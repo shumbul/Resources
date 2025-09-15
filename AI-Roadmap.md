@@ -2,14 +2,14 @@
 
 ## Month 1: Programming Foundations & Web Basics
 
-- Learn **Python** concepts, basic data structures, and algorithms.  
-- Understand **HTML/CSS** for web basics, **JavaScript** for interactivity, and essential **Git/GitHub** workflows.  
+- Learn **Python** concepts, basic data structures, and algorithms.
+- Understand **HTML/CSS** for web basics, **JavaScript** for interactivity, and essential **Git/GitHub** workflows.
 - Build a simple personal webpage or calculator.
 
-**Resources**:
-- [SWAYAM Plus: Free AI/ML using Python (IIT Madras)](https://www.iitm.ac.in/happenings/press-releases-and-coverages/iit-madras-swayam-plus-launches-free-ai-courses-students)[11]
-- [Microsoft AI for Beginners (free, GitHub)](https://microsoft.github.io/AI-For-Beginners/)[12]
-- [CS50: Introduction to AI with Python (free)](https://www.edx.org/course/cs50s-introduction-to-artificial-intelligence-with-python)[13]
+**Resources:**
+1. [SWAYAM Plus: Free AI/ML using Python (IIT Madras)](https://www.iitm.ac.in/happenings/press-releases-and-coverages/iit-madras-swayam-plus-launches-free-ai-courses-students)
+2. [Microsoft AI for Beginners (GitHub)](https://microsoft.github.io/AI-For-Beginners/)
+3. [CS50: Introduction to AI with Python (edX)](https://www.edx.org/course/cs50s-introduction-to-artificial-intelligence-with-python)
 
 ***
 
@@ -19,9 +19,9 @@
 - Learn database basics (**PostgreSQL**, **MongoDB**) and build RESTful APIs.
 - Create a CRUD app with user authentication.
 
-**Resources**:
-- [FreeCodeCamp: Responsive Web Design & JavaScript Algorithms](https://www.freecodecamp.org/learn)[13]
-- [GUVI: AI & ML Course (India focused)](https://www.guvi.in/blog/top-10-ai-courses-in-india/)[14]
+**Resources:**
+1. [FreeCodeCamp: Responsive Web Design & JavaScript Algorithms](https://www.freecodecamp.org/learn)
+2. [GUVI: AI & ML Course (India focused)](https://www.guvi.in/blog/top-10-ai-courses-in-india/)
 
 ***
 
@@ -31,10 +31,10 @@
 - Practice with **pandas**, **NumPy**, and **scikit-learn**.
 - Learn about neural networks, **TensorFlow**/**PyTorch** basics.
 
-**Resources**:
-- [Google Machine Learning Crash Course](https://grow.google/intl/en_pk/guide-ai-machine-learning/)[13]
-- [Coursera: AI for Everyone by Andrew Ng (free to audit)](https://www.coursera.org/learn/ai-for-everyone)[14][13]
-- [IBM AI Engineering Professional Certificate](https://www.coursera.org/professional-certificates/ai-engineer)[15]
+**Resources:**
+1. [Google Machine Learning Crash Course](https://grow.google/intl/en_pk/guide-ai-machine-learning/)
+2. [Coursera: AI for Everyone by Andrew Ng](https://www.coursera.org/learn/ai-for-everyone)
+3. [IBM AI Engineering Professional Certificate](https://www.coursera.org/professional-certificates/ai-engineer)
 
 ***
 
@@ -43,10 +43,10 @@
 - Explore **LLMs** (GPT, DALL·E), **prompt engineering**, **Hugging Face**, and **vector databases**.
 - Build simple chatbots or AI-powered search.
 
-**Resources**:
-- [fast.ai: Practical Deep Learning for Coders](https://course.fast.ai/)[14]
-- [MIT Deep Learning (lectures free on YouTube)](https://introtodeeplearning.com/)[14]
-- [DeepLearning.AI: AI Python for Beginners (short, beginner friendly)](https://www.deeplearning.ai/short-courses/ai-python-for-beginners/)[16]
+**Resources:**
+1. [fast.ai: Practical Deep Learning for Coders](https://course.fast.ai/)
+2. [MIT Deep Learning (YouTube)](https://introtodeeplearning.com/)
+3. [DeepLearning.AI: AI Python for Beginners](https://www.deeplearning.ai/short-courses/ai-python-for-beginners/)
 
 ***
 
@@ -56,10 +56,10 @@
 - Learn **Docker** basics, automate with CI/CD, and deploy on **AWS/GCP**.
 - Explore **MLOps** concepts.
 
-**Resources**:
-- [Google Cloud: Machine Learning & AI Courses](https://cloud.google.com/learn/training/machinelearning-ai)[17]
-- [Udacity: AI Programming with Python Nanodegree](https://www.udacity.com/course/ai-programming-python-nanodegree--nd089)[14]
-- [Kaggle: Datasets and Competition Platforms](https://www.kaggle.com/)[18]
+**Resources:**
+1. [Google Cloud: Machine Learning & AI Courses](https://cloud.google.com/learn/training/machinelearning-ai)
+2. [Udacity: AI Programming with Python Nanodegree](https://www.udacity.com/course/ai-programming-python-nanodegree--nd089)
+3. [Kaggle: Datasets and Competition Platforms](https://www.kaggle.com/)
 
 ***
 
@@ -69,11 +69,11 @@
 - Prepare portfolio with project reports, code repositories, and demo videos.
 - Study for certifications and brush up on interviews.
 
-**Resources**:
-- [RCM Bhubaneswar: Hands-on AI Project Ideas](https://rcm.ac.in/project-file-on-artificial-intelligence/)[19]
-- [UpGrad: 30+ AI Project Ideas for Beginners](https://www.upgrad.com/blog/top-artificial-intelligence-project-ideas-topics-for-beginners/)[20]
-- [IBM AI Developer Professional Certificate](https://www.coursera.org/professional-certificates/applied-artifical-intelligence-ibm-watson-ai)[15]
-- [IndiaAI: Free Course Directory](https://indiaai.gov.in/learning)[21]
-- [SkillsBuild.org: Free AI Certification](https://skillsbuild.org/students/course-catalog/artificial-intelligence)[22]
-- [Kaggle](https://www.kaggle.com/), [GitHub](https://github.com/): Share and publish your projects & code
-- Free Artificial Intelligence Course for Students | [SkillsBuild](https://skillsbuild.org/students/course-catalog/artificial-intelligence)
+**Resources:**
+1. [RCM Bhubaneswar: Hands-on AI Project Ideas](https://rcm.ac.in/project-file-on-artificial-intelligence/)
+2. [UpGrad: 30+ AI Project Ideas for Beginners](https://www.upgrad.com/blog/top-artificial-intelligence-project-ideas-topics-for-beginners/)
+3. [IBM AI Developer Professional Certificate](https://www.coursera.org/professional-certificates/applied-artifical-intelligence-ibm-watson-ai)
+4. [IndiaAI: Free Course Directory](https://indiaai.gov.in/learning)
+5. [SkillsBuild.org: Free AI Certification](https://skillsbuild.org/students/course-catalog/artificial-intelligence)
+6. [Kaggle](https://www.kaggle.com/) and [GitHub](https://github.com/): Build, share, and publish your projects and code.
+   
