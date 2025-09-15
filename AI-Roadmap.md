@@ -1,4 +1,4 @@
-# 6-Month AI Developer Roadmap for Indians
+# 6-Month AI Developer Roadmap
 
 ## Month 1: Programming Foundations & Web Basics
 
