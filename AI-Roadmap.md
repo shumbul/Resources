@@ -75,5 +75,5 @@
 - [IBM AI Developer Professional Certificate](https://www.coursera.org/professional-certificates/applied-artifical-intelligence-ibm-watson-ai)[15]
 - [IndiaAI: Free Course Directory](https://indiaai.gov.in/learning)[21]
 - [SkillsBuild.org: Free AI Certification](https://skillsbuild.org/students/course-catalog/artificial-intelligence)[22]
-- [Kaggle](https://www.kaggle.com/), [GitHub](https://github.com/): Share and publish your projects & code[
-[22] Free Artificial Intelligence Course for Students | SkillsBuild https://skillsbuild.org/students/course-catalog/artificial-intelligence
+- [Kaggle](https://www.kaggle.com/), [GitHub](https://github.com/): Share and publish your projects & code
+- Free Artificial Intelligence Course for Students | [SkillsBuild](https://skillsbuild.org/students/course-catalog/artificial-intelligence)
