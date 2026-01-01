@@ -317,10 +317,13 @@
             color: var(--primary);
         }
 
+
+
     </style>
 </head>
 <body>
-    <div data-component="theme-switcher"></div>
+    <!-- Theme Switcher -->
+    <div id="theme-switcher-placeholder"></div>
 
     <header>
         <div class="container">
@@ -509,6 +512,50 @@
 
     <script>
         // Page-specific JavaScript for index page
+        document.addEventListener('DOMContentLoaded', () => {
+            // Load theme
+            const savedTheme = localStorage.getItem('theme') || 'purple';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+
+            // Animation on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all cards
+            document.querySelectorAll('.resource-card, .week-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+
+            // Handle "Coming Soon" links
+            const comingSoonLinks = document.querySelectorAll('a[href="#"]');
+            comingSoonLinks.forEach(link => {
+                if (link.textContent.includes('Coming Soon')) {
+                    link.style.opacity = '0.6';
+                    link.style.cursor = 'not-allowed';
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        alert('This resource is coming soon! Follow the project for updates.');
+                    });
+                }
+            });
+        });
     </script>
+
+    <!-- Component Loader -->
+    <script src="./components/component-loader.js"></script>
 </body>
 </html>
