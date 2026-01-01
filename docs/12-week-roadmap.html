@@ -297,6 +297,33 @@
     </style>
 </head>
 <body>
+    <!-- Theme Switcher -->
+    <div class="theme-switcher">
+        <button class="theme-switcher-toggle" id="themeToggle">🎨</button>
+        <div class="theme-options" id="themeOptions">
+            <div class="theme-option" data-theme="purple">
+                <div class="theme-color purple"></div>
+                <span>Purple</span>
+            </div>
+            <div class="theme-option" data-theme="blue">
+                <div class="theme-color blue"></div>
+                <span>Blue</span>
+            </div>
+            <div class="theme-option" data-theme="green">
+                <div class="theme-color green"></div>
+                <span>Green</span>
+            </div>
+            <div class="theme-option" data-theme="orange">
+                <div class="theme-color orange"></div>
+                <span>Orange</span>
+            </div>
+            <div class="theme-option" data-theme="red">
+                <div class="theme-color red"></div>
+                <span>Red</span>
+            </div>
+        </div>
+    </div>
+
     <header class="header">
         <div class="container">
             <div class="header-content">
@@ -830,5 +857,56 @@
     
     <!-- Theme Switcher JavaScript -->
     <script src="./theme-switcher.js"></script>
+    
+    <script>
+        // Backup theme switcher functionality in case external JS fails
+        document.addEventListener('DOMContentLoaded', () => {
+            // Load saved theme or default to purple
+            const savedTheme = localStorage.getItem('theme') || 'purple';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+
+            // Theme switcher functionality
+            const themeToggle = document.getElementById('themeToggle');
+            const themeOptions = document.getElementById('themeOptions');
+            const themeOptionElements = document.querySelectorAll('.theme-option');
+
+            if (themeToggle && themeOptions) {
+                // Toggle theme options visibility
+                themeToggle.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    themeOptions.classList.toggle('show');
+                });
+
+                // Close theme options when clicking outside
+                document.addEventListener('click', () => {
+                    themeOptions.classList.remove('show');
+                });
+
+                // Handle theme selection
+                themeOptionElements.forEach(option => {
+                    option.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const selectedTheme = option.getAttribute('data-theme');
+                        
+                        // Apply theme
+                        document.documentElement.setAttribute('data-theme', selectedTheme);
+                        
+                        // Save theme preference
+                        localStorage.setItem('theme', selectedTheme);
+                        
+                        // Close options
+                        themeOptions.classList.remove('show');
+                        
+                        // Show feedback
+                        const originalText = themeToggle.textContent;
+                        themeToggle.textContent = '✓';
+                        setTimeout(() => {
+                            themeToggle.textContent = originalText;
+                        }, 500);
+                    });
+                });
+            }
+        });
+    </script>
 </body>
 </html>
