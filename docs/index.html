@@ -667,8 +667,8 @@
         const themeOptions = document.getElementById('themeOptions');
         const themeOptionElements = document.querySelectorAll('.theme-option');
 
-        // Load saved theme or default to blue
-        const savedTheme = localStorage.getItem('theme') || 'blue';
+        // Load saved theme or default to red
+        const savedTheme = localStorage.getItem('theme') || 'red';
         document.documentElement.setAttribute('data-theme', savedTheme);
 
         // Toggle theme options visibility
