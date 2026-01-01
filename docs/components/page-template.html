@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Include common head elements -->
+    <div data-component="head-common"></div>
+    
+    <!-- Page-specific meta tags -->
+    <title>{{PAGE_TITLE}} | Resources by Shumbul Arifa</title>
+    <meta name="description" content="{{PAGE_DESCRIPTION}}">
+    <meta property="og:title" content="{{PAGE_TITLE}}">
+    <meta property="og:description" content="{{PAGE_DESCRIPTION}}">
+
+    <!-- Page-specific styles -->
+    <style>
+        /* Add any page-specific styles here */
+        .page-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .page-subtitle {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .content-section {
+            background: var(--bg-secondary);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border);
+        }
+
+        .content-section h2 {
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .content-card {
+            background: var(--bg-primary);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .content-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .content-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .content-card h4 {
+            color: var(--secondary);
+            margin-bottom: 0.75rem;
+        }
+
+        .content-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .content-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .content-list li:last-child {
+            border-bottom: none;
+        }
+
+        .content-list li:before {
+            content: "→";
+            color: var(--primary);
+            font-weight: bold;
+            margin-right: 0.75rem;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, var(--primary)20, var(--accent)20);
+            border: 2px solid var(--primary);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .highlight-box h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2.25rem;
+            }
+            
+            .page-subtitle {
+                font-size: 1.125rem;
+            }
+            
+            .content-section, .content-card {
+                padding: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Include theme switcher -->
+    <div data-component="theme-switcher"></div>
+
+    <!-- Include back navigation -->
+    <div data-component="back-nav"></div>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container">
+            <h1 class="page-title">{{PAGE_TITLE}}</h1>
+            <p class="page-subtitle">{{PAGE_DESCRIPTION}}</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Add your content sections here -->
+        <div class="content-section">
+            <h2>Sample Section</h2>
+            <div class="content-card">
+                <h3>Sample Content Card</h3>
+                <p>Replace this with your actual content. You can add multiple content cards, lists, highlights, and other elements.</p>
+                
+                <ul class="content-list">
+                    <li>Sample list item 1</li>
+                    <li>Sample list item 2</li>
+                    <li>Sample list item 3</li>
+                </ul>
+            </div>
+            
+            <div class="highlight-box">
+                <h3>Important Highlight</h3>
+                <p>Use this for important information that needs to stand out.</p>
+            </div>
+        </div>
+
+        <!-- Add more sections as needed -->
+    </main>
+
+    <!-- Include footer -->
+    <div data-component="footer"></div>
+
+    <!-- Include common scripts -->
+    <div data-component="scripts-common"></div>
+
+    <!-- Component loader -->
+    <script src="./components/component-loader.js"></script>
+
+    <!-- Page-specific JavaScript -->
+    <script>
+        // Add any page-specific JavaScript here
+        document.addEventListener('DOMContentLoaded', () => {
+            // Custom back navigation configuration if needed
+            // window.backNavConfig = {
+            //     url: '../index.html',
+            //     text: 'Back to Resources'
+            // };
+            
+            console.log('{{PAGE_TITLE}} loaded successfully');
+        });
+    </script>
+</body>
+</html>

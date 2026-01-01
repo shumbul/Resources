@@ -1,0 +1,224 @@
+<!-- Common Head Section for All Pages -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Open Graph / Social Media -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://shumbul.github.io/roadmap-2026">
+
+<!-- Theme Switcher CSS -->
+<link rel="stylesheet" href="./theme-switcher.css">
+
+<style>
+    /* Fallback CSS variables in case external CSS fails to load */
+    :root {
+        --primary: #8b5cf6;
+        --secondary: #7c3aed;
+        --accent: #a78bfa;
+        --success: #059669;
+        --warning: #d97706;
+        --text-primary: #1f2937;
+        --text-secondary: #6b7280;
+        --bg-primary: #ffffff;
+        --bg-secondary: #f9fafb;
+        --bg-tertiary: #f1f5f9;
+        --border: #e5e7eb;
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Theme variations */
+    [data-theme="purple"] {
+        --primary: #8b5cf6;
+        --secondary: #7c3aed;
+        --accent: #a78bfa;
+    }
+
+    [data-theme="blue"] {
+        --primary: #2563eb;
+        --secondary: #1e40af;
+        --accent: #3b82f6;
+    }
+
+    [data-theme="green"] {
+        --primary: #059669;
+        --secondary: #047857;
+        --accent: #10b981;
+    }
+
+    [data-theme="orange"] {
+        --primary: #ea580c;
+        --secondary: #c2410c;
+        --accent: #f97316;
+    }
+
+    [data-theme="red"] {
+        --primary: #dc2626;
+        --secondary: #b91c1c;
+        --accent: #ef4444;
+    }
+
+    /* Base styles */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.7;
+        color: var(--text-primary);
+        background: var(--bg-primary);
+        transition: all 0.3s ease;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+
+    /* Typography */
+    h1, h2, h3, h4, h5, h6 {
+        line-height: 1.3;
+        margin-bottom: 1rem;
+        color: var(--text-primary);
+    }
+
+    p {
+        margin-bottom: 1rem;
+        color: var(--text-secondary);
+    }
+
+    a {
+        color: var(--primary);
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    a:hover {
+        color: var(--secondary);
+    }
+
+    /* Common button styles */
+    .btn, .cta-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.875rem 1.5rem;
+        background: var(--primary);
+        color: white;
+        border: none;
+        border-radius: 0.75rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        font-size: 1rem;
+    }
+
+    .btn:hover, .cta-button:hover {
+        background: var(--secondary);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+        color: white;
+    }
+
+    /* Back navigation */
+    .back-nav {
+        padding: 1rem 0;
+        border-bottom: 1px solid var(--border);
+        margin-bottom: 2rem;
+    }
+
+    .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--text-secondary);
+        transition: all 0.3s ease;
+        font-weight: 500;
+    }
+
+    .back-link:hover {
+        color: var(--primary);
+        transform: translateX(-3px);
+    }
+
+    /* Footer */
+    footer {
+        background: var(--bg-secondary);
+        border-top: 1px solid var(--border);
+        padding: 3rem 0;
+        text-align: center;
+        margin-top: 4rem;
+    }
+
+    .footer-content {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .footer-content p {
+        font-size: 1.125rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin: 2rem 0;
+    }
+
+    .social-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.5rem;
+        height: 2.5rem;
+        background: var(--bg-primary);
+        border: 2px solid var(--border);
+        border-radius: 50%;
+        color: var(--text-secondary);
+        transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+        background: var(--primary);
+        border-color: var(--primary);
+        color: white;
+        transform: translateY(-2px);
+    }
+
+    /* Theme switcher styles for individual theme colors */
+    .theme-color {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: 2px solid var(--border);
+    }
+
+    .theme-color.purple { background: #8b5cf6; }
+    .theme-color.blue { background: #2563eb; }
+    .theme-color.green { background: #059669; }
+    .theme-color.orange { background: #ea580c; }
+    .theme-color.red { background: #dc2626; }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+        .container {
+            padding: 0 1rem;
+        }
+        
+        .social-links {
+            gap: 0.75rem;
+        }
+        
+        .social-link {
+            width: 2.25rem;
+            height: 2.25rem;
+        }
+    }
+</style>

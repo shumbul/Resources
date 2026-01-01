@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <div data-component="head-common"></div>
+    
+    <title>Component Demo | Resources by Shumbul Arifa</title>
+    <meta name="description" content="Demonstration of the modular component system">
+    <meta property="og:title" content="Component Demo">
+    <meta property="og:description" content="Demonstration of the modular component system">
+
+    <style>
+        .demo-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .demo-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .demo-subtitle {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .demo-section {
+            background: var(--bg-secondary);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border);
+        }
+
+        .demo-card {
+            background: var(--bg-primary);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .demo-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, var(--primary)20, var(--accent)20);
+            border: 2px solid var(--primary);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div data-component="theme-switcher"></div>
+    <div data-component="back-nav"></div>
+
+    <header class="demo-header">
+        <div class="container">
+            <h1 class="demo-title">🧩 Component Demo</h1>
+            <p class="demo-subtitle">
+                This page demonstrates the new modular component system in action
+            </p>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="demo-section">
+            <h2>What's New? 🚀</h2>
+            <div class="demo-card">
+                <h3>Centralized Components</h3>
+                <p>All common HTML elements (header, footer, theme switcher, etc.) are now stored in reusable components in the <code>components/</code> directory.</p>
+            </div>
+            
+            <div class="demo-card">
+                <h3>No More Duplication</h3>
+                <p>Instead of copying the same HTML across multiple files, we now include components using data attributes or JavaScript loading.</p>
+            </div>
+
+            <div class="demo-card">
+                <h3>Easy Maintenance</h3>
+                <p>Update a component once, and the change applies to all pages using that component. Perfect for fixing bugs or adding new features!</p>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>How It Works 🛠️</h2>
+            <div class="demo-card">
+                <h3>1. Include Component Loader</h3>
+                <div class="code-block">
+&lt;script src="./components/component-loader.js"&gt;&lt;/script&gt;
+                </div>
+            </div>
+
+            <div class="demo-card">
+                <h3>2. Use Data Attributes</h3>
+                <div class="code-block">
+&lt;div data-component="theme-switcher"&gt;&lt;/div&gt;
+&lt;div data-component="footer"&gt;&lt;/div&gt;
+                </div>
+            </div>
+
+            <div class="demo-card">
+                <h3>3. Components Load Automatically</h3>
+                <p>The component loader finds all elements with <code>data-component</code> attributes and loads the corresponding HTML from the components directory.</p>
+            </div>
+        </div>
+
+        <div class="highlight-box">
+            <h3>✨ Benefits</h3>
+            <ul>
+                <li><strong>Consistency:</strong> All pages use the same components</li>
+                <li><strong>Maintainability:</strong> Update once, deploy everywhere</li>
+                <li><strong>Speed:</strong> Faster development with reusable templates</li>
+                <li><strong>Reliability:</strong> Components are cached and work offline</li>
+            </ul>
+        </div>
+
+        <div class="demo-section">
+            <h2>Available Components 📦</h2>
+            <div class="demo-card">
+                <h4>🎨 Theme Switcher</h4>
+                <p>Interactive theme switcher with multiple color options (you're using it right now!)</p>
+            </div>
+
+            <div class="demo-card">
+                <h4>🔗 Back Navigation</h4>
+                <p>Customizable back navigation with hover effects (see above)</p>
+            </div>
+
+            <div class="demo-card">
+                <h4>👤 Footer</h4>
+                <p>Complete footer with social links and credits (see below)</p>
+            </div>
+
+            <div class="demo-card">
+                <h4>🧠 Head Common</h4>
+                <p>Common HTML head section with all CSS variables and base styles</p>
+            </div>
+
+            <div class="demo-card">
+                <h4>⚡ Scripts Common</h4>
+                <p>Common JavaScript functionality including theme switching and animations</p>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>Creating New Pages 📝</h2>
+            <div class="demo-card">
+                <h3>Use the Template</h3>
+                <p>Copy <code>components/page-template.html</code> and customize it for your new page.</p>
+            </div>
+
+            <div class="demo-card">
+                <h3>Or Use the Creator Script</h3>
+                <div class="code-block">
+node components/page-creator.js "my-page.html" "My Page Title" "My page description"
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div data-component="footer"></div>
+    <div data-component="scripts-common"></div>
+    <script src="./components/component-loader.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Component demo page loaded successfully! 🎉');
+        });
+    </script>
+</body>
+</html>

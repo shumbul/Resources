@@ -1,0 +1,99 @@
+<!-- Common Scripts Section -->
+<!-- Theme Switcher JavaScript -->
+<script src="./theme-switcher.js"></script>
+
+<script>
+    // Backup theme switcher functionality in case external JS fails
+    document.addEventListener('DOMContentLoaded', () => {
+        // Load saved theme or default to purple
+        const savedTheme = localStorage.getItem('theme') || 'purple';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        
+        // Theme switcher functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const themeOptions = document.getElementById('themeOptions');
+        
+        if (themeToggle && themeOptions) {
+            // Toggle theme options visibility
+            themeToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                themeOptions.classList.toggle('show');
+            });
+            
+            // Close theme options when clicking outside
+            document.addEventListener('click', () => {
+                themeOptions.classList.remove('show');
+            });
+            
+            // Prevent theme options from closing when clicking inside
+            themeOptions.addEventListener('click', (e) => {
+                e.stopPropagation();
+            });
+            
+            // Handle theme selection
+            const themeOptionButtons = document.querySelectorAll('.theme-option');
+            themeOptionButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const selectedTheme = button.getAttribute('data-theme');
+                    
+                    // Apply theme
+                    document.documentElement.setAttribute('data-theme', selectedTheme);
+                    
+                    // Save theme preference
+                    localStorage.setItem('theme', selectedTheme);
+                    
+                    // Close options
+                    themeOptions.classList.remove('show');
+                    
+                    // Show feedback
+                    const originalText = themeToggle.textContent;
+                    themeToggle.style.transform = 'scale(1.2)';
+                    themeToggle.style.color = 'var(--success)';
+                    setTimeout(() => {
+                        themeToggle.style.transform = 'scale(1)';
+                        themeToggle.style.color = '';
+                    }, 300);
+                });
+            });
+        }
+    });
+
+    // Simple animation on scroll (if elements exist)
+    document.addEventListener('DOMContentLoaded', () => {
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards if they exist
+        const cards = document.querySelectorAll('.resource-card, .week-card, .content-card, .section-card');
+        cards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+
+        // Handle "Coming Soon" links if they exist
+        const comingSoonLinks = document.querySelectorAll('a[href="#"]');
+        comingSoonLinks.forEach(link => {
+            if (link.textContent.includes('Coming Soon')) {
+                link.style.opacity = '0.6';
+                link.style.cursor = 'not-allowed';
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    alert('This resource is coming soon! Follow the project for updates.');
+                });
+            }
+        });
+    });
+</script>

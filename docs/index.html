@@ -571,6 +571,18 @@
                 </div>
 
                 <div class="resource-card animate-in">
+                    <div class="resource-icon">🧩</div>
+                    <h3 class="resource-title">Component System Demo</h3>
+                    <p class="resource-description">
+                        See how this site is built with modular components. 
+                        No more code duplication, easier maintenance!
+                    </p>
+                    <a href="./component-demo.html" class="resource-link">
+                        View Demo →
+                    </a>
+                </div>
+
+                <div class="resource-card animate-in">
                     <div class="resource-icon">📄</div>
                     <h3 class="resource-title">Resume & Portfolio Templates</h3>
                     <p class="resource-description">
@@ -704,11 +716,12 @@
                         themeOptions.classList.remove('show');
                         
                         // Show feedback
-                        const originalText = themeToggle.textContent;
-                        themeToggle.textContent = '✓';
+                        themeToggle.style.transform = 'scale(1.2)';
+                        themeToggle.style.color = 'var(--success)';
                         setTimeout(() => {
-                            themeToggle.textContent = originalText;
-                        }, 500);
+                            themeToggle.style.transform = 'scale(1)';
+                            themeToggle.style.color = '';
+                        }, 300);
                     });
                 });
             }

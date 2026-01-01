@@ -8,14 +8,14 @@ Visit the live website: [shumbul.github.io/Resources](https://shumbul.github.io/
 
 ## 📚 Available Resources
 
-### 🎯 [12-Week Tech Career Roadmap](docs/12-week-roadmap.md)
+### 🎯 [12-Week Tech Career Roadmap](https://shumbul.github.io/Resources/12-week-roadmap.html)
 A comprehensive week-by-week breakdown from career clarity to job interviews. Includes practical tasks, builds, and clear goals for each phase.
 
 - **Weeks 1-4:** Foundation building (direction, CS basics, programming, DSA)
 - **Weeks 5-8:** Modern tech skills (AI, backend, system design) 
 - **Weeks 9-12:** Career preparation (projects, portfolio, job search)
 
-### 🤖 [AI Developer Roadmap](docs/AI-Roadmap.md)
+### 🤖 [AI Developer Roadmap](https://shumbul.github.io/Resources/AI-Roadmap.html)
 6-month comprehensive guide to mastering Artificial Intelligence from basics to advanced concepts with practical implementation steps.
 
 - **Month 1:** Programming Foundations & Web Basics
@@ -24,6 +24,9 @@ A comprehensive week-by-week breakdown from career clarity to job interviews. In
 - **Month 4:** Generative & Natural Language AI
 - **Months 5-6:** Advanced projects and specialization
 
+### 🧩 [Component System Demo](https://shumbul.github.io/Resources/component-demo.html)
+Explore the modular component system used to build this website. Learn how to eliminate code duplication and build maintainable web pages.
+
 ## 🔮 Coming Soon
 
 - DSA Practice Guide
@@ -31,6 +34,41 @@ A comprehensive week-by-week breakdown from career clarity to job interviews. In
 - AI Tools for Developers
 - Resume & Portfolio Templates
 - Interview Prep Kit
+
+## 🛠️ Technical Implementation
+
+This website is built using a **modular component system** that eliminates code duplication and makes maintenance easier:
+
+### Features
+- **Reusable Components:** Header, footer, theme switcher, and navigation are centralized
+- **Theme System:** Multi-color theme switcher with persistent preferences
+- **Responsive Design:** Works seamlessly on desktop and mobile
+- **Component Loading:** Dynamic component loading with caching
+- **Template System:** Easy creation of new pages from templates
+
+### Component Structure
+```
+docs/components/
+├── head-common.html      # Common head section with CSS variables
+├── theme-switcher.html   # Multi-color theme switcher UI
+├── footer.html           # Footer with social links
+├── back-nav.html         # Customizable back navigation
+├── scripts-common.html   # Common JavaScript functionality
+├── component-loader.js   # Component loading utility
+├── page-template.html    # Template for creating new pages
+└── README.md            # Component documentation
+```
+
+### Creating New Pages
+```bash
+# Use the page creator script
+node docs/components/page-creator.js "new-page.html" "Page Title" "Description"
+
+# Or copy the template manually
+cp docs/components/page-template.html docs/new-page.html
+```
+
+See the [Component Demo](https://shumbul.github.io/Resources/component-demo.html) for a live example of how this system works!
 
 ## 🌟 About
 
