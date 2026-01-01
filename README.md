@@ -46,28 +46,6 @@ This website is built using a **modular component system** that eliminates code 
 - **Component Loading:** Dynamic component loading with caching
 - **Template System:** Easy creation of new pages from templates
 
-### Component Structure
-```
-docs/components/
-├── head-common.html      # Common head section with CSS variables
-├── theme-switcher.html   # Multi-color theme switcher UI
-├── footer.html           # Footer with social links
-├── back-nav.html         # Customizable back navigation
-├── scripts-common.html   # Common JavaScript functionality
-├── component-loader.js   # Component loading utility
-├── page-template.html    # Template for creating new pages
-└── README.md            # Component documentation
-```
-
-### Creating New Pages
-```bash
-# Use the page creator script
-node docs/components/page-creator.js "new-page.html" "Page Title" "Description"
-
-# Or copy the template manually
-cp docs/components/page-template.html docs/new-page.html
-```
-
 See the [Component Demo](https://shumbul.github.io/Resources/component-demo.html) for a live example of how this system works!
 
 ## 🌟 About

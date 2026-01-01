@@ -273,32 +273,52 @@
             <h3>Initial Setup</h3>
             <p>Before using Git, configure your identity:</p>
             
-            <div class="command-block">
-<span class="command-comment"># Set your name and email globally</span>
+            <div class="code-block-container" data-language="bash">
+    <div class="code-block-header">
+        <span class="code-block-language">bash</span>
+        <button class="code-block-copy" title="Copy to clipboard">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+            </svg>
+            <span class="copy-text">Copy</span>
+        </button>
+    </div>
+    <pre class="code-block-content"><code># Set your name and email globally
 git config --global user.name "Your Name"
 git config --global user.email "your.email@example.com"
 
-<span class="command-comment"># Set default branch name to 'main'</span>
+# Set default branch name to 'main'
 git config --global init.defaultBranch main
 
-<span class="command-comment"># Set your preferred editor</span>
-git config --global core.editor "code --wait"  <span class="command-comment"># VS Code</span>
-git config --global core.editor "vim"          <span class="command-comment"># Vim</span>
-git config --global core.editor "nano"         <span class="command-comment"># Nano</span>
-            </div>
+# Set your preferred editor
+git config --global core.editor "code --wait"  # VS Code
+git config --global core.editor "vim"          # Vim
+git config --global core.editor "nano"         # Nano</code></pre>
+</div>
 
             <h3>Viewing Configuration</h3>
-            <div class="command-block">
-<span class="command-comment"># View all configurations</span>
+            <div class="code-block-container" data-language="bash">
+    <div class="code-block-header">
+        <span class="code-block-language">bash</span>
+        <button class="code-block-copy" title="Copy to clipboard">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+            </svg>
+            <span class="copy-text">Copy</span>
+        </button>
+    </div>
+    <pre class="code-block-content"><code># View all configurations
 git config --list
 
-<span class="command-comment"># View specific configuration</span>
+# View specific configuration
 git config user.name
 git config user.email
 
-<span class="command-comment"># View configuration with location info</span>
-git config --list --show-origin
-            </div>
+# View configuration with location info
+git config --list --show-origin</code></pre>
+</div>
 
             <div class="best-practice">
                 <h4>💡 Configuration Levels</h4>
@@ -315,37 +335,57 @@ git config --list --show-origin
             <h2>📁 Repository Operations</h2>
             
             <h3>Creating Repositories</h3>
-            <div class="command-block">
-<span class="command-comment"># Initialize a new repository in current directory</span>
+            <div class="code-block-container" data-language="bash">
+    <div class="code-block-header">
+        <span class="code-block-language">bash</span>
+        <button class="code-block-copy" title="Copy to clipboard">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+            </svg>
+            <span class="copy-text">Copy</span>
+        </button>
+    </div>
+    <pre class="code-block-content"><code># Initialize a new repository in current directory
 git init
 
-<span class="command-comment"># Initialize with specific branch name</span>
+# Initialize with specific branch name
 git init --initial-branch=main
 
-<span class="command-comment"># Clone an existing repository</span>
+# Clone an existing repository
 git clone &lt;repository-url&gt;
 
-<span class="command-comment"># Clone to a specific directory</span>
+# Clone to a specific directory
 git clone &lt;repository-url&gt; &lt;directory-name&gt;
 
-<span class="command-comment"># Clone a specific branch</span>
+# Clone a specific branch
 git clone -b &lt;branch-name&gt; &lt;repository-url&gt;
 
-<span class="command-comment"># Clone with limited history (shallow clone)</span>
-git clone --depth 1 &lt;repository-url&gt;
-            </div>
+# Clone with limited history (shallow clone)
+git clone --depth 1 &lt;repository-url&gt;</code></pre>
+</div>
 
             <h3>Repository Information</h3>
-            <div class="command-block">
-<span class="command-comment"># Show remote repositories</span>
+            <div class="code-block-container" data-language="bash">
+    <div class="code-block-header">
+        <span class="code-block-language">bash</span>
+        <button class="code-block-copy" title="Copy to clipboard">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+            </svg>
+            <span class="copy-text">Copy</span>
+        </button>
+    </div>
+    <pre class="code-block-content"><code># Show remote repositories
 git remote -v
 
-<span class="command-comment"># Show repository statistics</span>
+# Show repository statistics
 git count-objects -v
 
-<span class="command-comment"># Show repository size</span>
-du -sh .git/
-            </div>
+# Show repository size
+du -sh .git/</code></pre>
+</div>
         </div>
 
         <!-- Basic Workflow -->
@@ -353,16 +393,26 @@ du -sh .git/
             <h2>🔄 Basic Workflow</h2>
             
             <h3>Checking Status</h3>
-            <div class="command-block">
-<span class="command-comment"># Check repository status (detailed)</span>
+            <div class="code-block-container" data-language="bash">
+    <div class="code-block-header">
+        <span class="code-block-language">bash</span>
+        <button class="code-block-copy" title="Copy to clipboard">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+            </svg>
+            <span class="copy-text">Copy</span>
+        </button>
+    </div>
+    <pre class="code-block-content"><code># Check repository status (detailed)
 git status
 
-<span class="command-comment"># Check status in short format</span>
+# Check status in short format
 git status -s
 
-<span class="command-comment"># Check status and show ignored files</span>
-git status --ignored
-            </div>
+# Check status and show ignored files
+git status --ignored</code></pre>
+</div>
 
             <div class="workflow-card">
                 <h4>Status Indicators in Short Format:</h4>
@@ -377,49 +427,69 @@ git status --ignored
             </div>
 
             <h3>Adding Files (Staging)</h3>
-            <div class="command-block">
-<span class="command-comment"># Add specific file</span>
+            <div class="code-block-container" data-language="bash">
+    <div class="code-block-header">
+        <span class="code-block-language">bash</span>
+        <button class="code-block-copy" title="Copy to clipboard">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+            </svg>
+            <span class="copy-text">Copy</span>
+        </button>
+    </div>
+    <pre class="code-block-content"><code># Add specific file
 git add &lt;filename&gt;
 
-<span class="command-comment"># Add multiple files</span>
+# Add multiple files
 git add file1.txt file2.txt
 
-<span class="command-comment"># Add all files in current directory</span>
+# Add all files in current directory
 git add .
 
-<span class="command-comment"># Add all files with specific extension</span>
+# Add all files with specific extension
 git add *.js
 
-<span class="command-comment"># Add files interactively</span>
+# Add files interactively
 git add -i
 
-<span class="command-comment"># Add parts of a file (patch mode)</span>
+# Add parts of a file (patch mode)
 git add -p &lt;filename&gt;
 
-<span class="command-comment"># Add all tracked files (excluding untracked)</span>
-git add -u
-            </div>
+# Add all tracked files (excluding untracked)
+git add -u</code></pre>
+</div>
 
             <h3>Committing Changes</h3>
-            <div class="command-block">
-<span class="command-comment"># Commit staged changes with message</span>
+            <div class="code-block-container" data-language="bash">
+    <div class="code-block-header">
+        <span class="code-block-language">bash</span>
+        <button class="code-block-copy" title="Copy to clipboard">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+            </svg>
+            <span class="copy-text">Copy</span>
+        </button>
+    </div>
+    <pre class="code-block-content"><code># Commit staged changes with message
 git commit -m "Your commit message"
 
-<span class="command-comment"># Commit all tracked files (skip staging)</span>
+# Commit all tracked files (skip staging)
 git commit -am "Your commit message"
 
-<span class="command-comment"># Commit with detailed message</span>
+# Commit with detailed message
 git commit -m "Brief summary" -m "Detailed explanation"
 
-<span class="command-comment"># Commit and open editor for message</span>
+# Commit and open editor for message
 git commit
 
-<span class="command-comment"># Amend the last commit</span>
+# Amend the last commit
 git commit --amend
 
-<span class="command-comment"># Amend without changing message</span>
-git commit --amend --no-edit
-            </div>
+# Amend without changing message
+git commit --amend --no-edit</code></pre>
+</div>
         </div>
 
         <!-- Branching & Merging -->
@@ -427,52 +497,72 @@ git commit --amend --no-edit
             <h2>🌳 Branching & Merging</h2>
             
             <h3>Branch Management</h3>
-            <div class="command-block">
-<span class="command-comment"># List all local branches</span>
+            <div class="code-block-container" data-language="bash">
+    <div class="code-block-header">
+        <span class="code-block-language">bash</span>
+        <button class="code-block-copy" title="Copy to clipboard">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+            </svg>
+            <span class="copy-text">Copy</span>
+        </button>
+    </div>
+    <pre class="code-block-content"><code># List all local branches
 git branch
 
-<span class="command-comment"># List all branches including remote</span>
+# List all branches including remote
 git branch -a
 
-<span class="command-comment"># Create new branch</span>
+# Create new branch
 git branch &lt;branch-name&gt;
 
-<span class="command-comment"># Create and switch to new branch</span>
+# Create and switch to new branch
 git checkout -b &lt;branch-name&gt;
 
-<span class="command-comment"># Switch to existing branch</span>
+# Switch to existing branch
 git checkout &lt;branch-name&gt;
 
-<span class="command-comment"># Switch to previous branch</span>
+# Switch to previous branch
 git checkout -
 
-<span class="command-comment"># Rename current branch</span>
+# Rename current branch
 git branch -m &lt;new-branch-name&gt;
 
-<span class="command-comment"># Delete merged branch</span>
+# Delete merged branch
 git branch -d &lt;branch-name&gt;
 
-<span class="command-comment"># Force delete branch (even if not merged)</span>
-git branch -D &lt;branch-name&gt;
-            </div>
+# Force delete branch (even if not merged)
+git branch -D &lt;branch-name&gt;</code></pre>
+</div>
 
             <h3>Merging Strategies</h3>
-            <div class="command-block">
-<span class="command-comment"># Fast-forward merge (default when possible)</span>
+            <div class="code-block-container" data-language="bash">
+    <div class="code-block-header">
+        <span class="code-block-language">bash</span>
+        <button class="code-block-copy" title="Copy to clipboard">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+            </svg>
+            <span class="copy-text">Copy</span>
+        </button>
+    </div>
+    <pre class="code-block-content"><code># Fast-forward merge (default when possible)
 git merge &lt;branch-name&gt;
 
-<span class="command-comment"># Create merge commit even if fast-forward is possible</span>
+# Create merge commit even if fast-forward is possible
 git merge --no-ff &lt;branch-name&gt;
 
-<span class="command-comment"># Squash merge (combine all commits into one)</span>
+# Squash merge (combine all commits into one)
 git merge --squash &lt;branch-name&gt;
 
-<span class="command-comment"># Abort ongoing merge</span>
+# Abort ongoing merge
 git merge --abort
 
-<span class="command-comment"># Continue merge after resolving conflicts</span>
-git merge --continue
-            </div>
+# Continue merge after resolving conflicts
+git merge --continue</code></pre>
+</div>
 
             <div class="workflow-card">
                 <h4>🔧 Handling Merge Conflicts</h4>
@@ -491,80 +581,120 @@ git merge --continue
             <h2>🌐 Remote Operations</h2>
             
             <h3>Remote Repository Management</h3>
-            <div class="command-block">
-<span class="command-comment"># List remote repositories</span>
+            <div class="code-block-container" data-language="bash">
+    <div class="code-block-header">
+        <span class="code-block-language">bash</span>
+        <button class="code-block-copy" title="Copy to clipboard">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+            </svg>
+            <span class="copy-text">Copy</span>
+        </button>
+    </div>
+    <pre class="code-block-content"><code># List remote repositories
 git remote -v
 
-<span class="command-comment"># Add remote repository</span>
+# Add remote repository
 git remote add &lt;remote-name&gt; &lt;repository-url&gt;
 
-<span class="command-comment"># Remove remote</span>
+# Remove remote
 git remote remove &lt;remote-name&gt;
 
-<span class="command-comment"># Rename remote</span>
+# Rename remote
 git remote rename &lt;old-name&gt; &lt;new-name&gt;
 
-<span class="command-comment"># Change remote URL</span>
+# Change remote URL
 git remote set-url &lt;remote-name&gt; &lt;new-url&gt;
 
-<span class="command-comment"># Show remote information</span>
-git remote show &lt;remote-name&gt;
-            </div>
+# Show remote information
+git remote show &lt;remote-name&gt;</code></pre>
+</div>
 
             <h3>Fetching and Pulling</h3>
-            <div class="command-block">
-<span class="command-comment"># Fetch from default remote</span>
+            <div class="code-block-container" data-language="bash">
+    <div class="code-block-header">
+        <span class="code-block-language">bash</span>
+        <button class="code-block-copy" title="Copy to clipboard">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+            </svg>
+            <span class="copy-text">Copy</span>
+        </button>
+    </div>
+    <pre class="code-block-content"><code># Fetch from default remote
 git fetch
 
-<span class="command-comment"># Fetch from specific remote</span>
+# Fetch from specific remote
 git fetch &lt;remote-name&gt;
 
-<span class="command-comment"># Fetch all remotes</span>
+# Fetch all remotes
 git fetch --all
 
-<span class="command-comment"># Fetch and prune deleted branches</span>
+# Fetch and prune deleted branches
 git fetch --prune
 
-<span class="command-comment"># Pull changes (fetch + merge)</span>
+# Pull changes (fetch + merge)
 git pull
 
-<span class="command-comment"># Pull with rebase instead of merge</span>
+# Pull with rebase instead of merge
 git pull --rebase
 
-<span class="command-comment"># Pull and automatically stash/unstash changes</span>
-git pull --autostash
-            </div>
+# Pull and automatically stash/unstash changes
+git pull --autostash</code></pre>
+</div>
 
             <h3>Pushing Changes</h3>
-            <div class="command-block">
-<span class="command-comment"># Push to default remote and branch</span>
+            <div class="code-block-container" data-language="bash">
+    <div class="code-block-header">
+        <span class="code-block-language">bash</span>
+        <button class="code-block-copy" title="Copy to clipboard">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+            </svg>
+            <span class="copy-text">Copy</span>
+        </button>
+    </div>
+    <pre class="code-block-content"><code># Push to default remote and branch
 git push
 
-<span class="command-comment"># Push to specific remote and branch</span>
+# Push to specific remote and branch
 git push &lt;remote-name&gt; &lt;branch-name&gt;
 
-<span class="command-comment"># Push and set upstream tracking</span>
+# Push and set upstream tracking
 git push -u &lt;remote-name&gt; &lt;branch-name&gt;
 
-<span class="command-comment"># Push all branches</span>
+# Push all branches
 git push --all
 
-<span class="command-comment"># Push tags</span>
-git push --tags
-            </div>
+# Push tags
+git push --tags</code></pre>
+</div>
 
             <div class="warning">
                 <h4>⚠️ Dangerous Operations</h4>
-                <div class="command-block">
-<span class="command-comment"># Force push (dangerous - rewrites history)</span>
+                <div class="code-block-container" data-language="bash">
+    <div class="code-block-header">
+        <span class="code-block-language">bash</span>
+        <button class="code-block-copy" title="Copy to clipboard">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+            </svg>
+            <span class="copy-text">Copy</span>
+        </button>
+    </div>
+    <pre class="code-block-content"><code># Force push (dangerous - rewrites history)
 git push --force
 
-<span class="command-comment"># Safer force push (fails if remote has new commits)</span>
+# Safer force push (fails if remote has new commits)
 git push --force-with-lease
 
-<span class="command-comment"># Delete remote branch</span>
-git push &lt;remote-name&gt; --delete &lt;branch-name&gt;
-                </div>
+# Delete remote branch
+git push &lt;remote-name&gt; --delete &lt;branch-name&gt;</code></pre>
+</div>
             </div>
         </div>
 
@@ -573,73 +703,103 @@ git push &lt;remote-name&gt; --delete &lt;branch-name&gt;
             <h2>📜 Viewing History</h2>
             
             <h3>Basic Log Commands</h3>
-            <div class="command-block">
-<span class="command-comment"># View commit history</span>
+            <div class="code-block-container" data-language="bash">
+    <div class="code-block-header">
+        <span class="code-block-language">bash</span>
+        <button class="code-block-copy" title="Copy to clipboard">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+            </svg>
+            <span class="copy-text">Copy</span>
+        </button>
+    </div>
+    <pre class="code-block-content"><code># View commit history
 git log
 
-<span class="command-comment"># Compact one-line format</span>
+# Compact one-line format
 git log --oneline
 
-<span class="command-comment"># Show graphical representation</span>
+# Show graphical representation
 git log --graph
 
-<span class="command-comment"># Combine graph with oneline</span>
+# Combine graph with oneline
 git log --graph --oneline --all
 
-<span class="command-comment"># Show file statistics</span>
+# Show file statistics
 git log --stat
 
-<span class="command-comment"># Show actual changes</span>
+# Show actual changes
 git log --patch
 
-<span class="command-comment"># Limit number of commits</span>
+# Limit number of commits
 git log -n 5
-git log -5
-            </div>
+git log -5</code></pre>
+</div>
 
             <h3>Advanced Log Filtering</h3>
-            <div class="command-block">
-<span class="command-comment"># Filter by author</span>
+            <div class="code-block-container" data-language="bash">
+    <div class="code-block-header">
+        <span class="code-block-language">bash</span>
+        <button class="code-block-copy" title="Copy to clipboard">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+            </svg>
+            <span class="copy-text">Copy</span>
+        </button>
+    </div>
+    <pre class="code-block-content"><code># Filter by author
 git log --author="John Doe"
 
-<span class="command-comment"># Filter by date range</span>
+# Filter by date range
 git log --since="2023-01-01"
 git log --until="2023-12-31"
 git log --since="2 weeks ago"
 
-<span class="command-comment"># Filter by commit message</span>
+# Filter by commit message
 git log --grep="bug fix"
 
-<span class="command-comment"># Filter by file</span>
+# Filter by file
 git log -- &lt;filename&gt;
-git log --follow -- &lt;filename&gt;  <span class="command-comment"># Follow renames</span>
+git log --follow -- &lt;filename&gt;  # Follow renames
 
-<span class="command-comment"># Filter by content changes</span>
-git log -S "function_name"      <span class="command-comment"># When function_name was added/removed</span>
-git log -G "regex_pattern"      <span class="command-comment"># When pattern was added/removed</span>
-            </div>
+# Filter by content changes
+git log -S "function_name"      # When function_name was added/removed
+git log -G "regex_pattern"      # When pattern was added/removed</code></pre>
+</div>
 
             <h3>Comparing Changes</h3>
-            <div class="command-block">
-<span class="command-comment"># Show unstaged changes</span>
+            <div class="code-block-container" data-language="bash">
+    <div class="code-block-header">
+        <span class="code-block-language">bash</span>
+        <button class="code-block-copy" title="Copy to clipboard">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+            </svg>
+            <span class="copy-text">Copy</span>
+        </button>
+    </div>
+    <pre class="code-block-content"><code># Show unstaged changes
 git diff
 
-<span class="command-comment"># Show staged changes</span>
+# Show staged changes
 git diff --staged
 git diff --cached
 
-<span class="command-comment"># Compare specific commits</span>
+# Compare specific commits
 git diff &lt;commit1&gt; &lt;commit2&gt;
 
-<span class="command-comment"># Compare branches</span>
+# Compare branches
 git diff &lt;branch1&gt; &lt;branch2&gt;
 
-<span class="command-comment"># Show changes introduced by a commit</span>
+# Show changes introduced by a commit
 git show &lt;commit-hash&gt;
 
-<span class="command-comment"># Show file at specific commit</span>
-git show &lt;commit&gt;:&lt;filename&gt;
-            </div>
+# Show file at specific commit
+git show &lt;commit&gt;:&lt;filename&gt;</code></pre>
+</div>
         </div>
 
         <!-- Undoing Changes -->
@@ -647,61 +807,91 @@ git show &lt;commit&gt;:&lt;filename&gt;
             <h2>↩️ Undoing Changes</h2>
             
             <h3>Working Directory Changes</h3>
-            <div class="command-block">
-<span class="command-comment"># Discard changes in specific file</span>
+            <div class="code-block-container" data-language="bash">
+    <div class="code-block-header">
+        <span class="code-block-language">bash</span>
+        <button class="code-block-copy" title="Copy to clipboard">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+            </svg>
+            <span class="copy-text">Copy</span>
+        </button>
+    </div>
+    <pre class="code-block-content"><code># Discard changes in specific file
 git checkout -- &lt;filename&gt;
 
-<span class="command-comment"># Discard all changes in working directory</span>
+# Discard all changes in working directory
 git checkout -- .
 
-<span class="command-comment"># Restore file from specific commit</span>
+# Restore file from specific commit
 git checkout &lt;commit&gt; -- &lt;filename&gt;
 
-<span class="command-comment"># Using newer restore command (Git 2.23+)</span>
+# Using newer restore command (Git 2.23+)
 git restore &lt;filename&gt;
-git restore --staged &lt;filename&gt;  <span class="command-comment"># Unstage</span>
-git restore --source=&lt;commit&gt; &lt;filename&gt;
-            </div>
+git restore --staged &lt;filename&gt;  # Unstage
+git restore --source=&lt;commit&gt; &lt;filename&gt;</code></pre>
+</div>
 
             <h3>Cleaning Untracked Files</h3>
-            <div class="command-block">
-<span class="command-comment"># Remove untracked files</span>
+            <div class="code-block-container" data-language="bash">
+    <div class="code-block-header">
+        <span class="code-block-language">bash</span>
+        <button class="code-block-copy" title="Copy to clipboard">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+            </svg>
+            <span class="copy-text">Copy</span>
+        </button>
+    </div>
+    <pre class="code-block-content"><code># Remove untracked files
 git clean -f
 
-<span class="command-comment"># Remove untracked files and directories</span>
+# Remove untracked files and directories
 git clean -fd
 
-<span class="command-comment"># Preview what will be removed</span>
+# Preview what will be removed
 git clean -n
 
-<span class="command-comment"># Interactive clean</span>
+# Interactive clean
 git clean -i
 
-<span class="command-comment"># Remove ignored files too</span>
-git clean -fx
-            </div>
+# Remove ignored files too
+git clean -fx</code></pre>
+</div>
 
             <h3>Commit History Changes</h3>
-            <div class="command-block">
-<span class="command-comment"># Undo last commit, keep changes staged</span>
+            <div class="code-block-container" data-language="bash">
+    <div class="code-block-header">
+        <span class="code-block-language">bash</span>
+        <button class="code-block-copy" title="Copy to clipboard">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+            </svg>
+            <span class="copy-text">Copy</span>
+        </button>
+    </div>
+    <pre class="code-block-content"><code># Undo last commit, keep changes staged
 git reset --soft HEAD~1
 
-<span class="command-comment"># Undo last commit, keep changes in working directory</span>
+# Undo last commit, keep changes in working directory
 git reset --mixed HEAD~1
-git reset HEAD~1  <span class="command-comment"># default is --mixed</span>
+git reset HEAD~1  # default is --mixed
 
-<span class="command-comment"># Undo last commit, discard all changes</span>
+# Undo last commit, discard all changes
 git reset --hard HEAD~1
 
-<span class="command-comment"># Reset to specific commit</span>
+# Reset to specific commit
 git reset --hard &lt;commit-hash&gt;
 
-<span class="command-comment"># Create new commit that undoes changes</span>
+# Create new commit that undoes changes
 git revert &lt;commit-hash&gt;
 
-<span class="command-comment"># Revert merge commit</span>
-git revert -m 1 &lt;merge-commit-hash&gt;
-            </div>
+# Revert merge commit
+git revert -m 1 &lt;merge-commit-hash&gt;</code></pre>
+</div>
         </div>
 
         <!-- Stashing -->
@@ -709,60 +899,90 @@ git revert -m 1 &lt;merge-commit-hash&gt;
             <h2>📦 Stashing</h2>
             
             <h3>Basic Stashing</h3>
-            <div class="command-block">
-<span class="command-comment"># Stash current changes</span>
+            <div class="code-block-container" data-language="bash">
+    <div class="code-block-header">
+        <span class="code-block-language">bash</span>
+        <button class="code-block-copy" title="Copy to clipboard">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+            </svg>
+            <span class="copy-text">Copy</span>
+        </button>
+    </div>
+    <pre class="code-block-content"><code># Stash current changes
 git stash
-git stash push  <span class="command-comment"># newer syntax</span>
+git stash push  # newer syntax
 
-<span class="command-comment"># Stash with message</span>
+# Stash with message
 git stash save "Work in progress on feature X"
 git stash push -m "Work in progress on feature X"
 
-<span class="command-comment"># Stash including untracked files</span>
+# Stash including untracked files
 git stash -u
 git stash --include-untracked
 
-<span class="command-comment"># Stash only specific files</span>
-git stash push &lt;filename&gt;
-            </div>
+# Stash only specific files
+git stash push &lt;filename&gt;</code></pre>
+</div>
 
             <h3>Managing Stashes</h3>
-            <div class="command-block">
-<span class="command-comment"># List all stashes</span>
+            <div class="code-block-container" data-language="bash">
+    <div class="code-block-header">
+        <span class="code-block-language">bash</span>
+        <button class="code-block-copy" title="Copy to clipboard">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+            </svg>
+            <span class="copy-text">Copy</span>
+        </button>
+    </div>
+    <pre class="code-block-content"><code># List all stashes
 git stash list
 
-<span class="command-comment"># Show stash content</span>
+# Show stash content
 git stash show
-git stash show -p  <span class="command-comment"># show patch</span>
+git stash show -p  # show patch
 
-<span class="command-comment"># Apply latest stash</span>
+# Apply latest stash
 git stash apply
 
-<span class="command-comment"># Apply specific stash</span>
+# Apply specific stash
 git stash apply stash@{2}
 
-<span class="command-comment"># Pop stash (apply and remove)</span>
+# Pop stash (apply and remove)
 git stash pop
 git stash pop stash@{1}
 
-<span class="command-comment"># Drop specific stash</span>
+# Drop specific stash
 git stash drop stash@{0}
 
-<span class="command-comment"># Clear all stashes</span>
-git stash clear
-            </div>
+# Clear all stashes
+git stash clear</code></pre>
+</div>
 
             <h3>Advanced Stashing</h3>
-            <div class="command-block">
-<span class="command-comment"># Create branch from stash</span>
+            <div class="code-block-container" data-language="bash">
+    <div class="code-block-header">
+        <span class="code-block-language">bash</span>
+        <button class="code-block-copy" title="Copy to clipboard">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+            </svg>
+            <span class="copy-text">Copy</span>
+        </button>
+    </div>
+    <pre class="code-block-content"><code># Create branch from stash
 git stash branch &lt;branch-name&gt; stash@{0}
 
-<span class="command-comment"># Stash only staged changes</span>
+# Stash only staged changes
 git stash --staged
 
-<span class="command-comment"># Interactive stashing</span>
-git stash -p
-            </div>
+# Interactive stashing
+git stash -p</code></pre>
+</div>
         </div>
 
         <!-- Common Workflows -->
@@ -812,13 +1032,23 @@ git stash -p
             
             <h3>Commit Messages</h3>
             <p>Follow conventional commit format:</p>
-            <div class="command-block">
-&lt;type&gt;[optional scope]: &lt;description&gt;
+            <div class="code-block-container" data-language="bash">
+    <div class="code-block-header">
+        <span class="code-block-language">bash</span>
+        <button class="code-block-copy" title="Copy to clipboard">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+            </svg>
+            <span class="copy-text">Copy</span>
+        </button>
+    </div>
+    <pre class="code-block-content"><code>&lt;type&gt;[optional scope]: &lt;description&gt;
 
 [optional body]
 
-[optional footer(s)]
-            </div>
+[optional footer(s)]</code></pre>
+</div>
 
             <div class="workflow-card">
                 <h4>Commit Types:</h4>
@@ -834,23 +1064,43 @@ git stash -p
             </div>
 
             <h4>Examples:</h4>
-            <div class="command-block">
-feat(auth): add JWT token validation
+            <div class="code-block-container" data-language="bash">
+    <div class="code-block-header">
+        <span class="code-block-language">bash</span>
+        <button class="code-block-copy" title="Copy to clipboard">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+            </svg>
+            <span class="copy-text">Copy</span>
+        </button>
+    </div>
+    <pre class="code-block-content"><code>feat(auth): add JWT token validation
 
 fix: resolve memory leak in image processing
 
 docs: update API documentation for v2.0
 
-refactor(database): optimize query performance
-            </div>
+refactor(database): optimize query performance</code></pre>
+</div>
 
             <h3>Branch Naming Conventions</h3>
-            <div class="command-block">
-feature/feature-name
+            <div class="code-block-container" data-language="bash">
+    <div class="code-block-header">
+        <span class="code-block-language">bash</span>
+        <button class="code-block-copy" title="Copy to clipboard">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+            </svg>
+            <span class="copy-text">Copy</span>
+        </button>
+    </div>
+    <pre class="code-block-content"><code>feature/feature-name
 bugfix/issue-description
 hotfix/critical-issue
-release/version-number
-            </div>
+release/version-number</code></pre>
+</div>
 
             <div class="best-practice">
                 <h3>🎯 General Guidelines</h3>
@@ -880,38 +1130,48 @@ release/version-number
             </div>
 
             <h3>Common .gitignore Patterns</h3>
-            <div class="command-block">
-<span class="command-comment"># Dependencies</span>
+            <div class="code-block-container" data-language="bash">
+    <div class="code-block-header">
+        <span class="code-block-language">bash</span>
+        <button class="code-block-copy" title="Copy to clipboard">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+            </svg>
+            <span class="copy-text">Copy</span>
+        </button>
+    </div>
+    <pre class="code-block-content"><code># Dependencies
 node_modules/
 vendor/
 
-<span class="command-comment"># Build outputs</span>
+# Build outputs
 dist/
 build/
 *.exe
 *.dll
 
-<span class="command-comment"># IDE files</span>
+# IDE files
 .vscode/
 .idea/
 *.swp
 
-<span class="command-comment"># OS files</span>
+# OS files
 .DS_Store
 Thumbs.db
 
-<span class="command-comment"># Logs</span>
+# Logs
 *.log
 logs/
 
-<span class="command-comment"># Environment files</span>
+# Environment files
 .env
 .env.local
 
-<span class="command-comment"># Temporary files</span>
+# Temporary files
 *.tmp
-*.temp
-            </div>
+*.temp</code></pre>
+</div>
         </div>
 
         <div class="best-practice">
@@ -925,6 +1185,7 @@ logs/
 
     <div data-component="footer"></div>
     <div data-component="scripts-common"></div>
+    <div data-component="code-block"></div>
     <script src="./components/component-loader.js"></script>
 
     <script>
