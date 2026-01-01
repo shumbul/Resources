@@ -1,50 +1,5 @@
 /* Theme Switcher Styles */
-:root {
-    --primary: #8b5cf6;
-    --secondary: #7c3aed;
-    --accent: #a78bfa;
-    --success: #059669;
-    --warning: #d97706;
-    --text-primary: #1f2937;
-    --text-secondary: #6b7280;
-    --bg-primary: #ffffff;
-    --bg-secondary: #f9fafb;
-    --bg-tertiary: #f1f5f9;
-    --border: #e5e7eb;
-    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-}
-
-/* Theme variations */
-[data-theme="purple"] {
-    --primary: #8b5cf6;
-    --secondary: #7c3aed;
-    --accent: #a78bfa;
-}
-
-[data-theme="blue"] {
-    --primary: #2563eb;
-    --secondary: #1e40af;
-    --accent: #3b82f6;
-}
-
-[data-theme="green"] {
-    --primary: #059669;
-    --secondary: #047857;
-    --accent: #10b981;
-}
-
-[data-theme="orange"] {
-    --primary: #ea580c;
-    --secondary: #c2410c;
-    --accent: #f97316;
-}
-
-[data-theme="red"] {
-    --primary: #dc2626;
-    --secondary: #b91c1c;
-    --accent: #ef4444;
-}
+/* Note: Theme variables are now in theme-variables.css */
 
 /* Theme Switcher */
 .theme-switcher {
