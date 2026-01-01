@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12 Week Roadmap for 2026</title>
+    <meta name="description" content="Complete 12-week roadmap to build tech career momentum">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #dc2626;
+            --secondary: #b91c1c;
+            --accent: #f87171;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-tertiary: #f1f5f9;
+            --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: var(--bg-secondary);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><defs><radialGradient id="a" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="%23fff" stop-opacity="0.1"/><stop offset="100%" stop-color="%23fff" stop-opacity="0"/></radialGradient></defs><rect width="100" height="20" fill="url(%23a)"/></svg>');
+            opacity: 0.1;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 0.5rem;
+            transition: background 0.2s;
+        }
+
+        .back-link:hover {
+            background: rgba(255,255,255,0.2);
+            color: white;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #fff, #fca5a5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding-bottom: 4rem;
+        }
+
+        .intro {
+            background: var(--bg-primary);
+            padding: 2rem;
+            border-radius: 1rem;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--primary);
+        }
+
+        .intro h2 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .intro ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .intro li {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .intro li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .week-section {
+            background: var(--bg-primary);
+            margin: 2rem 0;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .week-section:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .week-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1.5rem 2rem;
+            position: relative;
+        }
+
+        .week-number {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .week-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .week-focus {
+            font-size: 1rem;
+            opacity: 0.95;
+            font-style: italic;
+        }
+
+        .week-content {
+            padding: 2rem;
+        }
+
+        .section {
+            margin-bottom: 2rem;
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section h4 {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section h4::before {
+            content: '';
+            width: 4px;
+            height: 1rem;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .task-list, .build-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .task-list li, .build-list li {
+            margin: 0.8rem 0;
+            padding: 0.8rem;
+            background: var(--bg-tertiary);
+            border-radius: 0.5rem;
+            border-left: 3px solid var(--accent);
+            position: relative;
+        }
+
+        .task-list li strong, .build-list li strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .task-list ul, .build-list ul {
+            margin: 0.5rem 0 0 1rem;
+            list-style-type: disc;
+            color: var(--text-secondary);
+        }
+
+        .task-list ul li, .build-list ul li {
+            background: none;
+            border: none;
+            padding: 0.2rem 0;
+            margin: 0.2rem 0;
+        }
+
+        .goal-section {
+            background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+            border: 1px solid var(--success);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .goal-section h4 {
+            color: var(--success);
+            margin-bottom: 0.5rem;
+        }
+
+        .goal-section p {
+            color: #166534;
+            font-weight: 500;
+            font-size: 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .week-header {
+                padding: 1rem 1.5rem;
+            }
+            
+            .week-content {
+                padding: 1.5rem;
+            }
+            
+            .intro {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Print styles */
+        @media print {
+            .header {
+                background: var(--primary) !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            
+            .week-section {
+                break-inside: avoid;
+                margin: 1rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="https://shumbul.github.io/Resources/" class="back-link">
+                    ← Back to Resources
+                </a>
+                <h1>12 Week Roadmap for 2026</h1>
+                <p class="subtitle">Transform 12 weeks of effort into career momentum through structured learning and practical building</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="intro">
+                <h2>Roadmap Overview</h2>
+                <p>This roadmap transforms 12 weeks of effort into career momentum through:</p>
+                <ul>
+                    <li><strong>Weeks 1-4:</strong> Foundation building (direction, CS basics, programming, DSA)</li>
+                    <li><strong>Weeks 5-8:</strong> Modern tech skills (AI, backend, system design)</li>
+                    <li><strong>Weeks 9-12:</strong> Career preparation (projects, portfolio, job search)</li>
+                </ul>
+                <p style="margin-top: 1rem;">Each week builds on the previous, ensuring steady progress toward your target role.</p>
+            </div>
+
+            <!-- Week 1 -->
+            <div class="week-section">
+                <div class="week-header">
+                    <div class="week-number">📍 WEEK 1</div>
+                    <div class="week-title">Tech Roles and Market Clarity</div>
+                    <div class="week-focus">Focus: Direction before execution<br><em>Before learning anything, decide what you're learning for.</em></div>
+                </div>
+                <div class="week-content">
+                    <div class="section">
+                        <h4>Tasks</h4>
+                        <ul class="task-list">
+                            <li><strong>Research roles</strong> like AI Engineer, Backend, Full Stack, DevOps
+                                <ul>
+                                    <li>What do they actually do day-to-day?</li>
+                                    <li>What skills show up repeatedly across job descriptions?</li>
+                                </ul>
+                            </li>
+                            <li><strong>Compare skill requirements + salary bands</strong>
+                                <ul>
+                                    <li>Not to chase money blindly, but to understand market demand</li>
+                                </ul>
+                            </li>
+                            <li><strong>Identify skill gaps honestly</strong>
+                                <ul>
+                                    <li>What you already know vs what the role expects</li>
+                                </ul>
+                            </li>
+                            <li><strong>Join 2-3 high-signal tech communities</strong>
+                                <ul>
+                                    <li>Think quality discussions, not spam or flex posts</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="section">
+                        <h4>Build</h4>
+                        <ul class="build-list">
+                            <li>Write a <strong>one-page career plan</strong>
+                                <ul>
+                                    <li>Role, target companies, timeline</li>
+                                </ul>
+                            </li>
+                            <li><strong>Define:</strong>
+                                <ul>
+                                    <li>Primary role</li>
+                                    <li>Core tech stack</li>
+                                    <li>Clear learning outcomes for 12 weeks</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="goal-section">
+                        <h4>Goal</h4>
+                        <p>A clear career North Star so the next 11 weeks aren't random effort.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Week 2 -->
+            <div class="week-section">
+                <div class="week-header">
+                    <div class="week-number">📍 WEEK 2</div>
+                    <div class="week-title">Computer Science Foundations</div>
+                    <div class="week-focus">Focus: Understand how software actually works<br><em>This week builds engineering intuition, not interview trivia.</em></div>
+                </div>
+                <div class="week-content">
+                    <div class="section">
+                        <h4>Tasks</h4>
+                        <ul class="task-list">
+                            <li><strong>How the internet works:</strong>
+                                <ul>
+                                    <li>DNS, HTTP, TCP at a conceptual level</li>
+                                </ul>
+                            </li>
+                            <li><strong>OS basics:</strong>
+                                <ul>
+                                    <li>Processes vs threads</li>
+                                    <li>Memory management at a high level</li>
+                                </ul>
+                            </li>
+                            <li><strong>OOP and SOLID:</strong>
+                                <ul>
+                                    <li>Why they exist, not just definitions</li>
+                                </ul>
+                            </li>
+                            <li><strong>SQL fundamentals:</strong>
+                                <ul>
+                                    <li>Tables, keys, normalization</li>
+                                    <li>Basic schema design thinking</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="section">
+                        <h4>Build</h4>
+                        <ul class="build-list">
+                            <li><strong>Design a simple system on paper</strong>
+                                <ul>
+                                    <li>Example: login flow or todo app</li>
+                                </ul>
+                            </li>
+                            <li><strong>Write 10 SQL queries</strong> based on real use cases</li>
+                        </ul>
+                    </div>
+
+                    <div class="goal-section">
+                        <h4>Goal</h4>
+                        <p>Understand what's happening beneath your code.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Week 3 -->
+            <div class="week-section">
+                <div class="week-header">
+                    <div class="week-number">📍 WEEK 3</div>
+                    <div class="week-title">Language Mastery</div>
+                    <div class="week-focus">Focus: Write confident, production-quality code<br><em>Depth beats breadth here.</em></div>
+                </div>
+                <div class="week-content">
+                    <div class="section">
+                        <h4>Tasks</h4>
+                        <ul class="task-list">
+                            <li><strong>Choose one language</strong> (Python / Java / C++)</li>
+                            <li><strong>Learn:</strong>
+                                <ul>
+                                    <li>Core data structures</li>
+                                    <li>Functions, modules, error handling</li>
+                                </ul>
+                            </li>
+                            <li><strong>Focus on:</strong>
+                                <ul>
+                                    <li>Clean code</li>
+                                    <li>Readability</li>
+                                    <li>Basic linting and formatting</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="section">
+                        <h4>Build</h4>
+                        <ul class="build-list">
+                            <li><strong>Solve 10 logic problems</strong></li>
+                            <li><strong>Write one reusable utility module</strong>
+                                <ul>
+                                    <li>Something you'd actually reuse</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="goal-section">
+                        <h4>Goal</h4>
+                        <p>Stop fighting syntax. Start thinking in logic.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Week 4 -->
+            <div class="week-section">
+                <div class="week-header">
+                    <div class="week-number">📍 WEEK 4</div>
+                    <div class="week-title">DSA Fundamentals</div>
+                    <div class="week-focus">Focus: Patterns, not memorization<br><em>DSA is about thinking, not grinding numbers.</em></div>
+                </div>
+                <div class="week-content">
+                    <div class="section">
+                        <h4>Tasks</h4>
+                        <ul class="task-list">
+                            <li><strong>Arrays, strings, hashing</strong></li>
+                            <li><strong>Two pointers, sliding window</strong></li>
+                            <li><strong>Time and space complexity</strong></li>
+                            <li><strong>Learn to read and explain solutions</strong></li>
+                        </ul>
+                    </div>
+
+                    <div class="section">
+                        <h4>Build</h4>
+                        <ul class="build-list">
+                            <li><strong>Solve 8-10 well-chosen problems</strong></li>
+                            <li><strong>Maintain a pattern notebook</strong>
+                                <ul>
+                                    <li>When to use what and why</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="goal-section">
+                        <h4>Goal</h4>
+                        <p>Recognize patterns instead of brute forcing solutions.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Week 5 -->
+            <div class="week-section">
+                <div class="week-header">
+                    <div class="week-number">📍 WEEK 5</div>
+                    <div class="week-title">AI Fundamentals and Developer Tools</div>
+                    <div class="week-focus">Focus: Use AI as a productivity multiplier<br><em>AI is a tool. Use it deliberately.</em></div>
+                </div>
+                <div class="week-content">
+                    <div class="section">
+                        <h4>Tasks</h4>
+                        <ul class="task-list">
+                            <li><strong>LLM basics:</strong>
+                                <ul>
+                                    <li>Tokens, context windows, limitations</li>
+                                </ul>
+                            </li>
+                            <li><strong>Prompting:</strong>
+                                <ul>
+                                    <li>For debugging, refactoring, explanation</li>
+                                </ul>
+                            </li>
+                            <li><strong>Tools:</strong>
+                                <ul>
+                                    <li>ChatGPT, Copilot, Cursor</li>
+                                </ul>
+                            </li>
+                            <li><strong>API basics:</strong>
+                                <ul>
+                                    <li>Keys, requests, responses, environments</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="section">
+                        <h4>Build</h4>
+                        <ul class="build-list">
+                            <li><strong>Use AI to refactor existing code</strong></li>
+                            <li><strong>Integrate one external API</strong></li>
+                        </ul>
+                    </div>
+
+                    <div class="goal-section">
+                        <h4>Goal</h4>
+                        <p>Write better code with AI - not lazier code.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Week 6 -->
+            <div class="week-section">
+                <div class="week-header">
+                    <div class="week-number">📍 WEEK 6</div>
+                    <div class="week-title">Applied AI and GenAI</div>
+                    <div class="week-focus">Focus: Practical understanding, not research depth<br><em>Enough theory to build something meaningful.</em></div>
+                </div>
+                <div class="week-content">
+                    <div class="section">
+                        <h4>Tasks</h4>
+                        <ul class="task-list">
+                            <li><strong>ML concepts:</strong>
+                                <ul>
+                                    <li>Supervised vs unsupervised</li>
+                                </ul>
+                            </li>
+                            <li><strong>NLP basics:</strong>
+                                <ul>
+                                    <li>Embeddings, similarity search</li>
+                                </ul>
+                            </li>
+                            <li><strong>GenAI flow:</strong>
+                                <ul>
+                                    <li>Prompt - model - response</li>
+                                </ul>
+                            </li>
+                            <li><strong>Vector databases:</strong>
+                                <ul>
+                                    <li>What they solve, not internals</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="section">
+                        <h4>Build</h4>
+                        <ul class="build-list">
+                            <li><strong>Create a simple AI agent or feature</strong>
+                                <ul>
+                                    <li>Text-based is enough</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="goal-section">
+                        <h4>Goal</h4>
+                        <p>Understand how AI systems work end to end.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Week 7 -->
+            <div class="week-section">
+                <div class="week-header">
+                    <div class="week-number">📍 WEEK 7</div>
+                    <div class="week-title">Backend and APIs</div>
+                    <div class="week-focus">Focus: Build real systems<br><em>This is where things start feeling real.</em></div>
+                </div>
+                <div class="week-content">
+                    <div class="section">
+                        <h4>Tasks</h4>
+                        <ul class="task-list">
+                            <li><strong>REST APIs and HTTP methods</strong></li>
+                            <li><strong>Authentication basics</strong></li>
+                            <li><strong>Database design + CRUD</strong></li>
+                            <li><strong>Error handling and logging</strong></li>
+                        </ul>
+                    </div>
+
+                    <div class="section">
+                        <h4>Build</h4>
+                        <ul class="build-list">
+                            <li><strong>A backend service with a database</strong></li>
+                            <li><strong>Clear API documentation</strong></li>
+                        </ul>
+                    </div>
+
+                    <div class="goal-section">
+                        <h4>Goal</h4>
+                        <p>Ship a working backend, not just folders and files.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Week 8 -->
+            <div class="week-section">
+                <div class="week-header">
+                    <div class="week-number">📍 WEEK 8</div>
+                    <div class="week-title">System Design Basics</div>
+                    <div class="week-focus">Focus: Think in systems, not screens<br><em>Start reasoning like an engineer.</em></div>
+                </div>
+                <div class="week-content">
+                    <div class="section">
+                        <h4>Tasks</h4>
+                        <ul class="task-list">
+                            <li><strong>Client-server architecture</strong></li>
+                            <li><strong>Caching and load balancing</strong></li>
+                            <li><strong>Databases vs queues</strong></li>
+                            <li><strong>Bottlenecks and trade-offs</strong></li>
+                        </ul>
+                    </div>
+
+                    <div class="section">
+                        <h4>Build</h4>
+                        <ul class="build-list">
+                            <li><strong>Design a URL shortener or feed system</strong></li>
+                            <li><strong>Create a simple architecture diagram</strong></li>
+                        </ul>
+                    </div>
+
+                    <div class="goal-section">
+                        <h4>Goal</h4>
+                        <p>Explain why you designed it that way.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Week 9 -->
+            <div class="week-section">
+                <div class="week-header">
+                    <div class="week-number">📍 WEEK 9</div>
+                    <div class="week-title">Mini Project Sprint</div>
+                    <div class="week-focus">Focus: Execution over perfection<br><em>No more planning. Just ship.</em></div>
+                </div>
+                <div class="week-content">
+                    <div class="section">
+                        <h4>Tasks</h4>
+                        <ul class="task-list">
+                            <li><strong>Shortlist 2 realistic project ideas</strong></li>
+                            <li><strong>Build one end to end</strong></li>
+                            <li><strong>Use AI where it genuinely helps</strong></li>
+                            <li><strong>Deploy publicly</strong></li>
+                        </ul>
+                    </div>
+
+                    <div class="section">
+                        <h4>Build</h4>
+                        <ul class="build-list">
+                            <li><strong>Live hosted project</strong></li>
+                            <li><strong>Clear README explaining:</strong>
+                                <ul>
+                                    <li>Decisions</li>
+                                    <li>Trade-offs</li>
+                                    <li>Learnings</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="goal-section">
+                        <h4>Goal</h4>
+                        <p>One real project you can confidently talk about.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Week 10 -->
+            <div class="week-section">
+                <div class="week-header">
+                    <div class="week-number">📍 WEEK 10</div>
+                    <div class="week-title">Portfolio and Visibility</div>
+                    <div class="week-focus">Focus: Show your work clearly<br><em>Good work unseen = no impact.</em></div>
+                </div>
+                <div class="week-content">
+                    <div class="section">
+                        <h4>Tasks</h4>
+                        <ul class="task-list">
+                            <li><strong>Simple, fast portfolio site</strong></li>
+                            <li><strong>Clear project breakdowns</strong></li>
+                            <li><strong>Mobile-friendly design</strong></li>
+                            <li><strong>Easy contact info</strong></li>
+                        </ul>
+                    </div>
+
+                    <div class="section">
+                        <h4>Build</h4>
+                        <ul class="build-list">
+                            <li><strong>Live portfolio</strong></li>
+                            <li><strong>One detailed project case study</strong></li>
+                        </ul>
+                    </div>
+
+                    <div class="goal-section">
+                        <h4>Goal</h4>
+                        <p>Make it easy for others to evaluate you.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Week 11 -->
+            <div class="week-section">
+                <div class="week-header">
+                    <div class="week-number">📍 WEEK 11</div>
+                    <div class="week-title">Resume and LinkedIn</div>
+                    <div class="week-focus">Focus: Recruiter-ready presence<br><em>Translate effort into opportunity.</em></div>
+                </div>
+                <div class="week-content">
+                    <div class="section">
+                        <h4>Tasks</h4>
+                        <ul class="task-list">
+                            <li><strong>Resume with impact and metrics</strong></li>
+                            <li><strong>Strong LinkedIn headline + About</strong></li>
+                            <li><strong>Share learnings publicly</strong></li>
+                            <li><strong>Reach out thoughtfully to people in your target role</strong></li>
+                        </ul>
+                    </div>
+
+                    <div class="section">
+                        <h4>Build</h4>
+                        <ul class="build-list">
+                            <li><strong>Final resume</strong></li>
+                            <li><strong>2 high-quality LinkedIn posts</strong></li>
+                        </ul>
+                    </div>
+
+                    <div class="goal-section">
+                        <h4>Goal</h4>
+                        <p>Convert skills into visibility.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Week 12 -->
+            <div class="week-section">
+                <div class="week-header">
+                    <div class="week-number">📍 WEEK 12</div>
+                    <div class="week-title">Review and Job Strategy</div>
+                    <div class="week-focus">Focus: Turn preparation into momentum<br><em>Close the loop.</em></div>
+                </div>
+                <div class="week-content">
+                    <div class="section">
+                        <h4>Tasks</h4>
+                        <ul class="task-list">
+                            <li><strong>Mock interviews</strong> (AI + peers)</li>
+                            <li><strong>Revisit weak areas</strong></li>
+                            <li><strong>Apply selectively, not blindly</strong></li>
+                            <li><strong>Plan the next 12 weeks</strong></li>
+                        </ul>
+                    </div>
+
+                    <div class="section">
+                        <h4>Build</h4>
+                        <ul class="build-list">
+                            <li><strong>Interview notes</strong></li>
+                            <li><strong>Application tracker</strong></li>
+                        </ul>
+                    </div>
+
+                    <div class="goal-section">
+                        <h4>Goal</h4>
+                        <p>Start interviews with confidence and clarity.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
