@@ -12,62 +12,14 @@
     <meta property="og:description" content="Transform 12 weeks of effort into career momentum with this comprehensive tech roadmap">
     <meta property="og:url" content="https://shumbul.github.io/roadmap-2026">
     
+    <!-- Theme Switcher CSS -->
+    <link rel="stylesheet" href="./theme-switcher.css">
+    
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #2563eb;
-            --secondary: #1e40af;
-            --accent: #3b82f6;
-            --success: #059669;
-            --warning: #d97706;
-            --text-primary: #1f2937;
-            --text-secondary: #6b7280;
-            --bg-primary: #ffffff;
-            --bg-secondary: #f9fafb;
-            --border: #e5e7eb;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Theme variations */
-        [data-theme="blue"] {
-            --primary: #2563eb;
-            --secondary: #1e40af;
-            --accent: #3b82f6;
-        }
-
-        [data-theme="green"] {
-            --primary: #059669;
-            --secondary: #047857;
-            --accent: #10b981;
-        }
-
-        [data-theme="orange"] {
-            --primary: #ea580c;
-            --secondary: #c2410c;
-            --accent: #f97316;
-        }
-
-        [data-theme="red"] {
-            --primary: #dc2626;
-            --secondary: #b91c1c;
-            --accent: #ef4444;
-        }
-
-        [data-theme="dark"] {
-            --primary: #3b82f6;
-            --secondary: #2563eb;
-            --accent: #60a5fa;
-            --text-primary: #f9fafb;
-            --text-secondary: #d1d5db;
-            --bg-primary: #111827;
-            --bg-secondary: #1f2937;
-            --border: #374151;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
         }
 
         body {
@@ -379,112 +331,9 @@
             background: #fef3c7;
             color: var(--warning);
         }
-
-        /* Theme Switcher */
-        .theme-switcher {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            background: var(--bg-primary);
-            border-radius: 12px;
-            padding: 8px;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-        }
-
-        .theme-switcher-toggle {
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            padding: 8px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: all 0.2s;
-        }
-
-        .theme-switcher-toggle:hover {
-            transform: scale(1.1);
-        }
-
-        .theme-options {
-            display: none;
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background: var(--bg-primary);
-            border-radius: 8px;
-            padding: 8px;
-            margin-top: 8px;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-            min-width: 150px;
-        }
-
-        .theme-options.show {
-            display: block;
-            animation: fadeInUp 0.3s ease;
-        }
-
-        .theme-option {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 12px;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: background 0.2s;
-            color: var(--text-primary);
-            font-size: 14px;
-            font-weight: 500;
-        }
-
-        .theme-option:hover {
-            background: var(--bg-secondary);
-        }
-
-        .theme-color {
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            border: 2px solid var(--border);
-        }
-
-        .theme-color.blue { background: #2563eb; }
-        .theme-color.green { background: #059669; }
-        .theme-color.orange { background: #ea580c; }
-        .theme-color.red { background: #dc2626; }
-        .theme-color.dark { background: #111827; }
     </style>
 </head>
 <body>
-    <!-- Theme Switcher -->
-    <div class="theme-switcher">
-        <button class="theme-switcher-toggle" id="themeToggle">🎨</button>
-        <div class="theme-options" id="themeOptions">
-            <div class="theme-option" data-theme="blue">
-                <div class="theme-color blue"></div>
-                <span>Blue</span>
-            </div>
-            <div class="theme-option" data-theme="green">
-                <div class="theme-color green"></div>
-                <span>Green</span>
-            </div>
-            <div class="theme-option" data-theme="orange">
-                <div class="theme-color orange"></div>
-                <span>Orange</span>
-            </div>
-            <div class="theme-option" data-theme="red">
-                <div class="theme-color red"></div>
-                <span>Red</span>
-            </div>
-            <div class="theme-option" data-theme="dark">
-                <div class="theme-color dark"></div>
-                <span>Dark</span>
-            </div>
-        </div>
-    </div>
 
     <header>
         <div class="container">
@@ -661,51 +510,10 @@
         </div>
     </footer>
 
+    <!-- Theme Switcher JavaScript -->
+    <script src="./theme-switcher.js"></script>
+    
     <script>
-        // Theme Switcher Functionality
-        const themeToggle = document.getElementById('themeToggle');
-        const themeOptions = document.getElementById('themeOptions');
-        const themeOptionElements = document.querySelectorAll('.theme-option');
-
-        // Load saved theme or default to red
-        const savedTheme = localStorage.getItem('theme') || 'red';
-        document.documentElement.setAttribute('data-theme', savedTheme);
-
-        // Toggle theme options visibility
-        themeToggle.addEventListener('click', (e) => {
-            e.stopPropagation();
-            themeOptions.classList.toggle('show');
-        });
-
-        // Close theme options when clicking outside
-        document.addEventListener('click', () => {
-            themeOptions.classList.remove('show');
-        });
-
-        // Handle theme selection
-        themeOptionElements.forEach(option => {
-            option.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const selectedTheme = option.getAttribute('data-theme');
-                
-                // Apply theme
-                document.documentElement.setAttribute('data-theme', selectedTheme);
-                
-                // Save theme preference
-                localStorage.setItem('theme', selectedTheme);
-                
-                // Close options
-                themeOptions.classList.remove('show');
-                
-                // Optional: Show feedback
-                const originalText = themeToggle.textContent;
-                themeToggle.textContent = '✓';
-                setTimeout(() => {
-                    themeToggle.textContent = originalText;
-                }, 500);
-            });
-        });
-
         // Simple animation on scroll
         const observerOptions = {
             threshold: 0.1,
