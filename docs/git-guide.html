@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <div data-component="head-common"></div>
+    
+    <title>Complete Git Guide | Resources by Shumbul Arifa</title>
+    <meta name="description" content="Comprehensive Git guide with commands, workflows, and best practices for developers">
+    <meta property="og:title" content="Complete Git Guide">
+    <meta property="og:description" content="Master Git with this comprehensive guide covering all commands, workflows, and best practices">
+
+    <style>
+        .git-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .git-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .git-subtitle {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .toc {
+            background: var(--bg-secondary);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            border: 1px solid var(--border);
+        }
+
+        .toc h2 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .toc-item {
+            background: var(--bg-primary);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            border-left: 3px solid var(--primary);
+        }
+
+        .toc-item a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .toc-item a:hover {
+            color: var(--secondary);
+        }
+
+        .git-section {
+            background: var(--bg-secondary);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border);
+        }
+
+        .git-section h2 {
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .git-section h3 {
+            color: var(--secondary);
+            margin: 2rem 0 1rem 0;
+            font-size: 1.25rem;
+        }
+
+        .git-section h4 {
+            color: var(--text-primary);
+            margin: 1.5rem 0 0.75rem 0;
+            font-size: 1.1rem;
+        }
+
+        .command-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+            border-left: 4px solid var(--primary);
+        }
+
+        .command-block code {
+            color: #68d391;
+        }
+
+        .command-comment {
+            color: #a0aec0;
+        }
+
+        .workflow-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .workflow-card h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .workflow-steps {
+            list-style: none;
+            padding: 0;
+        }
+
+        .workflow-steps li {
+            margin: 0.75rem 0;
+            padding: 0.5rem;
+            background: var(--bg-tertiary);
+            border-radius: 0.5rem;
+            border-left: 3px solid var(--accent);
+        }
+
+        .workflow-steps li strong {
+            color: var(--primary);
+        }
+
+        .best-practice {
+            background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+            border: 1px solid var(--success);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .best-practice h3 {
+            color: var(--success);
+            margin-bottom: 1rem;
+        }
+
+        .warning {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            border: 1px solid var(--warning);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .warning h4 {
+            color: #92400e;
+            margin-bottom: 0.5rem;
+        }
+
+        .git-aliases {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .alias-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            padding: 1rem;
+        }
+
+        .alias-card code {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .git-title {
+                font-size: 2.25rem;
+            }
+            
+            .git-subtitle {
+                font-size: 1.125rem;
+            }
+            
+            .git-section {
+                padding: 1.25rem;
+            }
+            
+            .toc-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div data-component="theme-switcher"></div>
+    <div data-component="back-nav"></div>
+
+    <header class="git-header">
+        <div class="container">
+            <h1 class="git-title">🚀 Complete Git Guide</h1>
+            <p class="git-subtitle">
+                Master Git with comprehensive commands, workflows, and best practices for modern development
+            </p>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Table of Contents -->
+        <div class="toc">
+            <h2>📋 Table of Contents</h2>
+            <div class="toc-grid">
+                <div class="toc-item">
+                    <a href="#setup">Setup & Configuration</a>
+                </div>
+                <div class="toc-item">
+                    <a href="#repository">Repository Operations</a>
+                </div>
+                <div class="toc-item">
+                    <a href="#workflow">Basic Workflow</a>
+                </div>
+                <div class="toc-item">
+                    <a href="#branching">Branching & Merging</a>
+                </div>
+                <div class="toc-item">
+                    <a href="#remote">Remote Operations</a>
+                </div>
+                <div class="toc-item">
+                    <a href="#history">Viewing History</a>
+                </div>
+                <div class="toc-item">
+                    <a href="#undoing">Undoing Changes</a>
+                </div>
+                <div class="toc-item">
+                    <a href="#stashing">Stashing</a>
+                </div>
+                <div class="toc-item">
+                    <a href="#tags">Tags</a>
+                </div>
+                <div class="toc-item">
+                    <a href="#advanced">Advanced Operations</a>
+                </div>
+                <div class="toc-item">
+                    <a href="#workflows">Common Workflows</a>
+                </div>
+                <div class="toc-item">
+                    <a href="#best-practices">Best Practices</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Setup & Configuration -->
+        <div class="git-section" id="setup">
+            <h2>🔧 Setup & Configuration</h2>
+            
+            <h3>Initial Setup</h3>
+            <p>Before using Git, configure your identity:</p>
+            
+            <div class="command-block">
+<span class="command-comment"># Set your name and email globally</span>
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
+
+<span class="command-comment"># Set default branch name to 'main'</span>
+git config --global init.defaultBranch main
+
+<span class="command-comment"># Set your preferred editor</span>
+git config --global core.editor "code --wait"  <span class="command-comment"># VS Code</span>
+git config --global core.editor "vim"          <span class="command-comment"># Vim</span>
+git config --global core.editor "nano"         <span class="command-comment"># Nano</span>
+            </div>
+
+            <h3>Viewing Configuration</h3>
+            <div class="command-block">
+<span class="command-comment"># View all configurations</span>
+git config --list
+
+<span class="command-comment"># View specific configuration</span>
+git config user.name
+git config user.email
+
+<span class="command-comment"># View configuration with location info</span>
+git config --list --show-origin
+            </div>
+
+            <div class="best-practice">
+                <h4>💡 Configuration Levels</h4>
+                <ul>
+                    <li><code>--system</code>: System-wide configuration (all users)</li>
+                    <li><code>--global</code>: User-specific configuration</li>
+                    <li><code>--local</code>: Repository-specific configuration (default)</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Repository Operations -->
+        <div class="git-section" id="repository">
+            <h2>📁 Repository Operations</h2>
+            
+            <h3>Creating Repositories</h3>
+            <div class="command-block">
+<span class="command-comment"># Initialize a new repository in current directory</span>
+git init
+
+<span class="command-comment"># Initialize with specific branch name</span>
+git init --initial-branch=main
+
+<span class="command-comment"># Clone an existing repository</span>
+git clone &lt;repository-url&gt;
+
+<span class="command-comment"># Clone to a specific directory</span>
+git clone &lt;repository-url&gt; &lt;directory-name&gt;
+
+<span class="command-comment"># Clone a specific branch</span>
+git clone -b &lt;branch-name&gt; &lt;repository-url&gt;
+
+<span class="command-comment"># Clone with limited history (shallow clone)</span>
+git clone --depth 1 &lt;repository-url&gt;
+            </div>
+
+            <h3>Repository Information</h3>
+            <div class="command-block">
+<span class="command-comment"># Show remote repositories</span>
+git remote -v
+
+<span class="command-comment"># Show repository statistics</span>
+git count-objects -v
+
+<span class="command-comment"># Show repository size</span>
+du -sh .git/
+            </div>
+        </div>
+
+        <!-- Basic Workflow -->
+        <div class="git-section" id="workflow">
+            <h2>🔄 Basic Workflow</h2>
+            
+            <h3>Checking Status</h3>
+            <div class="command-block">
+<span class="command-comment"># Check repository status (detailed)</span>
+git status
+
+<span class="command-comment"># Check status in short format</span>
+git status -s
+
+<span class="command-comment"># Check status and show ignored files</span>
+git status --ignored
+            </div>
+
+            <div class="workflow-card">
+                <h4>Status Indicators in Short Format:</h4>
+                <ul>
+                    <li><code>??</code> - Untracked files</li>
+                    <li><code>A</code> - Added (staged)</li>
+                    <li><code>M</code> - Modified</li>
+                    <li><code>D</code> - Deleted</li>
+                    <li><code>R</code> - Renamed</li>
+                    <li><code>C</code> - Copied</li>
+                </ul>
+            </div>
+
+            <h3>Adding Files (Staging)</h3>
+            <div class="command-block">
+<span class="command-comment"># Add specific file</span>
+git add &lt;filename&gt;
+
+<span class="command-comment"># Add multiple files</span>
+git add file1.txt file2.txt
+
+<span class="command-comment"># Add all files in current directory</span>
+git add .
+
+<span class="command-comment"># Add all files with specific extension</span>
+git add *.js
+
+<span class="command-comment"># Add files interactively</span>
+git add -i
+
+<span class="command-comment"># Add parts of a file (patch mode)</span>
+git add -p &lt;filename&gt;
+
+<span class="command-comment"># Add all tracked files (excluding untracked)</span>
+git add -u
+            </div>
+
+            <h3>Committing Changes</h3>
+            <div class="command-block">
+<span class="command-comment"># Commit staged changes with message</span>
+git commit -m "Your commit message"
+
+<span class="command-comment"># Commit all tracked files (skip staging)</span>
+git commit -am "Your commit message"
+
+<span class="command-comment"># Commit with detailed message</span>
+git commit -m "Brief summary" -m "Detailed explanation"
+
+<span class="command-comment"># Commit and open editor for message</span>
+git commit
+
+<span class="command-comment"># Amend the last commit</span>
+git commit --amend
+
+<span class="command-comment"># Amend without changing message</span>
+git commit --amend --no-edit
+            </div>
+        </div>
+
+        <!-- Branching & Merging -->
+        <div class="git-section" id="branching">
+            <h2>🌳 Branching & Merging</h2>
+            
+            <h3>Branch Management</h3>
+            <div class="command-block">
+<span class="command-comment"># List all local branches</span>
+git branch
+
+<span class="command-comment"># List all branches including remote</span>
+git branch -a
+
+<span class="command-comment"># Create new branch</span>
+git branch &lt;branch-name&gt;
+
+<span class="command-comment"># Create and switch to new branch</span>
+git checkout -b &lt;branch-name&gt;
+
+<span class="command-comment"># Switch to existing branch</span>
+git checkout &lt;branch-name&gt;
+
+<span class="command-comment"># Switch to previous branch</span>
+git checkout -
+
+<span class="command-comment"># Rename current branch</span>
+git branch -m &lt;new-branch-name&gt;
+
+<span class="command-comment"># Delete merged branch</span>
+git branch -d &lt;branch-name&gt;
+
+<span class="command-comment"># Force delete branch (even if not merged)</span>
+git branch -D &lt;branch-name&gt;
+            </div>
+
+            <h3>Merging Strategies</h3>
+            <div class="command-block">
+<span class="command-comment"># Fast-forward merge (default when possible)</span>
+git merge &lt;branch-name&gt;
+
+<span class="command-comment"># Create merge commit even if fast-forward is possible</span>
+git merge --no-ff &lt;branch-name&gt;
+
+<span class="command-comment"># Squash merge (combine all commits into one)</span>
+git merge --squash &lt;branch-name&gt;
+
+<span class="command-comment"># Abort ongoing merge</span>
+git merge --abort
+
+<span class="command-comment"># Continue merge after resolving conflicts</span>
+git merge --continue
+            </div>
+
+            <div class="workflow-card">
+                <h4>🔧 Handling Merge Conflicts</h4>
+                <ol class="workflow-steps">
+                    <li><strong>Step 1:</strong> Git marks conflicted files</li>
+                    <li><strong>Step 2:</strong> Edit files to resolve conflicts</li>
+                    <li><strong>Step 3:</strong> Remove conflict markers (<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code>, <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>)</li>
+                    <li><strong>Step 4:</strong> Stage resolved files: <code>git add &lt;filename&gt;</code></li>
+                    <li><strong>Step 5:</strong> Complete merge: <code>git commit</code></li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Remote Operations -->
+        <div class="git-section" id="remote">
+            <h2>🌐 Remote Operations</h2>
+            
+            <h3>Remote Repository Management</h3>
+            <div class="command-block">
+<span class="command-comment"># List remote repositories</span>
+git remote -v
+
+<span class="command-comment"># Add remote repository</span>
+git remote add &lt;remote-name&gt; &lt;repository-url&gt;
+
+<span class="command-comment"># Remove remote</span>
+git remote remove &lt;remote-name&gt;
+
+<span class="command-comment"># Rename remote</span>
+git remote rename &lt;old-name&gt; &lt;new-name&gt;
+
+<span class="command-comment"># Change remote URL</span>
+git remote set-url &lt;remote-name&gt; &lt;new-url&gt;
+
+<span class="command-comment"># Show remote information</span>
+git remote show &lt;remote-name&gt;
+            </div>
+
+            <h3>Fetching and Pulling</h3>
+            <div class="command-block">
+<span class="command-comment"># Fetch from default remote</span>
+git fetch
+
+<span class="command-comment"># Fetch from specific remote</span>
+git fetch &lt;remote-name&gt;
+
+<span class="command-comment"># Fetch all remotes</span>
+git fetch --all
+
+<span class="command-comment"># Fetch and prune deleted branches</span>
+git fetch --prune
+
+<span class="command-comment"># Pull changes (fetch + merge)</span>
+git pull
+
+<span class="command-comment"># Pull with rebase instead of merge</span>
+git pull --rebase
+
+<span class="command-comment"># Pull and automatically stash/unstash changes</span>
+git pull --autostash
+            </div>
+
+            <h3>Pushing Changes</h3>
+            <div class="command-block">
+<span class="command-comment"># Push to default remote and branch</span>
+git push
+
+<span class="command-comment"># Push to specific remote and branch</span>
+git push &lt;remote-name&gt; &lt;branch-name&gt;
+
+<span class="command-comment"># Push and set upstream tracking</span>
+git push -u &lt;remote-name&gt; &lt;branch-name&gt;
+
+<span class="command-comment"># Push all branches</span>
+git push --all
+
+<span class="command-comment"># Push tags</span>
+git push --tags
+            </div>
+
+            <div class="warning">
+                <h4>⚠️ Dangerous Operations</h4>
+                <div class="command-block">
+<span class="command-comment"># Force push (dangerous - rewrites history)</span>
+git push --force
+
+<span class="command-comment"># Safer force push (fails if remote has new commits)</span>
+git push --force-with-lease
+
+<span class="command-comment"># Delete remote branch</span>
+git push &lt;remote-name&gt; --delete &lt;branch-name&gt;
+                </div>
+            </div>
+        </div>
+
+        <!-- Viewing History -->
+        <div class="git-section" id="history">
+            <h2>📜 Viewing History</h2>
+            
+            <h3>Basic Log Commands</h3>
+            <div class="command-block">
+<span class="command-comment"># View commit history</span>
+git log
+
+<span class="command-comment"># Compact one-line format</span>
+git log --oneline
+
+<span class="command-comment"># Show graphical representation</span>
+git log --graph
+
+<span class="command-comment"># Combine graph with oneline</span>
+git log --graph --oneline --all
+
+<span class="command-comment"># Show file statistics</span>
+git log --stat
+
+<span class="command-comment"># Show actual changes</span>
+git log --patch
+
+<span class="command-comment"># Limit number of commits</span>
+git log -n 5
+git log -5
+            </div>
+
+            <h3>Advanced Log Filtering</h3>
+            <div class="command-block">
+<span class="command-comment"># Filter by author</span>
+git log --author="John Doe"
+
+<span class="command-comment"># Filter by date range</span>
+git log --since="2023-01-01"
+git log --until="2023-12-31"
+git log --since="2 weeks ago"
+
+<span class="command-comment"># Filter by commit message</span>
+git log --grep="bug fix"
+
+<span class="command-comment"># Filter by file</span>
+git log -- &lt;filename&gt;
+git log --follow -- &lt;filename&gt;  <span class="command-comment"># Follow renames</span>
+
+<span class="command-comment"># Filter by content changes</span>
+git log -S "function_name"      <span class="command-comment"># When function_name was added/removed</span>
+git log -G "regex_pattern"      <span class="command-comment"># When pattern was added/removed</span>
+            </div>
+
+            <h3>Comparing Changes</h3>
+            <div class="command-block">
+<span class="command-comment"># Show unstaged changes</span>
+git diff
+
+<span class="command-comment"># Show staged changes</span>
+git diff --staged
+git diff --cached
+
+<span class="command-comment"># Compare specific commits</span>
+git diff &lt;commit1&gt; &lt;commit2&gt;
+
+<span class="command-comment"># Compare branches</span>
+git diff &lt;branch1&gt; &lt;branch2&gt;
+
+<span class="command-comment"># Show changes introduced by a commit</span>
+git show &lt;commit-hash&gt;
+
+<span class="command-comment"># Show file at specific commit</span>
+git show &lt;commit&gt;:&lt;filename&gt;
+            </div>
+        </div>
+
+        <!-- Undoing Changes -->
+        <div class="git-section" id="undoing">
+            <h2>↩️ Undoing Changes</h2>
+            
+            <h3>Working Directory Changes</h3>
+            <div class="command-block">
+<span class="command-comment"># Discard changes in specific file</span>
+git checkout -- &lt;filename&gt;
+
+<span class="command-comment"># Discard all changes in working directory</span>
+git checkout -- .
+
+<span class="command-comment"># Restore file from specific commit</span>
+git checkout &lt;commit&gt; -- &lt;filename&gt;
+
+<span class="command-comment"># Using newer restore command (Git 2.23+)</span>
+git restore &lt;filename&gt;
+git restore --staged &lt;filename&gt;  <span class="command-comment"># Unstage</span>
+git restore --source=&lt;commit&gt; &lt;filename&gt;
+            </div>
+
+            <h3>Cleaning Untracked Files</h3>
+            <div class="command-block">
+<span class="command-comment"># Remove untracked files</span>
+git clean -f
+
+<span class="command-comment"># Remove untracked files and directories</span>
+git clean -fd
+
+<span class="command-comment"># Preview what will be removed</span>
+git clean -n
+
+<span class="command-comment"># Interactive clean</span>
+git clean -i
+
+<span class="command-comment"># Remove ignored files too</span>
+git clean -fx
+            </div>
+
+            <h3>Commit History Changes</h3>
+            <div class="command-block">
+<span class="command-comment"># Undo last commit, keep changes staged</span>
+git reset --soft HEAD~1
+
+<span class="command-comment"># Undo last commit, keep changes in working directory</span>
+git reset --mixed HEAD~1
+git reset HEAD~1  <span class="command-comment"># default is --mixed</span>
+
+<span class="command-comment"># Undo last commit, discard all changes</span>
+git reset --hard HEAD~1
+
+<span class="command-comment"># Reset to specific commit</span>
+git reset --hard &lt;commit-hash&gt;
+
+<span class="command-comment"># Create new commit that undoes changes</span>
+git revert &lt;commit-hash&gt;
+
+<span class="command-comment"># Revert merge commit</span>
+git revert -m 1 &lt;merge-commit-hash&gt;
+            </div>
+        </div>
+
+        <!-- Stashing -->
+        <div class="git-section" id="stashing">
+            <h2>📦 Stashing</h2>
+            
+            <h3>Basic Stashing</h3>
+            <div class="command-block">
+<span class="command-comment"># Stash current changes</span>
+git stash
+git stash push  <span class="command-comment"># newer syntax</span>
+
+<span class="command-comment"># Stash with message</span>
+git stash save "Work in progress on feature X"
+git stash push -m "Work in progress on feature X"
+
+<span class="command-comment"># Stash including untracked files</span>
+git stash -u
+git stash --include-untracked
+
+<span class="command-comment"># Stash only specific files</span>
+git stash push &lt;filename&gt;
+            </div>
+
+            <h3>Managing Stashes</h3>
+            <div class="command-block">
+<span class="command-comment"># List all stashes</span>
+git stash list
+
+<span class="command-comment"># Show stash content</span>
+git stash show
+git stash show -p  <span class="command-comment"># show patch</span>
+
+<span class="command-comment"># Apply latest stash</span>
+git stash apply
+
+<span class="command-comment"># Apply specific stash</span>
+git stash apply stash@{2}
+
+<span class="command-comment"># Pop stash (apply and remove)</span>
+git stash pop
+git stash pop stash@{1}
+
+<span class="command-comment"># Drop specific stash</span>
+git stash drop stash@{0}
+
+<span class="command-comment"># Clear all stashes</span>
+git stash clear
+            </div>
+
+            <h3>Advanced Stashing</h3>
+            <div class="command-block">
+<span class="command-comment"># Create branch from stash</span>
+git stash branch &lt;branch-name&gt; stash@{0}
+
+<span class="command-comment"># Stash only staged changes</span>
+git stash --staged
+
+<span class="command-comment"># Interactive stashing</span>
+git stash -p
+            </div>
+        </div>
+
+        <!-- Common Workflows -->
+        <div class="git-section" id="workflows">
+            <h2>🔄 Common Workflows</h2>
+            
+            <div class="workflow-card">
+                <h3>Feature Branch Workflow</h3>
+                <ol class="workflow-steps">
+                    <li><strong>Update main:</strong> <code>git checkout main && git pull origin main</code></li>
+                    <li><strong>Create feature branch:</strong> <code>git checkout -b feature/user-authentication</code></li>
+                    <li><strong>Work on feature:</strong> Make changes, commit regularly</li>
+                    <li><strong>Push feature:</strong> <code>git push -u origin feature/user-authentication</code></li>
+                    <li><strong>Create pull request:</strong> Via GitHub/GitLab interface</li>
+                    <li><strong>After approval:</strong> Merge and clean up branches</li>
+                </ol>
+            </div>
+
+            <div class="workflow-card">
+                <h3>Hotfix Workflow</h3>
+                <ol class="workflow-steps">
+                    <li><strong>Create hotfix from main:</strong> <code>git checkout -b hotfix/security-patch</code></li>
+                    <li><strong>Fix critical issue:</strong> Make necessary changes</li>
+                    <li><strong>Merge to main:</strong> <code>git checkout main && git merge hotfix/security-patch</code></li>
+                    <li><strong>Tag release:</strong> <code>git tag -a v1.2.1 -m "Security hotfix"</code></li>
+                    <li><strong>Push changes:</strong> <code>git push origin main && git push origin v1.2.1</code></li>
+                    <li><strong>Clean up:</strong> Delete hotfix branch</li>
+                </ol>
+            </div>
+
+            <div class="workflow-card">
+                <h3>Release Workflow</h3>
+                <ol class="workflow-steps">
+                    <li><strong>Create release branch:</strong> <code>git checkout -b release/v2.0.0</code></li>
+                    <li><strong>Finalize release:</strong> Version bumps, changelog, etc.</li>
+                    <li><strong>Merge to main:</strong> <code>git checkout main && git merge release/v2.0.0</code></li>
+                    <li><strong>Tag release:</strong> <code>git tag -a v2.0.0 -m "Release version 2.0.0"</code></li>
+                    <li><strong>Merge back to develop:</strong> If using GitFlow</li>
+                    <li><strong>Push everything:</strong> Main, develop, and tags</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Best Practices -->
+        <div class="git-section" id="best-practices">
+            <h2>⭐ Best Practices</h2>
+            
+            <h3>Commit Messages</h3>
+            <p>Follow conventional commit format:</p>
+            <div class="command-block">
+&lt;type&gt;[optional scope]: &lt;description&gt;
+
+[optional body]
+
+[optional footer(s)]
+            </div>
+
+            <div class="workflow-card">
+                <h4>Commit Types:</h4>
+                <ul>
+                    <li><code>feat</code>: New feature</li>
+                    <li><code>fix</code>: Bug fix</li>
+                    <li><code>docs</code>: Documentation changes</li>
+                    <li><code>style</code>: Code style changes (formatting, etc.)</li>
+                    <li><code>refactor</code>: Code refactoring</li>
+                    <li><code>test</code>: Adding or updating tests</li>
+                    <li><code>chore</code>: Maintenance tasks</li>
+                </ul>
+            </div>
+
+            <h4>Examples:</h4>
+            <div class="command-block">
+feat(auth): add JWT token validation
+
+fix: resolve memory leak in image processing
+
+docs: update API documentation for v2.0
+
+refactor(database): optimize query performance
+            </div>
+
+            <h3>Branch Naming Conventions</h3>
+            <div class="command-block">
+feature/feature-name
+bugfix/issue-description
+hotfix/critical-issue
+release/version-number
+            </div>
+
+            <div class="best-practice">
+                <h3>🎯 General Guidelines</h3>
+                <ul>
+                    <li><strong>Commit Often:</strong> Make small, focused commits</li>
+                    <li><strong>Write Good Messages:</strong> Clear, descriptive commit messages</li>
+                    <li><strong>Use Branches:</strong> Separate features, bugs, and experiments</li>
+                    <li><strong>Keep History Clean:</strong> Use rebase for feature branches</li>
+                    <li><strong>Test Before Pushing:</strong> Ensure code works before sharing</li>
+                    <li><strong>Pull Before Push:</strong> Always sync with remote before pushing</li>
+                    <li><strong>Use .gitignore:</strong> Exclude unnecessary files</li>
+                    <li><strong>Back Up Important Work:</strong> Push branches to remote regularly</li>
+                </ul>
+            </div>
+
+            <h3>Security Considerations</h3>
+            <div class="warning">
+                <h4>🔒 Security Best Practices</h4>
+                <ul>
+                    <li>Never commit sensitive data (passwords, API keys, etc.)</li>
+                    <li>Use environment variables for secrets</li>
+                    <li>Review changes before committing</li>
+                    <li>Use signed commits for important repositories</li>
+                    <li>Regularly update Git and related tools</li>
+                    <li>Be cautious with force push operations</li>
+                </ul>
+            </div>
+
+            <h3>Common .gitignore Patterns</h3>
+            <div class="command-block">
+<span class="command-comment"># Dependencies</span>
+node_modules/
+vendor/
+
+<span class="command-comment"># Build outputs</span>
+dist/
+build/
+*.exe
+*.dll
+
+<span class="command-comment"># IDE files</span>
+.vscode/
+.idea/
+*.swp
+
+<span class="command-comment"># OS files</span>
+.DS_Store
+Thumbs.db
+
+<span class="command-comment"># Logs</span>
+*.log
+logs/
+
+<span class="command-comment"># Environment files</span>
+.env
+.env.local
+
+<span class="command-comment"># Temporary files</span>
+*.tmp
+*.temp
+            </div>
+        </div>
+
+        <div class="best-practice">
+            <h3>🎉 You're Ready to Git!</h3>
+            <p>This guide covers the essential Git commands and workflows you'll use in your daily development. Remember, practice makes perfect - the more you use Git, the more natural it becomes.</p>
+            <p style="margin-top: 1rem;">
+                <strong>Pro Tip:</strong> Start with basic commands and gradually incorporate advanced features as you become more comfortable. Happy coding! 🚀
+            </p>
+        </div>
+    </main>
+
+    <div data-component="footer"></div>
+    <div data-component="scripts-common"></div>
+    <script src="./components/component-loader.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Smooth scrolling for internal links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+            
+            console.log('Git Guide loaded successfully! 🚀');
+        });
+    </script>
+</body>
+</html>
