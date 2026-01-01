@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12-Week Tech Career Roadmap 2026</title>
+    <meta name="description" content="Complete 12-week roadmap to land your dream tech job in 2026">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --secondary: #1e40af;
+            --accent: #3b82f6;
+            --success: #059669;
+            --warning: #d97706;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-tertiary: #f1f5f9;
+            --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: var(--bg-secondary);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><defs><radialGradient id="a" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="%23fff" stop-opacity="0.1"/><stop offset="100%" stop-color="%23fff" stop-opacity="0"/></radialGradient></defs><rect width="100" height="20" fill="url(%23a)"/></svg>');
+            opacity: 0.1;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 0.5rem;
+            transition: background 0.2s;
+        }
+
+        .back-link:hover {
+            background: rgba(255,255,255,0.2);
+            color: white;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #fff, #e0e7ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Main Content */
+        .main-content {
+            background: var(--bg-primary);
+            border-radius: 1rem;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .content-wrapper {
+            padding: 3rem;
+        }
+
+        /* Typography */
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 2rem 0 1rem 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--primary);
+            position: relative;
+        }
+
+        h2::before {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 3rem;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 1.5rem 0 1rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        h3::before {
+            content: '▸';
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        /* Lists */
+        ul, ol {
+            margin: 1rem 0 1rem 2rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        li::marker {
+            color: var(--primary);
+        }
+
+        /* Week Cards */
+        .week-section {
+            background: var(--bg-tertiary);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-left: 5px solid var(--primary);
+            position: relative;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .week-section:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .week-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .week-number {
+            background: var(--primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .week-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 0;
+        }
+
+        .week-focus {
+            background: var(--bg-primary);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            border-left: 4px solid var(--success);
+            margin: 1rem 0;
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        /* Task Sections */
+        .task-section {
+            background: var(--bg-primary);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border: 1px solid var(--border);
+        }
+
+        .task-section h4 {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .task-section h4::before {
+            content: '✓';
+            background: var(--success);
+            color: white;
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        /* Code blocks */
+        code {
+            background: var(--bg-tertiary);
+            padding: 0.2rem 0.4rem;
+            border-radius: 0.25rem;
+            font-family: 'SF Mono', Monaco, Consolas, monospace;
+            font-size: 0.9em;
+            color: var(--primary);
+        }
+
+        /* Blockquotes */
+        blockquote {
+            background: var(--bg-tertiary);
+            border-left: 4px solid var(--warning);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 0.5rem 0.5rem 0;
+            font-style: italic;
+        }
+
+        /* Strong text */
+        strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .content-wrapper {
+                padding: 2rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .week-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+        }
+
+        /* Progress indicator */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(37, 99, 235, 0.1);
+            z-index: 1000;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+    </div>
+
+    <div class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="../index.html" class="back-link">← Back to Resources</a>
+                <h1>12-Week Tech Career Roadmap</h1>
+                <p class="subtitle">Transform 12 weeks of effort into career momentum with this comprehensive guide</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="main-content fade-in">
+            <div class="content-wrapper">
+                
+                <div class="week-focus">
+                    <p><strong>This roadmap transforms 12 weeks of effort into career momentum through:</strong></p>
+                    <ul>
+                        <li><strong>Weeks 1-4:</strong> Foundation building (direction, CS basics, programming, DSA)</li>
+                        <li><strong>Weeks 5-8:</strong> Modern tech skills (AI, backend, system design)</li>
+                        <li><strong>Weeks 9-12:</strong> Career preparation (projects, portfolio, job search)</li>
+                    </ul>
+                    <p>Each week builds on the previous, ensuring steady progress toward your target role.</p>
+                </div>
+
+                <div class="week-section">
+                    <div class="week-header">
+                        <div class="week-number">WEEK 1</div>
+                        <h2 class="week-title">Tech Roles and Market Clarity</h2>
+                    </div>
+                    
+                    <div class="week-focus">
+                        <strong>Focus:</strong> Direction before execution<br>
+                        <em>Before learning anything, decide what you're learning for.</em>
+                    </div>
+
+                    <div class="task-section">
+                        <h4>Tasks</h4>
+                        <ul>
+                            <li><strong>Research roles</strong> like AI Engineer, Backend, Full Stack, DevOps
+                                <ul>
+                                    <li>What do they actually do day-to-day?</li>
+                                    <li>What skills show up repeatedly across job descriptions?</li>
+                                </ul>
+                            </li>
+                            <li><strong>Compare skill requirements + salary bands</strong>
+                                <ul>
+                                    <li>Not to chase money blindly, but to understand market demand</li>
+                                </ul>
+                            </li>
+                            <li><strong>Identify skill gaps honestly</strong>
+                                <ul>
+                                    <li>What you already know vs what the role expects</li>
+                                </ul>
+                            </li>
+                            <li><strong>Join 2-3 high-signal tech communities</strong>
+                                <ul>
+                                    <li>Think quality discussions, not spam or flex posts</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="task-section">
+                        <h4>Build</h4>
+                        <ul>
+                            <li>Write a <strong>one-page career plan</strong>
+                                <ul>
+                                    <li>Role, target companies, timeline</li>
+                                </ul>
+                            </li>
+                            <li><strong>Define:</strong>
+                                <ul>
+                                    <li>Primary role</li>
+                                    <li>Core tech stack</li>
+                                    <li>Clear learning outcomes for 12 weeks</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <blockquote>
+                        <strong>Goal:</strong> A clear career North Star so the next 11 weeks aren't random effort.
+                    </blockquote>
+                </div>
+
+                <div class="week-section">
+                    <div class="week-header">
+                        <div class="week-number">WEEK 2</div>
+                        <h2 class="week-title">Computer Science Foundations</h2>
+                    </div>
+                    
+                    <div class="week-focus">
+                        <strong>Focus:</strong> Understand how software actually works<br>
+                        <em>This week builds engineering intuition, not interview trivia.</em>
+                    </div>
+
+                    <div class="task-section">
+                        <h4>Tasks</h4>
+                        <ul>
+                            <li><strong>How the internet works:</strong>
+                                <ul>
+                                    <li>DNS, HTTP, TCP at a conceptual level</li>
+                                </ul>
+                            </li>
+                            <li><strong>OS basics:</strong>
+                                <ul>
+                                    <li>Processes, memory, file systems</li>
+                                    <li>Why some operations are "expensive"</li>
+                                </ul>
+                            </li>
+                            <li><strong>Database fundamentals:</strong>
+                                <ul>
+                                    <li>SQL vs NoSQL trade-offs</li>
+                                    <li>Indexing, transactions, ACID</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <blockquote>
+                        <strong>Goal:</strong> Build intuition for making better technical decisions.
+                    </blockquote>
+                </div>
+
+                <!-- Continue with more weeks... -->
+                <div class="week-section">
+                    <div class="week-header">
+                        <div class="week-number">WEEK 3</div>
+                        <h2 class="week-title">Programming Language Mastery</h2>
+                    </div>
+                    
+                    <div class="week-focus">
+                        <strong>Focus:</strong> Deep competence in your primary language<br>
+                        <em>Better to know one language deeply than three superficially.</em>
+                    </div>
+
+                    <div class="task-section">
+                        <h4>Choose Your Primary Language</h4>
+                        <ul>
+                            <li><strong>Python:</strong> AI/ML, backend, automation</li>
+                            <li><strong>JavaScript/TypeScript:</strong> Full-stack web development</li>
+                            <li><strong>Java:</strong> Enterprise, Android, big systems</li>
+                            <li><strong>Go:</strong> Cloud infrastructure, microservices</li>
+                        </ul>
+                    </div>
+
+                    <blockquote>
+                        <strong>Goal:</strong> Write clean, idiomatic code in your chosen language.
+                    </blockquote>
+                </div>
+
+                <div class="week-section">
+                    <div class="week-header">
+                        <div class="week-number">WEEKS 4-12</div>
+                        <h2 class="week-title">Continuing Your Journey</h2>
+                    </div>
+                    
+                    <div class="week-focus">
+                        This roadmap continues with advanced topics including DSA, system design, AI integration, project building, and career preparation. Each week builds systematically toward your goal of landing a tech role in 2026.
+                    </div>
+
+                    <div class="task-section">
+                        <h4>What's Coming Next</h4>
+                        <ul>
+                            <li><strong>Weeks 4-6:</strong> Data Structures & Algorithms</li>
+                            <li><strong>Weeks 7-8:</strong> System Design & Architecture</li>
+                            <li><strong>Weeks 9-10:</strong> Project Building & Portfolio</li>
+                            <li><strong>Weeks 11-12:</strong> Job Search & Interview Prep</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Progress bar animation
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById("progressFill").style.width = scrolled + "%";
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe week sections
+        document.querySelectorAll('.week-section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>

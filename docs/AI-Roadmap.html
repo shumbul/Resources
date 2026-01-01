@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6-Month AI Developer Roadmap</title>
+    <meta name="description" content="Complete 6-month roadmap to become an AI developer">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #8b5cf6;
+            --secondary: #7c3aed;
+            --accent: #a78bfa;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-tertiary: #f1f5f9;
+            --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: var(--bg-secondary);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><defs><radialGradient id="a" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="%23fff" stop-opacity="0.1"/><stop offset="100%" stop-color="%23fff" stop-opacity="0"/></radialGradient></defs><rect width="100" height="20" fill="url(%23a)"/></svg>');
+            opacity: 0.1;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 0.5rem;
+            transition: background 0.2s;
+        }
+
+        .back-link:hover {
+            background: rgba(255,255,255,0.2);
+            color: white;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #fff, #e0e7ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Main Content */
+        .main-content {
+            background: var(--bg-primary);
+            border-radius: 1rem;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .content-wrapper {
+            padding: 3rem;
+        }
+
+        /* Month Cards */
+        .month-section {
+            background: var(--bg-tertiary);
+            border-radius: 1rem;
+            padding: 2.5rem;
+            margin: 2rem 0;
+            border-left: 5px solid var(--primary);
+            position: relative;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .month-section:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .month-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .month-number {
+            background: var(--primary);
+            color: white;
+            padding: 0.75rem 1.25rem;
+            border-radius: 2rem;
+            font-weight: 700;
+            font-size: 0.9rem;
+            min-width: fit-content;
+        }
+
+        .month-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 0;
+        }
+
+        .month-skills {
+            background: var(--bg-primary);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            border-left: 4px solid var(--success);
+            margin: 1.5rem 0;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .skill-tag {
+            background: var(--primary);
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 1rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .skill-tag.secondary {
+            background: var(--accent);
+        }
+
+        /* Resources section */
+        .resources-section {
+            background: var(--bg-primary);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border: 1px solid var(--border);
+        }
+
+        .resources-title {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .resources-title::before {
+            content: '📚';
+            font-size: 1.2rem;
+        }
+
+        .resource-link {
+            display: block;
+            color: var(--primary);
+            text-decoration: none;
+            padding: 0.75rem;
+            margin: 0.5rem 0;
+            background: rgba(139, 92, 246, 0.05);
+            border-radius: 0.5rem;
+            border-left: 3px solid var(--primary);
+            transition: all 0.2s;
+        }
+
+        .resource-link:hover {
+            background: rgba(139, 92, 246, 0.1);
+            transform: translateX(5px);
+        }
+
+        .resource-link::before {
+            content: '🔗 ';
+            margin-right: 0.5rem;
+        }
+
+        /* Project showcase */
+        .project-showcase {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(124, 58, 237, 0.05));
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        .project-title {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .project-title::before {
+            content: '🚀';
+        }
+
+        /* Lists */
+        ul {
+            margin: 1rem 0;
+            padding-left: 2rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        li::marker {
+            color: var(--primary);
+        }
+
+        strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        /* Progress indicator */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(139, 92, 246, 0.1);
+            z-index: 1000;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .content-wrapper {
+                padding: 2rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .month-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+            }
+            
+            .month-section {
+                padding: 2rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+    </div>
+
+    <div class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="../index.html" class="back-link">← Back to Resources</a>
+                <h1>6-Month AI Developer Roadmap</h1>
+                <p class="subtitle">Your complete journey from beginner to AI developer with hands-on projects and curated resources</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="main-content fade-in">
+            <div class="content-wrapper">
+                
+                <div class="month-section">
+                    <div class="month-header">
+                        <div class="month-number">MONTH 1</div>
+                        <h2 class="month-title">Programming Foundations & Web Basics</h2>
+                    </div>
+                    
+                    <div class="month-skills">
+                        <strong>Core Focus:</strong> Building a solid programming foundation with Python and web technologies
+                        <div class="skills-list">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">HTML/CSS</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">Git/GitHub</span>
+                            <span class="skill-tag secondary">Data Structures</span>
+                            <span class="skill-tag secondary">Algorithms</span>
+                        </div>
+                    </div>
+
+                    <div class="project-showcase">
+                        <div class="project-title">Build This Month</div>
+                        <p>Create a simple personal webpage or calculator application to practice your new skills</p>
+                    </div>
+
+                    <div class="resources-section">
+                        <div class="resources-title">Learning Resources</div>
+                        <a href="https://www.iitm.ac.in/happenings/press-releases-and-coverages/iit-madras-swayam-plus-launches-free-ai-courses-students" class="resource-link">SWAYAM Plus: Free AI/ML using Python (IIT Madras)</a>
+                        <a href="https://microsoft.github.io/AI-For-Beginners/" class="resource-link">Microsoft AI for Beginners (GitHub)</a>
+                        <a href="https://www.edx.org/course/cs50s-introduction-to-artificial-intelligence-with-python" class="resource-link">CS50: Introduction to AI with Python (edX)</a>
+                    </div>
+                </div>
+
+                <div class="month-section">
+                    <div class="month-header">
+                        <div class="month-number">MONTH 2</div>
+                        <h2 class="month-title">Fullstack Web Development</h2>
+                    </div>
+                    
+                    <div class="month-skills">
+                        <strong>Core Focus:</strong> Building complete web applications with modern frameworks and databases
+                        <div class="skills-list">
+                            <span class="skill-tag">React.js</span>
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">Express.js</span>
+                            <span class="skill-tag">PostgreSQL</span>
+                            <span class="skill-tag">MongoDB</span>
+                            <span class="skill-tag secondary">RESTful APIs</span>
+                            <span class="skill-tag secondary">Authentication</span>
+                        </div>
+                    </div>
+
+                    <div class="project-showcase">
+                        <div class="project-title">Build This Month</div>
+                        <p>Create a CRUD application with user authentication - think todo app, blog, or inventory system</p>
+                    </div>
+
+                    <div class="resources-section">
+                        <div class="resources-title">Learning Resources</div>
+                        <a href="https://www.freecodecamp.org/learn" class="resource-link">FreeCodeCamp: Responsive Web Design & JavaScript Algorithms</a>
+                        <a href="https://www.guvi.in/blog/top-10-ai-courses-in-india/" class="resource-link">GUVI: AI & ML Course (India focused)</a>
+                    </div>
+                </div>
+
+                <div class="month-section">
+                    <div class="month-header">
+                        <div class="month-number">MONTH 3</div>
+                        <h2 class="month-title">Core AI & Machine Learning</h2>
+                    </div>
+                    
+                    <div class="month-skills">
+                        <strong>Core Focus:</strong> Understanding machine learning fundamentals and building your first AI models
+                        <div class="skills-list">
+                            <span class="skill-tag">Supervised Learning</span>
+                            <span class="skill-tag">pandas</span>
+                            <span class="skill-tag">NumPy</span>
+                            <span class="skill-tag">scikit-learn</span>
+                            <span class="skill-tag">TensorFlow</span>
+                            <span class="skill-tag secondary">Neural Networks</span>
+                            <span class="skill-tag secondary">PyTorch</span>
+                        </div>
+                    </div>
+
+                    <div class="project-showcase">
+                        <div class="project-title">Build This Month</div>
+                        <p>Train your first machine learning model - start with classification or regression problems using real datasets</p>
+                    </div>
+
+                    <div class="resources-section">
+                        <div class="resources-title">Learning Resources</div>
+                        <a href="https://grow.google/intl/en_pk/guide-ai-machine-learning/" class="resource-link">Google Machine Learning Crash Course</a>
+                        <a href="https://www.coursera.org/learn/ai-for-everyone" class="resource-link">Coursera: AI for Everyone by Andrew Ng</a>
+                        <a href="https://www.coursera.org/professional-certificates/ai-engineer" class="resource-link">IBM AI Engineering Professional Certificate</a>
+                    </div>
+                </div>
+
+                <div class="month-section">
+                    <div class="month-header">
+                        <div class="month-number">MONTH 4</div>
+                        <h2 class="month-title">Generative & Natural Language AI</h2>
+                    </div>
+                    
+                    <div class="month-skills">
+                        <strong>Core Focus:</strong> Working with Large Language Models and building conversational AI
+                        <div class="skills-list">
+                            <span class="skill-tag">LLMs (GPT, DALL·E)</span>
+                            <span class="skill-tag">Prompt Engineering</span>
+                            <span class="skill-tag">Hugging Face</span>
+                            <span class="skill-tag">Vector Databases</span>
+                            <span class="skill-tag secondary">Chatbots</span>
+                            <span class="skill-tag secondary">AI Search</span>
+                        </div>
+                    </div>
+
+                    <div class="project-showcase">
+                        <div class="project-title">Build This Month</div>
+                        <p>Build a simple chatbot or AI-powered search application using modern LLM APIs</p>
+                    </div>
+
+                    <div class="resources-section">
+                        <div class="resources-title">Learning Resources</div>
+                        <a href="https://course.fast.ai/" class="resource-link">fast.ai: Practical Deep Learning for Coders</a>
+                        <a href="https://introtodeeplearning.com/" class="resource-link">MIT Deep Learning (YouTube)</a>
+                        <a href="https://www.deeplearning.ai/short-courses/ai-python-for-beginners/" class="resource-link">DeepLearning.AI: AI Python for Beginners</a>
+                    </div>
+                </div>
+
+                <div class="month-section">
+                    <div class="month-header">
+                        <div class="month-number">MONTHS 5-6</div>
+                        <h2 class="month-title">Specialization & Portfolio Building</h2>
+                    </div>
+                    
+                    <div class="month-skills">
+                        <strong>Core Focus:</strong> Choose your AI specialization and build a professional portfolio
+                        <div class="skills-list">
+                            <span class="skill-tag">Computer Vision</span>
+                            <span class="skill-tag">NLP Applications</span>
+                            <span class="skill-tag">MLOps</span>
+                            <span class="skill-tag">AI Ethics</span>
+                            <span class="skill-tag secondary">Portfolio Development</span>
+                            <span class="skill-tag secondary">Industry Projects</span>
+                        </div>
+                    </div>
+
+                    <div class="project-showcase">
+                        <div class="project-title">Build This Month</div>
+                        <p>Create 2-3 comprehensive AI projects that showcase your skills. Deploy them and document your process.</p>
+                    </div>
+
+                    <div class="resources-section">
+                        <div class="resources-title">Next Steps</div>
+                        <p style="color: var(--text-secondary); padding: 1rem;">Focus on building real-world projects, contributing to open source, and networking with the AI community. Your portfolio should demonstrate both technical skills and problem-solving ability.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Progress bar animation
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById("progressFill").style.width = scrolled + "%";
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe month sections
+        document.querySelectorAll('.month-section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
