@@ -51,29 +51,37 @@ class ThemeSwitcher {
     }
 
     setupEventListeners() {
-        const themeToggle = document.getElementById('themeToggle');
-        const themeOptions = document.getElementById('themeOptions');
-        const themeOptionElements = document.querySelectorAll('.theme-option');
+        // Use a small delay to ensure elements are fully rendered
+        setTimeout(() => {
+            const themeToggle = document.getElementById('themeToggle');
+            const themeOptions = document.getElementById('themeOptions');
+            const themeOptionElements = document.querySelectorAll('.theme-option');
 
-        // Toggle theme options visibility
-        themeToggle.addEventListener('click', (e) => {
-            e.stopPropagation();
-            themeOptions.classList.toggle('show');
-        });
+            if (!themeToggle || !themeOptions) {
+                console.error('Theme switcher elements not found');
+                return;
+            }
 
-        // Close theme options when clicking outside
-        document.addEventListener('click', () => {
-            themeOptions.classList.remove('show');
-        });
-
-        // Handle theme selection
-        themeOptionElements.forEach(option => {
-            option.addEventListener('click', (e) => {
+            // Toggle theme options visibility
+            themeToggle.addEventListener('click', (e) => {
                 e.stopPropagation();
-                const selectedTheme = option.getAttribute('data-theme');
-                this.applyTheme(selectedTheme);
+                themeOptions.classList.toggle('show');
             });
-        });
+
+            // Close theme options when clicking outside
+            document.addEventListener('click', () => {
+                themeOptions.classList.remove('show');
+            });
+
+            // Handle theme selection
+            themeOptionElements.forEach(option => {
+                option.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const selectedTheme = option.getAttribute('data-theme');
+                    this.applyTheme(selectedTheme);
+                });
+            });
+        }, 100);
     }
 
     loadTheme() {
