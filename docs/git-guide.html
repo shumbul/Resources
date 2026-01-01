@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Core Theme Variables (Load First) -->
+    <link rel="stylesheet" href="./theme-variables.css">
+    <!-- Theme Switcher CSS -->
+    <link rel="stylesheet" href="./theme-switcher.css">
+    
     <div data-component="head-common"></div>
     
     <title>Complete Git Guide | Resources by Shumbul Arifa</title>
@@ -10,8 +18,8 @@
 
     <style>
         .git-header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
+            background: linear-gradient(135deg, var(--primary, #8b5cf6), var(--secondary, #7c3aed));
+            color: white !important;
             padding: 4rem 0;
             text-align: center;
             margin-bottom: 3rem;
@@ -22,6 +30,7 @@
             font-weight: 800;
             margin-bottom: 1rem;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            color: white !important;
         }
 
         .git-subtitle {
@@ -29,6 +38,7 @@
             opacity: 0.9;
             max-width: 600px;
             margin: 0 auto;
+            color: white !important;
         }
 
         .toc {
@@ -206,6 +216,19 @@
             .toc-grid {
                 grid-template-columns: 1fr;
             }
+        }
+
+        /* Copy button styles */
+        .code-block-copy.copied {
+            background: #10b981 !important;
+            border-color: #10b981 !important;
+            color: white !important;
+        }
+
+        .code-block-copy:hover {
+            background: #334155;
+            border-color: #64748b;
+            color: #f1f5f9;
         }
     </style>
 </head>
@@ -1173,14 +1196,6 @@ logs/
 *.temp</code></pre>
 </div>
         </div>
-
-        <div class="best-practice">
-            <h3>🎉 You're Ready to Git!</h3>
-            <p>This guide covers the essential Git commands and workflows you'll use in your daily development. Remember, practice makes perfect - the more you use Git, the more natural it becomes.</p>
-            <p style="margin-top: 1rem;">
-                <strong>Pro Tip:</strong> Start with basic commands and gradually incorporate advanced features as you become more comfortable. Happy coding! 🚀
-            </p>
-        </div>
     </main>
 
     <div data-component="footer"></div>
@@ -1190,6 +1205,54 @@ logs/
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Initialize copy functionality for code blocks
+            const copyButtons = document.querySelectorAll('.code-block-copy');
+            
+            copyButtons.forEach(button => {
+                button.addEventListener('click', async function() {
+                    const codeBlock = this.closest('.code-block-container');
+                    const codeContent = codeBlock.querySelector('.code-block-content code');
+                    const copyText = this.querySelector('.copy-text');
+                    
+                    if (codeContent && copyText) {
+                        try {
+                            const text = codeContent.textContent || codeContent.innerText;
+                            await navigator.clipboard.writeText(text);
+                            
+                            // Visual feedback
+                            this.classList.add('copied');
+                            copyText.textContent = 'Copied!';
+                            
+                            // Reset after 2 seconds
+                            setTimeout(() => {
+                                this.classList.remove('copied');
+                                copyText.textContent = 'Copy';
+                            }, 2000);
+                            
+                        } catch (err) {
+                            console.error('Failed to copy text: ', err);
+                            
+                            // Fallback for older browsers
+                            const textArea = document.createElement('textarea');
+                            textArea.value = codeContent.textContent || codeContent.innerText;
+                            document.body.appendChild(textArea);
+                            textArea.select();
+                            document.execCommand('copy');
+                            document.body.removeChild(textArea);
+                            
+                            // Visual feedback
+                            this.classList.add('copied');
+                            copyText.textContent = 'Copied!';
+                            
+                            setTimeout(() => {
+                                this.classList.remove('copied');
+                                copyText.textContent = 'Copy';
+                            }, 2000);
+                        }
+                    }
+                });
+            });
+
             // Smooth scrolling for internal links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
