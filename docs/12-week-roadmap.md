@@ -1,5 +1,13 @@
 # 12 Week Roadmap for 2026
 
+This roadmap transforms 12 weeks of effort into career momentum through:
+
+- **Weeks 1-4:** Foundation building (direction, CS basics, programming, DSA)
+- **Weeks 5-8:** Modern tech skills (AI, backend, system design)
+- **Weeks 9-12:** Career preparation (projects, portfolio, job search)
+
+Each week builds on the previous, ensuring steady progress toward your target role.
+
 ---
 
 ## 📍 WEEK 1 - Tech Roles and Market Clarity
@@ -274,13 +282,3 @@ Convert skills into visibility.
 Start interviews with confidence and clarity.
 
 ---
-
-## Summary
-
-This roadmap transforms 12 weeks of effort into career momentum through:
-
-- **Weeks 1-4:** Foundation building (direction, CS basics, programming, DSA)
-- **Weeks 5-8:** Modern tech skills (AI, backend, system design)
-- **Weeks 9-12:** Career preparation (projects, portfolio, job search)
-
-Each week builds on the previous, ensuring steady progress toward your target role.
