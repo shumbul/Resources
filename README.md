@@ -24,6 +24,15 @@ A comprehensive week-by-week breakdown from career clarity to job interviews. In
 - **Month 4:** Generative & Natural Language AI
 - **Months 5-6:** Advanced projects and specialization
 
+### 💼 [LinkedIn Optimization Mastery](https://shumbul.github.io/Resources/linkedin-utilization-guide.html)
+Transform your LinkedIn profile into an opportunity magnet with AI-powered strategies, templates, and actionable tips.
+
+- **Profile Foundation:** Professional photo, compelling headlines, and keyword optimization
+- **AI-Powered Content:** Use AI prompts to create engaging posts and project descriptions
+- **Strategic Networking:** Build meaningful connections and leverage your network effectively
+- **Job Search Mastery:** Direct outreach strategies that increase response rates by 5x
+- **Complete Templates:** Ready-to-use templates for every LinkedIn interaction
+
 ### 🧩 [Component System Demo](https://shumbul.github.io/Resources/component-demo.html)
 Explore the modular component system used to build this website. Learn how to eliminate code duplication and build maintainable web pages.
 

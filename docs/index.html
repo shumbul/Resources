@@ -317,6 +317,17 @@
             color: var(--success);
         }
 
+        .status-hot {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+            color: white;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
         .status-updated {
             background: #fef3c7;
             color: var(--warning);
@@ -380,6 +391,21 @@
                     </p>
                     <a href="./AI-Roadmap.html" class="resource-link">
                         View AI Roadmap →
+                    </a>
+                </div>
+
+                <div class="resource-card animate-in clickable" onclick="window.location.href='./linkedin-utilization-guide.html'">
+                    <div class="resource-icon">💼</div>
+                    <h3 class="resource-title">
+                        LinkedIn Optimization Mastery 
+                        <span class="status-badge status-hot">🔥 Hot</span>
+                    </h3>
+                    <p class="resource-description">
+                        Transform your LinkedIn into an opportunity magnet. AI-powered strategies, templates, 
+                        and actionable tips to 5x your profile views and land your dream job.
+                    </p>
+                    <a href="./linkedin-utilization-guide.html" class="resource-link">
+                        Master LinkedIn →
                     </a>
                 </div>
 
