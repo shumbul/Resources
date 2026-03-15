@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkedIn Optimization Guide - Transform Your Profile Into an Opportunity Magnet</title>
+    <meta name="description" content="Complete guide to optimizing your LinkedIn profile with AI-powered strategies, templates, and actionable tips to land your dream job">
+    
+    <!-- Core Theme Variables (Load First) -->
+    <link rel="stylesheet" href="./theme-variables.css">
+    <!-- Theme Switcher CSS -->
+    <link rel="stylesheet" href="./theme-switcher.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.75;
+            color: var(--text-primary);
+            background: var(--bg-secondary);
+            overflow-x: hidden;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #0077b5 0%, #004471 100%);
+            color: white;
+            padding: 4rem 0;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="1.5" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px) translateX(0px); }
+            100% { transform: translateY(-100px) translateX(100px); }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+            text-align: center;
+        }
+
+        .header .stats {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+            justify-content: center;
+        }
+
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .stat {
+            background: rgba(255,255,255,0.1);
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Navigation */
+        .nav {
+            background: var(--bg-primary);
+            padding: 1.5rem 0;
+            margin-bottom: 4rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            border: 1px solid var(--border);
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav-item a {
+            display: block;
+            padding: 1rem 1.75rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .nav-item a:hover, .nav-item a.active {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Content Sections */
+        .section {
+            background: var(--bg-primary);
+            margin-bottom: 3rem;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--border);
+        }
+
+        .section:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+        }
+
+        .section h2 {
+            color: var(--primary);
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            letter-spacing: -0.025em;
+        }
+
+        .section h3 {
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 2.5rem 0 1.25rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            letter-spacing: -0.015em;
+        }
+
+        .emoji {
+            font-size: 1.2em;
+        }
+
+        /* Template Boxes */
+        .template-box {
+            background: var(--bg-secondary);
+            border: 2px solid var(--primary);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            position: relative;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .template-box::before {
+            content: "📝 TEMPLATE";
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: var(--primary);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .template-box h4 {
+            color: var(--primary);
+            margin-bottom: 1.25rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .template-content {
+            background: var(--bg-primary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+            font-style: italic;
+            margin: 1rem 0;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        /* AI Prompt Boxes */
+        .ai-prompt {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            position: relative;
+            box-shadow: 0 8px 20px rgba(118, 75, 162, 0.3);
+        }
+
+        .ai-prompt::before {
+            content: "🤖 AI PROMPT";
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: #764ba2;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .ai-prompt h4 {
+            margin-bottom: 1.25rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .prompt-text {
+            background: rgba(255,255,255,0.15);
+            padding: 1.25rem;
+            border-radius: 8px;
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+            font-size: 0.9rem;
+            border-left: 4px solid rgba(255,255,255,0.4);
+            margin: 1.25rem 0;
+            line-height: 1.6;
+            white-space: pre-line;
+        }
+
+        /* Example Boxes */
+        .example-box {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            position: relative;
+            box-shadow: 0 8px 20px rgba(79, 172, 254, 0.3);
+        }
+
+        .example-box::before {
+            content: "💡 EXAMPLE";
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: #00f2fe;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        /* Lists */
+        .checklist {
+            list-style: none;
+            padding: 0;
+        }
+
+        .checklist li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .checklist li:before {
+            content: "✅";
+            flex-shrink: 0;
+        }
+
+        .tip-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tip-list li {
+            padding: 0.8rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .tip-list li:before {
+            content: "💡";
+            flex-shrink: 0;
+        }
+
+        /* Highlight boxes */
+        .highlight {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .highlight h3 {
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        /* Before/After comparison */
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .before, .after {
+            padding: 1.5rem;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .before {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+            color: white;
+        }
+
+        .after {
+            background: linear-gradient(135deg, #26de81 0%, #20bf6b 100%);
+            color: white;
+        }
+
+        .before::before {
+            content: "❌ BEFORE";
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: #ee5a24;
+            padding: 0.3rem 0.8rem;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .after::before {
+            content: "✅ AFTER";
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: #20bf6b;
+            padding: 0.3rem 0.8rem;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+            @media (max-width: 768px) {
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2.25rem;
+            }
+            
+            .header .stats {
+                gap: 1rem;
+            }
+            
+            .nav-list {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .section {
+                padding: 2rem;
+                margin-bottom: 2rem;
+            }
+            
+            .section h2 {
+                font-size: 1.875rem;
+            }
+            
+            .section h3 {
+                font-size: 1.375rem;
+            }
+        }
+
+        /* Loading animation for smooth appearance */
+        .section {
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Back navigation */
+        .back-nav {
+            margin-bottom: 2rem;
+        }
+
+        .back-nav a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .back-nav a:hover {
+            transform: translateX(-5px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Theme Switcher Component -->
+    <div data-component="theme-switcher"></div>
+    
+    <div class="container">
+        <!-- Back Navigation -->
+        <div class="back-nav">
+            <a href="./index.html">← Back to Resources</a>
+        </div>
+
+        <!-- Header -->
+        <div class="header">
+            <div class="header-content">
+                <h1>LinkedIn Utilization Guide</h1>
+                <p class="subtitle">Transform Your Profile Into an Opportunity Magnet with AI-Powered Strategies</p>
+                <div class="stats">
+                    <div class="stat">
+                        <span class="stat-number">5x</span>
+                        <span class="stat-label">More Profile Views</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">10x</span>
+                        <span class="stat-label">More Recruiter Messages</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">3x</span>
+                        <span class="stat-label">Better Job Responses</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="nav">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="#profile-foundation">How Should Your Profile Look Like?</a></li>
+                <li class="nav-item"><a href="#ai-optimization">AI Optimization</a></li>
+                <li class="nav-item"><a href="#content-strategy">Content That Gets Noticed</a></li>
+                <li class="nav-item"><a href="#networking">Network Like a Pro</a></li>
+                <li class="nav-item"><a href="#job-search">Land Your Dream Job</a></li>
+                <li class="nav-item"><a href="#templates">Templates</a></li>
+            </ul>
+        </nav>
+
+        <!-- The Foundation Problem -->
+        <div class="section">
+            <h2><span class="emoji">🎯</span> The LinkedIn Reality Check</h2>
+            
+            <div class="highlight">
+                <h3>If you're applying to jobs but not getting responses, your LinkedIn profile might be the missing piece.</h3>
+                <p>Many candidates treat LinkedIn like a social platform. But it can actually work as an <em>extended version of your resume.</em></p>
+            </div>
+
+            <p><strong>Your resume gets 6 seconds of attention. Your LinkedIn profile works 24/7 as your personal marketing machine.</strong></p>
+
+            <div class="comparison">
+                <div class="before">
+                    <h4>Most LinkedIn Profiles:</h4>
+                    <ul>
+                        <li>Generic headline like "Student at XYZ University"</li>
+                        <li>Empty or boring summary</li>
+                        <li>Projects with no context or impact</li>
+                        <li>No engagement with industry content</li>
+                        <li>Passive job search approach</li>
+                    </ul>
+                </div>
+                <div class="after">
+                    <h4>Optimized LinkedIn Profiles:</h4>
+                    <ul>
+                        <li>Keyword-rich, value-focused headline</li>
+                        <li>Compelling story that sells your potential</li>
+                        <li>Detailed project descriptions with metrics</li>
+                        <li>Active industry participation</li>
+                        <li>Strategic networking and outreach</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Profile Foundation -->
+        <div class="section" id="profile-foundation">
+            <h2><span class="emoji">🏗️</span> How Should Your Profile Look Like?</h2>
+            
+            <h3><span class="emoji">📸</span> Professional Photo & Banner</h3>
+            <ul class="tip-list">
+                <li><strong>Photo:</strong> High-quality headshot, professional attire, genuine smile, clear background</li>
+                <li><strong>Banner:</strong> Use tools like Canva to create a custom banner showcasing your field (coding screenshots, design work, etc.)</li>
+                <li><strong>Pro Tip:</strong> Your photo is the first thing people notice - invest in a good one or use AI tools to enhance it</li>
+            </ul>
+
+            <div class="ai-prompt">
+                <h4>AI Prompt for Banner Design Ideas</h4>
+                <div class="prompt-text">
+"I'm a [your field] professional. Create 5 LinkedIn banner design concepts that would appeal to recruiters in [industry]. Include elements that showcase [your key skills]. Make them modern, professional, and eye-catching. Provide specific design descriptions I can use with design tools."
+                </div>
+            </div>
+
+            <h3><span class="emoji">🎯</span> Headline Optimization</h3>
+            <p>Your headline is prime real estate - 220 characters to grab attention and include keywords.</p>
+
+            <div class="template-box">
+                <h4>Headline Formula</h4>
+                <div class="template-content">
+[Current Role/Aspiring Role] | [Key Skills] | [Value Proposition] | [Industry Keywords]
+                </div>
+            </div>
+
+            <div class="example-box">
+                <h4>Headline Examples</h4>
+                <p><strong>Instead of:</strong> "Computer Science Student at ABC University"</p>
+                <p><strong>Write:</strong> "Aspiring Software Engineer | Full-Stack Developer | React, Node.js, Python | Building scalable web applications | Open to SWE opportunities"</p>
+                <br>
+                <p><strong>Instead of:</strong> "Marketing Graduate"</p>
+                <p><strong>Write:</strong> "Digital Marketing Specialist | SEO & Social Media Expert | Drove 150% engagement growth | Data-driven campaigns | Seeking Marketing roles"</p>
+            </div>
+
+            <div class="ai-prompt">
+                <h4>AI Prompt for Headline Creation</h4>
+                <div class="prompt-text">
+"I'm a [your background] looking for [type of role] in [industry]. My key skills are [list skills]. I've achieved [mention 1-2 key achievements]. Create 5 LinkedIn headline options that are keyword-rich, compelling, and would attract recruiters. Each should be under 220 characters and include my target job keywords."
+                </div>
+            </div>
+
+            <h3><span class="emoji">📝</span> About Section - Your Story</h3>
+            <p>This is where you sell your potential. Use the STAR method (Situation, Task, Action, Result) to structure your narrative.</p>
+
+            <div class="template-box">
+                <h4>About Section Structure</h4>
+                <div class="template-content">
+                    <strong>Hook (1-2 sentences):</strong> Start with your passion or a compelling achievement<br><br>
+                    <strong>Your Story (2-3 sentences):</strong> Background and journey<br><br>
+                    <strong>Skills & Expertise (3-4 bullets):</strong> Core competencies with examples<br><br>
+                    <strong>What You're Looking For (1-2 sentences):</strong> Career goals and target roles<br><br>
+                    <strong>Call to Action (1 sentence):</strong> How people can connect with you
+                </div>
+            </div>
+
+            <div class="example-box">
+                <h4>About Section Example</h4>
+                <div style="background: rgba(255,255,255,0.1); padding: 1rem; border-radius: 8px; font-style: italic; line-height: 1.6;">
+                    🚀 Passionate about creating digital solutions that solve real-world problems. Currently building my expertise in full-stack development while pursuing my CS degree.<br><br>
+                    
+                    My journey started when I built my first web app to help students find study groups - it gained 500+ users in just 2 months. Since then, I've been hooked on the power of code to create impact.<br><br>
+                    
+                    💻 <strong>Technical Skills:</strong><br>
+                    • Full-Stack Development: React, Node.js, MongoDB (3 deployed projects)<br>
+                    • Problem Solving: 200+ LeetCode problems, competitive programming experience<br>
+                    • AI/ML: Built recommendation system using Python & TensorFlow<br>
+                    • Project Leadership: Led 3-person team for university hackathon (2nd place)<br><br>
+                    
+                    🎯 <strong>What I'm Looking For:</strong><br>
+                    Seeking Software Engineering internships/entry-level roles where I can contribute to meaningful projects while learning from experienced developers.<br><br>
+                    
+                    📬 <strong>Let's Connect:</strong> Always excited to discuss tech, share projects, or explore collaboration opportunities!
+                </div>
+            </div>
+
+            <div class="ai-prompt">
+                <h4>AI Prompt for About Section</h4>
+                <div class="prompt-text">
+"Help me write a compelling LinkedIn About section. Here's my info:
+- Background: [your background]
+- Key achievements: [list 2-3 achievements with numbers if possible]
+- Skills: [list your technical and soft skills]
+- Career goal: [what you're looking for]
+- Personality trait: [something that makes you unique]
+
+Make it engaging, professional, and keyword-rich for [target industry]. Include specific examples and metrics where possible. Keep it around 300-400 words."
+                </div>
+            </div>
+        </div>
+
+        <!-- AI Optimization -->
+        <div class="section" id="ai-optimization">
+            <h2><span class="emoji">🤖</span> AI-Powered Profile Optimization</h2>
+            
+            <p>Leverage AI to make your profile irresistible to both humans and LinkedIn's algorithm.</p>
+
+            <h3><span class="emoji">🔍</span> Keyword Optimization</h3>
+            <ul class="checklist">
+                <li>Research job descriptions for your target roles and extract common keywords</li>
+                <li>Use tools like LinkedIn's job search to find trending skills in your field</li>
+                <li>Naturally integrate these keywords throughout your profile</li>
+                <li>Include both technical skills and soft skills that employers seek</li>
+            </ul>
+
+            <div class="ai-prompt">
+                <h4>AI Prompt for Keyword Research</h4>
+                <div class="prompt-text">
+"I'm targeting [specific job title] roles in [industry/company type]. Analyze the most important keywords and skills that should appear in my LinkedIn profile to get noticed by recruiters and ATS systems. Provide:
+1. Top 20 technical keywords for this role
+2. Top 10 soft skills keywords
+3. Industry-specific terminology I should include
+4. Suggestions on how to naturally incorporate these into my headline, about section, and experience descriptions."
+                </div>
+            </div>
+
+            <h3><span class="emoji">📊</span> Profile Analytics & Improvement</h3>
+            <ul class="tip-list">
+                <li>Use LinkedIn's profile strength meter to identify gaps</li>
+                <li>Regularly check your profile views and search appearances</li>
+                <li>A/B test different headlines and about sections</li>
+                <li>Ask AI to analyze your profile for improvement opportunities</li>
+            </ul>
+
+            <div class="ai-prompt">
+                <h4>AI Prompt for Profile Analysis</h4>
+                <div class="prompt-text">
+"Review my LinkedIn profile content below and provide specific improvement recommendations:
+
+[Paste your current profile sections here]
+
+Focus on:
+1. Keyword optimization for [target role]
+2. Content gaps that might hurt my chances
+3. Ways to make my achievements more compelling
+4. Suggestions to improve my professional brand
+5. Specific metrics or examples I should add
+
+Provide actionable, specific feedback with examples."
+                </div>
+            </div>
+
+            <h3><span class="emoji">🎨</span> Content Generation</h3>
+            <p>Use AI to create compelling content for different sections of your profile.</p>
+
+            <div class="ai-prompt">
+                <h4>AI Prompt for Experience Descriptions</h4>
+                <div class="prompt-text">
+"Help me write a compelling LinkedIn experience description for this role:
+
+Position: [job title]
+Company: [company name]
+Duration: [time period]
+Responsibilities: [list main tasks]
+Achievements: [any measurable results]
+Skills used: [relevant skills]
+
+Create a description that:
+- Uses action verbs and quantifies impact where possible
+- Includes relevant keywords for [target industry]
+- Tells a story of growth and contribution
+- Is formatted for easy scanning (bullet points/short paragraphs)
+- Highlights transferable skills for [target role]"
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Strategy -->
+        <div class="section" id="content-strategy">
+            <h2><span class="emoji">📱</span> How to Create Content That Gets Noticed</h2>
+
+            <h3><span class="emoji">🏗️</span> Project Showcase Strategy</h3>
+            <p>Transform your projects from resume bullet points into compelling stories.</p>
+
+            <div class="template-box">
+                <h4>Project Description Template</h4>
+                <div class="template-content">
+                    <strong>🎯 Problem:</strong> [What problem did you solve?]<br><br>
+                    <strong>💡 Solution:</strong> [Your approach and key features]<br><br>
+                    <strong>🛠️ Tech Stack:</strong> [Technologies used]<br><br>
+                    <strong>📊 Impact:</strong> [Results, metrics, user feedback]<br><br>
+                    <strong>🔗 Links:</strong> [GitHub, live demo, case study]<br><br>
+                    <strong>💭 Key Learnings:</strong> [What you learned/skills developed]
+                </div>
+            </div>
+
+            <div class="example-box">
+                <h4>Project Showcase Example</h4>
+                <div style="background: rgba(255,255,255,0.1); padding: 1rem; border-radius: 8px; line-height: 1.6;">
+                    <strong>📱 EcoTracker - Personal Carbon Footprint App</strong><br><br>
+                    
+                    🎯 <strong>Problem:</strong> Students wanted to live more sustainably but lacked easy ways to track and reduce their carbon footprint.<br><br>
+                    
+                    💡 <strong>Solution:</strong> Built a React Native app that gamifies sustainable living with daily challenges, progress tracking, and social features for friendly competition.<br><br>
+                    
+                    🛠️ <strong>Tech Stack:</strong> React Native, Firebase, Node.js, Chart.js, Google Maps API<br><br>
+                    
+                    📊 <strong>Impact:</strong><br>
+                    • 200+ downloads in first month<br>
+                    • 85% user retention rate after 1 week<br>
+                    • Users reduced carbon footprint by avg. 15% in first month<br>
+                    • Featured in university sustainability newsletter<br><br>
+                    
+                    🔗 <strong>Links:</strong> GitHub | Play Store | Demo Video<br><br>
+                    
+                    💭 <strong>Key Learnings:</strong> Gained experience with mobile development, real-time databases, API integration, and user-centered design principles.
+                </div>
+            </div>
+
+            <div class="ai-prompt">
+                <h4>AI Prompt for Project Enhancement</h4>
+                <div class="prompt-text">
+"Help me transform this basic project description into a compelling LinkedIn project showcase:
+
+Project: [project name]
+Description: [current basic description]
+Technologies: [tech stack]
+Challenges: [what difficulties you faced]
+Results: [any metrics or outcomes]
+
+Create an engaging project description that:
+1. Follows the Problem-Solution-Impact format
+2. Includes relevant keywords for [target role]
+3. Quantifies impact where possible
+4. Highlights key skills developed
+5. Makes it easy for recruiters to understand the value
+6. Suggests metrics I should track if I don't have them yet"
+                </div>
+            </div>
+
+            <h3><span class="emoji">📝</span> Content Creation & Posting</h3>
+            <p>Regular, valuable content increases your visibility and positions you as a thought leader.</p>
+
+            <ul class="tip-list">
+                <li><strong>Share Learning:</strong> Post about new technologies you're exploring</li>
+                <li><strong>Project Updates:</strong> Share progress on your current projects</li>
+                <li><strong>Industry Insights:</strong> Comment thoughtfully on industry trends</li>
+                <li><strong>Resource Sharing:</strong> Share helpful articles, tools, or tutorials</li>
+                <li><strong>Career Journey:</strong> Share lessons learned and milestones achieved</li>
+            </ul>
+
+            <div class="template-box">
+                <h4>LinkedIn Post Templates</h4>
+                <div class="template-content">
+                    <strong>Learning Post:</strong><br>
+                    "Just completed [course/project/challenge]! 🎉<br><br>
+                    Key takeaways:<br>
+                    • [Insight 1]<br>
+                    • [Insight 2]<br>
+                    • [Insight 3]<br><br>
+                    Next up: [what you're learning next]<br>
+                    #TechLearning #[relevant hashtags]"<br><br>
+
+                    <strong>Project Announcement:</strong><br>
+                    "Excited to share my latest project: [Project Name]! 🚀<br><br>
+                    Built to solve [problem] using [tech stack].<br>
+                    [Key feature or impressive metric]<br><br>
+                    Check it out: [link]<br>
+                    Thanks to [anyone who helped] for the support!<br>
+                    #WebDevelopment #[relevant hashtags]"<br><br>
+
+                    <strong>Industry Insight:</strong><br>
+                    "Interesting trend I'm noticing in [industry]:<br>
+                    [Your observation]<br><br>
+                    This means [implication for professionals]<br>
+                    What's your take? 🤔<br>
+                    #[Industry] #[relevant hashtags]"
+                </div>
+            </div>
+
+            <div class="ai-prompt">
+                <h4>AI Prompt for Content Ideas</h4>
+                <div class="prompt-text">
+"Generate 20 LinkedIn post ideas for someone in [your field] who is [your current stage - student/junior/career changer]. Focus on content that would:
+1. Show expertise and learning growth
+2. Engage with the [target industry] community
+3. Attract recruiters and potential collaborators
+4. Demonstrate thought leadership potential
+5. Be authentic to someone at my experience level
+
+For each idea, provide:
+- The main topic/angle
+- Key points to cover
+- Relevant hashtags
+- Engagement strategy (questions to ask audience)"
+                </div>
+            </div>
+        </div>
+
+        <!-- Smart Networking -->
+        <div class="section" id="networking">
+            <h2><span class="emoji">🤝</span> How to Network Like a Pro</h2>
+            
+            <p>Networking isn't about collecting connections - it's about building meaningful relationships that can accelerate your career.</p>
+
+            <h3><span class="emoji">🎯</span> Target Audience Identification</h3>
+            <ul class="checklist">
+                <li><strong>Industry Professionals:</strong> People working in your target companies/roles</li>
+                <li><strong>Alumni Network:</strong> Fellow students and graduates from your school</li>
+                <li><strong>Recruiters:</strong> Both internal recruiters and agencies in your field</li>
+                <li><strong>Thought Leaders:</strong> Influencers and experts in your industry</li>
+                <li><strong>Peers:</strong> Other professionals at your level for mutual support</li>
+            </ul>
+
+            <h3><span class="emoji">💌</span> Connection Request Strategy</h3>
+            <p>Personalized connection requests have 3x higher acceptance rates than generic ones.</p>
+
+            <div class="template-box">
+                <h4>Connection Request Templates</h4>
+                <div class="template-content">
+                    <strong>For Alumni:</strong><br>
+                    "Hi [Name], Fellow [University] alum here! I noticed you're working at [Company] as a [Role]. I'm currently [your status] and would love to learn about your journey in [industry]. Would you be open to connecting?"<br><br>
+
+                    <strong>For Industry Professionals:</strong><br>
+                    "Hi [Name], I came across your profile while researching [specific topic/company]. Your background in [specific area] is impressive! I'm passionate about [shared interest] and would appreciate connecting to learn from your expertise."<br><br>
+
+                    <strong>For Recruiters:</strong><br>
+                    "Hi [Name], I see you specialize in recruiting for [specific roles/industry]. I'm a [your background] seeking opportunities in [specific area]. I'd love to connect and stay on your radar for relevant positions."<br><br>
+
+                    <strong>After Meeting/Event:</strong><br>
+                    "Hi [Name], Great meeting you at [event/webinar]! I really enjoyed our conversation about [specific topic]. Would love to stay connected and continue the discussion."
+                </div>
+            </div>
+
+            <div class="ai-prompt">
+                <h4>AI Prompt for Personalized Outreach</h4>
+                <div class="prompt-text">
+"Help me craft a personalized LinkedIn connection request for:
+
+Target Person: [Name and title]
+Their Company: [Company name]
+Their Background: [What you know about them from their profile]
+Your Goal: [Why you want to connect]
+Common Ground: [Shared connections, interests, background, etc.]
+Your Background: [Brief description of who you are]
+
+Create a connection request that:
+- Is personal and specific (mentions something from their profile)
+- Is concise (under 300 characters)
+- Clearly states why you want to connect
+- Feels genuine and not salesy
+- Increases chances they'll accept and respond"
+                </div>
+            </div>
+
+            <h3><span class="emoji">💬</span> Follow-up Strategy</h3>
+            <p>The real networking happens after the connection is made.</p>
+
+            <div class="template-box">
+                <h4>Follow-up Message Templates</h4>
+                <div class="template-content">
+                    <strong>Thank You + Value Add:</strong><br>
+                    "Thanks for connecting, [Name]! I noticed you recently posted about [their recent post topic]. I actually just worked on a project related to [relevant experience]. Would love to hear your thoughts on [specific question related to their expertise]."<br><br>
+
+                    <strong>Information Interview Request:</strong><br>
+                    "Hi [Name], Hope you're doing well! I'm currently exploring career opportunities in [their field/company type]. Would you be open to a brief 15-minute chat about your experience at [Company]? I'd love to learn about your journey and get advice on breaking into the field. I'm happy to work around your schedule!"<br><br>
+
+                    <strong>Resource Sharing:</strong><br>
+                    "Hi [Name], Saw your recent post about [topic]. Thought you might find this [article/tool/resource] interesting - [link]. It covers [brief description]. Thanks again for connecting!"
+                </div>
+            </div>
+
+            <h3><span class="emoji">📅</span> Networking Action Plan</h3>
+            <ul class="tip-list">
+                <li><strong>Daily:</strong> Send 3-5 personalized connection requests</li>
+                <li><strong>Weekly:</strong> Follow up with 5-10 recent connections</li>
+                <li><strong>Bi-weekly:</strong> Reach out to existing network with updates</li>
+                <li><strong>Monthly:</strong> Request 2-3 informational interviews</li>
+                <li><strong>Ongoing:</strong> Engage with connections' posts meaningfully</li>
+            </ul>
+
+            <div class="ai-prompt">
+                <h4>AI Prompt for Networking Strategy</h4>
+                <div class="prompt-text">
+"Create a personalized networking strategy for my career goals:
+
+My Background: [current situation]
+Target Role: [specific position/industry]
+Target Companies: [list of companies you're interested in]
+Current Network Size: [approximate number]
+Time Available: [hours per week for networking]
+Strengths: [what you bring to conversations]
+Goals: [what you want to achieve through networking]
+
+Provide:
+1. Specific types of people I should target
+2. Where to find them (LinkedIn groups, events, etc.)
+3. Monthly networking goals and metrics
+4. Template outreach messages for different scenarios
+5. Ways to provide value to my network
+6. Follow-up strategies to maintain relationships"
+                </div>
+            </div>
+        </div>
+
+        <!-- Job Search -->
+        <div class="section" id="job-search">
+            <h2><span class="emoji">🎯</span> How to Land Your Dream Job</h2>
+            
+            <p>Transform your job search from spray-and-pray to targeted and strategic.</p>
+
+            <h3><span class="emoji">🔍</span> LinkedIn Job Search Optimization</h3>
+            <ul class="checklist">
+                <li>Use specific keywords in job searches, not just job titles</li>
+                <li>Set up job alerts for your target roles and companies</li>
+                <li>Filter by date posted (focus on jobs less than 1 week old)</li>
+                <li>Look for jobs where you have 1st or 2nd-degree connections</li>
+                <li>Save interesting companies and follow their updates</li>
+            </ul>
+
+            <h3><span class="emoji">🎯</span> The "Inside Track" Strategy</h3>
+            <p>Apply through LinkedIn but also reach out directly to increase your chances by 5x.</p>
+
+            <div class="template-box">
+                <h4>Job Application Outreach Process</h4>
+                <div class="template-content">
+                    <strong>Step 1:</strong> Apply through official channels<br><br>
+                    <strong>Step 2:</strong> Find the hiring manager or team lead on LinkedIn<br><br>
+                    <strong>Step 3:</strong> Send a personalized message within 24 hours<br><br>
+                    <strong>Step 4:</strong> Connect with 2-3 people who work at the company<br><br>
+                    <strong>Step 5:</strong> Follow up after 1 week if no response
+                </div>
+            </div>
+
+            <div class="template-box">
+                <h4>Hiring Manager Outreach Template</h4>
+                <div class="template-content">
+                    "Hi [Name],<br><br>
+                    
+                    I just applied for the [Job Title] position on your team at [Company]. I'm really excited about this opportunity because [specific reason related to the role/company].<br><br>
+                    
+                    My background in [relevant experience] aligns well with what you're looking for, particularly my experience with [specific skill/project that matches job requirements].<br><br>
+                    
+                    I'd love the opportunity to discuss how I can contribute to [specific team goal or company mission]. Would you have 15 minutes for a brief call this week?<br><br>
+                    
+                    Best regards,<br>
+                    [Your Name]<br><br>
+                    
+                    P.S. I noticed [company recent news/achievement] - congratulations on [specific accomplishment]!"
+                </div>
+            </div>
+
+            <div class="ai-prompt">
+                <h4>AI Prompt for Job Application Strategy</h4>
+                <div class="prompt-text">
+"I'm applying for this job posting:
+
+[Paste full job description here]
+
+My background:
+[Paste your resume/key experiences here]
+
+Help me create a targeted application strategy:
+
+1. Key requirements I should emphasize in my application
+2. Specific keywords to include in my LinkedIn outreach
+3. Personalized outreach message to the hiring manager
+4. Questions I should ask to show genuine interest
+5. How to position gaps or mismatches in my background
+6. Follow-up strategy if I don't hear back
+7. Ways to demonstrate I've researched the company
+
+Make it specific to this role and company."
+                </div>
+            </div>
+
+            <h3><span class="emoji">📊</span> Application Tracking & Analytics</h3>
+            <p>Track your efforts to identify what's working and what isn't.</p>
+
+            <div class="template-box">
+                <h4>Job Search Metrics to Track</h4>
+                <div class="template-content">
+                    <strong>Weekly Metrics:</strong><br>
+                    • Applications submitted: [Target: 5-10]<br>
+                    • Personalized outreach messages sent: [Target: 5-10]<br>
+                    • LinkedIn profile views: [Track weekly changes]<br>
+                    • New connections made: [Target: 10-15]<br><br>
+
+                    <strong>Monthly Metrics:</strong><br>
+                    • Response rate to applications: [Target: >10%]<br>
+                    • Interview invitations: [Track total and source]<br>
+                    • Networking conversations: [Target: 5-8]<br>
+                    • LinkedIn engagement rate: [Track post/comment engagement]
+                </div>
+            </div>
+
+            <h3><span class="emoji">🤖</span> AI-Powered Job Search</h3>
+            <p>Use AI to scale your job search while maintaining personalization.</p>
+
+            <div class="ai-prompt">
+                <h4>AI Prompt for Company Research</h4>
+                <div class="prompt-text">
+"I'm researching [Company Name] for a potential application to their [Job Title] role. Provide me with:
+
+1. Recent company news, funding, or product launches (last 6 months)
+2. Company culture and values based on their public communications
+3. Key challenges this company/industry is facing that I could address
+4. Names and backgrounds of key team members I should know about
+5. Intelligent questions I could ask in an interview
+6. How to connect my background to their specific needs
+7. Red flags or concerns I should be aware of
+
+Use this information to help me craft targeted, informed outreach and interview responses."
+                </div>
+            </div>
+
+            <h3><span class="emoji">💼</span> Interview Preparation</h3>
+            <p>Use your LinkedIn research to ace your interviews.</p>
+
+            <div class="ai-prompt">
+                <h4>AI Prompt for Interview Prep</h4>
+                <div class="prompt-text">
+"I have an interview for [Job Title] at [Company Name]. Based on my research:
+
+Company Info: [What you know about the company]
+Job Requirements: [Key requirements from job posting]
+Interviewer(s): [Names and roles if known]
+My Background: [Relevant experience and skills]
+
+Help me prepare:
+1. 10 likely interview questions specific to this role
+2. STAR method answers highlighting my relevant experience
+3. Thoughtful questions to ask them (beyond basic company info)
+4. How to address potential concerns about my background
+5. Ways to demonstrate I understand their business challenges
+6. Stories that showcase the skills they're looking for
+7. How to follow up after the interview
+
+Make it specific to this company and role, not generic advice."
+                </div>
+            </div>
+        </div>
+
+        <!-- Templates -->
+        <div class="section" id="templates">
+            <h2><span class="emoji">📋</span> Complete Template Library</h2>
+            
+            <h3><span class="emoji">👤</span> Profile Optimization Templates</h3>
+            
+            <div class="template-box">
+                <h4>Skills Section Optimization</h4>
+                <div class="template-content">
+                    <strong>Technical Skills (Top 3 most important for your target role):</strong><br>
+                    • [Skill 1] - [Years of experience] - [Specific technologies/frameworks]<br>
+                    • [Skill 2] - [Years of experience] - [Specific applications/projects]<br>
+                    • [Skill 3] - [Years of experience] - [Certifications/achievements]<br><br>
+
+                    <strong>Endorsement Strategy:</strong><br>
+                    • Ask 5 people to endorse your top 3 skills<br>
+                    • Endorse others' skills first (they often reciprocate)<br>
+                    • Focus on skills that match your target job requirements
+                </div>
+            </div>
+
+            <div class="template-box">
+                <h4>Experience Section Template</h4>
+                <div class="template-content">
+                    <strong>[Job Title]</strong><br>
+                    [Company Name] • [Employment Type] • [Duration]<br>
+                    [Location]<br><br>
+
+                    [Brief 1-sentence overview of role and impact]<br><br>
+
+                    <strong>Key Achievements:</strong><br>
+                    • [Quantified achievement #1 with metrics]<br>
+                    • [Process improvement or efficiency gain]<br>
+                    • [Leadership or collaboration example]<br>
+                    • [Learning or skill development milestone]<br><br>
+
+                    <strong>Skills Developed:</strong> [Relevant skills separated by commas]
+                </div>
+            </div>
+
+            <h3><span class="emoji">💌</span> Outreach Message Templates</h3>
+
+            <div class="template-box">
+                <h4>Cold Outreach to Industry Professional</h4>
+                <div class="template-content">
+                    Subject: [Specific Question] from a [Your Background] - 5 min read<br><br>
+
+                    Hi [Name],<br><br>
+
+                    I hope this message finds you well. I came across your profile while researching [specific topic/company/industry trend] and was impressed by your work on [specific project/achievement from their profile].<br><br>
+
+                    I'm currently [your situation - student/job seeker/career changer] passionate about [specific area that aligns with their expertise]. I've been working on [brief mention of relevant project/experience] and would love to get insights from someone with your experience.<br><br>
+
+                    Specifically, I'm curious about:<br>
+                    • [Specific question #1 related to their expertise]<br>
+                    • [Specific question #2 about industry trends]<br><br>
+
+                    I understand you're busy, so I'd be happy with even a brief response or a 10-minute call if you prefer. I'd also be glad to share my project work if it might be of interest.<br><br>
+
+                    Thank you for your time, and I look forward to potentially connecting!<br><br>
+
+                    Best regards,<br>
+                    [Your Name]<br>
+                    [Your Title/Background]<br>
+                    [Link to your portfolio/LinkedIn]
+                </div>
+            </div>
+
+            <div class="template-box">
+                <h4>Follow-up After No Response</h4>
+                <div class="template-content">
+                    Hi [Name],<br><br>
+
+                    I wanted to follow up on my message from last week about [brief reminder of topic]. I completely understand if you're too busy to respond - I know how hectic things can get in [their industry/role].<br><br>
+
+                    Since reaching out, I've [update on what you've been working on/learning]. I thought you might find [relevant resource/article/project update] interesting given your work on [their area of expertise].<br><br>
+
+                    No worries if you can't connect, but the offer for a brief chat still stands if your schedule permits.<br><br>
+
+                    Best regards,<br>
+                    [Your Name]
+                </div>
+            </div>
+
+            <h3><span class="emoji">📝</span> Content Creation Templates</h3>
+
+            <div class="template-box">
+                <h4>Project Launch Post</h4>
+                <div class="template-content">
+                    🚀 Excited to share my latest project: [Project Name]!<br><br>
+
+                    🎯 <strong>The Problem:</strong><br>
+                    [Brief description of the problem you solved]<br><br>
+
+                    💡 <strong>My Solution:</strong><br>
+                    Built [brief description] using [key technologies]. Key features include:<br>
+                    • [Feature 1 with benefit]<br>
+                    • [Feature 2 with benefit]<br>
+                    • [Feature 3 with benefit]<br><br>
+
+                    📊 <strong>Results So Far:</strong><br>
+                    • [Metric 1]<br>
+                    • [Metric 2]<br>
+                    • [User feedback or testimonial]<br><br>
+
+                    🛠️ <strong>Tech Stack:</strong> [List technologies used]<br><br>
+
+                    💭 <strong>Key Learnings:</strong><br>
+                    [1-2 sentences about what you learned or found challenging]<br><br>
+
+                    👀 <strong>Check it out:</strong> [Link to live demo/GitHub]<br><br>
+
+                    Thanks to [mention anyone who helped] for the support and feedback!<br><br>
+
+                    What projects are you working on? Would love to hear about them in the comments! 👇<br><br>
+
+                    #WebDevelopment #[YourField] #[TechStack] #BuildInPublic #[Industry]
+                </div>
+            </div>
+
+            <div class="template-box">
+                <h4>Learning/Achievement Post</h4>
+                <div class="template-content">
+                    🎉 Just [completed/achieved] [specific accomplishment]!<br><br>
+
+                    📚 <strong>What I learned:</strong><br>
+                    • [Key takeaway 1]<br>
+                    • [Key takeaway 2]<br>
+                    • [Key takeaway 3]<br><br>
+
+                    🔥 <strong>Most surprising insight:</strong><br>
+                    [Share something unexpected you discovered]<br><br>
+
+                    ⚡ <strong>Immediate application:</strong><br>
+                    Already implementing [specific example] in my current project.<br><br>
+
+                    🎯 <strong>Next up:</strong><br>
+                    Planning to dive into [what you're learning next] to [specific goal].<br><br>
+
+                    For anyone considering [the course/challenge/certification], my advice:<br>
+                    [1-2 practical tips]<br><br>
+
+                    What's been your biggest learning win recently? Drop a comment! 👇<br><br>
+
+                    #ContinuousLearning #[YourField] #[SpecificSkill] #Growth #[Industry]
+                </div>
+            </div>
+
+            <h3><span class="emoji">🤖</span> AI Prompt Collection</h3>
+
+            <div class="ai-prompt">
+                <h4>Weekly Content Planning</h4>
+                <div class="prompt-text">
+"Create a week's worth of LinkedIn content for someone in [your field] at [your level]. I want to post daily and focus on:
+
+Current projects: [list current work/projects]
+Learning goals: [what you're currently learning]
+Career objectives: [what you want to achieve]
+Target audience: [recruiters/peers/industry professionals]
+
+For each day, provide:
+1. Post type (project update, learning insight, industry commentary, etc.)
+2. Main message/hook
+3. Key points to cover
+4. Relevant hashtags
+5. Engagement question for comments
+
+Make content authentic to my experience level while positioning me as someone actively growing in the field."
+                </div>
+            </div>
+
+            <div class="ai-prompt">
+                <h4>Profile Audit & Improvement</h4>
+                <div class="prompt-text">
+"Audit my LinkedIn profile for [target role] in [industry]. Here's my current profile:
+
+Headline: [current headline]
+About: [current about section]
+Experience: [list recent experiences]
+Skills: [current skills list]
+Target role: [specific position you want]
+
+Provide specific feedback:
+1. Headline improvements (3 options)
+2. About section rewrite suggestions
+3. Missing keywords I should add
+4. Experience descriptions that need work
+5. Skills to add/remove/reorder
+6. Overall brand positioning advice
+7. Specific metrics or achievements I should highlight
+
+Make recommendations actionable and specific to my goals."
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <div data-component="footer"></div>
+    </div>
+
+    <!-- Load Components -->
+    <script src="./components/component-loader.js"></script>
+    <!-- Theme Switcher JS -->
+    <script src="./theme-switcher.js"></script>
+    
+    <!-- Smooth scrolling for navigation -->
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Update active nav item on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.section[id]');
+            const navLinks = document.querySelectorAll('.nav-item a');
+            
+            let currentSection = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.offsetHeight;
+                if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentSection}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
