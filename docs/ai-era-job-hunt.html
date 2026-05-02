@@ -1,0 +1,1458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The AI Era Job Hunt - 3 Ways to Future-Proof Your Career</title>
+    <meta name="description" content="The traditional job hunt is dead. Here's exactly how to get hired in the AI era - master AI-augmented workflows, lean into human skills, and build public proof of work.">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="The AI Era Job Hunt - 3 Ways to Future-Proof Your Career">
+    <meta property="og:description" content="100 identical resumes into a portal won't work anymore. Here's the new playbook.">
+    <meta property="og:url" content="https://shumbul.github.io/Resources/ai-era-job-hunt.html">
+
+    <!-- Core Theme Variables (Load First) -->
+    <link rel="stylesheet" href="./theme-variables.css">
+    <!-- Theme Switcher CSS -->
+    <link rel="stylesheet" href="./theme-switcher.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.75;
+            color: var(--text-primary);
+            background: var(--bg-secondary);
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* ── HEADER ── */
+        .header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 60%, var(--primary) 100%);
+            color: white;
+            padding: 4rem 0 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 80% 20%, rgba(139,92,246,0.25) 0%, transparent 60%),
+                        radial-gradient(ellipse at 20% 80%, rgba(59,130,246,0.15) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        /* floating grid dots */
+        .header::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(rgba(255,255,255,0.07) 1px, transparent 1px);
+            background-size: 32px 32px;
+            pointer-events: none;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            margin-bottom: 2.5rem;
+            padding: 0.45rem 1rem;
+            background: rgba(255,255,255,0.08);
+            border-radius: 0.5rem;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+
+        .back-link:hover {
+            background: rgba(255,255,255,0.16);
+            color: white;
+        }
+
+        .eyebrow {
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 1.25rem;
+            background: linear-gradient(135deg, #fff 0%, #c4b5fd 60%, #93c5fd 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.75);
+            max-width: 580px;
+            margin: 0 auto 2rem;
+        }
+
+        .header-stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .stat-pill {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.12);
+            padding: 0.6rem 1.2rem;
+            border-radius: 2rem;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.9);
+            backdrop-filter: blur(8px);
+        }
+
+        .stat-pill strong {
+            color: var(--accent);
+        }
+
+        /* ── TRUTH BOMB BANNER ── */
+        .truth-bomb {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: white;
+            padding: 3rem 0;
+            border-bottom: 1px solid rgba(139,92,246,0.3);
+        }
+
+        .truth-bomb .container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .truth-line {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: rgba(255,255,255,0.9);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .truth-line.strike {
+            color: rgba(255,255,255,0.35);
+            text-decoration: line-through;
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        .truth-line .icon {
+            flex-shrink: 0;
+            font-size: 1.3rem;
+        }
+
+        .truth-highlight {
+            color: var(--accent);
+        }
+
+        /* ── MAIN CONTENT ── */
+        .main {
+            padding: 3.5rem 0 5rem;
+        }
+
+        /* ── SECTION INTRO ── */
+        .section-intro {
+            background: var(--bg-primary);
+            border-radius: 1rem;
+            padding: 2rem 2.25rem;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--primary);
+        }
+
+        .section-intro h2 {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .section-intro p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        /* ── STRATEGY CARDS ── */
+        .strategy-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .strategy-card {
+            background: var(--bg-primary);
+            border-radius: 1.25rem;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .strategy-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 1.75rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+        }
+
+        .card-num {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: rgba(255,255,255,0.15);
+            line-height: 1;
+            min-width: 2.5rem;
+        }
+
+        .card-header-text {}
+
+        .card-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.65);
+            margin-bottom: 0.3rem;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: white;
+        }
+
+        .card-body {
+            padding: 2rem;
+        }
+
+        .card-hook {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1.25rem;
+            line-height: 1.6;
+        }
+
+        .card-hook em {
+            color: var(--primary);
+            font-style: normal;
+        }
+
+        /* What it looks like in practice */
+        .practice-block {
+            background: var(--bg-tertiary);
+            border-radius: 0.875rem;
+            padding: 1.5rem 1.75rem;
+            margin: 1.5rem 0;
+        }
+
+        .practice-block h4 {
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .practice-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .practice-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.875rem 1rem;
+            background: var(--bg-primary);
+            border-radius: 0.625rem;
+            border-left: 3px solid var(--accent);
+            font-size: 0.95rem;
+            color: var(--text-primary);
+        }
+
+        .practice-list li .li-icon {
+            flex-shrink: 0;
+            font-size: 1rem;
+            margin-top: 0.05rem;
+        }
+
+        /* Do vs Don't */
+        .vs-block {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .vs-col {
+            border-radius: 0.75rem;
+            padding: 1.25rem;
+        }
+
+        .vs-col.dont {
+            background: #fff5f5;
+            border: 1px solid #fecaca;
+        }
+
+        .vs-col.do {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+        }
+
+        .vs-col h5 {
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+
+        .vs-col.dont h5 { color: #dc2626; }
+        .vs-col.do h5 { color: #16a34a; }
+
+        .vs-col ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .vs-col ul li {
+            font-size: 0.9rem;
+            padding-left: 1.25rem;
+            position: relative;
+            color: var(--text-secondary);
+        }
+
+        .vs-col.dont ul li::before { content: '✗'; position: absolute; left: 0; color: #dc2626; font-weight: 700; }
+        .vs-col.do ul li::before   { content: '✓'; position: absolute; left: 0; color: #16a34a; font-weight: 700; }
+
+        /* Reality check callout */
+        .reality-callout {
+            background: linear-gradient(135deg, rgba(139,92,246,0.08), rgba(124,58,237,0.04));
+            border: 1px solid rgba(139,92,246,0.2);
+            border-radius: 0.875rem;
+            padding: 1.25rem 1.5rem;
+            margin-top: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.875rem;
+        }
+
+        .reality-callout .callout-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .reality-callout p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .reality-callout p strong {
+            color: var(--primary);
+        }
+
+        /* ── PROOF OF WORK EXAMPLES ── */
+        .pow-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .pow-card {
+            background: var(--bg-tertiary);
+            border-radius: 0.75rem;
+            padding: 1.25rem;
+            border: 1px solid var(--border);
+            transition: border-color 0.2s;
+        }
+
+        .pow-card:hover {
+            border-color: var(--primary);
+        }
+
+        .pow-card .pow-icon {
+            font-size: 1.6rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .pow-card h5 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.4rem;
+        }
+
+        .pow-card p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ── MINDSET SHIFT SECTION ── */
+        .mindset-section {
+            background: var(--bg-primary);
+            border-radius: 1.25rem;
+            padding: 2.5rem 2rem;
+            margin-bottom: 3.5rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .mindset-section h2 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .mindset-section .lead {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto 2rem;
+        }
+
+        .shift-grid {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 1rem;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .shift-old {
+            background: #f8f8f8;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.75rem;
+            padding: 1rem 1.25rem;
+            text-align: left;
+        }
+
+        .shift-old .label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-secondary);
+            margin-bottom: 0.35rem;
+        }
+
+        .shift-old p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-decoration: line-through;
+        }
+
+        .shift-new {
+            background: linear-gradient(135deg, rgba(139,92,246,0.08), rgba(124,58,237,0.04));
+            border: 1px solid rgba(139,92,246,0.25);
+            border-radius: 0.75rem;
+            padding: 1rem 1.25rem;
+            text-align: left;
+        }
+
+        .shift-new .label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--primary);
+            margin-bottom: 0.35rem;
+        }
+
+        .shift-new p {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .shift-arrow {
+            font-size: 1.5rem;
+            color: var(--primary);
+            font-weight: 900;
+        }
+
+        /* ── RESOURCES CTA ── */
+        .resources-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 1.25rem;
+            padding: 3rem 2rem;
+            text-align: center;
+            color: white;
+            margin-bottom: 3.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .resources-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);
+            background-size: 28px 28px;
+        }
+
+        .resources-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .resources-section h2 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 0.75rem;
+        }
+
+        .resources-section p {
+            font-size: 1rem;
+            opacity: 0.85;
+            max-width: 500px;
+            margin: 0 auto 2rem;
+        }
+
+        .resource-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .resource-link-card {
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 0.875rem;
+            padding: 1.25rem;
+            text-decoration: none;
+            color: white;
+            transition: background 0.2s, transform 0.2s;
+            display: block;
+            text-align: left;
+        }
+
+        .resource-link-card:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+            color: white;
+        }
+
+        .resource-link-card .rlc-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .resource-link-card h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .resource-link-card p {
+            font-size: 0.8rem;
+            opacity: 0.75;
+            margin: 0;
+        }
+
+        .cta-note {
+            font-size: 0.9rem;
+            opacity: 0.75;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: #0f172a;
+            color: rgba(255,255,255,0.6);
+            padding: 2.5rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.25rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.25rem;
+            height: 2.25rem;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 0.5rem;
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .social-link:hover {
+            background: rgba(139,92,246,0.3);
+            color: white;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 640px) {
+            h1 { font-size: 2rem; }
+            .shift-grid { grid-template-columns: 1fr; }
+            .shift-arrow { transform: rotate(90deg); justify-self: center; }
+            .vs-block { grid-template-columns: 1fr; }
+            .card-num { display: none; }
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 0 1.25rem; }
+            .card-body { padding: 1.5rem; }
+        }
+
+        /* ── MINI BEFORE/AFTER EXAMPLES ── */
+        .example-block {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 0.75rem;
+            align-items: start;
+            margin: 1.25rem 0 1.75rem;
+            background: var(--bg-tertiary);
+            border-radius: 0.875rem;
+            padding: 1.25rem;
+        }
+
+        .example-before, .example-after {
+            border-radius: 0.625rem;
+            padding: 0.875rem 1rem;
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+
+        .example-before {
+            background: #fff5f5;
+            border: 1px solid #fecaca;
+            color: var(--text-secondary);
+        }
+
+        .example-after {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .ex-label {
+            display: block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 0.4rem;
+        }
+
+        .example-before .ex-label { color: #dc2626; }
+        .example-after .ex-label { color: #16a34a; }
+
+        .example-arrow {
+            font-size: 1.3rem;
+            color: var(--primary);
+            font-weight: 900;
+            padding-top: 1.75rem;
+            text-align: center;
+        }
+
+        /* ── WEEKEND PLAN ── */
+        .weekend-section {
+            background: var(--bg-primary);
+            border-radius: 1.25rem;
+            padding: 2.5rem 2rem;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .weekend-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .weekend-header h2 {
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .weekend-header p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .weekend-days {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 1.5rem;
+            align-items: start;
+        }
+
+        .day-divider {
+            width: 1px;
+            background: var(--border);
+            align-self: stretch;
+            margin-top: 3rem;
+        }
+
+        .day-label {
+            font-size: 0.95rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 0.45rem 1rem;
+            border-radius: 2rem;
+            display: inline-block;
+            margin-bottom: 1.25rem;
+        }
+
+        .day-label.saturday {
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+            color: #1d4ed8;
+        }
+
+        .day-label.sunday {
+            background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+            color: #6d28d9;
+        }
+
+        .day-checklist {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .day-checklist li {
+            display: flex;
+            gap: 0.875rem;
+            align-items: flex-start;
+        }
+
+        .check-box {
+            flex-shrink: 0;
+            width: 1.25rem;
+            height: 1.25rem;
+            border: 2px solid var(--border);
+            border-radius: 0.3rem;
+            margin-top: 0.15rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: var(--bg-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .check-box:hover { border-color: var(--primary); background: rgba(139,92,246,0.06); }
+
+        .check-box.checked {
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .check-box.checked::after {
+            content: '✓';
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .day-checklist strong {
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .task-note {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            line-height: 1.55;
+            display: block;
+        }
+
+        /* ── FAQ ── */
+        .faq-section {
+            background: var(--bg-primary);
+            border-radius: 1.25rem;
+            padding: 2.5rem 2rem;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow);
+        }
+
+        .faq-section h2 {
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .faq-lead {
+            color: var(--text-secondary);
+            margin-bottom: 1.75rem;
+            font-size: 1rem;
+        }
+
+        .faq-list {
+            border: 1px solid var(--border);
+            border-radius: 0.875rem;
+            overflow: hidden;
+        }
+
+        .faq-item { border-bottom: 1px solid var(--border); }
+        .faq-item:last-child { border-bottom: none; }
+
+        .faq-q {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 1.1rem 1.5rem;
+            text-align: left;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            transition: background 0.15s;
+            font-family: inherit;
+        }
+
+        .faq-q:hover { background: var(--bg-tertiary); }
+        .faq-q.open { color: var(--primary); background: var(--bg-tertiary); }
+
+        .faq-icon {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            flex-shrink: 0;
+            transition: transform 0.2s;
+            line-height: 1;
+        }
+
+        .faq-q.open .faq-icon { transform: rotate(45deg); }
+
+        .faq-a {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.2s;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.75;
+            padding: 0 1.5rem;
+        }
+
+        .faq-a.open {
+            max-height: 200px;
+            padding: 0 1.5rem 1.25rem;
+        }
+
+        @media (max-width: 640px) {
+            .example-block { grid-template-columns: 1fr; }
+            .example-arrow { padding-top: 0; text-align: center; transform: rotate(90deg); }
+            .weekend-days { grid-template-columns: 1fr; }
+            .day-divider { width: 100%; height: 1px; margin: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Theme Switcher -->
+    <div class="theme-switcher">
+        <button class="theme-switcher-toggle" id="themeToggle">🎨</button>
+        <div class="theme-options" id="themeOptions">
+            <div class="theme-option" data-theme="purple"><div class="theme-color purple"></div><span>Purple</span></div>
+            <div class="theme-option" data-theme="blue"><div class="theme-color blue"></div><span>Blue</span></div>
+            <div class="theme-option" data-theme="green"><div class="theme-color green"></div><span>Green</span></div>
+            <div class="theme-option" data-theme="orange"><div class="theme-color orange"></div><span>Orange</span></div>
+            <div class="theme-option" data-theme="red"><div class="theme-color red"></div><span>Red</span></div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="./index.html" class="back-link">← Back to Resources</a>
+                <p class="eyebrow">Career Strategy · 2026</p>
+                <h1>The AI Era Job Hunt</h1>
+                <p class="subtitle">The old playbook is dead. Here are the 3 moves that actually get you hired now.</p>
+                <div class="header-stats">
+                    <span class="stat-pill">🔸 <strong>3</strong> Strategies</span>
+                    <span class="stat-pill">⏱️ <strong>5 min</strong> read</span>
+                    <span class="stat-pill">🎯 For devs &amp; engineers</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Truth Bomb -->
+    <section class="truth-bomb">
+        <div class="container">
+            <p class="truth-line strike"><span class="icon">❌</span> Sending 100 identical resumes into a portal.</p>
+            <p class="truth-line strike"><span class="icon">❌</span> Listing "GenAI" under skills and calling it a day.</p>
+            <p class="truth-line strike"><span class="icon">❌</span> A 1-page PDF as your only proof of ability.</p>
+            <p class="truth-line" style="margin-top:0.5rem;"><span class="icon">✅</span> The rules have <span class="truth-highlight">completely changed.</span> Here's the new playbook.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+
+            <div class="section-intro">
+                <h2>Why this matters right now</h2>
+                <p>AI has flipped the cost of producing average work to near-zero. That means average work is worth near-zero to a hiring team. What's valuable now is your <strong>judgment, your communication, and your visible track record</strong>. This guide breaks down exactly how to reposition yourself for that reality.</p>
+            </div>
+
+            <!-- Strategy Cards -->
+            <div class="strategy-grid">
+
+                <!-- Strategy 1 -->
+                <div class="strategy-card">
+                    <div class="card-header">
+                        <div class="card-num">01</div>
+                        <div class="card-header-text">
+                            <div class="card-label">Strategy One</div>
+                            <div class="card-title">Master AI-Augmented Workflows</div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-hook">
+                            Simply listing "GenAI" on your resume isn't enough anymore.<br>
+                            You need to show <em>how it accelerates your output</em> - with receipts.
+                        </p>
+
+                        <div class="example-block">
+                            <div class="example-before">
+                                <span class="ex-label">Resume says</span>
+                                "Built REST API"
+                            </div>
+                            <div class="example-arrow">→</div>
+                            <div class="example-after">
+                                <span class="ex-label">Should say</span>
+                                "Shipped auth API in 2 days - used Copilot for scaffolding, wrote all business logic + edge cases myself, cut PR review time 40% with AI-assisted summaries"
+                            </div>
+                        </div>
+
+                        <p style="color:var(--text-secondary); margin-bottom:1.5rem;">
+                            Think of AI as a junior engineer on your team. It writes the boilerplate. It handles the repetitive debugging. It drafts the first pass. Your job - the high-value job - is the architecture, the edge cases, and the decisions that require context AI doesn't have.
+                        </p>
+
+                        <div class="practice-block">
+                            <h4>What this looks like in practice</h4>
+                            <ul class="practice-list">
+                                <li><span class="li-icon">⚡</span> Use Copilot / Cursor to generate boilerplate and unit tests - you own the logic layer.</li>
+                                <li><span class="li-icon">🔍</span> Prompt LLMs to explain unfamiliar codebases in seconds - then go deeper yourself.</li>
+                                <li><span class="li-icon">🧱</span> Let AI draft your PR descriptions and commit messages - you make sure they're accurate.</li>
+                                <li><span class="li-icon">📊</span> Use AI-powered code review tools - then critique their suggestions like a senior engineer.</li>
+                            </ul>
+                        </div>
+
+                        <div class="vs-block">
+                            <div class="vs-col dont">
+                                <h5>Old Playbook</h5>
+                                <ul>
+                                    <li>Write every line from scratch to "prove" you can</li>
+                                    <li>Avoid AI because it "feels like cheating"</li>
+                                    <li>List "ChatGPT" as a skill</li>
+                                </ul>
+                            </div>
+                            <div class="vs-col do">
+                                <h5>New Playbook</h5>
+                                <ul>
+                                    <li>Ship features 3× faster using AI for the grunt work</li>
+                                    <li>Document the decisions you made where AI couldn't</li>
+                                    <li>Show the before/after of your AI-augmented workflow</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="reality-callout">
+                            <span class="callout-icon">💡</span>
+                            <p><strong>The question interviewers are now asking:</strong> "Walk me through a recent project. What did you use AI for, and what did you deliberately not use AI for?" Know your answer cold.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Strategy 2 -->
+                <div class="strategy-card">
+                    <div class="card-header">
+                        <div class="card-num">02</div>
+                        <div class="card-header-text">
+                            <div class="card-label">Strategy Two</div>
+                            <div class="card-title">Lean into Human Skills</div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-hook">
+                            AI is incredible at crunching data and writing scripts.<br>
+                            You know what it's terrible at? <em>Sitting in a room and negotiating trade-offs.</em>
+                        </p>
+
+                        <div class="example-block">
+                            <div class="example-before">
+                                <span class="ex-label">Generic post</span>
+                                "Currently learning system design 📚"
+                            </div>
+                            <div class="example-arrow">→</div>
+                            <div class="example-after">
+                                <span class="ex-label">Shows your thinking</span>
+                                "Chose Redis over Postgres for session storage. Here are the 3 trade-offs I considered - and what finally made the call for me."
+                            </div>
+                        </div>
+
+                        <p style="color:var(--text-secondary); margin-bottom:1.5rem;">
+                            In a world where code is easier than ever to generate, the engineer who can walk into a system design review, communicate complex ideas clearly, and navigate ambiguity with stakeholders is the one who becomes genuinely hard to replace. Soft skills aren't soft anymore - they're a hard competitive edge.
+                        </p>
+
+                        <div class="practice-block">
+                            <h4>The "human" skills worth deliberately building</h4>
+                            <ul class="practice-list">
+                                <li><span class="li-icon">🗣️</span> <strong>Structured communication:</strong> Write design docs, explain your thinking in async threads, own your decisions out loud.</li>
+                                <li><span class="li-icon">⚖️</span> <strong>Trade-off reasoning:</strong> Practice saying "We could do X but the cost is Y. I recommend Z because..." in every discussion.</li>
+                                <li><span class="li-icon">🧩</span> <strong>Ambiguity tolerance:</strong> Get comfortable with unclear requirements. Ask the right clarifying questions, not all the questions.</li>
+                                <li><span class="li-icon">🤝</span> <strong>Cross-functional fluency:</strong> Understand what product managers and designers actually care about. Speak their language.</li>
+                            </ul>
+                        </div>
+
+                        <div class="vs-block">
+                            <div class="vs-col dont">
+                                <h5>Old Playbook</h5>
+                                <ul>
+                                    <li>Polish technical skills only, skip the "soft" stuff</li>
+                                    <li>Wait for perfect requirements before starting</li>
+                                    <li>Stay in your silo, avoid cross-team meetings</li>
+                                </ul>
+                            </div>
+                            <div class="vs-col do">
+                                <h5>New Playbook</h5>
+                                <ul>
+                                    <li>Practice explaining technical decisions to non-engineers</li>
+                                    <li>Volunteer to run sprint planning or a design review</li>
+                                    <li>Write internal RFCs - even ones nobody asked for</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="reality-callout">
+                            <span class="callout-icon">💡</span>
+                            <p><strong>Reframe how you think about this:</strong> <em>navigating ambiguity</em> and <em>communicating clearly</em> have officially become your most valuable <strong>hard skills</strong>. Start treating them that way.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Strategy 3 -->
+                <div class="strategy-card">
+                    <div class="card-header">
+                        <div class="card-num">03</div>
+                        <div class="card-header-text">
+                            <div class="card-label">Strategy Three</div>
+                            <div class="card-title">Build a Public Proof of Work</div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-hook">
+                            A standard 1-page PDF doesn't tell a recruiter how your brain works.<br>
+                            You need to make your expertise <em>undeniable - and findable.</em>
+                        </p>
+
+                        <div class="example-block">
+                            <div class="example-before">
+                                <span class="ex-label">Vague post</span>
+                                "Learning AI - it's wild out there 🤖"
+                            </div>
+                            <div class="example-arrow">→</div>
+                            <div class="example-after">
+                                <span class="ex-label">Proof of work</span>
+                                "Here's the exact prompt I used, the broken output it gave me, and the 2-line fix that made it work. Saving you 45 minutes."
+                            </div>
+                        </div>
+
+                        <p style="color:var(--text-secondary); margin-bottom:1.5rem;">
+                            Engineering managers are now screening candidates before they even apply. They're watching who shares their thinking in public. Who documents their roadblocks honestly. Who talks about the <em>why</em> behind the build, not just the what. A resume tells them what you claim. A public body of work shows them who you actually are.
+                        </p>
+
+                        <div class="pow-examples">
+                            <div class="pow-card">
+                                <div class="pow-icon">📝</div>
+                                <h5>Technical Write-ups</h5>
+                                <p>Document the architecture decisions on your projects. Share the trade-offs you considered and why you chose what you chose.</p>
+                            </div>
+                            <div class="pow-card">
+                                <div class="pow-icon">🧵</div>
+                                <h5>Build in Public</h5>
+                                <p>Post about the roadblock you hit on Tuesday. What it was. What you tried. How you unblocked it. That's what a hiring manager wants to see.</p>
+                            </div>
+                            <div class="pow-card">
+                                <div class="pow-icon">📂</div>
+                                <h5>Documented Repos</h5>
+                                <p>Your GitHub isn't just code storage. Every README is a signal. Great docs show you think about the reader - that's an engineering skill too.</p>
+                            </div>
+                            <div class="pow-card">
+                                <div class="pow-icon">�</div>
+                                <h5>Demo + Link It Everywhere</h5>
+                                <p>Record a 2-min demo of your project. Post it on LinkedIn, add it to your portfolio, paste the link in your resume, GitHub README, and every application you send.</p>
+                            </div>
+                        </div>
+
+                        <div class="practice-block">
+                            <h4>Your 30-day proof of work sprint</h4>
+                            <ul class="practice-list">
+                                <li><span class="li-icon">📅</span> <strong>Week 1:</strong> Pick one project. Write a 500-word breakdown of the most interesting technical decision you made.</li>
+                                <li><span class="li-icon">📅</span> <strong>Week 2:</strong> Post about one bug you spent more than 2 hours on. What was it? What did you learn?</li>
+                                <li><span class="li-icon">📅</span> <strong>Week 3:</strong> Refactor your GitHub READMEs to actually explain the "why" of each project.</li>
+                                <li><span class="li-icon">📅</span> <strong>Week 4:</strong> Share a resource, a tool, or a mental model that changed how you write code. Tag the author.</li>
+                            </ul>
+                        </div>
+
+                        <div class="reality-callout">
+                            <span class="callout-icon">💡</span>
+                            <p><strong>Consistency beats virality every time.</strong> You don't need 50,000 followers. You need one engineering manager to Google your name and find a trail of genuine, thoughtful work. That's the whole game.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Weekend Plan -->
+            <div class="weekend-section">
+                <div class="weekend-header">
+                    <h2>⚡ Do This Weekend</h2>
+                    <p>Two days. Real moves. This is how you go from reading to actually being ahead.</p>
+                </div>
+                <div class="weekend-days">
+                    <div class="day-col">
+                        <div class="day-label saturday">Saturday</div>
+                        <ul class="day-checklist">
+                            <li>
+                                <span class="check-box" role="checkbox" tabindex="0"></span>
+                                <div>
+                                    <strong>Fix your LinkedIn headline + About section</strong>
+                                    <span class="task-note">Stop using "Aspiring" or "Open to opportunities". Use: Role + what you're building + who you help. Make a recruiter stop scrolling.</span>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="check-box" role="checkbox" tabindex="0"></span>
+                                <div>
+                                    <strong>Rewrite 5 resume bullets with impact + scope + metric</strong>
+                                    <span class="task-note">Formula: "Did X → resulted in Y → at the scale of Z". Every bullet needs a number or it's decorative.</span>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="check-box" role="checkbox" tabindex="0"></span>
+                                <div>
+                                    <strong>Build 1 mini proof-of-work post</strong>
+                                    <span class="task-note">A bug you solved, a tool you learned, a decision you made. 150 words + what you learned. Post it to LinkedIn today.</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="day-divider"></div>
+                    <div class="day-col">
+                        <div class="day-label sunday">Sunday</div>
+                        <ul class="day-checklist">
+                            <li>
+                                <span class="check-box" role="checkbox" tabindex="0"></span>
+                                <div>
+                                    <strong>Ship 1 small project or case study page</strong>
+                                    <span class="task-note">Working API, notebook, or a simple portfolio page. Ship it. Record a 2-min demo. Drop the link in your LinkedIn featured section, resume, and GitHub bio.</span>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="check-box" role="checkbox" tabindex="0"></span>
+                                <div>
+                                    <strong>Write "roadblocks + how I solved them"</strong>
+                                    <span class="task-note">One honest post about what broke and how you fixed it. That's a better interview than any LeetCode score.</span>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="check-box" role="checkbox" tabindex="0"></span>
+                                <div>
+                                    <strong>Prep 10 outreach messages + apply</strong>
+                                    <span class="task-note">Not "hope you're well" messages. Specific, short, about them. Reference something real from their work. Send 10.</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ -->
+            <div class="faq-section">
+                <h2>Quick Answers</h2>
+                <p class="faq-lead">The objections people have right before they close the tab and do nothing.</p>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <button class="faq-q">Is all of this free? <span class="faq-icon">+</span></button>
+                        <div class="faq-a">Yes. Every resource on this site is free. No newsletter gate, no "download to access", no upsell. Just the guide. Share it with whoever needs it.</div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q">Who is this actually for? <span class="faq-icon">+</span></button>
+                        <div class="faq-a">Developers, engineers, and tech professionals who are either actively job hunting or want to future-proof before the next wave hits. Works whether you have 0 years of experience or 5 - the strategies scale.</div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q">Do I need AI experience to start? <span class="faq-icon">+</span></button>
+                        <div class="faq-a">No. The AI-augmented workflow strategy starts from scratch - it's about using tools like Copilot and ChatGPT in your daily work, not building models. You'll be up to speed in a week of actually using them.</div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q">How long will this actually take to see results? <span class="faq-icon">+</span></button>
+                        <div class="faq-a">The weekend plan takes 2 days. Real, meaningful changes to how you show up online take about 4-6 weeks of consistent effort. Not 6 months. Not a bootcamp. Consistent, deliberate work in your existing hours.</div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q">What if I'm switching careers entirely - not just jobs? <span class="faq-icon">+</span></button>
+                        <div class="faq-a">The proof-of-work strategy is especially powerful for career switchers. You don't have a 5-year track record - but you can build a visible 60-day learning trail that shows how you think and how fast you move. That beats a credential every time.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mindset Shift -->
+            <div class="mindset-section">
+                <h2>The Mindset Shifts That Tie It Together</h2>
+                <p class="lead">These aren't just tactical changes. They're a different way of thinking about what value you bring.</p>
+
+                <div class="shift-grid">
+                    <div class="shift-old">
+                        <div class="label">Old Thinking</div>
+                        <p>I need to apply to more jobs</p>
+                    </div>
+                    <div class="shift-arrow">→</div>
+                    <div class="shift-new">
+                        <div class="label">New Thinking</div>
+                        <p>I need to be found by the right jobs</p>
+                    </div>
+                </div>
+
+                <div class="shift-grid">
+                    <div class="shift-old">
+                        <div class="label">Old Thinking</div>
+                        <p>AI will replace my skills</p>
+                    </div>
+                    <div class="shift-arrow">→</div>
+                    <div class="shift-new">
+                        <div class="label">New Thinking</div>
+                        <p>AI will amplify whoever learns to direct it</p>
+                    </div>
+                </div>
+
+                <div class="shift-grid">
+                    <div class="shift-old">
+                        <div class="label">Old Thinking</div>
+                        <p>My work speaks for itself</p>
+                    </div>
+                    <div class="shift-arrow">→</div>
+                    <div class="shift-new">
+                        <div class="label">New Thinking</div>
+                        <p>My work doesn't exist if nobody can find it</p>
+                    </div>
+                </div>
+
+                <div class="shift-grid">
+                    <div class="shift-old">
+                        <div class="label">Old Thinking</div>
+                        <p>I'll share once the project is perfect</p>
+                    </div>
+                    <div class="shift-arrow">→</div>
+                    <div class="shift-new">
+                        <div class="label">New Thinking</div>
+                        <p>The process is the proof. Share it as you build.</p>
+                    </div>
+                </div>
+
+                <p style="margin-top:1.75rem; font-size:1.05rem; font-weight:600; color:var(--text-primary);">
+                    The tools are changing, but the core goal is the same.<br>
+                    <span style="color:var(--primary);">Solve problems. Create value. Make it visible.</span>
+                </p>
+            </div>
+
+            <!-- Resources CTA -->
+            <div class="resources-section">
+                <h2>Ready to redesign your strategy?</h2>
+                <p>I've put together the templates and resources to help you act on all three of these this weekend. Start with whichever one feels most urgent.</p>
+
+                <div class="resource-links">
+                    <a href="./12-week-roadmap.html" class="resource-link-card">
+                        <div class="rlc-icon">🗓️</div>
+                        <h4>12-Week Career Roadmap</h4>
+                        <p>Week-by-week plan from zero to interview-ready</p>
+                    </a>
+                    <a href="./AI-Roadmap.html" class="resource-link-card">
+                        <div class="rlc-icon">🤖</div>
+                        <h4>AI Developer Roadmap</h4>
+                        <p>6-month guide to mastering AI workflows</p>
+                    </a>
+                    <a href="./linkedin-utilization-guide.html" class="resource-link-card">
+                        <div class="rlc-icon">💼</div>
+                        <h4>LinkedIn Strategy Guide</h4>
+                        <p>Turn your profile into an inbound opportunity machine</p>
+                    </a>
+                    <a href="./git-guide.html" class="resource-link-card">
+                        <div class="rlc-icon">🌿</div>
+                        <h4>Git Guide</h4>
+                        <p>Build a repo history that shows how you think</p>
+                    </a>
+                </div>
+
+                <p class="cta-note">Found this useful? Share it with someone who's about to send their 100th application into a void.</p>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="social-links">
+                    <a href="https://github.com/shumbul" class="social-link" title="GitHub" target="_blank" rel="noopener noreferrer">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+                    </a>
+                    <a href="https://linkedin.com/in/shumbul" class="social-link" title="LinkedIn" target="_blank" rel="noopener noreferrer">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/></svg>
+                    </a>
+                    <a href="https://instagram.com/shumbul.arifa" class="social-link" title="Instagram" target="_blank" rel="noopener noreferrer">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.374.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/></svg>
+                    </a>
+                    <a href="https://www.youtube.com/@Shumbul" class="social-link" title="YouTube" target="_blank" rel="noopener noreferrer">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z"/></svg>
+                    </a>
+                </div>
+                <p style="font-size:0.875rem;">Created with ❤️ by <a href="https://linkedin.com/in/shumbul" style="color:var(--accent);text-decoration:none;">Shumbul Arifa</a> · © 2026</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Theme Switcher JS -->
+    <script src="./theme-switcher.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme') || 'purple';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+
+            const themeToggle = document.getElementById('themeToggle');
+            const themeOptions = document.getElementById('themeOptions');
+            const themeOptionElements = document.querySelectorAll('.theme-option');
+
+            if (themeToggle && themeOptions) {
+                themeToggle.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    themeOptions.classList.toggle('show');
+                });
+
+                document.addEventListener('click', () => {
+                    themeOptions.classList.remove('show');
+                });
+
+                themeOptionElements.forEach(option => {
+                    option.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const selectedTheme = option.getAttribute('data-theme');
+                        document.documentElement.setAttribute('data-theme', selectedTheme);
+                        localStorage.setItem('theme', selectedTheme);
+                        themeOptions.classList.remove('show');
+                        themeToggle.style.transform = 'scale(1.2)';
+                        themeToggle.style.color = 'var(--success)';
+                        setTimeout(() => {
+                            themeToggle.style.transform = 'scale(1)';
+                            themeToggle.style.color = '';
+                        }, 300);
+                    });
+                });
+            }
+
+            // FAQ accordion
+            document.querySelectorAll('.faq-q').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const answer = btn.nextElementSibling;
+                    const isOpen = btn.classList.contains('open');
+                    document.querySelectorAll('.faq-q').forEach(b => {
+                        b.classList.remove('open');
+                        b.nextElementSibling.classList.remove('open');
+                    });
+                    if (!isOpen) {
+                        btn.classList.add('open');
+                        answer.classList.add('open');
+                    }
+                });
+            });
+
+            // Interactive checkboxes
+            document.querySelectorAll('.check-box').forEach(box => {
+                const toggle = () => box.classList.toggle('checked');
+                box.addEventListener('click', toggle);
+                box.addEventListener('keydown', (e) => {
+                    if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); toggle(); }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
