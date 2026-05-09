@@ -1,0 +1,1454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Big Companies Explained - Core Business Models</title>
+    <meta name="description" content="A simple breakdown of what top companies actually do, how they make money, and the core business models they repeat.">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Big Companies Explained - Core Business Models">
+    <meta property="og:description" content="Most big companies win by doing one core thing extremely well. Learn the model and apply it to your own product thinking.">
+    <meta property="og:url" content="https://shumbul.github.io/Resources/docs/big-tech-core-models.html">
+
+    <link rel="stylesheet" href="./theme-variables.css">
+    <link rel="stylesheet" href="./theme-switcher.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: linear-gradient(180deg, #f7f9ff 0%, #eef4ff 30%, #f4f8ef 100%);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1040px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .reading-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(90deg, #2a6a9c, #2b8c79);
+            z-index: 9999;
+            transition: width 0.15s ease;
+        }
+
+        .quick-nav {
+            position: fixed;
+            right: 1rem;
+            top: 22%;
+            width: 210px;
+            background: rgba(255, 255, 255, 0.94);
+            border: 1px solid #d8e6f4;
+            border-radius: 0.9rem;
+            box-shadow: 0 8px 22px rgba(8, 33, 58, 0.1);
+            padding: 0.8rem;
+            z-index: 1000;
+            backdrop-filter: blur(4px);
+        }
+
+        .quick-nav h4 {
+            font-size: 0.82rem;
+            color: #204b72;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 0.45rem;
+        }
+
+        .quick-nav a {
+            display: block;
+            font-size: 0.84rem;
+            color: #31506d;
+            text-decoration: none;
+            border-radius: 0.45rem;
+            padding: 0.34rem 0.42rem;
+        }
+
+        .quick-nav a:hover {
+            background: #eef6ff;
+            color: #0a4e8e;
+        }
+
+        .hero {
+            background: radial-gradient(circle at 10% 10%, #0f3b73 0%, transparent 45%),
+                        radial-gradient(circle at 90% 20%, #2a6a9c 0%, transparent 42%),
+                        linear-gradient(135deg, #0b2748, #184e77 55%, #2a9d8f 100%);
+            color: #f8fbff;
+            padding: 4.5rem 0 3.2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+            background-size: 28px 28px;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #c9dcf1;
+            text-decoration: none;
+            margin-bottom: 2rem;
+            font-size: 0.92rem;
+            padding: 0.45rem 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 999px;
+            transition: all 0.2s ease;
+        }
+
+        .back-link:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.09);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .eyebrow {
+            font-size: 0.78rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: #bde0fe;
+            margin-bottom: 0.8rem;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 4vw, 3.1rem);
+            line-height: 1.2;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .hero-sub {
+            max-width: 760px;
+            margin: 0 auto;
+            color: #d7e8f8;
+            font-size: 1.08rem;
+        }
+
+        .hero-rule {
+            margin-top: 1.6rem;
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.14);
+            border: 1px solid rgba(255, 255, 255, 0.22);
+            border-radius: 999px;
+            padding: 0.55rem 1rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .hero-visual {
+            margin-top: 2.1rem;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 1rem;
+            padding: 1rem;
+            backdrop-filter: blur(3px);
+        }
+
+        .visual-grid {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 0.6rem;
+        }
+
+        .visual-chip {
+            border-radius: 0.7rem;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.8rem 0.6rem;
+            text-align: center;
+            font-size: 0.84rem;
+        }
+
+        .visual-chip strong {
+            display: block;
+            color: #ffffff;
+            margin-bottom: 0.2rem;
+        }
+
+        .main {
+            padding: 3rem 0 4rem;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity 0.55s ease, transform 0.55s ease;
+        }
+
+        .reveal.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .statement {
+            background: #fff;
+            border: 1px solid #d7e5f3;
+            border-radius: 1rem;
+            padding: 1.4rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 25px rgba(11, 39, 72, 0.08);
+        }
+
+        .statement p {
+            font-size: 1.04rem;
+            color: #14324f;
+        }
+
+        .source-note {
+            margin-top: 0.9rem;
+            background: #f8fcff;
+            border: 1px solid #d6e6f5;
+            border-radius: 0.75rem;
+            padding: 0.75rem 0.9rem;
+            font-size: 0.86rem;
+            color: #35536e;
+        }
+
+        .source-note a {
+            color: #0a4e8e;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .source-note a:hover {
+            text-decoration: underline;
+        }
+
+        .statement code {
+            background: #edf6ff;
+            color: #0a4e8e;
+            padding: 0.18rem 0.45rem;
+            border-radius: 0.4rem;
+            font-weight: 600;
+        }
+
+        .section-title {
+            font-size: 1.7rem;
+            color: #12385f;
+            margin: 0 0 1.2rem;
+            font-weight: 800;
+        }
+
+        .company-grid {
+            display: grid;
+            gap: 1rem;
+            margin-bottom: 2.4rem;
+        }
+
+        .flow-strip {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 0.7rem;
+            margin-bottom: 1.15rem;
+        }
+
+        .flow-card {
+            background: #ffffff;
+            border: 1px solid #d8e6f4;
+            border-radius: 0.8rem;
+            padding: 0.7rem;
+            box-shadow: 0 8px 20px rgba(6, 27, 48, 0.05);
+            cursor: pointer;
+            transition: transform 0.18s ease, box-shadow 0.18s ease;
+        }
+
+        .flow-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(6, 27, 48, 0.1);
+        }
+
+        .flow-card:focus-visible {
+            outline: 3px solid #9ec8ee;
+            outline-offset: 2px;
+        }
+
+        .flow-top {
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .brand-dot {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.68rem;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .b-ms { background: #1666c1; }
+        .b-ap { background: #6b7280; }
+        .b-go { background: #db4437; }
+        .b-am { background: #ff9900; color: #222; }
+        .b-me { background: #0866ff; }
+
+        .flow-top strong {
+            font-size: 0.84rem;
+            color: #103354;
+        }
+
+        .flow-svg {
+            width: 100%;
+            height: 32px;
+            display: block;
+        }
+
+        .flow-caption {
+            font-size: 0.75rem;
+            color: #31506d;
+            margin-top: 0.2rem;
+        }
+
+        .company-card {
+            background: #ffffff;
+            border: 1px solid #d8e3ec;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 12px 30px rgba(6, 27, 48, 0.06);
+        }
+
+        .company-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 1.2rem;
+            background: linear-gradient(90deg, #f3f7fd, #ecf6f1);
+            border-bottom: 1px solid #d8e3ec;
+        }
+
+        .company-head h3 {
+            font-size: 1.2rem;
+            color: #103354;
+            font-weight: 800;
+        }
+
+        .company-title {
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
+        }
+
+        .logo-chip {
+            width: 29px;
+            height: 29px;
+            border-radius: 0.5rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .l-ms { background: linear-gradient(135deg, #1460b2, #3f88d0); }
+        .l-ap { background: linear-gradient(135deg, #525a66, #8b95a3); }
+        .l-go { background: linear-gradient(135deg, #db4437, #4285f4); }
+        .l-am { background: linear-gradient(135deg, #ff9900, #ffb94d); color: #242424; }
+        .l-me { background: linear-gradient(135deg, #0866ff, #52a4ff); }
+        .l-nf { background: linear-gradient(135deg, #e50914, #fa4d56); }
+
+        .company-tag {
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            color: #0c4f88;
+            background: #dceeff;
+            border: 1px solid #b8dbfc;
+            border-radius: 999px;
+            padding: 0.26rem 0.62rem;
+        }
+
+        .company-body {
+            padding: 1rem 1.2rem 1.25rem;
+        }
+
+        .label {
+            color: #5c7187;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 700;
+            margin-top: 0.85rem;
+            margin-bottom: 0.34rem;
+        }
+
+        .model {
+            background: #f3fbf6;
+            border: 1px solid #bde7cb;
+            border-radius: 0.65rem;
+            padding: 0.7rem 0.85rem;
+            font-family: Consolas, 'Courier New', monospace;
+            color: #0c6040;
+            font-size: 0.92rem;
+            margin: 0.6rem 0;
+        }
+
+        .bullets {
+            list-style: none;
+            display: grid;
+            gap: 0.45rem;
+            margin-top: 0.1rem;
+        }
+
+        .bullets li {
+            color: #243f58;
+            background: #f9fcff;
+            border: 1px solid #e3eef8;
+            padding: 0.55rem 0.7rem;
+            border-radius: 0.58rem;
+            font-size: 0.95rem;
+        }
+
+        .insight-table {
+            background: #ffffff;
+            border-radius: 1rem;
+            border: 1px solid #d8e3ec;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 20px rgba(6, 27, 48, 0.06);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 0.88rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e7eef6;
+            font-size: 0.95rem;
+        }
+
+        th {
+            background: #f1f7ff;
+            color: #174671;
+            font-size: 0.84rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .models-grid {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 0.65rem;
+            margin-bottom: 2.2rem;
+        }
+
+        .model-pill {
+            border-radius: 0.8rem;
+            padding: 0.8rem;
+            color: #0a2f52;
+            border: 1px solid;
+            min-height: 132px;
+        }
+
+        .model-pill h4 {
+            font-size: 0.95rem;
+            margin-bottom: 0.45rem;
+        }
+
+        .model-pill p {
+            font-size: 0.86rem;
+            color: #24486a;
+        }
+
+        .m1 { background: #e5f2ff; border-color: #bddcff; }
+        .m2 { background: #eaf8ea; border-color: #c9eec9; }
+        .m3 { background: #fff4df; border-color: #ffe1a8; }
+        .m4 { background: #ffecec; border-color: #ffc8c8; }
+        .m5 { background: #f2ecff; border-color: #d8c8ff; }
+
+        .you-section {
+            background: linear-gradient(135deg, #103454, #1f5d84 60%, #2b8c79);
+            color: #f4fbff;
+            border-radius: 1.1rem;
+            padding: 1.6rem;
+            margin-bottom: 2rem;
+        }
+
+        .you-section h3 {
+            font-size: 1.35rem;
+            margin-bottom: 0.65rem;
+        }
+
+        .you-section p {
+            color: #deeffc;
+            margin-bottom: 1rem;
+        }
+
+        .mapping-list {
+            list-style: none;
+            display: grid;
+            gap: 0.5rem;
+        }
+
+        .mapping-list li {
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 0.6rem;
+            padding: 0.56rem 0.72rem;
+            font-size: 0.94rem;
+        }
+
+        .task-section {
+            background: #ffffff;
+            border: 1px solid #d8e3ec;
+            border-radius: 1rem;
+            padding: 1.35rem;
+            box-shadow: 0 10px 30px rgba(8, 33, 58, 0.07);
+        }
+
+        .task-section h3 {
+            font-size: 1.4rem;
+            color: #12385f;
+            margin-bottom: 0.35rem;
+        }
+
+        .task-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.7rem;
+            flex-wrap: wrap;
+        }
+
+        .reset-practice-btn {
+            border: 1px solid #d1dcea;
+            background: #f7f9fd;
+            color: #35516c;
+            border-radius: 0.55rem;
+            padding: 0.45rem 0.7rem;
+            font-weight: 700;
+            font-size: 0.82rem;
+            cursor: pointer;
+        }
+
+        .reset-practice-btn:hover {
+            background: #eef4fb;
+        }
+
+        .task-lead {
+            color: #4e667d;
+            margin-bottom: 1rem;
+        }
+
+        .task-list {
+            display: grid;
+            gap: 0.75rem;
+        }
+
+        .task-card {
+            border: 1px solid #d9e7f5;
+            border-radius: 0.75rem;
+            background: #f8fbff;
+            overflow: hidden;
+        }
+
+        .task-q {
+            width: 100%;
+            background: #f8fbff;
+            border: none;
+            text-align: left;
+            padding: 0.9rem 1rem;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #133d63;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .task-q:hover {
+            background: #f0f7ff;
+        }
+
+        .task-a {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: #ffffff;
+            border-top: 1px solid #d9e7f5;
+        }
+
+        .task-a-inner {
+            padding: 0.95rem 1rem;
+        }
+
+        .task-a p {
+            color: #2f4f6c;
+            font-size: 0.94rem;
+        }
+
+        .scratch-note {
+            margin-top: 0.65rem;
+            color: #4b6884;
+            font-size: 0.82rem;
+            font-style: italic;
+        }
+
+        .scratch-input {
+            margin-top: 0.5rem;
+            width: 100%;
+            min-height: 84px;
+            border: 1px solid #cfe0f1;
+            border-radius: 0.55rem;
+            padding: 0.6rem 0.7rem;
+            font-size: 0.9rem;
+            color: #1f3f5d;
+            background: #fcfeff;
+            resize: vertical;
+            font-family: inherit;
+        }
+
+        .scratch-input:focus {
+            outline: 2px solid #b8d8f5;
+            border-color: #9ec8ee;
+        }
+
+        .scratch-actions {
+            margin-top: 0.55rem;
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .clear-note-btn {
+            border: 1px solid #d1dcea;
+            background: #f6f9fd;
+            color: #35516c;
+            border-radius: 0.55rem;
+            padding: 0.45rem 0.7rem;
+            font-weight: 700;
+            font-size: 0.82rem;
+            cursor: pointer;
+        }
+
+        .clear-note-btn:hover {
+            background: #edf4fb;
+        }
+
+        .reveal-btn {
+            margin-top: 0.65rem;
+            border: 1px solid #c4ddf5;
+            background: #eff7ff;
+            color: #0c4f88;
+            border-radius: 0.55rem;
+            padding: 0.45rem 0.7rem;
+            font-weight: 700;
+            font-size: 0.82rem;
+            cursor: pointer;
+        }
+
+        .answer {
+            margin-top: 0.7rem;
+            background: #f0fbf3;
+            border: 1px solid #c8e8d0;
+            border-radius: 0.55rem;
+            padding: 0.6rem 0.7rem;
+            font-size: 0.9rem;
+            color: #1d523b;
+            display: none;
+        }
+
+        .answer.loading {
+            display: block;
+            background: #fff8e6;
+            border-color: #ffe3a5;
+            color: #6e5715;
+        }
+
+        .quiz-box {
+            margin-top: 1.2rem;
+            border: 1px solid #d1e4f8;
+            border-radius: 0.8rem;
+            background: #f4f9ff;
+            padding: 0.95rem;
+        }
+
+        .quiz-box h4 {
+            color: #0f3e66;
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .quiz-box p {
+            color: #44607a;
+            font-size: 0.9rem;
+            margin-bottom: 0.65rem;
+        }
+
+        .quiz-q {
+            border: 1px solid #d7e8f9;
+            background: #ffffff;
+            border-radius: 0.65rem;
+            padding: 0.7rem;
+            margin-bottom: 0.55rem;
+        }
+
+        .quiz-q strong {
+            color: #133d63;
+            font-size: 0.9rem;
+        }
+
+        .quiz-options {
+            margin-top: 0.35rem;
+            display: grid;
+            gap: 0.35rem;
+        }
+
+        .quiz-options label {
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+            font-size: 0.86rem;
+            color: #2d4e6a;
+            cursor: pointer;
+        }
+
+        .quiz-action {
+            margin-top: 0.7rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+        }
+
+        .quiz-btn {
+            border: 1px solid #b8d8f5;
+            background: #e7f3ff;
+            color: #0c4f88;
+            border-radius: 0.55rem;
+            padding: 0.5rem 0.75rem;
+            font-weight: 700;
+            font-size: 0.84rem;
+            cursor: pointer;
+        }
+
+        .quiz-score {
+            font-size: 0.86rem;
+            color: #1f4c72;
+            background: #ffffff;
+            border: 1px solid #d4e6f8;
+            border-radius: 999px;
+            padding: 0.36rem 0.68rem;
+            display: none;
+        }
+
+        footer {
+            margin-top: 3rem;
+            background: var(--text-primary);
+            color: #fff;
+            padding: 2rem 0 1.5rem;
+        }
+
+        .footer-wrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 0.65rem;
+        }
+
+        .social-link {
+            color: rgba(255, 255, 255, 0.85);
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.45);
+            transform: translateY(-1px);
+        }
+
+        a:focus-visible,
+        button:focus-visible,
+        input:focus-visible,
+        textarea:focus-visible {
+            outline: 3px solid #9ec8ee;
+            outline-offset: 2px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            .reveal,
+            .flow-card,
+            .reading-progress {
+                transition: none !important;
+            }
+
+            .reveal {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .visual-grid, .models-grid, .flow-strip {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .visual-grid, .models-grid, .flow-strip {
+                grid-template-columns: 1fr;
+            }
+
+            .company-head {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            th, td {
+                padding: 0.72rem 0.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="reading-progress" id="readingProgress"></div>
+
+    <div class="theme-switcher">
+        <button class="theme-switcher-toggle" id="themeToggle">🎨</button>
+        <div class="theme-options" id="themeOptions">
+            <div class="theme-option" data-theme="purple"><div class="theme-color purple"></div><span>Purple</span></div>
+            <div class="theme-option" data-theme="blue"><div class="theme-color blue"></div><span>Blue</span></div>
+            <div class="theme-option" data-theme="green"><div class="theme-color green"></div><span>Green</span></div>
+            <div class="theme-option" data-theme="orange"><div class="theme-color orange"></div><span>Orange</span></div>
+            <div class="theme-option" data-theme="red"><div class="theme-color red"></div><span>Red</span></div>
+        </div>
+    </div>
+
+    <nav class="quick-nav" aria-label="Quick section navigation">
+        <h4>Quick jump</h4>
+        <a href="#top5">Top 5 breakdown</a>
+        <a href="#bonus">Bonus Netflix</a>
+        <a href="#pattern">Pattern table</a>
+        <a href="#models">5 repeating models</a>
+        <a href="#tasks">Practice tasks</a>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <a href="./index.html" class="back-link">← Back to Resources</a>
+                <p class="eyebrow">Business Thinking for Builders</p>
+                <h1>What Big Companies Actually Do</h1>
+                <p class="hero-sub">Most big companies are not doing everything. They are doing one core thing extremely well, and then expanding around it.</p>
+                <div class="hero-rule">Company = Problem solved + Money engine</div>
+
+                <div class="hero-visual" aria-label="Visual summary of core assets">
+                    <div class="visual-grid">
+                        <div class="visual-chip"><strong>Microsoft</strong>Infra for work</div>
+                        <div class="visual-chip"><strong>Apple</strong>Premium ecosystem</div>
+                        <div class="visual-chip"><strong>Google</strong>User intent</div>
+                        <div class="visual-chip"><strong>Amazon</strong>Logistics + cloud</div>
+                        <div class="visual-chip"><strong>Meta</strong>Social engagement</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <section class="statement reveal">
+                <p><strong>Core lens:</strong> before you admire a company, decode it. Ask: <code>What is the one problem they dominate?</code> Then ask: <code>How does money repeat?</code></p>
+                <div class="source-note">
+                    Data framing uses market-cap and business-model summaries. Snapshot context: 2025-2026. Sources: <a href="https://en.wikipedia.org/wiki/Big_Tech" target="_blank" rel="noopener noreferrer">Wikipedia Big Tech</a>, <a href="https://www.investopedia.com/terms/f/faang-stocks.asp" target="_blank" rel="noopener noreferrer">Investopedia FAANG</a>, <a href="https://www.investopedia.com/biggest-companies-in-the-world-by-market-cap-5212784" target="_blank" rel="noopener noreferrer">Investopedia market-cap list</a>.
+                </div>
+            </section>
+
+            <section class="reveal" id="top5">
+                <h2 class="section-title">The 5 most important companies and their core engine</h2>
+                <div class="flow-strip" aria-label="Money flow visual for top companies">
+                    <div class="flow-card" data-target="ms-section" title="Jump to Microsoft section" role="button" tabindex="0" aria-label="Jump to Microsoft section">
+                        <div class="flow-top"><span class="brand-dot b-ms">MS</span><strong>Microsoft</strong></div>
+                        <svg class="flow-svg" viewBox="0 0 240 36" aria-hidden="true"><rect x="2" y="8" width="86" height="20" rx="8" fill="#dceeff"/><text x="45" y="22" text-anchor="middle" fill="#114a81" font-size="11">Cloud + SaaS</text><line x1="90" y1="18" x2="166" y2="18" stroke="#3280bf" stroke-width="2.2"/><polygon points="166,12 180,18 166,24" fill="#3280bf"/><rect x="184" y="8" width="54" height="20" rx="8" fill="#eaf8ea"/><text x="211" y="22" text-anchor="middle" fill="#16603f" font-size="11">$</text></svg>
+                        <p class="flow-caption">Infra -> usage billing</p>
+                    </div>
+                    <div class="flow-card" data-target="ap-section" title="Jump to Apple section" role="button" tabindex="0" aria-label="Jump to Apple section">
+                        <div class="flow-top"><span class="brand-dot b-ap">AP</span><strong>Apple</strong></div>
+                        <svg class="flow-svg" viewBox="0 0 240 36" aria-hidden="true"><rect x="2" y="8" width="90" height="20" rx="8" fill="#eceff3"/><text x="47" y="22" text-anchor="middle" fill="#3f4a57" font-size="11">Devices</text><line x1="94" y1="18" x2="166" y2="18" stroke="#5e6671" stroke-width="2.2"/><polygon points="166,12 180,18 166,24" fill="#5e6671"/><rect x="184" y="8" width="54" height="20" rx="8" fill="#f2ecff"/><text x="211" y="22" text-anchor="middle" fill="#5f48a5" font-size="11">$$</text></svg>
+                        <p class="flow-caption">Hardware -> services</p>
+                    </div>
+                    <div class="flow-card" data-target="go-section" title="Jump to Google section" role="button" tabindex="0" aria-label="Jump to Google section">
+                        <div class="flow-top"><span class="brand-dot b-go">GO</span><strong>Google</strong></div>
+                        <svg class="flow-svg" viewBox="0 0 240 36" aria-hidden="true"><rect x="2" y="8" width="90" height="20" rx="8" fill="#fde4e0"/><text x="47" y="22" text-anchor="middle" fill="#a2382f" font-size="11">Intent data</text><line x1="94" y1="18" x2="166" y2="18" stroke="#d25247" stroke-width="2.2"/><polygon points="166,12 180,18 166,24" fill="#d25247"/><rect x="184" y="8" width="54" height="20" rx="8" fill="#fff4df"/><text x="211" y="22" text-anchor="middle" fill="#9a6f13" font-size="11">Ads</text></svg>
+                        <p class="flow-caption">Intent -> ad revenue</p>
+                    </div>
+                    <div class="flow-card" data-target="am-section" title="Jump to Amazon section" role="button" tabindex="0" aria-label="Jump to Amazon section">
+                        <div class="flow-top"><span class="brand-dot b-am">AM</span><strong>Amazon</strong></div>
+                        <svg class="flow-svg" viewBox="0 0 240 36" aria-hidden="true"><rect x="2" y="8" width="90" height="20" rx="8" fill="#fff0d8"/><text x="47" y="22" text-anchor="middle" fill="#8f5e0a" font-size="11">Logistics + AWS</text><line x1="94" y1="18" x2="166" y2="18" stroke="#da8a00" stroke-width="2.2"/><polygon points="166,12 180,18 166,24" fill="#da8a00"/><rect x="184" y="8" width="54" height="20" rx="8" fill="#e8f6ff"/><text x="211" y="22" text-anchor="middle" fill="#2d6f98" font-size="11">$$</text></svg>
+                        <p class="flow-caption">Scale + cloud margins</p>
+                    </div>
+                    <div class="flow-card" data-target="me-section" title="Jump to Meta section" role="button" tabindex="0" aria-label="Jump to Meta section">
+                        <div class="flow-top"><span class="brand-dot b-me">ME</span><strong>Meta</strong></div>
+                        <svg class="flow-svg" viewBox="0 0 240 36" aria-hidden="true"><rect x="2" y="8" width="90" height="20" rx="8" fill="#dce9ff"/><text x="47" y="22" text-anchor="middle" fill="#1d57b7" font-size="11">Engagement</text><line x1="94" y1="18" x2="166" y2="18" stroke="#2e77ea" stroke-width="2.2"/><polygon points="166,12 180,18 166,24" fill="#2e77ea"/><rect x="184" y="8" width="54" height="20" rx="8" fill="#eaf8ea"/><text x="211" y="22" text-anchor="middle" fill="#16603f" font-size="11">Ads</text></svg>
+                        <p class="flow-caption">Behavior -> targeting</p>
+                    </div>
+                </div>
+                <div class="company-grid">
+                    <article class="company-card reveal" id="ms-section">
+                        <div class="company-head">
+                            <h3 class="company-title"><span class="logo-chip l-ms">MS</span>1) Microsoft - We run businesses</h3>
+                            <span class="company-tag">Enterprise infra</span>
+                        </div>
+                        <div class="company-body">
+                            <p><strong>What people think:</strong> Windows and Office.</p>
+                            <p><strong>What they actually do:</strong> provide infrastructure rails for companies.</p>
+                            <p class="label">Core products</p>
+                            <ul class="bullets">
+                                <li>Azure cloud for compute, storage, AI</li>
+                                <li>Microsoft 365 for productivity workflows</li>
+                                <li>GitHub for developer ecosystem</li>
+                            </ul>
+                            <div class="model">Microsoft = operating system for companies</div>
+                            <p><strong>Money comes from:</strong> subscriptions + cloud usage based billing.</p>
+                        </div>
+                    </article>
+
+                    <article class="company-card reveal" id="ap-section">
+                        <div class="company-head">
+                            <h3 class="company-title"><span class="logo-chip l-ap">AP</span>2) Apple - We sell premium ecosystem</h3>
+                            <span class="company-tag">Hardware + services</span>
+                        </div>
+                        <div class="company-body">
+                            <p><strong>What people think:</strong> iPhone company.</p>
+                            <p><strong>What they actually do:</strong> sell devices and keep users in a tightly integrated ecosystem.</p>
+                            <p class="label">Core products</p>
+                            <ul class="bullets">
+                                <li>iPhone, Mac, iPad, wearables</li>
+                                <li>App Store distribution layer</li>
+                                <li>iCloud and media subscriptions</li>
+                            </ul>
+                            <div class="model">Apple = premium hardware + ecosystem lock-in</div>
+                            <p><strong>Money comes from:</strong> device sales + recurring services.</p>
+                        </div>
+                    </article>
+
+                    <article class="company-card reveal" id="go-section">
+                        <div class="company-head">
+                            <h3 class="company-title"><span class="logo-chip l-go">GO</span>3) Google (Alphabet) - We own intent</h3>
+                            <span class="company-tag">Attention economy</span>
+                        </div>
+                        <div class="company-body">
+                            <p><strong>What people think:</strong> search engine.</p>
+                            <p><strong>What they actually do:</strong> capture user intent and monetize it.</p>
+                            <p class="label">Core products</p>
+                            <ul class="bullets">
+                                <li>Google Search and ads auction system</li>
+                                <li>YouTube attention platform</li>
+                                <li>Android distribution and data flywheel</li>
+                            </ul>
+                            <div class="model">Google = intent data -> ads monetization</div>
+                            <p><strong>Money comes from:</strong> mostly advertising revenue.</p>
+                        </div>
+                    </article>
+
+                    <article class="company-card reveal" id="am-section">
+                        <div class="company-head">
+                            <h3 class="company-title"><span class="logo-chip l-am">AM</span>4) Amazon - We built internet supply chain</h3>
+                            <span class="company-tag">Scale machine</span>
+                        </div>
+                        <div class="company-body">
+                            <p><strong>What people think:</strong> shopping website.</p>
+                            <p><strong>What they actually do:</strong> run two giant businesses at once.</p>
+                            <p class="label">Core products</p>
+                            <ul class="bullets">
+                                <li>Ecommerce logistics, warehousing, delivery</li>
+                                <li>AWS cloud infra for apps and enterprises</li>
+                                <li>Marketplace flywheel with third party sellers</li>
+                            </ul>
+                            <div class="model">Amazon = logistics + cloud infrastructure</div>
+                            <p><strong>Money comes from:</strong> AWS high margin + retail scale.</p>
+                        </div>
+                    </article>
+
+                    <article class="company-card reveal" id="me-section">
+                        <div class="company-head">
+                            <h3 class="company-title"><span class="logo-chip l-me">ME</span>5) Meta - We monetize social behavior</h3>
+                            <span class="company-tag">Engagement graph</span>
+                        </div>
+                        <div class="company-body">
+                            <p><strong>What people think:</strong> Instagram and Facebook.</p>
+                            <p><strong>What they actually do:</strong> capture engagement and monetize behavior signals.</p>
+                            <p class="label">Core products</p>
+                            <ul class="bullets">
+                                <li>Instagram, Facebook, WhatsApp, Messenger</li>
+                                <li>Ads platform targeting by engagement patterns</li>
+                                <li>AR and VR bets for future platform control</li>
+                            </ul>
+                            <div class="model">Meta = attention + engagement -> ads</div>
+                            <p><strong>Money comes from:</strong> advertising tied to user behavior.</p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section class="reveal" id="bonus">
+                <h2 class="section-title">Bonus: Netflix (important but different)</h2>
+                <div class="company-card reveal" style="margin-bottom: 1.8rem;">
+                    <div class="company-head">
+                        <h3 class="company-title"><span class="logo-chip l-nf">NF</span>Netflix - We sell subscription entertainment</h3>
+                        <span class="company-tag">Content engine</span>
+                    </div>
+                    <div class="company-body">
+                        <p><strong>What they actually do:</strong> produce and distribute content globally through a subscription platform.</p>
+                        <div class="model">Netflix = content library + recurring subscription</div>
+                        <p><strong>Money comes from:</strong> monthly subscriptions and ad supported tiers.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="reveal" id="pattern">
+                <h2 class="section-title">Real pattern you should remember</h2>
+                <div class="insight-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Company</th>
+                                <th>Core asset</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Microsoft</td><td>Enterprise infrastructure</td></tr>
+                            <tr><td>Apple</td><td>Ecosystem lock-in</td></tr>
+                            <tr><td>Google</td><td>User intent data</td></tr>
+                            <tr><td>Amazon</td><td>Logistics + cloud</td></tr>
+                            <tr><td>Meta</td><td>Social graph + engagement</td></tr>
+                            <tr><td>Netflix</td><td>Content + distribution</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="reveal" id="models">
+                <h2 class="section-title">The 5 models that repeat everywhere</h2>
+                <div class="models-grid">
+                    <article class="model-pill m1 reveal"><h4>1) Subscription</h4><p>Examples: Microsoft, Netflix, Spotify</p></article>
+                    <article class="model-pill m2 reveal"><h4>2) Ads</h4><p>Examples: Google, Meta</p></article>
+                    <article class="model-pill m3 reveal"><h4>3) Marketplace</h4><p>Examples: Amazon, Uber</p></article>
+                    <article class="model-pill m4 reveal"><h4>4) Hardware</h4><p>Examples: Apple, Tesla</p></article>
+                    <article class="model-pill m5 reveal"><h4>5) Infrastructure</h4><p>Examples: AWS, Azure, Google Cloud</p></article>
+                </div>
+            </section>
+
+            <section class="you-section reveal">
+                <h3>Why this lens matters</h3>
+                <p>Without this lens, big companies look random. With this lens, you can quickly decode why each one wins and where its money engine comes from.</p>
+                <ul class="mapping-list">
+                    <li>Start with the core model: subscription, ads, marketplace, product, or infrastructure.</li>
+                    <li>Identify the core asset: intent, ecosystem, logistics, social graph, or content.</li>
+                    <li>Map the money path: where revenue starts, and what makes it scale.</li>
+                </ul>
+            </section>
+
+            <section class="task-section reveal" id="tasks">
+                <div class="task-header">
+                    <h3>Practice tasks (click to reveal answers)</h3>
+                    <button class="reset-practice-btn" id="resetPractice" type="button">Reset practice</button>
+                </div>
+                <p class="task-lead">Use these to train business thinking. Answers are hidden and loaded when you ask for them.</p>
+
+                <div class="task-list">
+                    <article class="task-card reveal">
+                        <button class="task-q" type="button" aria-expanded="false">Task 1: For Spotify, what is the core asset and money engine?<span>+</span></button>
+                        <div class="task-a">
+                            <div class="task-a-inner">
+                                <p>Write your answer in one line first.</p>
+                                <textarea class="scratch-input" placeholder="Type your answer here..."></textarea>
+                                <p class="scratch-note">Your text is private to this page view and is not saved.</p>
+                                <div class="scratch-actions">
+                                    <button class="clear-note-btn" type="button">Clear my notes</button>
+                                </div>
+                                <button class="reveal-btn" type="button" data-answer="Spotify core asset = listener behavior data + music discovery graph. Money engine = subscriptions first, ads second.">Load answer</button>
+                                <div class="answer"></div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="task-card reveal">
+                        <button class="task-q" type="button" aria-expanded="false">Task 2: For Uber, what scales and what stays linear?<span>+</span></button>
+                        <div class="task-a">
+                            <div class="task-a-inner">
+                                <p>List one scaling engine and one linear cost.</p>
+                                <textarea class="scratch-input" placeholder="Type your answer here..."></textarea>
+                                <p class="scratch-note">Your text is private to this page view and is not saved.</p>
+                                <div class="scratch-actions">
+                                    <button class="clear-note-btn" type="button">Clear my notes</button>
+                                </div>
+                                <button class="reveal-btn" type="button" data-answer="What scales: demand matching software, routing data, marketplace liquidity. What stays linear: driver incentives, support, and local operations.">Load answer</button>
+                                <div class="answer"></div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="task-card reveal">
+                        <button class="task-q" type="button" aria-expanded="false">Task 3: Pick any company and map payer + urgency<span>+</span></button>
+                        <div class="task-a">
+                            <div class="task-a-inner">
+                                <p>Define who pays and why this problem is urgent now.</p>
+                                <textarea class="scratch-input" placeholder="Type your answer here..."></textarea>
+                                <p class="scratch-note">Your text is private to this page view and is not saved.</p>
+                                <div class="scratch-actions">
+                                    <button class="clear-note-btn" type="button">Clear my notes</button>
+                                </div>
+                                <button class="reveal-btn" type="button" data-answer="Strong answer format: Payer + pain + timing trigger. Example: Small retailers pay because ad costs rose this quarter and conversion leakage is now too expensive to ignore.">Load answer</button>
+                                <div class="answer"></div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="quiz-box reveal">
+                    <h4>Mini quiz score</h4>
+                    <p>Answer quickly, then check your score.</p>
+
+                    <div class="quiz-q">
+                        <strong>Q1. Which model best describes Meta?</strong>
+                        <div class="quiz-options">
+                            <label><input type="radio" name="q1" value="0"> Subscription + hardware</label>
+                            <label><input type="radio" name="q1" value="1"> Attention + ads</label>
+                            <label><input type="radio" name="q1" value="0"> Marketplace + delivery</label>
+                        </div>
+                    </div>
+
+                    <div class="quiz-q">
+                        <strong>Q2. What is AWS in Amazon's model?</strong>
+                        <div class="quiz-options">
+                            <label><input type="radio" name="q2" value="1"> High margin infrastructure layer</label>
+                            <label><input type="radio" name="q2" value="0"> Low margin content library</label>
+                            <label><input type="radio" name="q2" value="0"> Device lock-in channel</label>
+                        </div>
+                    </div>
+
+                    <div class="quiz-q">
+                        <strong>Q3. Best founder lens?</strong>
+                        <div class="quiz-options">
+                            <label><input type="radio" name="q3" value="0"> Build features first, pricing later</label>
+                            <label><input type="radio" name="q3" value="1"> Problem, payer, and scaling loop first</label>
+                            <label><input type="radio" name="q3" value="0"> Copy competitor UI before strategy</label>
+                        </div>
+                    </div>
+
+                    <div class="quiz-action">
+                        <button class="quiz-btn" id="scoreQuiz" type="button">Check score</button>
+                        <span class="quiz-score" id="quizScore" aria-live="polite"></span>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-wrap">
+                <div class="social-links">
+                    <a href="https://github.com/shumbul" class="social-link" title="GitHub" target="_blank" rel="noopener noreferrer">GH</a>
+                    <a href="https://linkedin.com/in/shumbul" class="social-link" title="LinkedIn" target="_blank" rel="noopener noreferrer">IN</a>
+                    <a href="https://instagram.com/shumbul.arifa" class="social-link" title="Instagram" target="_blank" rel="noopener noreferrer">IG</a>
+                    <a href="https://www.youtube.com/@Shumbul" class="social-link" title="YouTube" target="_blank" rel="noopener noreferrer">YT</a>
+                </div>
+                <p style="font-size: 0.88rem; color: rgba(255,255,255,0.84);">Created by Shumbul Arifa · 2026</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./theme-switcher.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const savedTheme = localStorage.getItem('theme') || 'purple';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+
+            const themeToggle = document.getElementById('themeToggle');
+            const themeOptions = document.getElementById('themeOptions');
+            const themeOptionElements = document.querySelectorAll('.theme-option');
+
+            if (themeToggle && themeOptions) {
+                themeToggle.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    themeOptions.classList.toggle('show');
+                });
+
+                document.addEventListener('click', () => {
+                    themeOptions.classList.remove('show');
+                });
+
+                themeOptionElements.forEach((option) => {
+                    option.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const selectedTheme = option.getAttribute('data-theme');
+                        document.documentElement.setAttribute('data-theme', selectedTheme);
+                        localStorage.setItem('theme', selectedTheme);
+                        themeOptions.classList.remove('show');
+                    });
+                });
+            }
+
+            const flowCards = document.querySelectorAll('.flow-card[data-target]');
+            flowCards.forEach((card) => {
+                const jumpToTarget = () => {
+                    const targetId = card.getAttribute('data-target');
+                    const target = targetId ? document.getElementById(targetId) : null;
+                    if (target) {
+                        target.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' });
+                    }
+                };
+
+                card.addEventListener('click', jumpToTarget);
+                card.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        jumpToTarget();
+                    }
+                });
+            });
+
+            // Keep scratch answers private and non-persistent.
+            document.querySelectorAll('.scratch-input').forEach((input) => {
+                input.value = '';
+                input.setAttribute('autocomplete', 'off');
+                input.setAttribute('autocorrect', 'off');
+                input.setAttribute('autocapitalize', 'off');
+                input.setAttribute('spellcheck', 'false');
+            });
+
+            document.querySelectorAll('.clear-note-btn').forEach((btn) => {
+                btn.addEventListener('click', () => {
+                    const panel = btn.closest('.task-a');
+                    const input = panel ? panel.querySelector('.scratch-input') : null;
+
+                    if (input) {
+                        input.value = '';
+                        input.focus();
+                    }
+
+                    if (panel) {
+                        panel.style.maxHeight = panel.scrollHeight + 'px';
+                    }
+                });
+            });
+
+            const taskButtons = document.querySelectorAll('.task-q');
+            taskButtons.forEach((btn) => {
+                btn.addEventListener('click', () => {
+                    const panel = btn.nextElementSibling;
+                    const expanded = btn.getAttribute('aria-expanded') === 'true';
+
+                    taskButtons.forEach((other) => {
+                        other.setAttribute('aria-expanded', 'false');
+                        other.querySelector('span').textContent = '+';
+                        other.nextElementSibling.style.maxHeight = '0';
+                    });
+
+                    if (!expanded) {
+                        btn.setAttribute('aria-expanded', 'true');
+                        btn.querySelector('span').textContent = '-';
+                        panel.style.maxHeight = panel.scrollHeight + 'px';
+                    }
+                });
+            });
+
+            document.querySelectorAll('.reveal-btn').forEach((btn) => {
+                btn.addEventListener('click', () => {
+                    const answerBox = btn.nextElementSibling;
+                    const answer = btn.getAttribute('data-answer');
+                    const panel = btn.closest('.task-a');
+
+                    answerBox.classList.add('loading');
+                    answerBox.textContent = 'Loading answer...';
+
+                    if (panel) {
+                        panel.style.maxHeight = panel.scrollHeight + 'px';
+                    }
+
+                    setTimeout(() => {
+                        answerBox.classList.remove('loading');
+                        answerBox.style.display = 'block';
+                        answerBox.textContent = answer;
+                        btn.textContent = 'Answer loaded';
+                        btn.disabled = true;
+
+                        if (panel) {
+                            panel.style.maxHeight = panel.scrollHeight + 'px';
+                        }
+                    }, 550);
+                });
+            });
+
+            const resetPracticeBtn = document.getElementById('resetPractice');
+            if (resetPracticeBtn) {
+                resetPracticeBtn.addEventListener('click', () => {
+                    // Reset accordion panels
+                    taskButtons.forEach((btn) => {
+                        btn.setAttribute('aria-expanded', 'false');
+                        const icon = btn.querySelector('span');
+                        if (icon) icon.textContent = '+';
+                        const panel = btn.nextElementSibling;
+                        if (panel) panel.style.maxHeight = '0';
+                    });
+
+                    // Reset scratch notes
+                    document.querySelectorAll('.scratch-input').forEach((input) => {
+                        input.value = '';
+                    });
+
+                    // Reset loaded answers and buttons
+                    document.querySelectorAll('.answer').forEach((box) => {
+                        box.textContent = '';
+                        box.style.display = 'none';
+                        box.classList.remove('loading');
+                    });
+
+                    document.querySelectorAll('.reveal-btn').forEach((btn) => {
+                        btn.textContent = 'Load answer';
+                        btn.disabled = false;
+                    });
+
+                    // Reset quiz state
+                    document.querySelectorAll('.quiz-options input[type="radio"]').forEach((input) => {
+                        input.checked = false;
+                    });
+
+                    const scoreBox = document.getElementById('quizScore');
+                    if (scoreBox) {
+                        scoreBox.textContent = '';
+                        scoreBox.style.display = 'none';
+                    }
+                });
+            }
+
+            // Scroll reveal for visual rhythm
+            const revealElements = document.querySelectorAll('.reveal');
+            if (prefersReducedMotion) {
+                revealElements.forEach((el) => el.classList.add('show'));
+            } else {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('show');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.16, rootMargin: '0px 0px -30px 0px' });
+
+                revealElements.forEach((el, index) => {
+                    el.style.transitionDelay = Math.min(index * 40, 220) + 'ms';
+                    observer.observe(el);
+                });
+            }
+
+            // Mini quiz scoring
+            const scoreBtn = document.getElementById('scoreQuiz');
+            const scoreBox = document.getElementById('quizScore');
+
+            if (scoreBtn && scoreBox) {
+                scoreBtn.addEventListener('click', () => {
+                    const answers = ['q1', 'q2', 'q3'];
+                    let score = 0;
+                    let answered = 0;
+
+                    answers.forEach((key) => {
+                        const checked = document.querySelector(`input[name="${key}"]:checked`);
+                        if (checked) {
+                            answered += 1;
+                            score += Number(checked.value);
+                        }
+                    });
+
+                    scoreBox.style.display = 'inline-block';
+
+                    if (answered < answers.length) {
+                        scoreBox.textContent = `You answered ${answered}/3. Complete all to score.`;
+                        return;
+                    }
+
+                    if (score === 3) {
+                        scoreBox.textContent = 'Score: 3/3. Strong business lens.';
+                    } else if (score === 2) {
+                        scoreBox.textContent = 'Score: 2/3. Good. Refine your model clarity.';
+                    } else {
+                        scoreBox.textContent = `Score: ${score}/3. Recheck the core model section.`;
+                    }
+                });
+            }
+
+            const progressBar = document.getElementById('readingProgress');
+            const updateProgress = () => {
+                if (!progressBar) return;
+                const scrollTop = window.scrollY;
+                const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+                const percent = maxScroll > 0 ? (scrollTop / maxScroll) * 100 : 0;
+                progressBar.style.width = Math.max(0, Math.min(100, percent)) + '%';
+            };
+
+            updateProgress();
+            window.addEventListener('scroll', updateProgress, { passive: true });
+        });
+    </script>
+</body>
+</html>
