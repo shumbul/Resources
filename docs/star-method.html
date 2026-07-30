@@ -212,8 +212,11 @@
 
         <div class="gsection">
             <h2>Practice questions</h2>
-            <p class="muted">Prepare a STAR story for each. Say your answer out loud, ideally timed to about 90 seconds.</p>
-            <ol class="prac muted">
+            <p class="muted">Prepare a STAR story for each. The best way to practice is out loud, on the clock: pull a random question, then answer it in about 90 seconds.</p>
+            <div class="practice-picker" data-source="#star-practice-list" data-label="Answer this in STAR format"></div>
+            <div class="practice-timer" data-seconds="90"></div>
+            <p class="muted" style="margin-top:1rem;">Or work through the full list:</p>
+            <ol class="prac muted" id="star-practice-list">
                 <li>Use persuasion to change someone's viewpoint.</li>
                 <li>Face a stressful challenge and cope with it.</li>
                 <li>Use logic to solve a problem.</li>
@@ -235,7 +238,7 @@
                 <li>Use fact-finding to solve a problem.</li>
                 <li>Anticipate and prevent a potential problem.</li>
                 <li>Make an unpopular decision.</li>
-                <li>A time your goals were too high or too low.</li>
+                <li>A time you set a goal that turned out too ambitious.</li>
                 <li>Show great attention to detail.</li>
                 <li>Recover from a mistake you made.</li>
             </ol>
@@ -246,6 +249,6 @@
     <div data-component="footer"></div>
     <div data-component="scripts-common"></div>
     <script src="./components/component-loader.js"></script>
-    <script type="module" src="./functions/site.js"></script>
+    <script type="module" src="./functions/site.js?v=20260731"></script>
 </body>
 </html>

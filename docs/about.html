@@ -8,10 +8,10 @@
     <div data-component="head-common"></div>
 
     <title>About | Resources by Shumbul Arifa</title>
-    <meta name="description" content="About Shumbul Arifa and this collection of free, friendly tech-career resources built to help you break into tech.">
+    <meta name="description" content="About Shumbul Arifa, a Software Engineer at Microsoft with 4+ years of experience, and this collection of free, friendly tech-career resources built to help you break into tech.">
     <meta property="og:title" content="About - Resources by Shumbul Arifa">
-    <meta property="og:description" content="Why this collection of free tech-career guides exists, and who's behind it.">
-
+    <meta property="og:description" content="Meet Shumbul Arifa, a Microsoft software engineer sharing free, practical guides to help you break into tech.">
+    <meta property="og:image" content="./assets/shumbul-microsoft.jpeg">
     <style>
         .guide-header { background: linear-gradient(135deg, var(--primary), var(--secondary)); color:#fff; padding:3.5rem 0; text-align:center; margin-bottom:2.5rem; }
         .guide-title { font-size:2.6rem; font-weight:800; margin-bottom:.6rem; color:#fff; }
@@ -24,6 +24,30 @@
         .value .ic { font-size:1.6rem; }
         .muted { color:var(--text-secondary); }
         ul { padding-left:1.2rem; }
+
+        /* Intro: text beside a decorated photo. Stacks on small screens. */
+        .intro { display:grid; grid-template-columns:1.4fr 1fr; gap:1.8rem; align-items:center; }
+        @media (max-width:760px){ .intro { grid-template-columns:1fr; } }
+        /* A pretty, glassy photo frame: soft gradient ring, deep shadow, gentle float. */
+        .photo-frame { position:relative; border-radius:20px; padding:8px;
+            background:linear-gradient(135deg, rgba(124,58,237,.35), rgba(167,139,250,.15));
+            box-shadow:0 24px 50px -18px rgba(15,23,42,.45), 0 8px 20px -12px rgba(124,58,237,.35);
+            transition:transform .3s ease, box-shadow .3s ease; }
+        .photo-frame:hover { transform:translateY(-6px); box-shadow:0 34px 64px -18px rgba(15,23,42,.55), 0 12px 26px -12px rgba(124,58,237,.45); }
+        .photo-frame img { display:block; width:100%; height:auto; border-radius:14px; }
+        /* A frosted caption chip floating on the photo. */
+        .photo-frame .chip { position:absolute; left:14px; bottom:14px;
+            background:rgba(255,255,255,.72); backdrop-filter:blur(8px);
+            border:1px solid rgba(255,255,255,.6); color:#1f2937;
+            font-size:.78rem; font-weight:700; padding:.35rem .7rem; border-radius:999px;
+            box-shadow:0 6px 16px -8px rgba(15,23,42,.4); }
+        @media (prefers-reduced-motion: reduce){ .photo-frame, .photo-frame:hover { transition:none; transform:none; } }
+
+        .photo-band { display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; margin-top:.3rem; }
+        @media (max-width:640px){ .photo-band { grid-template-columns:1fr; } }
+        .badge-row { display:flex; flex-wrap:wrap; gap:.5rem; margin:.2rem 0 .4rem; }
+        .mini-badge { display:inline-flex; align-items:center; gap:.35rem; background:var(--bg-tertiary); border:1px solid var(--border);
+            border-radius:999px; padding:.3rem .7rem; font-size:.82rem; font-weight:600; color:var(--text-primary); }
     </style>
 </head>
 <body>
@@ -38,9 +62,37 @@
 
     <main class="container">
         <div class="gsection">
-            <h2>Hi, I'm Shumbul 👋</h2>
-            <p>I'm a tech enthusiast who loves helping people break into the industry. Somewhere along my own journey I realized how much scattered, gate-kept, or overwhelming advice is out there, and how little of it is actually practical for a beginner. So I started collecting the guides I wish I'd had: clear, honest, and free.</p>
-            <p class="muted">Everything here is written to be read on a coffee break and acted on the same day.</p>
+            <div class="intro">
+                <div>
+                    <h2>Hi, I'm Shumbul 👋</h2>
+                    <div class="badge-row">
+                        <span class="mini-badge">💻 Software Engineer @ Microsoft</span>
+                        <span class="mini-badge">⏳ 4+ years of experience</span>
+                        <span class="mini-badge">🎓 B.Tech CSE, NITK</span>
+                    </div>
+                    <p>I'm a Software Engineer at Microsoft with 4+ years of experience building software that real people use. I studied Computer Science at NITK, and somewhere along my own journey I realized how much scattered, gate-kept, or overwhelming advice is out there, and how little of it is actually practical for a beginner.</p>
+                    <p>So I started collecting the guides I wish I'd had when I was starting out: clear, honest, and free. Outside of work I love creating content and sharing what I learn, on <a href="https://github.com/shumbul" target="_blank" rel="noopener">GitHub</a>, <a href="https://www.youtube.com/@Shumbul" target="_blank" rel="noopener">YouTube</a>, and <a href="https://linkedin.com/in/shumbul" target="_blank" rel="noopener">LinkedIn</a>, because the thing that helped me most was other people being generous with theirs.</p>
+                    <p class="muted">Everything here is written to be read on a coffee break and acted on the same day.</p>
+                </div>
+                <div class="photo-frame">
+                    <img src="./assets/shumbul-microsoft.jpeg" alt="Shumbul Arifa at a Microsoft office, pointing at the Microsoft building sign" loading="lazy" width="713" height="765">
+                    <span class="chip">📍 Microsoft</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="gsection">
+            <div class="intro">
+                <div class="photo-frame">
+                    <img src="./assets/shumbul-campus.jpeg" alt="Shumbul Arifa on a Microsoft campus in the evening" loading="lazy" width="713" height="1141">
+                    <span class="chip">🌙 On campus</span>
+                </div>
+                <div>
+                    <h2>A little of my journey</h2>
+                    <p>I was once the person googling "how do I even start", refreshing job portals, and wondering if I was behind. I wasn't, and neither are you. Consistent, small steps got me from a CS student at NITK to shipping software at Microsoft, and the same approach is what these guides are built around.</p>
+                    <p class="muted">If any of this helps you land something or just feel less lost, that's the whole point. That would genuinely make my day.</p>
+                </div>
+            </div>
         </div>
 
         <div class="gsection">
@@ -72,6 +124,6 @@
     <div data-component="footer"></div>
     <div data-component="scripts-common"></div>
     <script src="./components/component-loader.js"></script>
-    <script type="module" src="./functions/site.js"></script>
+    <script type="module" src="./functions/site.js?v=20260731"></script>
 </body>
 </html>

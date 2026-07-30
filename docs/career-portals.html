@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap">
+    <meta charset="UTF-8">
+    <div data-component="head-common"></div>
+
+    <title>Career Portals: 99 Tech Companies | Resources by Shumbul Arifa</title>
+    <meta name="description" content="Official career pages of 99 top tech companies hiring in India, well-paying, popular, and successful. Search, click, and apply directly. Bookmark this for your job hunt.">
+    <meta property="og:title" content="Career Portals - 99 tech companies hiring in India">
+    <meta property="og:description" content="A searchable directory of official career pages for 99 top tech companies hiring in India. Apply directly.">
+
+    <style>
+        .guide-header { background: linear-gradient(135deg, var(--primary), var(--secondary)); color:#fff; padding:3.5rem 0; text-align:center; margin-bottom:2.5rem; }
+        .guide-title { font-size:2.6rem; font-weight:800; margin-bottom:.6rem; color:#fff; }
+        .guide-sub { font-size:1.15rem; color:rgba(255,255,255,.94); max-width:720px; margin:0 auto; }
+        .guide-badges { display:flex; gap:.5rem; justify-content:center; flex-wrap:wrap; margin-top:1.2rem; }
+        .guide-badge { background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.4); padding:.35rem .8rem; border-radius:999px; font-size:.85rem; font-weight:600; }
+
+        .starter { background:var(--bg-primary); border:1px solid var(--border); border-left:4px solid var(--primary); border-radius:12px; padding:1.1rem 1.3rem; margin-bottom:1.75rem; }
+        .gsection { background:var(--bg-secondary); border:1px solid var(--border); border-radius:16px; padding:1.6rem 1.75rem; margin-bottom:1.75rem; }
+        .gsection h2 { margin-top:0; }
+        .muted { color:var(--text-secondary); }
+
+        .cp-search { width:100%; box-sizing:border-box; padding:.75rem 1rem; border:1px solid var(--border); border-radius:12px;
+            background:var(--bg-primary); color:var(--text-primary); font:500 1rem/1 var(--font-sans,inherit); margin-bottom:.4rem; }
+        .cp-search:focus { outline:none; border-color:var(--primary); box-shadow:0 0 0 3px var(--ring); }
+        .cp-count { font-size:.85rem; color:var(--text-secondary); margin:0 0 1rem; }
+        .cp-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(200px, 1fr)); gap:.7rem; }
+        .cp-card { display:flex; align-items:center; gap:.7rem; text-decoration:none; background:var(--bg-primary);
+            border:1px solid var(--border); border-radius:12px; padding:.8rem .9rem; transition:transform .16s ease, box-shadow .16s ease, border-color .16s ease; }
+        .cp-card:hover { transform:translateY(-3px); box-shadow:var(--shadow); border-color:var(--primary); }
+        .cp-logo { width:38px; height:38px; flex-shrink:0; border-radius:10px; display:flex; align-items:center; justify-content:center;
+            font-weight:800; font-size:1rem; color:#fff; background:linear-gradient(135deg,var(--primary),var(--secondary)); font-family:var(--font-display,sans-serif); }
+        .cp-name { font-weight:700; color:var(--text-primary); font-size:.95rem; line-height:1.2; }
+        .cp-go { margin-left:auto; color:var(--text-secondary); font-size:.9rem; }
+        .cp-card:hover .cp-go { color:var(--primary); }
+        .cp-none { display:none; color:var(--text-secondary); padding:.6rem 0; }
+        .gsection p a, .starter a { text-decoration:underline; }
+        .nextlinks { display:flex; flex-wrap:wrap; gap:.6rem; }
+        .nextlinks a { text-decoration:none; background:var(--bg-primary); border:1px solid var(--border); border-radius:10px; padding:.55rem .9rem; font-weight:600; color:var(--text-primary); }
+        .nextlinks a:hover { border-color:var(--primary); color:var(--primary); }
+    </style>
+</head>
+<body>
+    <div data-component="theme-switcher"></div>
+
+    <header class="guide-header">
+        <div class="container">
+            <h1 class="guide-title">🏢 Career Portals</h1>
+            <p class="guide-sub">Official career pages of 99 top tech companies that hire in India, pay well, and are genuinely popular and successful, all in one place. Applying on a company's own portal (not just aggregators) often gets your resume seen faster. Search, click, and apply directly. Bookmark this for your whole job hunt.</p>
+            <div class="guide-badges">
+                <span class="guide-badge">🔎 Searchable</span>
+                <span class="guide-badge">🔗 Direct official links</span>
+                <span class="guide-badge">🔖 Bookmark it</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="starter">
+            <strong style="font-family:var(--font-display);">🌱 How to use this</strong>
+            <p class="muted" style="margin:.5rem 0 0;">Type a company name to filter instantly, then click to open its official careers page in a new tab. Applying directly on the company portal, plus a referral where you can get one, beats spraying applications on job boards. Pair this with the <a href="./resume-portfolio-templates.html">Resume &amp; Portfolio guide</a> and <a href="./linkedin-utilization-guide.html">LinkedIn guide</a> to actually get noticed.</p>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="All companies">Search 99 companies</h2>
+            <input type="search" class="cp-search" id="cpSearch" placeholder="Search companies (e.g. Google, Amazon, Adobe)..." aria-label="Search companies" autocomplete="off">
+            <p class="cp-count" id="cpCount"></p>
+            <div class="cp-grid" id="cpGrid"></div>
+            <p class="cp-none" id="cpNone">No companies match your search.</p>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Applying smart">Applying smart (not just often)</h2>
+            <ul class="muted">
+                <li><b>Apply on the official portal</b> and, in parallel, find a referral on LinkedIn. A referral plus a direct application is the strongest combo.</li>
+                <li><b>Tailor the top of your resume</b> to each role's keywords. See the <a href="./resume-portfolio-templates.html">Resume guide</a>.</li>
+                <li><b>Set up alerts</b> on the portals for roles you want, so you apply early.</li>
+                <li><b>Track your applications</b> in a simple sheet: company, role, date, status, referral.</li>
+                <li><b>Follow up</b> politely on LinkedIn after applying. See the <a href="./linkedin-utilization-guide.html">LinkedIn guide</a>.</li>
+            </ul>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="What's next">What to do next</h2>
+            <div class="nextlinks">
+                <a href="./resume-portfolio-templates.html">📄 Resume &amp; Portfolio</a>
+                <a href="./linkedin-utilization-guide.html">💼 LinkedIn Guide</a>
+                <a href="./interview-prep-kit.html">🗣️ Interview Prep</a>
+                <a href="./ai-era-job-hunt.html">🧭 AI Era Job Hunt</a>
+                <a href="./trending-tech-roles.html">🚀 Trending Roles</a>
+            </div>
+        </div>
+    </main>
+
+    <div data-component="footer"></div>
+    <div data-component="scripts-common"></div>
+    <script src="./components/component-loader.js"></script>
+    <script type="module" src="./functions/site.js?v=20260731"></script>
+
+    <script>
+        (function () {
+            // Official career pages. Kept as data so the grid + search stay simple.
+            var COMPANIES = [
+                ["Accenture","https://www.accenture.com/us-en/careers"],
+                ["Adobe","https://www.adobe.com/careers.html"],
+                ["Amazon","https://www.amazon.jobs/en/"],
+                ["Apple","https://www.apple.com/careers/in/"],
+                ["Atlassian","https://www.atlassian.com/company/careers"],
+                ["Barclays","https://home.barclays/careers/"],
+                ["Bloomberg","https://careers.bloomberg.com/job/search"],
+                ["Capgemini","https://jobs.capgemini.com/"],
+                ["Cisco","https://www.cisco.com/c/en_in/about/careers.html"],
+                ["Dell","https://jobs.dell.com/"],
+                ["Deloitte","https://www2.deloitte.com/in/en/careers.html"],
+                ["EY","https://careers.ey.com/"],
+                ["Flipkart","https://www.flipkartcareers.com/"],
+                ["Goldman Sachs","https://www.goldmansachs.com/careers/"],
+                ["Google","https://careers.google.com/"],
+                ["HCL Technologies","https://www.hcltech.com/careers"],
+                ["IBM","https://www.ibm.com/in-en/employment/"],
+                ["Infosys","https://career.infosys.com/"],
+                ["Intel","https://jobs.intel.com/"],
+                ["Intuit","https://www.intuit.com/in/careers/"],
+                ["J.P. Morgan","https://careers.jpmorgan.com/"],
+                ["Juniper Networks","https://careers.juniper.net/"],
+                ["LinkedIn","https://careers.linkedin.com/"],
+                ["Meta","https://www.metacareers.com/jobs"],
+                ["Microsoft","https://careers.microsoft.com/"],
+                ["Mindtree","https://www.mindtree.com/careers"],
+                ["Morgan Stanley","https://www.morganstanley.com/careers"],
+                ["Netflix","https://jobs.netflix.com/"],
+                ["NVIDIA","https://www.nvidia.com/en-in/about-nvidia/careers/"],
+                ["Oracle","https://careers.oracle.com/jobs/"],
+                ["PayPal","https://www.paypal.com/in/webapps/mpp/jobs"],
+                ["PhonePe","https://www.phonepe.com/careers/"],
+                ["Qualcomm","https://www.qualcomm.com/company/careers/"],
+                ["Salesforce","https://www.salesforce.com/in/company/careers/"],
+                ["Samsung","https://www.samsung.com/in/about-us/careers/"],
+                ["SAP Labs","https://jobs.sap.com/"],
+                ["ServiceNow","https://careers.servicenow.com/careers/"],
+                ["Siemens","https://jobs.siemens.com/careers"],
+                ["Sprinklr","https://www.sprinklr.com/careers/"],
+                ["Snapchat","https://careers.snap.com/"],
+                ["TCS","https://www.tcs.com/careers"],
+                ["Tech Mahindra","https://www.techmahindra.com/careers/"],
+                ["Uber","https://www.uber.com/in/en/careers/"],
+                ["InMobi","https://www.inmobi.com/company/careers"],
+                ["Walmart","https://careers.walmart.com/"],
+                ["Wipro","https://careers.wipro.com/"],
+                ["Zoho Corporation","https://www.zoho.com/careers/"],
+                ["Airbnb","https://careers.airbnb.com/"],
+                ["Stripe","https://stripe.com/jobs"],
+                ["Databricks","https://www.databricks.com/company/careers"],
+                ["Snowflake","https://careers.snowflake.com/"],
+                ["MongoDB","https://www.mongodb.com/company/careers"],
+                ["Visa","https://corporate.visa.com/en/jobs/"],
+                ["Mastercard","https://careers.mastercard.com/"],
+                ["American Express","https://www.americanexpress.com/en-us/careers/"],
+                ["Wells Fargo","https://www.wellsfargojobs.com/"],
+                ["Citi","https://jobs.citi.com/"],
+                ["HSBC","https://www.hsbc.com/careers"],
+                ["BlackRock","https://careers.blackrock.com/"],
+                ["Optum","https://www.optum.com/careers.html"],
+                ["Palo Alto Networks","https://jobs.paloaltonetworks.com/"],
+                ["CrowdStrike","https://www.crowdstrike.com/careers/"],
+                ["Zscaler","https://www.zscaler.com/careers"],
+                ["AMD","https://careers.amd.com/"],
+                ["Micron","https://careers.micron.com/"],
+                ["Texas Instruments","https://careers.ti.com/"],
+                ["Broadcom","https://www.broadcom.com/company/careers"],
+                ["Synopsys","https://www.synopsys.com/careers.html"],
+                ["Cadence","https://www.cadence.com/en_US/home/company/careers.html"],
+                ["Autodesk","https://www.autodesk.com/careers/overview"],
+                ["Workday","https://www.workday.com/en-us/company/careers.html"],
+                ["Ericsson","https://www.ericsson.com/en/careers"],
+                ["Nokia","https://www.nokia.com/careers/"],
+                ["Bosch","https://www.bosch.in/careers/"],
+                ["Honeywell","https://careers.honeywell.com/"],
+                ["S&P Global","https://careers.spglobal.com/"],
+                ["Target","https://corporate.target.com/careers"],
+                ["eBay","https://careers.ebayinc.com/"],
+                ["Cognizant","https://careers.cognizant.com/global/en"],
+                ["LTIMindtree","https://www.ltimindtree.com/careers/"],
+                ["Thoughtworks","https://www.thoughtworks.com/careers"],
+                ["Persistent Systems","https://www.persistent.com/careers/"],
+                ["EPAM","https://www.epam.com/careers"],
+                ["Globant","https://www.globant.com/careers"],
+                ["Swiggy","https://careers.swiggy.com/"],
+                ["Zomato","https://www.zomato.com/careers"],
+                ["Razorpay","https://razorpay.com/jobs/"],
+                ["CRED","https://careers.cred.club/"],
+                ["Meesho","https://www.meesho.io/jobs"],
+                ["Paytm","https://paytm.com/careers"],
+                ["Groww","https://groww.in/careers"],
+                ["Zerodha","https://zerodha.com/careers/"],
+                ["Dream11","https://www.dream11.com/careers"],
+                ["Freshworks","https://www.freshworks.com/company/careers/"],
+                ["Postman","https://www.postman.com/company/careers/"],
+                ["BrowserStack","https://www.browserstack.com/careers"],
+                ["Nykaa","https://www.nykaa.com/careers"],
+                ["Ola","https://www.olacabs.com/careers"],
+                ["Urban Company","https://careers.urbancompany.com/"]
+            ].sort(function (a, b) { return a[0].localeCompare(b[0]); });
+
+            function initials(name) {
+                var parts = name.replace(/[^A-Za-z0-9 ]/g, "").split(" ").filter(Boolean);
+                if (!parts.length) return "?";
+                return (parts[0][0] + (parts[1] ? parts[1][0] : "")).toUpperCase();
+            }
+
+            var grid = document.getElementById("cpGrid");
+            var search = document.getElementById("cpSearch");
+            var count = document.getElementById("cpCount");
+            var none = document.getElementById("cpNone");
+
+            grid.innerHTML = COMPANIES.map(function (c) {
+                return '<a class="cp-card" href="' + c[1] + '" target="_blank" rel="noopener noreferrer" data-name="' +
+                    c[0].toLowerCase() + '">' +
+                    '<span class="cp-logo" aria-hidden="true">' + initials(c[0]) + '</span>' +
+                    '<span class="cp-name">' + c[0] + '</span>' +
+                    '<span class="cp-go" aria-hidden="true">↗</span></a>';
+            }).join("");
+
+            function update() {
+                var q = search.value.trim().toLowerCase();
+                var shown = 0;
+                grid.querySelectorAll(".cp-card").forEach(function (card) {
+                    var match = !q || card.getAttribute("data-name").indexOf(q) !== -1;
+                    card.style.display = match ? "" : "none";
+                    if (match) shown++;
+                });
+                none.style.display = shown ? "none" : "block";
+                count.textContent = shown + " of " + COMPANIES.length + " companies";
+            }
+            search.addEventListener("input", update);
+            update();
+        })();
+    </script>
+</body>
+</html>

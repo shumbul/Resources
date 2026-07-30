@@ -2,3 +2,5 @@
 # Wrangler local cache (contains account info)
 .wrangler/
 worker/.wrangler/
+
+_commitmsg.txt

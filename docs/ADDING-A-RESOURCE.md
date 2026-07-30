@@ -64,10 +64,16 @@ Every guide has this skeleton:
     <div data-component="footer"></div>
     <div data-component="scripts-common"></div>
     <script src="./components/component-loader.js"></script>
-    <script type="module" src="./functions/site.js"></script>
+    <script type="module" src="./functions/site.js?v=20260731"></script>
 </body>
 </html>
 ```
+
+> **Cache-busting:** the `?v=20260731` on the `site.js` tag forces browsers to
+> re-fetch the shared modules after a deploy. Use the **same version** the other
+> pages currently use. When you change any file in `functions/`, bump the version
+> in two places: this `?v=` on every page's `site.js` tag, and the matching
+> `?v=` on the imports inside `functions/site.js`.
 
 **Rules that keep parity with the rest of the site:**
 - Use `.container` (already 1200px via the shared style) — do **not** set a custom `max-width`, or the page width will look inconsistent.

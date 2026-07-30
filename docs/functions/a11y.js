@@ -25,7 +25,7 @@ function apply() {
             markRegion(el, (h ? h.textContent.trim() : 'Section') + ', scrollable');
         }
     });
-    document.querySelectorAll('.gsection table').forEach((el) => {
+    document.querySelectorAll('.gsection table, .infosection table').forEach((el) => {
         if (el.hasAttribute('data-a11y-scroll')) return;
         // These tables use overflow-x:auto, so they can scroll at narrow widths.
         // Mark them focusable unconditionally to avoid fragile width measuring.

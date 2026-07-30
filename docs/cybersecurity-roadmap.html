@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap">
+    <meta charset="UTF-8">
+    <div data-component="head-common"></div>
+
+    <title>Cyber Security Roadmap | Resources by Shumbul Arifa</title>
+    <meta name="description" content="A step-by-step roadmap into cyber security: networking and Linux, security fundamentals, offensive and defensive skills, certifications, and how to land your first role.">
+    <meta property="og:title" content="Cyber Security Roadmap - from zero to hired">
+    <meta property="og:description" content="Your travel-the-highway roadmap into cyber security, with hands-on labs, tools, certs, and free resources.">
+
+    <style>
+        .guide-header { background: linear-gradient(135deg, var(--primary), var(--secondary)); color:#fff; padding:3.5rem 0; text-align:center; margin-bottom:2.5rem; }
+        .guide-title { font-size:2.6rem; font-weight:800; margin-bottom:.6rem; color:#fff; }
+        .guide-sub { font-size:1.15rem; color:rgba(255,255,255,.94); max-width:720px; margin:0 auto; }
+        .guide-badges { display:flex; gap:.5rem; justify-content:center; flex-wrap:wrap; margin-top:1.2rem; }
+        .guide-badge { background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.4); padding:.35rem .8rem; border-radius:999px; font-size:.85rem; font-weight:600; }
+
+        .starter { background:var(--bg-primary); border:1px solid var(--border); border-left:4px solid var(--primary); border-radius:12px; padding:1.1rem 1.3rem; margin-bottom:1.75rem; }
+        /* .gsection = a real learning stage (tracked by progress + the journey map).
+           .infosection looks identical but is NOT a stage, so intro/resources
+           sections do not get counted or a "mark done" button. */
+        .gsection, .infosection { background:var(--bg-secondary); border:1px solid var(--border); border-radius:16px; padding:1.6rem 1.75rem; margin-bottom:1.75rem; }
+        .gsection h2, .infosection h2 { margin-top:0; }
+        .muted { color:var(--text-secondary); }
+
+        .stagemeta { display:inline-block; font-size:.75rem; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:var(--primary); margin-bottom:.4rem; }
+        .skill { display:inline-block; background:var(--bg-tertiary); border:1px solid var(--border); border-radius:999px; padding:.2rem .6rem; font-size:.78rem; font-weight:600; margin:.25rem .25rem 0 0; }
+        .lab { background:var(--bg-primary); border:1px solid var(--border); border-radius:12px; padding:1rem 1.2rem; margin-top:.7rem; }
+        .lab strong { color:var(--primary); }
+        .snap { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin:0 0 1.75rem; }
+        .snap .cell { background:var(--bg-secondary); border:1px solid var(--border); border-radius:14px; padding:1.1rem 1rem; text-align:center; }
+        .snap .n { font-family:var(--font-display,sans-serif); font-size:1.8rem; font-weight:700; color:var(--primary); line-height:1; }
+        .snap .l { font-size:.85rem; color:var(--text-secondary); margin-top:.35rem; }
+        @media (max-width:700px){ .snap { grid-template-columns:repeat(2,1fr); } }
+        .roletable { width:100%; border-collapse:collapse; }
+        .roletable th, .roletable td { text-align:left; padding:.55rem .7rem; border-bottom:1px solid var(--border); font-size:.92rem; vertical-align:top; }
+        .roletable th { color:var(--text-secondary); font-size:.8rem; text-transform:uppercase; letter-spacing:.04em; }
+        .nextlinks { display:flex; flex-wrap:wrap; gap:.6rem; }
+        .nextlinks a { text-decoration:none; background:var(--bg-primary); border:1px solid var(--border); border-radius:10px; padding:.55rem .9rem; font-weight:600; color:var(--text-primary); }
+        .nextlinks a:hover { border-color:var(--primary); color:var(--primary); }
+        /* Inline links inside text stay distinguishable without relying on color alone (WCAG). */
+        .gsection p a, .gsection li a, .infosection p a, .infosection li a, .lab a, .starter a { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div data-component="theme-switcher"></div>
+
+    <header class="guide-header">
+        <div class="container">
+            <h1 class="guide-title">🛡️ Cyber Security Roadmap</h1>
+            <p class="guide-sub">Cyber security has a huge talent shortage and no single "right" degree to enter it. This roadmap is your highway: six stages from networking basics to landing your first security role, with hands-on labs at every stop.</p>
+            <div class="guide-badges">
+                <span class="guide-badge">🧭 6-stage journey</span>
+                <span class="guide-badge">🧪 Hands-on labs</span>
+                <span class="guide-badge">🆓 Free tools &amp; labs</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="starter">
+            <strong style="font-family:var(--font-display);">🌱 New to security? Start calm</strong>
+            <p class="muted" style="margin:.5rem 0 0;">You do not need a special degree or to be a "genius hacker". Security is a craft you build stage by stage: understand how systems work, then how they break, then how to defend them. Follow the road below in order, mark each stage done as you go, and let the map track your progress. Stuck on a concept? Tap <strong>✦ Ask AI</strong> for a plain-English explanation.</p>
+        </div>
+
+        <div class="snap">
+            <div class="cell"><div class="n" data-countup="6">6</div><div class="l">stages to job-ready</div></div>
+            <div class="cell"><div class="n" data-countup="3">3</div><div class="l">phases on the road</div></div>
+            <div class="cell"><div class="n">🔥</div><div class="l">very high demand</div></div>
+            <div class="cell"><div class="n" data-countup="0" data-suffix="₹">0₹</div><div class="l">cost to start</div></div>
+        </div>
+
+        <div class="infosection">
+            <h2>How this roadmap works</h2>
+            <p class="muted">Each stage below is a stop on your journey. Read it, do the hands-on lab, then hit <b>Mark stage done</b>, the map at the top updates and the traveler moves along the road. The three phases are:</p>
+            <ul class="muted">
+                <li><b>Foundations</b> - how computers, networks, and security actually work.</li>
+                <li><b>Core Security</b> - the two halves of the field: attacking (red team) and defending (blue team).</li>
+                <li><b>Get Hired</b> - specialize, certify, build proof, and land the role.</li>
+            </ul>
+            <p class="muted">One honest note: security rewards curiosity and persistence more than raw talent. If you enjoy taking things apart to see how they work, you will do well here.</p>
+        </div>
+
+        <div class="gsection">
+            <span class="stagemeta">Phase 1 · Foundations</span>
+            <h2>Stage 1: Networking &amp; Linux basics</h2>
+            <p class="muted">Everything in security sits on top of networks and Linux. You cannot secure or attack what you do not understand, so this is the non-negotiable first stop.</p>
+            <div><span class="skill">TCP/IP &amp; OSI</span><span class="skill">DNS, HTTP, HTTPS</span><span class="skill">Ports &amp; protocols</span><span class="skill">Linux command line</span><span class="skill">Bash basics</span><span class="skill">Networking tools</span></div>
+            <div class="lab"><strong>Hands-on lab:</strong> set up a Linux VM (or WSL), learn the core commands, and use <code>ping</code>, <code>nmap</code>, and <code>Wireshark</code> to see real traffic on your own network. Trace what happens when you load a website.</div>
+        </div>
+
+        <div class="gsection">
+            <span class="stagemeta">Phase 1 · Foundations</span>
+            <h2>Stage 2: Security fundamentals</h2>
+            <p class="muted">Now the core ideas that everything else builds on. Learn the language and mental models of security before touching tools.</p>
+            <div><span class="skill">CIA triad</span><span class="skill">Threats vs vulnerabilities vs risk</span><span class="skill">Authentication &amp; authorization</span><span class="skill">Cryptography basics</span><span class="skill">Hashing &amp; encryption</span><span class="skill">Common attack types</span></div>
+            <div class="lab"><strong>Hands-on lab:</strong> practice on <a href="https://tryhackme.com/" target="_blank" rel="noopener">TryHackMe's</a> free "Pre Security" and "Intro to Cyber Security" paths. Set up a password manager and enable 2FA everywhere, security starts with your own hygiene.</div>
+        </div>
+
+        <div class="gsection">
+            <span class="stagemeta">Phase 2 · Core Security</span>
+            <h2>Stage 3: Offensive security (red team)</h2>
+            <p class="muted">Learn to think like an attacker, ethically. This is "ethical hacking": finding weaknesses before the bad guys do. It is the most famous side of security and a great way to learn deeply.</p>
+            <div><span class="skill">Web app security (OWASP Top 10)</span><span class="skill">Reconnaissance</span><span class="skill">Exploitation basics</span><span class="skill">Burp Suite</span><span class="skill">Metasploit</span><span class="skill">Privilege escalation</span></div>
+            <div class="lab"><strong>Hands-on lab:</strong> work through <a href="https://portswigger.net/web-security" target="_blank" rel="noopener">PortSwigger's Web Security Academy</a> (free) and capture-the-flag rooms on <a href="https://www.hackthebox.com/" target="_blank" rel="noopener">Hack The Box</a>. Always practice only on systems you are allowed to, that line matters.</div>
+        </div>
+
+        <div class="gsection">
+            <span class="stagemeta">Phase 2 · Core Security</span>
+            <h2>Stage 4: Defensive security (blue team)</h2>
+            <p class="muted">The other half, and where most jobs are. Defenders monitor, detect, and respond to attacks. Roles like SOC Analyst are the most common entry point into the whole field.</p>
+            <div><span class="skill">SOC &amp; SIEM</span><span class="skill">Log analysis</span><span class="skill">Threat detection</span><span class="skill">Incident response</span><span class="skill">Endpoint security</span><span class="skill">Threat intelligence</span></div>
+            <div class="lab"><strong>Hands-on lab:</strong> try the <a href="https://www.letsdefend.io/" target="_blank" rel="noopener">LetsDefend</a> or TryHackMe "SOC Level 1" paths. Analyze a sample phishing email and a set of logs, and write a short incident report, exactly what the job involves.</div>
+        </div>
+
+        <div class="gsection">
+            <span class="stagemeta">Phase 3 · Get Hired</span>
+            <h2>Stage 5: Specialize &amp; get certified</h2>
+            <p class="muted">Security is wide. Once the basics click, pick a lane and back it with a respected, beginner-friendly certification. Certs matter more in security than in most tech fields, they are often a hiring filter.</p>
+            <p class="muted"><b>Popular starting specializations:</b> SOC Analyst, Penetration Tester, Cloud Security, Application Security, GRC (governance, risk, compliance).</p>
+            <div><span class="skill">CompTIA Security+</span><span class="skill">CompTIA Network+</span><span class="skill">TryHackMe / HTB paths</span><span class="skill">eJPT (practical pentest)</span><span class="skill">Cloud security basics</span></div>
+            <div class="lab"><strong>Action:</strong> pick one specialization that excites you, then target one entry cert (Security+ is the classic first choice). Study with free resources and the official objectives, and book the exam to give yourself a deadline.</div>
+        </div>
+
+        <div class="gsection">
+            <span class="stagemeta">Phase 3 · Get Hired</span>
+            <h2>Stage 6: Build proof &amp; land the role</h2>
+            <p class="muted">The final stretch: turn skills into a job. In security, visible proof of work and a clear story beat a long resume.</p>
+            <div><span class="skill">CTF write-ups</span><span class="skill">A security-focused GitHub/blog</span><span class="skill">Home lab</span><span class="skill">Networking &amp; community</span><span class="skill">Tailored resume</span></div>
+            <div class="lab"><strong>Action:</strong> document your TryHackMe/HTB rooms as write-ups, build a small home lab, and share what you learn publicly. Then apply for SOC Analyst, Security Analyst, or Junior Pentester roles. Polish your resume with the <a href="./resume-portfolio-templates.html">Resume &amp; Portfolio guide</a> and prep with the <a href="./interview-prep-kit.html">Interview Prep Kit</a>.</div>
+        </div>
+
+        <div class="infosection">
+            <h2>Entry roles &amp; where they lead</h2>
+            <p class="muted">You do not start as an elite hacker. Most people enter through one of these and grow from there:</p>
+            <div style="overflow-x:auto;">
+                <table class="roletable">
+                    <thead><tr><th>Entry role</th><th>What you do</th><th>Grows into</th></tr></thead>
+                    <tbody>
+                        <tr><td>SOC Analyst (Tier 1)</td><td>Monitor alerts, triage incidents, analyze logs</td><td>Incident Responder, Threat Hunter</td></tr>
+                        <tr><td>Security Analyst</td><td>Assess risks, harden systems, support audits</td><td>Security Engineer, GRC Analyst</td></tr>
+                        <tr><td>Junior Penetration Tester</td><td>Test apps and networks for weaknesses</td><td>Senior Pentester, Red Teamer</td></tr>
+                        <tr><td>IT / Helpdesk (pivot)</td><td>Support and systems, then move into security</td><td>Any of the above</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="infosection">
+            <h2>Free places to learn</h2>
+            <ul class="muted">
+                <li><a href="https://tryhackme.com/" target="_blank" rel="noopener">TryHackMe</a> - guided, beginner-friendly hands-on paths (start here).</li>
+                <li><a href="https://www.hackthebox.com/" target="_blank" rel="noopener">Hack The Box</a> - practice machines and CTFs as you level up.</li>
+                <li><a href="https://portswigger.net/web-security" target="_blank" rel="noopener">PortSwigger Web Security Academy</a> - the best free web-hacking course.</li>
+                <li><a href="https://www.letsdefend.io/" target="_blank" rel="noopener">LetsDefend</a> - hands-on blue-team / SOC practice.</li>
+                <li><a href="https://roadmap.sh/cyber-security" target="_blank" rel="noopener">roadmap.sh/cyber-security</a> - a detailed visual skill map.</li>
+                <li><a href="https://www.youtube.com/@_JohnHammond" target="_blank" rel="noopener">John Hammond (YouTube)</a> - approachable security walkthroughs.</li>
+            </ul>
+        </div>
+
+        <div class="infosection">
+            <h2>What to do next</h2>
+            <p class="muted">Security overlaps with the rest of your tech skills. These guides pair well with this roadmap:</p>
+            <div class="nextlinks">
+                <a href="./cs-fundamentals-guide.html">🧠 CS Fundamentals</a>
+                <a href="./cloud-devops-starter.html">☁️ Cloud &amp; DevOps</a>
+                <a href="./trending-tech-roles.html">🚀 Trending Roles</a>
+                <a href="./resume-portfolio-templates.html">📄 Resume &amp; Portfolio</a>
+                <a href="./interview-prep-kit.html">🗣️ Interview Prep</a>
+            </div>
+        </div>
+    </main>
+
+    <div data-component="footer"></div>
+    <div data-component="scripts-common"></div>
+    <script src="./components/component-loader.js"></script>
+    <script type="module" src="./functions/site.js?v=20260731"></script>
+</body>
+</html>

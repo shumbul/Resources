@@ -54,10 +54,17 @@ export function initAssistant() {
     .ai-x{background:transparent;border:none;color:#fff;font-size:1.1rem;cursor:pointer;opacity:.85;padding:0 .2rem;}
     .ai-body{flex:1;overflow-y:auto;padding:1rem;display:flex;flex-direction:column;gap:.7rem;
         background:var(--bg-secondary,#f9fafb);}
-    .ai-msg{max-width:88%;padding:.6rem .8rem;border-radius:14px;font:400 .9rem/1.5 Inter,Segoe UI,sans-serif;white-space:pre-wrap;}
-    .ai-msg.user{align-self:flex-end;background:var(--primary,#8b5cf6);color:#fff;border-bottom-right-radius:4px;}
+    .ai-msg{max-width:88%;padding:.6rem .8rem;border-radius:14px;font:400 .9rem/1.5 Inter,Segoe UI,sans-serif;}
+    .ai-msg.user{align-self:flex-end;background:var(--primary,#8b5cf6);color:#fff;border-bottom-right-radius:4px;white-space:pre-wrap;}
     .ai-msg.bot{align-self:flex-start;background:var(--bg-primary,#fff);border:1px solid var(--border,#e5e7eb);
         color:var(--text-primary,#111);border-bottom-left-radius:4px;}
+    .ai-msg.bot p{margin:0 0 .5rem;} .ai-msg.bot p:last-child{margin-bottom:0;}
+    .ai-msg.bot .ai-h{display:block;margin:.5rem 0 .25rem;font-size:.95rem;} .ai-msg.bot .ai-h:first-child{margin-top:0;}
+    .ai-msg.bot ul,.ai-msg.bot ol{margin:.25rem 0 .5rem;padding-left:1.25rem;} .ai-msg.bot li{margin:.15rem 0;}
+    .ai-msg.bot code{background:var(--bg-tertiary,#eef1f8);border-radius:5px;padding:.05rem .35rem;
+        font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.85em;}
+    .ai-msg.bot a{color:var(--primary,#7c3aed);text-decoration:underline;}
+    .ai-msg.bot br{line-height:.5;}
     .ai-chips{display:flex;flex-wrap:wrap;gap:.4rem;padding:.6rem 1rem 0;}
     .ai-chip{font:500 .78rem/1 Inter,Segoe UI,sans-serif;padding:.45rem .7rem;border-radius:999px;cursor:pointer;
         background:var(--bg-tertiary,#f1f5f9);color:var(--text-secondary,#555);border:1px solid var(--border,#e5e7eb);}
@@ -175,10 +182,51 @@ export function initAssistant() {
     };
 
     function setStatus(s) { statusEl.textContent = s; }
+    // Render a safe subset of Markdown. We escape all HTML first, then re-introduce
+    // ONLY a known set of tags, so untrusted model/proxy output can't inject HTML.
+    function renderMarkdown(src) {
+        let s = String(src).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        const codes = [];
+        s = s.replace(/`([^`\n]+)`/g, (_, c) => { codes.push(c); return '\u0000' + (codes.length - 1) + '\u0000'; });
+        s = s.replace(/\*\*([^*\n]+)\*\*/g, '<strong>$1</strong>');
+        s = s.replace(/(^|[^*])\*([^*\n]+)\*/g, '$1<em>$2</em>');
+        s = s.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g,
+            '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
+
+        const out = [];
+        let list = null; // 'ul' | 'ol'
+        const closeList = () => { if (list) { out.push('</' + list + '>'); list = null; } };
+        s.split('\n').forEach((line) => {
+            const t = line.trim();
+            let m;
+            if ((m = t.match(/^#{1,6}\s+(.*)$/))) { closeList(); out.push('<strong class="ai-h">' + m[1] + '</strong>'); return; }
+            if ((m = t.match(/^[-*]\s+(.*)$/))) { if (list !== 'ul') { closeList(); list = 'ul'; out.push('<ul>'); } out.push('<li>' + m[1] + '</li>'); return; }
+            if ((m = t.match(/^\d+\.\s+(.*)$/))) { if (list !== 'ol') { closeList(); list = 'ol'; out.push('<ol>'); } out.push('<li>' + m[1] + '</li>'); return; }
+            closeList();
+            if (t === '') out.push('<br>'); else out.push('<p>' + line + '</p>');
+        });
+        closeList();
+        let html = out.join('');
+        html = html.replace(/\u0000(\d+)\u0000/g, (_, i) => '<code>' + codes[+i] + '</code>');
+        return html;
+    }
+
+    // Set/stream text into a bot bubble as rendered Markdown; keeps the raw text
+    // on the node so streaming chunks re-render cleanly. User text stays literal.
+    function setBotContent(el, raw) {
+        el._raw = raw;
+        el.innerHTML = renderMarkdown(raw);
+        body.scrollTop = body.scrollHeight;
+    }
+    function appendBotChunk(el, chunk) {
+        setBotContent(el, (el._raw || '') + chunk);
+    }
+
     function addMsg(role, text) {
         const d = document.createElement('div');
         d.className = 'ai-msg ' + (role === 'user' ? 'user' : 'bot');
-        d.textContent = text;
+        if (role === 'user') d.textContent = text;
+        else setBotContent(d, text);
         body.appendChild(d); body.scrollTop = body.scrollHeight;
         return d;
     }
@@ -231,7 +279,7 @@ export function initAssistant() {
             for (const line of lines) {
                 const t = line.trim(); if (!t.startsWith('data:')) continue;
                 const data = t.slice(5).trim(); if (data === '[DONE]') return;
-                try { const j = JSON.parse(data); const d = j.choices?.[0]?.delta?.content || ''; if (d) { target.textContent += d; body.scrollTop = body.scrollHeight; } } catch {}
+                try { const j = JSON.parse(data); const d = j.choices?.[0]?.delta?.content || ''; if (d) { appendBotChunk(target, d); } } catch {}
             }
         }
     }
@@ -240,7 +288,7 @@ export function initAssistant() {
         const m = mode();
         if (m === 'ondevice') {
             const chunks = await engine.chat.completions.create({ messages, temperature: 0.7, max_tokens: 700, stream: true });
-            for await (const c of chunks) { const d = c.choices?.[0]?.delta?.content || ''; if (d) { target.textContent += d; body.scrollTop = body.scrollHeight; } }
+            for await (const c of chunks) { const d = c.choices?.[0]?.delta?.content || ''; if (d) { appendBotChunk(target, d); } }
             return;
         }
         if (m === 'proxy') {
@@ -267,7 +315,6 @@ export function initAssistant() {
         const bot = addMsg('bot', '');
         try {
             await ensureEngine();
-            if (!bot.textContent) bot.textContent = '';
             const page = pageContext();
             const messages = [
                 { role: 'system', content: 'You are a concise, practical assistant embedded in a career-resources website. Ground your answers in the page context when relevant. Give specific, actionable output. Never use em dashes or en dashes, use plain punctuation.' },

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap">
+    <meta charset="UTF-8">
+    <div data-component="head-common"></div>
+
+    <title>SQL &amp; Databases Guide | Resources by Shumbul Arifa</title>
+    <meta name="description" content="Learn SQL the practical way: the queries you actually use, joins made simple, and the database concepts that show up in interviews and real jobs.">
+    <meta property="og:title" content="SQL & Databases - the practical guide">
+    <meta property="og:description" content="The 20% of SQL you use 80% of the time, plus the concepts interviews love.">
+
+    <style>
+        .guide-header { background: linear-gradient(135deg, var(--primary), var(--secondary)); color:#fff; padding:3.5rem 0; text-align:center; margin-bottom:2.5rem; }
+        .guide-title { font-size:2.6rem; font-weight:800; margin-bottom:.6rem; color:#fff; }
+        .guide-sub { font-size:1.15rem; color:rgba(255,255,255,.94); max-width:720px; margin:0 auto; }
+        .guide-badges { display:flex; gap:.5rem; justify-content:center; flex-wrap:wrap; margin-top:1.2rem; }
+        .guide-badge { background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.4); padding:.35rem .8rem; border-radius:999px; font-size:.85rem; font-weight:600; }
+
+        .starter { background:var(--bg-primary); border:1px solid var(--border); border-left:4px solid var(--primary); border-radius:12px; padding:1.1rem 1.3rem; margin-bottom:1.75rem; }
+        .gsection { background:var(--bg-secondary); border:1px solid var(--border); border-radius:16px; padding:1.6rem 1.75rem; margin-bottom:1.75rem; }
+        .gsection h2 { margin-top:0; }
+        .muted { color:var(--text-secondary); }
+
+        pre { background:#0f172a; color:#e2e8f0; border-radius:12px; padding:1rem 1.2rem; overflow-x:auto; font-size:.9rem; line-height:1.55; margin:.6rem 0; }
+        pre code { font-family:ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace; }
+        .join { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; margin-top:.6rem; }
+        @media (max-width:700px){ .join { grid-template-columns:1fr; } }
+        .join .card { background:var(--bg-primary); border:1px solid var(--border); border-radius:12px; padding:1rem 1.1rem; }
+        .join .card b { color:var(--primary); }
+        .roletable { width:100%; border-collapse:collapse; }
+        .roletable th, .roletable td { text-align:left; padding:.55rem .7rem; border-bottom:1px solid var(--border); font-size:.92rem; vertical-align:top; }
+        .roletable th { color:var(--text-secondary); font-size:.8rem; text-transform:uppercase; letter-spacing:.04em; }
+        .nextlinks { display:flex; flex-wrap:wrap; gap:.6rem; }
+        .nextlinks a { text-decoration:none; background:var(--bg-primary); border:1px solid var(--border); border-radius:10px; padding:.55rem .9rem; font-weight:600; color:var(--text-primary); }
+        .nextlinks a:hover { border-color:var(--primary); color:var(--primary); }
+    </style>
+</head>
+<body>
+    <div data-component="theme-switcher"></div>
+
+    <header class="guide-header">
+        <div class="container">
+            <h1 class="guide-title">🗄️ SQL &amp; Databases</h1>
+            <p class="guide-sub">Almost every job touches a database. The good news: you only need a small slice of SQL to be genuinely useful. This guide teaches the queries you will actually write, with examples you can copy.</p>
+            <div class="guide-badges">
+                <span class="guide-badge">📋 Copy-ready queries</span>
+                <span class="guide-badge">🔗 Joins made simple</span>
+                <span class="guide-badge">🎯 Interview-ready</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="starter">
+            <strong style="font-family:var(--font-display);">🌱 New to SQL? Start calm</strong>
+            <p class="muted" style="margin:.5rem 0 0;">SQL reads almost like English: "select these columns from this table where this is true." You do not need to memorize everything, you need the handful of patterns below. Run them on a free playground (links at the end) as you read. Confused by a query? Paste it into <strong>✦ Ask AI</strong> and ask it to explain line by line.</p>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="The core query">The one query shape to master</h2>
+            <p class="muted">Most of SQL is variations on this. Learn the order and you can read almost anything:</p>
+            <pre><code>SELECT column1, column2      -- which columns you want
+FROM table_name              -- from which table
+WHERE condition              -- filter rows
+GROUP BY column1             -- bucket rows together
+HAVING condition             -- filter those buckets
+ORDER BY column2 DESC        -- sort the result
+LIMIT 10;                    -- cap the rows</code></pre>
+            <p class="muted">The database runs them roughly in the order FROM to WHERE to GROUP BY to HAVING to SELECT to ORDER BY to LIMIT, which is why you cannot use a SELECT alias in WHERE. Small detail, common interview gotcha.</p>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Everyday queries">Everyday queries you will actually write</h2>
+            <p class="muted">Filtering and sorting:</p>
+            <pre><code>SELECT name, salary
+FROM employees
+WHERE department = 'Engineering' AND salary &gt; 50000
+ORDER BY salary DESC;</code></pre>
+            <p class="muted">Counting and grouping (how many employees per department):</p>
+            <pre><code>SELECT department, COUNT(*) AS headcount
+FROM employees
+GROUP BY department
+ORDER BY headcount DESC;</code></pre>
+            <p class="muted">Aggregates (average salary per department, only where it beats 60k):</p>
+            <pre><code>SELECT department, AVG(salary) AS avg_salary
+FROM employees
+GROUP BY department
+HAVING AVG(salary) &gt; 60000;</code></pre>
+            <p class="muted">Inserting, updating, deleting:</p>
+            <pre><code>INSERT INTO employees (name, department, salary)
+VALUES ('Asha', 'Engineering', 72000);
+
+UPDATE employees SET salary = 80000 WHERE name = 'Asha';
+
+DELETE FROM employees WHERE name = 'Asha';</code></pre>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Joins">Joins, the part everyone fears (they are simple)</h2>
+            <p class="muted">A join combines rows from two tables using a shared column. Picture two tables, <code>employees</code> and <code>departments</code>, linked by a department id.</p>
+            <pre><code>SELECT e.name, d.department_name
+FROM employees e
+JOIN departments d ON e.department_id = d.id;</code></pre>
+            <div class="join">
+                <div class="card"><b>INNER JOIN</b><p class="muted" style="margin:.3rem 0 0;">Only rows that match in both tables. The default and most common.</p></div>
+                <div class="card"><b>LEFT JOIN</b><p class="muted" style="margin:.3rem 0 0;">All rows from the left table, plus matches from the right (nulls where none). Great for "who has no matching record?"</p></div>
+                <div class="card"><b>RIGHT JOIN</b><p class="muted" style="margin:.3rem 0 0;">The mirror of LEFT, all rows from the right table. Rarely needed, you can flip the query instead.</p></div>
+                <div class="card"><b>FULL OUTER JOIN</b><p class="muted" style="margin:.3rem 0 0;">Everything from both tables, matched where possible. Used less often day to day.</p></div>
+            </div>
+            <p class="muted" style="margin-top:.8rem;">Interview favorite, find employees with no department:</p>
+            <pre><code>SELECT e.name
+FROM employees e
+LEFT JOIN departments d ON e.department_id = d.id
+WHERE d.id IS NULL;</code></pre>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Concepts">Concepts interviews love</h2>
+            <ul class="muted">
+                <li><b>Primary key</b> - uniquely identifies each row. <b>Foreign key</b> - points to a primary key in another table (how tables relate).</li>
+                <li><b>Normalization</b> - splitting data so each fact lives in one place, avoiding duplication and update bugs (aim for 3NF in most apps).</li>
+                <li><b>Index</b> - like a book's index, it makes reads on a column much faster (at a small cost to writes). Add them to columns you filter or join on a lot.</li>
+                <li><b>ACID &amp; transactions</b> - a transaction groups steps so they all succeed or all roll back (think bank transfer).</li>
+                <li><b>SQL vs NoSQL</b> - SQL for structured, related data with strong consistency; NoSQL (like MongoDB) for flexible, fast-changing, or huge-scale data.</li>
+            </ul>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Practice tasks">Practice tasks (do these)</h2>
+            <p class="muted">Reading SQL is easy; writing it is the skill. Set up a free playground and try:</p>
+            <ol class="muted">
+                <li>Find the top 5 highest-paid employees.</li>
+                <li>Count how many employees are in each department.</li>
+                <li>List departments with an average salary above 60k.</li>
+                <li>Join employees to departments and show each person's department name.</li>
+                <li>Find employees who are not assigned to any department.</li>
+                <li>Find the second-highest salary (a classic interview question).</li>
+            </ol>
+            <pre><code>-- Second highest salary, one clean way:
+SELECT MAX(salary) AS second_highest
+FROM employees
+WHERE salary &lt; (SELECT MAX(salary) FROM employees);</code></pre>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Which database">Which database should you learn?</h2>
+            <div style="overflow-x:auto;">
+                <table class="roletable">
+                    <thead><tr><th>Database</th><th>Type</th><th>Great for</th></tr></thead>
+                    <tbody>
+                        <tr><td>PostgreSQL</td><td>SQL (relational)</td><td>The best default. Powerful, free, loved by employers.</td></tr>
+                        <tr><td>MySQL</td><td>SQL (relational)</td><td>Very common in web apps; similar skills to Postgres.</td></tr>
+                        <tr><td>SQLite</td><td>SQL (file-based)</td><td>Zero setup, perfect for learning and small apps.</td></tr>
+                        <tr><td>MongoDB</td><td>NoSQL (document)</td><td>Flexible schemas, popular with Node/JS stacks.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="muted" style="margin-top:.8rem;">Start with SQL (PostgreSQL or SQLite). The relational thinking transfers everywhere, and most jobs expect it.</p>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Free resources">Free places to practice</h2>
+            <ul class="muted">
+                <li><a href="https://sqlbolt.com/" target="_blank" rel="noopener">SQLBolt</a> - interactive lessons, no setup.</li>
+                <li><a href="https://pgexercises.com/" target="_blank" rel="noopener">PostgreSQL Exercises</a> - practice against a real dataset.</li>
+                <li><a href="https://www.hackerrank.com/domains/sql" target="_blank" rel="noopener">HackerRank SQL</a> - graded problems, interview style.</li>
+                <li><a href="https://www.db-fiddle.com/" target="_blank" rel="noopener">DB Fiddle</a> - a free online SQL playground.</li>
+            </ul>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="What's next">What to do next</h2>
+            <div class="nextlinks">
+                <a href="./cs-fundamentals-guide.html">🧠 CS Fundamentals</a>
+                <a href="./full-stack-developer-path.html">🌐 Full-Stack Path</a>
+                <a href="./dsa-practice-guide.html">💻 DSA Practice</a>
+                <a href="./interview-prep-kit.html">🗣️ Interview Prep</a>
+            </div>
+        </div>
+    </main>
+
+    <div data-component="footer"></div>
+    <div data-component="scripts-common"></div>
+    <script src="./components/component-loader.js"></script>
+    <script type="module" src="./functions/site.js?v=20260731"></script>
+</body>
+</html>

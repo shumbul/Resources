@@ -24,6 +24,13 @@ A comprehensive week-by-week breakdown from career clarity to job interviews. In
 - **Month 4:** Generative & Natural Language AI
 - **Months 5-6:** Advanced projects and specialization
 
+### 🛡️ [Cyber Security Roadmap](https://shumbul.github.io/Resources/cybersecurity-roadmap.html)
+A six-stage journey into cyber security, with an animated progress map, hands-on labs, tools, and certifications at every stop.
+
+- **Foundations:** Networking, Linux, and security fundamentals
+- **Core Security:** Offensive (red team) and defensive (blue team) skills
+- **Get Hired:** Specialize, get certified, build proof, and land your first role
+
 ### 💼 [LinkedIn Optimization Mastery](https://shumbul.github.io/Resources/linkedin-utilization-guide.html)
 Transform your LinkedIn profile into an opportunity magnet with AI-powered strategies, templates, and actionable tips.
 
@@ -57,6 +64,51 @@ The STAR method, common behavioral questions, a technical checklist, and smart q
 
 ### ⭐ [The STAR Method](https://shumbul.github.io/Resources/star-method.html)
 Answer any "tell me about a time" question with a clear structure. Includes a framework, 10 worked sample answers, and 24 practice questions.
+
+### 🚀 [Trending Roles in Tech](https://shumbul.github.io/Resources/trending-tech-roles.html)
+A friendly map of the most in-demand tech roles for 2026: what each one does, why it is trending, the core skills, and how a fresher can break in. Includes an at-a-glance comparison and a "how to pick your lane" guide.
+
+### 🌐 [Full-Stack Developer Path](https://shumbul.github.io/Resources/full-stack-developer-path.html)
+Web development in the right order: HTML, CSS, JavaScript, React, Node, and databases, each stage ending with a project you build yourself. Skips tutorial hell.
+
+### 🧠 [CS Fundamentals](https://shumbul.github.io/Resources/cs-fundamentals-guide.html)
+The core computer science every fresher interview digs into: Operating Systems, DBMS, Computer Networks, and OOP, with focus topics and sample questions and answers.
+
+### 🗄️ [SQL & Databases](https://shumbul.github.io/Resources/sql-databases-guide.html)
+The practical slice of SQL you actually use: everyday queries, joins made simple, and the database concepts interviews love, with copy-ready examples.
+
+### ☁️ [Cloud & DevOps Starter](https://shumbul.github.io/Resources/cloud-devops-starter.html)
+A calm, ordered path into cloud and DevOps: Linux, Git, Docker, CI/CD, and one cloud provider, with free tools and a hands-on project at each stage.
+
+### 🌍 [Open-Source Contribution](https://shumbul.github.io/Resources/open-source-guide.html)
+Make your first pull request without the fear: find beginner-friendly issues, follow the fork-and-pull workflow, and build real, public proof of work.
+
+### 💰 [Salary Negotiation](https://shumbul.github.io/Resources/salary-negotiation-guide.html)
+Negotiate your offer without fear. Research, timing, ready-made scripts, and what to say (and never say), calibrated even for first jobs.
+
+### 🌐 [Build & Deploy a Website](https://shumbul.github.io/Resources/build-a-website.html)
+Go from a blank file to a live, shareable link in one afternoon: HTML, CSS, GitHub, and free GitHub Pages hosting, no experience needed.
+
+### 🤖 [Build an AI Agent](https://shumbul.github.io/Resources/build-ai-agent.html)
+Build a real AI agent from scratch, an LLM in a loop with tools and memory, in Python on a free API tier. Understand every piece, no ML maths required.
+
+### 🛰️ [Networking Toolkit](https://shumbul.github.io/Resources/networking-toolkit.html)
+Copy-paste commands (Windows, Linux, macOS) that make Computer Networks theory click: watch DNS, ICMP, routing, TCP, and ports happen live on your own machine.
+
+### 🖥️ [Operating Systems Deep Dive](https://shumbul.github.io/Resources/operating-systems-deep-dive.html)
+Interview-oriented OS theory with real analogies, a quiz after every section, and a scored final quiz. Processes, scheduling, deadlocks, synchronization, and memory.
+
+### 🗃️ [DBMS Deep Dive](https://shumbul.github.io/Resources/dbms-deep-dive.html)
+Keys, normalization, ACID, indexing, and SQL vs NoSQL, explained with examples and self-scoring quizzes throughout.
+
+### 🌐 [Computer Networks Deep Dive](https://shumbul.github.io/Resources/computer-networks-deep-dive.html)
+OSI vs TCP/IP, TCP vs UDP, HTTP, DNS, and the "what happens when you type a URL" walkthrough, with quizzes and a live command companion.
+
+### 🧩 [OOP Deep Dive](https://shumbul.github.io/Resources/oop-deep-dive.html)
+The four pillars, overloading vs overriding, abstract vs interface, and SOLID, with examples and quizzes after every section.
+
+### 🏢 [Career Portals](https://shumbul.github.io/Resources/career-portals.html)
+Official career pages of 99 top tech companies (hiring in India, well-paying, popular) in one searchable place. Apply directly on company portals, bookmark it for your whole job hunt.
 
 ## 🛠️ Technical Implementation
 

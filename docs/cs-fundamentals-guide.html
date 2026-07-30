@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap">
+    <meta charset="UTF-8">
+    <div data-component="head-common"></div>
+
+    <title>CS Fundamentals Guide | Resources by Shumbul Arifa</title>
+    <meta name="description" content="The computer science core that interviews love: Operating Systems, DBMS, Computer Networks, and OOP, explained simply with the exact topics to focus on.">
+    <meta property="og:title" content="CS Fundamentals - OS, DBMS, Networks, OOP">
+    <meta property="og:description" content="The core CS subjects every fresher interview asks about, explained clearly with focus areas.">
+
+    <style>
+        .guide-header { background: linear-gradient(135deg, var(--primary), var(--secondary)); color:#fff; padding:3.5rem 0; text-align:center; margin-bottom:2.5rem; }
+        .guide-title { font-size:2.6rem; font-weight:800; margin-bottom:.6rem; color:#fff; }
+        .guide-sub { font-size:1.15rem; color:rgba(255,255,255,.94); max-width:720px; margin:0 auto; }
+        .guide-badges { display:flex; gap:.5rem; justify-content:center; flex-wrap:wrap; margin-top:1.2rem; }
+        .guide-badge { background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.4); padding:.35rem .8rem; border-radius:999px; font-size:.85rem; font-weight:600; }
+
+        .starter { background:var(--bg-primary); border:1px solid var(--border); border-left:4px solid var(--primary); border-radius:12px; padding:1.1rem 1.3rem; margin-bottom:1.75rem; }
+        .gsection { background:var(--bg-secondary); border:1px solid var(--border); border-radius:16px; padding:1.6rem 1.75rem; margin-bottom:1.75rem; }
+        .gsection h2 { margin-top:0; }
+        .muted { color:var(--text-secondary); }
+
+        .why { background:var(--bg-primary); border:1px solid var(--border); border-radius:10px; padding:.9rem 1.1rem; margin:.7rem 0 1rem; }
+        .why b { color:var(--primary); }
+        .focus { display:grid; grid-template-columns:1fr 1fr; gap:.6rem 1.5rem; margin-top:.6rem; }
+        @media (max-width:700px){ .focus { grid-template-columns:1fr; } }
+        .focus .item { display:flex; gap:.5rem; align-items:flex-start; }
+        .focus .item::before { content:'▸'; color:var(--primary); font-weight:700; }
+        .qa { border-left:3px solid var(--border); padding:.3rem 0 .3rem 1rem; margin:.7rem 0; }
+        .qa .q { font-weight:600; }
+        .qa .a { color:var(--text-secondary); margin:.2rem 0 0; }
+        .roletable { width:100%; border-collapse:collapse; }
+        .roletable th, .roletable td { text-align:left; padding:.55rem .7rem; border-bottom:1px solid var(--border); font-size:.92rem; vertical-align:top; }
+        .roletable th { color:var(--text-secondary); font-size:.8rem; text-transform:uppercase; letter-spacing:.04em; }
+        .nextlinks { display:flex; flex-wrap:wrap; gap:.6rem; }
+        .nextlinks a { text-decoration:none; background:var(--bg-primary); border:1px solid var(--border); border-radius:10px; padding:.55rem .9rem; font-weight:600; color:var(--text-primary); }
+        .nextlinks a:hover { border-color:var(--primary); color:var(--primary); }
+    </style>
+</head>
+<body>
+    <div data-component="theme-switcher"></div>
+
+    <header class="guide-header">
+        <div class="container">
+            <h1 class="guide-title">🧠 CS Fundamentals</h1>
+            <p class="guide-sub">The core computer science every fresher interview digs into: Operating Systems, Databases, Networks, and OOP. You do not need a whole semester, you need the right topics, explained simply.</p>
+            <div class="guide-badges">
+                <span class="guide-badge">🎯 Interview-focused</span>
+                <span class="guide-badge">📚 4 core subjects</span>
+                <span class="guide-badge">🌱 Plain-English</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="starter">
+            <strong style="font-family:var(--font-display);">🌱 Why this guide exists</strong>
+            <p class="muted" style="margin:.5rem 0 0;">Many freshers grind DSA but freeze when asked "what is a deadlock?" or "explain normalization." These core subjects come up in almost every entry-level interview, especially at service companies and product firms alike. This guide gives you the high-value topics per subject, plus the questions that actually get asked. Want a topic explained your way? Tap <strong>✦ Ask AI</strong>.</p>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="How to use this">How to use this guide</h2>
+            <p class="muted">Do not try to master everything. For each subject below you get: <b>why it matters</b>, the <b>focus topics</b> (the ones that actually get asked), and a few <b>sample questions</b> with short answers so you know the depth expected. Read actively: after each topic, try to explain it out loud in one or two sentences. If you can teach it, you know it.</p>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Operating Systems">Operating Systems (OS)</h2>
+            <div class="why"><b>Why it matters:</b> interviewers test whether you understand how programs really run, share resources, and avoid stepping on each other.</div>
+            <p class="muted"><b>Focus on these topics:</b></p>
+            <div class="focus">
+                <div class="item">Process vs thread</div>
+                <div class="item">CPU scheduling (FCFS, SJF, Round Robin)</div>
+                <div class="item">Deadlock (4 conditions, prevention)</div>
+                <div class="item">Process synchronization, mutex vs semaphore</div>
+                <div class="item">Virtual memory &amp; paging</div>
+                <div class="item">Context switching</div>
+            </div>
+            <div class="qa" data-reveal>
+                <p class="q">Q: Difference between a process and a thread?</p>
+                <p class="a">A process is an independent running program with its own memory; a thread is a lighter unit inside a process that shares that memory. Threads are cheaper to create and communicate, but a crash in one can affect others in the same process.</p>
+            </div>
+            <div class="qa" data-reveal>
+                <p class="q">Q: What is a deadlock and how do you prevent it?</p>
+                <p class="a">A deadlock is when processes wait on each other forever. It needs four conditions at once (mutual exclusion, hold-and-wait, no preemption, circular wait). Break any one, for example by acquiring locks in a fixed order, and you prevent it.</p>
+            </div>
+            <p class="muted" style="margin-top:.8rem;">📚 Want the full theory with analogies and quizzes? See the <a href="./operating-systems-deep-dive.html">Operating Systems Deep Dive</a>.</p>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="DBMS">Databases (DBMS)</h2>
+            <div class="why"><b>Why it matters:</b> almost every app stores data, so interviewers check that you can model it, query it, and keep it consistent.</div>
+            <p class="muted"><b>Focus on these topics:</b></p>
+            <div class="focus">
+                <div class="item">SQL queries &amp; joins</div>
+                <div class="item">Normalization (1NF, 2NF, 3NF)</div>
+                <div class="item">Keys (primary, foreign, candidate)</div>
+                <div class="item">ACID properties &amp; transactions</div>
+                <div class="item">Indexing (why it speeds reads)</div>
+                <div class="item">SQL vs NoSQL, when to use each</div>
+            </div>
+            <div class="qa" data-reveal>
+                <p class="q">Q: What is normalization and why do it?</p>
+                <p class="a">Normalization organizes tables to reduce duplicate data and avoid update anomalies. You split data into related tables (up to 3NF for most apps) so each fact lives in exactly one place, keeping data consistent.</p>
+            </div>
+            <div class="qa" data-reveal>
+                <p class="q">Q: Explain ACID.</p>
+                <p class="a">Atomicity (all or nothing), Consistency (valid state to valid state), Isolation (transactions do not corrupt each other), Durability (once committed, it stays). Together they keep transactions reliable, like a bank transfer never losing money midway.</p>
+            </div>
+            <p class="muted" style="margin-top:.8rem;">Want hands-on SQL practice? See the <a href="./sql-databases-guide.html">SQL &amp; Databases guide</a>. For the full theory with quizzes, see the <a href="./dbms-deep-dive.html">DBMS Deep Dive</a>.</p>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Networks">Computer Networks (CN)</h2>
+            <div class="why"><b>Why it matters:</b> every web app talks over a network, so interviewers check you understand what happens when you type a URL and hit enter.</div>
+            <p class="muted"><b>Focus on these topics:</b></p>
+            <div class="focus">
+                <div class="item">OSI &amp; TCP/IP models</div>
+                <div class="item">TCP vs UDP</div>
+                <div class="item">HTTP / HTTPS &amp; status codes</div>
+                <div class="item">DNS (how names become IPs)</div>
+                <div class="item">What happens when you visit a URL</div>
+                <div class="item">IP addressing basics</div>
+            </div>
+            <div class="qa" data-reveal>
+                <p class="q">Q: TCP vs UDP?</p>
+                <p class="a">TCP is reliable and ordered, it confirms delivery (used for web pages, email). UDP is fast but does not guarantee delivery or order (used for live video, games, calls) where speed beats perfection.</p>
+            </div>
+            <div class="qa" data-reveal>
+                <p class="q">Q: What happens when you type a URL and press enter?</p>
+                <p class="a">The browser resolves the domain to an IP via DNS, opens a TCP connection (and a TLS handshake for HTTPS), sends an HTTP request, the server responds with HTML, and the browser renders it, fetching CSS, JS, and images as needed.</p>
+            </div>
+            <p class="muted" style="margin-top:.8rem;">📚 Full theory with quizzes: the <a href="./computer-networks-deep-dive.html">Computer Networks Deep Dive</a>. See it live with the <a href="./networking-toolkit.html">Networking Toolkit</a>.</p>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="OOP">Object-Oriented Programming (OOP)</h2>
+            <div class="why"><b>Why it matters:</b> most codebases are object-oriented, so interviewers check you can design clean, reusable code, not just make it work.</div>
+            <p class="muted"><b>Focus on these topics:</b></p>
+            <div class="focus">
+                <div class="item">The 4 pillars (below)</div>
+                <div class="item">Class vs object</div>
+                <div class="item">Overloading vs overriding</div>
+                <div class="item">Abstract class vs interface</div>
+                <div class="item">Composition vs inheritance</div>
+                <div class="item">SOLID principles (at a high level)</div>
+            </div>
+            <div class="qa" data-reveal>
+                <p class="q">Q: What are the four pillars of OOP?</p>
+                <p class="a"><b>Encapsulation</b> (bundle data with the methods that use it, hide internals), <b>Abstraction</b> (expose what, hide how), <b>Inheritance</b> (reuse via parent-child classes), and <b>Polymorphism</b> (one interface, many behaviors, e.g. overriding a method).</p>
+            </div>
+            <div class="qa" data-reveal>
+                <p class="q">Q: Overloading vs overriding?</p>
+                <p class="a">Overloading = same method name, different parameters, in the same class (compile-time). Overriding = a subclass redefines a parent method with the same signature (run-time). Overload for convenience, override for polymorphism.</p>
+            </div>
+            <p class="muted" style="margin-top:.8rem;">📚 Full theory with quizzes: the <a href="./oop-deep-dive.html">OOP Deep Dive</a>.</p>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Priority table">What to prioritize</h2>
+            <p class="muted">Short on time? Here is a rough priority order based on how often each shows up in fresher interviews.</p>
+            <div style="overflow-x:auto;">
+                <table class="roletable">
+                    <thead><tr><th>Subject</th><th>Interview frequency</th><th>Must-know topics</th></tr></thead>
+                    <tbody>
+                        <tr><td>OOP</td><td>Very high</td><td>4 pillars, overloading vs overriding, abstract vs interface</td></tr>
+                        <tr><td>DBMS</td><td>Very high</td><td>Joins, normalization, ACID, indexing</td></tr>
+                        <tr><td>OS</td><td>High</td><td>Process vs thread, deadlock, scheduling, synchronization</td></tr>
+                        <tr><td>Networks</td><td>Medium to high</td><td>TCP vs UDP, HTTP, DNS, URL walkthrough</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Free resources">Free places to learn</h2>
+            <ul class="muted">
+                <li><a href="https://www.geeksforgeeks.org/" target="_blank" rel="noopener">GeeksforGeeks</a> - topic-wise notes and interview questions for all four subjects.</li>
+                <li><a href="https://www.youtube.com/@gatesmashers" target="_blank" rel="noopener">Gate Smashers (YouTube)</a> - clear, short lectures on OS, DBMS, and CN.</li>
+                <li><a href="https://roadmap.sh/computer-science" target="_blank" rel="noopener">roadmap.sh/computer-science</a> - a visual map of the whole CS core.</li>
+                <li><a href="https://cs.fyi/" target="_blank" rel="noopener">cs.fyi</a> - concise guides on key CS concepts.</li>
+            </ul>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="What's next">What to do next</h2>
+            <p class="muted">Pair these fundamentals with problem-solving and interview practice:</p>
+            <div class="nextlinks">
+                <a href="./dsa-practice-guide.html">💻 DSA Practice</a>
+                <a href="./system-design-templates.html">🎯 System Design</a>
+                <a href="./sql-databases-guide.html">🗄️ SQL &amp; Databases</a>
+                <a href="./interview-prep-kit.html">🗣️ Interview Prep</a>
+            </div>
+        </div>
+    </main>
+
+    <div data-component="footer"></div>
+    <div data-component="scripts-common"></div>
+    <script src="./components/component-loader.js"></script>
+    <script type="module" src="./functions/site.js?v=20260731"></script>
+</body>
+</html>

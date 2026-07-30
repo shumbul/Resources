@@ -144,15 +144,19 @@ pre { max-width: 100%; overflow-x: auto; box-sizing: border-box; }
 .back-link-row { text-align: center; margin-bottom: 1.5rem; position: relative; z-index: 1; }
 .back-link {
     display: inline-flex; align-items: center; gap: .5rem;
-    color: rgba(255,255,255,.92); text-decoration: none;
+    color: #ffffff; text-decoration: none;
     padding: .5rem 1rem; border-radius: .55rem;
     background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.28);
     font: 600 .9rem/1 var(--font-sans, inherit); transition: background .2s ease, color .2s ease;
 }
+.back-link, .back-link:visited, .back-link span { color: #ffffff; }
 .back-link:hover, .back-link:focus-visible { background: rgba(255,255,255,.26); color: #fff; }
 .back-link:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
 
-/* Links inside paragraphs stay distinguishable without relying on color alone. */
-.footer-content p a, .site-footer a { text-decoration: underline; }
+/* Links inside paragraphs stay distinguishable without relying on color alone.
+   Icon-only links (social buttons) are excluded, an underline under an icon
+   is just a stray dash. */
+.footer-content p a, .site-footer a:not(.social-link) { text-decoration: underline; }
+.site-footer .social-link, .footer-content .social-link { text-decoration: none; }
 /* In-content links on the guide pages (DSA, system design, resume, interview). */
 .gsection a, .gcard a { text-decoration: underline; }
