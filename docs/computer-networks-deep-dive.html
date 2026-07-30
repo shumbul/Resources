@@ -148,15 +148,8 @@
 
         <div class="gsection">
             <h2 data-jump="URL walkthrough">What happens when you visit a URL</h2>
-            <p class="muted">The classic interview question. Here is the chain, top to bottom:</p>
-            <div class="flow">
-                <span class="node">DNS lookup</span><span class="arrow">→</span>
-                <span class="node">TCP handshake</span><span class="arrow">→</span>
-                <span class="node">TLS handshake (HTTPS)</span><span class="arrow">→</span>
-                <span class="node">HTTP request</span><span class="arrow">→</span>
-                <span class="node">Server responds</span><span class="arrow">→</span>
-                <span class="node">Browser renders</span>
-            </div>
+            <p class="muted">The classic interview question. Here is the chain, left to right:</p>
+            <div class="flowmap" data-flow="DNS lookup|🔎, TCP handshake|🤝, TLS handshake|🔒, HTTP request|📤, Server responds|📥, Render|🖼️"></div>
             <p class="muted">In words: the browser resolves the domain to an IP via <b>DNS</b>, opens a <b>TCP</b> connection (plus a <b>TLS</b> handshake for HTTPS), sends an <b>HTTP</b> request, the server returns HTML, and the browser renders it, fetching CSS, JS, and images as needed. You can watch this live with <code>curl -v</code> in the <a href="./networking-toolkit.html">Networking Toolkit</a>.</p>
             <div class="quiz" data-quiz-title="Check: URL walkthrough">
                 <script type="application/json">

@@ -105,6 +105,7 @@ CMD ["node", "server.js"]</code></pre>
                 <div>
                     <h3>Ship automatically on every push</h3>
                     <p class="muted">CI/CD means: every time you push code, a pipeline automatically tests it and (if it passes) deploys it. GitHub Actions is free and the easiest place to start.</p>
+                    <div class="flowmap" data-flow-title="A CI/CD pipeline" data-flow="Push code|⬆️, Build|🔨, Test|🧪, Deploy|🚀, Live|🌍"></div>
                     <div><span class="skill">GitHub Actions</span><span class="skill">Pipelines</span><span class="skill">Automated tests</span><span class="skill">Build &amp; deploy steps</span></div>
                     <pre><code># .github/workflows/ci.yml (runs tests on every push)
 name: CI
