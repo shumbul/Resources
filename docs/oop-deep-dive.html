@@ -31,7 +31,7 @@
         .pillar .ic { font-size:1.5rem; }
         .pillar b { color:var(--primary); display:block; margin:.2rem 0; }
         pre { background:#0f172a; color:#e2e8f0; border-radius:12px; padding:1rem 1.2rem; overflow-x:auto; font-size:.88rem; line-height:1.55; margin:.5rem 0; max-width:100%; box-sizing:border-box; }
-        pre code { font-family:'Space Grotesk', ui-monospace, monospace; }
+        pre code { font-family:ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace; }
         table.tbl { width:100%; border-collapse:collapse; margin:.6rem 0; }
         table.tbl th, table.tbl td { text-align:left; padding:.5rem .7rem; border-bottom:1px solid var(--border); font-size:.92rem; vertical-align:top; }
         table.tbl th { color:var(--text-secondary); font-size:.8rem; text-transform:uppercase; letter-spacing:.04em; }
@@ -66,12 +66,14 @@
             <h2 data-jump="Class vs Object">Class vs object</h2>
             <p class="muted">A <b>class</b> is a blueprint; an <b>object</b> is a concrete thing built from that blueprint.</p>
             <div class="analogy"><b>Analogy:</b> a class is the architectural plan for a house. An object is an actual house built from that plan. One plan (class), many houses (objects), each with its own address and paint color (its own data).</div>
-            <pre><code>class Dog:            # the blueprint
-    name
-    def bark(): ...
+            <pre><code>class Dog:                  # the blueprint
+    def __init__(self, name):
+        self.name = name
+    def bark(self):
+        return "Woof!"
 
-rex = Dog("Rex")      # an object (instance)
-fido = Dog("Fido")    # another object</code></pre>
+rex = Dog("Rex")           # an object (instance)
+fido = Dog("Fido")         # another object</code></pre>
             <div class="quiz" data-quiz-title="Check: class vs object">
                 <script type="application/json">
                 [
