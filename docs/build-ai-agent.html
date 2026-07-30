@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap">
+    <meta charset="UTF-8">
+    <div data-component="head-common"></div>
+
+    <title>Build an AI Agent | Resources by Shumbul Arifa</title>
+    <meta name="description" content="Build your first AI agent from scratch: understand what an agent really is, wire up an LLM with tools and memory, and ship a working project you can show.">
+    <meta property="og:title" content="Build an AI Agent - from zero to working">
+    <meta property="og:description" content="A friendly, project-based guide to building a real AI agent with tools and memory.">
+
+    <style>
+        .guide-header { background: linear-gradient(135deg, var(--primary), var(--secondary)); color:#fff; padding:3.5rem 0; text-align:center; margin-bottom:2.5rem; }
+        .guide-title { font-size:2.6rem; font-weight:800; margin-bottom:.6rem; color:#fff; }
+        .guide-sub { font-size:1.15rem; color:rgba(255,255,255,.94); max-width:720px; margin:0 auto; }
+        .guide-badges { display:flex; gap:.5rem; justify-content:center; flex-wrap:wrap; margin-top:1.2rem; }
+        .guide-badge { background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.4); padding:.35rem .8rem; border-radius:999px; font-size:.85rem; font-weight:600; }
+
+        .starter { background:var(--bg-primary); border:1px solid var(--border); border-left:4px solid var(--primary); border-radius:12px; padding:1.1rem 1.3rem; margin-bottom:1.75rem; }
+        .gsection { background:var(--bg-secondary); border:1px solid var(--border); border-radius:16px; padding:1.6rem 1.75rem; margin-bottom:1.75rem; }
+        .gsection h2 { margin-top:0; }
+        .muted { color:var(--text-secondary); }
+
+        pre { background:#0f172a; color:#e2e8f0; border-radius:12px; padding:1rem 1.2rem; overflow-x:auto; font-size:.88rem; line-height:1.55; margin:.5rem 0; max-width:100%; box-sizing:border-box; }
+        pre code { font-family:'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, monospace; }
+        .loop { display:grid; grid-template-columns:repeat(4,1fr); gap:.7rem; margin:.8rem 0; }
+        @media (max-width:760px){ .loop { grid-template-columns:1fr 1fr; } }
+        .loop .box { background:var(--bg-primary); border:1px solid var(--border); border-radius:12px; padding:.9rem 1rem; text-align:center; }
+        .loop .box .ic { font-size:1.5rem; }
+        .loop .box b { display:block; margin:.3rem 0 .1rem; }
+        .loop .box span { font-size:.82rem; color:var(--text-secondary); }
+        .concept { display:inline-block; background:var(--bg-tertiary); border:1px solid var(--border); border-radius:999px; padding:.2rem .6rem; font-size:.78rem; font-weight:600; margin:.25rem .25rem 0 0; }
+        .gsection p a, .gsection li a, .starter a { text-decoration:underline; }
+        .nextlinks { display:flex; flex-wrap:wrap; gap:.6rem; }
+        .nextlinks a { text-decoration:none; background:var(--bg-primary); border:1px solid var(--border); border-radius:10px; padding:.55rem .9rem; font-weight:600; color:var(--text-primary); }
+        .nextlinks a:hover { border-color:var(--primary); color:var(--primary); }
+    </style>
+</head>
+<body>
+    <div data-component="theme-switcher"></div>
+
+    <header class="guide-header">
+        <div class="container">
+            <h1 class="guide-title">🤖 Build an AI Agent</h1>
+            <p class="guide-sub">"AI agent" sounds like magic. It is not. An agent is an LLM in a loop that can use tools and remember things. In this project you build one from scratch and understand every piece.</p>
+            <div class="guide-badges">
+                <span class="guide-badge">🛠️ Project-based</span>
+                <span class="guide-badge">🐍 Python</span>
+                <span class="guide-badge">🆓 Free API tier</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="starter">
+            <strong style="font-family:var(--font-display);">🌱 What you need</strong>
+            <p class="muted" style="margin:.5rem 0 0;">Basic Python (variables, functions, dictionaries) and a free LLM API key (Groq and Google AI Studio both have generous free tiers). That is it. You do not need machine-learning maths, you are <i>using</i> a model, not training one. Stuck on any step? Tap <strong>✦ Ask AI</strong>.</p>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="What is an agent">What an agent actually is</h2>
+            <p class="muted">Strip away the buzzwords and an AI agent is a simple loop:</p>
+            <div class="loop">
+                <div class="box"><div class="ic">🧠</div><b>Think</b><span>The LLM decides what to do next</span></div>
+                <div class="box"><div class="ic">🛠️</div><b>Act</b><span>It calls a tool (search, calculator, API)</span></div>
+                <div class="box"><div class="ic">👀</div><b>Observe</b><span>It reads the tool's result</span></div>
+                <div class="box"><div class="ic">🔁</div><b>Repeat</b><span>Until the task is done</span></div>
+            </div>
+            <p class="muted">A plain chatbot answers in one shot. An <b>agent</b> loops: it can look something up, do a calculation, then use those results to answer. That loop, plus tools and memory, is the whole idea.</p>
+            <div><span class="concept">LLM</span><span class="concept">Tools / function calling</span><span class="concept">Memory</span><span class="concept">The agent loop</span></div>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Setup">Step 1: Set up</h2>
+            <p class="muted">Create a project and install one small library. We will talk to an OpenAI-compatible API (Groq's free tier here).</p>
+            <pre><code>mkdir my-agent && cd my-agent
+python -m venv venv
+# Windows: venv\Scripts\activate   |   Linux/Mac: source venv/bin/activate
+pip install openai</code></pre>
+            <p class="muted">Get a free key from <a href="https://console.groq.com/keys" target="_blank" rel="noopener">console.groq.com/keys</a> and set it as an environment variable so it never lives in your code:</p>
+            <pre><code># Windows (PowerShell)
+$env:GROQ_API_KEY="your_key_here"
+
+# Linux / macOS
+export GROQ_API_KEY="your_key_here"</code></pre>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Talk to the LLM">Step 2: Talk to the model</h2>
+            <p class="muted">First, the simplest possible call. Save this as <code>agent.py</code>:</p>
+            <pre><code>import os
+from openai import OpenAI
+
+client = OpenAI(
+    base_url="https://api.groq.com/openai/v1",
+    api_key=os.environ["GROQ_API_KEY"],
+)
+
+resp = client.chat.completions.create(
+    model="llama-3.1-8b-instant",
+    messages=[{"role": "user", "content": "Say hi in one sentence."}],
+)
+print(resp.choices[0].message.content)</code></pre>
+            <p class="muted">Run <code>python agent.py</code>. If you see a friendly sentence, your model connection works. Everything else builds on this.</p>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Add a tool">Step 3: Give it a tool</h2>
+            <p class="muted">Tools are just Python functions the model is allowed to call. Let us give it a calculator (LLMs are famously bad at arithmetic, so this is a perfect first tool).</p>
+            <pre><code>def calculator(expression: str) -> str:
+    """Safely evaluate a simple math expression."""
+    try:
+        return str(eval(expression, {"__builtins__": {}}, {}))
+    except Exception as e:
+        return f"error: {e}"
+
+tools = [{
+    "type": "function",
+    "function": {
+        "name": "calculator",
+        "description": "Evaluate a math expression like '23 * 47'.",
+        "parameters": {
+            "type": "object",
+            "properties": {"expression": {"type": "string"}},
+            "required": ["expression"],
+        },
+    },
+}]</code></pre>
+            <p class="muted">You describe the tool to the model in plain words. The model decides <i>when</i> to call it, you decide what it does.</p>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="The agent loop">Step 4: Build the loop</h2>
+            <p class="muted">This is the heart of an agent: keep calling the model, and whenever it asks for a tool, run it and hand back the result, until it produces a final answer.</p>
+            <pre><code>import json
+
+def run_agent(question: str) -> str:
+    messages = [{"role": "user", "content": question}]
+    while True:
+        resp = client.chat.completions.create(
+            model="llama-3.1-8b-instant",
+            messages=messages,
+            tools=tools,
+        )
+        msg = resp.choices[0].message
+        messages.append(msg)
+
+        if not msg.tool_calls:
+            return msg.content          # final answer, we are done
+
+        for call in msg.tool_calls:     # the model wants a tool
+            args = json.loads(call.function.arguments)
+            result = calculator(**args)
+            messages.append({
+                "role": "tool",
+                "tool_call_id": call.id,
+                "content": result,
+            })
+
+print(run_agent("What is 1234 * 5678, and is it bigger than 7 million?"))</code></pre>
+            <p class="muted">Watch what happens: the model calls <code>calculator</code>, reads the number, then answers the comparison in words. That two-step reasoning is the agent loop working.</p>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Add memory">Step 5: Add memory</h2>
+            <p class="muted">Right now each question starts fresh. "Memory" is just keeping the <code>messages</code> list between turns so the agent remembers the conversation.</p>
+            <pre><code>history = []
+
+def chat(question: str) -> str:
+    history.append({"role": "user", "content": question})
+    # ... run the same loop, but start from `history` instead of a new list,
+    #     and append the final answer back to `history`.
+    # Now the agent recalls earlier turns.
+    return "..."</code></pre>
+            <p class="muted">That is the difference between a goldfish and an assistant. For longer memory, you would store past messages in a database or summarize old ones, but the idea stays this simple.</p>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Make it yours">Step 6: Make it a real project</h2>
+            <p class="muted">Now turn the toy into something you would actually show. Swap the calculator for a tool that matters to you:</p>
+            <ul class="muted">
+                <li><b>A research agent</b> - add a web-search tool and have it summarize findings.</li>
+                <li><b>A coding helper</b> - a tool that reads files from a folder and answers questions about your code.</li>
+                <li><b>A personal assistant</b> - tools for weather, reminders, or a to-do list.</li>
+                <li><b>A data agent</b> - a tool that runs SQL against a small database (pairs with the <a href="./sql-databases-guide.html">SQL guide</a>).</li>
+            </ul>
+            <p class="muted">Add 2 to 3 tools, give it a clear system prompt describing its job, wrap it in a simple command-line or web chat, and you have a portfolio-worthy project.</p>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Going further">Going further</h2>
+            <p class="muted">Once the from-scratch version makes sense, these frameworks do the plumbing for you (but you will understand what they are doing):</p>
+            <div><span class="concept">LangChain</span><span class="concept">LlamaIndex</span><span class="concept">CrewAI</span><span class="concept">OpenAI Agents SDK</span></div>
+            <p class="muted" style="margin-top:.7rem;">Concepts to explore next: <b>RAG</b> (let the agent search your documents), <b>multi-agent</b> setups (agents that talk to each other), and <b>guardrails</b> (keeping tools safe). This whole site's own <a href="./ai-tools.html">AI helper</a> is a small agent-style system, you now know roughly how it works.</p>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="What's next">What to do next</h2>
+            <div class="nextlinks">
+                <a href="./ai-tools.html">🛠️ AI Tools</a>
+                <a href="./AI-Roadmap.html">🤖 AI Developer Roadmap</a>
+                <a href="./full-stack-developer-path.html">🌐 Full-Stack Path</a>
+                <a href="./resume-portfolio-templates.html">📄 Resume &amp; Portfolio</a>
+            </div>
+        </div>
+    </main>
+
+    <div data-component="footer"></div>
+    <div data-component="scripts-common"></div>
+    <script src="./components/component-loader.js"></script>
+    <script type="module" src="./functions/site.js?v=20260731"></script>
+</body>
+</html>

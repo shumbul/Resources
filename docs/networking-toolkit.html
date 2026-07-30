@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap">
+    <meta charset="UTF-8">
+    <div data-component="head-common"></div>
+
+    <title>Networking Toolkit | Resources by Shumbul Arifa</title>
+    <meta name="description" content="A hands-on networking toolkit: copy-paste commands to inspect your network, diagnose problems, and see Computer Networks theory in action.">
+    <meta property="og:title" content="Networking Toolkit - commands that make CN click">
+    <meta property="og:description" content="Copy-ready networking commands mapped to the Computer Networks concepts they demonstrate.">
+
+    <style>
+        .guide-header { background: linear-gradient(135deg, var(--primary), var(--secondary)); color:#fff; padding:3.5rem 0; text-align:center; margin-bottom:2.5rem; }
+        .guide-title { font-size:2.6rem; font-weight:800; margin-bottom:.6rem; color:#fff; }
+        .guide-sub { font-size:1.15rem; color:rgba(255,255,255,.94); max-width:720px; margin:0 auto; }
+        .guide-badges { display:flex; gap:.5rem; justify-content:center; flex-wrap:wrap; margin-top:1.2rem; }
+        .guide-badge { background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.4); padding:.35rem .8rem; border-radius:999px; font-size:.85rem; font-weight:600; }
+
+        .starter { background:var(--bg-primary); border:1px solid var(--border); border-left:4px solid var(--primary); border-radius:12px; padding:1.1rem 1.3rem; margin-bottom:1.75rem; }
+        .gsection { background:var(--bg-secondary); border:1px solid var(--border); border-radius:16px; padding:1.6rem 1.75rem; margin-bottom:1.75rem; }
+        .gsection h2 { margin-top:0; }
+        .muted { color:var(--text-secondary); }
+
+        pre { background:#0f172a; color:#e2e8f0; border-radius:12px; padding:1rem 1.2rem; overflow-x:auto; font-size:.9rem; line-height:1.55; margin:.5rem 0; max-width:100%; box-sizing:border-box; }
+        pre code { font-family:'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, monospace; }
+        .cmd-why { font-size:.9rem; color:var(--text-secondary); margin:.1rem 0 .3rem; }
+        .cn-tag { display:inline-block; background:var(--bg-tertiary); border:1px solid var(--border); border-radius:999px; padding:.15rem .55rem; font-size:.74rem; font-weight:700; color:var(--primary); margin-bottom:.35rem; }
+        .os-note { font-size:.82rem; color:var(--text-secondary); font-style:italic; margin-top:.2rem; }
+        .gsection p a, .gsection li a, .starter a { text-decoration:underline; }
+        .nextlinks { display:flex; flex-wrap:wrap; gap:.6rem; }
+        .nextlinks a { text-decoration:none; background:var(--bg-primary); border:1px solid var(--border); border-radius:10px; padding:.55rem .9rem; font-weight:600; color:var(--text-primary); }
+        .nextlinks a:hover { border-color:var(--primary); color:var(--primary); }
+    </style>
+</head>
+<body>
+    <div data-component="theme-switcher"></div>
+
+    <header class="guide-header">
+        <div class="container">
+            <h1 class="guide-title">🛰️ Networking Toolkit</h1>
+            <p class="guide-sub">The fastest way to make Computer Networks theory click is to run it. This is a hands-on toolkit of copy-paste commands that let you see DNS, TCP, routing, and ports on your own machine, right now.</p>
+            <div class="guide-badges">
+                <span class="guide-badge">📋 Copy-paste commands</span>
+                <span class="guide-badge">🔗 Maps to CN theory</span>
+                <span class="guide-badge">🪟 Windows &amp; 🐧 Linux/Mac</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="starter">
+            <strong style="font-family:var(--font-display);">🌱 How to use this</strong>
+            <p class="muted" style="margin:.5rem 0 0;">Open a terminal and run these as you read, every command has a <b>Copy</b> button. Each one is tagged with the <b>Computer Networks</b> concept it demonstrates, so theory and practice reinforce each other. For the theory itself, keep the <a href="./cs-fundamentals-guide.html">CS Fundamentals guide</a> (Computer Networks section) open alongside. All commands are safe and read-only on your own machine.</p>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="See your setup">See your own network setup</h2>
+            <span class="cn-tag">CN: IP addressing, subnets, MAC</span>
+            <p class="cmd-why">Show your IP address, subnet, and network adapters, the identity of your machine on the network.</p>
+            <pre><code># Windows
+ipconfig /all
+
+# Linux / macOS
+ip addr        # (or: ifconfig)</code></pre>
+            <p class="os-note">Look for your IPv4 address, subnet mask, default gateway (your router), and MAC (physical) address.</p>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="DNS in action">Watch DNS resolve a name to an IP</h2>
+            <span class="cn-tag">CN: DNS, application layer</span>
+            <p class="cmd-why">DNS turns a name like <code>github.com</code> into an IP address. These let you watch it happen and see which DNS server answered.</p>
+            <pre><code># Windows
+nslookup github.com
+
+# Linux / macOS
+dig github.com          # detailed
+host github.com         # short</code></pre>
+            <p class="os-note">Try <code>nslookup github.com 8.8.8.8</code> to ask Google's DNS specifically, and compare the answer.</p>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Reachability">Test if a host is reachable (ICMP)</h2>
+            <span class="cn-tag">CN: ICMP, round-trip time</span>
+            <p class="cmd-why">Ping sends small ICMP packets and times the round trip, the simplest "is it alive and how far away" test.</p>
+            <pre><code># Windows (4 packets by default)
+ping github.com
+
+# Linux / macOS (Ctrl+C to stop)
+ping github.com</code></pre>
+            <p class="os-note">The time in milliseconds is latency. High or wildly varying times hint at network congestion or distance.</p>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Trace the route">Trace the path packets take</h2>
+            <span class="cn-tag">CN: routing, hops, TTL</span>
+            <p class="cmd-why">Every packet hops through multiple routers to reach its destination. This reveals each hop on the way, routing made visible.</p>
+            <pre><code># Windows
+tracert github.com
+
+# Linux / macOS
+traceroute github.com   # install if needed: sudo apt install traceroute</code></pre>
+            <p class="os-note">Each line is one router (a "hop"). This is the TTL field in action, decremented at every hop until the packet arrives.</p>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Ports &amp; connections">See open ports and live connections</h2>
+            <span class="cn-tag">CN: ports, TCP states, sockets</span>
+            <p class="cmd-why">Every network service listens on a port. See what is listening and which connections are currently open on your machine.</p>
+            <pre><code># Windows
+netstat -ano
+
+# Linux / macOS
+ss -tulpn        # modern (or: netstat -tulpn)</code></pre>
+            <p class="os-note">Notice TCP states like LISTEN and ESTABLISHED, that is the TCP connection lifecycle you read about, live.</p>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Talk to a server">Talk to a web server by hand (HTTP)</h2>
+            <span class="cn-tag">CN: HTTP, TCP, application layer</span>
+            <p class="cmd-why">A web request is just text sent over TCP. These make an HTTP request and show you the raw response headers, the protocol demystified.</p>
+            <pre><code># Any OS with curl
+curl -I https://github.com          # headers only
+curl -v https://example.com         # verbose: see the TCP + TLS + HTTP steps</code></pre>
+            <p class="os-note">The <code>-v</code> flag shows the DNS lookup, TCP connect, TLS handshake, and HTTP exchange in order, the whole stack in one command.</p>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Check a specific port">Check if a specific port is open</h2>
+            <span class="cn-tag">CN: ports, TCP handshake</span>
+            <p class="cmd-why">Useful for "is the server up on port 443?" Tries to open a TCP connection to one port.</p>
+            <pre><code># Linux / macOS (netcat)
+nc -zv github.com 443
+
+# Windows PowerShell
+Test-NetConnection github.com -Port 443</code></pre>
+            <p class="os-note">A success means the TCP three-way handshake completed. A timeout usually means a firewall or a closed port.</p>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Mini challenge">Mini challenge: trace a full request</h2>
+            <p class="muted">Put it together. Pick any website and, in order:</p>
+            <ol class="muted">
+                <li>Resolve its name with <code>nslookup</code> or <code>dig</code> (DNS).</li>
+                <li>Ping it to measure latency (ICMP).</li>
+                <li>Trace the route to see the hops (routing).</li>
+                <li>Run <code>curl -v</code> and watch DNS, TCP, TLS, and HTTP happen.</li>
+            </ol>
+            <p class="muted">You just walked the exact path of the classic interview question "what happens when you type a URL and press enter?", except you watched it for real. That is the fastest way to make it stick.</p>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="What's next">What to do next</h2>
+            <div class="nextlinks">
+                <a href="./cs-fundamentals-guide.html">🧠 CS Fundamentals (Networks)</a>
+                <a href="./cloud-devops-starter.html">☁️ Cloud &amp; DevOps</a>
+                <a href="./cybersecurity-roadmap.html">🛡️ Cyber Security Roadmap</a>
+                <a href="./interview-prep-kit.html">🗣️ Interview Prep</a>
+            </div>
+        </div>
+    </main>
+
+    <div data-component="footer"></div>
+    <div data-component="scripts-common"></div>
+    <script src="./components/component-loader.js"></script>
+    <script type="module" src="./functions/site.js?v=20260731"></script>
+</body>
+</html>

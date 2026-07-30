@@ -86,6 +86,15 @@ Make your first pull request without the fear: find beginner-friendly issues, fo
 ### 💰 [Salary Negotiation](https://shumbul.github.io/Resources/salary-negotiation-guide.html)
 Negotiate your offer without fear. Research, timing, ready-made scripts, and what to say (and never say), calibrated even for first jobs.
 
+### 🌐 [Build & Deploy a Website](https://shumbul.github.io/Resources/build-a-website.html)
+Go from a blank file to a live, shareable link in one afternoon: HTML, CSS, GitHub, and free GitHub Pages hosting, no experience needed.
+
+### 🤖 [Build an AI Agent](https://shumbul.github.io/Resources/build-ai-agent.html)
+Build a real AI agent from scratch, an LLM in a loop with tools and memory, in Python on a free API tier. Understand every piece, no ML maths required.
+
+### 🛰️ [Networking Toolkit](https://shumbul.github.io/Resources/networking-toolkit.html)
+Copy-paste commands (Windows, Linux, macOS) that make Computer Networks theory click: watch DNS, ICMP, routing, TCP, and ports happen live on your own machine.
+
 ## 🛠️ Technical Implementation
 
 This website is built using a **modular component system** that eliminates code duplication and makes maintenance easier:

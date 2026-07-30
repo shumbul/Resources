@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap">
+    <meta charset="UTF-8">
+    <div data-component="head-common"></div>
+
+    <title>Build &amp; Deploy a Website | Resources by Shumbul Arifa</title>
+    <meta name="description" content="Build your first real website and put it live on the internet for free. From a single HTML file to a deployed, shareable link, step by step.">
+    <meta property="og:title" content="Build & Deploy a Website - live in an afternoon">
+    <meta property="og:description" content="Go from a blank file to a live, shareable website for free, no experience needed.">
+
+    <style>
+        .guide-header { background: linear-gradient(135deg, var(--primary), var(--secondary)); color:#fff; padding:3.5rem 0; text-align:center; margin-bottom:2.5rem; }
+        .guide-title { font-size:2.6rem; font-weight:800; margin-bottom:.6rem; color:#fff; }
+        .guide-sub { font-size:1.15rem; color:rgba(255,255,255,.94); max-width:720px; margin:0 auto; }
+        .guide-badges { display:flex; gap:.5rem; justify-content:center; flex-wrap:wrap; margin-top:1.2rem; }
+        .guide-badge { background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.4); padding:.35rem .8rem; border-radius:999px; font-size:.85rem; font-weight:600; }
+
+        .starter { background:var(--bg-primary); border:1px solid var(--border); border-left:4px solid var(--primary); border-radius:12px; padding:1.1rem 1.3rem; margin-bottom:1.75rem; }
+        .gsection { background:var(--bg-secondary); border:1px solid var(--border); border-radius:16px; padding:1.6rem 1.75rem; margin-bottom:1.75rem; }
+        .gsection h2 { margin-top:0; }
+        .muted { color:var(--text-secondary); }
+
+        pre { background:#0f172a; color:#e2e8f0; border-radius:12px; padding:1rem 1.2rem; overflow-x:auto; font-size:.88rem; line-height:1.55; margin:.5rem 0; max-width:100%; box-sizing:border-box; }
+        pre code { font-family:'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, monospace; }
+        .path { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-top:.6rem; }
+        @media (max-width:760px){ .path { grid-template-columns:1fr; } }
+        .path .card { background:var(--bg-primary); border:1px solid var(--border); border-radius:12px; padding:1rem 1.1rem; }
+        .path .card b { color:var(--primary); }
+        .concept { display:inline-block; background:var(--bg-tertiary); border:1px solid var(--border); border-radius:999px; padding:.2rem .6rem; font-size:.78rem; font-weight:600; margin:.25rem .25rem 0 0; }
+        .gsection p a, .gsection li a, .starter a { text-decoration:underline; }
+        .nextlinks { display:flex; flex-wrap:wrap; gap:.6rem; }
+        .nextlinks a { text-decoration:none; background:var(--bg-primary); border:1px solid var(--border); border-radius:10px; padding:.55rem .9rem; font-weight:600; color:var(--text-primary); }
+        .nextlinks a:hover { border-color:var(--primary); color:var(--primary); }
+    </style>
+</head>
+<body>
+    <div data-component="theme-switcher"></div>
+
+    <header class="guide-header">
+        <div class="container">
+            <h1 class="guide-title">🌐 Build &amp; Deploy a Website</h1>
+            <p class="guide-sub">The most satisfying first project in tech: a website that is actually live on the internet, with a link you can text to anyone. You can go from blank file to shareable URL in a single afternoon, for free.</p>
+            <div class="guide-badges">
+                <span class="guide-badge">🚀 Live in one sitting</span>
+                <span class="guide-badge">🆓 Free hosting</span>
+                <span class="guide-badge">🌱 No experience needed</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="starter">
+            <strong style="font-family:var(--font-display);">🌱 Absolute beginner? Perfect</strong>
+            <p class="muted" style="margin:.5rem 0 0;">You do not need to know how to code first. You will write a little HTML and CSS here and learn by seeing it work. The goal is momentum: get something <i>live</i>, feel the win, then improve it. Want the deeper, structured version afterwards? Follow the <a href="./full-stack-developer-path.html">Full-Stack Developer Path</a>. Stuck? Tap <strong>✦ Ask AI</strong>.</p>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="The plan">The plan in one line</h2>
+            <p class="muted"><b>Write an HTML page → make it look good with CSS → put it on GitHub → turn on free hosting.</b> That is the entire journey. Let us do it.</p>
+            <div><span class="concept">HTML</span><span class="concept">CSS</span><span class="concept">Git &amp; GitHub</span><span class="concept">GitHub Pages</span></div>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Your first page">Step 1: Your first page</h2>
+            <p class="muted">Create a folder, and inside it a file called <code>index.html</code>. Paste this and open the file in your browser, you have a webpage.</p>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+  &lt;title&gt;My Portfolio&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Hi, I'm [Your Name]&lt;/h1&gt;
+  &lt;p&gt;I'm learning to build things for the web.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            <p class="muted"><code>index.html</code> is special, it is the default page a site loads. HTML is just structure: headings, paragraphs, links, images.</p>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Make it look good">Step 2: Make it look good (CSS)</h2>
+            <p class="muted">Add a <code>&lt;style&gt;</code> block inside <code>&lt;head&gt;</code>. CSS controls colors, spacing, and layout.</p>
+            <pre><code>&lt;style&gt;
+  body {
+    font-family: system-ui, sans-serif;
+    max-width: 680px;
+    margin: 3rem auto;
+    padding: 0 1rem;
+    line-height: 1.6;
+    color: #1f2937;
+  }
+  h1 { color: #7c3aed; }
+  a { color: #7c3aed; }
+&lt;/style&gt;</code></pre>
+            <p class="muted">Refresh the browser and watch it transform. Change the colors, add your links (GitHub, LinkedIn), a short bio, maybe a project or two. Make it yours.</p>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Put it on GitHub">Step 3: Put it on GitHub</h2>
+            <p class="muted">To host it free, your code needs to live on GitHub. Create a free account, then in your project folder:</p>
+            <pre><code>git init
+git add .
+git commit -m "My first website"</code></pre>
+            <p class="muted">Create a new repository on GitHub named <code>your-username.github.io</code> (this exact name unlocks free hosting), then connect and push:</p>
+            <pre><code>git remote add origin https://github.com/YOUR-USERNAME/YOUR-USERNAME.github.io.git
+git branch -M main
+git push -u origin main</code></pre>
+            <p class="muted">New to Git? The <a href="./git-guide.html">Git Guide</a> walks through every command calmly.</p>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Go live">Step 4: Go live (free hosting)</h2>
+            <p class="muted">Because you named the repo <code>your-username.github.io</code>, GitHub Pages may already be serving it. To be sure:</p>
+            <ol class="muted">
+                <li>Open your repo on GitHub → <b>Settings</b> → <b>Pages</b>.</li>
+                <li>Under "Build and deployment", set <b>Source</b> to "Deploy from a branch", branch <code>main</code>, folder <code>/ (root)</code>.</li>
+                <li>Save, wait a minute, and visit <code>https://your-username.github.io</code>.</li>
+            </ol>
+            <p class="muted">That is a real, live website with a link you can share with anyone, at zero cost. This entire Resources site is hosted exactly this way.</p>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Level up">Step 5: Level it up</h2>
+            <p class="muted">Now iterate. Each of these is a small, satisfying upgrade:</p>
+            <ul class="muted">
+                <li>Make it responsive so it looks great on phones (CSS media queries).</li>
+                <li>Add a projects section with cards and links to live demos.</li>
+                <li>Add a bit of JavaScript, a dark-mode toggle or a contact form.</li>
+                <li>Point a custom domain at it (optional, a domain costs a little).</li>
+            </ul>
+            <p class="muted">Every push auto-updates the live site in under a minute. That fast feedback loop is what makes web development addictive.</p>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Which path next">Which path fits you next?</h2>
+            <div class="path">
+                <div class="card"><b>Want depth?</b><p class="muted" style="margin:.3rem 0 0;">Follow the <a href="./full-stack-developer-path.html">Full-Stack Path</a> to learn JavaScript, React, and backends properly.</p></div>
+                <div class="card"><b>Want a job portfolio?</b><p class="muted" style="margin:.3rem 0 0;">Turn this into a proper portfolio with the <a href="./resume-portfolio-templates.html">Resume &amp; Portfolio guide</a>.</p></div>
+                <div class="card"><b>Want to add AI?</b><p class="muted" style="margin:.3rem 0 0;">Drop a small assistant onto your site, see <a href="./build-ai-agent.html">Build an AI Agent</a>.</p></div>
+            </div>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="What's next">What to do next</h2>
+            <div class="nextlinks">
+                <a href="./full-stack-developer-path.html">🌐 Full-Stack Path</a>
+                <a href="./git-guide.html">🚀 Git Guide</a>
+                <a href="./resume-portfolio-templates.html">📄 Resume &amp; Portfolio</a>
+                <a href="./open-source-guide.html">🌍 Open Source</a>
+            </div>
+        </div>
+    </main>
+
+    <div data-component="footer"></div>
+    <div data-component="scripts-common"></div>
+    <script src="./components/component-loader.js"></script>
+    <script type="module" src="./functions/site.js?v=20260731"></script>
+</body>
+</html>

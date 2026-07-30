@@ -30,6 +30,11 @@ const GROUPS = [
         { href: 'cloud-devops-starter.html', label: 'Cloud & DevOps', icon: '☁️' },
         { href: 'open-source-guide.html', label: 'Open Source', icon: '🌍' },
     ]},
+    { title: 'Build a Project', items: [
+        { href: 'build-a-website.html', label: 'Build a Website', icon: '🌐' },
+        { href: 'build-ai-agent.html', label: 'Build an AI Agent', icon: '🤖' },
+        { href: 'networking-toolkit.html', label: 'Networking Toolkit', icon: '🛰️' },
+    ]},
     { title: 'Land the Job', items: [
         { href: 'trending-tech-roles.html', label: 'Trending Tech Roles', icon: '🚀' },
         { href: 'linkedin-utilization-guide.html', label: 'LinkedIn Guide', icon: '💼' },
