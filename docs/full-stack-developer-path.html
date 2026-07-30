@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap">
+    <meta charset="UTF-8">
+    <div data-component="head-common"></div>
+
+    <title>Full-Stack Developer Path | Resources by Shumbul Arifa</title>
+    <meta name="description" content="A calm, step-by-step path from zero to full-stack developer: HTML, CSS, JavaScript, React, Node, databases, and the projects that get you hired.">
+    <meta property="og:title" content="Full-Stack Developer Path - from zero to hired">
+    <meta property="og:description" content="Learn web development in the right order, build real projects, and skip the tutorial trap.">
+
+    <style>
+        .guide-header { background: linear-gradient(135deg, var(--primary), var(--secondary)); color:#fff; padding:3.5rem 0; text-align:center; margin-bottom:2.5rem; }
+        .guide-title { font-size:2.6rem; font-weight:800; margin-bottom:.6rem; color:#fff; }
+        .guide-sub { font-size:1.15rem; color:rgba(255,255,255,.94); max-width:720px; margin:0 auto; }
+        .guide-badges { display:flex; gap:.5rem; justify-content:center; flex-wrap:wrap; margin-top:1.2rem; }
+        .guide-badge { background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.4); padding:.35rem .8rem; border-radius:999px; font-size:.85rem; font-weight:600; }
+
+        .starter { background:var(--bg-primary); border:1px solid var(--border); border-left:4px solid var(--primary); border-radius:12px; padding:1.1rem 1.3rem; margin-bottom:1.75rem; }
+        .gsection { background:var(--bg-secondary); border:1px solid var(--border); border-radius:16px; padding:1.6rem 1.75rem; margin-bottom:1.75rem; }
+        .gsection h2 { margin-top:0; }
+        .muted { color:var(--text-secondary); }
+
+        .stage { display:flex; gap:1rem; align-items:flex-start; padding:1.1rem 0; border-bottom:1px solid var(--border); }
+        .stage:last-child { border-bottom:none; }
+        .stage .num { flex-shrink:0; width:2.2rem; height:2.2rem; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; color:#fff; background:linear-gradient(135deg,var(--primary),var(--secondary)); }
+        .stage h3 { margin:0 0 .3rem; font-size:1.15rem; }
+        .stage p { margin:.2rem 0; }
+        .skill { display:inline-block; background:var(--bg-tertiary); border:1px solid var(--border); border-radius:999px; padding:.2rem .6rem; font-size:.78rem; font-weight:600; margin:.25rem .25rem 0 0; }
+
+        .build { background:var(--bg-primary); border:1px solid var(--border); border-radius:12px; padding:1rem 1.2rem; margin-top:.6rem; }
+        .build strong { color:var(--primary); }
+
+        .cols { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+        @media (max-width:760px){ .cols { grid-template-columns:1fr; } }
+        .avoid, .do { border-radius:12px; padding:1rem 1.2rem; }
+        .avoid { background:#fdecec; border:1px solid #f3b9b4; }
+        .do { background:#e7f6ee; border:1px solid #a9dcc0; }
+        .avoid h4, .do h4 { margin:0 0 .5rem; }
+        .avoid h4 { color:#b3261e; } .do h4 { color:#0b7a43; }
+        .avoid ul, .do ul { margin:0; padding-left:1.1rem; } .avoid li, .do li { margin:.25rem 0; }
+
+        .nextlinks { display:flex; flex-wrap:wrap; gap:.6rem; }
+        .nextlinks a { text-decoration:none; background:var(--bg-primary); border:1px solid var(--border); border-radius:10px; padding:.55rem .9rem; font-weight:600; color:var(--text-primary); }
+        .nextlinks a:hover { border-color:var(--primary); color:var(--primary); }
+    </style>
+</head>
+<body>
+    <div data-component="theme-switcher"></div>
+
+    <header class="guide-header">
+        <div class="container">
+            <h1 class="guide-title">🌐 Full-Stack Developer Path</h1>
+            <p class="guide-sub">Web development, in the right order. No jumping around, no tutorial hell. Learn each layer, build a real thing with it, then move on. By the end you have skills and a portfolio.</p>
+            <div class="guide-badges">
+                <span class="guide-badge">🧱 Step by step</span>
+                <span class="guide-badge">🛠️ Project-first</span>
+                <span class="guide-badge">🆓 Free tools only</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="starter">
+            <strong style="font-family:var(--font-display);">🌱 New here? Read this first</strong>
+            <p class="muted" style="margin:.5rem 0 0;">The biggest trap in learning to code is watching endless tutorials without building anything. This path fixes that: every stage ends with a small project you build yourself. If a stage feels slow, that is normal, keep going. Stuck? Tap <strong>✦ Ask AI</strong> for a hint tailored to where you are.</p>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="The big picture">The big picture</h2>
+            <p class="muted">"Full-stack" just means you can build both halves of a web app:</p>
+            <ul class="muted">
+                <li><b>Frontend</b> - what the user sees and clicks (runs in the browser).</li>
+                <li><b>Backend</b> - the server, the logic, and the database (runs on a machine somewhere).</li>
+            </ul>
+            <p class="muted">You will learn the frontend first because you can see results instantly, which keeps motivation high. Then the backend, then you connect them. Total time to job-ready with steady effort: roughly <b>4 to 6 months</b>. Consistency beats cramming every time.</p>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Stage 1: Foundations">Stage 1: Web foundations (HTML &amp; CSS)</h2>
+            <div class="stage" data-reveal>
+                <div class="num">1</div>
+                <div>
+                    <h3>Structure and style</h3>
+                    <p class="muted">HTML gives a page its structure (headings, lists, links, forms). CSS makes it look good (colors, spacing, layout). Learn semantic HTML, the box model, Flexbox, Grid, and responsive design.</p>
+                    <div><span class="skill">HTML5</span><span class="skill">CSS</span><span class="skill">Flexbox</span><span class="skill">Grid</span><span class="skill">Responsive design</span></div>
+                    <div class="build"><strong>Build:</strong> a personal landing page and one pixel-accurate clone of a real site (say, a product page). Make it look right on both phone and laptop.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Stage 2: JavaScript">Stage 2: JavaScript (the language of the web)</h2>
+            <div class="stage" data-reveal>
+                <div class="num">2</div>
+                <div>
+                    <h3>Make pages interactive</h3>
+                    <p class="muted">JavaScript is where things start to feel powerful. Learn the core language, then how it talks to the page (the DOM) and to servers (fetch / APIs). Do not skip async, it trips everyone up and matters everywhere.</p>
+                    <div><span class="skill">Variables &amp; functions</span><span class="skill">Arrays &amp; objects</span><span class="skill">DOM</span><span class="skill">Fetch / APIs</span><span class="skill">Async / await</span><span class="skill">ES6+</span></div>
+                    <div class="build"><strong>Build:</strong> a to-do app (add, delete, save), and a weather app that fetches a real API and shows the result. No frameworks yet, do it in plain JS so you understand the basics.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Stage 3: React">Stage 3: A frontend framework (React)</h2>
+            <div class="stage" data-reveal>
+                <div class="num">3</div>
+                <div>
+                    <h3>Build real user interfaces</h3>
+                    <p class="muted">React is the most in-demand way to build UIs. Learn components, props, state, hooks, and how to fetch data and route between pages. Once you get "thinking in components", everything speeds up.</p>
+                    <div><span class="skill">Components</span><span class="skill">Props &amp; state</span><span class="skill">Hooks</span><span class="skill">Routing</span><span class="skill">Data fetching</span></div>
+                    <div class="build"><strong>Build:</strong> a multi-page app that fetches data (a movie browser, a GitHub profile viewer). Deploy it free on Vercel or Netlify and put the link on your resume.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Stage 4: Backend">Stage 4: The backend (Node, Express, APIs)</h2>
+            <div class="stage" data-reveal>
+                <div class="num">4</div>
+                <div>
+                    <h3>Build the server side</h3>
+                    <p class="muted">Now the other half. Learn how a server handles requests, builds an API, and manages users. Node with Express is a friendly, popular starting point (and it is still JavaScript, so no new language).</p>
+                    <div><span class="skill">Node.js</span><span class="skill">Express</span><span class="skill">REST APIs</span><span class="skill">Auth (JWT)</span><span class="skill">Error handling</span></div>
+                    <div class="build"><strong>Build:</strong> a REST API with sign-up, login, and CRUD (say, a notes API). Test it with Postman before you connect a frontend.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Stage 5: Databases">Stage 5: Databases (where data lives)</h2>
+            <div class="stage" data-reveal>
+                <div class="num">5</div>
+                <div>
+                    <h3>Store and query data</h3>
+                    <p class="muted">Apps need to remember things. Learn one SQL database (PostgreSQL is a great choice) and understand the basics of one NoSQL option (MongoDB) too. Focus on modeling data well, that skill outlasts any specific tool.</p>
+                    <div><span class="skill">SQL basics</span><span class="skill">PostgreSQL</span><span class="skill">MongoDB</span><span class="skill">Schema design</span><span class="skill">Relationships</span></div>
+                    <div class="build"><strong>Build:</strong> connect your Stage 4 API to a real database so data survives a restart. Want to go deeper on SQL? See the <a href="./sql-databases-guide.html">SQL &amp; Databases guide</a>.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Stage 6: Full-stack">Stage 6: Put it all together</h2>
+            <div class="stage" data-reveal>
+                <div class="num">6</div>
+                <div>
+                    <h3>Ship one real full-stack app</h3>
+                    <p class="muted">This is the project that gets you hired. Frontend (React) + backend (Node/Express) + database + auth + deployment. Pick something you would actually use so you stay motivated.</p>
+                    <div><span class="skill">Git &amp; GitHub</span><span class="skill">Deployment</span><span class="skill">Environment vars</span><span class="skill">Basic testing</span></div>
+                    <div class="build"><strong>Build one of:</strong> a blog with accounts and comments, an expense tracker, a job-application tracker, or a simple e-commerce store. One polished app beats ten half-finished ones. Learn Git well while you are here, the <a href="./git-guide.html">Git Guide</a> has you covered.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Do's and don'ts">Do's and don'ts</h2>
+            <div class="cols">
+                <div class="avoid" data-reveal>
+                    <h4>Avoid</h4>
+                    <ul>
+                        <li>Tutorial hell: watching without building.</li>
+                        <li>Learning 3 frameworks at once.</li>
+                        <li>Chasing every shiny new tool.</li>
+                        <li>Copy-pasting code you do not understand.</li>
+                        <li>Waiting until you "feel ready" to build.</li>
+                    </ul>
+                </div>
+                <div class="do" data-reveal data-reveal-delay="80">
+                    <h4>Do</h4>
+                    <ul>
+                        <li>Build a small thing after every stage.</li>
+                        <li>Go deep on one stack, then branch out.</li>
+                        <li>Read errors slowly, they are clues.</li>
+                        <li>Rebuild from a blank file to test yourself.</li>
+                        <li>Ship and deploy, even if it is imperfect.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Free resources">Free places to learn</h2>
+            <ul class="muted">
+                <li><a href="https://developer.mozilla.org/" target="_blank" rel="noopener">MDN Web Docs</a> - the reference for HTML, CSS, and JavaScript.</li>
+                <li><a href="https://www.theodinproject.com/" target="_blank" rel="noopener">The Odin Project</a> - a full, free, project-based full-stack curriculum.</li>
+                <li><a href="https://www.freecodecamp.org/" target="_blank" rel="noopener">freeCodeCamp</a> - hands-on lessons with certificates.</li>
+                <li><a href="https://javascript.info/" target="_blank" rel="noopener">javascript.info</a> - the clearest deep dive on JavaScript.</li>
+                <li><a href="https://react.dev/learn" target="_blank" rel="noopener">react.dev</a> - the official, beginner-friendly React tutorial.</li>
+            </ul>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="What's next">What to do next</h2>
+            <p class="muted">Once you have one full-stack app deployed, you are ready to apply. These guides take you the rest of the way:</p>
+            <div class="nextlinks">
+                <a href="./resume-portfolio-templates.html">📄 Resume &amp; Portfolio</a>
+                <a href="./dsa-practice-guide.html">💻 DSA Practice</a>
+                <a href="./interview-prep-kit.html">🗣️ Interview Prep</a>
+                <a href="./ai-era-job-hunt.html">🧭 AI Era Job Hunt</a>
+                <a href="./trending-tech-roles.html">🚀 Trending Roles</a>
+            </div>
+        </div>
+    </main>
+
+    <div data-component="footer"></div>
+    <div data-component="scripts-common"></div>
+    <script src="./components/component-loader.js"></script>
+    <script type="module" src="./functions/site.js"></script>
+</body>
+</html>

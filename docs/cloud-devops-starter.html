@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap">
+    <meta charset="UTF-8">
+    <div data-component="head-common"></div>
+
+    <title>Cloud &amp; DevOps Starter | Resources by Shumbul Arifa</title>
+    <meta name="description" content="A beginner's path into cloud and DevOps: Linux, Git, Docker, CI/CD, and one cloud provider, with the concepts and projects that get you hired.">
+    <meta property="og:title" content="Cloud & DevOps Starter - from zero">
+    <meta property="og:description" content="The core cloud and DevOps skills, in a sensible order, with hands-on projects.">
+
+    <style>
+        .guide-header { background: linear-gradient(135deg, var(--primary), var(--secondary)); color:#fff; padding:3.5rem 0; text-align:center; margin-bottom:2.5rem; }
+        .guide-title { font-size:2.6rem; font-weight:800; margin-bottom:.6rem; color:#fff; }
+        .guide-sub { font-size:1.15rem; color:rgba(255,255,255,.94); max-width:720px; margin:0 auto; }
+        .guide-badges { display:flex; gap:.5rem; justify-content:center; flex-wrap:wrap; margin-top:1.2rem; }
+        .guide-badge { background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.4); padding:.35rem .8rem; border-radius:999px; font-size:.85rem; font-weight:600; }
+
+        .starter { background:var(--bg-primary); border:1px solid var(--border); border-left:4px solid var(--primary); border-radius:12px; padding:1.1rem 1.3rem; margin-bottom:1.75rem; }
+        .gsection { background:var(--bg-secondary); border:1px solid var(--border); border-radius:16px; padding:1.6rem 1.75rem; margin-bottom:1.75rem; }
+        .gsection h2 { margin-top:0; }
+        .muted { color:var(--text-secondary); }
+
+        .stage { display:flex; gap:1rem; align-items:flex-start; padding:1.1rem 0; border-bottom:1px solid var(--border); }
+        .stage:last-child { border-bottom:none; }
+        .stage > div { min-width:0; }
+        pre { max-width:100%; }
+        .stage .num { flex-shrink:0; width:2.2rem; height:2.2rem; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; color:#fff; background:linear-gradient(135deg,var(--primary),var(--secondary)); }
+        .stage h3 { margin:0 0 .3rem; font-size:1.15rem; }
+        .skill { display:inline-block; background:var(--bg-tertiary); border:1px solid var(--border); border-radius:999px; padding:.2rem .6rem; font-size:.78rem; font-weight:600; margin:.25rem .25rem 0 0; }
+        .build { background:var(--bg-primary); border:1px solid var(--border); border-radius:12px; padding:1rem 1.2rem; margin-top:.6rem; }
+        .build strong { color:var(--primary); }
+        pre { background:#0f172a; color:#e2e8f0; border-radius:12px; padding:1rem 1.2rem; overflow-x:auto; font-size:.9rem; line-height:1.55; margin:.6rem 0; }
+        pre code { font-family:'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, monospace; }
+        .nextlinks { display:flex; flex-wrap:wrap; gap:.6rem; }
+        .nextlinks a { text-decoration:none; background:var(--bg-primary); border:1px solid var(--border); border-radius:10px; padding:.55rem .9rem; font-weight:600; color:var(--text-primary); }
+        .nextlinks a:hover { border-color:var(--primary); color:var(--primary); }
+    </style>
+</head>
+<body>
+    <div data-component="theme-switcher"></div>
+
+    <header class="guide-header">
+        <div class="container">
+            <h1 class="guide-title">☁️ Cloud &amp; DevOps Starter</h1>
+            <p class="guide-sub">"DevOps" appears on nearly every job posting now, and it looks intimidating. It is not. This is a calm, ordered path through the core skills, with free tools and hands-on projects at each step.</p>
+            <div class="guide-badges">
+                <span class="guide-badge">🧱 Ordered path</span>
+                <span class="guide-badge">🛠️ Hands-on</span>
+                <span class="guide-badge">🆓 Free tiers</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="starter">
+            <strong style="font-family:var(--font-display);">🌱 What even is DevOps?</strong>
+            <p class="muted" style="margin:.5rem 0 0;">In plain words: DevOps is the set of practices and tools that get code from your laptop into the hands of users, quickly and reliably. Instead of "write code, throw it over the wall," one flow builds, tests, ships, and runs it. You do not need all of it at once, follow the stages below. Stuck on a concept? Tap <strong>✦ Ask AI</strong>.</p>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="The mindset">The DevOps mindset first</h2>
+            <p class="muted">Before tools, the idea: <b>automate the boring, repeatable stuff so releases are fast and mistakes are rare.</b> Every tool below exists to serve that goal. Keep asking "what manual step can I automate?" and DevOps will make sense.</p>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Stage 1: Linux &amp; Git">Stage 1: Linux &amp; Git (the ground floor)</h2>
+            <div class="stage" data-reveal>
+                <div class="num">1</div>
+                <div>
+                    <h3>Live in the terminal</h3>
+                    <p class="muted">Almost all servers run Linux, and everything in DevOps assumes you are comfortable at the command line and with version control.</p>
+                    <div><span class="skill">Linux commands</span><span class="skill">File permissions</span><span class="skill">Bash scripting</span><span class="skill">Git</span><span class="skill">SSH</span></div>
+                    <div class="build"><strong>Build:</strong> spin up a free Linux VM (or use WSL), navigate the filesystem, and write a small bash script that automates a task (say, backing up a folder). New to Git? The <a href="./git-guide.html">Git Guide</a> covers it.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Stage 2: Containers">Stage 2: Containers (Docker)</h2>
+            <div class="stage" data-reveal>
+                <div class="num">2</div>
+                <div>
+                    <h3>Package apps so they run anywhere</h3>
+                    <p class="muted">Docker packages an app with everything it needs into a "container" that runs the same on any machine. It solves "but it works on my laptop." This is the single most useful DevOps skill to learn first.</p>
+                    <div><span class="skill">Images vs containers</span><span class="skill">Dockerfile</span><span class="skill">docker build / run</span><span class="skill">Volumes</span><span class="skill">docker-compose</span></div>
+                    <pre><code># A tiny Dockerfile for a Node app
+FROM node:20-alpine
+WORKDIR /app
+COPY . .
+RUN npm install
+CMD ["node", "server.js"]</code></pre>
+                    <div class="build"><strong>Build:</strong> containerize one of your own apps, then run it with <code>docker run</code>. Bonus: use docker-compose to run the app plus a database together.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Stage 3: CI/CD">Stage 3: CI/CD (automate build &amp; deploy)</h2>
+            <div class="stage" data-reveal>
+                <div class="num">3</div>
+                <div>
+                    <h3>Ship automatically on every push</h3>
+                    <p class="muted">CI/CD means: every time you push code, a pipeline automatically tests it and (if it passes) deploys it. GitHub Actions is free and the easiest place to start.</p>
+                    <div><span class="skill">GitHub Actions</span><span class="skill">Pipelines</span><span class="skill">Automated tests</span><span class="skill">Build &amp; deploy steps</span></div>
+                    <pre><code># .github/workflows/ci.yml (runs tests on every push)
+name: CI
+on: [push]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm install
+      - run: npm test</code></pre>
+                    <div class="build"><strong>Build:</strong> add a GitHub Actions workflow to one of your repos that runs your tests on every push, then extend it to auto-deploy to a free host.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Stage 4: Cloud">Stage 4: One cloud provider</h2>
+            <div class="stage" data-reveal>
+                <div class="num">4</div>
+                <div>
+                    <h3>Run things on real infrastructure</h3>
+                    <p class="muted">Pick <b>one</b> cloud (AWS is the market leader; Azure and GCP are close cousins) and learn the core services. Do not try to learn all three, the concepts transfer.</p>
+                    <div><span class="skill">Compute (EC2 / VMs)</span><span class="skill">Storage (S3 / blobs)</span><span class="skill">Networking basics</span><span class="skill">IAM &amp; permissions</span><span class="skill">Managed databases</span></div>
+                    <div class="build"><strong>Build:</strong> deploy your Dockerized app to a cloud free tier. Then try a free-tier database and connect to it. A foundational cert (AWS Cloud Practitioner) is a solid, resume-friendly goal here.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Stage 5: IaC &amp; orchestration">Stage 5: Infrastructure as Code &amp; Kubernetes</h2>
+            <div class="stage" data-reveal>
+                <div class="num">5</div>
+                <div>
+                    <h3>Scale it up (once the basics click)</h3>
+                    <p class="muted">These are the "advanced but valuable" skills. Infrastructure as Code (Terraform) lets you define servers in files instead of clicking around. Kubernetes runs and scales many containers. Learn these <i>after</i> you are comfortable with stages 1 to 4, not before.</p>
+                    <div><span class="skill">Terraform</span><span class="skill">Kubernetes basics</span><span class="skill">Monitoring &amp; logs</span><span class="skill">Secrets management</span></div>
+                    <div class="build"><strong>Build:</strong> use Terraform to create one cloud resource from code. Then deploy a container to a small Kubernetes cluster (minikube runs one locally for free).</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="A sensible order">A sensible learning order</h2>
+            <p class="muted">If you remember one thing: go in order and do not skip ahead. A common mistake is jumping straight to Kubernetes before understanding Linux, Git, and Docker, which makes everything confusing.</p>
+            <p class="muted"><b>Linux &amp; Git → Docker → CI/CD → one Cloud → Terraform &amp; Kubernetes.</b> Each stage makes the next one make sense.</p>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Free resources">Free places to learn</h2>
+            <ul class="muted">
+                <li><a href="https://roadmap.sh/devops" target="_blank" rel="noopener">roadmap.sh/devops</a> - the visual DevOps roadmap.</li>
+                <li><a href="https://docs.docker.com/get-started/" target="_blank" rel="noopener">Docker's official getting started</a> - hands-on and clear.</li>
+                <li><a href="https://docs.github.com/actions" target="_blank" rel="noopener">GitHub Actions docs</a> - free CI/CD with great examples.</li>
+                <li><a href="https://aws.amazon.com/training/digital/" target="_blank" rel="noopener">AWS free digital training</a> - official cloud basics.</li>
+                <li><a href="https://killercoda.com/" target="_blank" rel="noopener">Killercoda</a> - free browser labs for Docker, Kubernetes, and Linux.</li>
+            </ul>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="What's next">What to do next</h2>
+            <div class="nextlinks">
+                <a href="./full-stack-developer-path.html">🌐 Full-Stack Path</a>
+                <a href="./git-guide.html">🚀 Git Guide</a>
+                <a href="./trending-tech-roles.html">🚀 Trending Roles</a>
+                <a href="./resume-portfolio-templates.html">📄 Resume &amp; Portfolio</a>
+            </div>
+        </div>
+    </main>
+
+    <div data-component="footer"></div>
+    <div data-component="scripts-common"></div>
+    <script src="./components/component-loader.js"></script>
+    <script type="module" src="./functions/site.js"></script>
+</body>
+</html>

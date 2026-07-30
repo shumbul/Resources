@@ -21,6 +21,13 @@ const GROUPS = [
         { href: 'git-guide.html', label: 'Git Guide', icon: '🚀' },
         { href: 'dsa-practice-guide.html', label: 'DSA Practice', icon: '💻' },
         { href: 'system-design-templates.html', label: 'System Design', icon: '🎯' },
+        { href: 'cs-fundamentals-guide.html', label: 'CS Fundamentals', icon: '🧠' },
+        { href: 'sql-databases-guide.html', label: 'SQL & Databases', icon: '🗄️' },
+    ]},
+    { title: 'Learn to Build', items: [
+        { href: 'full-stack-developer-path.html', label: 'Full-Stack Path', icon: '🌐' },
+        { href: 'cloud-devops-starter.html', label: 'Cloud & DevOps', icon: '☁️' },
+        { href: 'open-source-guide.html', label: 'Open Source', icon: '🌍' },
     ]},
     { title: 'Land the Job', items: [
         { href: 'trending-tech-roles.html', label: 'Trending Tech Roles', icon: '🚀' },
@@ -28,6 +35,7 @@ const GROUPS = [
         { href: 'resume-portfolio-templates.html', label: 'Resume & Portfolio', icon: '📄' },
         { href: 'interview-prep-kit.html', label: 'Interview Prep', icon: '🗣️' },
         { href: 'star-method.html', label: 'STAR Method', icon: '⭐' },
+        { href: 'salary-negotiation-guide.html', label: 'Salary Negotiation', icon: '💰' },
         { href: 'ai-era-job-hunt.html', label: 'AI Era Job Hunt', icon: '🧭' },
         { href: 'big-tech-core-models.html', label: 'Big Tech Models', icon: '🏢' },
     ]},

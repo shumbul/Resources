@@ -61,6 +61,24 @@ Answer any "tell me about a time" question with a clear structure. Includes a fr
 ### 🚀 [Trending Roles in Tech](https://shumbul.github.io/Resources/trending-tech-roles.html)
 A friendly map of the most in-demand tech roles for 2026: what each one does, why it is trending, the core skills, and how a fresher can break in. Includes an at-a-glance comparison and a "how to pick your lane" guide.
 
+### 🌐 [Full-Stack Developer Path](https://shumbul.github.io/Resources/full-stack-developer-path.html)
+Web development in the right order: HTML, CSS, JavaScript, React, Node, and databases, each stage ending with a project you build yourself. Skips tutorial hell.
+
+### 🧠 [CS Fundamentals](https://shumbul.github.io/Resources/cs-fundamentals-guide.html)
+The core computer science every fresher interview digs into: Operating Systems, DBMS, Computer Networks, and OOP, with focus topics and sample questions and answers.
+
+### 🗄️ [SQL & Databases](https://shumbul.github.io/Resources/sql-databases-guide.html)
+The practical slice of SQL you actually use: everyday queries, joins made simple, and the database concepts interviews love, with copy-ready examples.
+
+### ☁️ [Cloud & DevOps Starter](https://shumbul.github.io/Resources/cloud-devops-starter.html)
+A calm, ordered path into cloud and DevOps: Linux, Git, Docker, CI/CD, and one cloud provider, with free tools and a hands-on project at each stage.
+
+### 🌍 [Open-Source Contribution](https://shumbul.github.io/Resources/open-source-guide.html)
+Make your first pull request without the fear: find beginner-friendly issues, follow the fork-and-pull workflow, and build real, public proof of work.
+
+### 💰 [Salary Negotiation](https://shumbul.github.io/Resources/salary-negotiation-guide.html)
+Negotiate your offer without fear. Research, timing, ready-made scripts, and what to say (and never say), calibrated even for first jobs.
+
 ## 🛠️ Technical Implementation
 
 This website is built using a **modular component system** that eliminates code duplication and makes maintenance easier:
