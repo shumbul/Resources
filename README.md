@@ -58,6 +58,9 @@ The STAR method, common behavioral questions, a technical checklist, and smart q
 ### ⭐ [The STAR Method](https://shumbul.github.io/Resources/star-method.html)
 Answer any "tell me about a time" question with a clear structure. Includes a framework, 10 worked sample answers, and 24 practice questions.
 
+### 🚀 [Trending Roles in Tech](https://shumbul.github.io/Resources/trending-tech-roles.html)
+A friendly map of the most in-demand tech roles for 2026: what each one does, why it is trending, the core skills, and how a fresher can break in. Includes an at-a-glance comparison and a "how to pick your lane" guide.
+
 ## 🛠️ Technical Implementation
 
 This website is built using a **modular component system** that eliminates code duplication and makes maintenance easier:

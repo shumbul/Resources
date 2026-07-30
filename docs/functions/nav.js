@@ -23,6 +23,7 @@ const GROUPS = [
         { href: 'system-design-templates.html', label: 'System Design', icon: '🎯' },
     ]},
     { title: 'Land the Job', items: [
+        { href: 'trending-tech-roles.html', label: 'Trending Tech Roles', icon: '🚀' },
         { href: 'linkedin-utilization-guide.html', label: 'LinkedIn Guide', icon: '💼' },
         { href: 'resume-portfolio-templates.html', label: 'Resume & Portfolio', icon: '📄' },
         { href: 'interview-prep-kit.html', label: 'Interview Prep', icon: '🗣️' },
