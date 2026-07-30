@@ -1,11 +1,17 @@
-Make Back to Resources link white and expand Career Portals to 99 companies
+New heart-S logo and fix outdated Career Portal links
 
-- Fixed the shared back-link color: head-common.html overrode it to grey; now
-  pure white (and on hover) across all guide pages
-- Career Portals: curated to exactly 99 companies that hire in India, pay well,
-  and are popular/successful (added product, fintech, semiconductor, and Indian
-  unicorn employers; removed a few weaker fits). Updated title, header, count,
-  homepage card, README, and the AI Era Job Hunt callout
-- Validated: 99 companies, no duplicates, WCAG AA 0 violations, HTMLHint clean
+- Replaced the plain spark logo with an original heart-shaped S mark (gradient
+  heart + white S swash) in the nav brand and favicon. Self-contained SVG, no
+  external/stock assets.
+- Audited all 99 career-portal links; fixed the genuinely broken ones:
+  * Deloitte: dead host jobsindia.deloitte.com to www2.deloitte.com/in/en/careers.html
+  * Visa: 404 jobs.html to corporate.visa.com/en/jobs/
+  * Optum: dead host to www.optum.com/careers.html
+  * Tech Mahindra: 404 to www.techmahindra.com/careers/
+  * Urban Company: 404 to careers.urbancompany.com/
+  * VMware (acquired by Broadcom, link dead) replaced with InMobi
+  (403/405/406 responses were anti-bot blocks on valid pages, left as-is)
+- Still exactly 99 companies, no duplicates, all https, WCAG AA clean, HTMLHint
+  40 files clean
 
 Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>

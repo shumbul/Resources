@@ -61,6 +61,16 @@ const SIDEBAR_W = 250;
 const TOPBAR_H = 56;
 const COLLAPSE_KEY = 'sidebar_collapsed';
 
+// Brand mark: a heart shape with an "S" swash through it (original, gradient).
+const HEART_S_SVG = `<svg viewBox="0 0 32 32" role="img" aria-label="Resources logo">
+    <defs><linearGradient id="heartS" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#7c3aed"/><stop offset="1" stop-color="#ec4899"/>
+    </linearGradient></defs>
+    <path fill="url(#heartS)" d="M16 28.5C7.5 22.6 2.8 16.6 2.8 10.9 2.8 7.1 5.7 4.4 9.2 4.4c2.6 0 5 1.5 6.8 4 1.8-2.5 4.2-4 6.8-4 3.5 0 6.4 2.7 6.4 6.5 0 5.7-4.7 11.7-13.2 17.6z"/>
+    <path fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"
+        d="M20.2 11.4c-1.2-1.1-3-1.5-4.6-1-1.5.5-2.2 1.9-1.3 3 .9 1.2 3.2 1.2 4.4 2.1 1.2.9.9 2.6-.6 3.2-1.6.6-3.6.2-4.9-.9"/>
+</svg>`;
+
 const CSS = `
 :root { --sidebar-w: ${SIDEBAR_W}px; --topbar-h: ${TOPBAR_H}px; }
 
@@ -74,8 +84,8 @@ const CSS = `
 .site-menu-btn:hover{border-color:var(--primary);color:var(--primary);}
 .site-topbar__brand{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--font-display,inherit);
     font-weight:700;color:var(--text-primary,#111);text-decoration:none;white-space:nowrap;}
-.site-topbar__brand .spark{display:inline-flex;width:28px;height:28px;align-items:center;justify-content:center;
-    border-radius:8px;color:#fff;background:linear-gradient(135deg,var(--primary),var(--secondary));font-size:.95rem;}
+.site-topbar__brand .spark{display:inline-flex;width:30px;height:30px;align-items:center;justify-content:center;}
+.site-topbar__brand .spark svg{width:30px;height:30px;display:block;filter:drop-shadow(0 2px 5px rgba(124,58,237,.35));}
 .site-topbar__spacer{flex:1;}
 .site-topbar__links{display:flex;align-items:center;gap:.3rem;}
 .site-topbar__links a{white-space:nowrap;text-decoration:none;font:600 .9rem/1 var(--font-sans,inherit);
@@ -139,7 +149,7 @@ export function renderNav() {
         `<a href="./${l.href}"${isActive(l) ? ' class="active" aria-current="page"' : ''}>${l.label}</a>`).join('');
     top.innerHTML =
         `<button class="site-menu-btn" id="siteMenuBtn" aria-label="Toggle menu" aria-expanded="false">☰</button>` +
-        `<a class="site-topbar__brand" href="./index.html"><span class="spark">✦</span><span>Resources</span></a>` +
+        `<a class="site-topbar__brand" href="./index.html"><span class="spark">${HEART_S_SVG}</span><span>Resources</span></a>` +
         `<span class="site-topbar__spacer"></span>` +
         `<div class="site-topbar__links">${topLinks}</div>`;
 
