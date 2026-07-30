@@ -15,6 +15,7 @@ import { initProgress } from './progress.js';
 import { initAssistant } from './assistant.js';
 import { makeScrollablesFocusable } from './a11y.js';
 import { initMotion } from './motion.js';
+import { initJourney } from './journey.js';
 
 const STEPS = [
     ['meta', ensureMeta],
@@ -22,6 +23,7 @@ const STEPS = [
     ['footer', renderFooter],
     ['copy', initCopyButtons],
     ['progress', initProgress],
+    ['journey', initJourney],
     ['assistant', initAssistant],
     ['a11y', makeScrollablesFocusable],
     ['motion', initMotion],

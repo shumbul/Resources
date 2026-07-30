@@ -18,7 +18,7 @@ const CSS = `
     background:var(--bg-primary,#fff);color:var(--text-secondary,#666);border-radius:999px;padding:.45rem .9rem;cursor:pointer;
     font-weight:600;font-size:.9rem;transition:all .2s ease;}
 .fn-toggle:hover{border-color:var(--primary,#8b5cf6);color:var(--primary,#8b5cf6);}
-.fn-item-done .fn-toggle{background:var(--success,#059669);border-color:var(--success,#059669);color:#fff;}
+.fn-item-done .fn-toggle{background:#047857;border-color:#047857;color:#fff;}
 @media (prefers-reduced-motion: reduce){.fn-progress .fill{transition:none;}}
 `;
 
@@ -78,12 +78,14 @@ export function initProgress() {
             done[i] = !done[i];
             localStorage.setItem(cfg.key, JSON.stringify(done));
             render();
+            document.dispatchEvent(new CustomEvent('progress:change', { detail: { key: cfg.key } }));
         });
         header.appendChild(btn);
     });
 
     panel.querySelector('.rst').addEventListener('click', () => {
         done = {}; localStorage.setItem(cfg.key, JSON.stringify(done)); render();
+        document.dispatchEvent(new CustomEvent('progress:change', { detail: { key: cfg.key } }));
     });
 
     render();
