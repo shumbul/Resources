@@ -98,6 +98,38 @@ pre { max-width: 100%; overflow-x: auto; box-sizing: border-box; }
 /* Wide tables scroll inside their own box instead of stretching the page. */
 .gsection table { display: block; max-width: 100%; overflow-x: auto; }
 
+/* Shared header decoration: subtle floating bubbles behind every guide header,
+   so all pages get the same lively-but-calm texture (reusable, not per-page).
+   Uses ::after to avoid clashing with any existing ::before dot patterns. */
+.guide-header, .demo-header, .ai-header, .git-header, .header, .hero { position: relative; overflow: hidden; }
+.guide-header::after, .demo-header::after, .ai-header::after,
+.git-header::after, .header::after, .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+        radial-gradient(circle at 12% 22%, rgba(255,255,255,0.16) 0 6px, transparent 7px),
+        radial-gradient(circle at 82% 18%, rgba(255,255,255,0.12) 0 9px, transparent 10px),
+        radial-gradient(circle at 68% 74%, rgba(255,255,255,0.10) 0 5px, transparent 6px),
+        radial-gradient(circle at 28% 78%, rgba(255,255,255,0.13) 0 7px, transparent 8px),
+        radial-gradient(circle at 46% 34%, rgba(255,255,255,0.08) 0 4px, transparent 5px);
+    animation: headerBubbles 9s ease-in-out infinite alternate;
+}
+/* Keep header text above the bubbles. */
+.guide-header .container, .demo-header .container, .ai-header .container,
+.git-header .container, .header .container, .hero .container,
+.guide-header > *, .demo-header > *, .ai-header > * { position: relative; z-index: 1; }
+@keyframes headerBubbles {
+    from { transform: translateY(0) translateX(0); }
+    to   { transform: translateY(-10px) translateX(6px); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .guide-header::after, .demo-header::after, .ai-header::after,
+    .git-header::after, .header::after, .hero::after { animation: none; }
+}
+
 /* Links inside paragraphs stay distinguishable without relying on color alone. */
 .footer-content p a, .site-footer a { text-decoration: underline; }
 /* In-content links on the guide pages (DSA, system design, resume, interview). */

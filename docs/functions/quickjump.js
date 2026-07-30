@@ -51,8 +51,21 @@ export function initQuickJump() {
         items.map((it) => `<a href="#${it.id}">${it.label}</a>`).join('') +
         `</div>`;
 
-    // Place it at the very top of the content region.
-    container.insertBefore(nav, container.firstChild);
+    // Place it at the start of the content, always BELOW the page header.
+    // - Pages with <main>: top of main (header sits outside main).
+    // - Pages without <main> (header lives inside the same container): right
+    //   after the header so it never appears above the title.
+    const main = document.querySelector('main');
+    if (main) {
+        main.insertBefore(nav, main.firstChild);
+    } else {
+        const header = document.querySelector('.header, header, .hero');
+        if (header && header.parentNode) {
+            header.parentNode.insertBefore(nav, header.nextSibling);
+        } else {
+            container.insertBefore(nav, container.firstChild);
+        }
+    }
 
     wireSmoothScroll(nav);
     wireActiveHighlight(nav, headings);
