@@ -101,16 +101,6 @@ class ThemeSwitcher {
         if (themeOptions) {
             themeOptions.classList.remove('show');
         }
-        
-        // Show feedback
-        const themeToggle = document.getElementById('themeToggle');
-        if (themeToggle) {
-            const originalText = themeToggle.textContent;
-            themeToggle.textContent = '✓';
-            setTimeout(() => {
-                themeToggle.textContent = originalText;
-            }, 500);
-        }
     }
 }
 

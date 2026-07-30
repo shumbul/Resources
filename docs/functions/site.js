@@ -28,6 +28,7 @@ import { initTypewriter } from './typewriter.js?v=20260731';
 import { initQuickJump } from './quickjump.js?v=20260731';
 import { initQuizzes } from './quiz.js?v=20260731';
 import { initFlowMaps } from './flow.js?v=20260731';
+import { initPractice } from './practice.js?v=20260731';
 
 const STEPS = [
     ['meta', ensureMeta],
@@ -44,6 +45,7 @@ const STEPS = [
     ['typewriter', initTypewriter],
     ['quiz', initQuizzes],
     ['flow', initFlowMaps],
+    ['practice', initPractice],
 ];
 
 function run() {
