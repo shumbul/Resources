@@ -14,18 +14,18 @@
  *   2. the ?v=... on the site.js <script> tag in the HTML pages
  *      (docs uses a single value; see ADDING-A-RESOURCE.md).
  */
-import { ensureMeta } from './meta.js?v=20260730';
-import { renderNav } from './nav.js?v=20260730';
-import { renderFooter } from './footer.js?v=20260730';
-import { renderBackLink } from './header.js?v=20260730';
-import { initCopyButtons } from './copyButtons.js?v=20260730';
-import { initProgress } from './progress.js?v=20260730';
-import { initAssistant } from './assistant.js?v=20260730';
-import { makeScrollablesFocusable } from './a11y.js?v=20260730';
-import { initMotion } from './motion.js?v=20260730';
-import { initJourney } from './journey.js?v=20260730';
-import { initTypewriter } from './typewriter.js?v=20260730';
-import { initQuickJump } from './quickjump.js?v=20260730';
+import { ensureMeta } from './meta.js?v=20260731';
+import { renderNav } from './nav.js?v=20260731';
+import { renderFooter } from './footer.js?v=20260731';
+import { renderBackLink } from './header.js?v=20260731';
+import { initCopyButtons } from './copyButtons.js?v=20260731';
+import { initProgress } from './progress.js?v=20260731';
+import { initAssistant } from './assistant.js?v=20260731';
+import { makeScrollablesFocusable } from './a11y.js?v=20260731';
+import { initMotion } from './motion.js?v=20260731';
+import { initJourney } from './journey.js?v=20260731';
+import { initTypewriter } from './typewriter.js?v=20260731';
+import { initQuickJump } from './quickjump.js?v=20260731';
 
 const STEPS = [
     ['meta', ensureMeta],

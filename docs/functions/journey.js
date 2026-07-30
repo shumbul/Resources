@@ -67,6 +67,21 @@ const TYPES = [
         ],
         pageMatch: 'system-design-templates.html',
     },
+    {
+        id: 'cybersec',
+        sectionSel: '.gsection',
+        titleSel: 'h2',
+        storageKey: 'progress_cybersec_v1',
+        unit: 'stage',
+        heading: 'The Cyber Security Path',
+        rangeWord: 'Stages',
+        phases: [
+            { name: 'Foundations', from: 0, to: 2 },
+            { name: 'Core Security', from: 2, to: 4 },
+            { name: 'Get Hired', from: 4, to: 6 },
+        ],
+        pageMatch: 'cybersecurity-roadmap.html',
+    },
 ];
 
 /* ---- Geometry helpers (shared, pure) ------------------------------------ */

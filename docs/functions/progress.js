@@ -27,6 +27,7 @@ const CONFIGS = [
     { sel: '.month-section', head: '.month-header', unit: 'months', key: 'progress_months_v1' },
     { sel: '.gsection', head: 'h2', unit: 'stages', key: 'progress_dsa_v1', page: 'dsa-practice-guide.html', appendToSection: true },
     { sel: '.gsection', head: 'h2', unit: 'stages', key: 'progress_sysdesign_v1', page: 'system-design-templates.html', appendToSection: true },
+    { sel: '.gsection', head: 'h2', unit: 'stages', key: 'progress_cybersec_v1', page: 'cybersecurity-roadmap.html', appendToSection: true },
 ];
 
 export function initProgress() {

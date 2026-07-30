@@ -24,6 +24,13 @@ A comprehensive week-by-week breakdown from career clarity to job interviews. In
 - **Month 4:** Generative & Natural Language AI
 - **Months 5-6:** Advanced projects and specialization
 
+### 🛡️ [Cyber Security Roadmap](https://shumbul.github.io/Resources/cybersecurity-roadmap.html)
+A six-stage journey into cyber security, with an animated progress map, hands-on labs, tools, and certifications at every stop.
+
+- **Foundations:** Networking, Linux, and security fundamentals
+- **Core Security:** Offensive (red team) and defensive (blue team) skills
+- **Get Hired:** Specialize, get certified, build proof, and land your first role
+
 ### 💼 [LinkedIn Optimization Mastery](https://shumbul.github.io/Resources/linkedin-utilization-guide.html)
 Transform your LinkedIn profile into an opportunity magnet with AI-powered strategies, templates, and actionable tips.
 
