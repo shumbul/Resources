@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <div data-component="head-common"></div>
+
+    <title>About | Resources by Shumbul Arifa</title>
+    <meta name="description" content="About Shumbul Arifa and this collection of free, friendly tech-career resources built to help you break into tech.">
+    <meta property="og:title" content="About - Resources by Shumbul Arifa">
+    <meta property="og:description" content="Why this collection of free tech-career guides exists, and who's behind it.">
+
+    <style>
+        .guide-header { background: linear-gradient(135deg, var(--primary), var(--secondary)); color:#fff; padding:3.5rem 0; text-align:center; margin-bottom:2.5rem; }
+        .guide-title { font-size:2.6rem; font-weight:800; margin-bottom:.6rem; color:#fff; }
+        .guide-sub { font-size:1.15rem; color:rgba(255,255,255,.94); max-width:680px; margin:0 auto; }
+        .gsection { background:var(--bg-secondary); border:1px solid var(--border); border-radius:16px; padding:1.6rem 1.75rem; margin-bottom:1.75rem; }
+        .gsection h2 { margin-top:0; }
+        .values { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-top:1rem; }
+        @media (max-width:700px){ .values { grid-template-columns:1fr; } }
+        .value { background:var(--bg-primary); border:1px solid var(--border); border-radius:12px; padding:1.1rem 1.25rem; }
+        .value .ic { font-size:1.6rem; }
+        .muted { color:var(--text-secondary); }
+        ul { padding-left:1.2rem; }
+    </style>
+</head>
+<body>
+    <div data-component="theme-switcher"></div>
+
+    <header class="guide-header">
+        <div class="container">
+            <h1 class="guide-title">👋 About</h1>
+            <p class="guide-sub">Free, friendly, no-nonsense tech-career resources. Built by someone who remembers exactly how confusing the start can be.</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="gsection">
+            <h2>Hi, I'm Shumbul 👋</h2>
+            <p>I'm a tech enthusiast who loves helping people break into the industry. Somewhere along my own journey I realized how much scattered, gate-kept, or overwhelming advice is out there, and how little of it is actually practical for a beginner. So I started collecting the guides I wish I'd had: clear, honest, and free.</p>
+            <p class="muted">Everything here is written to be read on a coffee break and acted on the same day.</p>
+        </div>
+
+        <div class="gsection">
+            <h2>What this site is</h2>
+            <p>A growing library of career and skill guides, roadmaps for learning, LinkedIn and resume help, DSA and system design starters, interview prep, and even a built-in AI helper that reads each page and answers your questions right there.</p>
+            <div class="values">
+                <div class="value"><div class="ic">🆓</div><strong>Always free</strong><p class="muted" style="margin:.3rem 0 0;">No paywalls, no email gates, no upsells. Share it with anyone.</p></div>
+                <div class="value"><div class="ic">🌱</div><strong>Beginner-first</strong><p class="muted" style="margin:.3rem 0 0;">Written for freshers and career-switchers, not for people who already know.</p></div>
+                <div class="value"><div class="ic">🛠️</div><strong>Practical</strong><p class="muted" style="margin:.3rem 0 0;">Templates, checklists, and examples you can use today, not just theory.</p></div>
+            </div>
+        </div>
+
+        <div class="gsection">
+            <h2>How to use it</h2>
+            <ul>
+                <li>Browse the <strong>guides in the sidebar</strong> and start with whatever feels most urgent for you.</li>
+                <li>New to everything? Begin with the <a href="./12-week-roadmap.html">12-Week Roadmap</a>.</li>
+                <li>Job hunting now? Jump to <a href="./ai-era-job-hunt.html">The AI Era Job Hunt</a> and <a href="./resume-portfolio-templates.html">Resume &amp; Portfolio</a>.</li>
+                <li>Stuck on any page? Tap <strong>✦ Ask AI</strong> at the bottom-right, it's free and reads the page for context.</li>
+            </ul>
+        </div>
+
+        <div class="gsection">
+            <h2>Want to say hi or suggest a guide?</h2>
+            <p>I'd genuinely love to hear from you, feedback, requests, or just a hello. Head over to the <a href="./contact.html">Contact page</a> and pick whichever channel you like.</p>
+        </div>
+    </main>
+
+    <div data-component="footer"></div>
+    <div data-component="scripts-common"></div>
+    <script src="./components/component-loader.js"></script>
+    <script type="module" src="./functions/site.js"></script>
+</body>
+</html>

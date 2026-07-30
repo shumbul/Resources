@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <div data-component="head-common"></div>
+
+    <title>Resume &amp; Portfolio Templates | Resources by Shumbul Arifa</title>
+    <meta name="description" content="Recruiter-tested resume and portfolio advice for freshers. A bullet formula that shows impact, a one-page structure, and a simple portfolio checklist.">
+    <meta property="og:title" content="Resume & Portfolio Templates - show impact, not tasks">
+    <meta property="og:description" content="A friendly, practical guide to a resume and portfolio that actually get replies.">
+
+    <style>
+        .guide-header { background: linear-gradient(135deg, var(--primary), var(--secondary)); color:#fff; padding:3.5rem 0; text-align:center; margin-bottom:2.5rem; }
+        .guide-title { font-size:2.6rem; font-weight:800; margin-bottom:.6rem; color:#fff; }
+        .guide-sub { font-size:1.15rem; color:rgba(255,255,255,.94); max-width:680px; margin:0 auto; }
+        .guide-badges { display:flex; gap:.5rem; justify-content:center; flex-wrap:wrap; margin-top:1.2rem; }
+        .guide-badge { background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.4); padding:.35rem .8rem; border-radius:999px; font-size:.85rem; font-weight:600; }
+        .gsection { background:var(--bg-secondary); border:1px solid var(--border); border-radius:16px; padding:1.6rem 1.75rem; margin-bottom:1.75rem; }
+        .gsection h2 { margin-top:0; }
+        .starter { background:var(--bg-primary); border:1px solid var(--border); border-left:4px solid var(--primary); border-radius:12px; padding:1.1rem 1.3rem; margin-bottom:1.75rem; }
+        .compare { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:1rem 0; }
+        @media (max-width:600px){ .compare { grid-template-columns:1fr; } }
+        .before, .after { border-radius:12px; padding:1rem 1.2rem; border:1px solid var(--border); }
+        .before { background:var(--bg-primary); }
+        .after { background:var(--bg-primary); border-left:4px solid var(--success); }
+        .lbl { font-weight:700; font-size:.8rem; text-transform:uppercase; letter-spacing:.04em; margin-bottom:.4rem; }
+        .lbl.bad { color:#b91c1c; } .lbl.good { color:#15803d; }
+        .muted { color:var(--text-secondary); }
+        code { background:var(--bg-tertiary); padding:.1rem .4rem; border-radius:6px; }
+        ul { padding-left:1.2rem; }
+    </style>
+</head>
+<body>
+    <div data-component="theme-switcher"></div>
+    <div data-component="back-nav"></div>
+
+    <header class="guide-header">
+        <div class="container">
+            <h1 class="guide-title">📄 Resume &amp; Portfolio Templates</h1>
+            <p class="guide-sub">Your resume gets about 6 seconds of attention. Let's make them count. The trick is simple: show impact, not a list of tasks.</p>
+            <div class="guide-badges">
+                <span class="guide-badge">✍️ Impact bullets</span>
+                <span class="guide-badge">📁 Portfolio checklist</span>
+                <span class="guide-badge">🌱 Fresher-friendly</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="starter">
+            <strong style="font-family:var(--font-display);">🌱 No work experience yet? You still have plenty to show</strong>
+            <p class="muted" style="margin:.5rem 0 0;">Projects, coursework, hackathons, open-source, and volunteering all count. A fresher resume built around 2-3 solid projects beats an empty "experience" section every time. Want feedback on a bullet? Paste it into <strong>✦ Ask AI</strong> and ask it to add impact.</p>
+        </div>
+
+        <div class="gsection">
+            <h2>The one bullet formula to rule them all</h2>
+            <p class="muted">Every bullet should follow this shape. If there's no number or outcome, it's decoration.</p>
+            <p style="font-size:1.1rem; background:var(--bg-primary); border:1px solid var(--border); border-radius:10px; padding:1rem;"><strong>Did X</strong> &nbsp;→&nbsp; <strong>using Y</strong> &nbsp;→&nbsp; <strong>which resulted in Z</strong> <span class="muted">(a number, if you can)</span></p>
+            <div class="compare">
+                <div class="before">
+                    <div class="lbl bad">Weak</div>
+                    "Built a REST API for a todo app."
+                </div>
+                <div class="after">
+                    <div class="lbl good">Strong</div>
+                    "Built a REST API (Node, Express, PostgreSQL) for a todo app used by 120+ classmates, cutting task setup time by ~40%."
+                </div>
+            </div>
+            <p class="muted">No real metric? Estimate honestly ("~50 users", "reduced load time noticeably"), or describe scope ("handled auth, CRUD, and deployment solo").</p>
+        </div>
+
+        <div class="gsection">
+            <h2>The one-page structure (in order)</h2>
+            <ul>
+                <li><strong>Header:</strong> Name, role you want, email, phone, GitHub, LinkedIn, portfolio link. No full address needed.</li>
+                <li><strong>Skills:</strong> Group them (Languages, Frameworks, Tools). List what you'd be comfortable being asked about.</li>
+                <li><strong>Projects (your star section):</strong> 2-3 projects, each with 2-3 impact bullets and a live/GitHub link.</li>
+                <li><strong>Experience:</strong> Internships, freelance, teaching assistant, anything real. Same bullet formula.</li>
+                <li><strong>Education:</strong> Degree, institution, graduation year. Add relevant coursework if you're early-career.</li>
+            </ul>
+            <p class="muted">Keep it to <strong>one page</strong>. Use a clean, single-column layout so applicant tracking systems can read it. Save and send as <strong>PDF</strong>.</p>
+        </div>
+
+        <div class="gsection">
+            <h2>Quick resume do's and don'ts</h2>
+            <div class="compare">
+                <div class="before">
+                    <div class="lbl bad">Avoid</div>
+                    <ul style="margin:0;">
+                        <li>"Responsible for..." with no outcome</li>
+                        <li>Rating skills with star bars</li>
+                        <li>Walls of text, tiny fonts, 2 pages</li>
+                        <li>Photos, graphics ATS can't read</li>
+                        <li>One generic resume for every job</li>
+                    </ul>
+                </div>
+                <div class="after">
+                    <div class="lbl good">Do</div>
+                    <ul style="margin:0;">
+                        <li>Start bullets with strong verbs (Built, Shipped, Automated)</li>
+                        <li>Put a number in most bullets</li>
+                        <li>Tailor the top skills to each job</li>
+                        <li>Link a live demo for every project</li>
+                        <li>Proofread twice, then have a friend check</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="gsection">
+            <h2>Portfolio checklist</h2>
+            <p class="muted">A portfolio makes you findable and believable. It doesn't need to be fancy, it needs to be clear.</p>
+            <ul>
+                <li><strong>A short intro:</strong> who you are, what you build, what you're looking for.</li>
+                <li><strong>3-4 projects</strong> with: the problem, your solution, the tech, and a link to the live demo + code.</li>
+                <li><strong>A 2-minute demo video</strong> for your best project. Recruiters love not having to run your code.</li>
+                <li><strong>Clear contact:</strong> email, GitHub, LinkedIn, and a downloadable resume.</li>
+                <li><strong>Fast and mobile-friendly.</strong> Recruiters open links on their phones. GitHub Pages is free and perfect for this.</li>
+            </ul>
+            <p class="muted">Good news: the <a href="./12-week-roadmap.html">12-Week Roadmap</a> and <a href="./ai-era-job-hunt.html">AI Era Job Hunt</a> guides walk you through building exactly this kind of visible proof of work.</p>
+        </div>
+    </main>
+
+    <div data-component="footer"></div>
+    <div data-component="scripts-common"></div>
+    <script src="./components/component-loader.js"></script>
+    <script type="module" src="./functions/site.js"></script>
+</body>
+</html>

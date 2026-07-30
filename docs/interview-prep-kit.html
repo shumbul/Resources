@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <div data-component="head-common"></div>
+
+    <title>Interview Prep Kit | Resources by Shumbul Arifa</title>
+    <meta name="description" content="A calm, complete interview prep kit for freshers: the STAR method, common behavioral questions, a technical checklist, and smart questions to ask back.">
+    <meta property="og:title" content="Interview Prep Kit - turn prep into confidence">
+    <meta property="og:description" content="STAR answers, behavioral questions, a technical checklist, and questions to ask. Friendly and practical.">
+
+    <style>
+        .guide-header { background: linear-gradient(135deg, var(--primary), var(--secondary)); color:#fff; padding:3.5rem 0; text-align:center; margin-bottom:2.5rem; }
+        .guide-title { font-size:2.6rem; font-weight:800; margin-bottom:.6rem; color:#fff; }
+        .guide-sub { font-size:1.15rem; color:rgba(255,255,255,.94); max-width:680px; margin:0 auto; }
+        .guide-badges { display:flex; gap:.5rem; justify-content:center; flex-wrap:wrap; margin-top:1.2rem; }
+        .guide-badge { background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.4); padding:.35rem .8rem; border-radius:999px; font-size:.85rem; font-weight:600; }
+        .gsection { background:var(--bg-secondary); border:1px solid var(--border); border-radius:16px; padding:1.6rem 1.75rem; margin-bottom:1.75rem; }
+        .gsection h2 { margin-top:0; }
+        .starter { background:var(--bg-primary); border:1px solid var(--border); border-left:4px solid var(--primary); border-radius:12px; padding:1.1rem 1.3rem; margin-bottom:1.75rem; }
+        .gcard { background:var(--bg-primary); border:1px solid var(--border); border-radius:12px; padding:1.1rem 1.25rem; margin-bottom:1rem; }
+        .star { display:grid; grid-template-columns:repeat(4,1fr); gap:.75rem; margin:1rem 0; }
+        @media (max-width:640px){ .star { grid-template-columns:1fr 1fr; } }
+        .star div { background:var(--bg-primary); border:1px solid var(--border); border-radius:10px; padding:.9rem; text-align:center; }
+        .star .k { font-family:var(--font-display); font-weight:700; color:var(--primary); font-size:1.4rem; }
+        .muted { color:var(--text-secondary); }
+        ul { padding-left:1.2rem; }
+    </style>
+</head>
+<body>
+    <div data-component="theme-switcher"></div>
+    <div data-component="back-nav"></div>
+
+    <header class="guide-header">
+        <div class="container">
+            <h1 class="guide-title">🗣️ Interview Prep Kit</h1>
+            <p class="guide-sub">Interviews feel scary because they feel unpredictable. They're actually pretty predictable. Prepare a few things well and confidence follows.</p>
+            <div class="guide-badges">
+                <span class="guide-badge">⭐ STAR method</span>
+                <span class="guide-badge">💬 Behavioral + technical</span>
+                <span class="guide-badge">🌱 Fresher-friendly</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="starter">
+            <strong style="font-family:var(--font-display);">🌱 Nervous? That's normal, here's the reframe</strong>
+            <p class="muted" style="margin:.5rem 0 0;">An interview is a conversation, not an interrogation. They already liked your resume, now they just want to see how you think and whether you're pleasant to work with. Prepare 3-4 stories and a few questions, and you're most of the way there. Want a mock interview? Tap <strong>✦ Ask AI</strong> and ask it to interview you for your target role.</p>
+        </div>
+
+        <div class="gsection">
+            <h2>The STAR method (for every behavioral question)</h2>
+            <p class="muted">"Tell me about a time you..." questions all have the same answer shape. Walk through these four beats and you'll always sound structured.</p>
+            <div class="star">
+                <div><div class="k">S</div>Situation<br><span class="muted">Set the scene briefly</span></div>
+                <div><div class="k">T</div>Task<br><span class="muted">What was your goal?</span></div>
+                <div><div class="k">A</div>Action<br><span class="muted">What did <em>you</em> do?</span></div>
+                <div><div class="k">R</div>Result<br><span class="muted">What happened? (numbers!)</span></div>
+            </div>
+            <p class="muted">Spend most of your time on <strong>Action</strong> and <strong>Result</strong>. Use "I", not "we", they want to know what <em>you</em> did.</p>
+        </div>
+
+        <div class="gsection">
+            <h2>Behavioral questions to prepare</h2>
+            <p class="muted">Prepare one STAR story for each of these. A few stories can be reused across many questions.</p>
+            <ul>
+                <li>Tell me about yourself. <span class="muted">(90 seconds: present → past → why this role.)</span></li>
+                <li>Tell me about a project you're proud of.</li>
+                <li>Describe a time you faced a bug or blocker you couldn't solve quickly.</li>
+                <li>Tell me about a disagreement in a team and how you handled it.</li>
+                <li>A time you had to learn something new fast.</li>
+                <li>A time you failed or missed a deadline, and what you learned.</li>
+                <li>Why this company? Why this role? <span class="muted">(Do your research, this filters out the unprepared.)</span></li>
+            </ul>
+        </div>
+
+        <div class="gsection">
+            <h2>Technical prep checklist</h2>
+            <div class="gcard"><strong>Coding:</strong> Comfortable with the 8 core DSA patterns. Practice talking while you code. See the <a href="./dsa-practice-guide.html">DSA Practice Guide</a>.</div>
+            <div class="gcard"><strong>Fundamentals:</strong> Be ready to explain: how the internet works (DNS, HTTP), OOP basics, a database query, and the projects on your resume in depth.</div>
+            <div class="gcard"><strong>System design (for some roles):</strong> Know the 6-step framework and core building blocks. See the <a href="./system-design-templates.html">System Design Templates</a>.</div>
+            <div class="gcard"><strong>Your own projects:</strong> You <em>will</em> be asked "why did you build it this way?" Know your trade-offs. This is the easiest section to ace because it's yours.</div>
+        </div>
+
+        <div class="gsection">
+            <h2>The coding-interview flow (say these out loud)</h2>
+            <ul>
+                <li><strong>Clarify:</strong> Repeat the problem, ask about edge cases and input size.</li>
+                <li><strong>Examples:</strong> Walk through a small example by hand.</li>
+                <li><strong>Approach:</strong> State your plan and its time/space cost <em>before</em> coding. Mention a brute force, then improve.</li>
+                <li><strong>Code:</strong> Talk as you type. Silence is the enemy.</li>
+                <li><strong>Test:</strong> Run through your example, check edge cases.</li>
+            </ul>
+            <p class="muted">Interviewers grade your <strong>thinking</strong>, not just the final code. A clear, communicated approach beats a silent correct answer.</p>
+        </div>
+
+        <div class="gsection">
+            <h2>Smart questions to ask them</h2>
+            <p class="muted">Always have 2-3 ready. It shows genuine interest and it's your chance to check if you'd actually enjoy working there.</p>
+            <ul>
+                <li>What does a typical day or week look like for this role?</li>
+                <li>How does the team support someone early in their career?</li>
+                <li>What does success look like in the first 3-6 months?</li>
+                <li>What's the most interesting problem the team is working on right now?</li>
+            </ul>
+        </div>
+
+        <div class="gsection">
+            <h2>After the interview</h2>
+            <ul>
+                <li>Send a short thank-you note within 24 hours. Mention something specific you discussed.</li>
+                <li>Jot down the questions you were asked, this makes your next interview easier.</li>
+                <li>If you get a no, politely ask for feedback. Many will share it, and it's gold.</li>
+            </ul>
+        </div>
+    </main>
+
+    <div data-component="footer"></div>
+    <div data-component="scripts-common"></div>
+    <script src="./components/component-loader.js"></script>
+    <script type="module" src="./functions/site.js"></script>
+</body>
+</html>

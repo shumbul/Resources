@@ -37,7 +37,14 @@ class ComponentLoader {
      */
     async insertComponent(componentName, targetElement) {
         const html = await this.loadComponent(componentName);
-        if (html && targetElement) {
+        if (!targetElement) return;
+        if (!html) {
+            console.warn(`Component "${componentName}" loaded empty; showing fallback.`);
+            targetElement.innerHTML = `<!-- component "${componentName}" unavailable -->`;
+            targetElement.setAttribute('data-component-error', 'true');
+            return;
+        }
+        if (html) {
             targetElement.innerHTML = html;
             
             // Execute any scripts in the loaded component
@@ -81,17 +88,11 @@ class ComponentLoader {
     }
 }
 
-// Create global instance
+// Create global instance and initialize once.
+// init() already handles the DOMContentLoaded vs. ready case internally,
+// so we must NOT re-wrap it in another readyState check (that double-fired load).
 window.componentLoader = new ComponentLoader();
-
-// Auto-initialize if this script is loaded
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-        window.componentLoader.init();
-    });
-} else {
-    window.componentLoader.init();
-}
+window.componentLoader.init();
 
 // Export for module usage (if needed)
 if (typeof module !== 'undefined' && module.exports) {

@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <div data-component="head-common"></div>
+
+    <title>AI Tools for Developers | Resources by Shumbul Arifa</title>
+    <meta name="description" content="Free, private AI tools that run entirely in your browser. No API key, no server, no cost. Optimize your LinkedIn headline and run prompts with an on-device model.">
+    <meta property="og:title" content="AI Tools for Developers - runs in your browser, free">
+    <meta property="og:description" content="On-device AI. No key, no server, no cost. Optimize your LinkedIn headline and run prompts privately.">
+
+    <style>
+        .ai-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 3.5rem 0;
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        .ai-title { font-size: 2.75rem; font-weight: 800; margin-bottom: 0.75rem; }
+        .ai-subtitle { font-size: 1.2rem; opacity: 0.92; max-width: 640px; margin: 0 auto; }
+
+        .badges { display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; margin-top: 1.25rem; }
+        .badge {
+            background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.35);
+            padding: 0.35rem 0.8rem; border-radius: 999px; font-size: 0.85rem; font-weight: 600;
+        }
+
+        .panel {
+            background: var(--bg-secondary); border: 1px solid var(--border);
+            border-radius: 1rem; padding: 1.75rem; margin-bottom: 1.75rem;
+        }
+        .panel h2 { margin-bottom: 0.5rem; }
+        .muted { color: var(--text-secondary); font-size: 0.95rem; }
+
+        .engine-row { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; margin-top: 1rem; }
+        select, input[type="text"], input[type="password"], textarea {
+            font-family: inherit; font-size: 1rem; color: var(--text-primary);
+            background: var(--bg-primary); border: 1px solid var(--border);
+            border-radius: 0.6rem; padding: 0.7rem 0.8rem; width: 100%;
+        }
+        textarea { min-height: 90px; resize: vertical; line-height: 1.5; }
+        label { display: block; font-weight: 600; margin: 1rem 0 0.4rem; }
+
+        .progress-wrap { margin-top: 1rem; display: none; }
+        .progress-bar { height: 8px; background: var(--bg-primary); border: 1px solid var(--border); border-radius: 999px; overflow: hidden; }
+        .progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--primary), var(--accent)); transition: width 0.3s ease; }
+        .progress-text { font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.4rem; }
+
+        .status-pill { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; font-weight: 600; padding: 0.3rem 0.7rem; border-radius: 999px; border: 1px solid var(--border); }
+        .status-pill.off { color: var(--text-secondary); }
+        .status-pill.on { color: #059669; border-color: #059669; }
+        .dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+
+        .output {
+            background: var(--bg-primary); border: 1px solid var(--border);
+            border-radius: 0.75rem; padding: 1.1rem 1.25rem; margin-top: 1rem;
+            white-space: pre-wrap; line-height: 1.6; min-height: 40px;
+        }
+        .tool-grid { display: grid; grid-template-columns: 1fr; gap: 0.75rem; }
+        details.byok summary { cursor: pointer; font-weight: 600; }
+        details.byok { margin-top: 1rem; border-top: 1px dashed var(--border); padding-top: 1rem; }
+        .btn[disabled] { opacity: 0.5; cursor: not-allowed; transform: none; }
+        .hint { font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.3rem; }
+        .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+        @media (max-width: 600px) { .row-2 { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div data-component="theme-switcher"></div>
+    <div data-component="back-nav"></div>
+
+    <header class="ai-header">
+        <div class="container">
+            <h1 class="ai-title">🛠️ AI Tools for Developers</h1>
+            <p class="ai-subtitle">Real AI that runs inside your browser. No API key, no server, no cost, and nothing you type ever leaves your device.</p>
+            <div class="badges">
+                <span class="badge">🆓 Free forever</span>
+                <span class="badge">🔒 100% private</span>
+                <span class="badge">📴 Works offline after load</span>
+                <span class="badge">⚡ On-device model</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="panel">
+            <h2>1. Load the model <span id="engineStatus" class="status-pill off"><span class="dot"></span>Not loaded</span></h2>
+            <p class="muted">The model downloads once (cached by your browser) and then runs on your own hardware using WebGPU. First load pulls a few hundred MB, later visits are instant.</p>
+            <div class="engine-row">
+                <select id="modelSelect" aria-label="Choose which AI model to run" style="max-width: 340px;">
+                    <option value="Qwen2.5-0.5B-Instruct-q4f16_1-MLC">Qwen2.5 0.5B (fastest, ~300MB)</option>
+                    <option value="Qwen2.5-1.5B-Instruct-q4f16_1-MLC" selected>Qwen2.5 1.5B (balanced, ~1GB)</option>
+                    <option value="Llama-3.2-1B-Instruct-q4f16_1-MLC">Llama 3.2 1B</option>
+                    <option value="Phi-3.5-mini-instruct-q4f16_1-MLC">Phi-3.5 mini (best quality, ~2GB)</option>
+                </select>
+                <button id="loadBtn" class="btn">Load AI model</button>
+            </div>
+            <div class="progress-wrap" id="progressWrap">
+                <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+                <div class="progress-text" id="progressText">Preparing...</div>
+            </div>
+            <div id="webgpuWarn" class="hint" style="display:none;">
+                ⚠️ Your browser does not expose WebGPU, so the on-device model can't run here. Use a Chromium browser (Chrome/Edge 113+) or switch to <strong>Bring your own key</strong> mode in any tool below, which stays free on providers like Groq.
+            </div>
+        </div>
+
+        <div class="panel">
+            <h2>2. LinkedIn headline optimizer</h2>
+            <p class="muted">Paste your current headline and role. Get three sharper rewrites tuned for recruiter search and click-through.</p>
+            <div class="row-2">
+                <div>
+                    <label for="hlCurrent">Current headline</label>
+                    <input type="text" id="hlCurrent" placeholder="Software Engineer at Acme">
+                </div>
+                <div>
+                    <label for="hlRole">Target role / focus</label>
+                    <input type="text" id="hlRole" placeholder="Backend + AI engineer roles">
+                </div>
+            </div>
+            <button id="hlRun" class="btn" style="margin-top:1rem;" disabled>Generate 3 rewrites</button>
+            <div class="output" id="hlOut">Load the model (or set a key) to enable this tool.</div>
+        </div>
+
+        <div class="panel">
+            <h2>3. Run any prompt</h2>
+            <p class="muted">This is what the site's "copy this prompt" buttons should have been all along. Type a prompt, get a real answer, streamed live.</p>
+            <label for="promptBox">Your prompt</label>
+            <textarea id="promptBox" placeholder="Rewrite my project bullet to show impact: 'Built a REST API for the team.'"></textarea>
+            <button id="promptRun" class="btn" style="margin-top:1rem;" disabled>Run prompt</button>
+            <div class="output" id="promptOut">Load the model (or set a key) to enable this tool.</div>
+
+            <details class="byok">
+                <summary>⚙️ Bring your own key (optional, still free on Groq/OpenRouter)</summary>
+                <p class="hint">Prefer a bigger cloud model or no WebGPU? Paste your own API key from an OpenAI-compatible provider. It is stored only in this browser (localStorage) and calls the provider directly. The site owner pays nothing.</p>
+                <div class="row-2">
+                    <div>
+                        <label for="byokBase">API base URL</label>
+                        <input type="text" id="byokBase" placeholder="https://api.groq.com/openai/v1">
+                    </div>
+                    <div>
+                        <label for="byokModel">Model</label>
+                        <input type="text" id="byokModel" placeholder="llama-3.1-8b-instant">
+                    </div>
+                </div>
+                <label for="byokKey">API key</label>
+                <input type="password" id="byokKey" placeholder="paste your key">
+                <button id="byokSave" class="btn" style="margin-top:1rem;">Save key in this browser</button>
+                <span id="byokStatus" class="hint"></span>
+            </details>
+        </div>
+
+        <div class="panel">
+            <h2>Why this is free</h2>
+            <ul class="muted">
+                <li><strong>Hosting:</strong> GitHub Pages, static, $0.</li>
+                <li><strong>AI:</strong> the model runs on your device via WebGPU, so there is no server bill no matter how many people use it.</li>
+                <li><strong>Optional key mode:</strong> if you bring your own key, you talk to the provider directly. The owner never sees it and never pays.</li>
+            </ul>
+        </div>
+    </main>
+
+    <div data-component="footer"></div>
+    <div data-component="scripts-common"></div>
+    <script src="./components/component-loader.js"></script>
+
+    <script type="module">
+        import { CreateMLCEngine } from "https://esm.run/@mlc-ai/web-llm";
+
+        // Set this to your deployed Cloudflare Worker URL (see worker/README.md).
+        // When set, the tools work for every visitor with no key and no GPU.
+        const SHARED_PROXY_URL = '';
+
+        const els = {
+            loadBtn: document.getElementById('loadBtn'),
+            modelSelect: document.getElementById('modelSelect'),
+            progressWrap: document.getElementById('progressWrap'),
+            progressFill: document.getElementById('progressFill'),
+            progressText: document.getElementById('progressText'),
+            engineStatus: document.getElementById('engineStatus'),
+            webgpuWarn: document.getElementById('webgpuWarn'),
+            hlRun: document.getElementById('hlRun'),
+            hlOut: document.getElementById('hlOut'),
+            hlCurrent: document.getElementById('hlCurrent'),
+            hlRole: document.getElementById('hlRole'),
+            promptRun: document.getElementById('promptRun'),
+            promptBox: document.getElementById('promptBox'),
+            promptOut: document.getElementById('promptOut'),
+            byokBase: document.getElementById('byokBase'),
+            byokModel: document.getElementById('byokModel'),
+            byokKey: document.getElementById('byokKey'),
+            byokSave: document.getElementById('byokSave'),
+            byokStatus: document.getElementById('byokStatus'),
+        };
+
+        let engine = null;
+
+        const hasWebGPU = 'gpu' in navigator;
+        if (!hasWebGPU) els.webgpuWarn.style.display = 'block';
+
+        // ---- Bring-your-own-key (OpenAI-compatible) ----
+        const KEYS = 'ai_tools_byok';
+        function loadByok() {
+            try { return JSON.parse(localStorage.getItem(KEYS) || '{}'); } catch { return {}; }
+        }
+        function refreshByokUI() {
+            const b = loadByok();
+            if (b.base) els.byokBase.value = b.base;
+            if (b.model) els.byokModel.value = b.model;
+            if (b.key) { els.byokKey.value = ''; els.byokStatus.textContent = 'Key saved in this browser.'; enableTools(); }
+        }
+        els.byokSave.addEventListener('click', () => {
+            const b = {
+                base: els.byokBase.value.trim() || 'https://api.groq.com/openai/v1',
+                model: els.byokModel.value.trim() || 'llama-3.1-8b-instant',
+                key: els.byokKey.value.trim() || loadByok().key || '',
+            };
+            if (!b.key) { els.byokStatus.textContent = 'Enter a key first.'; return; }
+            localStorage.setItem(KEYS, JSON.stringify(b));
+            els.byokKey.value = '';
+            els.byokStatus.textContent = 'Saved. Tools will use ' + b.model + '.';
+            enableTools();
+        });
+        refreshByokUI();
+
+        function byokReady() { const b = loadByok(); return !!(b.key); }
+        function ready() { return engine !== null || byokReady() || !!SHARED_PROXY_URL; }
+
+        function enableTools() {
+            const on = ready();
+            els.hlRun.disabled = !on;
+            els.promptRun.disabled = !on;
+            if (on) {
+                if (els.hlOut.textContent.startsWith('Load the model')) els.hlOut.textContent = 'Ready.';
+                if (els.promptOut.textContent.startsWith('Load the model')) els.promptOut.textContent = 'Ready.';
+            }
+        }
+
+        // ---- Load on-device model ----
+        els.loadBtn.addEventListener('click', async () => {
+            let adapter = null;
+            if (hasWebGPU) { try { adapter = await navigator.gpu.requestAdapter(); } catch { adapter = null; } }
+            if (!adapter) {
+                els.webgpuWarn.style.display = 'block';
+                els.webgpuWarn.innerHTML = '⚠️ This device has no compatible WebGPU GPU, so the on-device model can\'t run here. You can still use these tools for free: open <strong>Bring your own key</strong> below and paste a free <a href="https://console.groq.com/keys" target="_blank" rel="noopener">Groq key</a>.';
+                return;
+            }
+            const model = els.modelSelect.value;
+            els.loadBtn.disabled = true;
+            els.progressWrap.style.display = 'block';
+            els.engineStatus.className = 'status-pill off';
+            els.engineStatus.innerHTML = '<span class="dot"></span>Loading...';
+            try {
+                engine = await CreateMLCEngine(model, {
+                    initProgressCallback: (p) => {
+                        const pct = Math.round((p.progress || 0) * 100);
+                        els.progressFill.style.width = pct + '%';
+                        els.progressText.textContent = p.text || ('Loading ' + pct + '%');
+                    }
+                });
+                els.engineStatus.className = 'status-pill on';
+                els.engineStatus.innerHTML = '<span class="dot"></span>Loaded: ' + model;
+                els.progressText.textContent = 'Model ready. Runs fully on your device.';
+                enableTools();
+            } catch (err) {
+                console.error(err);
+                els.engineStatus.className = 'status-pill off';
+                els.engineStatus.innerHTML = '<span class="dot"></span>Failed';
+                els.progressText.textContent = 'Could not load model: ' + (err.message || err) + '. Try a smaller model or use bring-your-own-key.';
+                els.loadBtn.disabled = false;
+            }
+        });
+
+        // ---- Unified generate: streams tokens into a target element ----
+        async function generate(messages, targetEl, { temperature = 0.7, max_tokens = 512 } = {}) {
+            targetEl.textContent = '';
+            // Priority: loaded on-device engine > visitor's own key > shared proxy.
+            if (engine) {
+                const chunks = await engine.chat.completions.create({
+                    messages, temperature, max_tokens, stream: true,
+                });
+                for await (const chunk of chunks) {
+                    const delta = chunk.choices?.[0]?.delta?.content || '';
+                    if (delta) targetEl.textContent += delta;
+                }
+                return;
+            }
+
+            let url, headers, bodyObj;
+            if (byokReady()) {
+                const b = loadByok();
+                url = b.base.replace(/\/$/, '') + '/chat/completions';
+                headers = { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + b.key };
+                bodyObj = { model: b.model, messages, temperature, max_tokens, stream: true };
+            } else if (SHARED_PROXY_URL) {
+                url = SHARED_PROXY_URL;
+                headers = { 'Content-Type': 'application/json' };
+                bodyObj = { messages, temperature, max_tokens, stream: true };
+            } else {
+                throw new Error('No AI backend available. Load the on-device model or add a key.');
+            }
+
+            const res = await fetch(url, { method: 'POST', headers, body: JSON.stringify(bodyObj) });
+            if (!res.ok || !res.body) {
+                const txt = await res.text().catch(() => res.statusText);
+                throw new Error('Provider error ' + res.status + ': ' + txt);
+            }
+            const reader = res.body.getReader();
+            const decoder = new TextDecoder();
+            let buffer = '';
+            while (true) {
+                const { value, done } = await reader.read();
+                if (done) break;
+                buffer += decoder.decode(value, { stream: true });
+                const lines = buffer.split('\n');
+                buffer = lines.pop();
+                for (const line of lines) {
+                    const t = line.trim();
+                    if (!t.startsWith('data:')) continue;
+                    const data = t.slice(5).trim();
+                    if (data === '[DONE]') return;
+                    try {
+                        const json = JSON.parse(data);
+                        const delta = json.choices?.[0]?.delta?.content || '';
+                        if (delta) targetEl.textContent += delta;
+                    } catch { /* ignore keep-alive lines */ }
+                }
+            }
+        }
+
+        function withBusy(btn, fn) {
+            return async () => {
+                if (!ready()) return;
+                btn.disabled = true;
+                const label = btn.textContent;
+                btn.textContent = 'Generating...';
+                try { await fn(); }
+                catch (err) { console.error(err); }
+                finally { btn.disabled = false; btn.textContent = label; }
+            };
+        }
+
+        // ---- Tool 1: LinkedIn headline optimizer ----
+        els.hlRun.addEventListener('click', withBusy(els.hlRun, async () => {
+            const current = els.hlCurrent.value.trim() || '(none provided)';
+            const role = els.hlRole.value.trim() || 'their current field';
+            const messages = [
+                { role: 'system', content: 'You are a concise LinkedIn branding expert. Never use em dashes or en dashes. Use plain punctuation.' },
+                { role: 'user', content:
+                    `Rewrite this LinkedIn headline into exactly 3 stronger options, numbered 1 to 3. ` +
+                    `Each under 220 characters, keyword-rich for recruiter search, specific, and confident. ` +
+                    `Target role/focus: ${role}. Current headline: "${current}". ` +
+                    `Return only the 3 numbered options, no preamble.` },
+            ];
+            try { await generate(messages, els.hlOut, { temperature: 0.8, max_tokens: 400 }); }
+            catch (err) { els.hlOut.textContent = 'Error: ' + (err.message || err); }
+        }));
+
+        // ---- Tool 2: free-form prompt runner ----
+        els.promptRun.addEventListener('click', withBusy(els.promptRun, async () => {
+            const prompt = els.promptBox.value.trim();
+            if (!prompt) { els.promptOut.textContent = 'Type a prompt first.'; return; }
+            const messages = [
+                { role: 'system', content: 'You are a helpful, practical assistant for developers and job seekers. Be concise. Never use em dashes or en dashes.' },
+                { role: 'user', content: prompt },
+            ];
+            try { await generate(messages, els.promptOut, { temperature: 0.7, max_tokens: 700 }); }
+            catch (err) { els.promptOut.textContent = 'Error: ' + (err.message || err); }
+        }));
+
+        enableTools();
+    </script>
+    <script type="module" src="./functions/site.js"></script>
+</body>
+</html>

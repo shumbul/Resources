@@ -1,47 +1,100 @@
 /* Core Theme Variables - Load First */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
+
 :root {
-    --primary: #8b5cf6;
-    --secondary: #7c3aed;
+    --primary: #7c3aed;
+    --secondary: #6d28d9;
     --accent: #a78bfa;
     --success: #059669;
     --warning: #d97706;
-    --text-primary: #1f2937;
-    --text-secondary: #6b7280;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
     --bg-primary: #ffffff;
-    --bg-secondary: #f9fafb;
-    --bg-tertiary: #f1f5f9;
-    --border: #e5e7eb;
-    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --bg-secondary: #f7f8fc;
+    --bg-tertiary: #eef1f8;
+    --border: #e6e8f0;
+
+    /* Modern depth: softer, deeper, more diffuse */
+    --shadow: 0 2px 8px -2px rgba(15, 23, 42, 0.10), 0 6px 16px -8px rgba(15, 23, 42, 0.12);
+    --shadow-lg: 0 12px 34px -10px rgba(15, 23, 42, 0.20), 0 4px 12px -6px rgba(15, 23, 42, 0.10);
+
+    /* New design tokens */
+    --radius-sm: 10px;
+    --radius: 16px;
+    --radius-lg: 22px;
+    --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+    --glass-bg: rgba(255, 255, 255, 0.65);
+    --glass-border: rgba(255, 255, 255, 0.55);
+    --ring: rgba(139, 92, 246, 0.35);
+
+    --font-sans: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-display: 'Space Grotesk', 'Inter', 'Segoe UI', sans-serif;
+    --mesh-1: rgba(139, 92, 246, 0.14);
+    --mesh-2: rgba(59, 130, 246, 0.10);
+    --mesh-3: rgba(236, 72, 153, 0.08);
 }
 
 /* Theme variations */
-[data-theme="purple"] {
-    --primary: #8b5cf6;
-    --secondary: #7c3aed;
-    --accent: #a78bfa;
+[data-theme="purple"] { --primary: #7c3aed; --secondary: #6d28d9; --accent: #a78bfa; --ring: rgba(139,92,246,.35); --mesh-1: rgba(139,92,246,.14); }
+[data-theme="blue"]   { --primary: #2563eb; --secondary: #1e40af; --accent: #3b82f6; --ring: rgba(37,99,235,.35);  --mesh-1: rgba(37,99,235,.14);  }
+[data-theme="green"]  { --primary: #047857; --secondary: #065f46; --accent: #10b981; --ring: rgba(5,150,105,.35);  --mesh-1: rgba(5,150,105,.14);  }
+[data-theme="orange"] { --primary: #c2410c; --secondary: #9a3412; --accent: #f97316; --ring: rgba(234,88,12,.35);  --mesh-1: rgba(234,88,12,.14);  }
+[data-theme="red"]    { --primary: #b91c1c; --secondary: #991b1b; --accent: #ef4444; --ring: rgba(220,38,38,.35);  --mesh-1: rgba(220,38,38,.14);  }
+
+/* ---- Global modern layer (lowest priority: pages can still override) ---- */
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
 }
 
-[data-theme="blue"] {
-    --primary: #2563eb;
-    --secondary: #1e40af;
-    --accent: #3b82f6;
+/* Futuristic, lightweight backdrop: a fixed gradient mesh behind all content.
+   Pure CSS, no images, no JS, so it stays fast. */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+        radial-gradient(45rem 45rem at 12% -8%, var(--mesh-1), transparent 60%),
+        radial-gradient(40rem 40rem at 108% 12%, var(--mesh-2), transparent 55%),
+        radial-gradient(38rem 38rem at 50% 118%, var(--mesh-3), transparent 60%);
 }
 
-[data-theme="green"] {
-    --primary: #059669;
-    --secondary: #047857;
-    --accent: #10b981;
+h1, h2, h3, .demo-title, .ai-title { font-family: var(--font-display); letter-spacing: -0.01em; }
+
+::selection { background: var(--primary); color: #fff; }
+
+:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--ring); border-radius: 6px; }
+
+/* Refined scrollbar */
+* { scrollbar-width: thin; scrollbar-color: var(--accent) transparent; }
+*::-webkit-scrollbar { width: 10px; height: 10px; }
+*::-webkit-scrollbar-thumb { background: color-mix(in srgb, var(--accent) 70%, transparent); border-radius: 999px; border: 2px solid transparent; background-clip: padding-box; }
+*::-webkit-scrollbar-thumb:hover { background: var(--primary); background-clip: padding-box; }
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
 
-[data-theme="orange"] {
-    --primary: #ea580c;
-    --secondary: #c2410c;
-    --accent: #f97316;
-}
+/* Hero header legibility: titles/subtitles sit on the purple gradient header,
+   so they must stay light. The shared base style forces dark heading color,
+   these higher-specificity rules restore white text on the colored headers. */
+.header h1, .header h2,
+.demo-header .demo-title,
+.ai-header .ai-title { color: #ffffff; }
+.demo-header .demo-subtitle,
+.ai-header .ai-subtitle { color: rgba(255, 255, 255, 0.92); }
 
-[data-theme="red"] {
-    --primary: #dc2626;
-    --secondary: #b91c1c;
-    --accent: #ef4444;
-}
+/* Never let a code block force horizontal page scroll on small screens. */
+pre { max-width: 100%; overflow-x: auto; box-sizing: border-box; }
+
+/* Links inside paragraphs stay distinguishable without relying on color alone. */
+.footer-content p a, .site-footer a { text-decoration: underline; }
+/* In-content links on the guide pages (DSA, system design, resume, interview). */
+.gsection a, .gcard a { text-decoration: underline; }

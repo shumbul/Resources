@@ -33,22 +33,34 @@ Transform your LinkedIn profile into an opportunity magnet with AI-powered strat
 - **Job Search Mastery:** Direct outreach strategies that increase response rates by 5x
 - **Complete Templates:** Ready-to-use templates for every LinkedIn interaction
 
+### 🛠️ [AI Tools for Developers](https://shumbul.github.io/Resources/ai-tools.html)
+Real AI that runs entirely in your browser. Free, private, and needs no API key. The model loads on your own device via WebGPU, so nothing you type leaves your machine and hosting stays $0.
+
+- **LinkedIn headline optimizer:** paste your headline, get 3 recruiter-ready rewrites
+- **Prompt runner:** type any prompt and get a live streamed answer
+- **Bring your own key (optional):** point it at any OpenAI-compatible provider (Groq, OpenRouter) for a bigger model, still free
+
 ### 🧩 [Component System Demo](https://shumbul.github.io/Resources/component-demo.html)
 Explore the modular component system used to build this website. Learn how to eliminate code duplication and build maintainable web pages.
 
-## 🔮 Coming Soon
+### 💻 [DSA Practice Guide](https://shumbul.github.io/Resources/dsa-practice-guide.html)
+A pattern-based way to learn Data Structures and Algorithms. Learn the 8 core patterns, follow an 8-week plan, and practice with free resources.
 
-- DSA Practice Guide
-- System Design Templates
-- AI Tools for Developers
-- Resume & Portfolio Templates
-- Interview Prep Kit
+### 🎯 [System Design Templates](https://shumbul.github.io/Resources/system-design-templates.html)
+A simple 6-step framework, reusable building blocks, and a worked example so you can think in systems, not just code.
+
+### 📄 [Resume & Portfolio Templates](https://shumbul.github.io/Resources/resume-portfolio-templates.html)
+A recruiter-tested bullet formula, a one-page structure, and a portfolio checklist that show impact instead of tasks.
+
+### 🗣️ [Interview Prep Kit](https://shumbul.github.io/Resources/interview-prep-kit.html)
+The STAR method, common behavioral questions, a technical checklist, and smart questions to ask back. Turn prep into confidence.
 
 ## 🛠️ Technical Implementation
 
 This website is built using a **modular component system** that eliminates code duplication and makes maintenance easier:
 
 ### Features
+- **On-page AI assistant:** every guide has a free, private "Ask AI" helper that reads the current page and tailors it to you. Runs on your device (WebGPU), no key or server needed, with an optional bring-your-own-key mode.
 - **Reusable Components:** Header, footer, theme switcher, and navigation are centralized
 - **Theme System:** Multi-color theme switcher with persistent preferences
 - **Responsive Design:** Works seamlessly on desktop and mobile

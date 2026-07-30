@@ -1,0 +1,6 @@
+name = "resources-ai"
+main = "worker.js"
+compatibility_date = "2025-01-01"
+
+# The Groq API key is NOT stored here. Set it as a secret instead:
+#   npx wrangler secret put GROQ_API_KEY

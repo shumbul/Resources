@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
     <title>6-Month AI Developer Roadmap</title>
     <meta name="description" content="Complete 6-month roadmap to become an AI developer">
     
@@ -172,7 +173,7 @@
         }
 
         .skill-tag.secondary {
-            background: var(--accent);
+            background: var(--secondary);
         }
 
         /* Resources section */
@@ -358,9 +359,9 @@
     <div class="header">
         <div class="container">
             <div class="header-content">
-                <a href="https://shumbul.github.io/Resources/" class="back-link">← Back to Resources</a>
+                <a href="./index.html" class="back-link">← Back to Resources</a>
                 <h1>6-Month AI Developer Roadmap</h1>
-                <p class="subtitle">Your complete journey from beginner to AI developer with hands-on projects and curated resources</p>
+                <p class="subtitle">Your friendly, step-by-step path from total beginner to AI developer. Real projects, free resources, no gatekeeping.</p>
             </div>
         </div>
     </div>
@@ -368,6 +369,10 @@
     <div class="container">
         <div class="main-content fade-in">
             <div class="content-wrapper">
+                <div style="background:var(--bg-secondary,#f7f8fc);border:1px solid var(--border,#e6e8f0);border-left:4px solid var(--primary,#8b5cf6);border-radius:14px;padding:1.1rem 1.3rem;margin:0 0 1.75rem;">
+                    <div style="font-weight:700;font-family:var(--font-display,inherit);margin-bottom:.5rem;">🌱 Fresher reality check: pace over speed</div>
+                    <p style="margin:0;color:var(--text-secondary);">This is a real 6-month plan, not a weekend crash course. Do one month at a time and actually ship the "Build This Month" project before moving on. Month 5 (Docker, cloud, MLOps) looks scary, that is normal, you only need a working deploy, not mastery. Use the <strong>Mark month done</strong> buttons to pace yourself, and tap <strong>✦ Ask AI</strong> if any topic feels overwhelming.</p>
+                </div>
                 
                 <div class="month-section">
                     <div class="month-header">
@@ -647,5 +652,6 @@
             observer.observe(section);
         });
     </script>
+    <script type="module" src="./functions/site.js"></script>
 </body>
 </html>
