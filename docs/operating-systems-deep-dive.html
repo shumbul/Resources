@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap">
+    <meta charset="UTF-8">
+    <div data-component="head-common"></div>
+
+    <title>Operating Systems Deep Dive | Resources by Shumbul Arifa</title>
+    <meta name="description" content="An interview-oriented Operating Systems guide: processes, threads, scheduling, deadlocks, memory, and more, explained with real analogies, plus a quiz after every section and a final quiz with scoring.">
+    <meta property="og:title" content="Operating Systems Deep Dive - with quizzes">
+    <meta property="og:description" content="Learn OS the interview way: interesting theory with examples and self-scoring quizzes after every section.">
+
+    <style>
+        .guide-header { background: linear-gradient(135deg, var(--primary), var(--secondary)); color:#fff; padding:3.5rem 0; text-align:center; margin-bottom:2.5rem; }
+        .guide-title { font-size:2.6rem; font-weight:800; margin-bottom:.6rem; color:#fff; }
+        .guide-sub { font-size:1.15rem; color:rgba(255,255,255,.94); max-width:720px; margin:0 auto; }
+        .guide-badges { display:flex; gap:.5rem; justify-content:center; flex-wrap:wrap; margin-top:1.2rem; }
+        .guide-badge { background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.4); padding:.35rem .8rem; border-radius:999px; font-size:.85rem; font-weight:600; }
+
+        .starter { background:var(--bg-primary); border:1px solid var(--border); border-left:4px solid var(--primary); border-radius:12px; padding:1.1rem 1.3rem; margin-bottom:1.75rem; }
+        .gsection { background:var(--bg-secondary); border:1px solid var(--border); border-radius:16px; padding:1.6rem 1.75rem; margin-bottom:1.75rem; }
+        .gsection h2 { margin-top:0; }
+        .gsection h3 { margin:1.2rem 0 .4rem; }
+        .muted { color:var(--text-secondary); }
+        .analogy { background:var(--bg-primary); border:1px solid var(--border); border-left:4px solid var(--accent); border-radius:10px; padding:.8rem 1.1rem; margin:.7rem 0; }
+        .analogy b { color:var(--primary); }
+        .key { background:var(--bg-primary); border:1px solid var(--border); border-radius:10px; padding:.9rem 1.1rem; margin:.7rem 0; }
+        .key ul { margin:.3rem 0 0; }
+        table.tbl { width:100%; border-collapse:collapse; margin:.6rem 0; }
+        table.tbl th, table.tbl td { text-align:left; padding:.5rem .7rem; border-bottom:1px solid var(--border); font-size:.92rem; vertical-align:top; }
+        table.tbl th { color:var(--text-secondary); font-size:.8rem; text-transform:uppercase; letter-spacing:.04em; }
+        .gsection p a, .gsection li a, .starter a { text-decoration:underline; }
+        .nextlinks { display:flex; flex-wrap:wrap; gap:.6rem; }
+        .nextlinks a { text-decoration:none; background:var(--bg-primary); border:1px solid var(--border); border-radius:10px; padding:.55rem .9rem; font-weight:600; color:var(--text-primary); }
+        .nextlinks a:hover { border-color:var(--primary); color:var(--primary); }
+    </style>
+</head>
+<body>
+    <div data-component="theme-switcher"></div>
+
+    <header class="guide-header">
+        <div class="container">
+            <h1 class="guide-title">🖥️ Operating Systems Deep Dive</h1>
+            <p class="guide-sub">The OS concepts interviewers love, explained with everyday analogies so they actually stick. Read a section, take its quiz, and finish with a scored final quiz to prove you have got it.</p>
+            <div class="guide-badges">
+                <span class="guide-badge">🎯 Interview-oriented</span>
+                <span class="guide-badge">📝 Quiz after each section</span>
+                <span class="guide-badge">🏆 Final scored quiz</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="starter">
+            <strong style="font-family:var(--font-display);">🌱 How to use this</strong>
+            <p class="muted" style="margin:.5rem 0 0;">Each section gives you the theory with a real-world analogy, then a short quiz so you can check yourself immediately. At the very end there is a final quiz that scores you out of 10. Do not just read, answer the quizzes out loud too, that is closer to the real interview. Want a concept re-explained? Tap <strong>✦ Ask AI</strong>. This is the deep dive companion to the <a href="./cs-fundamentals-guide.html">CS Fundamentals guide</a>.</p>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Process vs Thread">Processes &amp; threads</h2>
+            <p class="muted">A <b>process</b> is a running program with its own private memory. A <b>thread</b> is a lighter unit of execution that lives inside a process and shares that process's memory with sibling threads.</p>
+            <div class="analogy"><b>Analogy:</b> a process is a house (its own address, its own stuff). Threads are the people living in that house, they share the kitchen and rooms (memory), so they cooperate cheaply, but if one starts a fire, everyone is affected.</div>
+            <div class="key"><b>Remember:</b><ul>
+                <li>Processes are isolated (a crash in one does not kill another); threads in a process are not.</li>
+                <li>Creating a thread is cheaper than a process; switching between threads is faster too.</li>
+                <li>Threads share memory (fast communication, but needs synchronization); processes need IPC to talk.</li>
+            </ul></div>
+            <div class="quiz" data-quiz-title="Check: processes &amp; threads">
+                <script type="application/json">
+                [
+                  {"q":"Which statement is true?","options":["Threads have fully separate memory from each other","Threads in the same process share memory","A process is lighter than a thread","Processes always share memory"],"answer":1,"explain":"Threads within a process share that process's memory, which is why they communicate cheaply but need synchronization."},
+                  {"q":"Why is a thread cheaper than a process?","options":["It uses no CPU","It shares the parent process's resources instead of duplicating them","It cannot be scheduled","It has more memory"],"answer":1,"explain":"A thread reuses its process's memory and resources, so creation and context switches are lighter than for a full process."},
+                  {"q":"If one thread crashes with an unhandled fault, what is the typical effect?","options":["Only that thread, never others","It can bring down the whole process","It restarts the OS","Nothing happens"],"answer":1,"explain":"Because threads share the process's memory space, a fatal fault in one can take down the entire process."}
+                ]
+                </script>
+            </div>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="CPU Scheduling">CPU scheduling</h2>
+            <p class="muted">The CPU can run one thing at a time per core, so the OS scheduler decides who runs next. The goal: keep the CPU busy while feeling responsive to users.</p>
+            <table class="tbl">
+                <thead><tr><th>Algorithm</th><th>Idea</th><th>Watch out for</th></tr></thead>
+                <tbody>
+                    <tr><td>FCFS</td><td>First come, first served</td><td>A long job blocks everyone (convoy effect)</td></tr>
+                    <tr><td>SJF</td><td>Shortest job first</td><td>Long jobs can starve; needs to know job length</td></tr>
+                    <tr><td>Round Robin</td><td>Each gets a fixed time slice, then rotate</td><td>Time slice too big = FCFS; too small = overhead</td></tr>
+                    <tr><td>Priority</td><td>Highest priority runs first</td><td>Low-priority starvation (fix with aging)</td></tr>
+                </tbody>
+            </table>
+            <div class="analogy"><b>Analogy:</b> Round Robin is a group of friends sharing one video-game controller with a 5-minute timer, everyone gets a fair turn. SJF is a supermarket "10 items or fewer" lane: quick shoppers finish fast, but someone with a full cart may wait a long time.</div>
+            <div class="quiz" data-quiz-title="Check: scheduling">
+                <script type="application/json">
+                [
+                  {"q":"Which algorithm gives each process a fixed time slice in rotation?","options":["FCFS","Round Robin","SJF","Priority"],"answer":1,"explain":"Round Robin cycles through processes giving each a fixed quantum, which keeps the system responsive."},
+                  {"q":"The 'convoy effect' (a long job delaying many short ones) is a problem with:","options":["Round Robin","FCFS","SJF","Aging"],"answer":1,"explain":"In FCFS, one long job at the front makes all later (possibly short) jobs wait, the convoy effect."},
+                  {"q":"How do you prevent low-priority starvation in priority scheduling?","options":["Lower the time slice","Aging (gradually raise waiting jobs' priority)","Use FCFS instead","Add more memory"],"answer":1,"explain":"Aging slowly increases the priority of long-waiting processes so they eventually run."}
+                ]
+                </script>
+            </div>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Deadlocks">Deadlocks</h2>
+            <p class="muted">A <b>deadlock</b> is when processes wait on each other forever, none can proceed. It needs <b>all four</b> of these conditions at once:</p>
+            <div class="key"><ul>
+                <li><b>Mutual exclusion</b> - a resource is held by only one process at a time.</li>
+                <li><b>Hold and wait</b> - a process holds one resource while waiting for another.</li>
+                <li><b>No preemption</b> - resources cannot be forcibly taken away.</li>
+                <li><b>Circular wait</b> - a cycle of processes each waiting on the next.</li>
+            </ul></div>
+            <div class="analogy"><b>Analogy:</b> two people at a narrow bridge, each stepping on halfway and refusing to back up. Neither can pass, neither will reverse. Break any one rule (say, one agrees to reverse, that is preempting) and the deadlock is gone.</div>
+            <p class="muted">Because you need all four, breaking <b>any one</b> prevents deadlock. A common practical fix: always acquire locks in a fixed global order, which removes circular wait.</p>
+            <div class="quiz" data-quiz-title="Check: deadlocks">
+                <script type="application/json">
+                [
+                  {"q":"How many of the four conditions must hold for a deadlock?","options":["Any one","At least two","All four","Exactly three"],"answer":2,"explain":"All four (mutual exclusion, hold-and-wait, no preemption, circular wait) must hold simultaneously."},
+                  {"q":"Acquiring all locks in a fixed global order primarily prevents:","options":["Mutual exclusion","Circular wait","Hold and wait","Starvation"],"answer":1,"explain":"A consistent lock ordering makes a waiting cycle impossible, so it eliminates circular wait."},
+                  {"q":"Which is NOT one of the four deadlock conditions?","options":["Hold and wait","Circular wait","Priority inversion","No preemption"],"answer":2,"explain":"Priority inversion is a separate scheduling problem, not one of the four Coffman conditions for deadlock."}
+                ]
+                </script>
+            </div>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Synchronization">Synchronization: mutex vs semaphore</h2>
+            <p class="muted">When threads share data, you must stop them corrupting it by acting at once. That shared, must-be-exclusive code is the <b>critical section</b>.</p>
+            <table class="tbl">
+                <thead><tr><th></th><th>Mutex</th><th>Semaphore</th></tr></thead>
+                <tbody>
+                    <tr><td>Meaning</td><td>A lock: one holder at a time</td><td>A counter allowing N at a time</td></tr>
+                    <tr><td>Ownership</td><td>Owned by the locker (only it unlocks)</td><td>No ownership; anyone can signal</td></tr>
+                    <tr><td>Use for</td><td>Mutual exclusion (one resource)</td><td>Limiting access to N resources / signaling</td></tr>
+                </tbody>
+            </table>
+            <div class="analogy"><b>Analogy:</b> a mutex is the single key to one toilet, whoever holds it is inside, everyone else waits. A semaphore is a parking lot with N spaces and a counter at the gate: it lets N cars in, then makes the rest wait until a space frees up.</div>
+            <div class="quiz" data-quiz-title="Check: synchronization">
+                <script type="application/json">
+                [
+                  {"q":"A mutex allows how many threads in the critical section at once?","options":["One","Two","N (a set number)","Unlimited"],"answer":0,"explain":"A mutex is a mutual-exclusion lock: exactly one thread holds it at a time."},
+                  {"q":"A semaphore initialized to 3 lets how many threads proceed before blocking?","options":["1","3","0","Unlimited"],"answer":1,"explain":"A counting semaphore with value 3 permits three concurrent acquirers before the next one blocks."},
+                  {"q":"A key difference: a mutex has ownership, meaning:","options":["Any thread can unlock it","Only the thread that locked it should unlock it","It cannot be unlocked","It counts to N"],"answer":1,"explain":"A mutex is owned by the locking thread; that same thread is expected to release it. Semaphores have no such ownership."}
+                ]
+                </script>
+            </div>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Memory">Virtual memory &amp; paging</h2>
+            <p class="muted"><b>Virtual memory</b> gives each process the illusion of a large, private, contiguous memory, even though physical RAM is limited and shared. The OS splits memory into fixed-size <b>pages</b> and maps virtual pages to physical frames.</p>
+            <p class="muted">When a process touches a page that is not in RAM, a <b>page fault</b> occurs and the OS loads it from disk. Too many page faults (constant swapping) is called <b>thrashing</b>, and it destroys performance.</p>
+            <div class="analogy"><b>Analogy:</b> your desk is RAM (small, fast), the filing cabinet is disk (big, slow). Paging is fetching just the folder you need onto the desk. Thrashing is a desk so small you spend all day swapping folders in and out and never actually working.</div>
+            <div class="quiz" data-quiz-title="Check: memory">
+                <script type="application/json">
+                [
+                  {"q":"What is a page fault?","options":["A hardware failure","Accessing a page not currently in RAM, so the OS loads it","A deadlock","A scheduling error"],"answer":1,"explain":"A page fault happens when a process accesses a virtual page not resident in RAM; the OS fetches it from disk."},
+                  {"q":"Constant swapping that cripples performance is called:","options":["Paging","Thrashing","Fragmentation","Context switching"],"answer":1,"explain":"Thrashing is when the system spends most of its time swapping pages instead of doing useful work."},
+                  {"q":"Virtual memory mainly gives a process:","options":["Faster CPU","The illusion of a large, private, contiguous address space","More cores","Free disk space"],"answer":1,"explain":"Virtual memory abstracts physical RAM so each process sees a large, private, contiguous space."}
+                ]
+                </script>
+            </div>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Final quiz">Final quiz</h2>
+            <p class="muted">Ten questions across everything above. Aim for 7+ before you call this subject interview-ready.</p>
+            <div class="quiz quiz-final" data-quiz-title="Operating Systems: final quiz">
+                <script type="application/json">
+                [
+                  {"q":"A process differs from a thread mainly because a process has:","options":["Its own isolated memory space","No memory","Higher priority always","No ability to run"],"answer":0,"explain":"Processes have isolated memory; threads share their process's memory."},
+                  {"q":"Which scheduler can cause the convoy effect?","options":["Round Robin","FCFS","Priority with aging","SJF"],"answer":1,"explain":"FCFS lets a long early job delay many short later ones, the convoy effect."},
+                  {"q":"Round Robin's fairness comes from:","options":["Running shortest jobs first","A fixed time quantum per process in rotation","Static priorities","Never preempting"],"answer":1,"explain":"Each process gets a fixed time slice in turn."},
+                  {"q":"Deadlock requires how many conditions together?","options":["1","2","4","5"],"answer":2,"explain":"All four Coffman conditions must hold at once."},
+                  {"q":"Which breaks circular wait in practice?","options":["More RAM","Fixed global lock ordering","Bigger time slice","Lower priority"],"answer":1,"explain":"Acquiring locks in a consistent order prevents a waiting cycle."},
+                  {"q":"A binary mutex permits how many holders?","options":["One","Two","N","Zero"],"answer":0,"explain":"A mutex is mutual exclusion: one holder at a time."},
+                  {"q":"A counting semaphore is best for:","options":["Guaranteeing single access only","Limiting access to N identical resources","Scheduling the CPU","Paging memory"],"answer":1,"explain":"A counting semaphore lets up to N threads use a pool of resources."},
+                  {"q":"A page fault is handled by:","options":["Crashing the process","The OS loading the page from disk into RAM","Deleting the page","Ignoring it"],"answer":1,"explain":"The OS brings the missing page into RAM, then resumes the process."},
+                  {"q":"Thrashing means the system is:","options":["Running efficiently","Spending most time swapping pages, not working","Out of processes","Using one core"],"answer":1,"explain":"Thrashing is excessive paging that starves real work."},
+                  {"q":"Threads communicate cheaply because they:","options":["Use the network","Share their process's memory","Have separate address spaces","Never need synchronization"],"answer":1,"explain":"Shared memory makes thread communication cheap, but it does still require synchronization."}
+                ]
+                </script>
+            </div>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="What's next">What to do next</h2>
+            <div class="nextlinks">
+                <a href="./cs-fundamentals-guide.html">🧠 CS Fundamentals</a>
+                <a href="./dbms-deep-dive.html">🗃️ DBMS Deep Dive</a>
+                <a href="./computer-networks-deep-dive.html">🌐 Networks Deep Dive</a>
+                <a href="./oop-deep-dive.html">🧩 OOP Deep Dive</a>
+                <a href="./interview-prep-kit.html">🗣️ Interview Prep</a>
+            </div>
+        </div>
+    </main>
+
+    <div data-component="footer"></div>
+    <div data-component="scripts-common"></div>
+    <script src="./components/component-loader.js"></script>
+    <script type="module" src="./functions/site.js?v=20260731"></script>
+</body>
+</html>

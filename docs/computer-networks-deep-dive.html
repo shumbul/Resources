@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap">
+    <meta charset="UTF-8">
+    <div data-component="head-common"></div>
+
+    <title>Computer Networks Deep Dive | Resources by Shumbul Arifa</title>
+    <meta name="description" content="An interview-oriented Computer Networks guide: OSI vs TCP/IP, TCP vs UDP, HTTP, DNS, and what happens when you visit a URL, explained with examples, plus a quiz after every section and a final scored quiz.">
+    <meta property="og:title" content="Computer Networks Deep Dive - with quizzes">
+    <meta property="og:description" content="Learn networking the interview way: clear theory with examples and self-scoring quizzes after every section.">
+
+    <style>
+        .guide-header { background: linear-gradient(135deg, var(--primary), var(--secondary)); color:#fff; padding:3.5rem 0; text-align:center; margin-bottom:2.5rem; }
+        .guide-title { font-size:2.6rem; font-weight:800; margin-bottom:.6rem; color:#fff; }
+        .guide-sub { font-size:1.15rem; color:rgba(255,255,255,.94); max-width:720px; margin:0 auto; }
+        .guide-badges { display:flex; gap:.5rem; justify-content:center; flex-wrap:wrap; margin-top:1.2rem; }
+        .guide-badge { background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.4); padding:.35rem .8rem; border-radius:999px; font-size:.85rem; font-weight:600; }
+
+        .starter { background:var(--bg-primary); border:1px solid var(--border); border-left:4px solid var(--primary); border-radius:12px; padding:1.1rem 1.3rem; margin-bottom:1.75rem; }
+        .gsection { background:var(--bg-secondary); border:1px solid var(--border); border-radius:16px; padding:1.6rem 1.75rem; margin-bottom:1.75rem; }
+        .gsection h2 { margin-top:0; }
+        .muted { color:var(--text-secondary); }
+        .analogy { background:var(--bg-primary); border:1px solid var(--border); border-left:4px solid var(--accent); border-radius:10px; padding:.8rem 1.1rem; margin:.7rem 0; }
+        .analogy b { color:var(--primary); }
+        .key { background:var(--bg-primary); border:1px solid var(--border); border-radius:10px; padding:.9rem 1.1rem; margin:.7rem 0; }
+        .key ul { margin:.3rem 0 0; }
+        table.tbl { width:100%; border-collapse:collapse; margin:.6rem 0; }
+        table.tbl th, table.tbl td { text-align:left; padding:.5rem .7rem; border-bottom:1px solid var(--border); font-size:.92rem; vertical-align:top; }
+        table.tbl th { color:var(--text-secondary); font-size:.8rem; text-transform:uppercase; letter-spacing:.04em; }
+        .flow { display:flex; flex-wrap:wrap; gap:.5rem; align-items:center; margin:.7rem 0; }
+        .flow .node { background:var(--bg-primary); border:1px solid var(--border); border-radius:10px; padding:.5rem .8rem; font-size:.85rem; font-weight:600; }
+        .flow .arrow { color:var(--primary); font-weight:700; }
+        .gsection p a, .gsection li a, .starter a { text-decoration:underline; }
+        .nextlinks { display:flex; flex-wrap:wrap; gap:.6rem; }
+        .nextlinks a { text-decoration:none; background:var(--bg-primary); border:1px solid var(--border); border-radius:10px; padding:.55rem .9rem; font-weight:600; color:var(--text-primary); }
+        .nextlinks a:hover { border-color:var(--primary); color:var(--primary); }
+    </style>
+</head>
+<body>
+    <div data-component="theme-switcher"></div>
+
+    <header class="guide-header">
+        <div class="container">
+            <h1 class="guide-title">🌐 Computer Networks Deep Dive</h1>
+            <p class="guide-sub">Every web app talks over a network, so interviewers love this subject. Learn the layers, protocols, and the famous "what happens when you type a URL" walkthrough, with a quiz after each section and a scored final quiz.</p>
+            <div class="guide-badges">
+                <span class="guide-badge">🎯 Interview-oriented</span>
+                <span class="guide-badge">📝 Quiz after each section</span>
+                <span class="guide-badge">🏆 Final scored quiz</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="starter">
+            <strong style="font-family:var(--font-display);">🌱 How to use this</strong>
+            <p class="muted" style="margin:.5rem 0 0;">Read each section, then take its quiz. The final quiz scores you out of 10. Want to <i>see</i> these concepts run on your own machine? Pair this with the hands-on <a href="./networking-toolkit.html">Networking Toolkit</a>. It is also the deep dive for the <a href="./cs-fundamentals-guide.html">CS Fundamentals</a> Networks section. Stuck? Tap <strong>✦ Ask AI</strong>.</p>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Models">OSI &amp; TCP/IP models</h2>
+            <p class="muted">Networking is built in <b>layers</b>, each doing one job and talking only to the layers next to it. The <b>OSI</b> model has 7 layers (a teaching model); the <b>TCP/IP</b> model has 4 (what the internet actually uses).</p>
+            <table class="tbl">
+                <thead><tr><th>Layer (top to bottom)</th><th>Job</th><th>Example</th></tr></thead>
+                <tbody>
+                    <tr><td>Application</td><td>What the user's app speaks</td><td>HTTP, DNS</td></tr>
+                    <tr><td>Transport</td><td>Reliable/fast delivery between apps</td><td>TCP, UDP</td></tr>
+                    <tr><td>Network</td><td>Routing across networks</td><td>IP</td></tr>
+                    <tr><td>Link</td><td>Delivery on the local wire/wifi</td><td>Ethernet, MAC</td></tr>
+                </tbody>
+            </table>
+            <div class="analogy"><b>Analogy:</b> sending a gift. You write a note (application), box it (transport), address it to a city and street (network/IP), and the local courier hands it to the right door (link). Each layer only cares about its own job.</div>
+            <div class="quiz" data-quiz-title="Check: models">
+                <script type="application/json">
+                [
+                  {"q":"How many layers does the OSI model have?","options":["4","5","7","10"],"answer":2,"explain":"OSI has 7 layers; the TCP/IP model has 4."},
+                  {"q":"Which layer is responsible for routing across networks?","options":["Application","Transport","Network (IP)","Link"],"answer":2,"explain":"The network layer (IP) handles addressing and routing between networks."},
+                  {"q":"HTTP and DNS operate at which layer?","options":["Application","Transport","Network","Link"],"answer":0,"explain":"HTTP and DNS are application-layer protocols."}
+                ]
+                </script>
+            </div>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="TCP vs UDP">TCP vs UDP</h2>
+            <p class="muted">Both are transport-layer protocols, but they make opposite trade-offs.</p>
+            <table class="tbl">
+                <thead><tr><th></th><th>TCP</th><th>UDP</th></tr></thead>
+                <tbody>
+                    <tr><td>Reliable?</td><td>Yes, confirms delivery, retransmits</td><td>No guarantees</td></tr>
+                    <tr><td>Ordered?</td><td>Yes, in-order</td><td>No</td></tr>
+                    <tr><td>Speed</td><td>Slower (overhead)</td><td>Faster (lean)</td></tr>
+                    <tr><td>Use for</td><td>Web, email, file transfer</td><td>Video calls, games, live streams</td></tr>
+                </tbody>
+            </table>
+            <p class="muted">TCP starts with a <b>three-way handshake</b> (SYN → SYN-ACK → ACK) to set up a reliable connection before any data flows.</p>
+            <div class="analogy"><b>Analogy:</b> TCP is a phone call, you confirm the other person heard you ("can you hear me? yes"). UDP is shouting across a field, fast and simple, but you do not know if every word landed. For a live match, missing a frame is fine; for a bank transfer, it is not.</div>
+            <div class="quiz" data-quiz-title="Check: TCP vs UDP">
+                <script type="application/json">
+                [
+                  {"q":"Which protocol guarantees reliable, in-order delivery?","options":["UDP","TCP","IP","DNS"],"answer":1,"explain":"TCP confirms delivery and orders packets; UDP does not."},
+                  {"q":"A live video call usually uses:","options":["TCP for reliability","UDP for speed","DNS","Ethernet only"],"answer":1,"explain":"Real-time media favors UDP, speed matters more than perfect delivery."},
+                  {"q":"TCP's connection setup is called the:","options":["Four-way wave","Three-way handshake","Round robin","Page fault"],"answer":1,"explain":"TCP uses a three-way handshake (SYN, SYN-ACK, ACK) to establish a connection."}
+                ]
+                </script>
+            </div>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="HTTP">HTTP, HTTPS &amp; status codes</h2>
+            <p class="muted"><b>HTTP</b> is the application-layer protocol browsers use to request web resources. <b>HTTPS</b> is HTTP wrapped in TLS encryption, so no one in the middle can read or tamper with it.</p>
+            <div class="key"><b>Status code families:</b><ul>
+                <li><b>2xx</b> success (200 OK).</li>
+                <li><b>3xx</b> redirect (301 moved permanently).</li>
+                <li><b>4xx</b> client error (404 not found, 401 unauthorized).</li>
+                <li><b>5xx</b> server error (500 internal server error).</li>
+            </ul></div>
+            <p class="muted">Common methods: <code>GET</code> (read), <code>POST</code> (create), <code>PUT</code> (update/replace), <code>DELETE</code> (remove).</p>
+            <div class="quiz" data-quiz-title="Check: HTTP">
+                <script type="application/json">
+                [
+                  {"q":"A 404 status code means:","options":["Success","Server error","Resource not found (client error)","Redirect"],"answer":2,"explain":"404 is a 4xx client error meaning the requested resource was not found."},
+                  {"q":"HTTPS adds what over HTTP?","options":["Faster DNS","TLS encryption","More status codes","UDP transport"],"answer":1,"explain":"HTTPS is HTTP over TLS, encrypting the traffic."},
+                  {"q":"Which method is typically used to create a resource?","options":["GET","POST","DELETE","HEAD"],"answer":1,"explain":"POST is conventionally used to create new resources."}
+                ]
+                </script>
+            </div>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="DNS">DNS: names to addresses</h2>
+            <p class="muted"><b>DNS</b> (Domain Name System) is the internet's phone book: it translates a human name like <code>github.com</code> into the IP address machines actually use to connect.</p>
+            <div class="analogy"><b>Analogy:</b> you remember "Mom" in your contacts, not her full phone number. DNS is that contact list for the whole internet, you type a name, it finds the number.</div>
+            <p class="muted">A lookup may pass through several DNS servers (resolver → root → TLD → authoritative), and results are <b>cached</b> along the way so repeat visits are fast.</p>
+            <div class="quiz" data-quiz-title="Check: DNS">
+                <script type="application/json">
+                [
+                  {"q":"DNS translates:","options":["IP to MAC","Domain names to IP addresses","HTTP to HTTPS","TCP to UDP"],"answer":1,"explain":"DNS resolves human-friendly domain names into IP addresses."},
+                  {"q":"Why are DNS results cached?","options":["To encrypt them","To make repeat lookups fast","To change the IP","To block sites"],"answer":1,"explain":"Caching avoids repeating the full lookup, speeding up subsequent requests."},
+                  {"q":"DNS is best described as the internet's:","options":["Firewall","Phone book","Router","Cache only"],"answer":1,"explain":"DNS maps names to numbers, like a phone book."}
+                ]
+                </script>
+            </div>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="URL walkthrough">What happens when you visit a URL</h2>
+            <p class="muted">The classic interview question. Here is the chain, top to bottom:</p>
+            <div class="flow">
+                <span class="node">DNS lookup</span><span class="arrow">→</span>
+                <span class="node">TCP handshake</span><span class="arrow">→</span>
+                <span class="node">TLS handshake (HTTPS)</span><span class="arrow">→</span>
+                <span class="node">HTTP request</span><span class="arrow">→</span>
+                <span class="node">Server responds</span><span class="arrow">→</span>
+                <span class="node">Browser renders</span>
+            </div>
+            <p class="muted">In words: the browser resolves the domain to an IP via <b>DNS</b>, opens a <b>TCP</b> connection (plus a <b>TLS</b> handshake for HTTPS), sends an <b>HTTP</b> request, the server returns HTML, and the browser renders it, fetching CSS, JS, and images as needed. You can watch this live with <code>curl -v</code> in the <a href="./networking-toolkit.html">Networking Toolkit</a>.</p>
+            <div class="quiz" data-quiz-title="Check: URL walkthrough">
+                <script type="application/json">
+                [
+                  {"q":"What is the first step after entering a URL?","options":["Render the page","Resolve the domain via DNS","Send HTTP body","Close the connection"],"answer":1,"explain":"First the browser resolves the domain name to an IP address via DNS."},
+                  {"q":"For an HTTPS site, which handshake happens after TCP connects?","options":["DNS handshake","TLS handshake","UDP handshake","MAC handshake"],"answer":1,"explain":"After the TCP connection, a TLS handshake sets up encryption for HTTPS."},
+                  {"q":"The server's response for a web page is typically:","options":["A MAC address","HTML (plus linked CSS/JS)","A DNS record","A ping"],"answer":1,"explain":"The server returns HTML, and the browser then fetches linked CSS, JS, and images."}
+                ]
+                </script>
+            </div>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Final quiz">Final quiz</h2>
+            <p class="muted">Ten questions across models, TCP/UDP, HTTP, DNS, and the URL walkthrough. Aim for 7+.</p>
+            <div class="quiz quiz-final" data-quiz-title="Computer Networks: final quiz">
+                <script type="application/json">
+                [
+                  {"q":"The OSI model has how many layers?","options":["4","5","7","9"],"answer":2,"explain":"OSI has 7 layers."},
+                  {"q":"IP addressing and routing live at which layer?","options":["Application","Transport","Network","Link"],"answer":2,"explain":"The network layer handles IP addressing and routing."},
+                  {"q":"Which is reliable and ordered?","options":["UDP","TCP","IP","ARP"],"answer":1,"explain":"TCP guarantees reliable, ordered delivery."},
+                  {"q":"Online gaming favors UDP because it wants:","options":["Guaranteed delivery","Low latency over perfect delivery","Encryption","Routing"],"answer":1,"explain":"Games prefer speed; a lost packet matters less than delay."},
+                  {"q":"TCP establishes a connection using the:","options":["Two-way ping","Three-way handshake","DNS lookup","TLS only"],"answer":1,"explain":"The three-way handshake (SYN, SYN-ACK, ACK) sets up TCP."},
+                  {"q":"A 500 status code indicates:","options":["Success","Client error","Server error","Redirect"],"answer":2,"explain":"5xx codes are server errors, e.g. 500 internal server error."},
+                  {"q":"HTTPS differs from HTTP by adding:","options":["UDP","TLS encryption","A new DNS","Caching"],"answer":1,"explain":"HTTPS wraps HTTP in TLS encryption."},
+                  {"q":"DNS converts a domain name into:","options":["A MAC address","An IP address","An HTTP method","A port only"],"answer":1,"explain":"DNS resolves names to IP addresses."},
+                  {"q":"The first step when visiting a URL is:","options":["TLS handshake","DNS resolution","Rendering","TCP teardown"],"answer":1,"explain":"DNS resolution comes first to find the server's IP."},
+                  {"q":"After TCP (and TLS) are set up, the browser sends:","options":["A DNS query","An HTTP request","A MAC frame only","A ping"],"answer":1,"explain":"It sends the HTTP request; the server then responds with HTML."}
+                ]
+                </script>
+            </div>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="What's next">What to do next</h2>
+            <div class="nextlinks">
+                <a href="./networking-toolkit.html">🛰️ Networking Toolkit</a>
+                <a href="./cs-fundamentals-guide.html">🧠 CS Fundamentals</a>
+                <a href="./operating-systems-deep-dive.html">🖥️ OS Deep Dive</a>
+                <a href="./dbms-deep-dive.html">🗃️ DBMS Deep Dive</a>
+                <a href="./oop-deep-dive.html">🧩 OOP Deep Dive</a>
+            </div>
+        </div>
+    </main>
+
+    <div data-component="footer"></div>
+    <div data-component="scripts-common"></div>
+    <script src="./components/component-loader.js"></script>
+    <script type="module" src="./functions/site.js?v=20260731"></script>
+</body>
+</html>

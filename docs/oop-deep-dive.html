@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap">
+    <meta charset="UTF-8">
+    <div data-component="head-common"></div>
+
+    <title>OOP Deep Dive | Resources by Shumbul Arifa</title>
+    <meta name="description" content="An interview-oriented Object-Oriented Programming guide: the four pillars, overloading vs overriding, abstract classes vs interfaces, and SOLID, with examples, a quiz after every section, and a final scored quiz.">
+    <meta property="og:title" content="OOP Deep Dive - with quizzes">
+    <meta property="og:description" content="Learn OOP the interview way: clear theory with examples and self-scoring quizzes after every section.">
+
+    <style>
+        .guide-header { background: linear-gradient(135deg, var(--primary), var(--secondary)); color:#fff; padding:3.5rem 0; text-align:center; margin-bottom:2.5rem; }
+        .guide-title { font-size:2.6rem; font-weight:800; margin-bottom:.6rem; color:#fff; }
+        .guide-sub { font-size:1.15rem; color:rgba(255,255,255,.94); max-width:720px; margin:0 auto; }
+        .guide-badges { display:flex; gap:.5rem; justify-content:center; flex-wrap:wrap; margin-top:1.2rem; }
+        .guide-badge { background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.4); padding:.35rem .8rem; border-radius:999px; font-size:.85rem; font-weight:600; }
+
+        .starter { background:var(--bg-primary); border:1px solid var(--border); border-left:4px solid var(--primary); border-radius:12px; padding:1.1rem 1.3rem; margin-bottom:1.75rem; }
+        .gsection { background:var(--bg-secondary); border:1px solid var(--border); border-radius:16px; padding:1.6rem 1.75rem; margin-bottom:1.75rem; }
+        .gsection h2 { margin-top:0; }
+        .muted { color:var(--text-secondary); }
+        .analogy { background:var(--bg-primary); border:1px solid var(--border); border-left:4px solid var(--accent); border-radius:10px; padding:.8rem 1.1rem; margin:.7rem 0; }
+        .analogy b { color:var(--primary); }
+        .pillars { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; margin:.7rem 0; }
+        @media (max-width:700px){ .pillars { grid-template-columns:1fr; } }
+        .pillar { background:var(--bg-primary); border:1px solid var(--border); border-radius:12px; padding:1rem 1.15rem; }
+        .pillar .ic { font-size:1.5rem; }
+        .pillar b { color:var(--primary); display:block; margin:.2rem 0; }
+        pre { background:#0f172a; color:#e2e8f0; border-radius:12px; padding:1rem 1.2rem; overflow-x:auto; font-size:.88rem; line-height:1.55; margin:.5rem 0; max-width:100%; box-sizing:border-box; }
+        pre code { font-family:'Space Grotesk', ui-monospace, monospace; }
+        table.tbl { width:100%; border-collapse:collapse; margin:.6rem 0; }
+        table.tbl th, table.tbl td { text-align:left; padding:.5rem .7rem; border-bottom:1px solid var(--border); font-size:.92rem; vertical-align:top; }
+        table.tbl th { color:var(--text-secondary); font-size:.8rem; text-transform:uppercase; letter-spacing:.04em; }
+        .gsection p a, .gsection li a, .starter a { text-decoration:underline; }
+        .nextlinks { display:flex; flex-wrap:wrap; gap:.6rem; }
+        .nextlinks a { text-decoration:none; background:var(--bg-primary); border:1px solid var(--border); border-radius:10px; padding:.55rem .9rem; font-weight:600; color:var(--text-primary); }
+        .nextlinks a:hover { border-color:var(--primary); color:var(--primary); }
+    </style>
+</head>
+<body>
+    <div data-component="theme-switcher"></div>
+
+    <header class="guide-header">
+        <div class="container">
+            <h1 class="guide-title">🧩 OOP Deep Dive</h1>
+            <p class="guide-sub">Object-Oriented Programming is the backbone of most codebases and a fixture in interviews. Learn the four pillars and the tricky comparisons with clear examples, then test yourself with a quiz after each section and a scored final quiz.</p>
+            <div class="guide-badges">
+                <span class="guide-badge">🎯 Interview-oriented</span>
+                <span class="guide-badge">📝 Quiz after each section</span>
+                <span class="guide-badge">🏆 Final scored quiz</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="starter">
+            <strong style="font-family:var(--font-display);">🌱 How to use this</strong>
+            <p class="muted" style="margin:.5rem 0 0;">Read each section, then take its quiz to check yourself. The final quiz scores you out of 10. Examples use simple, language-neutral pseudocode so the ideas transfer to Java, C++, Python, or C#. This is the deep dive for the <a href="./cs-fundamentals-guide.html">CS Fundamentals</a> OOP section. Confused? Tap <strong>✦ Ask AI</strong>.</p>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Class vs Object">Class vs object</h2>
+            <p class="muted">A <b>class</b> is a blueprint; an <b>object</b> is a concrete thing built from that blueprint.</p>
+            <div class="analogy"><b>Analogy:</b> a class is the architectural plan for a house. An object is an actual house built from that plan. One plan (class), many houses (objects), each with its own address and paint color (its own data).</div>
+            <pre><code>class Dog:            # the blueprint
+    name
+    def bark(): ...
+
+rex = Dog("Rex")      # an object (instance)
+fido = Dog("Fido")    # another object</code></pre>
+            <div class="quiz" data-quiz-title="Check: class vs object">
+                <script type="application/json">
+                [
+                  {"q":"A class is best described as:","options":["A running instance","A blueprint/template","A variable","A database"],"answer":1,"explain":"A class is a blueprint; objects are instances created from it."},
+                  {"q":"How many objects can you create from one class?","options":["Only one","Exactly two","Many","Zero"],"answer":2,"explain":"A single class can produce many independent objects."},
+                  {"q":"Each object typically has:","options":["The same shared data as all others","Its own copy of instance data","No data ever","Only methods"],"answer":1,"explain":"Each object holds its own instance data, even though they share the class's methods."}
+                ]
+                </script>
+            </div>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Four pillars">The four pillars</h2>
+            <div class="pillars">
+                <div class="pillar"><div class="ic">🔒</div><b>Encapsulation</b>Bundle data with the methods that use it, and hide the internals behind a clean interface (getters/setters, private fields).</div>
+                <div class="pillar"><div class="ic">🎭</div><b>Abstraction</b>Expose <i>what</i> something does, hide <i>how</i>. You drive a car without knowing the engine internals.</div>
+                <div class="pillar"><div class="ic">🧬</div><b>Inheritance</b>A child class reuses and extends a parent class. A <code>Dog</code> is an <code>Animal</code> and gets its behavior for free.</div>
+                <div class="pillar"><div class="ic">🔀</div><b>Polymorphism</b>One interface, many forms. Call <code>.speak()</code> on any <code>Animal</code> and each type responds its own way.</div>
+            </div>
+            <div class="analogy"><b>Analogy:</b> a TV remote. <b>Encapsulation</b>: the buttons hide the circuitry. <b>Abstraction</b>: you press "volume up" without knowing the electronics. <b>Inheritance</b>: a smart-TV remote extends a basic remote. <b>Polymorphism</b>: the same "power" button works differently on a TV, an AC, or a fan.</div>
+            <div class="quiz" data-quiz-title="Check: four pillars">
+                <script type="application/json">
+                [
+                  {"q":"Hiding internal data behind getters/setters is:","options":["Inheritance","Encapsulation","Polymorphism","Abstraction"],"answer":1,"explain":"Encapsulation bundles data with methods and hides internal state."},
+                  {"q":"'One interface, many forms' describes:","options":["Encapsulation","Abstraction","Polymorphism","Inheritance"],"answer":2,"explain":"Polymorphism lets the same call behave differently across types."},
+                  {"q":"A Dog class reusing an Animal class's behavior is:","options":["Inheritance","Encapsulation","Abstraction","Overloading"],"answer":0,"explain":"Inheritance lets a subclass reuse and extend a parent class."},
+                  {"q":"Showing 'what' while hiding 'how' is:","options":["Abstraction","Inheritance","Polymorphism","Encapsulation"],"answer":0,"explain":"Abstraction exposes behavior while hiding implementation details."}
+                ]
+                </script>
+            </div>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Overloading vs Overriding">Overloading vs overriding</h2>
+            <p class="muted">A classic trap. Both involve methods with the same name, but they are very different.</p>
+            <table class="tbl">
+                <thead><tr><th></th><th>Overloading</th><th>Overriding</th></tr></thead>
+                <tbody>
+                    <tr><td>Where</td><td>Same class</td><td>Subclass redefines a parent method</td></tr>
+                    <tr><td>Signature</td><td>Same name, <b>different</b> parameters</td><td><b>Same</b> name and parameters</td></tr>
+                    <tr><td>Resolved</td><td>At compile time (static)</td><td>At run time (dynamic)</td></tr>
+                    <tr><td>Purpose</td><td>Convenience (many ways to call)</td><td>Polymorphism (change behavior)</td></tr>
+                </tbody>
+            </table>
+            <pre><code># Overloading: same name, different params (same class)
+add(2, 3)
+add(2, 3, 4)
+
+# Overriding: subclass changes behavior (same signature)
+class Animal:  def speak(): "..."
+class Dog(Animal): def speak(): "Woof"   # overrides</code></pre>
+            <div class="quiz" data-quiz-title="Check: overloading vs overriding">
+                <script type="application/json">
+                [
+                  {"q":"Overloading means same method name but:","options":["Different parameters, same class","Same parameters, subclass","A different class name","Encrypted methods"],"answer":0,"explain":"Overloading uses the same name with different parameter lists in the same class."},
+                  {"q":"Overriding is resolved:","options":["At compile time","At run time","Never","By the database"],"answer":1,"explain":"Overriding is dynamic dispatch, resolved at run time based on the actual object type."},
+                  {"q":"Overriding primarily enables:","options":["Convenience calls","Polymorphism","Encapsulation","Indexing"],"answer":1,"explain":"Overriding lets subclasses provide their own behavior, powering polymorphism."}
+                ]
+                </script>
+            </div>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Abstract vs Interface">Abstract class vs interface</h2>
+            <p class="muted">Both define a contract subclasses must follow, but they differ.</p>
+            <table class="tbl">
+                <thead><tr><th></th><th>Abstract class</th><th>Interface</th></tr></thead>
+                <tbody>
+                    <tr><td>Methods</td><td>Can have both implemented and abstract methods</td><td>Traditionally only method signatures (a pure contract)</td></tr>
+                    <tr><td>State</td><td>Can have fields/state</td><td>Typically no instance state</td></tr>
+                    <tr><td>Inheritance</td><td>A class extends one abstract class</td><td>A class can implement many interfaces</td></tr>
+                    <tr><td>Use when</td><td>Sharing common code among related classes</td><td>Defining a capability many unrelated classes can have</td></tr>
+                </tbody>
+            </table>
+            <div class="analogy"><b>Analogy:</b> an abstract class is a "Vehicle" base with a real, shared <code>startEngine()</code> plus a blank <code>drive()</code> to fill in. An interface is a capability like "Swimmable", a duck, a fish, and a submarine are unrelated, but all can implement <code>swim()</code>.</div>
+            <div class="quiz" data-quiz-title="Check: abstract vs interface">
+                <script type="application/json">
+                [
+                  {"q":"A class can usually implement how many interfaces?","options":["Only one","Many","Zero","Exactly two"],"answer":1,"explain":"Most languages let a class implement multiple interfaces but extend only one (abstract) class."},
+                  {"q":"Which can contain implemented methods and state?","options":["Interface only","Abstract class","Neither","Both always"],"answer":1,"explain":"Abstract classes can hold shared implemented methods and fields; classic interfaces are pure contracts."},
+                  {"q":"Use an interface when you want to:","options":["Share code among related classes","Define a capability many unrelated classes can have","Store instance state","Prevent inheritance"],"answer":1,"explain":"Interfaces describe a capability (like Comparable/Swimmable) that unrelated classes can implement."}
+                ]
+                </script>
+            </div>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="SOLID">SOLID principles (high level)</h2>
+            <p class="muted">Five guidelines for clean, maintainable OOP. You do not need to memorize definitions, know what each aims for:</p>
+            <div class="key" style="background:var(--bg-primary);border:1px solid var(--border);border-radius:10px;padding:.9rem 1.1rem;">
+                <ul style="margin:.3rem 0 0;">
+                    <li><b>S</b> - Single Responsibility: a class should have one reason to change.</li>
+                    <li><b>O</b> - Open/Closed: open to extension, closed to modification.</li>
+                    <li><b>L</b> - Liskov Substitution: a subclass should be usable anywhere its parent is.</li>
+                    <li><b>I</b> - Interface Segregation: many small interfaces beat one fat one.</li>
+                    <li><b>D</b> - Dependency Inversion: depend on abstractions, not concrete classes.</li>
+                </ul>
+            </div>
+            <div class="quiz" data-quiz-title="Check: SOLID">
+                <script type="application/json">
+                [
+                  {"q":"The 'S' in SOLID means a class should:","options":["Be static","Have a single responsibility","Be small in bytes","Have one method"],"answer":1,"explain":"Single Responsibility: a class should have one reason to change."},
+                  {"q":"'Open/Closed' means code should be:","options":["Open to modification, closed to extension","Open to extension, closed to modification","Always rewritten","Never reused"],"answer":1,"explain":"You should extend behavior without modifying existing, tested code."},
+                  {"q":"Dependency Inversion says depend on:","options":["Concrete classes","Abstractions/interfaces","Global variables","The database"],"answer":1,"explain":"Depend on abstractions so implementations can change without breaking callers."}
+                ]
+                </script>
+            </div>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Final quiz">Final quiz</h2>
+            <p class="muted">Ten questions across classes, the four pillars, overloading/overriding, abstract vs interface, and SOLID. Aim for 7+.</p>
+            <div class="quiz quiz-final" data-quiz-title="OOP: final quiz">
+                <script type="application/json">
+                [
+                  {"q":"An object is:","options":["A blueprint","An instance of a class","A method","A keyword"],"answer":1,"explain":"An object is a concrete instance created from a class blueprint."},
+                  {"q":"Hiding internal state behind a clean interface is:","options":["Abstraction","Encapsulation","Inheritance","Polymorphism"],"answer":1,"explain":"Encapsulation bundles and hides internal data."},
+                  {"q":"'One interface, many forms' is:","options":["Encapsulation","Polymorphism","Abstraction","Overloading"],"answer":1,"explain":"Polymorphism: the same call behaves differently by type."},
+                  {"q":"Reusing a parent class's behavior is:","options":["Inheritance","Interface","Overloading","Encapsulation"],"answer":0,"explain":"Inheritance lets a subclass reuse and extend a parent."},
+                  {"q":"Overloading uses the same name with:","options":["Different parameters (same class)","Same parameters (subclass)","No parameters ever","A new class name"],"answer":0,"explain":"Overloading varies the parameter list within a class."},
+                  {"q":"Overriding is resolved at:","options":["Compile time","Run time","Never","Link time"],"answer":1,"explain":"Overriding is dynamic, resolved at run time."},
+                  {"q":"A class can extend how many abstract classes (typically)?","options":["One","Many","Zero","Unlimited"],"answer":0,"explain":"Usually a class extends a single (abstract) class but can implement many interfaces."},
+                  {"q":"Which can hold shared implemented methods?","options":["Interface only","Abstract class","Neither","Both never"],"answer":1,"explain":"Abstract classes can include implemented methods and state."},
+                  {"q":"The 'L' in SOLID (Liskov) says:","options":["Large classes are fine","A subclass should be usable wherever its parent is","Lock all methods","Load lazily"],"answer":1,"explain":"Subtypes must be substitutable for their base types."},
+                  {"q":"Dependency Inversion means depend on:","options":["Concrete implementations","Abstractions","Global state","The UI"],"answer":1,"explain":"Depend on abstractions so implementations can vary safely."}
+                ]
+                </script>
+            </div>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="What's next">What to do next</h2>
+            <div class="nextlinks">
+                <a href="./cs-fundamentals-guide.html">🧠 CS Fundamentals</a>
+                <a href="./operating-systems-deep-dive.html">🖥️ OS Deep Dive</a>
+                <a href="./dbms-deep-dive.html">🗃️ DBMS Deep Dive</a>
+                <a href="./computer-networks-deep-dive.html">🌐 Networks Deep Dive</a>
+                <a href="./interview-prep-kit.html">🗣️ Interview Prep</a>
+            </div>
+        </div>
+    </main>
+
+    <div data-component="footer"></div>
+    <div data-component="scripts-common"></div>
+    <script src="./components/component-loader.js"></script>
+    <script type="module" src="./functions/site.js?v=20260731"></script>
+</body>
+</html>

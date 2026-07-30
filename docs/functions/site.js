@@ -26,6 +26,7 @@ import { initMotion } from './motion.js?v=20260731';
 import { initJourney } from './journey.js?v=20260731';
 import { initTypewriter } from './typewriter.js?v=20260731';
 import { initQuickJump } from './quickjump.js?v=20260731';
+import { initQuizzes } from './quiz.js?v=20260731';
 
 const STEPS = [
     ['meta', ensureMeta],
@@ -40,6 +41,7 @@ const STEPS = [
     ['a11y', makeScrollablesFocusable],
     ['motion', initMotion],
     ['typewriter', initTypewriter],
+    ['quiz', initQuizzes],
 ];
 
 function run() {

@@ -25,6 +25,12 @@ const GROUPS = [
         { href: 'cs-fundamentals-guide.html', label: 'CS Fundamentals', icon: '🧠' },
         { href: 'sql-databases-guide.html', label: 'SQL & Databases', icon: '🗄️' },
     ]},
+    { title: 'CS Deep Dives', items: [
+        { href: 'operating-systems-deep-dive.html', label: 'Operating Systems', icon: '🖥️' },
+        { href: 'dbms-deep-dive.html', label: 'DBMS', icon: '🗃️' },
+        { href: 'computer-networks-deep-dive.html', label: 'Computer Networks', icon: '🌐' },
+        { href: 'oop-deep-dive.html', label: 'OOP', icon: '🧩' },
+    ]},
     { title: 'Learn to Build', items: [
         { href: 'full-stack-developer-path.html', label: 'Full-Stack Path', icon: '🌐' },
         { href: 'cloud-devops-starter.html', label: 'Cloud & DevOps', icon: '☁️' },

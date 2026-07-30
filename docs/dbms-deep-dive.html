@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap">
+    <meta charset="UTF-8">
+    <div data-component="head-common"></div>
+
+    <title>DBMS Deep Dive | Resources by Shumbul Arifa</title>
+    <meta name="description" content="An interview-oriented DBMS guide: keys, normalization, ACID, transactions, indexing, and SQL vs NoSQL, explained with examples, plus a quiz after every section and a final scored quiz.">
+    <meta property="og:title" content="DBMS Deep Dive - with quizzes">
+    <meta property="og:description" content="Learn databases the interview way: clear theory with examples and self-scoring quizzes after every section.">
+
+    <style>
+        .guide-header { background: linear-gradient(135deg, var(--primary), var(--secondary)); color:#fff; padding:3.5rem 0; text-align:center; margin-bottom:2.5rem; }
+        .guide-title { font-size:2.6rem; font-weight:800; margin-bottom:.6rem; color:#fff; }
+        .guide-sub { font-size:1.15rem; color:rgba(255,255,255,.94); max-width:720px; margin:0 auto; }
+        .guide-badges { display:flex; gap:.5rem; justify-content:center; flex-wrap:wrap; margin-top:1.2rem; }
+        .guide-badge { background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.4); padding:.35rem .8rem; border-radius:999px; font-size:.85rem; font-weight:600; }
+
+        .starter { background:var(--bg-primary); border:1px solid var(--border); border-left:4px solid var(--primary); border-radius:12px; padding:1.1rem 1.3rem; margin-bottom:1.75rem; }
+        .gsection { background:var(--bg-secondary); border:1px solid var(--border); border-radius:16px; padding:1.6rem 1.75rem; margin-bottom:1.75rem; }
+        .gsection h2 { margin-top:0; }
+        .muted { color:var(--text-secondary); }
+        .analogy { background:var(--bg-primary); border:1px solid var(--border); border-left:4px solid var(--accent); border-radius:10px; padding:.8rem 1.1rem; margin:.7rem 0; }
+        .analogy b { color:var(--primary); }
+        .key { background:var(--bg-primary); border:1px solid var(--border); border-radius:10px; padding:.9rem 1.1rem; margin:.7rem 0; }
+        .key ul { margin:.3rem 0 0; }
+        pre { background:#0f172a; color:#e2e8f0; border-radius:12px; padding:1rem 1.2rem; overflow-x:auto; font-size:.88rem; line-height:1.55; margin:.5rem 0; max-width:100%; box-sizing:border-box; }
+        pre code { font-family:'Space Grotesk', ui-monospace, monospace; }
+        table.tbl { width:100%; border-collapse:collapse; margin:.6rem 0; }
+        table.tbl th, table.tbl td { text-align:left; padding:.5rem .7rem; border-bottom:1px solid var(--border); font-size:.92rem; vertical-align:top; }
+        table.tbl th { color:var(--text-secondary); font-size:.8rem; text-transform:uppercase; letter-spacing:.04em; }
+        .gsection p a, .gsection li a, .starter a { text-decoration:underline; }
+        .nextlinks { display:flex; flex-wrap:wrap; gap:.6rem; }
+        .nextlinks a { text-decoration:none; background:var(--bg-primary); border:1px solid var(--border); border-radius:10px; padding:.55rem .9rem; font-weight:600; color:var(--text-primary); }
+        .nextlinks a:hover { border-color:var(--primary); color:var(--primary); }
+    </style>
+</head>
+<body>
+    <div data-component="theme-switcher"></div>
+
+    <header class="guide-header">
+        <div class="container">
+            <h1 class="guide-title">🗃️ DBMS Deep Dive</h1>
+            <p class="guide-sub">Databases power almost every app, so interviews probe them hard. Learn the core ideas with clear examples, then test yourself with a quiz after every section and a scored final quiz.</p>
+            <div class="guide-badges">
+                <span class="guide-badge">🎯 Interview-oriented</span>
+                <span class="guide-badge">📝 Quiz after each section</span>
+                <span class="guide-badge">🏆 Final scored quiz</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="starter">
+            <strong style="font-family:var(--font-display);">🌱 How to use this</strong>
+            <p class="muted" style="margin:.5rem 0 0;">Read each section, then take its quiz to lock it in. The final quiz scores you out of 10. Pairs perfectly with the hands-on <a href="./sql-databases-guide.html">SQL &amp; Databases guide</a> and the <a href="./cs-fundamentals-guide.html">CS Fundamentals guide</a>. Confused by a term? Tap <strong>✦ Ask AI</strong>.</p>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Keys">Keys: how rows are identified and linked</h2>
+            <p class="muted">Keys are how a database uniquely identifies rows and connects tables.</p>
+            <div class="key"><ul>
+                <li><b>Primary key</b> - uniquely identifies each row (e.g. <code>student_id</code>). One per table, never null.</li>
+                <li><b>Candidate key</b> - any column(s) that <i>could</i> be the primary key. The primary key is chosen from these.</li>
+                <li><b>Foreign key</b> - a column that points to another table's primary key. This is how relationships work.</li>
+                <li><b>Composite key</b> - a primary key made of two or more columns together.</li>
+            </ul></div>
+            <div class="analogy"><b>Analogy:</b> a primary key is your unique roll number. A foreign key on a "marks" table stores that roll number to link each mark back to the right student, without repeating the student's name and details everywhere.</div>
+            <div class="quiz" data-quiz-title="Check: keys">
+                <script type="application/json">
+                [
+                  {"q":"What does a foreign key do?","options":["Uniquely identifies a row","Points to a primary key in another table","Encrypts data","Sorts the table"],"answer":1,"explain":"A foreign key references another table's primary key, creating a relationship between tables."},
+                  {"q":"A primary key can be:","options":["Null sometimes","Duplicated across rows","Unique and never null","Only text"],"answer":2,"explain":"A primary key must uniquely identify each row and cannot be null."},
+                  {"q":"A key made of two or more columns together is a:","options":["Foreign key","Composite key","Super key only","Candidate key"],"answer":1,"explain":"A composite (compound) key uses multiple columns together to uniquely identify a row."}
+                ]
+                </script>
+            </div>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Normalization">Normalization</h2>
+            <p class="muted"><b>Normalization</b> organizes tables to reduce duplicate data and prevent update anomalies. You split data so each fact lives in exactly one place.</p>
+            <table class="tbl">
+                <thead><tr><th>Form</th><th>Rule (informally)</th></tr></thead>
+                <tbody>
+                    <tr><td>1NF</td><td>Each cell holds a single value; no repeating groups or lists.</td></tr>
+                    <tr><td>2NF</td><td>1NF + every non-key column depends on the <i>whole</i> key (no partial dependency).</td></tr>
+                    <tr><td>3NF</td><td>2NF + no non-key column depends on another non-key column (no transitive dependency).</td></tr>
+                </tbody>
+            </table>
+            <div class="analogy"><b>Analogy:</b> instead of writing your full address on every single letter you send (and having to update all of them when you move), you keep the address in one place and reference it. Change it once, everything stays correct. That is what normalization does for data.</div>
+            <p class="muted">Most real apps aim for <b>3NF</b>. Sometimes teams deliberately <b>denormalize</b> (add controlled duplication) to speed up reads, a trade-off, not a mistake.</p>
+            <div class="quiz" data-quiz-title="Check: normalization">
+                <script type="application/json">
+                [
+                  {"q":"The main goal of normalization is to:","options":["Make queries slower","Reduce data duplication and update anomalies","Encrypt the database","Remove all tables"],"answer":1,"explain":"Normalization reduces redundancy so each fact lives in one place, avoiding update anomalies."},
+                  {"q":"Most applications normalize up to which form?","options":["1NF","3NF","6NF","No normalization"],"answer":1,"explain":"3NF is the practical target for most applications."},
+                  {"q":"Deliberately adding controlled duplication for faster reads is called:","options":["Normalization","Denormalization","Indexing","Sharding"],"answer":1,"explain":"Denormalization trades some redundancy for read performance, a conscious design choice."}
+                ]
+                </script>
+            </div>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="ACID">ACID &amp; transactions</h2>
+            <p class="muted">A <b>transaction</b> is a group of operations treated as one unit. <b>ACID</b> is the set of guarantees that keep transactions reliable:</p>
+            <div class="key"><ul>
+                <li><b>Atomicity</b> - all steps succeed, or none do (no half-done transactions).</li>
+                <li><b>Consistency</b> - the database moves from one valid state to another (rules stay satisfied).</li>
+                <li><b>Isolation</b> - concurrent transactions do not corrupt each other's view.</li>
+                <li><b>Durability</b> - once committed, changes survive crashes and power loss.</li>
+            </ul></div>
+            <div class="analogy"><b>Analogy:</b> a bank transfer. Debiting your account and crediting your friend's must both happen or neither (atomicity). Money can never vanish midway (consistency), two transfers at once must not double-spend (isolation), and once done, it stays done even if the server crashes (durability).</div>
+            <div class="quiz" data-quiz-title="Check: ACID">
+                <script type="application/json">
+                [
+                  {"q":"'All steps succeed or none do' describes which property?","options":["Atomicity","Isolation","Durability","Consistency"],"answer":0,"explain":"Atomicity guarantees a transaction is all-or-nothing."},
+                  {"q":"'Once committed, it survives a crash' is:","options":["Atomicity","Isolation","Durability","Consistency"],"answer":2,"explain":"Durability ensures committed changes persist through failures."},
+                  {"q":"Isolation ensures that:","options":["Data is encrypted","Concurrent transactions do not corrupt each other","Only one table exists","Backups run nightly"],"answer":1,"explain":"Isolation keeps simultaneous transactions from interfering and producing wrong results."}
+                ]
+                </script>
+            </div>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Indexing">Indexing</h2>
+            <p class="muted">An <b>index</b> is a separate data structure (often a B-tree) that lets the database find rows fast without scanning the whole table. Add indexes to columns you frequently filter (<code>WHERE</code>) or join on.</p>
+            <div class="analogy"><b>Analogy:</b> the index at the back of a textbook. To find "photosynthesis" you do not read every page, you jump to the index, get the page number, and go straight there. Without it, you would scan the whole book (a full table scan).</div>
+            <div class="key"><b>Trade-off:</b><ul>
+                <li>Indexes make reads much faster.</li>
+                <li>They make writes slightly slower (the index must be updated too) and use extra storage.</li>
+                <li>So index the columns you search on, not every column.</li>
+            </ul></div>
+            <div class="quiz" data-quiz-title="Check: indexing">
+                <script type="application/json">
+                [
+                  {"q":"An index primarily improves:","options":["Write speed","Read/lookup speed","Storage usage","Encryption"],"answer":1,"explain":"Indexes speed up lookups so the database avoids scanning the whole table."},
+                  {"q":"What is the cost of adding many indexes?","options":["Faster writes","Slower writes and more storage","Nothing","Fewer rows"],"answer":1,"explain":"Each index must be maintained on writes and consumes storage, so over-indexing hurts."},
+                  {"q":"A query with no useful index on its filter column may do a:","options":["Full table scan","Commit","Rollback","Join only"],"answer":0,"explain":"Without a helpful index, the DB scans every row, a full table scan."}
+                ]
+                </script>
+            </div>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="SQL vs NoSQL">SQL vs NoSQL</h2>
+            <table class="tbl">
+                <thead><tr><th></th><th>SQL (relational)</th><th>NoSQL</th></tr></thead>
+                <tbody>
+                    <tr><td>Structure</td><td>Fixed schema, tables &amp; rows</td><td>Flexible (documents, key-value, graph)</td></tr>
+                    <tr><td>Best for</td><td>Structured, related data; strong consistency</td><td>Flexible or huge-scale, fast-changing data</td></tr>
+                    <tr><td>Examples</td><td>PostgreSQL, MySQL</td><td>MongoDB, Redis, Cassandra</td></tr>
+                    <tr><td>Guarantees</td><td>Strong ACID</td><td>Often favors availability/scale (BASE)</td></tr>
+                </tbody>
+            </table>
+            <div class="analogy"><b>Analogy:</b> SQL is a spreadsheet with strict columns everyone must follow, great when structure matters. NoSQL is a box of labeled sticky notes, each can hold different fields, great when things vary or scale massively.</div>
+            <div class="quiz" data-quiz-title="Check: SQL vs NoSQL">
+                <script type="application/json">
+                [
+                  {"q":"Which typically offers a flexible schema?","options":["SQL","NoSQL","Both are fully fixed","Neither"],"answer":1,"explain":"NoSQL databases usually allow flexible, varying schemas."},
+                  {"q":"Strong ACID guarantees and related, structured data suit:","options":["NoSQL key-value","A relational SQL database","A cache only","A file system"],"answer":1,"explain":"Relational SQL databases are built for structured, related data with strong ACID."},
+                  {"q":"Which is a NoSQL database?","options":["PostgreSQL","MySQL","MongoDB","SQLite"],"answer":2,"explain":"MongoDB is a document-oriented NoSQL database; the others are relational."}
+                ]
+                </script>
+            </div>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="Final quiz">Final quiz</h2>
+            <p class="muted">Ten questions across keys, normalization, ACID, indexing, and SQL vs NoSQL. Aim for 7+.</p>
+            <div class="quiz quiz-final" data-quiz-title="DBMS: final quiz">
+                <script type="application/json">
+                [
+                  {"q":"A foreign key exists to:","options":["Encrypt rows","Link a row to another table's primary key","Sort data","Index a column"],"answer":1,"explain":"Foreign keys create relationships by referencing another table's primary key."},
+                  {"q":"A primary key must be:","options":["Nullable","Unique and non-null","Always numeric","Duplicated"],"answer":1,"explain":"Primary keys uniquely identify rows and can't be null."},
+                  {"q":"Normalization mainly reduces:","options":["Speed","Redundancy and update anomalies","Security","Backups"],"answer":1,"explain":"It removes duplicate data so updates stay consistent."},
+                  {"q":"Most apps normalize to:","options":["1NF","2NF","3NF","5NF"],"answer":2,"explain":"3NF is the common practical target."},
+                  {"q":"'All or nothing' in a transaction is:","options":["Consistency","Atomicity","Durability","Isolation"],"answer":1,"explain":"Atomicity means the whole transaction commits or none of it does."},
+                  {"q":"Committed data surviving a crash is:","options":["Isolation","Durability","Atomicity","Consistency"],"answer":1,"explain":"Durability guarantees persistence after commit."},
+                  {"q":"An index speeds up:","options":["Writes","Reads/lookups","Deletes only","Backups"],"answer":1,"explain":"Indexes accelerate lookups by avoiding full scans."},
+                  {"q":"Over-indexing hurts because:","options":["Reads slow down","Writes slow down and storage grows","Rows vanish","Keys break"],"answer":1,"explain":"Every index adds write overhead and storage cost."},
+                  {"q":"MongoDB is an example of:","options":["Relational DB","NoSQL document DB","SQL engine","Index type"],"answer":1,"explain":"MongoDB is a NoSQL document database."},
+                  {"q":"Choose SQL over NoSQL when you need:","options":["Schema-less flexibility","Strong consistency over structured, related data","Only caching","Graph traversal at scale"],"answer":1,"explain":"Relational SQL shines for structured, related data with strong consistency."}
+                ]
+                </script>
+            </div>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="What's next">What to do next</h2>
+            <div class="nextlinks">
+                <a href="./sql-databases-guide.html">🗄️ SQL &amp; Databases</a>
+                <a href="./cs-fundamentals-guide.html">🧠 CS Fundamentals</a>
+                <a href="./operating-systems-deep-dive.html">🖥️ OS Deep Dive</a>
+                <a href="./computer-networks-deep-dive.html">🌐 Networks Deep Dive</a>
+                <a href="./oop-deep-dive.html">🧩 OOP Deep Dive</a>
+            </div>
+        </div>
+    </main>
+
+    <div data-component="footer"></div>
+    <div data-component="scripts-common"></div>
+    <script src="./components/component-loader.js"></script>
+    <script type="module" src="./functions/site.js?v=20260731"></script>
+</body>
+</html>
