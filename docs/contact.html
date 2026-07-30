@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <div data-component="head-common"></div>
+
+    <title>Contact | Resources by Shumbul Arifa</title>
+    <meta name="description" content="Get in touch with Shumbul Arifa. Connect on LinkedIn, GitHub, YouTube, Instagram, or by email.">
+    <meta property="og:title" content="Contact - Resources by Shumbul Arifa">
+    <meta property="og:description" content="Say hi, share feedback, or suggest a guide. Multiple friendly ways to reach out.">
+
+    <style>
+        .guide-header { background: linear-gradient(135deg, var(--primary), var(--secondary)); color:#fff; padding:3.5rem 0; text-align:center; margin-bottom:2.5rem; }
+        .guide-title { font-size:2.6rem; font-weight:800; margin-bottom:.6rem; color:#fff; }
+        .guide-sub { font-size:1.15rem; color:rgba(255,255,255,.94); max-width:680px; margin:0 auto; }
+        .gsection { background:var(--bg-secondary); border:1px solid var(--border); border-radius:16px; padding:1.6rem 1.75rem; margin-bottom:1.75rem; }
+        .gsection h2 { margin-top:0; }
+        .channels { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; margin-top:1rem; }
+        @media (max-width:600px){ .channels { grid-template-columns:1fr; } }
+        .channel { display:flex; align-items:center; gap:.9rem; background:var(--bg-primary); border:1px solid var(--border); border-radius:12px; padding:1rem 1.2rem; text-decoration:none; color:var(--text-primary); transition:all .2s ease; }
+        .channel:hover { border-color:var(--primary); transform:translateY(-2px); box-shadow:var(--shadow); color:var(--text-primary); }
+        .channel .ic { font-size:1.6rem; }
+        .channel .meta small { color:var(--text-secondary); display:block; }
+        .channel .meta strong { font-family:var(--font-display); }
+        .muted { color:var(--text-secondary); }
+    </style>
+</head>
+<body>
+    <div data-component="theme-switcher"></div>
+
+    <header class="guide-header">
+        <div class="container">
+            <h1 class="guide-title">📬 Let's Connect</h1>
+            <p class="guide-sub">Questions, feedback, a guide you wish existed, or just a hello. Pick whichever channel feels easiest, I read everything.</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="gsection">
+            <h2>Reach out</h2>
+            <div class="channels">
+                <a class="channel" href="mailto:shumbularifa@outlook.com">
+                    <span class="ic">📧</span>
+                    <span class="meta"><strong>Email</strong><small>shumbularifa@outlook.com</small></span>
+                </a>
+                <a class="channel" href="https://linkedin.com/in/shumbul" target="_blank" rel="noopener">
+                    <span class="ic">💼</span>
+                    <span class="meta"><strong>LinkedIn</strong><small>Connect and say hi</small></span>
+                </a>
+                <a class="channel" href="https://github.com/shumbul" target="_blank" rel="noopener">
+                    <span class="ic">💻</span>
+                    <span class="meta"><strong>GitHub</strong><small>See the code behind this site</small></span>
+                </a>
+                <a class="channel" href="https://www.youtube.com/@Shumbul" target="_blank" rel="noopener">
+                    <span class="ic">📺</span>
+                    <span class="meta"><strong>YouTube</strong><small>Videos and walkthroughs</small></span>
+                </a>
+                <a class="channel" href="https://instagram.com/shumbul.arifa" target="_blank" rel="noopener">
+                    <span class="ic">📸</span>
+                    <span class="meta"><strong>Instagram</strong><small>@shumbul.arifa</small></span>
+                </a>
+                <a class="channel" href="https://linktree.com/shumbul" target="_blank" rel="noopener">
+                    <span class="ic">🌐</span>
+                    <span class="meta"><strong>All links</strong><small>Everything in one place</small></span>
+                </a>
+            </div>
+        </div>
+
+        <div class="gsection">
+            <h2>A quick note</h2>
+            <p class="muted">This site is a personal project made to help people, so if any guide helped you land something, I'd love to hear about it. And if something was confusing or wrong, tell me, that's how it gets better.</p>
+        </div>
+    </main>
+
+    <div data-component="footer"></div>
+    <div data-component="scripts-common"></div>
+    <script src="./components/component-loader.js"></script>
+    <script type="module" src="./functions/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <div data-component="head-common"></div>
+
+    <title>DSA Practice Guide | Resources by Shumbul Arifa</title>
+    <meta name="description" content="A friendly, pattern-based way to learn Data Structures and Algorithms. Stop grinding random problems, start recognizing patterns.">
+    <meta property="og:title" content="DSA Practice Guide - patterns over grinding">
+    <meta property="og:description" content="Learn DSA by pattern, not by brute force. A calm, practical plan for freshers.">
+
+    <style>
+        .guide-header { background: linear-gradient(135deg, var(--primary), var(--secondary)); color:#fff; padding:3.5rem 0; text-align:center; margin-bottom:2.5rem; }
+        .guide-title { font-size:2.6rem; font-weight:800; margin-bottom:.6rem; color:#fff; }
+        .guide-sub { font-size:1.15rem; color:rgba(255,255,255,.94); max-width:680px; margin:0 auto; }
+        .guide-badges { display:flex; gap:.5rem; justify-content:center; flex-wrap:wrap; margin-top:1.2rem; }
+        .guide-badge { background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.4); padding:.35rem .8rem; border-radius:999px; font-size:.85rem; font-weight:600; }
+        .gsection { background:var(--bg-secondary); border:1px solid var(--border); border-radius:16px; padding:1.6rem 1.75rem; margin-bottom:1.75rem; }
+        .gsection h2 { margin-top:0; }
+        .starter { background:var(--bg-primary); border:1px solid var(--border); border-left:4px solid var(--primary); border-radius:12px; padding:1.1rem 1.3rem; margin-bottom:1.75rem; }
+        .gcard { background:var(--bg-primary); border:1px solid var(--border); border-radius:12px; padding:1.1rem 1.25rem; margin-bottom:1rem; }
+        table { width:100%; border-collapse:collapse; margin:1rem 0; font-size:.95rem; }
+        th, td { text-align:left; padding:.6rem .7rem; border-bottom:1px solid var(--border); vertical-align:top; }
+        th { font-family:var(--font-display); }
+        .pill { display:inline-block; background:var(--primary); color:#fff; padding:.15rem .55rem; border-radius:999px; font-size:.78rem; font-weight:600; }
+        .muted { color:var(--text-secondary); }
+    </style>
+</head>
+<body>
+    <div data-component="theme-switcher"></div>
+    <div data-component="back-nav"></div>
+
+    <header class="guide-header">
+        <div class="container">
+            <h1 class="guide-title">💻 DSA Practice Guide</h1>
+            <p class="guide-sub">DSA is not about grinding 500 problems. It's about spotting a handful of patterns. Learn those, and most problems start to look familiar.</p>
+            <div class="guide-badges">
+                <span class="guide-badge">🧩 Pattern-based</span>
+                <span class="guide-badge">🌱 Beginner-friendly</span>
+                <span class="guide-badge">⏱️ ~8 weeks</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="starter">
+            <strong style="font-family:var(--font-display);">🌱 New to DSA? Read this first</strong>
+            <p class="muted" style="margin:.5rem 0 0;">You do not need to be "good at math". You need to recognize patterns and practice a little every day. Aim for 1 to 2 problems a day, not 20 on Sunday. Quality over quantity, always. Stuck on a problem? Tap <strong>✦ Ask AI</strong> to get a hint without spoiling the whole solution.</p>
+        </div>
+
+        <div class="gsection">
+            <h2>The 8 patterns that cover most problems</h2>
+            <p class="muted">If you learn to spot these, you can solve the large majority of interview questions. Master them in this order.</p>
+            <table>
+                <thead><tr><th>Pattern</th><th>Use it when</th><th>Classic example</th></tr></thead>
+                <tbody>
+                    <tr><td><span class="pill">1</span> Two Pointers</td><td>A sorted array, or you compare from both ends</td><td>Pair with target sum</td></tr>
+                    <tr><td><span class="pill">2</span> Sliding Window</td><td>Longest / shortest subarray or substring</td><td>Longest substring without repeats</td></tr>
+                    <tr><td><span class="pill">3</span> Hashing</td><td>You need fast lookups or counts</td><td>Two Sum, group anagrams</td></tr>
+                    <tr><td><span class="pill">4</span> Binary Search</td><td>Sorted data, or "find the smallest X that works"</td><td>Search in rotated array</td></tr>
+                    <tr><td><span class="pill">5</span> Stacks / Queues</td><td>Matching, nesting, or next-greater problems</td><td>Valid parentheses</td></tr>
+                    <tr><td><span class="pill">6</span> Trees / BFS &amp; DFS</td><td>Hierarchies, levels, or "explore everything"</td><td>Level-order traversal</td></tr>
+                    <tr><td><span class="pill">7</span> Recursion / Backtracking</td><td>Try all combinations, undo, try again</td><td>Subsets, permutations</td></tr>
+                    <tr><td><span class="pill">8</span> Dynamic Programming</td><td>Overlapping subproblems, "min / max / count ways"</td><td>Climbing stairs, coin change</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="gsection">
+            <h2>An 8-week plan that won't burn you out</h2>
+            <div class="gcard"><strong>Weeks 1-2:</strong> Arrays, strings, hashing, two pointers, sliding window. These show up everywhere. <span class="muted">~2 problems/day.</span></div>
+            <div class="gcard"><strong>Weeks 3-4:</strong> Binary search, stacks, queues, linked lists. Learn to reason about pointers calmly.</div>
+            <div class="gcard"><strong>Weeks 5-6:</strong> Trees, BFS, DFS, recursion. Draw the tree on paper before you code.</div>
+            <div class="gcard"><strong>Weeks 7-8:</strong> Backtracking and gentle DP. Do not fear DP, start with the classic 5 and build intuition.</div>
+        </div>
+
+        <div class="gsection">
+            <h2>How to actually practice (the part most people skip)</h2>
+            <ul class="muted">
+                <li><strong>Try for 20-30 minutes before looking at the solution.</strong> The struggle is where the learning happens.</li>
+                <li><strong>When stuck, read only a hint,</strong> not the full answer. Then close it and solve it yourself.</li>
+                <li><strong>Keep a "patterns notebook".</strong> For each problem write: what pattern, what tipped you off, the key trick. Review it weekly.</li>
+                <li><strong>Re-solve problems you failed,</strong> a few days later, from a blank editor. If you can't, you didn't learn it yet.</li>
+                <li><strong>Explain your solution out loud.</strong> If you can teach it, you understand it. This is also literally what interviews test.</li>
+            </ul>
+        </div>
+
+        <div class="gsection">
+            <h2>Free places to practice</h2>
+            <ul>
+                <li><a href="https://leetcode.com/studyplan/" target="_blank" rel="noopener">LeetCode study plans</a> - start with "LeetCode 75" or "Top Interview 150".</li>
+                <li><a href="https://neetcode.io/practice" target="_blank" rel="noopener">NeetCode 150</a> - the same core problems, grouped by pattern, with clear videos.</li>
+                <li><a href="https://www.hackerrank.com/domains/data-structures" target="_blank" rel="noopener">HackerRank</a> - gentle on-ramp if LeetCode feels intimidating.</li>
+                <li><a href="https://visualgo.net/en" target="_blank" rel="noopener">VisuAlgo</a> - see the data structures and algorithms animate. Great for building intuition.</li>
+            </ul>
+            <p class="muted">Remember: consistency beats intensity. 2 problems a day for 8 weeks is ~112 problems, more than enough to walk into interviews with real confidence.</p>
+        </div>
+    </main>
+
+    <div data-component="footer"></div>
+    <div data-component="scripts-common"></div>
+    <script src="./components/component-loader.js"></script>
+    <script type="module" src="./functions/site.js"></script>
+</body>
+</html>

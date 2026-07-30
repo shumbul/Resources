@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
     <title>The AI Era Job Hunt - 3 Ways to Future-Proof Your Career</title>
     <meta name="description" content="The traditional job hunt is dead. Here's exactly how to get hired in the AI era - master AI-augmented workflows, lean into human skills, and build public proof of work.">
 
@@ -356,7 +357,7 @@
         }
 
         .vs-col.dont h5 { color: #dc2626; }
-        .vs-col.do h5 { color: #16a34a; }
+        .vs-col.do h5 { color: #15803d; }
 
         .vs-col ul {
             list-style: none;
@@ -374,7 +375,7 @@
         }
 
         .vs-col.dont ul li::before { content: '✗'; position: absolute; left: 0; color: #dc2626; font-weight: 700; }
-        .vs-col.do ul li::before   { content: '✓'; position: absolute; left: 0; color: #16a34a; font-weight: 700; }
+        .vs-col.do ul li::before   { content: '✓'; position: absolute; left: 0; color: #15803d; font-weight: 700; }
 
         /* Reality check callout */
         .reality-callout {
@@ -706,7 +707,7 @@
         }
 
         .example-before .ex-label { color: #dc2626; }
-        .example-after .ex-label { color: #16a34a; }
+        .example-after .ex-label { color: #15803d; }
 
         .example-arrow {
             font-size: 1.3rem;
@@ -970,6 +971,7 @@
             <div class="section-intro">
                 <h2>Why this matters right now</h2>
                 <p>AI has flipped the cost of producing average work to near-zero. That means average work is worth near-zero to a hiring team. What's valuable now is your <strong>judgment, your communication, and your visible track record</strong>. This guide breaks down exactly how to reposition yourself for that reality.</p>
+                <p style="margin-top:.75rem;padding:.7rem 1rem;background:var(--bg-secondary,#f7f8fc);border-left:4px solid var(--primary,#8b5cf6);border-radius:10px;"><strong>🌱 Zero experience?</strong> Start with the <a href="./12-week-roadmap.html">12-Week Roadmap</a> to build skills, then come back and run the weekend plan below. You do not need a job history to build a visible track record.</p>
             </div>
 
             <!-- Strategy Cards -->
@@ -1157,7 +1159,7 @@
                                 <p>Your GitHub isn't just code storage. Every README is a signal. Great docs show you think about the reader - that's an engineering skill too.</p>
                             </div>
                             <div class="pow-card">
-                                <div class="pow-icon">�</div>
+                                <div class="pow-icon">🎬</div>
                                 <h5>Demo + Link It Everywhere</h5>
                                 <p>Record a 2-min demo of your project. Post it on LinkedIn, add it to your portfolio, paste the link in your resume, GitHub README, and every application you send.</p>
                             </div>
@@ -1384,7 +1386,7 @@
                         <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z"/></svg>
                     </a>
                 </div>
-                <p style="font-size:0.875rem;">Created with ❤️ by <a href="https://linkedin.com/in/shumbul" style="color:var(--accent);text-decoration:none;">Shumbul Arifa</a> · © 2026</p>
+                <p style="font-size:0.875rem;">Created with ❤️ by <a href="https://linkedin.com/in/shumbul" style="color:var(--accent);text-decoration:underline;">Shumbul Arifa</a> · © 2026</p>
             </div>
         </div>
     </footer>
@@ -1445,7 +1447,11 @@
 
             // Interactive checkboxes
             document.querySelectorAll('.check-box').forEach(box => {
-                const toggle = () => box.classList.toggle('checked');
+                // Accessibility: give each toggle a name (from its task) and a checked state
+                const label = box.parentElement.querySelector('strong');
+                if (label && !box.getAttribute('aria-label')) box.setAttribute('aria-label', label.textContent.trim());
+                if (!box.hasAttribute('aria-checked')) box.setAttribute('aria-checked', 'false');
+                const toggle = () => { const on = box.classList.toggle('checked'); box.setAttribute('aria-checked', on ? 'true' : 'false'); };
                 box.addEventListener('click', toggle);
                 box.addEventListener('keydown', (e) => {
                     if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); toggle(); }
@@ -1453,6 +1459,6 @@
             });
         });
     </script>
-
+    <script type="module" src="./functions/site.js"></script>
 </body>
 </html>

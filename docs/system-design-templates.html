@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <div data-component="head-common"></div>
+
+    <title>System Design Templates | Resources by Shumbul Arifa</title>
+    <meta name="description" content="A friendly starter kit for system design. A simple framework, reusable building blocks, and worked examples so you can think in systems, not just code.">
+    <meta property="og:title" content="System Design Templates - think in systems">
+    <meta property="og:description" content="A simple framework and reusable building blocks for system design interviews and real projects.">
+
+    <style>
+        .guide-header { background: linear-gradient(135deg, var(--primary), var(--secondary)); color:#fff; padding:3.5rem 0; text-align:center; margin-bottom:2.5rem; }
+        .guide-title { font-size:2.6rem; font-weight:800; margin-bottom:.6rem; color:#fff; }
+        .guide-sub { font-size:1.15rem; color:rgba(255,255,255,.94); max-width:680px; margin:0 auto; }
+        .guide-badges { display:flex; gap:.5rem; justify-content:center; flex-wrap:wrap; margin-top:1.2rem; }
+        .guide-badge { background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.4); padding:.35rem .8rem; border-radius:999px; font-size:.85rem; font-weight:600; }
+        .gsection { background:var(--bg-secondary); border:1px solid var(--border); border-radius:16px; padding:1.6rem 1.75rem; margin-bottom:1.75rem; }
+        .gsection h2 { margin-top:0; }
+        .starter { background:var(--bg-primary); border:1px solid var(--border); border-left:4px solid var(--primary); border-radius:12px; padding:1.1rem 1.3rem; margin-bottom:1.75rem; }
+        .gcard { background:var(--bg-primary); border:1px solid var(--border); border-radius:12px; padding:1.1rem 1.25rem; margin-bottom:1rem; }
+        .steps { counter-reset:step; list-style:none; padding:0; }
+        .steps li { position:relative; padding:.6rem 0 .6rem 2.6rem; border-bottom:1px solid var(--border); }
+        .steps li::before { counter-increment:step; content:counter(step); position:absolute; left:0; top:.55rem; width:1.7rem; height:1.7rem; background:var(--primary); color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:.85rem; }
+        table { width:100%; border-collapse:collapse; margin:1rem 0; font-size:.95rem; }
+        th, td { text-align:left; padding:.6rem .7rem; border-bottom:1px solid var(--border); vertical-align:top; }
+        th { font-family:var(--font-display); }
+        .muted { color:var(--text-secondary); }
+    </style>
+</head>
+<body>
+    <div data-component="theme-switcher"></div>
+    <div data-component="back-nav"></div>
+
+    <header class="guide-header">
+        <div class="container">
+            <h1 class="guide-title">🎯 System Design Templates</h1>
+            <p class="guide-sub">System design feels huge until you have a simple checklist. Here's a friendly framework and a set of building blocks you can reuse for almost any design question.</p>
+            <div class="guide-badges">
+                <span class="guide-badge">🧠 Think in systems</span>
+                <span class="guide-badge">🧱 Reusable blocks</span>
+                <span class="guide-badge">🌱 Beginner-friendly</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="starter">
+            <strong style="font-family:var(--font-display);">🌱 First time seeing system design? Relax</strong>
+            <p class="muted" style="margin:.5rem 0 0;">Nobody expects a fresher to design Netflix on day one. What interviewers actually want is to see you <strong>ask good questions, make trade-offs out loud, and stay organized</strong>. This page gives you a repeatable structure so you never freeze. Want to practice? Tap <strong>✦ Ask AI</strong> and ask it to quiz you on a design.</p>
+        </div>
+
+        <div class="gsection">
+            <h2>The 6-step framework (use it every time)</h2>
+            <ol class="steps">
+                <li><strong>Clarify requirements.</strong> What must it do (features) and how well (scale, latency)? Ask before you build. Never assume.</li>
+                <li><strong>Estimate scale.</strong> Rough numbers: users, requests per second, storage. Order of magnitude is enough.</li>
+                <li><strong>Define the API.</strong> A few core endpoints. This forces clarity on what the system actually does.</li>
+                <li><strong>Sketch the high-level design.</strong> Client, load balancer, servers, database, cache. Draw the boxes and arrows.</li>
+                <li><strong>Go deep on 1-2 pieces.</strong> Pick the interesting part (the feed, the matching, the storage) and detail it.</li>
+                <li><strong>Discuss trade-offs and bottlenecks.</strong> What breaks first at scale? How would you fix it? This is where you shine.</li>
+            </ol>
+        </div>
+
+        <div class="gsection">
+            <h2>The building blocks (your Lego set)</h2>
+            <p class="muted">Almost every design is assembled from these. Know what each one is <em>for</em> and the trade-off it brings.</p>
+            <table>
+                <thead><tr><th>Block</th><th>What it's for</th><th>The trade-off</th></tr></thead>
+                <tbody>
+                    <tr><td>Load balancer</td><td>Spread traffic across many servers</td><td>Adds a hop; needs health checks</td></tr>
+                    <tr><td>Cache (Redis)</td><td>Serve hot data fast, cut DB load</td><td>Can go stale; needs invalidation</td></tr>
+                    <tr><td>SQL database</td><td>Structured data, transactions, joins</td><td>Harder to scale horizontally</td></tr>
+                    <tr><td>NoSQL database</td><td>Huge scale, flexible schema</td><td>Weaker joins and consistency</td></tr>
+                    <tr><td>Message queue (Kafka)</td><td>Decouple work, handle spikes, async jobs</td><td>Adds complexity and eventual consistency</td></tr>
+                    <tr><td>CDN</td><td>Serve images / static files near the user</td><td>Costs money; cache invalidation</td></tr>
+                    <tr><td>Replication &amp; sharding</td><td>Scale reads (replicas) and writes (shards)</td><td>Operational complexity, rebalancing</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="gsection">
+            <h2>A worked example: design a URL shortener</h2>
+            <div class="gcard"><strong>1. Requirements:</strong> Take a long URL, return a short one. Redirect short to long. Reads far outnumber writes.</div>
+            <div class="gcard"><strong>2. Scale:</strong> Say 100M new links/month, 10:1 read-to-write. That's heavy on reads, so caching matters.</div>
+            <div class="gcard"><strong>3. API:</strong> <code>POST /shorten {url}</code> returns a short code; <code>GET /{code}</code> redirects.</div>
+            <div class="gcard"><strong>4. Design:</strong> Client → load balancer → app servers → database of (code → url). Put a cache in front for hot links.</div>
+            <div class="gcard"><strong>5. Deep dive:</strong> Generate the short code with a counter in base62, or hash the URL. Base62 of a counter avoids collisions cleanly.</div>
+            <div class="gcard"><strong>6. Trade-offs:</strong> Cache reduces DB reads but can serve a deleted link briefly. A NoSQL store scales the key-value lookup well.</div>
+        </div>
+
+        <div class="gsection">
+            <h2>Keep learning (free)</h2>
+            <ul>
+                <li><a href="https://github.com/donnemartin/system-design-primer" target="_blank" rel="noopener">System Design Primer</a> - the classic free repo, start here.</li>
+                <li><a href="https://www.youtube.com/@ByteByteGo" target="_blank" rel="noopener">ByteByteGo (YouTube)</a> - short, visual explanations of real systems.</li>
+                <li><a href="https://github.com/karanpratapsingh/system-design" target="_blank" rel="noopener">Karan's System Design guide</a> - a clean, readable walkthrough of the concepts.</li>
+            </ul>
+        </div>
+    </main>
+
+    <div data-component="footer"></div>
+    <div data-component="scripts-common"></div>
+    <script src="./components/component-loader.js"></script>
+    <script type="module" src="./functions/site.js"></script>
+</body>
+</html>

@@ -11,6 +11,7 @@
     
     <div data-component="head-common"></div>
     
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
     <title>Complete Git Guide | Resources by Shumbul Arifa</title>
     <meta name="description" content="Comprehensive Git guide with commands, workflows, and best practices for developers">
     <meta property="og:title" content="Complete Git Guide">
@@ -240,12 +241,25 @@
         <div class="container">
             <h1 class="git-title">🚀 Complete Git Guide</h1>
             <p class="git-subtitle">
-                Master Git with comprehensive commands, workflows, and best practices for modern development
+                Git can feel scary at first. It won't after this. Friendly, practical commands and workflows you'll actually use every day.
             </p>
         </div>
     </header>
 
     <main class="container">
+        <!-- Fresher quickstart -->
+        <div style="background:var(--bg-secondary,#f7f8fc);border:1px solid var(--border,#e6e8f0);border-left:4px solid var(--primary,#8b5cf6);border-radius:14px;padding:1.1rem 1.3rem;margin:0 0 1.75rem;">
+            <div style="font-weight:700;font-family:var(--font-display,inherit);margin-bottom:.5rem;">🌱 New to Git? The 7 commands you actually use daily</div>
+            <p style="margin:0 0 .6rem;color:var(--text-secondary);">Ignore the rest until you need it. This is 90% of real work:</p>
+            <pre style="background:#1e293b;color:#e2e8f0;padding:1rem;border-radius:10px;overflow-x:auto;margin:0 0 .5rem;font-size:.9rem;line-height:1.7;"><code>git clone &lt;url&gt;      # get the repo
+git pull             # get latest changes
+git checkout -b feat # make a branch to work on
+git add .            # stage your changes
+git commit -m "msg"  # save a snapshot
+git push             # send it to GitHub
+git status           # what's going on? (use this constantly)</code></pre>
+            <p style="margin:0;color:var(--text-secondary);font-size:.9rem;">That's it to start. The full reference below is for when you hit something new. Stuck on a command? Tap <strong>✦ Ask AI</strong> and paste it.</p>
+        </div>
         <!-- Table of Contents -->
         <div class="toc">
             <h2>📋 Table of Contents</h2>
@@ -518,7 +532,46 @@ git commit --amend --no-edit</code></pre>
         <!-- Branching & Merging -->
         <div class="git-section" id="branching">
             <h2>🌳 Branching & Merging</h2>
-            
+
+            <div class="git-visual" style="background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--radius,16px);padding:1.25rem 1.25rem .5rem;margin:0 0 1.5rem;">
+                <h3 style="margin-top:0;">Merge vs Rebase, at a glance</h3>
+                <p style="color:var(--text-secondary);margin-bottom:1rem;">Both bring your feature branch up to date with <code>main</code>. Merge keeps the true history and adds a merge commit. Rebase rewrites your commits on top of main for a clean, straight line.</p>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+                    <div>
+                        <strong>Merge</strong> <span style="color:var(--text-secondary);font-size:.85rem;">preserves history</span>
+                        <svg viewBox="0 0 260 120" width="100%" height="120" role="img" aria-label="Merge keeps both branches and joins them with a merge commit">
+                            <line x1="20" y1="35" x2="240" y2="35" stroke="var(--border)" stroke-width="3"/>
+                            <line x1="60" y1="85" x2="180" y2="85" stroke="var(--accent)" stroke-width="3"/>
+                            <line x1="60" y1="35" x2="60" y2="85" stroke="var(--accent)" stroke-width="3"/>
+                            <line x1="180" y1="85" x2="220" y2="35" stroke="var(--primary)" stroke-width="3"/>
+                            <circle cx="20" cy="35" r="7" fill="var(--primary)"/>
+                            <circle cx="60" cy="35" r="7" fill="var(--primary)"/>
+                            <circle cx="220" cy="35" r="9" fill="var(--secondary)"/>
+                            <circle cx="100" cy="85" r="7" fill="var(--accent)"/>
+                            <circle cx="140" cy="85" r="7" fill="var(--accent)"/>
+                            <circle cx="180" cy="85" r="7" fill="var(--accent)"/>
+                            <text x="14" y="22" font-size="11" fill="var(--text-secondary)">main</text>
+                            <text x="54" y="108" font-size="11" fill="var(--text-secondary)">feature</text>
+                            <text x="206" y="22" font-size="11" fill="var(--text-secondary)">merge</text>
+                        </svg>
+                    </div>
+                    <div>
+                        <strong>Rebase</strong> <span style="color:var(--text-secondary);font-size:.85rem;">straight line</span>
+                        <svg viewBox="0 0 260 120" width="100%" height="120" role="img" aria-label="Rebase replays feature commits on top of main for a linear history">
+                            <line x1="20" y1="60" x2="240" y2="60" stroke="var(--border)" stroke-width="3"/>
+                            <circle cx="20" cy="60" r="7" fill="var(--primary)"/>
+                            <circle cx="60" cy="60" r="7" fill="var(--primary)"/>
+                            <circle cx="120" cy="60" r="7" fill="var(--accent)"/>
+                            <circle cx="160" cy="60" r="7" fill="var(--accent)"/>
+                            <circle cx="200" cy="60" r="7" fill="var(--accent)"/>
+                            <text x="14" y="46" font-size="11" fill="var(--text-secondary)">main</text>
+                            <text x="150" y="88" font-size="11" fill="var(--text-secondary)">feature replayed</text>
+                        </svg>
+                    </div>
+                </div>
+                <p style="color:var(--text-secondary);font-size:.9rem;margin:.25rem 0 1rem;">Rule of thumb: <strong>rebase</strong> your own local feature branch to stay tidy, but <strong>merge</strong> (never rebase) anything you have already pushed and others may be using.</p>
+            </div>
+
             <h3>Branch Management</h3>
             <div class="code-block-container" data-language="bash">
     <div class="code-block-header">
@@ -1270,5 +1323,6 @@ logs/
             console.log('Git Guide loaded successfully! 🚀');
         });
     </script>
+    <script type="module" src="./functions/site.js"></script>
 </body>
 </html>
