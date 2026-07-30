@@ -108,7 +108,7 @@ OSI vs TCP/IP, TCP vs UDP, HTTP, DNS, and the "what happens when you type a URL"
 The four pillars, overloading vs overriding, abstract vs interface, and SOLID, with examples and quizzes after every section.
 
 ### 🏢 [Career Portals](https://shumbul.github.io/Resources/career-portals.html)
-Official career pages of 50+ top tech companies in one searchable place. Apply directly on company portals, bookmark it for your whole job hunt.
+Official career pages of 99 top tech companies (hiring in India, well-paying, popular) in one searchable place. Apply directly on company portals, bookmark it for your whole job hunt.
 
 ## 🛠️ Technical Implementation
 

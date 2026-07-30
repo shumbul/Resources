@@ -1,0 +1,11 @@
+Make Back to Resources link white and expand Career Portals to 99 companies
+
+- Fixed the shared back-link color: head-common.html overrode it to grey; now
+  pure white (and on hover) across all guide pages
+- Career Portals: curated to exactly 99 companies that hire in India, pay well,
+  and are popular/successful (added product, fintech, semiconductor, and Indian
+  unicorn employers; removed a few weaker fits). Updated title, header, count,
+  homepage card, README, and the AI Era Job Hunt callout
+- Validated: 99 companies, no duplicates, WCAG AA 0 violations, HTMLHint clean
+
+Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>
