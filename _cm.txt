@@ -1,16 +1,15 @@
-Unify all footers to one look: gradient palette-following icon circles
+Keep the road streaming even under reduced-motion (fixes 'moves on phone, not laptop')
 
-There were three footer icon styles (white-outlined component footer, purple-
-gradient site-footer, solid-purple homepage footer). Unified them so every page
-shows the SAME footer: roomy spacing plus gradient circle icons that follow the
-color palette (they recolor when the theme switcher changes).
+Root cause was not a laptop-vs-phone bug: the road SMIL animation was gated behind
+prefers-reduced-motion, and the laptop had reduce-motion enabled (Windows animation
+effects off / battery saver) while the phone did not.
 
-- head-common.html .social-link: white/outlined -> gradient circle (var(--primary)
-  to var(--secondary)), hover lifts with shadow
-- index.html .social-link: solid square-ish -> matching gradient circle
-- functions/footer.js already used this treatment (the reference)
+The thin streaming centerline is a subtle, essential cue the road is a path you
+travel, so it now animates for everyone, just gentler (1.4s vs 0.6s) under reduced
+motion. The heavier motions (walking traveler, zooming glow dots, pulsing, flash)
+stay suppressed under reduced-motion, honoring the accessibility intent.
 
-Validated: all footer variants render identical gradient circles, icons recolor
-with the palette (verified green theme), WCAG AA clean, HTMLHint 40 files clean.
+Validated: road moves on all 5 journey pages under BOTH normal and reduced-motion;
+traveler/cars stay static under reduced motion; HTMLHint 40 files clean.
 
 Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>
