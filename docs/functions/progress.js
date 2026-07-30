@@ -25,10 +25,13 @@ const CSS = `
 const CONFIGS = [
     { sel: '.week-section', head: '.week-header', unit: 'weeks', key: 'progress_weeks_v1' },
     { sel: '.month-section', head: '.month-header', unit: 'months', key: 'progress_months_v1' },
+    { sel: '.gsection', head: 'h2', unit: 'stages', key: 'progress_dsa_v1', page: 'dsa-practice-guide.html', appendToSection: true },
+    { sel: '.gsection', head: 'h2', unit: 'stages', key: 'progress_sysdesign_v1', page: 'system-design-templates.html', appendToSection: true },
 ];
 
 export function initProgress() {
-    const cfg = CONFIGS.find((c) => document.querySelector(c.sel));
+    const page = (location.pathname.split('/').pop() || '').toLowerCase();
+    const cfg = CONFIGS.find((c) => (!c.page || c.page === page) && document.querySelector(c.sel));
     if (!cfg) return;
     const items = Array.from(document.querySelectorAll(cfg.sel));
     if (items.length < 2) return;
@@ -70,7 +73,7 @@ export function initProgress() {
     }
 
     items.forEach((sec, i) => {
-        const header = sec.querySelector(cfg.head) || sec;
+        const target = cfg.appendToSection ? sec : (sec.querySelector(cfg.head) || sec);
         const btn = document.createElement('button');
         btn.type = 'button';
         btn.className = 'fn-toggle';
@@ -80,7 +83,7 @@ export function initProgress() {
             render();
             document.dispatchEvent(new CustomEvent('progress:change', { detail: { key: cfg.key } }));
         });
-        header.appendChild(btn);
+        target.appendChild(btn);
     });
 
     panel.querySelector('.rst').addEventListener('click', () => {
