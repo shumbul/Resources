@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap">
+    <meta charset="UTF-8">
+    <div data-component="head-common"></div>
+
+    <title>Page not found (404) | Resources by Shumbul Arifa</title>
+    <meta name="description" content="That page took a wrong turn. Here's a friendly 404 with quick links to get you back on the road.">
+    <meta name="robots" content="noindex">
+
+    <style>
+        .nf-header { background: linear-gradient(135deg, var(--primary), var(--secondary)); color:#fff; padding:3.5rem 0 3rem; text-align:center; }
+        .nf-code {
+            font-family: var(--font-display, 'Space Grotesk', sans-serif);
+            font-size: clamp(4.5rem, 18vw, 9rem); font-weight: 700; line-height: 1;
+            letter-spacing: .02em; margin: 0; color: #fff;
+            display: inline-flex; align-items: center; gap: .5rem;
+        }
+        /* The "0" becomes a little lost traveler wandering between the 4s. */
+        .nf-zero { position: relative; display: inline-block; width: 1em; }
+        .nf-zero svg { width: 1em; height: 1em; overflow: visible; }
+        .nf-walk { animation: nfWalk 3.4s ease-in-out infinite; transform-origin: center; }
+        @keyframes nfWalk { 0%,100% { transform: translateX(-8%) rotate(-3deg); } 50% { transform: translateX(8%) rotate(3deg); } }
+        .nf-leg-l { transform-origin: 50px 62px; animation: nfLegA .5s ease-in-out infinite; }
+        .nf-leg-r { transform-origin: 50px 62px; animation: nfLegB .5s ease-in-out infinite; }
+        @keyframes nfLegA { 0%,100% { transform: rotate(-16deg); } 50% { transform: rotate(16deg); } }
+        @keyframes nfLegB { 0%,100% { transform: rotate(16deg); } 50% { transform: rotate(-16deg); } }
+        .nf-arm { transform-origin: 50px 40px; animation: nfWave .6s ease-in-out infinite; }
+        @keyframes nfWave { 0%,100% { transform: rotate(-10deg); } 50% { transform: rotate(26deg); } }
+        .nf-title { font-size: 1.8rem; font-weight: 800; margin: 1rem 0 .5rem; color:#fff; }
+        .nf-sub { font-size: 1.1rem; color: rgba(255,255,255,.94); max-width: 560px; margin: 0 auto; }
+
+        .nf-search-wrap { max-width: 520px; margin: 2rem auto 0; }
+        .nf-search { display:flex; gap:.5rem; }
+        .nf-search input {
+            flex:1; padding:.75rem 1rem; border-radius: 12px; border:1px solid var(--border);
+            background: var(--bg-primary); color: var(--text-primary); font: 500 1rem/1 var(--font-sans, inherit);
+        }
+        .nf-search input:focus { outline:none; border-color: var(--primary); box-shadow: 0 0 0 3px var(--ring); }
+        .nf-search button {
+            padding:.75rem 1.2rem; border:none; border-radius:12px; cursor:pointer; font-weight:700;
+            color:#fff; background: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+
+        .nf-grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap:1rem; margin-top: 1.5rem; }
+        .nf-card {
+            display:flex; gap:.85rem; align-items:flex-start; text-decoration:none;
+            background: var(--bg-secondary); border:1px solid var(--border); border-radius:14px; padding:1.1rem 1.2rem;
+            transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+        }
+        .nf-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-color: var(--primary); }
+        .nf-card .ic { font-size: 1.6rem; line-height: 1; }
+        .nf-card strong { color: var(--text-primary); display:block; margin-bottom:.15rem; }
+        .nf-card span { color: var(--text-secondary); font-size:.9rem; }
+        .nf-section-title { font-size:1.3rem; margin: 2.25rem 0 .25rem; }
+        .nf-muted { color: var(--text-secondary); }
+        @media (prefers-reduced-motion: reduce) {
+            .nf-walk, .nf-leg-l, .nf-leg-r, .nf-arm { animation: none; }
+        }
+    </style>
+</head>
+<body>
+    <div data-component="theme-switcher"></div>
+
+    <header class="nf-header">
+        <div class="container">
+            <p class="nf-code" aria-label="404">
+                4
+                <span class="nf-zero" aria-hidden="true">
+                    <svg viewBox="0 0 100 100" role="img">
+                        <g class="nf-walk">
+                            <circle cx="50" cy="28" r="14" fill="#fff"/>
+                            <rect x="42" y="40" width="16" height="24" rx="7" fill="#fff"/>
+                            <rect class="nf-arm" x="56" y="38" width="7" height="18" rx="3.5" fill="#fff"/>
+                            <rect class="nf-leg-l" x="44" y="60" width="6" height="20" rx="3" fill="#fff"/>
+                            <rect class="nf-leg-r" x="50" y="60" width="6" height="20" rx="3" fill="#fff"/>
+                        </g>
+                    </svg>
+                </span>
+                4
+            </p>
+            <h1 class="nf-title">This page wandered off the map</h1>
+            <p class="nf-sub">The link is broken or the page moved. No worries, let's get you back on the road to a job you'll love.</p>
+
+            <div class="nf-search-wrap">
+                <form class="nf-search" id="nfSearch" role="search" aria-label="Search guides">
+                    <input type="search" id="nfSearchInput" placeholder="Search guides (e.g. resume, DSA, LinkedIn)..." aria-label="Search guides" autocomplete="off">
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <h2 class="nf-section-title">Popular places to go</h2>
+        <p class="nf-muted">Pick one of these, or use the sidebar to browse everything.</p>
+        <div class="nf-grid" id="nfGrid"></div>
+
+        <h2 class="nf-section-title">Or start from the top</h2>
+        <div class="nf-grid">
+            <a class="nf-card" href="./index.html"><span class="ic">🏠</span><span><strong>Home</strong><span>All resources in one place</span></span></a>
+            <a class="nf-card" href="./about.html"><span class="ic">👋</span><span><strong>About</strong><span>What this site is and why</span></span></a>
+            <a class="nf-card" href="./contact.html"><span class="ic">📬</span><span><strong>Contact</strong><span>Say hi or report the broken link</span></span></a>
+        </div>
+    </main>
+
+    <div data-component="footer"></div>
+    <div data-component="scripts-common"></div>
+    <script src="./components/component-loader.js"></script>
+    <script type="module" src="./functions/site.js"></script>
+
+    <script>
+        // A handful of top destinations, rendered as cards. Kept in sync by hand
+        // with the sidebar groups; the sidebar (from nav.js) always lists them all.
+        (function () {
+            const PICKS = [
+                { href: './12-week-roadmap.html', icon: '📋', title: '12-Week Roadmap', desc: 'A week-by-week plan to job-ready', keys: 'roadmap plan weeks beginner' },
+                { href: './dsa-practice-guide.html', icon: '💻', title: 'DSA Practice', desc: 'Patterns that crack most problems', keys: 'dsa algorithms data structures leetcode' },
+                { href: './resume-portfolio-templates.html', icon: '📄', title: 'Resume & Portfolio', desc: 'Templates recruiters respond to', keys: 'resume cv portfolio templates' },
+                { href: './linkedin-utilization-guide.html', icon: '💼', title: 'LinkedIn Guide', desc: 'Get noticed by recruiters', keys: 'linkedin profile networking' },
+                { href: './interview-prep-kit.html', icon: '🗣️', title: 'Interview Prep', desc: 'Walk in calm and ready', keys: 'interview questions prep' },
+                { href: './ai-tools.html', icon: '🛠️', title: 'AI Tools', desc: 'Free AI helpers for your search', keys: 'ai tools chat assistant' },
+            ];
+            const grid = document.getElementById('nfGrid');
+            if (grid) {
+                grid.innerHTML = PICKS.map(function (p) {
+                    return '<a class="nf-card" href="' + p.href + '" data-keys="' + p.keys + ' ' + p.title.toLowerCase() + '">' +
+                        '<span class="ic">' + p.icon + '</span>' +
+                        '<span><strong>' + p.title + '</strong><span>' + p.desc + '</span></span></a>';
+                }).join('');
+            }
+
+            // Search: filter the picks live, and on submit jump to the best match.
+            const form = document.getElementById('nfSearch');
+            const input = document.getElementById('nfSearchInput');
+            function bestMatch(q) {
+                q = q.trim().toLowerCase();
+                if (!q) return null;
+                return PICKS.find(function (p) { return (p.keys + ' ' + p.title.toLowerCase()).includes(q); });
+            }
+            if (input) {
+                input.addEventListener('input', function () {
+                    const q = input.value.trim().toLowerCase();
+                    grid.querySelectorAll('.nf-card').forEach(function (c) {
+                        const show = !q || (c.getAttribute('data-keys') || '').includes(q);
+                        c.style.display = show ? '' : 'none';
+                    });
+                });
+            }
+            if (form) {
+                form.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    const m = bestMatch(input.value);
+                    window.location.href = m ? m.href : './index.html';
+                });
+            }
+        })();
+    </script>
+</body>
+</html>

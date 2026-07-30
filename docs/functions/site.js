@@ -10,6 +10,7 @@
 import { ensureMeta } from './meta.js';
 import { renderNav } from './nav.js';
 import { renderFooter } from './footer.js';
+import { renderBackLink } from './header.js';
 import { initCopyButtons } from './copyButtons.js';
 import { initProgress } from './progress.js';
 import { initAssistant } from './assistant.js';
@@ -22,6 +23,7 @@ import { initQuickJump } from './quickjump.js';
 const STEPS = [
     ['meta', ensureMeta],
     ['nav', renderNav],
+    ['backlink', renderBackLink],
     ['footer', renderFooter],
     ['copy', initCopyButtons],
     ['progress', initProgress],

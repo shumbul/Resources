@@ -110,8 +110,11 @@ const CSS = `
 .journey__road{display:block;width:100%;height:auto;}
 .j-road{fill:none;stroke:#1f2c48;stroke-width:26;stroke-linecap:round;}
 .j-road2{fill:none;stroke:#2b3a5c;stroke-width:20;stroke-linecap:round;}
-.j-dash{fill:none;stroke:#5b6b8f;stroke-width:2.5;stroke-dasharray:2 16;stroke-linecap:round;animation:jdash 3.5s linear infinite;}
-@keyframes jdash{to{stroke-dashoffset:-180;}}
+/* Small centerline dashes that continuously stream forward along the road.
+   Dash period = 2 + 16 = 18, so animating the offset by exactly 18 loops
+   seamlessly. A short duration keeps the motion clearly visible. */
+.j-dash{fill:none;stroke:#8ea6d8;stroke-width:3;stroke-dasharray:2 16;stroke-linecap:round;animation:jdash 0.9s linear infinite;}
+@keyframes jdash{from{stroke-dashoffset:0;}to{stroke-dashoffset:-18;}}
 .j-plabel{fill:#e2e8f0;font-family:var(--font-display,sans-serif);font-weight:700;font-size:15px;}
 .j-prange{fill:#94a3b8;font-family:var(--font-sans,sans-serif);font-size:12px;}
 .j-cap{fill:#cbd5e1;font-family:var(--font-display,sans-serif);font-weight:700;font-size:13px;}
