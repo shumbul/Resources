@@ -13,6 +13,8 @@ import { renderFooter } from './footer.js';
 import { initCopyButtons } from './copyButtons.js';
 import { initProgress } from './progress.js';
 import { initAssistant } from './assistant.js';
+import { makeScrollablesFocusable } from './a11y.js';
+import { initMotion } from './motion.js';
 
 const STEPS = [
     ['meta', ensureMeta],
@@ -21,6 +23,8 @@ const STEPS = [
     ['copy', initCopyButtons],
     ['progress', initProgress],
     ['assistant', initAssistant],
+    ['a11y', makeScrollablesFocusable],
+    ['motion', initMotion],
 ];
 
 function run() {

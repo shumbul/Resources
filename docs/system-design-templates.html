@@ -26,6 +26,8 @@
         th, td { text-align:left; padding:.6rem .7rem; border-bottom:1px solid var(--border); vertical-align:top; }
         th { font-family:var(--font-display); }
         .muted { color:var(--text-secondary); }
+        .arch { border-radius:14px; overflow:hidden; border:1px solid var(--border); background:#0a1220; }
+        .arch svg { display:block; width:100%; height:auto; }
     </style>
 </head>
 <body>
@@ -60,6 +62,97 @@
                 <li><strong>Go deep on 1-2 pieces.</strong> Pick the interesting part (the feed, the matching, the storage) and detail it.</li>
                 <li><strong>Discuss trade-offs and bottlenecks.</strong> What breaks first at scale? How would you fix it? This is where you shine.</li>
             </ol>
+        </div>
+
+        <div class="gsection" style="overflow:hidden;">
+            <h2>See a request flow through a system</h2>
+            <p class="muted">Requests flow left to right. Watch where they pile up, that saturated database is your bottleneck, exactly the kind of thing you call out in step 6.</p>
+            <div class="arch" role="img" aria-label="Architecture diagram: a client sends requests through a load balancer to two healthy servers, then a Redis cache, which reads from a saturated database (the bottleneck) and writes to a queue.">
+                <svg viewBox="0 0 1000 360" preserveAspectRatio="xMidYMid meet">
+                    <defs>
+                        <style>
+                            .wire{fill:none;stroke:#334155;stroke-width:2.5;}
+                            .flow{fill:none;stroke-width:2.5;stroke-linecap:round;stroke-dasharray:6 220;}
+                            .flow.ok{stroke:#38bdf8;animation:archflow 2.4s linear infinite;}
+                            .flow.warn{stroke:#f87171;animation:archflow 2.4s linear infinite;}
+                            .node{fill:#0f1b2d;stroke-width:2;rx:12;}
+                            .node.blue{stroke:#38bdf8;}
+                            .node.slate{stroke:#475569;}
+                            .node.warn{stroke:#f87171;}
+                            .node.amber{stroke:#f59e0b;}
+                            .lbl{fill:#e2e8f0;font-family:'Space Grotesk',sans-serif;font-weight:700;}
+                            .sub{fill:#94a3b8;font-family:'Inter',sans-serif;font-size:12px;}
+                            .ok-dot{fill:#4ade80;}
+                            .badge{fill:#7f1d1d;}
+                            @keyframes archflow{from{stroke-dashoffset:226;}to{stroke-dashoffset:0;}}
+                            @keyframes archpulse{0%,100%{opacity:.55;}50%{opacity:1;}}
+                            .pulse{animation:archpulse 1.6s ease-in-out infinite;}
+                            @media (prefers-reduced-motion: reduce){ .flow{animation:none;stroke-dasharray:none;opacity:.9;} .pulse{animation:none;} }
+                        </style>
+                    </defs>
+                    <rect x="0" y="0" width="1000" height="360" fill="#0a1220"/>
+
+                    <!-- wires -->
+                    <path class="wire" d="M110,180 H210"/>
+                    <path class="wire" d="M330,180 C370,180 370,110 410,110"/>
+                    <path class="wire" d="M330,180 C370,180 370,250 410,250"/>
+                    <path class="wire" d="M560,110 C600,110 600,180 640,180"/>
+                    <path class="wire" d="M560,250 C600,250 600,180 640,180"/>
+                    <path class="wire" d="M760,180 C800,180 800,110 840,110"/>
+                    <path class="wire" d="M760,180 C800,180 800,250 840,250"/>
+
+                    <!-- animated flow overlays -->
+                    <path class="flow ok" d="M110,180 H210"/>
+                    <path class="flow ok" d="M330,180 C370,180 370,110 410,110"/>
+                    <path class="flow ok" d="M330,180 C370,180 370,250 410,250"/>
+                    <path class="flow ok" d="M560,110 C600,110 600,180 640,180"/>
+                    <path class="flow ok" d="M560,250 C600,250 600,180 640,180"/>
+                    <path class="flow warn" d="M760,180 C800,180 800,110 840,110"/>
+                    <path class="flow ok" d="M760,180 C800,180 800,250 840,250"/>
+
+                    <!-- client -->
+                    <circle cx="70" cy="180" r="34" fill="#0f1b2d" stroke="#475569" stroke-width="2"/>
+                    <text class="sub" x="70" y="184" text-anchor="middle">CLIENT</text>
+
+                    <!-- load balancer -->
+                    <rect class="node blue" x="210" y="148" width="120" height="64" rx="12"/>
+                    <text class="lbl" x="270" y="176" text-anchor="middle" font-size="14">LOAD</text>
+                    <text class="lbl" x="270" y="194" text-anchor="middle" font-size="14">BALANCER</text>
+
+                    <!-- server A -->
+                    <rect class="node slate" x="410" y="82" width="150" height="56" rx="12"/>
+                    <text class="lbl" x="470" y="106" text-anchor="middle" font-size="14">SERVER A</text>
+                    <circle class="ok-dot" cx="440" cy="122" r="4"/>
+                    <text class="sub" x="452" y="126">healthy</text>
+
+                    <!-- server B -->
+                    <rect class="node slate" x="410" y="222" width="150" height="56" rx="12"/>
+                    <text class="lbl" x="470" y="246" text-anchor="middle" font-size="14">SERVER B</text>
+                    <circle class="ok-dot" cx="440" cy="262" r="4"/>
+                    <text class="sub" x="452" y="266">healthy</text>
+
+                    <!-- cache -->
+                    <rect class="node blue" x="640" y="146" width="120" height="68" rx="12"/>
+                    <text class="lbl" x="700" y="174" text-anchor="middle" font-size="14">CACHE</text>
+                    <text class="sub" x="700" y="192" text-anchor="middle" fill="#4ade80">hit: 68%</text>
+                    <text class="sub" x="700" y="206" text-anchor="middle">Redis</text>
+
+                    <!-- database (bottleneck) -->
+                    <g class="pulse">
+                        <rect class="badge" x="838" y="52" width="156" height="24" rx="6"/>
+                        <text x="916" y="69" text-anchor="middle" fill="#fecaca" font-family="Inter,sans-serif" font-weight="700" font-size="12">BOTTLENECK DETECTED</text>
+                    </g>
+                    <rect class="node warn" x="840" y="82" width="150" height="56" rx="12"/>
+                    <text class="lbl" x="915" y="106" text-anchor="middle" font-size="14" fill="#fca5a5">DATABASE</text>
+                    <text class="sub" x="915" y="126" text-anchor="middle" fill="#f87171">⚠ SATURATED</text>
+
+                    <!-- queue -->
+                    <rect class="node amber" x="840" y="222" width="150" height="56" rx="12"/>
+                    <text class="lbl" x="915" y="246" text-anchor="middle" font-size="14" fill="#fbbf24">QUEUE</text>
+                    <text class="sub" x="915" y="266" text-anchor="middle" fill="#f59e0b">depth: 2,841</text>
+                </svg>
+            </div>
+            <p class="muted" style="margin-top:.75rem;">The fix here: add read replicas or cache more aggressively so the database stops being the wall everything hits. That is the trade-off conversation interviewers love.</p>
         </div>
 
         <div class="gsection">

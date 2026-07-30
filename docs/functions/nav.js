@@ -1,18 +1,17 @@
-/* Shared site chrome: a top bar for site-level links (Home, About, Contact)
- * plus a left sidebar that lists the guides, grouped. Call renderNav() once.
- *
- * - Desktop (>=1024px): sidebar is always visible and gently pushes content right.
- * - Mobile/tablet: sidebar becomes an off-canvas drawer toggled by the menu button.
- * - Any legacy per-page "Back to Resources" nav is hidden, since the sidebar replaces it.
+/* Shared site chrome.
+ * - Top bar: menu toggle + brand, and (desktop only) Home / About / Contact.
+ * - Left sidebar: a live search box + the guides, grouped. On mobile it also
+ *   lists Home / About / Contact so the top bar can stay clean.
+ * - The menu button (☰) collapses the sidebar on desktop (remembered) and
+ *   opens it as a drawer on mobile.
  */
 
-const TOP_LINKS = [
-    { href: 'index.html', label: 'Home', match: ['index.html', ''] },
-    { href: 'about.html', label: 'About' },
-    { href: 'contact.html', label: 'Contact' },
+const SITE_LINKS = [
+    { href: 'index.html', label: 'Home', icon: '🏠', match: ['index.html', ''] },
+    { href: 'about.html', label: 'About', icon: '👋' },
+    { href: 'contact.html', label: 'Contact', icon: '📬' },
 ];
 
-// Guides grouped for the sidebar.
 const GROUPS = [
     { title: 'Roadmaps', items: [
         { href: '12-week-roadmap.html', label: '12-Week Roadmap', icon: '📋' },
@@ -37,15 +36,19 @@ const GROUPS = [
 
 const SIDEBAR_W = 250;
 const TOPBAR_H = 56;
+const COLLAPSE_KEY = 'sidebar_collapsed';
 
 const CSS = `
 :root { --sidebar-w: ${SIDEBAR_W}px; --topbar-h: ${TOPBAR_H}px; }
 
-/* Top bar (site level) */
 .site-topbar{position:fixed;top:0;left:0;right:0;height:var(--topbar-h);z-index:9500;
-    display:flex;align-items:center;gap:.75rem;padding:0 1rem;
-    background:var(--glass-bg, rgba(255,255,255,.8));backdrop-filter:blur(12px);
+    display:flex;align-items:center;gap:.6rem;padding:0 .9rem;
+    background:var(--glass-bg, rgba(255,255,255,.85));backdrop-filter:blur(12px);
     border-bottom:1px solid var(--border,#e5e7eb);}
+.site-menu-btn{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;
+    border:1px solid var(--border);background:var(--bg-primary);border-radius:10px;cursor:pointer;
+    font-size:1.15rem;color:var(--text-primary);flex-shrink:0;}
+.site-menu-btn:hover{border-color:var(--primary);color:var(--primary);}
 .site-topbar__brand{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--font-display,inherit);
     font-weight:700;color:var(--text-primary,#111);text-decoration:none;white-space:nowrap;}
 .site-topbar__brand .spark{display:inline-flex;width:28px;height:28px;align-items:center;justify-content:center;
@@ -56,14 +59,17 @@ const CSS = `
     color:var(--text-secondary,#555);padding:.5rem .8rem;border-radius:999px;transition:all .18s ease;}
 .site-topbar__links a:hover{color:var(--primary);background:var(--bg-tertiary,#f1f5f9);}
 .site-topbar__links a.active{color:#fff;background:linear-gradient(135deg,var(--primary),var(--secondary));}
-.site-menu-btn{display:none;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid var(--border);
-    background:var(--bg-primary);border-radius:10px;cursor:pointer;font-size:1.1rem;color:var(--text-primary);}
 
-/* Sidebar (guides) */
 .site-sidebar{position:fixed;top:var(--topbar-h);left:0;bottom:0;width:var(--sidebar-w);z-index:9400;
-    overflow-y:auto;padding:1rem .8rem 2rem;background:var(--bg-secondary,#f7f8fc);
+    display:flex;flex-direction:column;background:var(--bg-secondary,#f7f8fc);
     border-right:1px solid var(--border,#e5e7eb);transition:transform .25s ease;}
-.site-sidebar__group{margin-bottom:1.1rem;}
+.site-search{padding:.85rem .8rem .4rem;}
+.site-search input{width:100%;box-sizing:border-box;padding:.55rem .7rem;border:1px solid var(--border);
+    border-radius:10px;background:var(--bg-primary);color:var(--text-primary);
+    font:500 .88rem/1 var(--font-sans,inherit);}
+.site-search input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px var(--ring);}
+.site-sidebar__scroll{flex:1;overflow-y:auto;padding:.4rem .8rem 2rem;}
+.site-sidebar__group{margin-bottom:1.05rem;}
 .site-sidebar__title{font:700 .72rem/1 var(--font-sans,inherit);text-transform:uppercase;letter-spacing:.08em;
     color:var(--text-secondary,#666);padding:.3rem .7rem .5rem;}
 .site-sidebar a{display:flex;align-items:center;gap:.6rem;text-decoration:none;border-radius:10px;
@@ -71,24 +77,27 @@ const CSS = `
 .site-sidebar a .ic{width:1.3rem;text-align:center;}
 .site-sidebar a:hover{background:var(--bg-tertiary,#eef1f8);color:var(--primary);}
 .site-sidebar a.active{background:linear-gradient(135deg,var(--primary),var(--secondary));color:#fff;}
-.site-sidebar__foot{margin-top:1rem;padding-top:.7rem;border-top:1px solid var(--border);}
+.site-sidebar__site{display:none;} /* site links appear in sidebar only on mobile */
+.site-noresult{display:none;color:var(--text-secondary);font-size:.85rem;padding:.5rem .7rem;}
 
 .site-backdrop{position:fixed;inset:0;z-index:9300;background:rgba(15,23,42,.45);opacity:0;pointer-events:none;transition:opacity .25s ease;}
 
 /* Layout offsets */
-body{padding-top:var(--topbar-h);}
-@media (min-width:1024px){ body{padding-left:var(--sidebar-w);} }
+body{padding-top:var(--topbar-h);transition:padding-left .25s ease;}
+@media (min-width:1024px){
+    body{padding-left:var(--sidebar-w);}
+    body.sidebar-collapsed{padding-left:0;}
+    body.sidebar-collapsed .site-sidebar{transform:translateX(-100%);}
+}
 @media (max-width:1023px){
+    .site-topbar__links{display:none;}          /* declutter: site links move to the drawer */
+    .site-sidebar__site{display:block;}
     .site-sidebar{transform:translateX(-100%);box-shadow:0 12px 40px rgba(2,6,23,.25);}
     body.sidebar-open .site-sidebar{transform:translateX(0);}
     body.sidebar-open .site-backdrop{opacity:1;pointer-events:auto;}
-    .site-menu-btn{display:inline-flex;}
 }
 
-/* Hide legacy per-page back links for a consistent nav experience. */
 .back-nav, [data-component="back-nav"]{display:none !important;}
-
-/* Nudge the floating theme switcher clear of the fixed top bar. */
 .theme-switcher{top:calc(var(--topbar-h) + 12px) !important;z-index:9200;}
 `;
 
@@ -97,17 +106,16 @@ export function renderNav() {
     injectStyle('site-nav-css', CSS);
 
     const current = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    const isActive = (l) => (l.match || [l.href]).map((m) => m.toLowerCase()).includes(current);
 
     // Top bar
     const top = document.createElement('nav');
     top.className = 'site-topbar';
     top.setAttribute('aria-label', 'Primary');
-    const topLinks = TOP_LINKS.map((l) => {
-        const active = (l.match || [l.href]).map((m) => m.toLowerCase()).includes(current);
-        return `<a href="./${l.href}"${active ? ' class="active" aria-current="page"' : ''}>${l.label}</a>`;
-    }).join('');
+    const topLinks = SITE_LINKS.map((l) =>
+        `<a href="./${l.href}"${isActive(l) ? ' class="active" aria-current="page"' : ''}>${l.label}</a>`).join('');
     top.innerHTML =
-        `<button class="site-menu-btn" id="siteMenuBtn" aria-label="Open guides menu" aria-expanded="false">☰</button>` +
+        `<button class="site-menu-btn" id="siteMenuBtn" aria-label="Toggle menu" aria-expanded="false">☰</button>` +
         `<a class="site-topbar__brand" href="./index.html"><span class="spark">✦</span><span>Resources</span></a>` +
         `<span class="site-topbar__spacer"></span>` +
         `<div class="site-topbar__links">${topLinks}</div>`;
@@ -116,14 +124,31 @@ export function renderNav() {
     const side = document.createElement('aside');
     side.className = 'site-sidebar';
     side.setAttribute('aria-label', 'Guides');
+
+    const siteLinksHtml =
+        `<div class="site-sidebar__group site-sidebar__site" data-searchgroup>
+            <div class="site-sidebar__title">Menu</div>` +
+        SITE_LINKS.map((l) =>
+            `<a href="./${l.href}" data-label="${l.label.toLowerCase()}"${isActive(l) ? ' class="active" aria-current="page"' : ''}><span class="ic">${l.icon}</span>${l.label}</a>`).join('') +
+        `</div>`;
+
     const groupsHtml = GROUPS.map((g) => {
         const items = g.items.map((it) => {
             const on = it.href.toLowerCase() === current;
-            return `<a href="./${it.href}"${on ? ' class="active" aria-current="page"' : ''}><span class="ic">${it.icon}</span>${it.label}</a>`;
+            return `<a href="./${it.href}" data-label="${it.label.toLowerCase()}"${on ? ' class="active" aria-current="page"' : ''}><span class="ic">${it.icon}</span>${it.label}</a>`;
         }).join('');
-        return `<div class="site-sidebar__group"><div class="site-sidebar__title">${g.title}</div>${items}</div>`;
+        return `<div class="site-sidebar__group" data-searchgroup><div class="site-sidebar__title">${g.title}</div>${items}</div>`;
     }).join('');
-    side.innerHTML = groupsHtml;
+
+    side.innerHTML =
+        `<div class="site-search">
+            <input type="search" id="siteSearch" placeholder="Search guides..." aria-label="Search guides" autocomplete="off">
+        </div>
+        <div class="site-sidebar__scroll">
+            ${siteLinksHtml}
+            ${groupsHtml}
+            <p class="site-noresult" id="siteNoResult">No guides match your search.</p>
+        </div>`;
 
     const backdrop = document.createElement('div');
     backdrop.className = 'site-backdrop';
@@ -132,16 +157,44 @@ export function renderNav() {
     document.body.appendChild(side);
     document.body.appendChild(backdrop);
 
-    // Drawer toggle (mobile)
+    // Restore desktop collapsed state
+    if (localStorage.getItem(COLLAPSE_KEY) === '1') document.body.classList.add('sidebar-collapsed');
+
     const btn = top.querySelector('#siteMenuBtn');
-    const setOpen = (open) => {
-        document.body.classList.toggle('sidebar-open', open);
-        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    };
-    btn.addEventListener('click', () => setOpen(!document.body.classList.contains('sidebar-open')));
-    backdrop.addEventListener('click', () => setOpen(false));
-    side.addEventListener('click', (e) => { if (e.target.closest('a')) setOpen(false); });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); });
+    const isDesktop = () => window.matchMedia('(min-width:1024px)').matches;
+
+    function toggle() {
+        if (isDesktop()) {
+            const collapsed = document.body.classList.toggle('sidebar-collapsed');
+            localStorage.setItem(COLLAPSE_KEY, collapsed ? '1' : '0');
+            btn.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+        } else {
+            const open = document.body.classList.toggle('sidebar-open');
+            btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        }
+    }
+    btn.addEventListener('click', toggle);
+    backdrop.addEventListener('click', () => document.body.classList.remove('sidebar-open'));
+    side.addEventListener('click', (e) => { if (e.target.closest('a')) document.body.classList.remove('sidebar-open'); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') document.body.classList.remove('sidebar-open'); });
+
+    // Live search filter
+    const search = side.querySelector('#siteSearch');
+    const noResult = side.querySelector('#siteNoResult');
+    search.addEventListener('input', () => {
+        const q = search.value.trim().toLowerCase();
+        let anyVisible = false;
+        side.querySelectorAll('[data-searchgroup]').forEach((group) => {
+            let groupVisible = false;
+            group.querySelectorAll('a[data-label]').forEach((a) => {
+                const show = !q || a.getAttribute('data-label').includes(q);
+                a.style.display = show ? '' : 'none';
+                if (show) { groupVisible = true; anyVisible = true; }
+            });
+            group.style.display = groupVisible ? '' : 'none';
+        });
+        noResult.style.display = anyVisible ? 'none' : 'block';
+    });
 }
 
 function injectStyle(id, css) {
