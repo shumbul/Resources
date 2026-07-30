@@ -110,11 +110,11 @@ const CSS = `
 .journey__road{display:block;width:100%;height:auto;}
 .j-road{fill:none;stroke:#1f2c48;stroke-width:26;stroke-linecap:round;}
 .j-road2{fill:none;stroke:#2b3a5c;stroke-width:20;stroke-linecap:round;}
-/* Small centerline dashes that continuously stream forward along the road.
-   Dash period = 2 + 16 = 18, so animating the offset by exactly 18 loops
-   seamlessly. A short duration keeps the motion clearly visible. */
-.j-dash{fill:none;stroke:#8ea6d8;stroke-width:3;stroke-dasharray:2 16;stroke-linecap:round;animation:jdash 0.9s linear infinite;}
-@keyframes jdash{from{stroke-dashoffset:0;}to{stroke-dashoffset:-18;}}
+/* Small centerline dashes streaming forward along the road. The forward motion
+   is driven by a SMIL <animate> on stroke-dashoffset (see roadHtml), which is
+   more reliable across browsers than a CSS animation on an SVG attribute.
+   Dash period = 2 + 14 = 16, so animating the offset by 16 loops seamlessly. */
+.j-dash{fill:none;stroke:#c7d4f7;stroke-width:3.4;stroke-dasharray:2 14;stroke-linecap:round;}
 .j-plabel{fill:#e2e8f0;font-family:var(--font-display,sans-serif);font-weight:700;font-size:15px;}
 .j-prange{fill:#94a3b8;font-family:var(--font-sans,sans-serif);font-size:12px;}
 .j-cap{fill:#cbd5e1;font-family:var(--font-display,sans-serif);font-weight:700;font-size:13px;}
@@ -122,18 +122,22 @@ const CSS = `
 .j-ring{fill:#0a1220;stroke-width:4;}
 .j-pulse{animation:jpulse 1.7s ease-in-out infinite;transform-origin:center;transform-box:fill-box;}
 @keyframes jpulse{0%,100%{opacity:.5;}50%{opacity:1;}}
-/* The traveler standing on your current stop: gentle bob, waving arm, marching legs. */
+/* The traveler standing on your current stop: gentle bob and waving arm here;
+   the legs march via SMIL animateTransform (see travelerHtml) so they pivot
+   exactly at the hip, giving a clear front-back-front step. */
 .j-bob{animation:jbob 1.1s ease-in-out infinite;transform-origin:center bottom;transform-box:fill-box;}
 @keyframes jbob{0%,100%{transform:translateY(0);}50%{transform:translateY(-1.6px);}}
 .j-arm-wave{transform-origin:0px -11px;transform-box:fill-box;animation:jwave .6s ease-in-out infinite;}
 @keyframes jwave{0%,100%{transform:rotate(-6deg);}50%{transform:rotate(24deg);}}
-.j-leg-l{transform-origin:0px -4px;transform-box:fill-box;animation:jstepA .5s ease-in-out infinite;}
-.j-leg-r{transform-origin:0px -4px;transform-box:fill-box;animation:jstepB .5s ease-in-out infinite;}
-@keyframes jstepA{0%,100%{transform:rotate(-14deg);}50%{transform:rotate(14deg);}}
-@keyframes jstepB{0%,100%{transform:rotate(14deg);}50%{transform:rotate(-14deg);}}
-@media (prefers-reduced-motion: reduce){ .j-dash,.j-pulse,.j-car,.j-bob,.j-arm-wave,.j-leg-l,.j-leg-r{animation:none;} .j-car circle{display:none;} }
+@media (prefers-reduced-motion: reduce){ .j-pulse,.j-car,.j-bob,.j-arm-wave{animation:none;} .j-car circle{display:none;} }
 @media (max-width:640px){ .journey__title{font-size:1.15rem;} .journey__stat .n{font-size:1.2rem;} .journey__goal{min-width:0;} }
 `;
+
+/* True when the visitor prefers reduced motion; used to skip SMIL animations
+   (CSS media queries do not stop SMIL, so we gate it here at render time). */
+function reduceMotion() {
+    return !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+}
 
 /* ---- Public entry point ------------------------------------------------- */
 export function initJourney() {
@@ -276,7 +280,8 @@ class JourneyView {
                  aria-label="Journey map: ${s.doneCount} of ${s.total} ${type.unit}s complete, ${s.pct} percent.">
                 <path id="jRoad" class="j-road" d="${path}"/>
                 <path class="j-road2" d="${path}"/>
-                <path class="j-dash" d="${path}"/>
+                <path class="j-dash" d="${path}">${reduceMotion() ? '' :
+                    `<animate attributeName="stroke-dashoffset" from="0" to="-16" dur="0.6s" repeatCount="indefinite"/>`}</path>
                 ${cars}
                 <g class="j-node" data-goto="0">
                     <circle class="j-ring" cx="${GEO.X0}" cy="${yAt(GEO.X0)}" r="15" stroke="${startColor}"/>
@@ -305,6 +310,10 @@ class JourneyView {
         const color = s.finished ? '#fbbf24' : '#a78bfa';
         // Stand the figure just above the road node. Local coords keep the parts tidy.
         const baseY = y - 26;
+        // Legs march in place: each swings around the hip (0,-4), opposite phase,
+        // so it reads front-back-front. SMIL pivots exactly; CSS transform-box did not.
+        const march = (a) => reduceMotion() ? '' :
+            `<animateTransform attributeName="transform" attributeType="XML" type="rotate" values="${a} 0 -4;${-a} 0 -4;${a} 0 -4" dur="0.5s" repeatCount="indefinite"/>`;
         return `
             <g class="j-traveler" transform="translate(${x}, ${baseY})" aria-hidden="true">
                 <g class="j-bob">
@@ -316,9 +325,9 @@ class JourneyView {
                     <circle cx="0" cy="-19" r="4.6" fill="${color}"/>
                     <!-- body -->
                     <line x1="0" y1="-15" x2="0" y2="-4" stroke="${color}" stroke-width="2.6" stroke-linecap="round"/>
-                    <!-- legs (marching) -->
-                    <line class="j-leg-l" x1="0" y1="-4" x2="-4" y2="4" stroke="${color}" stroke-width="2.4" stroke-linecap="round"/>
-                    <line class="j-leg-r" x1="0" y1="-4" x2="4" y2="4" stroke="${color}" stroke-width="2.4" stroke-linecap="round"/>
+                    <!-- legs (marching in place, front-back-front) -->
+                    <line x1="0" y1="-4" x2="-4" y2="4" stroke="${color}" stroke-width="2.4" stroke-linecap="round">${march(22)}</line>
+                    <line x1="0" y1="-4" x2="4" y2="4" stroke="${color}" stroke-width="2.4" stroke-linecap="round">${march(-22)}</line>
                 </g>
             </g>`;
     }
