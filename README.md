@@ -95,6 +95,21 @@ Build a real AI agent from scratch, an LLM in a loop with tools and memory, in P
 ### 🛰️ [Networking Toolkit](https://shumbul.github.io/Resources/networking-toolkit.html)
 Copy-paste commands (Windows, Linux, macOS) that make Computer Networks theory click: watch DNS, ICMP, routing, TCP, and ports happen live on your own machine.
 
+### 🖥️ [Operating Systems Deep Dive](https://shumbul.github.io/Resources/operating-systems-deep-dive.html)
+Interview-oriented OS theory with real analogies, a quiz after every section, and a scored final quiz. Processes, scheduling, deadlocks, synchronization, and memory.
+
+### 🗃️ [DBMS Deep Dive](https://shumbul.github.io/Resources/dbms-deep-dive.html)
+Keys, normalization, ACID, indexing, and SQL vs NoSQL, explained with examples and self-scoring quizzes throughout.
+
+### 🌐 [Computer Networks Deep Dive](https://shumbul.github.io/Resources/computer-networks-deep-dive.html)
+OSI vs TCP/IP, TCP vs UDP, HTTP, DNS, and the "what happens when you type a URL" walkthrough, with quizzes and a live command companion.
+
+### 🧩 [OOP Deep Dive](https://shumbul.github.io/Resources/oop-deep-dive.html)
+The four pillars, overloading vs overriding, abstract vs interface, and SOLID, with examples and quizzes after every section.
+
+### 🏢 [Career Portals](https://shumbul.github.io/Resources/career-portals.html)
+Official career pages of 50+ top tech companies in one searchable place. Apply directly on company portals, bookmark it for your whole job hunt.
+
 ## 🛠️ Technical Implementation
 
 This website is built using a **modular component system** that eliminates code duplication and makes maintenance easier:

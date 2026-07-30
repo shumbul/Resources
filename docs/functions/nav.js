@@ -43,6 +43,7 @@ const GROUPS = [
     ]},
     { title: 'Land the Job', items: [
         { href: 'trending-tech-roles.html', label: 'Trending Tech Roles', icon: '🚀' },
+        { href: 'career-portals.html', label: 'Career Portals', icon: '🏢' },
         { href: 'linkedin-utilization-guide.html', label: 'LinkedIn Guide', icon: '💼' },
         { href: 'resume-portfolio-templates.html', label: 'Resume & Portfolio', icon: '📄' },
         { href: 'interview-prep-kit.html', label: 'Interview Prep', icon: '🗣️' },

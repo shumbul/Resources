@@ -35,6 +35,19 @@
         .nextlinks { display:flex; flex-wrap:wrap; gap:.6rem; }
         .nextlinks a { text-decoration:none; background:var(--bg-primary); border:1px solid var(--border); border-radius:10px; padding:.55rem .9rem; font-weight:600; color:var(--text-primary); }
         .nextlinks a:hover { border-color:var(--primary); color:var(--primary); }
+        .prompt { margin:.8rem 0; }
+        .prompt .lbl { display:inline-flex; align-items:center; gap:.4rem; font-size:.78rem; font-weight:700; text-transform:uppercase; letter-spacing:.04em; color:var(--primary); margin-bottom:.3rem; }
+        /* A little animated browser window mockup. */
+        .browser { max-width:420px; margin:1rem auto; border-radius:12px; overflow:hidden; border:1px solid var(--border); box-shadow:var(--shadow-lg); background:var(--bg-primary); }
+        .browser .bar { display:flex; align-items:center; gap:.4rem; padding:.5rem .7rem; background:var(--bg-tertiary); border-bottom:1px solid var(--border); }
+        .browser .bar i { width:11px; height:11px; border-radius:50%; display:inline-block; }
+        .browser .url { flex:1; margin-left:.5rem; background:var(--bg-primary); border:1px solid var(--border); border-radius:6px; font-size:.72rem; padding:.2rem .5rem; color:var(--text-secondary); overflow:hidden; white-space:nowrap; }
+        .browser .screen { padding:1.4rem 1.2rem; }
+        .browser .sk { height:12px; border-radius:6px; background:linear-gradient(90deg,var(--bg-tertiary),var(--border),var(--bg-tertiary)); background-size:200% 100%; animation:skshine 1.6s linear infinite; margin:.5rem 0; }
+        .browser .sk.h1 { height:22px; width:60%; background:linear-gradient(90deg,var(--primary),var(--accent)); }
+        .browser .sk.w80 { width:80%; } .browser .sk.w40 { width:40%; }
+        @keyframes skshine { to { background-position:-200% 0; } }
+        @media (prefers-reduced-motion: reduce){ .browser .sk { animation:none; } }
     </style>
 </head>
 <body>
@@ -61,6 +74,11 @@
         <div class="gsection">
             <h2 data-jump="The plan">The plan in one line</h2>
             <p class="muted"><b>Write an HTML page → make it look good with CSS → put it on GitHub → turn on free hosting.</b> That is the entire journey. Let us do it.</p>
+            <div class="browser" aria-hidden="true">
+                <div class="bar"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i><span class="url">your-username.github.io</span></div>
+                <div class="screen"><div class="sk h1"></div><div class="sk w80"></div><div class="sk"></div><div class="sk w40"></div></div>
+            </div>
+            <p class="muted" style="text-align:center;font-size:.85rem;">In a couple of hours, that URL is really yours.</p>
             <div><span class="concept">HTML</span><span class="concept">CSS</span><span class="concept">Git &amp; GitHub</span><span class="concept">GitHub Pages</span></div>
         </div>
 
@@ -142,6 +160,40 @@ git push -u origin main</code></pre>
                 <div class="card"><b>Want depth?</b><p class="muted" style="margin:.3rem 0 0;">Follow the <a href="./full-stack-developer-path.html">Full-Stack Path</a> to learn JavaScript, React, and backends properly.</p></div>
                 <div class="card"><b>Want a job portfolio?</b><p class="muted" style="margin:.3rem 0 0;">Turn this into a proper portfolio with the <a href="./resume-portfolio-templates.html">Resume &amp; Portfolio guide</a>.</p></div>
                 <div class="card"><b>Want to add AI?</b><p class="muted" style="margin:.3rem 0 0;">Drop a small assistant onto your site, see <a href="./build-ai-agent.html">Build an AI Agent</a>.</p></div>
+            </div>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="AI prompts">Copy-paste AI prompts</h2>
+            <p class="muted">Stuck or want to move faster? Paste these into any AI chatbot (or this site's <strong>✦ Ask AI</strong>). Fill in the brackets.</p>
+
+            <div class="prompt">
+                <span class="lbl">🎨 Generate a starter page</span>
+                <pre><code>Write a single index.html (HTML + inline CSS, no frameworks) for a personal
+portfolio for [your name], a [role you want]. Include a hero with my name, a short
+bio, a projects section with 3 cards, and links to GitHub and LinkedIn. Clean,
+modern, mobile-friendly, accessible. Explain the structure briefly.</code></pre>
+            </div>
+
+            <div class="prompt">
+                <span class="lbl">📱 Make it responsive</span>
+                <pre><code>Here is my HTML/CSS: [paste]. Make it look great on mobile without changing the
+desktop look. Use CSS media queries, explain what you changed and why, and keep it
+to one file.</code></pre>
+            </div>
+
+            <div class="prompt">
+                <span class="lbl">🚀 Deploy help</span>
+                <pre><code>Walk me through deploying my static site to GitHub Pages step by step, assuming I
+have never used Git. Give exact commands for [Windows / Mac], and tell me how to
+find my live URL and fix it if the page shows 404.</code></pre>
+            </div>
+
+            <div class="prompt">
+                <span class="lbl">✨ Add one cool feature</span>
+                <pre><code>Add a [dark-mode toggle / typing animation / contact form] to my page using plain
+vanilla JavaScript (no libraries). Give me the HTML, CSS, and JS, and explain how it
+works so I actually learn it.</code></pre>
             </div>
         </div>
 

@@ -37,6 +37,17 @@
         .nextlinks { display:flex; flex-wrap:wrap; gap:.6rem; }
         .nextlinks a { text-decoration:none; background:var(--bg-primary); border:1px solid var(--border); border-radius:10px; padding:.55rem .9rem; font-weight:600; color:var(--text-primary); }
         .nextlinks a:hover { border-color:var(--primary); color:var(--primary); }
+        /* AI prompt cards: a labelled, copyable prompt you can paste into any chatbot. */
+        .prompt { margin:.8rem 0; }
+        .prompt .lbl { display:inline-flex; align-items:center; gap:.4rem; font-size:.78rem; font-weight:700; text-transform:uppercase; letter-spacing:.04em; color:var(--primary); margin-bottom:.3rem; }
+        .prompt pre { background:#0f172a; }
+        /* Animated agent-loop diagram. */
+        .agentloop { display:block; width:100%; max-width:520px; height:auto; margin:1rem auto; }
+        .al-node { fill:var(--bg-primary); stroke:var(--primary); stroke-width:2; }
+        .al-txt { fill:var(--text-primary); font:600 13px var(--font-sans,sans-serif); }
+        .al-arrow { fill:none; stroke:var(--secondary); stroke-width:2.5; stroke-linecap:round; }
+        .al-dot { fill:var(--accent); }
+        @media (prefers-reduced-motion: reduce){ .al-dot animateMotion { display:none; } }
     </style>
 </head>
 <body>
@@ -70,6 +81,17 @@
                 <div class="box"><div class="ic">🔁</div><b>Repeat</b><span>Until the task is done</span></div>
             </div>
             <p class="muted">A plain chatbot answers in one shot. An <b>agent</b> loops: it can look something up, do a calculation, then use those results to answer. That loop, plus tools and memory, is the whole idea.</p>
+            <svg class="agentloop" viewBox="0 0 520 200" role="img" aria-label="Diagram: the agent loop cycles Think, Act, Observe, and back.">
+                <circle class="al-node" cx="90" cy="60" r="42"/><text class="al-txt" x="90" y="64" text-anchor="middle">🧠 Think</text>
+                <circle class="al-node" cx="430" cy="60" r="42"/><text class="al-txt" x="430" y="64" text-anchor="middle">🛠️ Act</text>
+                <circle class="al-node" cx="430" cy="150" r="42"/><text class="al-txt" x="430" y="154" text-anchor="middle">👀 Observe</text>
+                <circle class="al-node" cx="90" cy="150" r="42"/><text class="al-txt" x="90" y="154" text-anchor="middle">✅ Answer</text>
+                <path id="alPath" class="al-arrow" d="M132 60 H388 M430 102 V108 M388 150 H160 M90 108 V102" marker-end="url(#alHead)"/>
+                <path class="al-arrow" d="M132 55 H386"/><path class="al-arrow" d="M425 100 L430 110 L435 100"/>
+                <path class="al-arrow" d="M388 145 H150"/><path class="al-arrow" d="M85 110 L90 100 L95 110"/>
+                <circle class="al-dot" r="5"><animateMotion dur="4s" repeatCount="indefinite" path="M90 60 H430 V150 H90 V60"/></circle>
+            </svg>
+            <p class="muted" style="text-align:center;font-size:.85rem;">The loop keeps cycling until the model has enough to answer.</p>
             <div><span class="concept">LLM</span><span class="concept">Tools / function calling</span><span class="concept">Memory</span><span class="concept">The agent loop</span></div>
         </div>
 
@@ -195,6 +217,40 @@ def chat(question: str) -> str:
             <p class="muted">Once the from-scratch version makes sense, these frameworks do the plumbing for you (but you will understand what they are doing):</p>
             <div><span class="concept">LangChain</span><span class="concept">LlamaIndex</span><span class="concept">CrewAI</span><span class="concept">OpenAI Agents SDK</span></div>
             <p class="muted" style="margin-top:.7rem;">Concepts to explore next: <b>RAG</b> (let the agent search your documents), <b>multi-agent</b> setups (agents that talk to each other), and <b>guardrails</b> (keeping tools safe). This whole site's own <a href="./ai-tools.html">AI helper</a> is a small agent-style system, you now know roughly how it works.</p>
+        </div>
+
+        <div class="gsection">
+            <h2 data-jump="AI prompts">Copy-paste AI prompts</h2>
+            <p class="muted">Do not build alone. Paste these into any AI chatbot (or this site's <strong>✦ Ask AI</strong>) to speed up each step. Tweak the bracketed parts.</p>
+
+            <div class="prompt">
+                <span class="lbl">🧠 Scaffold the agent</span>
+                <pre><code>Act as a senior Python engineer. Write a minimal AI agent from scratch using the
+OpenAI Python SDK against an OpenAI-compatible endpoint. It should: (1) call an LLM,
+(2) support one tool called "calculator", (3) run a think-act-observe loop until a
+final answer. Keep it under 60 lines, well commented, no frameworks. Explain each part.</code></pre>
+            </div>
+
+            <div class="prompt">
+                <span class="lbl">🛠️ Design a custom tool</span>
+                <pre><code>I want to add a tool to my AI agent that [does X, e.g. "searches my notes folder"].
+Give me: the Python function, the JSON tool schema the model needs, and a one-line
+description that helps the model know when to call it. Keep it safe and simple.</code></pre>
+            </div>
+
+            <div class="prompt">
+                <span class="lbl">🐛 Debug a tool call</span>
+                <pre><code>My agent calls the tool but crashes on the tool result. Here is my code and the
+error: [paste code + error]. Explain the root cause in plain words, then give the
+minimal fix. Do not rewrite everything.</code></pre>
+            </div>
+
+            <div class="prompt">
+                <span class="lbl">✨ Turn it into a project</span>
+                <pre><code>Help me turn my basic agent into a portfolio project: [describe your idea]. Suggest
+2-3 useful tools, a clear system prompt describing the agent's job, and a simple way
+to demo it (CLI or minimal web page). Keep it achievable in a weekend.</code></pre>
+            </div>
         </div>
 
         <div class="gsection">
