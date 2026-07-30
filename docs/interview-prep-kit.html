@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap">
     <meta charset="UTF-8">
     <div data-component="head-common"></div>
 
@@ -22,14 +25,24 @@
         .star { display:grid; grid-template-columns:repeat(4,1fr); gap:.75rem; margin:1rem 0; }
         @media (max-width:640px){ .star { grid-template-columns:1fr 1fr; } }
         .star div { background:var(--bg-primary); border:1px solid var(--border); border-radius:10px; padding:.9rem; text-align:center; }
-        .star .k { font-family:var(--font-display); font-weight:700; color:var(--primary); font-size:1.4rem; }
+        .star .k { font-family:var(--font-display); font-weight:700; color:var(--primary); font-size:1.4rem; transition:color .3s ease; }
+        /* Sequential glow: S, then T, then A, then R, then loop. Uses the active theme color. */
+        .star > div .k { animation: starGlow 2.8s ease-in-out infinite; }
+        .star > div:nth-child(1) .k { animation-delay: 0s; }
+        .star > div:nth-child(2) .k { animation-delay: .7s; }
+        .star > div:nth-child(3) .k { animation-delay: 1.4s; }
+        .star > div:nth-child(4) .k { animation-delay: 2.1s; }
+        @keyframes starGlow {
+            0%, 82%, 100% { color: var(--primary); text-shadow: none; transform: scale(1); }
+            10%, 22% { color: var(--accent); text-shadow: 0 0 14px var(--accent), 0 0 26px var(--accent); transform: scale(1.18); }
+        }
+        @media (prefers-reduced-motion: reduce) { .star > div .k { animation: none; } }
         .muted { color:var(--text-secondary); }
         ul { padding-left:1.2rem; }
     </style>
 </head>
 <body>
     <div data-component="theme-switcher"></div>
-    <div data-component="back-nav"></div>
 
     <header class="guide-header">
         <div class="container">

@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="./favicon.svg">
@@ -29,14 +32,14 @@
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
         }
 
         /* Header */
         .header {
-            background: linear-gradient(135deg, #0077b5 0%, #004471 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
             padding: 4rem 0;
             margin-bottom: 3rem;
@@ -44,21 +47,8 @@
             overflow: hidden;
         }
 
-        .header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="1.5" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
-            animation: float 20s infinite linear;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px) translateX(0px); }
-            100% { transform: translateY(-100px) translateX(100px); }
-        }
+        /* Floating-dot texture now comes from the shared header rule in
+           theme-variables.css, so every page gets this identical treatment. */
 
         .header-content {
             position: relative;
@@ -215,7 +205,8 @@
         }
 
         .template-box h4 {
-            color: var(--primary);
+            color: var(--secondary);
+            color: color-mix(in srgb, var(--primary) 68%, #000);
             margin-bottom: 1.25rem;
             font-size: 1.25rem;
             font-weight: 600;
@@ -474,15 +465,7 @@
     </style>
 </head>
 <body>
-    <!-- Theme Switcher Component -->
-    <div data-component="theme-switcher"></div>
-    
     <div class="container">
-        <!-- Back Navigation -->
-        <div class="back-nav">
-            <a href="./index.html">← Back to Resources</a>
-        </div>
-
         <!-- Header -->
         <div class="header">
             <div class="header-content">
@@ -490,15 +473,15 @@
                 <p class="subtitle">Let's turn your profile into something recruiters actually notice. Simple, friendly tips (with AI to help) you can act on today.</p>
                 <div class="stats">
                     <div class="stat">
-                        <span class="stat-number">5x</span>
+                        <span class="stat-number" data-countup="5" data-suffix="x">5x</span>
                         <span class="stat-label">More Profile Views</span>
                     </div>
                     <div class="stat">
-                        <span class="stat-number">10x</span>
+                        <span class="stat-number" data-countup="10" data-suffix="x">10x</span>
                         <span class="stat-label">More Recruiter Messages</span>
                     </div>
                     <div class="stat">
-                        <span class="stat-number">3x</span>
+                        <span class="stat-number" data-countup="3" data-suffix="x">3x</span>
                         <span class="stat-label">Better Job Responses</span>
                     </div>
                 </div>

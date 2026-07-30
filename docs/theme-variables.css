@@ -1,5 +1,19 @@
 /* Core Theme Variables - Load First */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
+/* Fonts are loaded via <link rel="preconnect"/preload> in each page <head>
+   for fast, non-blocking delivery (see functions or the static head). */
+
+/* One consistent content column on every page: identical max width, centered,
+   with comfortable breathing room on both sides (the roomy feel people liked on
+   the LinkedIn page) so no page hugs the sidebar edge. Higher specificity than a
+   bare ".container" lets this be the single source of truth across all pages. */
+body .container {
+    max-width: 1160px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    box-sizing: border-box;
+}
 
 :root {
     --primary: #7c3aed;
@@ -93,6 +107,50 @@ h1, h2, h3, .demo-title, .ai-title { font-family: var(--font-display); letter-sp
 
 /* Never let a code block force horizontal page scroll on small screens. */
 pre { max-width: 100%; overflow-x: auto; box-sizing: border-box; }
+
+/* Wide tables scroll inside their own box instead of stretching the page. */
+.gsection table { display: block; max-width: 100%; overflow-x: auto; }
+
+/* Shared header decoration: the subtle floating-dot texture (the one people
+   liked on the LinkedIn header) applied to EVERY header from one place, so all
+   pages match. A tiny tiling SVG of faint dots drifts slowly on the diagonal. */
+.guide-header, .demo-header, .ai-header, .git-header, .header, .hero { position: relative; overflow: hidden; }
+.guide-header::after, .demo-header::after, .ai-header::after,
+.git-header::after, .header::after, .hero::after {
+    content: '';
+    position: absolute;
+    inset: -100px;                 /* extra bleed so the drift never exposes an edge */
+    z-index: 0;
+    pointer-events: none;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="1.5" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+    animation: headerFloat 20s infinite linear;
+}
+/* Keep header text and controls above the dots. */
+.guide-header .container, .demo-header .container, .ai-header .container,
+.git-header .container, .header .container, .hero .container,
+.guide-header > *, .demo-header > *, .ai-header > *,
+.git-header > *, .header > *, .hero > * { position: relative; z-index: 1; }
+@keyframes headerFloat {
+    0%   { transform: translateY(0) translateX(0); }
+    100% { transform: translateY(-100px) translateX(100px); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .guide-header::after, .demo-header::after, .ai-header::after,
+    .git-header::after, .header::after, .hero::after { animation: none; }
+}
+
+/* Shared "Back to Resources" link, styled once so every header matches the
+   roadmap treatment. Injected by functions/header.js (see renderBackLink). */
+.back-link-row { text-align: center; margin-bottom: 1.5rem; position: relative; z-index: 1; }
+.back-link {
+    display: inline-flex; align-items: center; gap: .5rem;
+    color: rgba(255,255,255,.92); text-decoration: none;
+    padding: .5rem 1rem; border-radius: .55rem;
+    background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.28);
+    font: 600 .9rem/1 var(--font-sans, inherit); transition: background .2s ease, color .2s ease;
+}
+.back-link:hover, .back-link:focus-visible { background: rgba(255,255,255,.26); color: #fff; }
+.back-link:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
 
 /* Links inside paragraphs stay distinguishable without relying on color alone. */
 .footer-content p a, .site-footer a { text-decoration: underline; }

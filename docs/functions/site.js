@@ -10,17 +10,29 @@
 import { ensureMeta } from './meta.js';
 import { renderNav } from './nav.js';
 import { renderFooter } from './footer.js';
+import { renderBackLink } from './header.js';
 import { initCopyButtons } from './copyButtons.js';
 import { initProgress } from './progress.js';
 import { initAssistant } from './assistant.js';
+import { makeScrollablesFocusable } from './a11y.js';
+import { initMotion } from './motion.js';
+import { initJourney } from './journey.js';
+import { initTypewriter } from './typewriter.js';
+import { initQuickJump } from './quickjump.js';
 
 const STEPS = [
     ['meta', ensureMeta],
     ['nav', renderNav],
+    ['backlink', renderBackLink],
     ['footer', renderFooter],
     ['copy', initCopyButtons],
     ['progress', initProgress],
+    ['journey', initJourney],
+    ['quickjump', initQuickJump],
     ['assistant', initAssistant],
+    ['a11y', makeScrollablesFocusable],
+    ['motion', initMotion],
+    ['typewriter', initTypewriter],
 ];
 
 function run() {

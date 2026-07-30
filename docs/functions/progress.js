@@ -18,17 +18,20 @@ const CSS = `
     background:var(--bg-primary,#fff);color:var(--text-secondary,#666);border-radius:999px;padding:.45rem .9rem;cursor:pointer;
     font-weight:600;font-size:.9rem;transition:all .2s ease;}
 .fn-toggle:hover{border-color:var(--primary,#8b5cf6);color:var(--primary,#8b5cf6);}
-.fn-item-done .fn-toggle{background:var(--success,#059669);border-color:var(--success,#059669);color:#fff;}
+.fn-item-done .fn-toggle{background:#047857;border-color:#047857;color:#fff;}
 @media (prefers-reduced-motion: reduce){.fn-progress .fill{transition:none;}}
 `;
 
 const CONFIGS = [
     { sel: '.week-section', head: '.week-header', unit: 'weeks', key: 'progress_weeks_v1' },
     { sel: '.month-section', head: '.month-header', unit: 'months', key: 'progress_months_v1' },
+    { sel: '.gsection', head: 'h2', unit: 'stages', key: 'progress_dsa_v1', page: 'dsa-practice-guide.html', appendToSection: true },
+    { sel: '.gsection', head: 'h2', unit: 'stages', key: 'progress_sysdesign_v1', page: 'system-design-templates.html', appendToSection: true },
 ];
 
 export function initProgress() {
-    const cfg = CONFIGS.find((c) => document.querySelector(c.sel));
+    const page = (location.pathname.split('/').pop() || '').toLowerCase();
+    const cfg = CONFIGS.find((c) => (!c.page || c.page === page) && document.querySelector(c.sel));
     if (!cfg) return;
     const items = Array.from(document.querySelectorAll(cfg.sel));
     if (items.length < 2) return;
@@ -70,7 +73,7 @@ export function initProgress() {
     }
 
     items.forEach((sec, i) => {
-        const header = sec.querySelector(cfg.head) || sec;
+        const target = cfg.appendToSection ? sec : (sec.querySelector(cfg.head) || sec);
         const btn = document.createElement('button');
         btn.type = 'button';
         btn.className = 'fn-toggle';
@@ -78,12 +81,14 @@ export function initProgress() {
             done[i] = !done[i];
             localStorage.setItem(cfg.key, JSON.stringify(done));
             render();
+            document.dispatchEvent(new CustomEvent('progress:change', { detail: { key: cfg.key } }));
         });
-        header.appendChild(btn);
+        target.appendChild(btn);
     });
 
     panel.querySelector('.rst').addEventListener('click', () => {
         done = {}; localStorage.setItem(cfg.key, JSON.stringify(done)); render();
+        document.dispatchEvent(new CustomEvent('progress:change', { detail: { key: cfg.key } }));
     });
 
     render();

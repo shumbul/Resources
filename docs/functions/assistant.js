@@ -18,7 +18,7 @@ export function initAssistant() {
     // Set this to your deployed Cloudflare Worker URL (see worker/README.md).
     // When set, the assistant works for every visitor with no key and no GPU.
     // Leave '' to disable the shared proxy and fall back to on-device / own key.
-    const SHARED_PROXY_URL = '';
+    const SHARED_PROXY_URL = 'https://resources-ai.shumbul-resources.workers.dev';
 
     let engine = null;
     let loading = false;

@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -22,6 +25,64 @@
     <link rel="icon" type="image/svg+xml" href="./favicon.svg">
     <style>
         /* Page-specific styles for index page */
+
+        /* Bento showcase */
+        .bento-section { padding: 2.5rem 0 0.5rem; }
+        .bento {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            grid-auto-rows: 1fr;
+        }
+        .bento-card {
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 1rem;
+            border-radius: 20px;
+            padding: 1.4rem 1.5rem;
+            text-decoration: none;
+            color: #1f2937;
+            border: 1px solid rgba(15,23,42,0.06);
+            min-height: 190px;
+            transition: transform .22s ease, box-shadow .22s ease;
+        }
+        .bento-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px -12px rgba(15,23,42,0.28); }
+        .bento-lg { grid-row: span 2; flex-direction: column; align-items: flex-start; justify-content: space-between; }
+        .bento-wide { grid-column: span 2; }
+        .bento-txt h3 { font-family: var(--font-display, inherit); font-size: 1.3rem; margin: .35rem 0 .4rem; color: #111827; line-height: 1.2; }
+        .bento-txt p { color: #374151; font-size: .92rem; margin: 0 0 .6rem; max-width: 30ch; }
+        .bento-kicker { font-size: .68rem; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; opacity: .75; }
+        .bento-go { font-weight: 700; font-size: .9rem; }
+        .bento-art { width: 88px; height: 88px; flex-shrink: 0; align-self: flex-end; }
+        .bento-lg .bento-art { align-self: flex-end; width: 120px; height: 120px; }
+        .bento-art-lg { width: 130px; height: 110px; }
+
+        /* Pastel palettes (all text stays AA on these light tints) */
+        .bento-violet { background: linear-gradient(145deg, #7c3aed, #6d28d9); color: #fff; border-color: transparent; }
+        .bento-violet .bento-txt h3, .bento-violet .bento-go { color: #fff; }
+        .bento-violet .bento-txt p { color: rgba(255,255,255,.92); }
+        .bento-mint { background: #dcfce7; }
+        .bento-mint .bento-go { color: #047857; }
+        .bento-pink { background: #fce7f3; }
+        .bento-pink .bento-go { color: #be185d; }
+        .bento-cream { background: #fef3c7; }
+        .bento-cream .bento-go { color: #b45309; }
+        .bento-sky { background: #e0f2fe; }
+        .bento-sky .bento-go { color: #0369a1; }
+
+        @media (max-width: 860px) {
+            .bento { grid-template-columns: repeat(2, 1fr); }
+            .bento-lg { grid-row: span 1; }
+            .bento-wide { grid-column: span 2; }
+        }
+        @media (max-width: 560px) {
+            .bento { grid-template-columns: 1fr; }
+            .bento-wide, .bento-lg { grid-column: auto; grid-row: auto; }
+            .bento-card { min-height: 150px; }
+        }
 
         /* Header */
         header {
@@ -645,6 +706,93 @@
         </div>
     </header>
 
+    <section class="bento-section">
+        <div class="container">
+            <div class="bento">
+                <!-- Big feature: AI Tools -->
+                <a class="bento-card bento-lg bento-violet" href="./ai-tools.html">
+                    <div class="bento-txt">
+                        <span class="bento-kicker">Built-in AI</span>
+                        <h3>AI that runs in your browser</h3>
+                        <p>Free, private, no key needed. Optimize your LinkedIn headline or run any prompt, live on this site.</p>
+                        <span class="bento-go">Try it live →</span>
+                    </div>
+                    <svg class="bento-art" viewBox="0 0 120 120" aria-hidden="true">
+                        <circle cx="60" cy="60" r="46" fill="rgba(255,255,255,.15)"/>
+                        <circle cx="60" cy="60" r="30" fill="rgba(255,255,255,.22)"/>
+                        <path d="M60 34 l6 16 16 6 -16 6 -6 16 -6 -16 -16 -6 16 -6z" fill="#fff"/>
+                    </svg>
+                </a>
+
+                <!-- Roadmaps -->
+                <a class="bento-card bento-mint" href="./12-week-roadmap.html">
+                    <div class="bento-txt">
+                        <span class="bento-kicker">Roadmaps</span>
+                        <h3>12-Week Career Highway</h3>
+                        <p>An animated, week-by-week journey from zero to interview-ready.</p>
+                        <span class="bento-go">Start the journey →</span>
+                    </div>
+                    <svg class="bento-art" viewBox="0 0 120 120" aria-hidden="true">
+                        <path d="M12 92 C40 72 80 108 108 74" fill="none" stroke="#0f766e" stroke-width="6" stroke-linecap="round" stroke-dasharray="2 12"/>
+                        <circle cx="12" cy="92" r="8" fill="#10b981"/>
+                        <circle cx="60" cy="86" r="7" fill="#0f766e"/>
+                        <circle cx="108" cy="74" r="9" fill="#f59e0b"/>
+                    </svg>
+                </a>
+
+                <!-- Interview prep -->
+                <a class="bento-card bento-pink" href="./interview-prep-kit.html">
+                    <div class="bento-txt">
+                        <span class="bento-kicker">Get hired</span>
+                        <h3>Interview Prep Kit</h3>
+                        <p>STAR answers, a technical checklist, and questions to ask back.</p>
+                        <span class="bento-go">Get ready →</span>
+                    </div>
+                    <svg class="bento-art" viewBox="0 0 120 120" aria-hidden="true">
+                        <rect x="26" y="30" width="68" height="46" rx="8" fill="rgba(190,24,93,.18)"/>
+                        <path d="M44 76 l0 12 12 -12z" fill="rgba(190,24,93,.18)"/>
+                        <circle cx="48" cy="52" r="6" fill="#be185d"/>
+                        <rect x="60" y="48" width="22" height="5" rx="2.5" fill="#be185d"/>
+                        <rect x="60" y="58" width="16" height="5" rx="2.5" fill="#db2777"/>
+                    </svg>
+                </a>
+
+                <!-- Wide: LinkedIn -->
+                <a class="bento-card bento-wide bento-cream" href="./linkedin-utilization-guide.html">
+                    <div class="bento-txt">
+                        <span class="bento-kicker">Be found</span>
+                        <h3>Turn LinkedIn into an opportunity magnet</h3>
+                        <p>Simple, friendly tips (with AI to help) that make recruiters stop scrolling.</p>
+                        <span class="bento-go">Master LinkedIn →</span>
+                    </div>
+                    <svg class="bento-art bento-art-lg" viewBox="0 0 140 120" aria-hidden="true">
+                        <rect x="18" y="24" width="104" height="72" rx="10" fill="rgba(180,120,20,.16)"/>
+                        <circle cx="46" cy="52" r="13" fill="#b45309"/>
+                        <rect x="68" y="44" width="42" height="7" rx="3.5" fill="#b45309"/>
+                        <rect x="68" y="58" width="30" height="7" rx="3.5" fill="#d97706"/>
+                        <rect x="30" y="76" width="80" height="7" rx="3.5" fill="#f59e0b"/>
+                    </svg>
+                </a>
+
+                <!-- DSA -->
+                <a class="bento-card bento-sky" href="./dsa-practice-guide.html">
+                    <div class="bento-txt">
+                        <span class="bento-kicker">Core skills</span>
+                        <h3>DSA by pattern</h3>
+                        <p>Learn the 8 patterns that cover most problems. Stop grinding.</p>
+                        <span class="bento-go">Start practicing →</span>
+                    </div>
+                    <svg class="bento-art" viewBox="0 0 120 120" aria-hidden="true">
+                        <rect x="24" y="66" width="14" height="30" rx="3" fill="#0369a1"/>
+                        <rect x="46" y="50" width="14" height="46" rx="3" fill="#0ea5e9"/>
+                        <rect x="68" y="34" width="14" height="62" rx="3" fill="#38bdf8"/>
+                        <rect x="90" y="54" width="14" height="42" rx="3" fill="#7dd3fc"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
     <section class="nav-section">
         <div class="container">
             <!-- <h2 class="section-title">Resources & Guides</h2> -->
@@ -659,9 +807,11 @@
                     <input 
                         type="text" 
                         id="resourceSearch" 
-                        placeholder="Search resources... (e.g., LinkedIn, Git, AI)" 
+                        placeholder='Search "Data Structures and Algorithms"' 
                         class="search-input"
                         aria-label="Search resources and guides"
+                        data-typewriter='["Data Structures and Algorithms","LinkedIn optimization","Git commands and workflows","System Design templates","Interview prep kit","AI tools for developers","12-Week career roadmap"]'
+                        data-typewriter-prefix="Search "
                     >
                     <button id="clearSearch" class="clear-btn" aria-label="Clear search" style="display: none;">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -848,6 +998,18 @@
                     </p>
                     <a href="./interview-prep-kit.html" class="resource-link">
                         Get Ready →
+                    </a>
+                </div>
+
+                <div class="resource-card animate-in clickable" onclick="window.location.href='./star-method.html'">
+                    <div class="resource-icon">⭐</div>
+                    <h3 class="resource-title">The STAR Method</h3>
+                    <p class="resource-description">
+                        Answer any "tell me about a time" question with a clear structure. 
+                        10 worked examples and 24 practice questions.
+                    </p>
+                    <a href="./star-method.html" class="resource-link">
+                        Learn STAR →
                     </a>
                 </div>
             </div>
@@ -1066,19 +1228,6 @@
                 card.style.transform = 'translateY(30px)';
                 card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
                 observer.observe(card);
-            });
-
-            // Handle "Coming Soon" links
-            const comingSoonLinks = document.querySelectorAll('a[href="#"]');
-            comingSoonLinks.forEach(link => {
-                if (link.textContent.includes('Coming Soon')) {
-                    link.style.opacity = '0.6';
-                    link.style.cursor = 'not-allowed';
-                    link.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        alert('This resource is coming soon! Follow the project for updates.');
-                    });
-                }
             });
 
             // Footer search functionality

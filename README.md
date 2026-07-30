@@ -55,6 +55,9 @@ A recruiter-tested bullet formula, a one-page structure, and a portfolio checkli
 ### 🗣️ [Interview Prep Kit](https://shumbul.github.io/Resources/interview-prep-kit.html)
 The STAR method, common behavioral questions, a technical checklist, and smart questions to ask back. Turn prep into confidence.
 
+### ⭐ [The STAR Method](https://shumbul.github.io/Resources/star-method.html)
+Answer any "tell me about a time" question with a clear structure. Includes a framework, 10 worked sample answers, and 24 practice questions.
+
 ## 🛠️ Technical Implementation
 
 This website is built using a **modular component system** that eliminates code duplication and makes maintenance easier:
