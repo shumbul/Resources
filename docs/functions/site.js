@@ -16,6 +16,7 @@ import { initAssistant } from './assistant.js';
 import { makeScrollablesFocusable } from './a11y.js';
 import { initMotion } from './motion.js';
 import { initJourney } from './journey.js';
+import { initTypewriter } from './typewriter.js';
 
 const STEPS = [
     ['meta', ensureMeta],
@@ -27,6 +28,7 @@ const STEPS = [
     ['assistant', initAssistant],
     ['a11y', makeScrollablesFocusable],
     ['motion', initMotion],
+    ['typewriter', initTypewriter],
 ];
 
 function run() {
