@@ -341,17 +341,18 @@
             justify-content: center;
             width: 2.5rem;
             height: 2.5rem;
-            background: var(--primary);
-            border-radius: 0.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
             color: white;
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
             font-size: 1.2rem;
         }
 
         .social-link:hover {
-            background: var(--accent);
+            filter: brightness(1.08);
             transform: translateY(-2px);
+            box-shadow: var(--shadow, 0 6px 16px -8px rgba(15,23,42,.45));
         }
 
         .quick-links ul {
