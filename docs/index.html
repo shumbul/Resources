@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -997,6 +1000,18 @@
                         Get Ready →
                     </a>
                 </div>
+
+                <div class="resource-card animate-in clickable" onclick="window.location.href='./star-method.html'">
+                    <div class="resource-icon">⭐</div>
+                    <h3 class="resource-title">The STAR Method</h3>
+                    <p class="resource-description">
+                        Answer any "tell me about a time" question with a clear structure. 
+                        10 worked examples and 24 practice questions.
+                    </p>
+                    <a href="./star-method.html" class="resource-link">
+                        Learn STAR →
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -1213,19 +1228,6 @@
                 card.style.transform = 'translateY(30px)';
                 card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
                 observer.observe(card);
-            });
-
-            // Handle "Coming Soon" links
-            const comingSoonLinks = document.querySelectorAll('a[href="#"]');
-            comingSoonLinks.forEach(link => {
-                if (link.textContent.includes('Coming Soon')) {
-                    link.style.opacity = '0.6';
-                    link.style.cursor = 'not-allowed';
-                    link.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        alert('This resource is coming soon! Follow the project for updates.');
-                    });
-                }
             });
 
             // Footer search functionality

@@ -110,7 +110,7 @@ const CSS = `
 .journey__road{display:block;width:100%;height:auto;}
 .j-road{fill:none;stroke:#1f2c48;stroke-width:26;stroke-linecap:round;}
 .j-road2{fill:none;stroke:#2b3a5c;stroke-width:20;stroke-linecap:round;}
-.j-dash{fill:none;stroke:#5b6b8f;stroke-width:2.5;stroke-dasharray:2 16;stroke-linecap:round;animation:jdash 8s linear infinite;}
+.j-dash{fill:none;stroke:#5b6b8f;stroke-width:2.5;stroke-dasharray:2 16;stroke-linecap:round;animation:jdash 3.5s linear infinite;}
 @keyframes jdash{to{stroke-dashoffset:-180;}}
 .j-plabel{fill:#e2e8f0;font-family:var(--font-display,sans-serif);font-weight:700;font-size:15px;}
 .j-prange{fill:#94a3b8;font-family:var(--font-sans,sans-serif);font-size:12px;}
@@ -119,7 +119,16 @@ const CSS = `
 .j-ring{fill:#0a1220;stroke-width:4;}
 .j-pulse{animation:jpulse 1.7s ease-in-out infinite;transform-origin:center;transform-box:fill-box;}
 @keyframes jpulse{0%,100%{opacity:.5;}50%{opacity:1;}}
-@media (prefers-reduced-motion: reduce){ .j-dash,.j-pulse,.j-car{animation:none;} .j-car circle{display:none;} }
+/* The traveler standing on your current stop: gentle bob, waving arm, marching legs. */
+.j-bob{animation:jbob 1.1s ease-in-out infinite;transform-origin:center bottom;transform-box:fill-box;}
+@keyframes jbob{0%,100%{transform:translateY(0);}50%{transform:translateY(-1.6px);}}
+.j-arm-wave{transform-origin:0px -11px;transform-box:fill-box;animation:jwave .6s ease-in-out infinite;}
+@keyframes jwave{0%,100%{transform:rotate(-6deg);}50%{transform:rotate(24deg);}}
+.j-leg-l{transform-origin:0px -4px;transform-box:fill-box;animation:jstepA .5s ease-in-out infinite;}
+.j-leg-r{transform-origin:0px -4px;transform-box:fill-box;animation:jstepB .5s ease-in-out infinite;}
+@keyframes jstepA{0%,100%{transform:rotate(-14deg);}50%{transform:rotate(14deg);}}
+@keyframes jstepB{0%,100%{transform:rotate(14deg);}50%{transform:rotate(-14deg);}}
+@media (prefers-reduced-motion: reduce){ .j-dash,.j-pulse,.j-car,.j-bob,.j-arm-wave,.j-leg-l,.j-leg-r{animation:none;} .j-car circle{display:none;} }
 @media (max-width:640px){ .journey__title{font-size:1.15rem;} .journey__stat .n{font-size:1.2rem;} .journey__goal{min-width:0;} }
 `;
 
@@ -256,6 +265,8 @@ class JourneyView {
 
         // Moving "traffic" dots that travel the whole road (animateMotion).
         const cars = this.carsHtml(path, s);
+        // A little traveler standing at your current spot, waving and marching.
+        const traveler = this.travelerHtml(s, n);
 
         return `
             <svg class="journey__road" viewBox="0 0 1000 340" preserveAspectRatio="xMidYMid meet" role="img"
@@ -275,7 +286,38 @@ class JourneyView {
                     <text x="${GEO.X1}" y="${yAt(GEO.X1) + 5}" text-anchor="middle" font-size="15" fill="${masteryColor}">★</text>
                     <text class="j-cap" x="${GEO.X1}" y="${yAt(GEO.X1) - 30}" text-anchor="middle" fill="${masteryColor}">MASTERY</text>
                 </g>
+                ${traveler}
             </svg>`;
+    }
+
+    travelerHtml(s, n) {
+        // Position: mastery star if finished, else the current phase node, else START.
+        let x, y;
+        if (s.finished) { x = GEO.X1; y = yAt(GEO.X1); }
+        else {
+            const cur = s.phases.find((p) => p.current);
+            if (cur) { x = phaseX(cur.i, n); y = yAt(phaseX(cur.i, n)); }
+            else { x = GEO.X0; y = yAt(GEO.X0); }
+        }
+        const color = s.finished ? '#fbbf24' : '#a78bfa';
+        // Stand the figure just above the road node. Local coords keep the parts tidy.
+        const baseY = y - 26;
+        return `
+            <g class="j-traveler" transform="translate(${x}, ${baseY})" aria-hidden="true">
+                <g class="j-bob">
+                    <!-- waving arm -->
+                    <line class="j-arm-wave" x1="0" y1="-11" x2="7" y2="-18" stroke="${color}" stroke-width="2.4" stroke-linecap="round"/>
+                    <!-- other arm -->
+                    <line x1="0" y1="-11" x2="-6" y2="-6" stroke="${color}" stroke-width="2.4" stroke-linecap="round"/>
+                    <!-- head -->
+                    <circle cx="0" cy="-19" r="4.6" fill="${color}"/>
+                    <!-- body -->
+                    <line x1="0" y1="-15" x2="0" y2="-4" stroke="${color}" stroke-width="2.6" stroke-linecap="round"/>
+                    <!-- legs (marching) -->
+                    <line class="j-leg-l" x1="0" y1="-4" x2="-4" y2="4" stroke="${color}" stroke-width="2.4" stroke-linecap="round"/>
+                    <line class="j-leg-r" x1="0" y1="-4" x2="4" y2="4" stroke="${color}" stroke-width="2.4" stroke-linecap="round"/>
+                </g>
+            </g>`;
     }
 
     carsHtml(path, s) {

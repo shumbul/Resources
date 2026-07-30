@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="./favicon.svg">
@@ -31,7 +34,7 @@
         }
 
         .container {
-            max-width: 1040px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 1.5rem;
         }
@@ -42,51 +45,19 @@
             left: 0;
             width: 0%;
             height: 4px;
-            background: linear-gradient(90deg, #2a6a9c, #2b8c79);
+            background: linear-gradient(90deg, var(--primary), var(--accent));
             z-index: 9999;
             transition: width 0.15s ease;
         }
 
         .quick-nav {
-            position: fixed;
-            right: 1rem;
-            top: 22%;
-            width: 210px;
-            background: rgba(255, 255, 255, 0.94);
-            border: 1px solid #d8e6f4;
-            border-radius: 0.9rem;
-            box-shadow: 0 8px 22px rgba(8, 33, 58, 0.1);
-            padding: 0.8rem;
-            z-index: 1000;
-            backdrop-filter: blur(4px);
-        }
-
-        .quick-nav h4 {
-            font-size: 0.82rem;
-            color: #204b72;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            margin-bottom: 0.45rem;
-        }
-
-        .quick-nav a {
-            display: block;
-            font-size: 0.84rem;
-            color: #31506d;
-            text-decoration: none;
-            border-radius: 0.45rem;
-            padding: 0.34rem 0.42rem;
-        }
-
-        .quick-nav a:hover {
-            background: #eef6ff;
-            color: #0a4e8e;
+            display: none;
         }
 
         .hero {
-            background: radial-gradient(circle at 10% 10%, #0f3b73 0%, transparent 45%),
-                        radial-gradient(circle at 90% 20%, #2a6a9c 0%, transparent 42%),
-                        linear-gradient(135deg, #0b2748, #184e77 55%, #2a9d8f 100%);
+            background: radial-gradient(circle at 10% 10%, rgba(255,255,255,0.12) 0%, transparent 45%),
+                        radial-gradient(circle at 90% 20%, var(--accent) 0%, transparent 42%),
+                        linear-gradient(135deg, var(--primary), var(--secondary) 100%);
             color: #f8fbff;
             padding: 4.5rem 0 3.2rem;
             position: relative;
@@ -310,7 +281,7 @@
 
         .b-ms { background: #1666c1; }
         .b-ap { background: #6b7280; }
-        .b-go { background: #db4437; }
+        .b-go { background: #c5372b; }
         .b-am { background: #ff9900; color: #222; }
         .b-me { background: #0866ff; }
 
@@ -497,7 +468,7 @@
         .m5 { background: #f2ecff; border-color: #d8c8ff; }
 
         .you-section {
-            background: linear-gradient(135deg, #103454, #1f5d84 60%, #2b8c79);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: #f4fbff;
             border-radius: 1.1rem;
             padding: 1.6rem;
@@ -841,10 +812,6 @@
             .visual-grid, .models-grid, .flow-strip {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
             }
-
-            .quick-nav {
-                display: none;
-            }
         }
 
         @media (max-width: 640px) {
@@ -881,15 +848,6 @@
             <div class="theme-option" data-theme="red"><div class="theme-color red"></div><span>Red</span></div>
         </div>
     </div>
-
-    <nav class="quick-nav" aria-label="Quick section navigation">
-        <h4>Quick jump</h4>
-        <a href="#top5">Top 5 breakdown</a>
-        <a href="#bonus">Bonus Netflix</a>
-        <a href="#pattern">Pattern table</a>
-        <a href="#models">5 repeating models</a>
-        <a href="#tasks">Practice tasks</a>
-    </nav>
 
     <header class="hero">
         <div class="container">
@@ -930,7 +888,7 @@
             </section>
 
             <section class="reveal" id="top5">
-                <h2 class="section-title">The 5 most important companies and their core engine</h2>
+                <h2 class="section-title" data-jump="Top 5">The 5 most important companies and their core engine</h2>
                 <div class="flow-strip" aria-label="Money flow visual for top companies">
                     <div class="flow-card" data-target="ms-section" title="Jump to Microsoft section" role="button" tabindex="0" aria-label="Jump to Microsoft section">
                         <div class="flow-top"><span class="brand-dot b-ms">MS</span><strong>Microsoft</strong></div>
@@ -1057,7 +1015,7 @@
             </section>
 
             <section class="reveal" id="bonus">
-                <h2 class="section-title">Bonus: Netflix (important but different)</h2>
+                <h2 class="section-title" data-jump="Bonus Netflix">Bonus: Netflix (important but different)</h2>
                 <div class="company-card reveal" style="margin-bottom: 1.8rem;">
                     <div class="company-head">
                         <h3 class="company-title"><span class="logo-chip l-nf">NF</span>Netflix - We sell subscription entertainment</h3>
@@ -1072,7 +1030,7 @@
             </section>
 
             <section class="reveal" id="pattern">
-                <h2 class="section-title">Real pattern you should remember</h2>
+                <h2 class="section-title" data-jump="Pattern table">Real pattern you should remember</h2>
                 <div class="insight-table">
                     <table>
                         <thead>
@@ -1094,7 +1052,7 @@
             </section>
 
             <section class="reveal" id="models">
-                <h2 class="section-title">The 5 models that repeat everywhere</h2>
+                <h2 class="section-title" data-jump="5 models">The 5 models that repeat everywhere</h2>
                 <div class="models-grid">
                     <article class="model-pill m1 reveal"><h4>1) Subscription</h4><p>Examples: Microsoft, Netflix, Spotify</p></article>
                     <article class="model-pill m2 reveal"><h4>2) Ads</h4><p>Examples: Google, Meta</p></article>

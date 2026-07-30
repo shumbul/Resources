@@ -26,6 +26,7 @@ const GROUPS = [
         { href: 'linkedin-utilization-guide.html', label: 'LinkedIn Guide', icon: '💼' },
         { href: 'resume-portfolio-templates.html', label: 'Resume & Portfolio', icon: '📄' },
         { href: 'interview-prep-kit.html', label: 'Interview Prep', icon: '🗣️' },
+        { href: 'star-method.html', label: 'STAR Method', icon: '⭐' },
         { href: 'ai-era-job-hunt.html', label: 'AI Era Job Hunt', icon: '🧭' },
         { href: 'big-tech-core-models.html', label: 'Big Tech Models', icon: '🏢' },
     ]},

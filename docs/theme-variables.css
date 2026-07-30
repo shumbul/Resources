@@ -1,5 +1,6 @@
 /* Core Theme Variables - Load First */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
+/* Fonts are loaded via <link rel="preconnect"/preload> in each page <head>
+   for fast, non-blocking delivery (see functions or the static head). */
 
 :root {
     --primary: #7c3aed;
@@ -93,6 +94,9 @@ h1, h2, h3, .demo-title, .ai-title { font-family: var(--font-display); letter-sp
 
 /* Never let a code block force horizontal page scroll on small screens. */
 pre { max-width: 100%; overflow-x: auto; box-sizing: border-box; }
+
+/* Wide tables scroll inside their own box instead of stretching the page. */
+.gsection table { display: block; max-width: 100%; overflow-x: auto; }
 
 /* Links inside paragraphs stay distinguishable without relying on color alone. */
 .footer-content p a, .site-footer a { text-decoration: underline; }
