@@ -2,23 +2,30 @@
  * Single entry point for shared site behavior.
  * Every page includes just this one module:
  *
- *   <script type="module" src="./functions/site.js"></script>
+ *   <script type="module" src="./functions/site.js?v=VERSION"></script>
  *
  * It composes the reusable functions in this folder. Each call is guarded
  * so one failing feature never breaks the rest of the page.
+ *
+ * Cache-busting: the ?v=... below (and on the <script> tag in every page)
+ * force browsers to fetch the latest modules after a deploy. When you change
+ * any file in functions/, bump this version in TWO places:
+ *   1. the SITE_VERSION query on the imports just below, and
+ *   2. the ?v=... on the site.js <script> tag in the HTML pages
+ *      (docs uses a single value; see ADDING-A-RESOURCE.md).
  */
-import { ensureMeta } from './meta.js';
-import { renderNav } from './nav.js';
-import { renderFooter } from './footer.js';
-import { renderBackLink } from './header.js';
-import { initCopyButtons } from './copyButtons.js';
-import { initProgress } from './progress.js';
-import { initAssistant } from './assistant.js';
-import { makeScrollablesFocusable } from './a11y.js';
-import { initMotion } from './motion.js';
-import { initJourney } from './journey.js';
-import { initTypewriter } from './typewriter.js';
-import { initQuickJump } from './quickjump.js';
+import { ensureMeta } from './meta.js?v=20260730';
+import { renderNav } from './nav.js?v=20260730';
+import { renderFooter } from './footer.js?v=20260730';
+import { renderBackLink } from './header.js?v=20260730';
+import { initCopyButtons } from './copyButtons.js?v=20260730';
+import { initProgress } from './progress.js?v=20260730';
+import { initAssistant } from './assistant.js?v=20260730';
+import { makeScrollablesFocusable } from './a11y.js?v=20260730';
+import { initMotion } from './motion.js?v=20260730';
+import { initJourney } from './journey.js?v=20260730';
+import { initTypewriter } from './typewriter.js?v=20260730';
+import { initQuickJump } from './quickjump.js?v=20260730';
 
 const STEPS = [
     ['meta', ensureMeta],
