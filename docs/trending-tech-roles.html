@@ -30,6 +30,14 @@
         .snap .l { font-size:.85rem; color:var(--text-secondary); margin-top:.35rem; }
         @media (max-width:700px){ .snap { grid-template-columns:repeat(2,1fr); } }
 
+        @media (max-width:480px){
+            .guide-header { padding:2.2rem 0 1.8rem; }
+            .guide-title { font-size:1.75rem; }
+            .guide-sub { font-size:1rem; }
+            .guide-badges { gap:.4rem; }
+            .guide-badge { font-size:.78rem; padding:.28rem .65rem; }
+        }
+
         .roles { display:grid; grid-template-columns:repeat(2,1fr); gap:1.1rem; }
         @media (max-width:820px){ .roles { grid-template-columns:1fr; } }
         .role { background:var(--bg-primary); border:1px solid var(--border); border-radius:14px; padding:1.25rem 1.35rem; display:flex; flex-direction:column; gap:.55rem; }
