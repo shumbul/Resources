@@ -68,6 +68,11 @@
         .roletable { width:100%; border-collapse:collapse; }
         .roletable th, .roletable td { text-align:left; padding:.6rem .7rem; border-bottom:1px solid var(--border); font-size:.92rem; vertical-align:top; }
         .roletable th { color:var(--text-secondary); font-size:.8rem; text-transform:uppercase; letter-spacing:.04em; }
+        @media (max-width:480px){
+            .roletable th:nth-child(2), .roletable td:nth-child(2),
+            .roletable th:nth-child(5), .roletable td:nth-child(5) { display:none; }
+            .roletable th, .roletable td { padding:.5rem .45rem; font-size:.82rem; }
+        }
 
         .res-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:.9rem; }
         @media (max-width:760px){ .res-grid { grid-template-columns:1fr; } }
