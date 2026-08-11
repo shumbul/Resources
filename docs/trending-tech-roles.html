@@ -13,7 +13,6 @@
     <meta property="og:description" content="A friendly map of the most in-demand tech roles, the skills they need, and how to start from zero.">
 
     <style>
-        /* Reuse the standard guide classes so widths and cards match every page */
         .guide-header { background: linear-gradient(135deg, var(--primary), var(--secondary)); color:#fff; padding:3.5rem 0; text-align:center; margin-bottom:2.5rem; }
         .guide-title { font-size:2.6rem; font-weight:800; margin-bottom:.6rem; color:#fff; }
         .guide-sub { font-size:1.15rem; color:rgba(255,255,255,.94); max-width:720px; margin:0 auto; }
@@ -25,14 +24,20 @@
         .gsection h2 { margin-top:0; }
         .muted { color:var(--text-secondary); }
 
-        /* Snapshot stat band */
         .snap { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin:0 0 1.75rem; }
         .snap .cell { background:var(--bg-secondary); border:1px solid var(--border); border-radius:14px; padding:1.1rem 1rem; text-align:center; }
         .snap .n { font-family:var(--font-display,sans-serif); font-size:1.9rem; font-weight:700; color:var(--primary); line-height:1; }
         .snap .l { font-size:.85rem; color:var(--text-secondary); margin-top:.35rem; }
         @media (max-width:700px){ .snap { grid-template-columns:repeat(2,1fr); } }
 
-        /* Role cards */
+        @media (max-width:480px){
+            .guide-header { padding:2.2rem 0 1.8rem; }
+            .guide-title { font-size:1.75rem; }
+            .guide-sub { font-size:1rem; }
+            .guide-badges { gap:.4rem; }
+            .guide-badge { font-size:.78rem; padding:.28rem .65rem; }
+        }
+
         .roles { display:grid; grid-template-columns:repeat(2,1fr); gap:1.1rem; }
         @media (max-width:820px){ .roles { grid-template-columns:1fr; } }
         .role { background:var(--bg-primary); border:1px solid var(--border); border-radius:14px; padding:1.25rem 1.35rem; display:flex; flex-direction:column; gap:.55rem; }
@@ -44,11 +49,12 @@
         .role .kv b { color:var(--text-primary); }
         .skill { display:inline-block; background:var(--bg-tertiary); border:1px solid var(--border); border-radius:999px; padding:.2rem .6rem; font-size:.78rem; font-weight:600; margin:.15rem .25rem 0 0; }
 
-        /* Demand meter */
         .demand { display:inline-flex; align-items:center; gap:.4rem; font-size:.78rem; font-weight:700; padding:.2rem .55rem; border-radius:999px; }
         .demand.hot { background:#fdecec; color:#b3261e; border:1px solid #f3b9b4; }
         .demand.high { background:#fff3e0; color:#9a5b00; border:1px solid #f2cf9a; }
         .demand.grow { background:#e7f6ee; color:#0b7a43; border:1px solid #a9dcc0; }
+
+        .spotlight-badge { display:inline-flex; align-items:center; gap:.3rem; background:linear-gradient(135deg,var(--primary),var(--secondary)); color:#fff; font-size:.7rem; font-weight:700; padding:.2rem .6rem; border-radius:999px; letter-spacing:.05em; align-self:flex-start; }
 
         .pick { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-top:.5rem; }
         @media (max-width:820px){ .pick { grid-template-columns:1fr; } }
@@ -62,6 +68,20 @@
         .roletable { width:100%; border-collapse:collapse; }
         .roletable th, .roletable td { text-align:left; padding:.6rem .7rem; border-bottom:1px solid var(--border); font-size:.92rem; vertical-align:top; }
         .roletable th { color:var(--text-secondary); font-size:.8rem; text-transform:uppercase; letter-spacing:.04em; }
+
+        .res-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:.9rem; }
+        @media (max-width:760px){ .res-grid { grid-template-columns:1fr; } }
+        .res-card { background:var(--bg-primary); border:1px solid var(--border); border-radius:12px; padding:1rem 1.15rem; }
+        .res-card .cat { font-size:.74rem; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:var(--primary); margin:0 0 .5rem; }
+        .res-card ul { margin:0; padding-left:1.15rem; }
+        .res-card li { margin:.3rem 0; font-size:.9rem; }
+        .res-card a { color:var(--primary); text-decoration:underline; }
+        .res-card a:hover { color:var(--secondary); }
+
+        .role-resources { border-top:1px solid var(--border); padding-top:.65rem; margin-top:.3rem; }
+        .role-resources .rl { font-size:.73rem; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:var(--text-secondary); margin:0 0 .4rem; }
+        .role-resources a { display:inline-block; font-size:.82rem; color:var(--primary); text-decoration:none; margin-right:.6rem; line-height:1.8; border-bottom:1px dotted var(--primary); }
+        .role-resources a:hover { color:var(--secondary); border-bottom-color:var(--secondary); }
     </style>
 </head>
 <body>
@@ -86,7 +106,7 @@
         </div>
 
         <div class="snap">
-            <div class="cell"><div class="n" data-countup="15" data-suffix="+">15+</div><div class="l">roles mapped</div></div>
+            <div class="cell"><div class="n" data-countup="18" data-suffix="+">18+</div><div class="l">roles mapped</div></div>
             <div class="cell"><div class="n" data-countup="4">4</div><div class="l">career families</div></div>
             <div class="cell"><div class="n" data-countup="1">1</div><div class="l">shared foundation</div></div>
             <div class="cell"><div class="n" data-countup="0" data-suffix="₹">0₹</div><div class="l">cost to start</div></div>
@@ -108,160 +128,286 @@
                 These are directional, not guarantees. Demand shifts, but the underlying skills stay useful.</p>
         </div>
 
+        <!-- ===== SPOTLIGHT 9 ===== -->
         <div class="gsection">
-            <h2 data-jump="AI &amp; Data roles">AI &amp; Data roles (the hottest lane)</h2>
-            <p class="muted">AI moved from hype to everyday tooling, so companies want people who can build with it, not just talk about it. These roles are in the strongest demand and pay well, but they reward a solid base in Python, data, and fundamentals.</p>
+            <h2 data-jump="2026 Spotlight roles">2026 Spotlight roles</h2>
+            <p class="muted">These 9 roles are the strongest bets for 2026: high demand, solid pay, and a realistic path in. Each one also has free resources built right in so you can start without spending a rupee.</p>
             <div class="roles">
+
                 <div class="role" data-reveal>
-                    <div class="top"><span class="ic">🤖</span><h3>AI / ML Engineer</h3></div>
+                    <div class="top"><span class="ic">🤖</span><h3>AI Engineer</h3></div>
+                    <span class="spotlight-badge">⭐ 2026 Spotlight</span>
                     <span class="demand hot" style="align-self:flex-start;">🔥 Very high</span>
-                    <p class="why">Builds and ships machine-learning models into real products: recommendations, detection, forecasting, and more.</p>
-                    <p class="kv"><b>Why now:</b> every company wants AI features, and few people can actually build them.</p>
+                    <p class="why">Builds and ships AI/ML models into real products: recommendations, detection, forecasting, and intelligent features.</p>
+                    <p class="kv"><b>Why now:</b> every company wants AI features and few people can actually build them end to end.</p>
                     <p class="kv"><b>Core skills:</b></p>
                     <div><span class="skill">Python</span><span class="skill">Math &amp; stats</span><span class="skill">PyTorch / TensorFlow</span><span class="skill">Data wrangling</span><span class="skill">APIs</span></div>
-                    <p class="kv"><b>Break in:</b> learn Python, do 2 to 3 end-to-end ML projects, and put them on GitHub with a clear README.</p>
+                    <p class="kv"><b>Break in:</b> learn Python, do 2 to 3 end-to-end ML projects, put them on GitHub with a clear README.</p>
+                    <div class="role-resources"><p class="rl">Free to start</p>
+                        <a href="https://www.fast.ai" target="_blank" rel="noopener">fast.ai course</a>
+                        <a href="https://www.coursera.org/specializations/machine-learning-introduction" target="_blank" rel="noopener">Andrew Ng ML (audit)</a>
+                        <a href="https://www.kaggle.com/learn" target="_blank" rel="noopener">Kaggle Learn</a>
+                    </div>
                 </div>
-                <div class="role" data-reveal data-reveal-delay="80">
-                    <div class="top"><span class="ic">✨</span><h3>GenAI / LLM Engineer</h3></div>
-                    <span class="demand hot" style="align-self:flex-start;">🔥 Very high</span>
-                    <p class="why">Builds apps on top of large language models: chat assistants, RAG search, agents, and workflow automation.</p>
-                    <p class="kv"><b>Why now:</b> the newest, fastest-growing niche, born entirely in the last few years.</p>
-                    <p class="kv"><b>Core skills:</b></p>
-                    <div><span class="skill">Prompt design</span><span class="skill">RAG / embeddings</span><span class="skill">APIs</span><span class="skill">Python / JS</span><span class="skill">Vector DBs</span></div>
-                    <p class="kv"><b>Break in:</b> build one small AI app (a page-aware chatbot, a doc Q&amp;A tool) and share a demo.</p>
-                </div>
-                <div class="role" data-reveal>
-                    <div class="top"><span class="ic">📊</span><h3>Data Scientist</h3></div>
-                    <span class="demand high" style="align-self:flex-start;">📈 High</span>
-                    <p class="why">Turns messy data into insight and predictions that guide business decisions.</p>
-                    <p class="kv"><b>Why now:</b> data keeps growing, and someone has to make sense of it.</p>
-                    <p class="kv"><b>Core skills:</b></p>
-                    <div><span class="skill">Python / R</span><span class="skill">SQL</span><span class="skill">Statistics</span><span class="skill">Visualization</span><span class="skill">Storytelling</span></div>
-                    <p class="kv"><b>Break in:</b> analyze a public dataset, publish a notebook, and write up what you found.</p>
-                </div>
-                <div class="role" data-reveal data-reveal-delay="80">
-                    <div class="top"><span class="ic">🔧</span><h3>Data Engineer</h3></div>
-                    <span class="demand hot" style="align-self:flex-start;">🔥 Very high</span>
-                    <p class="why">Builds the pipelines that move and clean data so analysts and models can trust it.</p>
-                    <p class="kv"><b>Why now:</b> AI is only as good as its data, so the plumbing is suddenly critical.</p>
-                    <p class="kv"><b>Core skills:</b></p>
-                    <div><span class="skill">SQL</span><span class="skill">Python</span><span class="skill">ETL tools</span><span class="skill">Cloud</span><span class="skill">Warehouses</span></div>
-                    <p class="kv"><b>Break in:</b> build a small pipeline (API to database to dashboard) and document it.</p>
-                </div>
-                <div class="role" data-reveal>
-                    <div class="top"><span class="ic">📈</span><h3>Data Analyst</h3></div>
-                    <span class="demand high" style="align-self:flex-start;">📈 High</span>
-                    <p class="why">Answers business questions with data using SQL, spreadsheets, and dashboards. A great, gentle entry point.</p>
-                    <p class="kv"><b>Why now:</b> one of the most accessible ways into a data career without heavy math.</p>
-                    <p class="kv"><b>Core skills:</b></p>
-                    <div><span class="skill">SQL</span><span class="skill">Excel / Sheets</span><span class="skill">Power BI / Tableau</span><span class="skill">Communication</span></div>
-                    <p class="kv"><b>Break in:</b> learn SQL well, build 2 dashboards, and explain the decisions they enable.</p>
-                </div>
-                <div class="role" data-reveal data-reveal-delay="80">
-                    <div class="top"><span class="ic">⚙️</span><h3>MLOps Engineer</h3></div>
-                    <span class="demand high" style="align-self:flex-start;">📈 High</span>
-                    <p class="why">Keeps ML models running reliably in production: deployment, monitoring, retraining, versioning.</p>
-                    <p class="kv"><b>Why now:</b> teams built models, now they need to run them at scale without breaking.</p>
-                    <p class="kv"><b>Core skills:</b></p>
-                    <div><span class="skill">Python</span><span class="skill">Docker</span><span class="skill">CI/CD</span><span class="skill">Cloud</span><span class="skill">Monitoring</span></div>
-                    <p class="kv"><b>Break in:</b> deploy one model behind an API and add basic monitoring. Blend of ML and DevOps.</p>
-                </div>
-            </div>
-        </div>
 
-        <div class="gsection">
-            <h2 data-jump="Web &amp; Product">Web, mobile &amp; product roles</h2>
-            <p class="muted">The classic path into tech, and still one of the most reliable. Products always need to be built, designed, and steered. These roles have the most beginner-friendly on-ramps.</p>
-            <div class="roles">
-                <div class="role" data-reveal>
-                    <div class="top"><span class="ic">🌐</span><h3>Full-Stack Developer</h3></div>
+                <div class="role" data-reveal data-reveal-delay="80">
+                    <div class="top"><span class="ic">⚡</span><h3>Forward-Deployed Engineer</h3></div>
+                    <span class="spotlight-badge">⭐ 2026 Spotlight</span>
                     <span class="demand hot" style="align-self:flex-start;">🔥 Very high</span>
-                    <p class="why">Builds both the front end (what users see) and the back end (servers, databases, APIs).</p>
-                    <p class="kv"><b>Why now:</b> versatile builders are cheaper for startups and endlessly useful everywhere.</p>
+                    <p class="why">Embeds with customers to build custom solutions on top of a company's platform, blending software skills with consulting instincts.</p>
+                    <p class="kv"><b>Why now:</b> AI companies selling to enterprises need engineers who can own customer outcomes, not just tickets.</p>
                     <p class="kv"><b>Core skills:</b></p>
-                    <div><span class="skill">HTML / CSS</span><span class="skill">JavaScript</span><span class="skill">React</span><span class="skill">Node</span><span class="skill">Databases</span></div>
-                    <p class="kv"><b>Break in:</b> ship 2 to 3 real apps (auth, CRUD, a live link). Proof of work beats certificates here.</p>
+                    <div><span class="skill">Full-stack basics</span><span class="skill">APIs</span><span class="skill">Communication</span><span class="skill">Problem framing</span><span class="skill">Python / JS</span></div>
+                    <p class="kv"><b>Break in:</b> build a consulting-style case study: take a real problem, build a solution, and document the impact.</p>
+                    <div class="role-resources"><p class="rl">Free to start</p>
+                        <a href="https://github.com/donnemartin/system-design-primer" target="_blank" rel="noopener">System Design Primer</a>
+                        <a href="https://newsletter.pragmaticengineer.com" target="_blank" rel="noopener">Pragmatic Engineer (free posts)</a>
+                        <a href="https://stripe.com/blog/engineering" target="_blank" rel="noopener">Stripe Engineering blog</a>
+                    </div>
                 </div>
-                <div class="role" data-reveal data-reveal-delay="80">
-                    <div class="top"><span class="ic">🎨</span><h3>Frontend Developer</h3></div>
-                    <span class="demand high" style="align-self:flex-start;">📈 High</span>
-                    <p class="why">Builds the interface users touch, with a focus on design, accessibility, and speed.</p>
-                    <p class="kv"><b>Why now:</b> polished, accessible UIs are a real differentiator, and AI can't fully fake taste.</p>
-                    <p class="kv"><b>Core skills:</b></p>
-                    <div><span class="skill">HTML / CSS</span><span class="skill">JavaScript</span><span class="skill">React</span><span class="skill">Accessibility</span><span class="skill">Design sense</span></div>
-                    <p class="kv"><b>Break in:</b> rebuild 3 real sites pixel-perfect and make them fast and accessible.</p>
-                </div>
+
                 <div class="role" data-reveal>
-                    <div class="top"><span class="ic">📱</span><h3>Mobile Developer</h3></div>
-                    <span class="demand grow" style="align-self:flex-start;">🌱 Growing</span>
-                    <p class="why">Builds iOS / Android apps, increasingly with cross-platform tools like Flutter or React Native.</p>
-                    <p class="kv"><b>Why now:</b> mobile-first stays the default for most consumer products.</p>
-                    <p class="kv"><b>Core skills:</b></p>
-                    <div><span class="skill">Kotlin / Swift</span><span class="skill">Flutter / RN</span><span class="skill">APIs</span><span class="skill">UI basics</span></div>
-                    <p class="kv"><b>Break in:</b> publish one small app to a store or a shareable build.</p>
-                </div>
-                <div class="role" data-reveal data-reveal-delay="80">
                     <div class="top"><span class="ic">🧭</span><h3>Product Manager</h3></div>
+                    <span class="spotlight-badge">⭐ 2026 Spotlight</span>
                     <span class="demand high" style="align-self:flex-start;">📈 High</span>
                     <p class="why">Decides what to build and why: talks to users, sets priorities, and steers the team. Not a coding role, but tech-fluent.</p>
                     <p class="kv"><b>Why now:</b> more products, more competition, more need for someone who owns the "why".</p>
                     <p class="kv"><b>Core skills:</b></p>
-                    <div><span class="skill">Communication</span><span class="skill">User research</span><span class="skill">Prioritization</span><span class="skill">Data literacy</span></div>
-                    <p class="kv"><b>Break in:</b> ship a side project end-to-end, or move in from support / QA / analyst roles.</p>
+                    <div><span class="skill">Communication</span><span class="skill">User research</span><span class="skill">Prioritization</span><span class="skill">Data literacy</span><span class="skill">Roadmapping</span></div>
+                    <p class="kv"><b>Break in:</b> ship a side project end-to-end or move in from support, QA, or analyst roles.</p>
+                    <div class="role-resources"><p class="rl">Free to start</p>
+                        <a href="https://www.lennysnewsletter.com" target="_blank" rel="noopener">Lenny's Newsletter (free)</a>
+                        <a href="https://productschool.com/resources" target="_blank" rel="noopener">Product School resources</a>
+                        <a href="https://www.ycombinator.com/library" target="_blank" rel="noopener">YC Library</a>
+                    </div>
                 </div>
+
+                <div class="role" data-reveal data-reveal-delay="80">
+                    <div class="top"><span class="ic">💻</span><h3>Software Engineer</h3></div>
+                    <span class="spotlight-badge">⭐ 2026 Spotlight</span>
+                    <span class="demand hot" style="align-self:flex-start;">🔥 Very high</span>
+                    <p class="why">Builds both the front end (what users see) and the back end (servers, databases, APIs), owning a feature from code to production.</p>
+                    <p class="kv"><b>Why now:</b> versatile builders are cheaper for startups and endlessly useful everywhere.</p>
+                    <p class="kv"><b>Core skills:</b></p>
+                    <div><span class="skill">HTML / CSS</span><span class="skill">JavaScript</span><span class="skill">React</span><span class="skill">Node / Python</span><span class="skill">Databases</span></div>
+                    <p class="kv"><b>Break in:</b> ship 2 to 3 real apps with auth, CRUD, and a live link. Proof of work beats certificates here.</p>
+                    <div class="role-resources"><p class="rl">Free to start</p>
+                        <a href="https://www.theodinproject.com" target="_blank" rel="noopener">The Odin Project</a>
+                        <a href="https://cs50.harvard.edu/x" target="_blank" rel="noopener">CS50 by Harvard</a>
+                        <a href="https://roadmap.sh/full-stack" target="_blank" rel="noopener">roadmap.sh/full-stack</a>
+                    </div>
+                </div>
+
+                <div class="role" data-reveal>
+                    <div class="top"><span class="ic">🔧</span><h3>Data Engineer</h3></div>
+                    <span class="spotlight-badge">⭐ 2026 Spotlight</span>
+                    <span class="demand hot" style="align-self:flex-start;">🔥 Very high</span>
+                    <p class="why">Builds the pipelines that move and clean data so analysts and models can trust it.</p>
+                    <p class="kv"><b>Why now:</b> AI is only as good as its data, so the plumbing is suddenly critical.</p>
+                    <p class="kv"><b>Core skills:</b></p>
+                    <div><span class="skill">SQL</span><span class="skill">Python</span><span class="skill">ETL tools</span><span class="skill">Cloud</span><span class="skill">dbt / Spark</span></div>
+                    <p class="kv"><b>Break in:</b> build a small pipeline (API to database to dashboard) and document it clearly.</p>
+                    <div class="role-resources"><p class="rl">Free to start</p>
+                        <a href="https://github.com/DataTalksClub/data-engineering-zoomcamp" target="_blank" rel="noopener">DE Zoomcamp (free)</a>
+                        <a href="https://courses.getdbt.com" target="_blank" rel="noopener">dbt Learn</a>
+                        <a href="https://mode.com/sql-tutorial" target="_blank" rel="noopener">Mode SQL tutorial</a>
+                    </div>
+                </div>
+
+                <div class="role" data-reveal data-reveal-delay="80">
+                    <div class="top"><span class="ic">☁️</span><h3>Cloud / DevOps Engineer</h3></div>
+                    <span class="spotlight-badge">⭐ 2026 Spotlight</span>
+                    <span class="demand hot" style="align-self:flex-start;">🔥 Very high</span>
+                    <p class="why">Designs cloud systems and automates how software is built, shipped, and kept alive. AWS, Azure, GCP, Docker, Kubernetes.</p>
+                    <p class="kv"><b>Why now:</b> almost every company is on the cloud and short on people who can run it reliably.</p>
+                    <p class="kv"><b>Core skills:</b></p>
+                    <div><span class="skill">Linux</span><span class="skill">Docker / K8s</span><span class="skill">CI/CD</span><span class="skill">Cloud (AWS/Azure/GCP)</span><span class="skill">Terraform</span></div>
+                    <p class="kv"><b>Break in:</b> containerize an app, wire up a CI/CD pipeline, and deploy it on a cloud free tier.</p>
+                    <div class="role-resources"><p class="rl">Free to start</p>
+                        <a href="https://roadmap.sh/devops" target="_blank" rel="noopener">roadmap.sh/devops</a>
+                        <a href="https://learn.microsoft.com/en-us/training" target="_blank" rel="noopener">Microsoft Learn (free)</a>
+                        <a href="https://aws.amazon.com/training/digital" target="_blank" rel="noopener">AWS Digital Training (free)</a>
+                    </div>
+                </div>
+
+                <div class="role" data-reveal>
+                    <div class="top"><span class="ic">🛡️</span><h3>Cybersecurity Engineer</h3></div>
+                    <span class="spotlight-badge">⭐ 2026 Spotlight</span>
+                    <span class="demand hot" style="align-self:flex-start;">🔥 Very high</span>
+                    <p class="why">Protects systems and data from attacks: finds weaknesses, monitors threats, and responds to incidents.</p>
+                    <p class="kv"><b>Why now:</b> a global talent shortage and rising attacks make this one of the safest career bets.</p>
+                    <p class="kv"><b>Core skills:</b></p>
+                    <div><span class="skill">Networking</span><span class="skill">Linux</span><span class="skill">Security basics</span><span class="skill">Scripting</span><span class="skill">Curiosity</span></div>
+                    <p class="kv"><b>Break in:</b> practice on free labs (TryHackMe, Hack The Box) and aim for a foundational cert like CompTIA Security+.</p>
+                    <div class="role-resources"><p class="rl">Free to start</p>
+                        <a href="https://tryhackme.com" target="_blank" rel="noopener">TryHackMe (free tier)</a>
+                        <a href="https://www.hackthebox.com" target="_blank" rel="noopener">Hack The Box (free)</a>
+                        <a href="https://owasp.org/www-project-top-ten" target="_blank" rel="noopener">OWASP Top 10</a>
+                    </div>
+                </div>
+
+                <div class="role" data-reveal data-reveal-delay="80">
+                    <div class="top"><span class="ic">🤖</span><h3>Robotics Engineer</h3></div>
+                    <span class="spotlight-badge">⭐ 2026 Spotlight</span>
+                    <span class="demand grow" style="align-self:flex-start;">🌱 Growing</span>
+                    <p class="why">Designs, builds, and programs physical machines that perceive and act in the world: manufacturing robots, drones, autonomous vehicles.</p>
+                    <p class="kv"><b>Why now:</b> automation and AI are merging, making robotics one of the fastest-growing physical-tech fields.</p>
+                    <p class="kv"><b>Core skills:</b></p>
+                    <div><span class="skill">Python / C++</span><span class="skill">ROS</span><span class="skill">Control theory</span><span class="skill">Sensors / actuators</span><span class="skill">Computer vision</span></div>
+                    <p class="kv"><b>Break in:</b> start with an Arduino or Raspberry Pi project, then explore ROS with a free tutorial.</p>
+                    <div class="role-resources"><p class="rl">Free to start</p>
+                        <a href="https://docs.ros.org/en/humble/Tutorials.html" target="_blank" rel="noopener">ROS 2 Tutorials (free)</a>
+                        <a href="https://ocw.mit.edu/search/?q=robotics" target="_blank" rel="noopener">MIT OCW Robotics</a>
+                        <a href="https://www.arduino.cc/en/Tutorial/HomePage" target="_blank" rel="noopener">Arduino Tutorials (free)</a>
+                    </div>
+                </div>
+
+                <div class="role" data-reveal>
+                    <div class="top"><span class="ic">🏗️</span><h3>Solutions Architect</h3></div>
+                    <span class="spotlight-badge">⭐ 2026 Spotlight</span>
+                    <span class="demand high" style="align-self:flex-start;">📈 High</span>
+                    <p class="why">Designs the technical blueprint for how systems should be built, usually bridging business needs and engineering teams.</p>
+                    <p class="kv"><b>Why now:</b> as systems grow in complexity, companies need someone who sees the whole picture, not just one layer.</p>
+                    <p class="kv"><b>Core skills:</b></p>
+                    <div><span class="skill">System design</span><span class="skill">Cloud</span><span class="skill">Communication</span><span class="skill">Trade-off analysis</span><span class="skill">Breadth over depth</span></div>
+                    <p class="kv"><b>Break in:</b> become a solid software or cloud engineer first, then study system design patterns and cloud certifications.</p>
+                    <div class="role-resources"><p class="rl">Free to start</p>
+                        <a href="https://github.com/donnemartin/system-design-primer" target="_blank" rel="noopener">System Design Primer</a>
+                        <a href="https://roadmap.sh/software-architect" target="_blank" rel="noopener">roadmap.sh/architect</a>
+                        <a href="https://learn.microsoft.com/en-us/azure/architecture" target="_blank" rel="noopener">Azure Architecture Center</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ===== SPECIALIZED 9 ===== -->
+        <div class="gsection">
+            <h2 data-jump="Specialized roles">Specialized roles worth knowing</h2>
+            <p class="muted">These roles go deeper in a specific niche. They are great to aim for once you have a foundation in an adjacent area, or if one of these is genuinely what excites you most.</p>
+            <div class="roles">
+
+                <div class="role" data-reveal>
+                    <div class="top"><span class="ic">✨</span><h3>GenAI / LLM Engineer</h3></div>
+                    <span class="demand hot" style="align-self:flex-start;">🔥 Very high</span>
+                    <p class="why">Builds apps on top of large language models: chat assistants, RAG search, agents, and workflow automation.</p>
+                    <p class="kv"><b>Why now:</b> the newest and fastest-growing niche, born entirely in the last few years.</p>
+                    <p class="kv"><b>Core skills:</b></p>
+                    <div><span class="skill">Prompt design</span><span class="skill">RAG / embeddings</span><span class="skill">APIs</span><span class="skill">Python / JS</span><span class="skill">Vector DBs</span></div>
+                    <p class="kv"><b>Break in:</b> build one small AI app (a page-aware chatbot, a doc Q&amp;A tool) and share a working demo.</p>
+                    <div class="role-resources"><p class="rl">Free to start</p>
+                        <a href="https://learn.deeplearning.ai" target="_blank" rel="noopener">DeepLearning.AI short courses</a>
+                        <a href="https://huggingface.co/learn/nlp-course" target="_blank" rel="noopener">Hugging Face NLP course</a>
+                        <a href="https://python.langchain.com/docs/tutorials" target="_blank" rel="noopener">LangChain tutorials</a>
+                    </div>
+                </div>
+
+                <div class="role" data-reveal data-reveal-delay="80">
+                    <div class="top"><span class="ic">📊</span><h3>Data Scientist</h3></div>
+                    <span class="demand high" style="align-self:flex-start;">📈 High</span>
+                    <p class="why">Turns messy data into insight and predictions that guide business decisions.</p>
+                    <p class="kv"><b>Why now:</b> data keeps growing and someone has to make sense of it with both rigor and story.</p>
+                    <p class="kv"><b>Core skills:</b></p>
+                    <div><span class="skill">Python / R</span><span class="skill">SQL</span><span class="skill">Statistics</span><span class="skill">Visualization</span><span class="skill">Storytelling</span></div>
+                    <p class="kv"><b>Break in:</b> analyze a public dataset, publish a notebook, and write up what you found in plain English.</p>
+                    <div class="role-resources"><p class="rl">Free to start</p>
+                        <a href="https://www.kaggle.com/learn" target="_blank" rel="noopener">Kaggle Learn</a>
+                        <a href="https://www.youtube.com/@statquest" target="_blank" rel="noopener">StatQuest (YouTube)</a>
+                        <a href="https://wesmckinney.com/book" target="_blank" rel="noopener">Python for Data Analysis (free online)</a>
+                    </div>
+                </div>
+
+                <div class="role" data-reveal>
+                    <div class="top"><span class="ic">📈</span><h3>Data Analyst</h3></div>
+                    <span class="demand high" style="align-self:flex-start;">📈 High</span>
+                    <p class="why">Answers business questions with data using SQL, spreadsheets, and dashboards. One of the most accessible entry points.</p>
+                    <p class="kv"><b>Why now:</b> every team wants dashboards that explain decisions, not just raw exports.</p>
+                    <p class="kv"><b>Core skills:</b></p>
+                    <div><span class="skill">SQL</span><span class="skill">Excel / Sheets</span><span class="skill">Power BI / Tableau</span><span class="skill">Communication</span></div>
+                    <p class="kv"><b>Break in:</b> learn SQL well, build 2 dashboards from public data, and explain the decisions they enable.</p>
+                    <div class="role-resources"><p class="rl">Free to start</p>
+                        <a href="https://mode.com/sql-tutorial" target="_blank" rel="noopener">Mode SQL tutorial</a>
+                        <a href="https://www.kaggle.com/learn/intro-to-sql" target="_blank" rel="noopener">Kaggle SQL course</a>
+                        <a href="https://www.youtube.com/@alextheanalyst" target="_blank" rel="noopener">Alex the Analyst (YouTube)</a>
+                    </div>
+                </div>
+
+                <div class="role" data-reveal data-reveal-delay="80">
+                    <div class="top"><span class="ic">⚙️</span><h3>MLOps Engineer</h3></div>
+                    <span class="demand high" style="align-self:flex-start;">📈 High</span>
+                    <p class="why">Keeps ML models running reliably in production: deployment, monitoring, retraining, versioning.</p>
+                    <p class="kv"><b>Why now:</b> teams built models; now they need to run them at scale without breaking.</p>
+                    <p class="kv"><b>Core skills:</b></p>
+                    <div><span class="skill">Python</span><span class="skill">Docker</span><span class="skill">CI/CD</span><span class="skill">Cloud</span><span class="skill">Monitoring</span></div>
+                    <p class="kv"><b>Break in:</b> deploy one model behind an API and add basic monitoring. A blend of ML and DevOps.</p>
+                    <div class="role-resources"><p class="rl">Free to start</p>
+                        <a href="https://github.com/DataTalksClub/mlops-zoomcamp" target="_blank" rel="noopener">MLOps Zoomcamp (free)</a>
+                        <a href="https://madewithml.com" target="_blank" rel="noopener">Made With ML</a>
+                        <a href="https://fullstackdeeplearning.com" target="_blank" rel="noopener">Full Stack Deep Learning</a>
+                    </div>
+                </div>
+
+                <div class="role" data-reveal>
+                    <div class="top"><span class="ic">🎨</span><h3>Frontend Developer</h3></div>
+                    <span class="demand high" style="align-self:flex-start;">📈 High</span>
+                    <p class="why">Builds the interface users actually touch, with a focus on design, accessibility, and speed.</p>
+                    <p class="kv"><b>Why now:</b> polished, accessible UIs are a real differentiator and AI cannot fully replace taste.</p>
+                    <p class="kv"><b>Core skills:</b></p>
+                    <div><span class="skill">HTML / CSS</span><span class="skill">JavaScript</span><span class="skill">React</span><span class="skill">Accessibility</span><span class="skill">Design sense</span></div>
+                    <p class="kv"><b>Break in:</b> rebuild 3 real sites pixel-perfect and make them fast and accessible.</p>
+                    <div class="role-resources"><p class="rl">Free to start</p>
+                        <a href="https://www.youtube.com/@KevinPowell" target="_blank" rel="noopener">Kevin Powell CSS (YouTube)</a>
+                        <a href="https://www.theodinproject.com" target="_blank" rel="noopener">The Odin Project</a>
+                        <a href="https://roadmap.sh/frontend" target="_blank" rel="noopener">roadmap.sh/frontend</a>
+                    </div>
+                </div>
+
+                <div class="role" data-reveal data-reveal-delay="80">
+                    <div class="top"><span class="ic">📱</span><h3>Mobile Developer</h3></div>
+                    <span class="demand grow" style="align-self:flex-start;">🌱 Growing</span>
+                    <p class="why">Builds iOS and Android apps, increasingly with cross-platform tools like Flutter or React Native.</p>
+                    <p class="kv"><b>Why now:</b> mobile-first stays the default for most consumer products worldwide.</p>
+                    <p class="kv"><b>Core skills:</b></p>
+                    <div><span class="skill">Kotlin / Swift</span><span class="skill">Flutter / RN</span><span class="skill">APIs</span><span class="skill">UI basics</span></div>
+                    <p class="kv"><b>Break in:</b> publish one small app to a store or a shareable build link.</p>
+                    <div class="role-resources"><p class="rl">Free to start</p>
+                        <a href="https://docs.flutter.dev/get-started/codelab" target="_blank" rel="noopener">Flutter Codelabs (free)</a>
+                        <a href="https://developer.android.com/courses" target="_blank" rel="noopener">Android Developer training</a>
+                        <a href="https://developer.apple.com/swift/playgrounds" target="_blank" rel="noopener">Swift Playgrounds (free)</a>
+                    </div>
+                </div>
+
                 <div class="role" data-reveal>
                     <div class="top"><span class="ic">🖌️</span><h3>UX / UI Designer</h3></div>
                     <span class="demand grow" style="align-self:flex-start;">🌱 Growing</span>
-                    <p class="why">Designs how a product looks and feels so it is clear, usable, and pleasant.</p>
-                    <p class="kv"><b>Why now:</b> good design is a competitive edge, and AI tools speed up the craft, not replace the judgment.</p>
+                    <p class="why">Designs how a product looks and feels so it is clear, usable, and enjoyable.</p>
+                    <p class="kv"><b>Why now:</b> good design is a competitive edge, and AI tools speed up the craft without replacing the judgment.</p>
                     <p class="kv"><b>Core skills:</b></p>
                     <div><span class="skill">Figma</span><span class="skill">User research</span><span class="skill">Prototyping</span><span class="skill">Accessibility</span></div>
                     <p class="kv"><b>Break in:</b> build a portfolio of 3 case studies that show your thinking, not just pretty screens.</p>
+                    <div class="role-resources"><p class="rl">Free to start</p>
+                        <a href="https://www.figma.com/resources/learn-design" target="_blank" rel="noopener">Figma Learn Design (free)</a>
+                        <a href="https://www.coursera.org/professional-certificates/google-ux-design" target="_blank" rel="noopener">Google UX Design (audit)</a>
+                        <a href="https://www.nngroup.com/articles" target="_blank" rel="noopener">Nielsen Norman Group articles</a>
+                    </div>
                 </div>
+
                 <div class="role" data-reveal data-reveal-delay="80">
                     <div class="top"><span class="ic">🧪</span><h3>QA / SDET</h3></div>
                     <span class="demand grow" style="align-self:flex-start;">🌱 Growing</span>
                     <p class="why">Makes sure software actually works, increasingly by writing automated tests (SDET = testing with code).</p>
-                    <p class="kv"><b>Why now:</b> a friendly entry into engineering, and automation skills keep it relevant.</p>
+                    <p class="kv"><b>Why now:</b> a friendly entry into engineering, and automation skills keep it relevant long term.</p>
                     <p class="kv"><b>Core skills:</b></p>
                     <div><span class="skill">Testing basics</span><span class="skill">Selenium / Playwright</span><span class="skill">One language</span><span class="skill">Attention to detail</span></div>
-                    <p class="kv"><b>Break in:</b> automate tests for one of your own projects and show the suite.</p>
+                    <p class="kv"><b>Break in:</b> automate tests for one of your own projects and show the full test suite.</p>
+                    <div class="role-resources"><p class="rl">Free to start</p>
+                        <a href="https://testautomationu.applitools.com" target="_blank" rel="noopener">Test Automation University (free)</a>
+                        <a href="https://playwright.dev/docs/intro" target="_blank" rel="noopener">Playwright docs</a>
+                        <a href="https://www.istqb.org/certifications/certified-tester-foundation-level" target="_blank" rel="noopener">ISTQB free study guide</a>
+                    </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="gsection">
-            <h2 data-jump="Infra &amp; Security">Infrastructure, cloud &amp; security roles</h2>
-            <p class="muted">Everything runs on cloud infrastructure now, and everything needs to be secure. These roles are in strong, steady demand and often pay a premium because the skills are harder to fake.</p>
-            <div class="roles">
                 <div class="role" data-reveal>
-                    <div class="top"><span class="ic">🛠️</span><h3>DevOps / Platform / SRE</h3></div>
-                    <span class="demand hot" style="align-self:flex-start;">🔥 Very high</span>
-                    <p class="why">Automates how software is built, shipped, and run so it deploys fast and stays up.</p>
-                    <p class="kv"><b>Why now:</b> faster release cycles make reliable automation non-negotiable.</p>
-                    <p class="kv"><b>Core skills:</b></p>
-                    <div><span class="skill">Linux</span><span class="skill">Docker</span><span class="skill">Kubernetes</span><span class="skill">CI/CD</span><span class="skill">Cloud</span><span class="skill">Scripting</span></div>
-                    <p class="kv"><b>Break in:</b> containerize an app, set up a CI/CD pipeline, and deploy it to a cloud free tier.</p>
-                </div>
-                <div class="role" data-reveal data-reveal-delay="80">
-                    <div class="top"><span class="ic">☁️</span><h3>Cloud Engineer</h3></div>
-                    <span class="demand hot" style="align-self:flex-start;">🔥 Very high</span>
-                    <p class="why">Designs and runs systems on AWS, Azure, or GCP: compute, storage, networking, cost.</p>
-                    <p class="kv"><b>Why now:</b> almost every company is on the cloud and short on cloud talent.</p>
-                    <p class="kv"><b>Core skills:</b></p>
-                    <div><span class="skill">One cloud (AWS/Azure/GCP)</span><span class="skill">Networking</span><span class="skill">Linux</span><span class="skill">IaC (Terraform)</span></div>
-                    <p class="kv"><b>Break in:</b> a free-tier cloud account plus one associate-level cert goes a long way here.</p>
-                </div>
-                <div class="role" data-reveal>
-                    <div class="top"><span class="ic">🛡️</span><h3>Cybersecurity Engineer</h3></div>
-                    <span class="demand hot" style="align-self:flex-start;">🔥 Very high</span>
-                    <p class="why">Protects systems and data from attacks: finds weaknesses, monitors threats, responds to incidents.</p>
-                    <p class="kv"><b>Why now:</b> a global talent shortage and rising attacks make this one of the safest bets.</p>
-                    <p class="kv"><b>Core skills:</b></p>
-                    <div><span class="skill">Networking</span><span class="skill">Linux</span><span class="skill">Security basics</span><span class="skill">Scripting</span><span class="skill">Curiosity</span></div>
-                    <p class="kv"><b>Break in:</b> practice on free labs (TryHackMe, Hack The Box) and aim for a foundational cert.</p>
-                </div>
-                <div class="role" data-reveal data-reveal-delay="80">
                     <div class="top"><span class="ic">📣</span><h3>Developer Advocate</h3></div>
                     <span class="demand grow" style="align-self:flex-start;">🌱 Growing</span>
                     <p class="why">Bridges companies and developers: writes tutorials, gives talks, builds demos, and gathers feedback.</p>
@@ -269,12 +415,19 @@
                     <p class="kv"><b>Core skills:</b></p>
                     <div><span class="skill">Coding basics</span><span class="skill">Writing</span><span class="skill">Speaking</span><span class="skill">Community</span></div>
                     <p class="kv"><b>Break in:</b> build in public: write, post, make demos. Your content is your portfolio.</p>
+                    <div class="role-resources"><p class="rl">Free to start</p>
+                        <a href="https://devrel.co/resources" target="_blank" rel="noopener">DevRel.co resources</a>
+                        <a href="https://developers.google.com/tech-writing" target="_blank" rel="noopener">Google Technical Writing course</a>
+                        <a href="https://cfpland.com" target="_blank" rel="noopener">CFP Land (speaking opportunities)</a>
+                    </div>
                 </div>
+
             </div>
         </div>
 
+        <!-- ===== AT A GLANCE TABLE ===== -->
         <div class="gsection">
-            <h2 data-jump="At a glance">All roles at a glance</h2>
+            <h2 data-jump="At a glance">All 18 roles at a glance</h2>
             <p class="muted">A quick side-by-side. "Entry difficulty" is how hard it usually is to land your first role, not how hard the work is.</p>
             <div style="overflow-x:auto;">
                 <table class="roletable">
@@ -282,27 +435,30 @@
                         <tr><th>Role</th><th>Family</th><th>Demand</th><th>Entry difficulty</th><th>Great if you like</th></tr>
                     </thead>
                     <tbody>
-                        <tr><td>AI / ML Engineer</td><td>AI &amp; Data</td><td>🔥 Very high</td><td>Hard</td><td>Math, models, research</td></tr>
-                        <tr><td>GenAI / LLM Engineer</td><td>AI &amp; Data</td><td>🔥 Very high</td><td>Medium</td><td>Building fast with AI</td></tr>
+                        <tr><td>AI Engineer</td><td>AI &amp; Data</td><td>🔥 Very high</td><td>Hard</td><td>Math, models, research</td></tr>
+                        <tr><td>Forward-Deployed Engineer</td><td>Software</td><td>🔥 Very high</td><td>Hard</td><td>Building and consulting</td></tr>
+                        <tr><td>Product Manager</td><td>Product</td><td>📈 High</td><td>Hard</td><td>Strategy and people</td></tr>
+                        <tr><td>Software Engineer</td><td>Software</td><td>🔥 Very high</td><td>Medium</td><td>Building whole products</td></tr>
                         <tr><td>Data Engineer</td><td>AI &amp; Data</td><td>🔥 Very high</td><td>Medium</td><td>Systems and pipelines</td></tr>
+                        <tr><td>Cloud / DevOps Engineer</td><td>Infra</td><td>🔥 Very high</td><td>Medium</td><td>Automation, reliability</td></tr>
+                        <tr><td>Cybersecurity Engineer</td><td>Infra</td><td>🔥 Very high</td><td>Medium</td><td>Defense, puzzles</td></tr>
+                        <tr><td>Robotics Engineer</td><td>Hardware</td><td>🌱 Growing</td><td>Hard</td><td>Physical systems, AI</td></tr>
+                        <tr><td>Solutions Architect</td><td>Software</td><td>📈 High</td><td>Hard (exp.)</td><td>Big picture design</td></tr>
+                        <tr><td>GenAI / LLM Engineer</td><td>AI &amp; Data</td><td>🔥 Very high</td><td>Medium</td><td>Building fast with AI</td></tr>
                         <tr><td>Data Scientist</td><td>AI &amp; Data</td><td>📈 High</td><td>Hard</td><td>Stats and insight</td></tr>
                         <tr><td>Data Analyst</td><td>AI &amp; Data</td><td>📈 High</td><td>Easy</td><td>Answers from data</td></tr>
-                        <tr><td>MLOps Engineer</td><td>AI &amp; Data</td><td>📈 High</td><td>Medium</td><td>Reliability + ML</td></tr>
-                        <tr><td>Full-Stack Developer</td><td>Web &amp; Product</td><td>🔥 Very high</td><td>Medium</td><td>Building whole products</td></tr>
-                        <tr><td>Frontend Developer</td><td>Web &amp; Product</td><td>📈 High</td><td>Easy</td><td>UI, design, polish</td></tr>
-                        <tr><td>Mobile Developer</td><td>Web &amp; Product</td><td>🌱 Growing</td><td>Medium</td><td>Apps in your pocket</td></tr>
-                        <tr><td>Product Manager</td><td>Web &amp; Product</td><td>📈 High</td><td>Hard</td><td>Strategy and people</td></tr>
-                        <tr><td>UX / UI Designer</td><td>Web &amp; Product</td><td>🌱 Growing</td><td>Medium</td><td>Design and empathy</td></tr>
-                        <tr><td>QA / SDET</td><td>Web &amp; Product</td><td>🌱 Growing</td><td>Easy</td><td>Breaking things well</td></tr>
-                        <tr><td>DevOps / SRE</td><td>Infra &amp; Security</td><td>🔥 Very high</td><td>Medium</td><td>Automation, reliability</td></tr>
-                        <tr><td>Cloud Engineer</td><td>Infra &amp; Security</td><td>🔥 Very high</td><td>Medium</td><td>Big systems, cloud</td></tr>
-                        <tr><td>Cybersecurity Engineer</td><td>Infra &amp; Security</td><td>🔥 Very high</td><td>Medium</td><td>Defense, puzzles</td></tr>
-                        <tr><td>Developer Advocate</td><td>Infra &amp; Security</td><td>🌱 Growing</td><td>Medium</td><td>Building + explaining</td></tr>
+                        <tr><td>MLOps Engineer</td><td>AI &amp; Data</td><td>📈 High</td><td>Medium</td><td>Reliability and ML</td></tr>
+                        <tr><td>Frontend Developer</td><td>Software</td><td>📈 High</td><td>Easy</td><td>UI, design, polish</td></tr>
+                        <tr><td>Mobile Developer</td><td>Software</td><td>🌱 Growing</td><td>Medium</td><td>Apps in your pocket</td></tr>
+                        <tr><td>UX / UI Designer</td><td>Product</td><td>🌱 Growing</td><td>Medium</td><td>Design and empathy</td></tr>
+                        <tr><td>QA / SDET</td><td>Software</td><td>🌱 Growing</td><td>Easy</td><td>Breaking things well</td></tr>
+                        <tr><td>Developer Advocate</td><td>Community</td><td>🌱 Growing</td><td>Medium</td><td>Building and explaining</td></tr>
                     </tbody>
                 </table>
             </div>
         </div>
 
+        <!-- ===== HOW TO PICK ===== -->
         <div class="gsection">
             <h2 data-jump="How to pick">How to pick your lane</h2>
             <p class="muted">A simple way to choose without overthinking it:</p>
@@ -314,6 +470,7 @@
             <p class="muted" style="margin-top:1rem;">Still torn between two? Pick the one with the <b>easier entry</b> for your first job, then move toward the other once you are in. Getting in beats waiting for perfect.</p>
         </div>
 
+        <!-- ===== NEXT STEPS ===== -->
         <div class="gsection">
             <h2 data-jump="Where to go next">Turn a direction into a plan</h2>
             <p class="muted">Chosen a lane? These guides help you actually get there:</p>

@@ -295,8 +295,7 @@ class JourneyView {
                  aria-label="Journey map: ${s.doneCount} of ${s.total} ${type.unit}s complete, ${s.pct} percent.">
                 <path id="jRoad" class="j-road" d="${path}"/>
                 <path class="j-road2" d="${path}"/>
-                <path class="j-dash" d="${path}">${reduceMotion() ? '' :
-                    `<animate attributeName="stroke-dashoffset" from="0" to="-16" dur="0.6s" repeatCount="indefinite"/>`}</path>
+                <path class="j-dash" d="${path}"><animate attributeName="stroke-dashoffset" from="0" to="-16" dur="${reduceMotion() ? '1.4s' : '0.6s'}" repeatCount="indefinite"/></path>
                 ${cars}
                 <g class="j-node" data-goto="0">
                     <circle class="j-ring" cx="${GEO.X0}" cy="${yAt(GEO.X0)}" r="15" stroke="${startColor}"/>
