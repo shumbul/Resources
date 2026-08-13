@@ -1,16 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Component Demo | Resources by Shumbul Arifa</title>
+    <meta name="description" content="Demonstration of the modular component system">
+    <link rel="canonical" href="https://shumbul.github.io/Resources/component-demo.html">
+    <meta name="robots" content="noindex">
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap">
-    <meta charset="UTF-8">
-    <div data-component="head-common"></div>
-    
-    <title>Component Demo | Resources by Shumbul Arifa</title>
-    <meta name="description" content="Demonstration of the modular component system">
+
+    <!-- Styles: real stylesheets, so they apply before first paint -->
+    <link rel="stylesheet" href="./theme-variables.css">
+    <link rel="stylesheet" href="./base.css">
+    <link rel="stylesheet" href="./guide.css">
+    <link rel="stylesheet" href="./theme-switcher.css">
+
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+    <link rel="alternate" type="application/rss+xml" title="Resources by Shumbul Arifa" href="./feed.xml">
+
+    <!-- Social share card -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Resources by Shumbul Arifa">
     <meta property="og:title" content="Component Demo">
     <meta property="og:description" content="Demonstration of the modular component system">
+    <meta property="og:url" content="https://shumbul.github.io/Resources/component-demo.html">
+    <meta property="og:image" content="https://shumbul.github.io/Resources/assets/og-default.png">
+    <meta property="og:image:alt" content="Resources by Shumbul Arifa, free tech career guides">
+    <meta name="twitter:card" content="summary_large_image">
 
     <style>
         .demo-header {
@@ -194,6 +214,6 @@ node components/page-creator.js "my-page.html" "My Page Title" "My page descript
             console.log('Component demo page loaded successfully! 🎉');
         });
     </script>
-    <script type="module" src="./functions/site.js?v=20260814b"></script>
+    <script type="module" src="./functions/site.js?v=20260815a"></script>
 </body>
 </html>

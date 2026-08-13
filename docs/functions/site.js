@@ -14,26 +14,31 @@
  *   2. the ?v=... on the site.js <script> tag in the HTML pages
  *      (docs uses a single value; see ADDING-A-RESOURCE.md).
  */
-import { ensureMeta } from './meta.js?v=20260814b';
-import { renderNav } from './nav.js?v=20260814b';
-import { renderFooter } from './footer.js?v=20260814b';
-import { renderBackLink } from './header.js?v=20260814b';
-import { initCopyButtons } from './copyButtons.js?v=20260814b';
-import { initProgress } from './progress.js?v=20260814b';
-import { initAssistant } from './assistant.js?v=20260814b';
-import { makeScrollablesFocusable } from './a11y.js?v=20260814b';
-import { initMotion } from './motion.js?v=20260814b';
-import { initJourney } from './journey.js?v=20260814b';
-import { initTypewriter } from './typewriter.js?v=20260814b';
-import { initQuickJump } from './quickjump.js?v=20260814b';
-import { initQuizzes } from './quiz.js?v=20260814b';
-import { initFlowMaps } from './flow.js?v=20260814b';
-import { initPractice } from './practice.js?v=20260814b';
+import { ensureMeta } from './meta.js?v=20260815a';
+import { renderSkipLink } from './skiplink.js?v=20260815a';
+import { renderNav } from './nav.js?v=20260815a';
+import { renderFooter } from './footer.js?v=20260815a';
+import { renderBackLink } from './header.js?v=20260815a';
+import { initCopyButtons } from './copyButtons.js?v=20260815a';
+import { initProgress } from './progress.js?v=20260815a';
+import { initAssistant } from './assistant.js?v=20260815a';
+import { makeScrollablesFocusable } from './a11y.js?v=20260815a';
+import { initMotion } from './motion.js?v=20260815a';
+import { initJourney } from './journey.js?v=20260815a';
+import { initTypewriter } from './typewriter.js?v=20260815a';
+import { initQuickJump } from './quickjump.js?v=20260815a';
+import { initQuizzes } from './quiz.js?v=20260815a';
+import { initFlowMaps } from './flow.js?v=20260815a';
+import { initPractice } from './practice.js?v=20260815a';
+import { renderUpdated } from './updated.js?v=20260815a';
+import { initAnalytics } from './analytics.js?v=20260815a';
 
 const STEPS = [
     ['meta', ensureMeta],
+    ['skiplink', renderSkipLink],
     ['nav', renderNav],
     ['backlink', renderBackLink],
+    ['updated', renderUpdated],
     ['footer', renderFooter],
     ['copy', initCopyButtons],
     ['progress', initProgress],
@@ -46,6 +51,7 @@ const STEPS = [
     ['quiz', initQuizzes],
     ['flow', initFlowMaps],
     ['practice', initPractice],
+    ['analytics', initAnalytics],
 ];
 
 function run() {

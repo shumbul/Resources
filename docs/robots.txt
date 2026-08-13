@@ -1,0 +1,12 @@
+# Resources by Shumbul Arifa
+# Note: GitHub Pages only serves robots.txt from the domain root, so this file
+# takes effect on a custom domain. The 404 and component demo pages also carry
+# <meta name="robots" content="noindex"> so they stay out of search either way.
+
+User-agent: *
+Allow: /
+
+Disallow: /404.html
+Disallow: /component-demo.html
+
+Sitemap: https://shumbul.github.io/Resources/sitemap.xml

@@ -1,28 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Portals: 99 Tech Companies | Resources by Shumbul Arifa</title>
+    <meta name="description" content="Official career pages of 99 top tech companies hiring in India, well-paying, popular, and successful. Search, click, and apply directly. Bookmark this for your job hunt.">
+    <link rel="canonical" href="https://shumbul.github.io/Resources/career-portals.html">
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap">
-    <meta charset="UTF-8">
-    <div data-component="head-common"></div>
 
-    <title>Career Portals: 99 Tech Companies | Resources by Shumbul Arifa</title>
-    <meta name="description" content="Official career pages of 99 top tech companies hiring in India, well-paying, popular, and successful. Search, click, and apply directly. Bookmark this for your job hunt.">
+    <!-- Styles: real stylesheets, so they apply before first paint -->
+    <link rel="stylesheet" href="./theme-variables.css">
+    <link rel="stylesheet" href="./base.css">
+    <link rel="stylesheet" href="./guide.css">
+    <link rel="stylesheet" href="./theme-switcher.css">
+
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+    <link rel="alternate" type="application/rss+xml" title="Resources by Shumbul Arifa" href="./feed.xml">
+
+    <!-- Social share card -->
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Resources by Shumbul Arifa">
     <meta property="og:title" content="Career Portals - 99 tech companies hiring in India">
     <meta property="og:description" content="A searchable directory of official career pages for 99 top tech companies hiring in India. Apply directly.">
+    <meta property="og:url" content="https://shumbul.github.io/Resources/career-portals.html">
+    <meta property="og:image" content="https://shumbul.github.io/Resources/assets/og-default.png">
+    <meta property="og:image:alt" content="Resources by Shumbul Arifa, free tech career guides">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="last-updated" content="2026-08-13">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Career Portals - 99 tech companies hiring in India",
+        "name": "Career Portals: 99 Tech Companies | Resources by Shumbul Arifa",
+        "description": "Official career pages of 99 top tech companies hiring in India, well-paying, popular, and successful. Search, click, and apply directly. Bookmark this for your job hunt.",
+        "inLanguage": "en",
+        "author": {
+            "@type": "Person",
+            "name": "Shumbul Arifa",
+            "url": "https://linktree.com/shumbul"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Resources by Shumbul Arifa",
+            "url": "https://shumbul.github.io/Resources/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://shumbul.github.io/Resources/favicon.svg"
+            }
+        },
+        "image": "https://shumbul.github.io/Resources/assets/og-default.png",
+        "dateModified": "2026-08-13",
+        "isAccessibleForFree": true,
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://shumbul.github.io/Resources/career-portals.html"
+        },
+        "url": "https://shumbul.github.io/Resources/career-portals.html"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Resources",
+                "item": "https://shumbul.github.io/Resources/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Career Portals - 99 tech companies hiring in India",
+                "item": "https://shumbul.github.io/Resources/career-portals.html"
+            }
+        ]
+    }
+    </script>
 
     <style>
-        .guide-header { background: linear-gradient(135deg, var(--primary), var(--secondary)); color:#fff; padding:3.5rem 0; text-align:center; margin-bottom:2.5rem; }
-        .guide-title { font-size:2.6rem; font-weight:800; margin-bottom:.6rem; color:#fff; }
-        .guide-sub { font-size:1.15rem; color:rgba(255,255,255,.94); max-width:720px; margin:0 auto; }
-        .guide-badges { display:flex; gap:.5rem; justify-content:center; flex-wrap:wrap; margin-top:1.2rem; }
-        .guide-badge { background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.4); padding:.35rem .8rem; border-radius:999px; font-size:.85rem; font-weight:600; }
-
-        .starter { background:var(--bg-primary); border:1px solid var(--border); border-left:4px solid var(--primary); border-radius:12px; padding:1.1rem 1.3rem; margin-bottom:1.75rem; }
-        .gsection { background:var(--bg-secondary); border:1px solid var(--border); border-radius:16px; padding:1.6rem 1.75rem; margin-bottom:1.75rem; }
-        .gsection h2 { margin-top:0; }
-        .muted { color:var(--text-secondary); }
 
         .cp-search { width:100%; box-sizing:border-box; padding:.75rem 1rem; border:1px solid var(--border); border-radius:12px;
             background:var(--bg-primary); color:var(--text-primary); font:500 1rem/1 var(--font-sans,inherit); margin-bottom:.4rem; }
@@ -39,9 +102,6 @@
         .cp-card:hover .cp-go { color:var(--primary); }
         .cp-none { display:none; color:var(--text-secondary); padding:.6rem 0; }
         .gsection p a, .starter a { text-decoration:underline; }
-        .nextlinks { display:flex; flex-wrap:wrap; gap:.6rem; }
-        .nextlinks a { text-decoration:none; background:var(--bg-primary); border:1px solid var(--border); border-radius:10px; padding:.55rem .9rem; font-weight:600; color:var(--text-primary); }
-        .nextlinks a:hover { border-color:var(--primary); color:var(--primary); }
     </style>
 </head>
 <body>
@@ -99,7 +159,7 @@
     <div data-component="footer"></div>
     <div data-component="scripts-common"></div>
     <script src="./components/component-loader.js"></script>
-    <script type="module" src="./functions/site.js?v=20260814b"></script>
+    <script type="module" src="./functions/site.js?v=20260815a"></script>
 
     <script>
         (function () {

@@ -1,0 +1,156 @@
+/* Shared guide layout.
+ *
+ * These card, section and header patterns were copy-pasted into the inline
+ * <style> of ~25 guide pages. They now live here once, so a fix lands
+ * everywhere and the browser caches them a single time.
+ *
+ * Loaded after base.css and before each page's own <style>, so any page can
+ * still override a rule locally when it genuinely needs something different.
+ */
+
+/* Page header band */
+.guide-header {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: #fff;
+    padding: 3.5rem 0;
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.guide-title {
+    font-size: 2.6rem;
+    font-weight: 800;
+    margin-bottom: .6rem;
+    color: #fff;
+}
+
+.guide-sub {
+    font-size: 1.15rem;
+    color: rgba(255, 255, 255, .94);
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.guide-badges {
+    display: flex;
+    gap: .5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 1.2rem;
+}
+
+.guide-badge {
+    background: rgba(255, 255, 255, .18);
+    border: 1px solid rgba(255, 255, 255, .4);
+    padding: .35rem .8rem;
+    border-radius: 999px;
+    font-size: .85rem;
+    font-weight: 600;
+}
+
+/* "Updated on" stamp, rendered by functions/updated.js from the
+   <meta name="last-updated"> value in the page head. */
+.guide-updated {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    margin-top: 1rem;
+    font-size: .82rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, .92);
+}
+
+/* Content blocks */
+.gsection {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.6rem 1.75rem;
+    margin-bottom: 1.75rem;
+}
+
+.gsection h2 {
+    margin-top: 0;
+}
+
+.gsection p a, .gsection li a, .starter a {
+    text-decoration: underline;
+}
+
+.starter {
+    background: var(--bg-primary);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--primary);
+    border-radius: 12px;
+    padding: 1.1rem 1.3rem;
+    margin-bottom: 1.75rem;
+}
+
+.gcard {
+    background: var(--bg-primary);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.1rem 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.analogy {
+    background: var(--bg-primary);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: 10px;
+    padding: .8rem 1.1rem;
+    margin: .7rem 0;
+}
+
+.analogy b {
+    color: var(--primary);
+}
+
+.muted {
+    color: var(--text-secondary);
+}
+
+/* Compact tables used across the deep dives */
+table.tbl {
+    width: 100%;
+    border-collapse: collapse;
+    margin: .6rem 0;
+}
+
+table.tbl th, table.tbl td {
+    text-align: left;
+    padding: .5rem .7rem;
+    border-bottom: 1px solid var(--border);
+    font-size: .92rem;
+    vertical-align: top;
+}
+
+table.tbl th {
+    color: var(--text-secondary);
+    font-size: .8rem;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+}
+
+/* "Where to next" link rows at the end of a guide */
+.nextlinks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .6rem;
+}
+
+.nextlinks a {
+    text-decoration: none;
+    background: var(--bg-primary);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: .55rem .9rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.nextlinks a:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}

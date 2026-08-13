@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Resources by Shumbul Arifa</title>
+        <link>https://shumbul.github.io/Resources/</link>
+        <atom:link href="https://shumbul.github.io/Resources/feed.xml" rel="self" type="application/rss+xml"/>
+        <description>Free, practical guides and roadmaps for breaking into tech: DSA, system design, interviews, AI, resume and LinkedIn.</description>
+        <language>en</language>
+        <lastBuildDate>Thu, 13 Aug 2026 09:00:00 +0000</lastBuildDate>
+        <image>
+            <url>https://shumbul.github.io/Resources/assets/og-default.png</url>
+            <title>Resources by Shumbul Arifa</title>
+            <link>https://shumbul.github.io/Resources/</link>
+        </image>
+        <item>
+            <title>12-Week Roadmap to Land a Tech Job in 2026</title>
+            <link>https://shumbul.github.io/Resources/12-week-roadmap.html</link>
+            <guid isPermaLink="true">https://shumbul.github.io/Resources/12-week-roadmap.html</guid>
+            <description>A week-by-week plan from career clarity to job interviews, with tasks, builds and goals for every phase.</description>
+            <pubDate>Thu, 13 Aug 2026 09:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>6-Month AI Developer Roadmap - from basics to projects</title>
+            <link>https://shumbul.github.io/Resources/AI-Roadmap.html</link>
+            <guid isPermaLink="true">https://shumbul.github.io/Resources/AI-Roadmap.html</guid>
+            <description>Six months from programming basics to shipping AI projects, month by month, with free resources.</description>
+            <pubDate>Thu, 13 Aug 2026 09:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>AI Tools for Developers - runs in your browser, free</title>
+            <link>https://shumbul.github.io/Resources/ai-tools.html</link>
+            <guid isPermaLink="true">https://shumbul.github.io/Resources/ai-tools.html</guid>
+            <description>On-device AI. No key, no server, no cost. Optimize your LinkedIn headline and run prompts privately.</description>
+            <pubDate>Thu, 13 Aug 2026 09:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>Big Companies Explained - Core Business Models</title>
+            <link>https://shumbul.github.io/Resources/big-tech-core-models.html</link>
+            <guid isPermaLink="true">https://shumbul.github.io/Resources/big-tech-core-models.html</guid>
+            <description>Most big companies win by doing one core thing extremely well. Learn the model and apply it to your own product thinking.</description>
+            <pubDate>Thu, 13 Aug 2026 09:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>Build &amp; Deploy a Website - live in an afternoon</title>
+            <link>https://shumbul.github.io/Resources/build-a-website.html</link>
+            <guid isPermaLink="true">https://shumbul.github.io/Resources/build-a-website.html</guid>
+            <description>Go from a blank file to a live, shareable website for free, no experience needed.</description>
+            <pubDate>Thu, 13 Aug 2026 09:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>Build an AI Agent - from zero to working</title>
+            <link>https://shumbul.github.io/Resources/build-ai-agent.html</link>
+            <guid isPermaLink="true">https://shumbul.github.io/Resources/build-ai-agent.html</guid>
+            <description>A friendly, project-based guide to building a real AI agent with tools and memory.</description>
+            <pubDate>Thu, 13 Aug 2026 09:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>Career Portals - 99 tech companies hiring in India</title>
+            <link>https://shumbul.github.io/Resources/career-portals.html</link>
+            <guid isPermaLink="true">https://shumbul.github.io/Resources/career-portals.html</guid>
+            <description>A searchable directory of official career pages for 99 top tech companies hiring in India. Apply directly.</description>
+            <pubDate>Thu, 13 Aug 2026 09:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>Cloud &amp; DevOps Starter - from zero</title>
+            <link>https://shumbul.github.io/Resources/cloud-devops-starter.html</link>
+            <guid isPermaLink="true">https://shumbul.github.io/Resources/cloud-devops-starter.html</guid>
+            <description>The core cloud and DevOps skills, in a sensible order, with hands-on projects.</description>
+            <pubDate>Thu, 13 Aug 2026 09:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>Complete Git Guide</title>
+            <link>https://shumbul.github.io/Resources/git-guide.html</link>
+            <guid isPermaLink="true">https://shumbul.github.io/Resources/git-guide.html</guid>
+            <description>Master Git with this comprehensive guide covering all commands, workflows, and best practices</description>
+            <pubDate>Thu, 13 Aug 2026 09:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>Computer Networks Deep Dive - with quizzes</title>
+            <link>https://shumbul.github.io/Resources/computer-networks-deep-dive.html</link>
+            <guid isPermaLink="true">https://shumbul.github.io/Resources/computer-networks-deep-dive.html</guid>
+            <description>Learn networking the interview way: clear theory with examples and self-scoring quizzes after every section.</description>
+            <pubDate>Thu, 13 Aug 2026 09:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>CS Fundamentals - OS, DBMS, Networks, OOP</title>
+            <link>https://shumbul.github.io/Resources/cs-fundamentals-guide.html</link>
+            <guid isPermaLink="true">https://shumbul.github.io/Resources/cs-fundamentals-guide.html</guid>
+            <description>The core CS subjects every fresher interview asks about, explained clearly with focus areas.</description>
+            <pubDate>Thu, 13 Aug 2026 09:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>Cyber Security Roadmap - from zero to hired</title>
+            <link>https://shumbul.github.io/Resources/cybersecurity-roadmap.html</link>
+            <guid isPermaLink="true">https://shumbul.github.io/Resources/cybersecurity-roadmap.html</guid>
+            <description>Your travel-the-highway roadmap into cyber security, with hands-on labs, tools, certs, and free resources.</description>
+            <pubDate>Thu, 13 Aug 2026 09:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>DBMS Deep Dive - with quizzes</title>
+            <link>https://shumbul.github.io/Resources/dbms-deep-dive.html</link>
+            <guid isPermaLink="true">https://shumbul.github.io/Resources/dbms-deep-dive.html</guid>
+            <description>Learn databases the interview way: clear theory with examples and self-scoring quizzes after every section.</description>
+            <pubDate>Thu, 13 Aug 2026 09:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>DSA Practice Guide - patterns over grinding</title>
+            <link>https://shumbul.github.io/Resources/dsa-practice-guide.html</link>
+            <guid isPermaLink="true">https://shumbul.github.io/Resources/dsa-practice-guide.html</guid>
+            <description>Learn DSA by pattern, not by brute force. A calm, practical plan for freshers.</description>
+            <pubDate>Thu, 13 Aug 2026 09:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>Full-Stack Developer Path - from zero to hired</title>
+            <link>https://shumbul.github.io/Resources/full-stack-developer-path.html</link>
+            <guid isPermaLink="true">https://shumbul.github.io/Resources/full-stack-developer-path.html</guid>
+            <description>Learn web development in the right order, build real projects, and skip the tutorial trap.</description>
+            <pubDate>Thu, 13 Aug 2026 09:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>Interview Prep Kit - turn prep into confidence</title>
+            <link>https://shumbul.github.io/Resources/interview-prep-kit.html</link>
+            <guid isPermaLink="true">https://shumbul.github.io/Resources/interview-prep-kit.html</guid>
+            <description>STAR answers, behavioral questions, a technical checklist, and questions to ask. Friendly and practical.</description>
+            <pubDate>Thu, 13 Aug 2026 09:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>LinkedIn Optimization Guide - be found by recruiters</title>
+            <link>https://shumbul.github.io/Resources/linkedin-utilization-guide.html</link>
+            <guid isPermaLink="true">https://shumbul.github.io/Resources/linkedin-utilization-guide.html</guid>
+            <description>Turn your LinkedIn profile into an opportunity magnet with templates, AI prompts and outreach scripts.</description>
+            <pubDate>Thu, 13 Aug 2026 09:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>Networking Toolkit - commands that make CN click</title>
+            <link>https://shumbul.github.io/Resources/networking-toolkit.html</link>
+            <guid isPermaLink="true">https://shumbul.github.io/Resources/networking-toolkit.html</guid>
+            <description>Copy-ready networking commands mapped to the Computer Networks concepts they demonstrate.</description>
+            <pubDate>Thu, 13 Aug 2026 09:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>OOP Deep Dive - with quizzes</title>
+            <link>https://shumbul.github.io/Resources/oop-deep-dive.html</link>
+            <guid isPermaLink="true">https://shumbul.github.io/Resources/oop-deep-dive.html</guid>
+            <description>Learn OOP the interview way: clear theory with examples and self-scoring quizzes after every section.</description>
+            <pubDate>Thu, 13 Aug 2026 09:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>Open-Source Contribution - your first PR</title>
+            <link>https://shumbul.github.io/Resources/open-source-guide.html</link>
+            <guid isPermaLink="true">https://shumbul.github.io/Resources/open-source-guide.html</guid>
+            <description>A step-by-step, beginner-friendly path to your first merged pull request.</description>
+            <pubDate>Thu, 13 Aug 2026 09:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>Operating Systems Deep Dive - with quizzes</title>
+            <link>https://shumbul.github.io/Resources/operating-systems-deep-dive.html</link>
+            <guid isPermaLink="true">https://shumbul.github.io/Resources/operating-systems-deep-dive.html</guid>
+            <description>Learn OS the interview way: interesting theory with examples and self-scoring quizzes after every section.</description>
+            <pubDate>Thu, 13 Aug 2026 09:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>Prompt Engineering Roadmap - from zero to confident</title>
+            <link>https://shumbul.github.io/Resources/prompt-engineering-roadmap.html</link>
+            <guid isPermaLink="true">https://shumbul.github.io/Resources/prompt-engineering-roadmap.html</guid>
+            <description>A practical, beginner-friendly roadmap to prompt engineering with free resources, real examples, and a step-by-step plan.</description>
+            <pubDate>Thu, 13 Aug 2026 09:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>Resume &amp; Portfolio Templates - show impact, not tasks</title>
+            <link>https://shumbul.github.io/Resources/resume-portfolio-templates.html</link>
+            <guid isPermaLink="true">https://shumbul.github.io/Resources/resume-portfolio-templates.html</guid>
+            <description>A friendly, practical guide to a resume and portfolio that actually get replies.</description>
+            <pubDate>Thu, 13 Aug 2026 09:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>Salary Negotiation - ask for more, politely</title>
+            <link>https://shumbul.github.io/Resources/salary-negotiation-guide.html</link>
+            <guid isPermaLink="true">https://shumbul.github.io/Resources/salary-negotiation-guide.html</guid>
+            <description>A friendly, practical guide to negotiating your offer, with ready-to-use scripts.</description>
+            <pubDate>Thu, 13 Aug 2026 09:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>SQL &amp; Databases - the practical guide</title>
+            <link>https://shumbul.github.io/Resources/sql-databases-guide.html</link>
+            <guid isPermaLink="true">https://shumbul.github.io/Resources/sql-databases-guide.html</guid>
+            <description>The 20% of SQL you use 80% of the time, plus the concepts interviews love.</description>
+            <pubDate>Thu, 13 Aug 2026 09:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>System Design Templates - think in systems</title>
+            <link>https://shumbul.github.io/Resources/system-design-templates.html</link>
+            <guid isPermaLink="true">https://shumbul.github.io/Resources/system-design-templates.html</guid>
+            <description>A simple framework and reusable building blocks for system design interviews and real projects.</description>
+            <pubDate>Thu, 13 Aug 2026 09:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>The AI Era Job Hunt - 3 Ways to Future-Proof Your Career</title>
+            <link>https://shumbul.github.io/Resources/ai-era-job-hunt.html</link>
+            <guid isPermaLink="true">https://shumbul.github.io/Resources/ai-era-job-hunt.html</guid>
+            <description>100 identical resumes into a portal won't work anymore. Here's the new playbook.</description>
+            <pubDate>Thu, 13 Aug 2026 09:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>The STAR Method - ace behavioral interviews</title>
+            <link>https://shumbul.github.io/Resources/star-method.html</link>
+            <guid isPermaLink="true">https://shumbul.github.io/Resources/star-method.html</guid>
+            <description>A friendly, structured way to answer any 'tell me about a time' question, with worked examples and practice questions.</description>
+            <pubDate>Thu, 13 Aug 2026 09:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>Trending Roles in Tech - what to aim for</title>
+            <link>https://shumbul.github.io/Resources/trending-tech-roles.html</link>
+            <guid isPermaLink="true">https://shumbul.github.io/Resources/trending-tech-roles.html</guid>
+            <description>A friendly map of the most in-demand tech roles, the skills they need, and how to start from zero.</description>
+            <pubDate>Thu, 13 Aug 2026 09:00:00 +0000</pubDate>
+        </item>
+    </channel>
+</rss>
