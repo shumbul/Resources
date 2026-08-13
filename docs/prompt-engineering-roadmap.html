@@ -7,9 +7,9 @@
     <meta charset="UTF-8">
     <div data-component="head-common"></div>
     <title>Prompt Engineering Roadmap | Resources by Shumbul Arifa</title>
-    <meta name="description" content="Learn prompt engineering from zero: how LLMs actually work, the patterns that matter, hands-on techniques, and a 4-week plan with free resources from Microsoft, Google and OpenAI.">
+    <meta name="description" content="Learn prompt engineering from zero: how LLMs actually work, the patterns that matter, hands-on techniques, and a step-by-step plan with free resources from Microsoft, Google and OpenAI.">
     <meta property="og:title" content="Prompt Engineering Roadmap - from zero to confident">
-    <meta property="og:description" content="A practical, beginner-friendly roadmap to prompt engineering with free resources, real examples, and a 4-week plan.">
+    <meta property="og:description" content="A practical, beginner-friendly roadmap to prompt engineering with free resources, real examples, and a step-by-step plan.">
 
     <style>
         .guide-header { background: linear-gradient(135deg, var(--primary), var(--secondary)); color:#fff; padding:3.5rem 0; text-align:center; margin-bottom:2.5rem; }
@@ -57,13 +57,13 @@
         .tech p { margin:0; font-size:.92rem; }
         .tech .use { font-size:.86rem; color:var(--text-secondary); }
 
-        /* week plan */
-        .weeks { display:grid; gap:1rem; }
-        .week { background:var(--bg-primary); border:1px solid var(--border); border-left:4px solid var(--primary); border-radius:12px; padding:1.1rem 1.3rem; }
-        .week h3 { margin:0 0 .4rem; font-size:1.08rem; display:flex; align-items:center; gap:.5rem; flex-wrap:wrap; }
-        .week .wtag { font-size:.72rem; font-weight:700; background:var(--bg-tertiary); border:1px solid var(--border); padding:.12rem .5rem; border-radius:999px; color:var(--text-secondary); }
-        .week ul { margin:.4rem 0 0; padding-left:1.15rem; }
-        .week li { margin:.25rem 0; font-size:.92rem; }
+        /* step plan */
+        .steps { display:grid; gap:1rem; }
+        .step { background:var(--bg-primary); border:1px solid var(--border); border-left:4px solid var(--primary); border-radius:12px; padding:1.1rem 1.3rem; }
+        .step h3 { margin:0 0 .4rem; font-size:1.08rem; display:flex; align-items:center; gap:.5rem; flex-wrap:wrap; }
+        .step .wtag { font-size:.72rem; font-weight:700; background:var(--bg-tertiary); border:1px solid var(--border); padding:.12rem .5rem; border-radius:999px; color:var(--text-secondary); }
+        .step ul { margin:.4rem 0 0; padding-left:1.15rem; }
+        .step li { margin:.25rem 0; font-size:.92rem; }
 
         /* resource cards */
         .res-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:.9rem; }
@@ -126,7 +126,7 @@
                     text-anchor:middle; dominant-baseline:central; transition:fill .25s;
                     font-family:var(--font-display,sans-serif); }
         .stop-label { font-size:14px; font-weight:700; fill:var(--text-primary); text-anchor:middle; }
-        .stop-week { font-size:11px; font-weight:600; fill:var(--text-secondary);
+        .stop-step { font-size:11px; font-weight:600; fill:var(--text-secondary);
                      text-anchor:middle; letter-spacing:.04em; }
 
         .stop:hover .stop-ring,
@@ -190,7 +190,7 @@
         @media (max-width:640px){
             .roadmap { margin-top:.7rem; }
             .stop-label { font-size:17px; }
-            .stop-week { font-size:14px; }
+            .stop-step { font-size:14px; }
             .stop-num { font-size:20px; }
             .road-base { stroke-width:28; }
             .sd-card { padding:.85rem .95rem; }
@@ -209,7 +209,7 @@
             .guide-badge { font-size:.72rem; padding:.25rem .6rem; }
 
             /* tighten global rhythm: 1.7 line-height is what made this feel huge */
-            .gsection, .starter, .muted, .tech p, .week li, .res-card li,
+            .gsection, .starter, .muted, .tech p, .step li, .res-card li,
             .checklist li, .mis span, .pbox { line-height:1.5; }
 
             /* sections */
@@ -244,13 +244,13 @@
             .pbox .tag { font-size:.66rem; margin-bottom:.4rem; }
             .pbox div { font-size:.78rem !important; }
 
-            /* week plan */
-            .weeks { gap:.7rem; }
-            .week { padding:.9rem 1rem; border-radius:11px; }
-            .week h3 { font-size:.96rem; margin-bottom:.3rem; }
-            .week .wtag { font-size:.68rem; }
-            .week ul { padding-left:1.05rem; }
-            .week li { font-size:.84rem; margin:.22rem 0; }
+            /* step plan */
+            .steps { gap:.7rem; }
+            .step { padding:.9rem 1rem; border-radius:11px; }
+            .step h3 { font-size:.96rem; margin-bottom:.3rem; }
+            .step .wtag { font-size:.68rem; }
+            .step ul { padding-left:1.05rem; }
+            .step li { font-size:.84rem; margin:.22rem 0; }
 
             /* resources */
             .res-grid { gap:.7rem; }
@@ -299,7 +299,7 @@
             <div class="guide-badges">
                 <span class="guide-badge">🌱 Beginner-friendly</span>
                 <span class="guide-badge">🆓 All free resources</span>
-                <span class="guide-badge">⏱️ 4-week plan</span>
+                <span class="guide-badge">🪜 4-step plan</span>
                 <span class="guide-badge">🔄 Updated 2026</span>
             </div>
         </div>
@@ -309,7 +309,7 @@
         <!-- ===== VISUAL ROADMAP ===== -->
         <div class="gsection roadmap-section">
             <h2 data-jump="The journey">Your journey at a glance</h2>
-            <p class="muted">Four stages, four weeks. Hover or tap any stop to see what happens there.</p>
+            <p class="muted">Four steps, start to finish. Hover or tap any stop to see what happens there.</p>
 
             <div class="roadmap" id="roadmap">
                 <svg class="road-svg" viewBox="0 0 900 340" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
@@ -344,33 +344,33 @@
                     </g>
 
                     <!-- stops -->
-                    <g class="stop" data-stop="1" tabindex="0" role="button" aria-label="Stage 1: Foundations">
+                    <g class="stop" data-stop="1" tabindex="0" role="button" aria-label="Step 1: Foundations">
                         <circle cx="60" cy="250" r="26" class="stop-ring"/>
                         <circle cx="60" cy="250" r="19" class="stop-fill"/>
                         <text x="60" y="250" class="stop-num">1</text>
                         <text x="60" y="298" class="stop-label">Foundations</text>
-                        <text x="60" y="315" class="stop-week">Week 1</text>
+                        <text x="60" y="315" class="stop-step">Step 1</text>
                     </g>
-                    <g class="stop" data-stop="2" tabindex="0" role="button" aria-label="Stage 2: Core techniques">
+                    <g class="stop" data-stop="2" tabindex="0" role="button" aria-label="Step 2: Core techniques">
                         <circle cx="285" cy="90" r="26" class="stop-ring"/>
                         <circle cx="285" cy="90" r="19" class="stop-fill"/>
                         <text x="285" y="90" class="stop-num">2</text>
                         <text x="285" y="42" class="stop-label">Techniques</text>
-                        <text x="285" y="26" class="stop-week">Week 2</text>
+                        <text x="285" y="26" class="stop-step">Step 2</text>
                     </g>
-                    <g class="stop" data-stop="3" tabindex="0" role="button" aria-label="Stage 3: Build something">
+                    <g class="stop" data-stop="3" tabindex="0" role="button" aria-label="Step 3: Build something">
                         <circle cx="510" cy="250" r="26" class="stop-ring"/>
                         <circle cx="510" cy="250" r="19" class="stop-fill"/>
                         <text x="510" y="250" class="stop-num">3</text>
                         <text x="510" y="298" class="stop-label">Build</text>
-                        <text x="510" y="315" class="stop-week">Week 3</text>
+                        <text x="510" y="315" class="stop-step">Step 3</text>
                     </g>
-                    <g class="stop" data-stop="4" tabindex="0" role="button" aria-label="Stage 4: Go deeper">
+                    <g class="stop" data-stop="4" tabindex="0" role="button" aria-label="Step 4: Go deeper">
                         <circle cx="735" cy="90" r="26" class="stop-ring"/>
                         <circle cx="735" cy="90" r="19" class="stop-fill"/>
                         <text x="735" y="90" class="stop-num">4</text>
                         <text x="735" y="42" class="stop-label">Go deeper</text>
-                        <text x="735" y="26" class="stop-week">Week 4</text>
+                        <text x="735" y="26" class="stop-step">Step 4</text>
                     </g>
                     <!-- finish flag -->
                     <g class="finish">
@@ -383,32 +383,32 @@
                 <!-- detail panel -->
                 <div class="stop-detail" id="stopDetail">
                     <div class="sd-card is-active" data-detail="1">
-                        <span class="sd-tag">Week 1</span>
+                        <span class="sd-tag">Step 1</span>
                         <h3>Foundations</h3>
                         <p>Understand what an LLM actually does, learn the vocabulary, and master the five-part prompt structure: role, task, context, format, constraints.</p>
                         <p class="sd-out"><b>You will have:</b> a personal cheat sheet of five prompt templates you actually use.</p>
                     </div>
                     <div class="sd-card" data-detail="2">
-                        <span class="sd-tag">Week 2</span>
+                        <span class="sd-tag">Step 2</span>
                         <h3>Core techniques</h3>
                         <p>Zero-shot, few-shot, chain of thought, role prompting, delimiters and structured output. Solve a real problem with each one and compare results.</p>
                         <p class="sd-out"><b>You will have:</b> a prompt that reliably returns valid JSON you could feed into code.</p>
                     </div>
                     <div class="sd-card" data-detail="3">
-                        <span class="sd-tag">Week 3</span>
+                        <span class="sd-tag">Step 3</span>
                         <h3>Build something</h3>
                         <p>Automate a task you genuinely repeat, using prompt chaining. Call the API from a script instead of a chat window. Meet Semantic Kernel and RAG.</p>
                         <p class="sd-out"><b>You will have:</b> a working script or notebook doing something useful with an LLM.</p>
                     </div>
                     <div class="sd-card" data-detail="4">
-                        <span class="sd-tag">Week 4</span>
+                        <span class="sd-tag">Step 4</span>
                         <h3>Go deeper</h3>
                         <p>Function calling and a tiny agent. Build an evaluation set so you can measure prompts instead of guessing. Learn prompt injection and safety basics.</p>
                         <p class="sd-out"><b>You will have:</b> a GitHub repo and a short write-up worth showing in an interview.</p>
                     </div>
                 </div>
 
-                <p class="road-hint muted">Tap a numbered stop to jump between stages</p>
+                <p class="road-hint muted">Tap a numbered stop to jump between steps</p>
             </div>
         </div>
 
@@ -434,7 +434,7 @@
 
         <!-- ===== FOUNDATIONS ===== -->
         <div class="gsection">
-            <h2 data-jump="Foundations">Step 1: Understand what you are talking to</h2>
+            <h2 data-jump="Foundations">Understand what you are talking to</h2>
             <p class="muted">You do not need the maths, but a rough mental model makes you dramatically better at prompting. Here is the honest version.</p>
 
             <h3 style="margin-top:1.2rem;">What an LLM actually does</h3>
@@ -492,7 +492,7 @@
 
         <!-- ===== ANATOMY ===== -->
         <div class="gsection">
-            <h2 data-jump="Anatomy of a prompt">Step 2: The anatomy of a good prompt</h2>
+            <h2 data-jump="Anatomy of a prompt">The anatomy of a good prompt</h2>
             <p class="muted">Almost every strong prompt has some combination of these five parts. You will not always need all five, but knowing them means you always know what to add when the output is not right.</p>
 
             <div class="techs" style="margin-top:1rem;">
@@ -547,7 +547,7 @@ likely ask about this schema.</code></pre>
 
         <!-- ===== TECHNIQUES ===== -->
         <div class="gsection">
-            <h2 data-jump="Core techniques">Step 3: The techniques that matter</h2>
+            <h2 data-jump="Core techniques">The techniques that matter</h2>
             <p class="muted">These are the named patterns you will see referenced everywhere. Learn the first four properly and you will handle 90% of real situations.</p>
 
             <div class="techs" style="margin-top:1rem;">
@@ -639,7 +639,7 @@ likely ask about this schema.</code></pre>
 
         <!-- ===== BEFORE AND AFTER ===== -->
         <div class="gsection">
-            <h2 data-jump="Before and after">Step 4: See the difference</h2>
+            <h2 data-jump="Before and after">See the difference</h2>
             <p class="muted">Three real situations, weak prompt versus strong prompt. Try both in any free chatbot and compare.</p>
 
             <h3 style="margin-top:1.1rem;">Debugging code</h3>
@@ -716,13 +716,13 @@ likely ask about this schema.</code></pre>
             </div>
         </div>
 
-        <!-- ===== 4-WEEK PLAN ===== -->
+        <!-- ===== 4-STEP PLAN ===== -->
         <div class="gsection">
-            <h2 data-jump="4-week plan">Your 4-week plan</h2>
-            <p class="muted">About 30 to 45 minutes a day. By the end you will have a small portfolio of prompts that solve real problems, which is genuinely worth showing in an interview.</p>
-            <div class="weeks">
-                <div class="week" data-reveal>
-                    <h3>Week 1 <span class="wtag">Foundations</span></h3>
+            <h2 data-jump="The 4-step plan">Your 4-step plan</h2>
+            <p class="muted">Go at your own pace. Each step takes a few days of focused practice. By the end you will have a small portfolio of prompts that solve real problems, which is genuinely worth showing in an interview.</p>
+            <div class="steps">
+                <div class="step" data-reveal>
+                    <h3>Step 1 <span class="wtag">Foundations</span></h3>
                     <ul>
                         <li>Read the Microsoft Learn and Google Cloud guides linked above</li>
                         <li>Learn the vocabulary table until the terms feel obvious</li>
@@ -731,8 +731,8 @@ likely ask about this schema.</code></pre>
                         <li><b>Deliverable:</b> a personal cheat sheet of your five best prompt templates</li>
                     </ul>
                 </div>
-                <div class="week" data-reveal data-reveal-delay="60">
-                    <h3>Week 2 <span class="wtag">Core techniques</span></h3>
+                <div class="step" data-reveal data-reveal-delay="60">
+                    <h3>Step 2 <span class="wtag">Core techniques</span></h3>
                     <ul>
                         <li>Practise zero-shot, few-shot, chain of thought, and role prompting</li>
                         <li>For each one, solve a real problem from your own work or study</li>
@@ -741,8 +741,8 @@ likely ask about this schema.</code></pre>
                         <li><b>Deliverable:</b> one prompt that reliably produces valid JSON you could feed into code</li>
                     </ul>
                 </div>
-                <div class="week" data-reveal>
-                    <h3>Week 3 <span class="wtag">Build something</span></h3>
+                <div class="step" data-reveal>
+                    <h3>Step 3 <span class="wtag">Build something</span></h3>
                     <ul>
                         <li>Pick a repetitive task you actually do and automate it with prompt chaining</li>
                         <li>Try the OpenAI or Azure OpenAI API from a script, not just the chat window</li>
@@ -751,8 +751,8 @@ likely ask about this schema.</code></pre>
                         <li><b>Deliverable:</b> a small working script or notebook that uses an LLM to do something useful</li>
                     </ul>
                 </div>
-                <div class="week" data-reveal data-reveal-delay="60">
-                    <h3>Week 4 <span class="wtag">Go deeper</span></h3>
+                <div class="step" data-reveal data-reveal-delay="60">
+                    <h3>Step 4 <span class="wtag">Go deeper</span></h3>
                     <ul>
                         <li>Learn function and tool calling, then build a tiny agent</li>
                         <li>Create a small evaluation set and measure your prompts objectively</li>
@@ -861,7 +861,7 @@ likely ask about this schema.</code></pre>
         </div>
         <div class="snap">
             <div class="cell"><div class="n" data-countup="12">12</div><div class="l">techniques covered</div></div>
-            <div class="cell"><div class="n" data-countup="4">4</div><div class="l">week plan</div></div>
+            <div class="cell"><div class="n" data-countup="4">4</div><div class="l">step plan</div></div>
             <div class="cell"><div class="n" data-countup="30" data-suffix="+">30+</div><div class="l">free resources</div></div>
             <div class="cell"><div class="n" data-countup="0" data-suffix="₹">0₹</div><div class="l">cost to start</div></div>
         </div>

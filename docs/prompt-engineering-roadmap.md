@@ -16,7 +16,7 @@
 4. [The techniques that matter](#step-3-the-techniques-that-matter)
 5. [Before and after examples](#step-4-see-the-difference)
 6. [Common mistakes](#common-mistakes-to-avoid)
-7. [Your 4-week plan](#your-4-week-plan)
+7. [Your 4-step plan](#your-4-step-plan)
 8. [Free resources](#free-resources)
 9. [Prompt quality checklist](#prompt-quality-checklist)
 
@@ -315,12 +315,12 @@ Explicitly asking for bluntness is what unlocks honest feedback.
 
 ---
 
-## Your 4-week plan
+## Your 4-step plan
 
-About 30 to 45 minutes a day. By the end you will have a small portfolio of prompts that
+Go at your own pace. Each step takes a few days of focused practice. By the end you will have a small portfolio of prompts that
 solve real problems, which is genuinely worth showing in an interview.
 
-### Week 1: Foundations
+### Step 1: Foundations
 - Read the Microsoft Learn and Google Cloud guides
 - Learn the vocabulary table until the terms feel obvious
 - Practise the five-part structure: role, task, context, format, constraints
@@ -328,7 +328,7 @@ solve real problems, which is genuinely worth showing in an interview.
 
 **Deliverable:** a personal cheat sheet of your five best prompt templates
 
-### Week 2: Core techniques
+### Step 2: Core techniques
 - Practise zero-shot, few-shot, chain of thought, and role prompting
 - For each one, solve a real problem from your own work or study
 - Learn delimiters and structured output (JSON, markdown tables)
@@ -336,7 +336,7 @@ solve real problems, which is genuinely worth showing in an interview.
 
 **Deliverable:** one prompt that reliably produces valid JSON you could feed into code
 
-### Week 3: Build something
+### Step 3: Build something
 - Pick a repetitive task you actually do and automate it with prompt chaining
 - Try the OpenAI or Azure OpenAI API from a script, not just the chat window
 - Explore [Semantic Kernel](https://learn.microsoft.com/en-us/semantic-kernel/overview/)
@@ -345,7 +345,7 @@ solve real problems, which is genuinely worth showing in an interview.
 
 **Deliverable:** a small working script or notebook that uses an LLM to do something useful
 
-### Week 4: Go deeper
+### Step 4: Go deeper
 - Learn function and tool calling, then build a tiny agent
 - Create a small evaluation set and measure your prompts objectively
 - Read about prompt injection and basic AI safety
