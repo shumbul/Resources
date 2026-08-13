@@ -94,14 +94,92 @@
         .mis strong { display:block; color:#b3261e; margin-bottom:.25rem; font-size:.95rem; }
         .mis span { font-size:.88rem; color:var(--text-secondary); }
 
-        @media (max-width:480px){
-            .guide-header { padding:2.2rem 0 1.8rem; }
-            .guide-title { font-size:1.75rem; }
-            .guide-sub { font-size:1rem; }
-            .guide-badges { gap:.4rem; }
-            .guide-badge { font-size:.78rem; padding:.28rem .65rem; }
-            .gsection { padding:1.2rem 1.1rem; }
-            .ptable th, .ptable td { padding:.5rem .45rem; font-size:.82rem; }
+        @media (max-width:640px){
+            /* header */
+            .guide-header { padding:2rem 0 1.7rem; margin-bottom:1.6rem; }
+            .guide-title { font-size:1.6rem; line-height:1.2; margin-bottom:.45rem; }
+            .guide-sub { font-size:.92rem; line-height:1.5; }
+            .guide-badges { gap:.35rem; margin-top:.9rem; }
+            .guide-badge { font-size:.72rem; padding:.25rem .6rem; }
+
+            /* tighten global rhythm: 1.7 line-height is what made this feel huge */
+            .gsection, .starter, .muted, .tech p, .week li, .res-card li,
+            .checklist li, .mis span, .pbox { line-height:1.5; }
+
+            /* sections */
+            .gsection { padding:1.05rem 1rem; border-radius:13px; margin-bottom:1.1rem; }
+            .gsection h2 { font-size:1.2rem; line-height:1.25; margin-bottom:.5rem; }
+            .gsection h3 { font-size:1rem; line-height:1.3; margin-top:1rem !important; }
+            .muted { font-size:.88rem; }
+            .gsection ul.muted { padding-left:1.1rem; }
+            .gsection ul.muted li { margin:.3rem 0; }
+
+            .starter { padding:.9rem 1rem; margin-bottom:1.1rem; }
+            .starter p { font-size:.86rem !important; }
+
+            /* stat band */
+            .snap { gap:.6rem; margin-bottom:1.1rem; }
+            .snap .cell { padding:.75rem .6rem; border-radius:11px; }
+            .snap .n { font-size:1.45rem; }
+            .snap .l { font-size:.74rem; line-height:1.3; margin-top:.25rem; }
+
+            /* technique cards */
+            .techs { gap:.7rem; }
+            .tech { padding:.9rem 1rem; border-radius:12px; gap:.4rem; }
+            .tech .ic { font-size:1.25rem; }
+            .tech h3 { font-size:.98rem; }
+            .tech p { font-size:.85rem; }
+            .tech .use { font-size:.8rem; }
+            .tech .lvl { font-size:.68rem; padding:.12rem .45rem; }
+
+            /* prompt compare boxes */
+            .compare { gap:.7rem; margin:.7rem 0; }
+            .pbox { padding:.75rem .9rem; font-size:.84rem; border-radius:10px; }
+            .pbox .tag { font-size:.66rem; margin-bottom:.4rem; }
+            .pbox div { font-size:.78rem !important; }
+
+            /* week plan */
+            .weeks { gap:.7rem; }
+            .week { padding:.9rem 1rem; border-radius:11px; }
+            .week h3 { font-size:.96rem; margin-bottom:.3rem; }
+            .week .wtag { font-size:.68rem; }
+            .week ul { padding-left:1.05rem; }
+            .week li { font-size:.84rem; margin:.22rem 0; }
+
+            /* resources */
+            .res-grid { gap:.7rem; }
+            .res-card { padding:.8rem .95rem; border-radius:11px; }
+            .res-card .cat { font-size:.69rem; margin-bottom:.4rem; }
+            .res-card ul { padding-left:1.05rem; }
+            .res-card li { font-size:.83rem; margin:.28rem 0; }
+
+            /* mistakes */
+            .mistakes { gap:.7rem; }
+            .mis { padding:.75rem .9rem; border-radius:11px; }
+            .mis strong { font-size:.88rem; }
+            .mis span { font-size:.81rem; }
+
+            /* checklist */
+            .checklist li { font-size:.86rem; padding:.35rem 0 .35rem 1.5rem; }
+
+            /* table */
+            .ptable th, .ptable td { padding:.45rem .4rem; font-size:.8rem; line-height:1.45; }
+            .ptable th { font-size:.7rem; }
+
+            /* code blocks */
+            pre { font-size:.76rem; line-height:1.5; padding:.8rem .9rem; border-radius:10px; }
+
+            /* next links */
+            .nextlinks { gap:.45rem; }
+            .nextlinks a { font-size:.84rem; padding:.45rem .75rem; }
+        }
+
+        @media (max-width:380px){
+            .guide-title { font-size:1.45rem; }
+            .gsection { padding:.9rem .85rem; }
+            .gsection h2 { font-size:1.12rem; }
+            .snap .n { font-size:1.3rem; }
+            .muted, .tech p { font-size:.85rem; }
         }
     </style>
 </head>
