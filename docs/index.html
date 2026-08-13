@@ -213,9 +213,14 @@
             line-height: 1.7;
         }
 
-        /* Start here lanes */
+        /* Start here lanes, reused by the subscribe row */
         .start-here {
             padding: 4rem 0 1rem;
+        }
+
+        .subscribe {
+            padding: 3rem 0 4rem;
+            background: var(--bg-secondary);
         }
 
         .lanes {
@@ -1367,6 +1372,33 @@
                         Take the quizzes →
                     </a>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="subscribe" aria-labelledby="subscribe-title">
+        <div class="container">
+            <h2 class="section-title" id="subscribe-title">Get the new ones</h2>
+            <p class="section-lede">No newsletter, no spam, no email address needed. Pick whichever you already use and the new guides come to you.</p>
+            <div class="lanes">
+                <a class="lane" href="./feed.xml">
+                    <span class="lane-icon" aria-hidden="true">📡</span>
+                    <h3>RSS feed</h3>
+                    <p>Every guide, new and updated, in your reader. Works with Feedly, Inoreader or anything else.</p>
+                    <span class="lane-go">Open the feed →</span>
+                </a>
+                <a class="lane" href="https://linkedin.com/in/shumbul" target="_blank" rel="noopener noreferrer">
+                    <span class="lane-icon" aria-hidden="true">💼</span>
+                    <h3>Follow on LinkedIn</h3>
+                    <p>Where most of these guides get shared first, with the shorter version in the post.</p>
+                    <span class="lane-go">Follow along →</span>
+                </a>
+                <a class="lane" href="https://github.com/shumbul/Resources" target="_blank" rel="noopener noreferrer">
+                    <span class="lane-icon" aria-hidden="true">⭐</span>
+                    <h3>Watch the repo</h3>
+                    <p>Star or watch on GitHub to see every change, and open an issue if something is out of date.</p>
+                    <span class="lane-go">Open on GitHub →</span>
+                </a>
             </div>
         </div>
     </section>

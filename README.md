@@ -47,11 +47,20 @@ Real AI that runs entirely in your browser. Free, private, and needs no API key.
 - **Prompt runner:** type any prompt and get a live streamed answer
 - **Bring your own key (optional):** point it at any OpenAI-compatible provider (Groq, OpenRouter) for a bigger model, still free
 
-### 🧩 [Component System Demo](https://shumbul.github.io/Resources/component-demo.html)
-Explore the modular component system used to build this website. Learn how to eliminate code duplication and build maintainable web pages.
-
 ### 💻 [DSA Practice Guide](https://shumbul.github.io/Resources/dsa-practice-guide.html)
 A pattern-based way to learn Data Structures and Algorithms. Learn the 8 core patterns, follow an 8-week plan, and practice with free resources.
+
+### 🧭 [AI-Era Job Hunt](https://shumbul.github.io/Resources/ai-era-job-hunt.html)
+The traditional job hunt is dead. How to get hired now: AI-augmented workflows, the human skills that still win, and public proof of work.
+
+### 🏢 [Big Tech Core Models](https://shumbul.github.io/Resources/big-tech-core-models.html)
+What the top companies actually do, how they make money, and the handful of business models they repeat. Useful context before any interview.
+
+### 🌱 [Git & GitHub Guide](https://shumbul.github.io/Resources/git-guide.html)
+The commands you use every day, the workflows teams expect, and the recovery moves for when something goes wrong.
+
+### ✍️ [Prompt Engineering Roadmap](https://shumbul.github.io/Resources/prompt-engineering-roadmap.html)
+Prompt engineering from zero: how LLMs actually work, the patterns that matter, and a step-by-step plan with free resources from Microsoft, Google and OpenAI.
 
 ### 🎯 [System Design Templates](https://shumbul.github.io/Resources/system-design-templates.html)
 A simple 6-step framework, reusable building blocks, and a worked example so you can think in systems, not just code.
@@ -110,19 +119,44 @@ The four pillars, overloading vs overriding, abstract vs interface, and SOLID, w
 ### 🏢 [Career Portals](https://shumbul.github.io/Resources/career-portals.html)
 Official career pages of 99 top tech companies (hiring in India, well-paying, popular) in one searchable place. Apply directly on company portals, bookmark it for your whole job hunt.
 
+## 📬 Site pages
+
+- [About](https://shumbul.github.io/Resources/about.html) - who writes this and why it is free
+- [Contact](https://shumbul.github.io/Resources/contact.html) - LinkedIn, GitHub, YouTube, email
+- [RSS feed](https://shumbul.github.io/Resources/feed.xml) - new and updated guides in your reader
+- [Sitemap](https://shumbul.github.io/Resources/sitemap.xml)
+
 ## 🛠️ Technical Implementation
 
-This website is built using a **modular component system** that eliminates code duplication and makes maintenance easier:
+A static site in `docs/`, served by GitHub Pages. No build step, no framework.
+
+### How a page is put together
+
+- **Styles load before paint.** `theme-variables.css`, `base.css`, `guide.css` and `theme-switcher.css` are real `<link rel="stylesheet">` tags, so a page is never shown unstyled. Never put a `<div data-component="...">` inside `<head>`: the parser closes `<head>` at the first `<div>` and the styles arrive late.
+- **Behaviour is one entry point.** `docs/functions/site.js` composes small ES modules (nav, footer, search, quick jump, progress, AI assistant, analytics, skip link), each in its own guard so one failure cannot take the page down.
+- **Body chrome is componentised.** `docs/components/` holds the few HTML fragments that `component-loader.js` injects into the body.
+- **Every page works without JavaScript.** Content is plain HTML, and a `<noscript>` block carries the main links.
 
 ### Features
-- **On-page AI assistant:** every guide has a free, private "Ask AI" helper that reads the current page and tailors it to you. Runs on your device (WebGPU), no key or server needed, with an optional bring-your-own-key mode.
-- **Reusable Components:** Header, footer, theme switcher, and navigation are centralized
-- **Theme System:** Multi-color theme switcher with persistent preferences
-- **Responsive Design:** Works seamlessly on desktop and mobile
-- **Component Loading:** Dynamic component loading with caching
-- **Template System:** Easy creation of new pages from templates
 
-See the [Component Demo](https://shumbul.github.io/Resources/component-demo.html) for a live example of how this system works!
+- **On-page AI assistant:** every guide has a free, private "Ask AI" helper that reads the current page. Runs on your device (WebGPU) with no key or server, warns before the first model download, times out instead of hanging, and offers bring-your-own-key as a fallback.
+- **Theme system:** multi-colour theme switcher with persistent preference.
+- **Search:** sidebar and homepage search across every guide, plus live search on the 404 page.
+- **Accessible by default:** skip link on every page, keyboard-reachable cards, visible focus rings.
+- **SEO and sharing:** per-page canonical, Open Graph and Twitter cards, `Article` and `BreadcrumbList` JSON-LD, `sitemap.xml`, `robots.txt` and an RSS feed.
+- **Privacy-friendly analytics:** cookieless and off by default. To switch it on, set `PROVIDER` and `SITE_ID` in `docs/functions/analytics.js` (GoatCounter, Plausible or Umami). Visitors sending Do Not Track or Global Privacy Control are never counted.
+
+### Contributing a guide
+
+Read [`docs/ADDING-A-RESOURCE.md`](docs/ADDING-A-RESOURCE.md). It has the exact `<head>` block, the shared CSS classes, and the five places a new guide must be linked. Keep `<meta name="last-updated">` current: it is shown under the guide title and used in the JSON-LD.
+
+### Checks that run on every pull request
+
+```bash
+npx htmlhint "docs/**/*.html"     # HTML lint
+node scripts/check-links.js       # internal links, anchors, canonical/og tags, sitemap and RSS
+npx @lhci/cli@0.15.x autorun      # Lighthouse budgets (lighthouserc.json)
+```
 
 ## 🌟 About
 
