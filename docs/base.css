@@ -198,6 +198,26 @@ footer {
     margin: 0 0.4rem;
 }
 
+/* Space for the site chrome that functions/site.js injects.
+   Reserving it here, before first paint, is what stops the page from jumping
+   when the topbar and sidebar appear. The html.js guard means visitors without
+   JavaScript (who never get the chrome) do not see an empty gap.
+   Values must match SIDEBAR_W and TOPBAR_H in functions/nav.js. */
+:root {
+    --sidebar-w: 250px;
+    --topbar-h: 56px;
+}
+
+html.js body {
+    padding-top: var(--topbar-h);
+}
+
+@media (min-width: 1024px) {
+    html.js body:not(.sidebar-collapsed) {
+        padding-left: var(--sidebar-w);
+    }
+}
+
 /* Theme switcher styles for individual theme colors */
 .theme-color {
     width: 20px;

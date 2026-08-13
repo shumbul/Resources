@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Tell CSS that JS is available, so base.css can reserve space for the
+         injected topbar and sidebar and the page never jumps. Runs before paint. -->
+    <script>document.documentElement.classList.add('js');</script>
     <title>Big Tech Business Models Explained | Resources by Shumbul Arifa</title>
     <meta name="description" content="A simple breakdown of what top companies actually do, how they make money, and the core business models they repeat.">
     <link rel="canonical" href="https://shumbul.github.io/Resources/big-tech-core-models.html">
@@ -19,6 +22,7 @@
     <link rel="stylesheet" href="./theme-switcher.css">
 
     <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+    <link rel="modulepreload" href="./functions/site.js?v=20260815b">
     <link rel="alternate" type="application/rss+xml" title="Resources by Shumbul Arifa" href="./feed.xml">
 
     <!-- Social share card -->
@@ -905,6 +909,7 @@
                         <div class="visual-chip"><strong>Meta</strong>Social engagement</div>
                     </div>
                 </div>
+                <p class="guide-updated"><span aria-hidden="true">🕒</span> Updated on <time datetime="2026-08-13">13 August 2026</time></p>
             </div>
         </div>
     </header>
@@ -1442,7 +1447,7 @@
             window.addEventListener('scroll', updateProgress, { passive: true });
         });
     </script>
-    <script type="module" src="./functions/site.js?v=20260815a"></script>
+    <script type="module" src="./functions/site.js?v=20260815b"></script>
     <noscript>
         <nav class="nojs-nav" aria-label="Site links without JavaScript">
             <div class="nojs-nav-inner">

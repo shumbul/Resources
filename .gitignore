@@ -4,3 +4,4 @@
 worker/.wrangler/
 
 _commitmsg.txt
+.lighthouseci/

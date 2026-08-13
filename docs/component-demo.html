@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Tell CSS that JS is available, so base.css can reserve space for the
+         injected topbar and sidebar and the page never jumps. Runs before paint. -->
+    <script>document.documentElement.classList.add('js');</script>
     <title>Component Demo | Resources by Shumbul Arifa</title>
     <meta name="description" content="Demonstration of the modular component system">
     <link rel="canonical" href="https://shumbul.github.io/Resources/component-demo.html">
@@ -20,6 +23,7 @@
     <link rel="stylesheet" href="./theme-switcher.css">
 
     <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+    <link rel="modulepreload" href="./functions/site.js?v=20260815b">
     <link rel="alternate" type="application/rss+xml" title="Resources by Shumbul Arifa" href="./feed.xml">
 
     <!-- Social share card -->
@@ -169,38 +173,34 @@
             </div>
 
             <div class="demo-card">
-                <h4>🔗 Back Navigation</h4>
-                <p>Customizable back navigation with hover effects (see above)</p>
-            </div>
-
-            <div class="demo-card">
                 <h4>👤 Footer</h4>
                 <p>Complete footer with social links and credits (see below)</p>
             </div>
 
             <div class="demo-card">
-                <h4>🧠 Head Common</h4>
-                <p>Common HTML head section with all CSS variables and base styles</p>
+                <h4>⚡ Scripts Common</h4>
+                <p>Shared inline script hooks used by every page</p>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>Styles are not components 🎨</h2>
+            <div class="demo-card">
+                <h3>Stylesheets load before paint</h3>
+                <p>Base and guide styles ship as real <code>&lt;link rel="stylesheet"&gt;</code> tags: <code>theme-variables.css</code>, <code>base.css</code>, <code>guide.css</code>, <code>theme-switcher.css</code>. A <code>data-component</code> placeholder inside <code>&lt;head&gt;</code> is invalid, so the browser moves it into the body and the page paints unstyled first.</p>
             </div>
 
             <div class="demo-card">
-                <h4>⚡ Scripts Common</h4>
-                <p>Common JavaScript functionality including theme switching and animations</p>
+                <h3>Behaviour lives in functions/</h3>
+                <p>Nav, footer, search, theme and the AI assistant are ES modules composed by <code>functions/site.js</code>, each wrapped in its own guard so one failure cannot take the page down.</p>
             </div>
         </div>
 
         <div class="demo-section">
             <h2>Creating New Pages 📝</h2>
             <div class="demo-card">
-                <h3>Use the Template</h3>
-                <p>Copy <code>components/page-template.html</code> and customize it for your new page.</p>
-            </div>
-
-            <div class="demo-card">
-                <h3>Or Use the Creator Script</h3>
-                <div class="code-block">
-node components/page-creator.js "my-page.html" "My Page Title" "My page description"
-                </div>
+                <h3>Copy a guide</h3>
+                <p>Duplicate an existing guide such as <code>dsa-practice-guide.html</code> and follow <code>ADDING-A-RESOURCE.md</code>. It has the exact head block to use, including canonical URL, Open Graph tags and JSON-LD.</p>
             </div>
         </div>
     </main>
@@ -214,7 +214,7 @@ node components/page-creator.js "my-page.html" "My Page Title" "My page descript
             console.log('Component demo page loaded successfully! 🎉');
         });
     </script>
-    <script type="module" src="./functions/site.js?v=20260815a"></script>
+    <script type="module" src="./functions/site.js?v=20260815b"></script>
     <noscript>
         <nav class="nojs-nav" aria-label="Site links without JavaScript">
             <div class="nojs-nav-inner">

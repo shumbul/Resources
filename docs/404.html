@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Tell CSS that JS is available, so base.css can reserve space for the
+         injected topbar and sidebar and the page never jumps. Runs before paint. -->
+    <script>document.documentElement.classList.add('js');</script>
     <title>Page not found (404) | Resources by Shumbul Arifa</title>
     <meta name="description" content="That page took a wrong turn. Here's a friendly 404 with quick links to get you back on the road.">
     <link rel="canonical" href="https://shumbul.github.io/Resources/404.html">
@@ -20,6 +23,7 @@
     <link rel="stylesheet" href="./theme-switcher.css">
 
     <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+    <link rel="modulepreload" href="./functions/site.js?v=20260815b">
     <link rel="alternate" type="application/rss+xml" title="Resources by Shumbul Arifa" href="./feed.xml">
 
     <!-- Social share card -->
@@ -131,7 +135,7 @@
     <div data-component="footer"></div>
     <div data-component="scripts-common"></div>
     <script src="./components/component-loader.js"></script>
-    <script type="module" src="./functions/site.js?v=20260815a"></script>
+    <script type="module" src="./functions/site.js?v=20260815b"></script>
 
     <script>
         // A handful of top destinations, rendered as cards. Kept in sync by hand

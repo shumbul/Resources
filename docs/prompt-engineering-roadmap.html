@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Tell CSS that JS is available, so base.css can reserve space for the
+         injected topbar and sidebar and the page never jumps. Runs before paint. -->
+    <script>document.documentElement.classList.add('js');</script>
     <title>Prompt Engineering Roadmap | Resources by Shumbul Arifa</title>
     <meta name="description" content="Learn prompt engineering from zero: how LLMs actually work, the patterns that matter, hands-on techniques, and a step-by-step plan with free resources from Microsoft, Google and OpenAI.">
     <link rel="canonical" href="https://shumbul.github.io/Resources/prompt-engineering-roadmap.html">
@@ -19,6 +22,7 @@
     <link rel="stylesheet" href="./theme-switcher.css">
 
     <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+    <link rel="modulepreload" href="./functions/site.js?v=20260815b">
     <link rel="alternate" type="application/rss+xml" title="Resources by Shumbul Arifa" href="./feed.xml">
 
     <!-- Social share card -->
@@ -362,6 +366,7 @@
                 <span class="guide-badge">🆓 All free resources</span>
                 <span class="guide-badge">🪜 4-step plan</span>
                 <span class="guide-badge">🔄 Updated 2026</span>
+                <p class="guide-updated"><span aria-hidden="true">🕒</span> Updated on <time datetime="2026-08-13">13 August 2026</time></p>
             </div>
         </div>
     </header>
@@ -937,7 +942,7 @@ likely ask about this schema.</code></pre>
     <div data-component="footer"></div>
     <div data-component="scripts-common"></div>
     <script src="./components/component-loader.js"></script>
-    <script type="module" src="./functions/site.js?v=20260815a"></script>
+    <script type="module" src="./functions/site.js?v=20260815b"></script>
 
     <script>
     (function () {

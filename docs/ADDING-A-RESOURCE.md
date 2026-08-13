@@ -13,28 +13,46 @@ Every guide has this skeleton:
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- Fonts: keep these three lines so text renders instantly (no flash) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Guide Title | Resources by Shumbul Arifa</title>
+    <meta name="description" content="One-line description.">
+    <link rel="canonical" href="https://shumbul.github.io/Resources/your-new-guide.html">
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap">
-    <div data-component="head-common"></div>
 
-    <title>Your Guide Title | Resources by Shumbul Arifa</title>
-    <meta name="description" content="One-line description.">
+    <!-- Styles: real stylesheets, so they apply before first paint -->
+    <link rel="stylesheet" href="./theme-variables.css">
+    <link rel="stylesheet" href="./base.css">
+    <link rel="stylesheet" href="./guide.css">
+    <link rel="stylesheet" href="./theme-switcher.css">
+
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+    <link rel="alternate" type="application/rss+xml" title="Resources by Shumbul Arifa" href="./feed.xml">
+
+    <!-- Social share card: og:url and canonical must point at THIS page -->
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Resources by Shumbul Arifa">
+    <meta property="og:title" content="Your Guide Title, in share-friendly words">
+    <meta property="og:description" content="One line that makes someone click on LinkedIn.">
+    <meta property="og:url" content="https://shumbul.github.io/Resources/your-new-guide.html">
+    <meta property="og:image" content="https://shumbul.github.io/Resources/assets/og-default.png">
+    <meta property="og:image:alt" content="Resources by Shumbul Arifa, free tech career guides">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="last-updated" content="2026-08-13">
+
+    <!-- Copy the Article + BreadcrumbList JSON-LD from any existing guide and
+         change headline, description, dateModified and the two URLs. -->
 
     <style>
-        /* Reuse the standard guide classes so widths and cards match every page */
-        .guide-header { background: linear-gradient(135deg, var(--primary), var(--secondary)); color:#fff; padding:3.5rem 0; text-align:center; margin-bottom:2.5rem; }
-        .guide-title { font-size:2.6rem; font-weight:800; margin-bottom:.6rem; color:#fff; }
-        .guide-sub { font-size:1.15rem; color:rgba(255,255,255,.94); max-width:680px; margin:0 auto; }
-        .gsection { background:var(--bg-secondary); border:1px solid var(--border); border-radius:16px; padding:1.6rem 1.75rem; margin-bottom:1.75rem; }
-        .starter { background:var(--bg-primary); border:1px solid var(--border); border-left:4px solid var(--primary); border-radius:12px; padding:1.1rem 1.3rem; margin-bottom:1.75rem; }
-        .muted { color:var(--text-secondary); }
+        /* Shared guide classes live in guide.css. Only add rules that are
+           genuinely unique to this page here. */
     </style>
 </head>
 <body>
     <div data-component="theme-switcher"></div>
-    <div data-component="back-nav"></div>
 
     <header class="guide-header">
         <div class="container">
@@ -64,21 +82,30 @@ Every guide has this skeleton:
     <div data-component="footer"></div>
     <div data-component="scripts-common"></div>
     <script src="./components/component-loader.js"></script>
-    <script type="module" src="./functions/site.js?v=20260731"></script>
+
+    <noscript>
+        <!-- Copy the whole <noscript> block from any existing guide: it is the
+             only navigation a visitor gets if JavaScript fails. -->
+    </noscript>
+
+    <script type="module" src="./functions/site.js?v=20260815b"></script>
 </body>
 </html>
 ```
 
-> **Cache-busting:** the `?v=20260731` on the `site.js` tag forces browsers to
+> **Cache-busting:** the `?v=` on the `site.js` tag forces browsers to
 > re-fetch the shared modules after a deploy. Use the **same version** the other
 > pages currently use. When you change any file in `functions/`, bump the version
 > in two places: this `?v=` on every page's `site.js` tag, and the matching
 > `?v=` on the imports inside `functions/site.js`.
 
 **Rules that keep parity with the rest of the site:**
+- Never put a `<div data-component="...">` inside `<head>`. HTML parsers close `<head>` at the first `<div>`, so the placeholder lands in `<body>` and anything it holds arrives after first paint. Styles belong in a stylesheet.
+- Reuse the shared classes in `guide.css` (`.guide-header`, `.guide-title`, `.guide-sub`, `.gsection`, `.starter`, `.gcard`, `.muted`, `.tbl`, `.nextlinks`). Only put page-unique rules in the inline `<style>`.
 - Use `.container` (already 1200px via the shared style) — do **not** set a custom `max-width`, or the page width will look inconsistent.
 - Use `var(--primary)` / `var(--secondary)` for the header gradient — never a hardcoded brand color, so it matches the theme and the theme switcher.
 - Wrap content sections in `.gsection` with an `<h2>` each.
+- Keep `<meta name="last-updated">` current. `functions/updated.js` renders it under the title, and it is the date readers use to judge whether the advice is stale.
 
 ## 2. What you get automatically (leverage these, don't rebuild them)
 
@@ -97,20 +124,24 @@ Just by including `functions/site.js`, the new page gets:
 
 Never copy nav/footer/quick-jump HTML into a page. If you need shared behavior that doesn't exist yet, add a small module in `functions/` (see `functions/README.md`) so **every** page can use it.
 
-## 3. Link the new guide in three places
+## 3. Link the new guide in five places
 
 1. **Sidebar** — add an entry to the right group in `docs/functions/nav.js` (the `GROUPS` array).
-2. **Homepage** — add a `.resource-card` (and optionally a `.bento-card`) in `docs/index.html`.
+2. **Homepage** — add a `.resource-card` (and optionally a `.bento-card`) in `docs/index.html`. Cards are plain links: the inner `<a class="resource-link">` stretches over the whole card, so never add an `onclick`.
 3. **README** — add a bullet under "Available Resources" in the repo `README.md`.
+4. **Sitemap** — add a `<url>` entry to `docs/sitemap.xml`. CI fails if an indexable page is missing.
+5. **RSS** — add an `<item>` to `docs/feed.xml` so subscribers see the new guide.
 
 ## 4. Validate before committing
 
 ```bash
 npx htmlhint "docs/**/*.html"     # HTML lint (CI runs this too)
+node scripts/check-links.js       # internal links + sitemap coverage (CI runs this too)
 ```
 Then open `docs/your-new-guide.html` through a local server (`python -m http.server` from `docs/`) and check:
 - Header is purple (theme), width matches other guides.
 - Quick Jump, sidebar, footer, and Ask AI all appear.
 - No horizontal scroll on mobile; text is readable on the header.
+- The page is styled the instant it appears (no unstyled flash). If it flashes, a stylesheet link is missing or misplaced.
 
 That's it. Content in, everything else is inherited.

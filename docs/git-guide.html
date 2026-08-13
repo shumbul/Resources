@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Tell CSS that JS is available, so base.css can reserve space for the
+         injected topbar and sidebar and the page never jumps. Runs before paint. -->
+    <script>document.documentElement.classList.add('js');</script>
     <title>Complete Git Guide | Resources by Shumbul Arifa</title>
     <meta name="description" content="Comprehensive Git guide with commands, workflows, and best practices for developers">
     <link rel="canonical" href="https://shumbul.github.io/Resources/git-guide.html">
@@ -19,6 +22,7 @@
     <link rel="stylesheet" href="./theme-switcher.css">
 
     <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+    <link rel="modulepreload" href="./functions/site.js?v=20260815b">
     <link rel="alternate" type="application/rss+xml" title="Resources by Shumbul Arifa" href="./feed.xml">
 
     <!-- Social share card -->
@@ -310,6 +314,7 @@
             <p class="git-subtitle">
                 Git can feel scary at first. It won't after this. Friendly, practical commands and workflows you'll actually use every day.
             </p>
+            <p class="guide-updated"><span aria-hidden="true">🕒</span> Updated on <time datetime="2026-08-13">13 August 2026</time></p>
         </div>
     </header>
 
@@ -354,12 +359,6 @@ git status           # what's going on? (use this constantly)</code></pre>
                 </div>
                 <div class="toc-item">
                     <a href="#stashing">Stashing</a>
-                </div>
-                <div class="toc-item">
-                    <a href="#tags">Tags</a>
-                </div>
-                <div class="toc-item">
-                    <a href="#advanced">Advanced Operations</a>
                 </div>
                 <div class="toc-item">
                     <a href="#workflows">Common Workflows</a>
@@ -1390,7 +1389,7 @@ logs/
             console.log('Git Guide loaded successfully! 🚀');
         });
     </script>
-    <script type="module" src="./functions/site.js?v=20260815a"></script>
+    <script type="module" src="./functions/site.js?v=20260815b"></script>
     <noscript>
         <nav class="nojs-nav" aria-label="Site links without JavaScript">
             <div class="nojs-nav-inner">

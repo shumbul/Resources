@@ -13,7 +13,14 @@ export function initAssistant() {
 
     const WEBLLM_URL = 'https://esm.run/@mlc-ai/web-llm';
     const DEFAULT_MODEL = 'Qwen2.5-1.5B-Instruct-q4f16_1-MLC';
+    const DEFAULT_MODEL_SIZE = 'about 1 GB';
     const BYOK_KEY = 'ai_tools_byok';
+    const ONDEVICE_CONSENT_KEY = 'ai_ondevice_consent';
+
+    // Nothing on a slow CDN or a stalled provider should leave the panel stuck
+    // on "loading" forever, so every network step gets a deadline.
+    const LIB_TIMEOUT_MS = 20000;   // downloading the WebLLM library from the CDN
+    const NET_TIMEOUT_MS = 25000;   // first response byte from a hosted provider
 
     // Set this to your deployed Cloudflare Worker URL (see worker/README.md).
     // When set, the assistant works for every visitor with no key and no GPU.
@@ -98,6 +105,12 @@ export function initAssistant() {
         font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.85em;}
     .ai-msg.bot a{color:var(--primary,#7c3aed);text-decoration:underline;}
     .ai-msg.bot br{line-height:.5;}
+    .ai-confirm{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.6rem;}
+    .ai-confirm button{border-radius:10px;cursor:pointer;padding:.4rem .7rem;
+        font:600 .8rem/1 Inter,Segoe UI,sans-serif;border:1px solid var(--border,#e5e7eb);}
+    .ai-confirm .ai-yes{border:none;color:#fff;
+        background:linear-gradient(135deg,var(--primary,#8b5cf6),var(--secondary,#7c3aed));}
+    .ai-confirm .ai-no{background:var(--bg-tertiary,#f1f5f9);color:var(--text-secondary,#555);}
     .ai-chips{display:flex;flex-wrap:wrap;gap:.4rem;padding:.6rem 1rem 0;}
     .ai-chip{font:500 .78rem/1 Inter,Segoe UI,sans-serif;padding:.45rem .7rem;border-radius:999px;cursor:pointer;
         background:var(--bg-tertiary,#f1f5f9);color:var(--text-secondary,#555);border:1px solid var(--border,#e5e7eb);}
@@ -200,7 +213,10 @@ export function initAssistant() {
 
     fab.onclick = () => {
         panel.classList.toggle('open');
-        if (panel.classList.contains('open')) input.focus();
+        if (panel.classList.contains('open')) {
+            input.focus();
+            try { window.__track?.('ask-ai-open'); } catch {}
+        }
         syncFabState();
     };
     $('aiClose').onclick = () => { panel.classList.remove('open'); syncFabState(); };
@@ -277,7 +293,56 @@ export function initAssistant() {
 
     class NeedKeyError extends Error {}
 
-    async function ensureEngine() {
+    // Reject if a promise has not settled in time, so a stalled CDN surfaces as
+    // a real error instead of an endless "loading model..." status.
+    function withTimeout(promise, ms, message) {
+        let timer;
+        const deadline = new Promise((_, reject) => {
+            timer = setTimeout(() => reject(new Error(message)), ms);
+        });
+        return Promise.race([promise, deadline]).finally(() => clearTimeout(timer));
+    }
+
+    // fetch that gives up if the provider never sends response headers. The timer
+    // is cleared as soon as headers arrive, so long streamed answers are safe.
+    async function fetchWithTimeout(url, options, ms = NET_TIMEOUT_MS) {
+        const ctrl = new AbortController();
+        const timer = setTimeout(() => ctrl.abort(), ms);
+        try {
+            return await fetch(url, { ...options, signal: ctrl.signal });
+        } catch (e) {
+            if (e && e.name === 'AbortError') throw new Error('timeout');
+            throw e;
+        } finally {
+            clearTimeout(timer);
+        }
+    }
+
+    // The first on-device run downloads a large model over the visitor's
+    // connection. Ask before spending their bandwidth, and remember the answer.
+    function confirmDownload(target) {
+        try { if (localStorage.getItem(ONDEVICE_CONSENT_KEY) === 'yes') return Promise.resolve(true); } catch {}
+        return new Promise((resolve) => {
+            const box = target || addMsg('bot', '');
+            box.innerHTML =
+                '<p><strong>Heads up before we start.</strong> Running the model on your device downloads ' +
+                DEFAULT_MODEL_SIZE + ' the first time. It is cached afterwards, so this happens once per browser. ' +
+                'Skip it on mobile data.</p>' +
+                '<div class="ai-confirm"><button type="button" class="ai-yes">Download and run</button>' +
+                '<button type="button" class="ai-no">Not now</button></div>';
+            box.querySelector('.ai-yes').onclick = () => {
+                try { localStorage.setItem(ONDEVICE_CONSENT_KEY, 'yes'); } catch {}
+                box.querySelector('.ai-confirm').remove();
+                resolve(true);
+            };
+            box.querySelector('.ai-no').onclick = () => {
+                box.querySelector('.ai-confirm').remove();
+                resolve(false);
+            };
+        });
+    }
+
+    async function ensureEngine(target) {
         // Proxy and BYOK need no local engine.
         if (mode() !== 'ondevice') return;
         if (engine) return;
@@ -292,17 +357,25 @@ export function initAssistant() {
         }
 
         if (loading) return;
+        if (!(await confirmDownload(target))) {
+            setStatus('on-device, off');
+            throw new NeedKeyError('No download started. You can ask again to start it, or paste a free Groq key below to run in the cloud instead.');
+        }
+
         loading = true;
         setStatus('loading model...');
         try {
-            const { CreateMLCEngine } = await import(WEBLLM_URL);
+            const { CreateMLCEngine } = await withTimeout(import(WEBLLM_URL), LIB_TIMEOUT_MS, 'timeout');
             engine = await CreateMLCEngine(DEFAULT_MODEL, {
-                initProgressCallback: (p) => setStatus('loading ' + Math.round((p.progress || 0) * 100) + '%'),
+                initProgressCallback: (p) => setStatus('downloading model ' + Math.round((p.progress || 0) * 100) + '%'),
             });
             setStatus('ready, on-device'); head.classList.add('ready');
         } catch (e) {
             setStatus('on-device unavailable');
-            throw new NeedKeyError('The on-device model could not start on this device. You can still use this for free: click "Use my own key instead" and paste a free Groq key. I opened it for you below.');
+            const timedOut = e && e.message === 'timeout';
+            throw new NeedKeyError(timedOut
+                ? 'The AI library did not download within 20 seconds, the CDN may be blocked or slow. Try again, or paste a free Groq key below to run in the cloud instead.'
+                : 'The on-device model could not start on this device. You can still use this for free: click "Use my own key instead" and paste a free Groq key. I opened it for you below.');
         } finally {
             loading = false;
         }
@@ -336,19 +409,41 @@ export function initAssistant() {
             return;
         }
         if (m === 'proxy') {
-            const res = await fetch(SHARED_PROXY_URL, {
-                method: 'POST', headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ messages, temperature: 0.7, max_tokens: 700, stream: true }),
-            });
+            let res;
+            try {
+                res = await fetchWithTimeout(SHARED_PROXY_URL, {
+                    method: 'POST', headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ messages, temperature: 0.7, max_tokens: 700, stream: true }),
+                });
+            } catch (e) {
+                throw new NeedKeyError(e && e.message === 'timeout'
+                    ? 'The free shared assistant did not answer within 25 seconds. Try again in a moment, or paste your own free Groq key below to stop depending on it.'
+                    : 'The free shared assistant could not be reached (you may be offline). Check your connection, or paste your own free Groq key below.');
+            }
+            // The shared quota belongs to the whole site, so one busy day can use it
+            // up for everyone. Say that plainly and offer the per-visitor way out.
+            if (res.status === 429) {
+                throw new NeedKeyError('The free shared quota for this site is used up right now. It is shared by every visitor and refills later. To carry on immediately, paste your own free Groq key below, it takes a minute and gives you your own quota.');
+            }
+            if (!res.ok) {
+                throw new NeedKeyError('The free shared assistant is unavailable right now (error ' + res.status + '). You can keep going by pasting your own free Groq key below.');
+            }
             await pipeSSE(res, target);
             return;
         }
         // byok
         const b = byok();
-        const res = await fetch(b.base.replace(/\/$/, '') + '/chat/completions', {
-            method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + b.key },
-            body: JSON.stringify({ model: b.model, messages, temperature: 0.7, max_tokens: 700, stream: true }),
-        });
+        let res;
+        try {
+            res = await fetchWithTimeout(b.base.replace(/\/$/, '') + '/chat/completions', {
+                method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + b.key },
+                body: JSON.stringify({ model: b.model, messages, temperature: 0.7, max_tokens: 700, stream: true }),
+            });
+        } catch (e) {
+            throw new Error(e && e.message === 'timeout'
+                ? 'Your provider did not answer within 25 seconds. Try again, or check the base URL and model in the key settings below.'
+                : 'Could not reach your provider. Check your connection and the base URL in the key settings below.');
+        }
         await pipeSSE(res, target);
     }
 
@@ -358,7 +453,7 @@ export function initAssistant() {
         addMsg('user', q);
         const bot = addMsg('bot', '');
         try {
-            await ensureEngine();
+            await ensureEngine(bot);
             const page = pageContext();
             const messages = [
                 { role: 'system', content: 'You are a concise, practical assistant embedded in a career-resources website. Ground your answers in the page context when relevant. Give specific, actionable output. Never use em dashes or en dashes, use plain punctuation.' },

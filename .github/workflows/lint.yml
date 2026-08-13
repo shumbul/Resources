@@ -1,4 +1,4 @@
-name: Lint HTML
+name: Checks
 
 on:
   push:
@@ -7,6 +7,7 @@ on:
 
 jobs:
   htmlhint:
+    name: HTML lint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -15,3 +16,31 @@ jobs:
           node-version: '20'
       - name: Run HTMLHint
         run: npx --yes htmlhint "docs/**/*.html"
+
+  links:
+    name: Internal links and metadata
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      # Catches a renamed page silently orphaning links, a guide missing from
+      # sitemap.xml, and any page with a wrong or missing canonical / og:url.
+      - name: Check internal links, sitemap and social tags
+        run: node scripts/check-links.js
+
+  lighthouse:
+    name: Lighthouse budget
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      # Budgets live in lighthouserc.json and sit a little below what the site
+      # scores today, so a real regression fails the PR but a slow runner does
+      # not. Guide pages still shift a little because the journey and quick-jump
+      # panels are injected after load; the budget stops that getting worse.
+      - name: Run Lighthouse CI
+        run: npx --yes @lhci/cli@0.15.x autorun --config=./lighthouserc.json

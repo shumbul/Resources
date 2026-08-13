@@ -49,8 +49,12 @@ export function initAnalytics() {
     document.head.appendChild(script);
 }
 
+if (typeof window !== 'undefined') window.__track = trackEvent;
+
 /* Count one meaningful interaction (for example the AI assistant being opened).
- * Safe to call whether or not analytics is configured. */
+ * Safe to call whether or not analytics is configured.
+ * Also exposed as window.__track so modules that are not imported by site.js
+ * (like the assistant) can report without importing this file. */
 export function trackEvent(name) {
     if (!PROVIDER || optedOut()) return;
     try {

@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Tell CSS that JS is available, so base.css can reserve space for the
+         injected topbar and sidebar and the page never jumps. Runs before paint. -->
+    <script>document.documentElement.classList.add('js');</script>
     <title>LinkedIn Optimization Guide | Resources by Shumbul Arifa</title>
     <meta name="description" content="Complete guide to optimizing your LinkedIn profile with AI-powered strategies, templates, and actionable tips to land your dream job">
     <link rel="canonical" href="https://shumbul.github.io/Resources/linkedin-utilization-guide.html">
@@ -19,6 +22,7 @@
     <link rel="stylesheet" href="./theme-switcher.css">
 
     <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+    <link rel="modulepreload" href="./functions/site.js?v=20260815b">
     <link rel="alternate" type="application/rss+xml" title="Resources by Shumbul Arifa" href="./feed.xml">
 
     <!-- Social share card -->
@@ -541,6 +545,7 @@
             <div class="header-content">
                 <h1>LinkedIn Utilization Guide</h1>
                 <p class="subtitle">Let's turn your profile into something recruiters actually notice. Simple, friendly tips (with AI to help) you can act on today.</p>
+                <p class="guide-updated"><span aria-hidden="true">🕒</span> Updated on <time datetime="2026-08-13">13 August 2026</time></p>
                 <div class="stats">
                     <div class="stat">
                         <span class="stat-number" data-countup="5" data-suffix="x">5x</span>
@@ -1393,7 +1398,7 @@ Make recommendations actionable and specific to my goals."
             });
         });
     </script>
-    <script type="module" src="./functions/site.js?v=20260815a"></script>
+    <script type="module" src="./functions/site.js?v=20260815b"></script>
     <noscript>
         <nav class="nojs-nav" aria-label="Site links without JavaScript">
             <div class="nojs-nav-inner">

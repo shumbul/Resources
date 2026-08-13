@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Tell CSS that JS is available, so base.css can reserve space for the
+         injected topbar and sidebar and the page never jumps. Runs before paint. -->
+    <script>document.documentElement.classList.add('js');</script>
     <title>About | Resources by Shumbul Arifa</title>
     <meta name="description" content="About Shumbul Arifa, a Software Engineer at Microsoft with 4+ years of experience, and this collection of free, friendly tech-career resources built to help you break into tech.">
     <link rel="canonical" href="https://shumbul.github.io/Resources/about.html">
@@ -19,6 +22,7 @@
     <link rel="stylesheet" href="./theme-switcher.css">
 
     <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+    <link rel="modulepreload" href="./functions/site.js?v=20260815b">
     <link rel="alternate" type="application/rss+xml" title="Resources by Shumbul Arifa" href="./feed.xml">
 
     <!-- Social share card -->
@@ -89,7 +93,10 @@
                     <p class="muted">Everything here is written to be read on a coffee break and acted on the same day.</p>
                 </div>
                 <div class="photo-frame">
-                    <img src="./assets/shumbul-microsoft.jpeg" alt="Shumbul Arifa at a Microsoft office, pointing at the Microsoft building sign" loading="lazy" width="713" height="765">
+                    <picture>
+                        <source type="image/webp" srcset="./assets/shumbul-microsoft-480.webp 480w, ./assets/shumbul-microsoft-713.webp 713w" sizes="(max-width: 760px) 92vw, 380px">
+                        <img src="./assets/shumbul-microsoft-713.jpeg" srcset="./assets/shumbul-microsoft-480.jpeg 480w, ./assets/shumbul-microsoft-713.jpeg 713w" sizes="(max-width: 760px) 92vw, 380px" alt="Shumbul Arifa at a Microsoft office, pointing at the Microsoft building sign" loading="lazy" decoding="async" width="713" height="756">
+                    </picture>
                     <span class="chip">📍 Microsoft</span>
                 </div>
             </div>
@@ -98,7 +105,10 @@
         <div class="gsection">
             <div class="intro">
                 <div class="photo-frame">
-                    <img src="./assets/shumbul-campus.jpeg" alt="Shumbul Arifa on a Microsoft campus in the evening" loading="lazy" width="713" height="1141">
+                    <picture>
+                        <source type="image/webp" srcset="./assets/shumbul-campus-480.webp 480w, ./assets/shumbul-campus-713.webp 713w" sizes="(max-width: 760px) 92vw, 380px">
+                        <img src="./assets/shumbul-campus-713.jpeg" srcset="./assets/shumbul-campus-480.jpeg 480w, ./assets/shumbul-campus-713.jpeg 713w" sizes="(max-width: 760px) 92vw, 380px" alt="Shumbul Arifa on a Microsoft campus in the evening" loading="lazy" decoding="async" width="713" height="1141">
+                    </picture>
                     <span class="chip">🌙 On campus</span>
                 </div>
                 <div>
@@ -138,7 +148,7 @@
     <div data-component="footer"></div>
     <div data-component="scripts-common"></div>
     <script src="./components/component-loader.js"></script>
-    <script type="module" src="./functions/site.js?v=20260815a"></script>
+    <script type="module" src="./functions/site.js?v=20260815b"></script>
     <noscript>
         <nav class="nojs-nav" aria-label="Site links without JavaScript">
             <div class="nojs-nav-inner">
