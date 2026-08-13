@@ -1,0 +1,7 @@
+# Resources by Shumbul Arifa
+User-agent: *
+Allow: /
+
+# No crawl-delay needed, this is a small static site.
+
+Sitemap: https://shumbul.github.io/Resources/sitemap.xml

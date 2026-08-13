@@ -712,8 +712,9 @@
         </div>
     </header>
 
-    <section class="bento-section">
+    <section class="bento-section" aria-labelledby="featuredHeading">
         <div class="container">
+            <h2 id="featuredHeading" class="sr-only">Featured resources</h2>
             <div class="bento">
                 <!-- Big feature: AI Tools -->
                 <a class="bento-card bento-lg bento-violet" href="./ai-tools.html">
@@ -860,6 +861,7 @@
                 </div>
             </div>
             
+            <h2 class="sr-only">All resources</h2>
             <div class="resources-grid">
                 <div class="resource-card animate-in clickable" onclick="window.location.href='./12-week-roadmap.html'">
                     <div class="resource-icon">📋</div>
@@ -1508,6 +1510,6 @@
             });
         }
     </script>
-    <script type="module" src="./functions/site.js?v=20260814b"></script>
+    <script type="module" src="./functions/site.js?v=20260814d"></script>
 </body>
 </html>

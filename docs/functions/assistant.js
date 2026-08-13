@@ -110,6 +110,20 @@ export function initAssistant() {
     .ai-send{border:none;border-radius:12px;padding:0 .95rem;cursor:pointer;color:#fff;font-weight:600;
         background:linear-gradient(135deg,var(--primary,#8b5cf6),var(--secondary,#7c3aed));}
     .ai-send:disabled{opacity:.5;cursor:not-allowed;}
+    .ai-mic{border:1px solid var(--border,#e5e7eb);border-radius:12px;width:42px;flex:0 0 42px;
+        cursor:pointer;background:var(--bg-primary,#fff);font-size:1.05rem;line-height:1;
+        display:inline-flex;align-items:center;justify-content:center;position:relative;
+        transition:background .18s ease,border-color .18s ease,transform .18s ease;}
+    .ai-mic:hover{border-color:var(--primary,#8b5cf6);background:var(--bg-tertiary,#f1f5f9);}
+    .ai-mic:focus-visible{outline:2px solid var(--primary,#8b5cf6);outline-offset:2px;}
+    .ai-mic[hidden]{display:none;}
+    .ai-mic.rec{border-color:#ef4444;background:rgba(239,68,68,.10);
+        animation:aiMicPulse 1.3s ease-in-out infinite;}
+    @keyframes aiMicPulse{0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,.45);}
+        70%{box-shadow:0 0 0 9px rgba(239,68,68,0);}}
+    .ai-mic.rec::after{content:'';position:absolute;top:5px;right:5px;width:6px;height:6px;
+        border-radius:50%;background:#ef4444;}
+    @media (prefers-reduced-motion:reduce){.ai-mic.rec{animation:none;}}
     .ai-note{font:400 .72rem/1.4 Inter,Segoe UI,sans-serif;color:var(--text-secondary,#777);}
     .ai-note a{color:var(--primary,#8b5cf6);cursor:pointer;text-decoration:underline;}
     .ai-byok{display:none;flex-direction:column;gap:.4rem;padding:.4rem 0;}
@@ -163,6 +177,7 @@ export function initAssistant() {
       <div class="ai-foot">
         <div class="ai-inrow">
           <textarea class="ai-in" id="aiIn" placeholder="Ask about this page..."></textarea>
+          <button class="ai-mic" id="aiMic" type="button" title="Speak your question" aria-label="Speak your question">&#127908;</button>
           <button class="ai-send" id="aiSend">Send</button>
         </div>
         <div class="ai-note" id="aiNote">First message loads a small model (a one-time download). <a id="aiByokToggle">Use my own key instead</a></div>
@@ -197,6 +212,67 @@ export function initAssistant() {
         fab.classList.toggle('is-quiet', open);
         fab.setAttribute('aria-expanded', open ? 'true' : 'false');
     }
+
+    // ---------- voice input (Web Speech API, on-device in most browsers) ----------
+    (function setupMic() {
+        const mic = $('aiMic');
+        if (!mic) return;
+        const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+        if (!SR) { mic.hidden = true; return; }   // unsupported, hide rather than break
+
+        const rec = new SR();
+        rec.lang = document.documentElement.lang || 'en-US';
+        rec.interimResults = true;
+        rec.continuous = false;
+        rec.maxAlternatives = 1;
+
+        let listening = false;
+        let baseText = '';
+
+        function setListening(on) {
+            listening = on;
+            mic.classList.toggle('rec', on);
+            mic.setAttribute('aria-label', on ? 'Stop listening' : 'Speak your question');
+            mic.title = on ? 'Listening, click to stop' : 'Speak your question';
+            if (on) input.setAttribute('placeholder', 'Listening...');
+            else input.setAttribute('placeholder', 'Ask about this page...');
+        }
+
+        mic.addEventListener('click', () => {
+            if (listening) { rec.stop(); return; }
+            baseText = input.value.trim();
+            try { rec.start(); } catch (_) { /* already started */ }
+        });
+
+        rec.onstart = () => setListening(true);
+
+        rec.onresult = (e) => {
+            let txt = '';
+            for (let i = e.resultIndex; i < e.results.length; i++) {
+                txt += e.results[i][0].transcript;
+            }
+            input.value = (baseText ? baseText + ' ' : '') + txt.trim();
+            input.dispatchEvent(new Event('input', { bubbles: true }));
+        };
+
+        rec.onerror = (e) => {
+            setListening(false);
+            if (e.error === 'not-allowed' || e.error === 'service-not-allowed') {
+                input.setAttribute('placeholder', 'Microphone blocked. Allow access in your browser.');
+                setTimeout(() => input.setAttribute('placeholder', 'Ask about this page...'), 4000);
+            }
+        };
+
+        rec.onend = () => {
+            setListening(false);
+            input.focus();
+        };
+
+        // stop listening if the panel closes
+        panel.addEventListener('transitionend', () => {
+            if (!panel.classList.contains('open') && listening) rec.stop();
+        });
+    })();
 
     fab.onclick = () => {
         panel.classList.toggle('open');
