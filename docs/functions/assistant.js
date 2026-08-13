@@ -35,9 +35,42 @@ export function initAssistant() {
     .ai-fab{position:fixed;right:20px;bottom:20px;z-index:9998;display:inline-flex;align-items:center;gap:.55rem;
         padding:.7rem 1.05rem;border:none;border-radius:999px;cursor:pointer;font:600 .95rem/1 Inter,Segoe UI,sans-serif;
         color:#fff;background:linear-gradient(135deg,var(--primary,#8b5cf6),var(--secondary,#7c3aed));
-        box-shadow:0 8px 24px rgba(124,58,237,.45);transition:transform .2s ease, box-shadow .2s ease;}
-    .ai-fab:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(124,58,237,.55);}
-    .ai-fab .spark{font-size:1.1rem;filter:drop-shadow(0 0 6px rgba(255,255,255,.6));}
+        box-shadow:0 8px 24px rgba(124,58,237,.45);
+        transition:transform .2s ease, box-shadow .2s ease;
+        animation:aiFabBreathe 2.8s ease-in-out infinite;}
+    /* breathing glow: shadow expands and contracts */
+    @keyframes aiFabBreathe{
+        0%,100%{box-shadow:0 8px 24px rgba(124,58,237,.45),
+                            0 0 0 0 rgba(124,58,237,.30);}
+        50%    {box-shadow:0 10px 30px rgba(124,58,237,.60),
+                            0 0 22px 6px rgba(124,58,237,.22);}
+    }
+    /* expanding halo ring that pulses outward */
+    .ai-fab::after{content:'';position:absolute;inset:0;border-radius:999px;
+        border:2px solid rgba(124,58,237,.55);pointer-events:none;
+        animation:aiFabRipple 2.8s ease-out infinite;}
+    @keyframes aiFabRipple{
+        0%  {transform:scale(1);opacity:.55;}
+        70% {transform:scale(1.28);opacity:0;}
+        100%{transform:scale(1.28);opacity:0;}
+    }
+    /* pause the attention animation once hovered or focused */
+    .ai-fab:hover,.ai-fab:focus-visible{transform:translateY(-2px);
+        box-shadow:0 12px 30px rgba(124,58,237,.55);animation:none;}
+    .ai-fab:hover::after,.ai-fab:focus-visible::after{animation:none;opacity:0;}
+    /* stop drawing attention while the panel is open */
+    .ai-fab.is-quiet{animation:none;}
+    .ai-fab.is-quiet::after{animation:none;opacity:0;}
+    .ai-fab .spark{font-size:1.1rem;filter:drop-shadow(0 0 6px rgba(255,255,255,.6));
+        animation:aiSparkGlow 2.8s ease-in-out infinite;}
+    @keyframes aiSparkGlow{
+        0%,100%{filter:drop-shadow(0 0 6px rgba(255,255,255,.6));transform:scale(1);}
+        50%    {filter:drop-shadow(0 0 11px rgba(255,255,255,.95));transform:scale(1.12);}
+    }
+    @media (prefers-reduced-motion:reduce){
+        .ai-fab,.ai-fab .spark{animation:none;}
+        .ai-fab::after{animation:none;opacity:0;}
+    }
     .ai-panel{position:fixed;right:20px;bottom:84px;z-index:9999;width:min(400px,calc(100vw - 40px));
         height:min(560px,calc(100vh - 120px));display:none;flex-direction:column;overflow:hidden;
         border-radius:18px;border:1px solid rgba(255,255,255,.14);
@@ -159,8 +192,19 @@ export function initAssistant() {
         chipWrap.appendChild(c);
     });
 
-    fab.onclick = () => { panel.classList.toggle('open'); if (panel.classList.contains('open')) input.focus(); };
-    $('aiClose').onclick = () => panel.classList.remove('open');
+    function syncFabState() {
+        const open = panel.classList.contains('open');
+        fab.classList.toggle('is-quiet', open);
+        fab.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+
+    fab.onclick = () => {
+        panel.classList.toggle('open');
+        if (panel.classList.contains('open')) input.focus();
+        syncFabState();
+    };
+    $('aiClose').onclick = () => { panel.classList.remove('open'); syncFabState(); };
+    syncFabState();
 
     // BYOK
     function byok() { try { return JSON.parse(localStorage.getItem(BYOK_KEY) || '{}'); } catch { return {}; } }

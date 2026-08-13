@@ -14,21 +14,21 @@
  *   2. the ?v=... on the site.js <script> tag in the HTML pages
  *      (docs uses a single value; see ADDING-A-RESOURCE.md).
  */
-import { ensureMeta } from './meta.js?v=20260731';
-import { renderNav } from './nav.js?v=20260731';
-import { renderFooter } from './footer.js?v=20260731';
-import { renderBackLink } from './header.js?v=20260731';
-import { initCopyButtons } from './copyButtons.js?v=20260731';
-import { initProgress } from './progress.js?v=20260731';
-import { initAssistant } from './assistant.js?v=20260731';
-import { makeScrollablesFocusable } from './a11y.js?v=20260731';
-import { initMotion } from './motion.js?v=20260731';
-import { initJourney } from './journey.js?v=20260731';
-import { initTypewriter } from './typewriter.js?v=20260731';
-import { initQuickJump } from './quickjump.js?v=20260731';
-import { initQuizzes } from './quiz.js?v=20260731';
-import { initFlowMaps } from './flow.js?v=20260731';
-import { initPractice } from './practice.js?v=20260731';
+import { ensureMeta } from './meta.js?v=20260814b';
+import { renderNav } from './nav.js?v=20260814b';
+import { renderFooter } from './footer.js?v=20260814b';
+import { renderBackLink } from './header.js?v=20260814b';
+import { initCopyButtons } from './copyButtons.js?v=20260814b';
+import { initProgress } from './progress.js?v=20260814b';
+import { initAssistant } from './assistant.js?v=20260814b';
+import { makeScrollablesFocusable } from './a11y.js?v=20260814b';
+import { initMotion } from './motion.js?v=20260814b';
+import { initJourney } from './journey.js?v=20260814b';
+import { initTypewriter } from './typewriter.js?v=20260814b';
+import { initQuickJump } from './quickjump.js?v=20260814b';
+import { initQuizzes } from './quiz.js?v=20260814b';
+import { initFlowMaps } from './flow.js?v=20260814b';
+import { initPractice } from './practice.js?v=20260814b';
 
 const STEPS = [
     ['meta', ensureMeta],

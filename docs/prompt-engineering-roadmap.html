@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap">
+    <meta charset="UTF-8">
+    <div data-component="head-common"></div>
+    <title>Prompt Engineering Roadmap | Resources by Shumbul Arifa</title>
+    <meta name="description" content="Learn prompt engineering from zero: how LLMs actually work, the patterns that matter, hands-on techniques, and a step-by-step plan with free resources from Microsoft, Google and OpenAI.">
+    <meta property="og:title" content="Prompt Engineering Roadmap - from zero to confident">
+    <meta property="og:description" content="A practical, beginner-friendly roadmap to prompt engineering with free resources, real examples, and a step-by-step plan.">
+
+    <style>
+        .guide-header { background: linear-gradient(135deg, var(--primary), var(--secondary)); color:#fff; padding:3.5rem 0; text-align:center; margin-bottom:2.5rem; }
+        .guide-title { font-size:2.6rem; font-weight:800; margin-bottom:.6rem; color:#fff; }
+        .guide-sub { font-size:1.15rem; color:rgba(255,255,255,.94); max-width:720px; margin:0 auto; }
+        .guide-badges { display:flex; gap:.5rem; justify-content:center; flex-wrap:wrap; margin-top:1.2rem; }
+        .guide-badge { background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.4); padding:.35rem .8rem; border-radius:999px; font-size:.85rem; font-weight:600; }
+
+        .starter { background:var(--bg-primary); border:1px solid var(--border); border-left:4px solid var(--primary); border-radius:12px; padding:1.1rem 1.3rem; margin-bottom:1.75rem; }
+        .gsection { background:var(--bg-secondary); border:1px solid var(--border); border-radius:16px; padding:1.6rem 1.75rem; margin-bottom:1.75rem; }
+        .gsection h2 { margin-top:0; }
+        .muted { color:var(--text-secondary); }
+
+        .snap { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin:0 0 1.75rem; }
+        .snap .cell { background:var(--bg-secondary); border:1px solid var(--border); border-radius:14px; padding:1.1rem 1rem; text-align:center; }
+        .snap .n { font-family:var(--font-display,sans-serif); font-size:1.9rem; font-weight:700; color:var(--primary); line-height:1; }
+        .snap .l { font-size:.85rem; color:var(--text-secondary); margin-top:.35rem; }
+        @media (max-width:700px){ .snap { grid-template-columns:repeat(2,1fr); } }
+
+        /* prompt comparison blocks */
+        .compare { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:.9rem 0; }
+        @media (max-width:760px){ .compare { grid-template-columns:1fr; } }
+        .pbox { border-radius:12px; padding:.9rem 1.1rem; font-size:.9rem; line-height:1.55; }
+        .pbox .tag { display:inline-block; font-size:.72rem; font-weight:700; text-transform:uppercase; letter-spacing:.06em; padding:.15rem .55rem; border-radius:999px; margin-bottom:.5rem; }
+        .pbox.bad { background:#fdecec; border:1px solid #f3b9b4; color:#7d2018; }
+        .pbox.bad .tag { background:#f3b9b4; color:#7d2018; }
+        .pbox.good { background:#e7f6ee; border:1px solid #a9dcc0; color:#0b5c34; }
+        .pbox.good .tag { background:#a9dcc0; color:#0b5c34; }
+        .pbox code { background:rgba(0,0,0,.06); padding:.1rem .3rem; border-radius:4px; font-size:.86em; }
+
+        pre { background:#0f172a; color:#e2e8f0; border-radius:12px; padding:1rem 1.2rem; overflow-x:auto; font-size:.86rem; line-height:1.6; margin:.6rem 0; max-width:100%; box-sizing:border-box; }
+        pre code { font-family:ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace; }
+
+        /* technique cards */
+        .techs { display:grid; grid-template-columns:repeat(2,1fr); gap:1.1rem; }
+        @media (max-width:820px){ .techs { grid-template-columns:1fr; } }
+        .tech { background:var(--bg-primary); border:1px solid var(--border); border-radius:14px; padding:1.25rem 1.35rem; display:flex; flex-direction:column; gap:.5rem; }
+        .tech .top { display:flex; align-items:center; gap:.6rem; }
+        .tech .ic { font-size:1.5rem; line-height:1; }
+        .tech h3 { margin:0; font-size:1.12rem; }
+        .tech .lvl { display:inline-flex; align-items:center; gap:.3rem; font-size:.72rem; font-weight:700; padding:.15rem .5rem; border-radius:999px; align-self:flex-start; }
+        .lvl.b { background:#e7f6ee; color:#0b7a43; border:1px solid #a9dcc0; }
+        .lvl.i { background:#fff3e0; color:#9a5b00; border:1px solid #f2cf9a; }
+        .lvl.a { background:#f3e8ff; color:#6b21a8; border:1px solid #d8b4fe; }
+        .tech p { margin:0; font-size:.92rem; }
+        .tech .use { font-size:.86rem; color:var(--text-secondary); }
+
+        /* step plan */
+        .steps { display:grid; gap:1rem; }
+        .step { background:var(--bg-primary); border:1px solid var(--border); border-left:4px solid var(--primary); border-radius:12px; padding:1.1rem 1.3rem; }
+        .step h3 { margin:0 0 .4rem; font-size:1.08rem; display:flex; align-items:center; gap:.5rem; flex-wrap:wrap; }
+        .step .wtag { font-size:.72rem; font-weight:700; background:var(--bg-tertiary); border:1px solid var(--border); padding:.12rem .5rem; border-radius:999px; color:var(--text-secondary); }
+        .step ul { margin:.4rem 0 0; padding-left:1.15rem; }
+        .step li { margin:.25rem 0; font-size:.92rem; }
+
+        /* resource cards */
+        .res-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:.9rem; }
+        @media (max-width:760px){ .res-grid { grid-template-columns:1fr; } }
+        .res-card { background:var(--bg-primary); border:1px solid var(--border); border-radius:12px; padding:1rem 1.15rem; }
+        .res-card .cat { font-size:.74rem; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:var(--primary); margin:0 0 .5rem; }
+        .res-card ul { margin:0; padding-left:1.15rem; }
+        .res-card li { margin:.32rem 0; font-size:.9rem; }
+        .res-card a { color:var(--primary); text-decoration:underline; }
+        .res-card a:hover { color:var(--secondary); }
+
+        .checklist { list-style:none; padding:0; margin:.5rem 0 0; }
+        .checklist li { padding:.4rem 0 .4rem 1.7rem; position:relative; font-size:.94rem; border-bottom:1px solid var(--border); }
+        .checklist li:last-child { border-bottom:none; }
+        .checklist li::before { content:"✓"; position:absolute; left:0; color:var(--primary); font-weight:700; }
+
+        .ptable { width:100%; border-collapse:collapse; }
+        .ptable th, .ptable td { text-align:left; padding:.6rem .7rem; border-bottom:1px solid var(--border); font-size:.9rem; vertical-align:top; }
+        .ptable th { color:var(--text-secondary); font-size:.78rem; text-transform:uppercase; letter-spacing:.04em; }
+
+        .nextlinks { display:flex; flex-wrap:wrap; gap:.6rem; }
+        .nextlinks a { text-decoration:none; background:var(--bg-primary); border:1px solid var(--border); border-radius:10px; padding:.55rem .9rem; font-weight:600; color:var(--text-primary); }
+        .nextlinks a:hover { border-color:var(--primary); color:var(--primary); }
+
+        .mistakes { display:grid; grid-template-columns:repeat(2,1fr); gap:.9rem; }
+        @media (max-width:760px){ .mistakes { grid-template-columns:1fr; } }
+        .mis { background:var(--bg-primary); border:1px solid var(--border); border-radius:12px; padding:.9rem 1.1rem; }
+        .mis strong { display:block; color:#b3261e; margin-bottom:.25rem; font-size:.95rem; }
+        .mis span { font-size:.88rem; color:var(--text-secondary); }
+
+        /* ===== VISUAL ROADMAP ===== */
+        .roadmap { position:relative; margin-top:1rem; }
+        .road-svg { width:100%; height:auto; display:block; overflow:visible; }
+
+        .road-base { fill:none; stroke:var(--border); stroke-width:22; stroke-linecap:round; }
+        .road-dash { fill:none; stroke:url(#roadGrad); stroke-width:3; stroke-linecap:round;
+                     stroke-dasharray:14 20; animation:roadFlow 2.4s linear infinite; }
+        @keyframes roadFlow { to { stroke-dashoffset:-68; } }
+        .road-progress { fill:none; stroke:var(--primary); stroke-width:5; stroke-linecap:round;
+                         stroke-dasharray:1800; stroke-dashoffset:1800; opacity:.85; }
+        .roadmap.is-live .road-progress { animation:roadDraw 2.6s cubic-bezier(.4,0,.2,1) forwards .2s; }
+        @keyframes roadDraw { to { stroke-dashoffset:0; } }
+
+        /* traveller */
+        .traveller { opacity:0; }
+        .roadmap.is-live .traveller { animation:travShow .3s ease forwards .3s; }
+        @keyframes travShow { to { opacity:1; } }
+        .trav-halo { fill:var(--primary); opacity:.22; }
+        .roadmap.is-live .trav-halo { animation:pulseHalo 1.7s ease-in-out infinite .6s; }
+        @keyframes pulseHalo { 0%,100%{ r:15; opacity:.22; } 50%{ r:21; opacity:.08; } }
+        .trav-dot { fill:var(--primary); stroke:var(--bg-secondary); stroke-width:3; }
+
+        /* stops */
+        .stop { cursor:pointer; outline:none; }
+        .stop-ring { fill:var(--bg-secondary); stroke:var(--border); stroke-width:2.5;
+                     transition:stroke .25s, r .25s; }
+        .stop-fill { fill:var(--bg-tertiary); stroke:var(--border); stroke-width:1.5;
+                     transition:fill .25s, stroke .25s; }
+        .stop-num { font-size:16px; font-weight:800; fill:var(--text-secondary);
+                    text-anchor:middle; dominant-baseline:central; transition:fill .25s;
+                    font-family:var(--font-display,sans-serif); }
+        .stop-label { font-size:14px; font-weight:700; fill:var(--text-primary); text-anchor:middle; }
+        .stop-step { font-size:11px; font-weight:600; fill:var(--text-secondary);
+                     text-anchor:middle; letter-spacing:.04em; }
+
+        .stop:hover .stop-ring,
+        .stop:focus-visible .stop-ring,
+        .stop.is-on .stop-ring { stroke:var(--primary); }
+        .stop:hover .stop-fill,
+        .stop:focus-visible .stop-fill,
+        .stop.is-on .stop-fill { fill:var(--primary); stroke:var(--primary); }
+        .stop:hover .stop-num,
+        .stop:focus-visible .stop-num,
+        .stop.is-on .stop-num { fill:#fff; }
+        .stop.is-on .stop-ring { filter:url(#stopGlow); }
+        .stop:focus-visible .stop-ring { stroke-width:4; }
+
+        /* reveal stops one by one */
+        .stop { opacity:0; transform:scale(.55); transform-origin:center;
+                transform-box:fill-box; }
+        .roadmap.is-live .stop { animation:stopPop .45s cubic-bezier(.34,1.5,.64,1) forwards; }
+        .roadmap.is-live .stop[data-stop="1"] { animation-delay:.35s; }
+        .roadmap.is-live .stop[data-stop="2"] { animation-delay:.95s; }
+        .roadmap.is-live .stop[data-stop="3"] { animation-delay:1.55s; }
+        .roadmap.is-live .stop[data-stop="4"] { animation-delay:2.15s; }
+        @keyframes stopPop { to { opacity:1; transform:scale(1); } }
+
+        .finish { opacity:0; transform-box:fill-box; transform-origin:center; }
+        .roadmap.is-live .finish { animation:stopPop .45s cubic-bezier(.34,1.5,.64,1) forwards 2.7s; }
+        .flag-pole { stroke:var(--text-secondary); stroke-width:3; stroke-linecap:round; }
+        .flag-cloth { fill:var(--primary); }
+        .roadmap.is-live .flag-cloth { animation:flagWave 2.2s ease-in-out infinite 3s;
+                                       transform-box:fill-box; transform-origin:left center; }
+        @keyframes flagWave { 0%,100%{ transform:skewY(0deg); } 50%{ transform:skewY(-7deg); } }
+        .flag-base { fill:var(--text-secondary); }
+
+        /* detail panel */
+        .stop-detail { position:relative; margin-top:.6rem; }
+        .sd-card { position:absolute; top:0; left:0; right:0; background:var(--bg-primary);
+                   border:1px solid var(--border); border-left:4px solid var(--primary);
+                   border-radius:12px; padding:1rem 1.2rem;
+                   opacity:0; visibility:hidden; transform:translateY(10px);
+                   transition:opacity .3s ease, transform .3s ease, visibility .3s; }
+        .sd-card.is-active { opacity:1; visibility:visible; transform:translateY(0);
+                             position:relative; }
+        .sd-tag { display:inline-block; font-size:.72rem; font-weight:700;
+                  text-transform:uppercase; letter-spacing:.06em; color:var(--primary);
+                  background:var(--bg-tertiary); border:1px solid var(--border);
+                  padding:.15rem .55rem; border-radius:999px; margin-bottom:.5rem; }
+        .sd-card h3 { margin:0 0 .35rem; font-size:1.12rem; }
+        .sd-card p { margin:0 0 .45rem; font-size:.92rem; color:var(--text-secondary); }
+        .sd-card .sd-out { margin:0; font-size:.88rem; }
+        .sd-card .sd-out b { color:var(--text-primary); }
+
+        .road-hint { text-align:center; font-size:.82rem; margin-top:.6rem; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .road-dash, .trav-halo, .flag-cloth { animation:none !important; }
+            .roadmap .road-progress { stroke-dashoffset:0 !important; animation:none !important; }
+            .roadmap .stop, .roadmap .finish, .roadmap .traveller {
+                opacity:1 !important; transform:none !important; animation:none !important; }
+        }
+
+        @media (max-width:640px){
+            .roadmap { margin-top:.7rem; }
+            .stop-label { font-size:17px; }
+            .stop-step { font-size:14px; }
+            .stop-num { font-size:20px; }
+            .road-base { stroke-width:28; }
+            .sd-card { padding:.85rem .95rem; }
+            .sd-card h3 { font-size:1rem; }
+            .sd-card p { font-size:.85rem; line-height:1.5; }
+            .sd-card .sd-out { font-size:.82rem; }
+            .road-hint { font-size:.78rem; margin-top:.8rem; }
+        }
+
+        @media (max-width:640px){
+            /* header */
+            .guide-header { padding:2rem 0 1.7rem; margin-bottom:1.6rem; }
+            .guide-title { font-size:1.6rem; line-height:1.2; margin-bottom:.45rem; }
+            .guide-sub { font-size:.92rem; line-height:1.5; }
+            .guide-badges { gap:.35rem; margin-top:.9rem; }
+            .guide-badge { font-size:.72rem; padding:.25rem .6rem; }
+
+            /* tighten global rhythm: 1.7 line-height is what made this feel huge */
+            .gsection, .starter, .muted, .tech p, .step li, .res-card li,
+            .checklist li, .mis span, .pbox { line-height:1.5; }
+
+            /* sections */
+            .gsection { padding:1.05rem 1rem; border-radius:13px; margin-bottom:1.1rem; }
+            .gsection h2 { font-size:1.2rem; line-height:1.25; margin-bottom:.5rem; }
+            .gsection h3 { font-size:1rem; line-height:1.3; margin-top:1rem !important; }
+            .muted { font-size:.88rem; }
+            .gsection ul.muted { padding-left:1.1rem; }
+            .gsection ul.muted li { margin:.3rem 0; }
+
+            .starter { padding:.9rem 1rem; margin-bottom:1.1rem; }
+            .starter p { font-size:.86rem !important; }
+
+            /* stat band */
+            .snap { gap:.6rem; margin-bottom:1.1rem; }
+            .snap .cell { padding:.75rem .6rem; border-radius:11px; }
+            .snap .n { font-size:1.45rem; }
+            .snap .l { font-size:.74rem; line-height:1.3; margin-top:.25rem; }
+
+            /* technique cards */
+            .techs { gap:.7rem; }
+            .tech { padding:.9rem 1rem; border-radius:12px; gap:.4rem; }
+            .tech .ic { font-size:1.25rem; }
+            .tech h3 { font-size:.98rem; }
+            .tech p { font-size:.85rem; }
+            .tech .use { font-size:.8rem; }
+            .tech .lvl { font-size:.68rem; padding:.12rem .45rem; }
+
+            /* prompt compare boxes */
+            .compare { gap:.7rem; margin:.7rem 0; }
+            .pbox { padding:.75rem .9rem; font-size:.84rem; border-radius:10px; }
+            .pbox .tag { font-size:.66rem; margin-bottom:.4rem; }
+            .pbox div { font-size:.78rem !important; }
+
+            /* step plan */
+            .steps { gap:.7rem; }
+            .step { padding:.9rem 1rem; border-radius:11px; }
+            .step h3 { font-size:.96rem; margin-bottom:.3rem; }
+            .step .wtag { font-size:.68rem; }
+            .step ul { padding-left:1.05rem; }
+            .step li { font-size:.84rem; margin:.22rem 0; }
+
+            /* resources */
+            .res-grid { gap:.7rem; }
+            .res-card { padding:.8rem .95rem; border-radius:11px; }
+            .res-card .cat { font-size:.69rem; margin-bottom:.4rem; }
+            .res-card ul { padding-left:1.05rem; }
+            .res-card li { font-size:.83rem; margin:.28rem 0; }
+
+            /* mistakes */
+            .mistakes { gap:.7rem; }
+            .mis { padding:.75rem .9rem; border-radius:11px; }
+            .mis strong { font-size:.88rem; }
+            .mis span { font-size:.81rem; }
+
+            /* checklist */
+            .checklist li { font-size:.86rem; padding:.35rem 0 .35rem 1.5rem; }
+
+            /* table */
+            .ptable th, .ptable td { padding:.45rem .4rem; font-size:.8rem; line-height:1.45; }
+            .ptable th { font-size:.7rem; }
+
+            /* code blocks */
+            pre { font-size:.76rem; line-height:1.5; padding:.8rem .9rem; border-radius:10px; }
+
+            /* next links */
+            .nextlinks { gap:.45rem; }
+            .nextlinks a { font-size:.84rem; padding:.45rem .75rem; }
+        }
+
+        @media (max-width:380px){
+            .guide-title { font-size:1.45rem; }
+            .gsection { padding:.9rem .85rem; }
+            .gsection h2 { font-size:1.12rem; }
+            .snap .n { font-size:1.3rem; }
+            .muted, .tech p { font-size:.85rem; }
+        }
+    </style>
+</head>
+<body>
+    <div data-component="theme-switcher"></div>
+
+    <header class="guide-header">
+        <div class="container">
+            <h1 class="guide-title">✨ Prompt Engineering Roadmap</h1>
+            <p class="guide-sub">AI tools are only as good as what you ask them. This is a practical, zero-jargon guide to writing prompts that actually work, from your very first one to advanced patterns used in production.</p>
+            <div class="guide-badges">
+                <span class="guide-badge">🌱 Beginner-friendly</span>
+                <span class="guide-badge">🆓 All free resources</span>
+                <span class="guide-badge">🪜 4-step plan</span>
+                <span class="guide-badge">🔄 Updated 2026</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- ===== VISUAL ROADMAP ===== -->
+        <div class="gsection roadmap-section">
+            <h2 data-jump="The journey">Your journey at a glance</h2>
+            <p class="muted">Four steps, start to finish. Hover or tap any stop to see what happens there.</p>
+
+            <div class="roadmap" id="roadmap">
+                <svg class="road-svg" viewBox="0 0 900 340" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+                    <defs>
+                        <linearGradient id="roadGrad" x1="0" y1="0" x2="1" y2="0">
+                            <stop offset="0%" stop-color="var(--primary)" stop-opacity=".35"/>
+                            <stop offset="50%" stop-color="var(--secondary)" stop-opacity=".55"/>
+                            <stop offset="100%" stop-color="var(--primary)" stop-opacity=".35"/>
+                        </linearGradient>
+                        <filter id="stopGlow" x="-60%" y="-60%" width="220%" height="220%">
+                            <feGaussianBlur stdDeviation="6" result="b"/>
+                            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+                        </filter>
+                    </defs>
+
+                    <!-- the road surface -->
+                    <path id="roadPath"
+                          d="M 60 250 C 170 250, 175 90, 285 90 S 400 250, 510 250 S 625 90, 735 90 S 830 170, 850 190"
+                          class="road-base"/>
+                    <!-- animated dashes travelling along the road -->
+                    <path d="M 60 250 C 170 250, 175 90, 285 90 S 400 250, 510 250 S 625 90, 735 90 S 830 170, 850 190"
+                          class="road-dash"/>
+                    <!-- progress line that draws in on scroll -->
+                    <path id="roadProgress"
+                          d="M 60 250 C 170 250, 175 90, 285 90 S 400 250, 510 250 S 625 90, 735 90 S 830 170, 850 190"
+                          class="road-progress"/>
+
+                    <!-- the traveller -->
+                    <g id="traveller" class="traveller">
+                        <circle r="15" class="trav-halo"/>
+                        <circle r="9" class="trav-dot"/>
+                    </g>
+
+                    <!-- stops -->
+                    <g class="stop" data-stop="1" tabindex="0" role="button" aria-label="Step 1: Foundations">
+                        <circle cx="60" cy="250" r="26" class="stop-ring"/>
+                        <circle cx="60" cy="250" r="19" class="stop-fill"/>
+                        <text x="60" y="250" class="stop-num">1</text>
+                        <text x="60" y="298" class="stop-label">Foundations</text>
+                        <text x="60" y="315" class="stop-step">Step 1</text>
+                    </g>
+                    <g class="stop" data-stop="2" tabindex="0" role="button" aria-label="Step 2: Core techniques">
+                        <circle cx="285" cy="90" r="26" class="stop-ring"/>
+                        <circle cx="285" cy="90" r="19" class="stop-fill"/>
+                        <text x="285" y="90" class="stop-num">2</text>
+                        <text x="285" y="42" class="stop-label">Techniques</text>
+                        <text x="285" y="26" class="stop-step">Step 2</text>
+                    </g>
+                    <g class="stop" data-stop="3" tabindex="0" role="button" aria-label="Step 3: Build something">
+                        <circle cx="510" cy="250" r="26" class="stop-ring"/>
+                        <circle cx="510" cy="250" r="19" class="stop-fill"/>
+                        <text x="510" y="250" class="stop-num">3</text>
+                        <text x="510" y="298" class="stop-label">Build</text>
+                        <text x="510" y="315" class="stop-step">Step 3</text>
+                    </g>
+                    <g class="stop" data-stop="4" tabindex="0" role="button" aria-label="Step 4: Go deeper">
+                        <circle cx="735" cy="90" r="26" class="stop-ring"/>
+                        <circle cx="735" cy="90" r="19" class="stop-fill"/>
+                        <text x="735" y="90" class="stop-num">4</text>
+                        <text x="735" y="42" class="stop-label">Go deeper</text>
+                        <text x="735" y="26" class="stop-step">Step 4</text>
+                    </g>
+                    <!-- finish flag -->
+                    <g class="finish">
+                        <line x1="850" y1="190" x2="850" y2="150" class="flag-pole"/>
+                        <path d="M 850 150 L 886 160 L 850 170 Z" class="flag-cloth"/>
+                        <circle cx="850" cy="190" r="6" class="flag-base"/>
+                    </g>
+                </svg>
+
+                <!-- detail panel -->
+                <div class="stop-detail" id="stopDetail">
+                    <div class="sd-card is-active" data-detail="1">
+                        <span class="sd-tag">Step 1</span>
+                        <h3>Foundations</h3>
+                        <p>Understand what an LLM actually does, learn the vocabulary, and master the five-part prompt structure: role, task, context, format, constraints.</p>
+                        <p class="sd-out"><b>You will have:</b> a personal cheat sheet of five prompt templates you actually use.</p>
+                    </div>
+                    <div class="sd-card" data-detail="2">
+                        <span class="sd-tag">Step 2</span>
+                        <h3>Core techniques</h3>
+                        <p>Zero-shot, few-shot, chain of thought, role prompting, delimiters and structured output. Solve a real problem with each one and compare results.</p>
+                        <p class="sd-out"><b>You will have:</b> a prompt that reliably returns valid JSON you could feed into code.</p>
+                    </div>
+                    <div class="sd-card" data-detail="3">
+                        <span class="sd-tag">Step 3</span>
+                        <h3>Build something</h3>
+                        <p>Automate a task you genuinely repeat, using prompt chaining. Call the API from a script instead of a chat window. Meet Semantic Kernel and RAG.</p>
+                        <p class="sd-out"><b>You will have:</b> a working script or notebook doing something useful with an LLM.</p>
+                    </div>
+                    <div class="sd-card" data-detail="4">
+                        <span class="sd-tag">Step 4</span>
+                        <h3>Go deeper</h3>
+                        <p>Function calling and a tiny agent. Build an evaluation set so you can measure prompts instead of guessing. Learn prompt injection and safety basics.</p>
+                        <p class="sd-out"><b>You will have:</b> a GitHub repo and a short write-up worth showing in an interview.</p>
+                    </div>
+                </div>
+
+                <p class="road-hint muted">Tap a numbered stop to jump between steps</p>
+            </div>
+        </div>
+
+        <!-- ===== WHY IT MATTERS ===== -->
+        <div class="gsection">
+            <h2 data-jump="Why this matters">Why prompt engineering matters</h2>
+            <p class="muted">Two people use the same AI model. One gets vague, generic output. The other gets exactly what they need, first try. The difference is not the tool, it is how they ask.</p>
+            <p class="muted">This is now a real, paid skill. It shows up in job descriptions across engineering, product, marketing, and support. More importantly, it makes everything else you do faster: writing code, debugging, research, drafting, learning.</p>
+            <div class="compare">
+                <div class="pbox bad">
+                    <span class="tag">Vague prompt</span>
+                    write about databases
+                    <div style="margin-top:.5rem; font-size:.85rem; opacity:.85;">Result: a generic textbook paragraph you could have googled.</div>
+                </div>
+                <div class="pbox good">
+                    <span class="tag">Clear prompt</span>
+                    Explain the difference between SQL and NoSQL to a final-year CS student preparing for interviews. Use a real example of when each one is the right choice. Keep it under 200 words. End with one question an interviewer might ask.
+                    <div style="margin-top:.5rem; font-size:.85rem; opacity:.85;">Result: something you can actually use tonight.</div>
+                </div>
+            </div>
+            <p class="muted" style="margin-top:.9rem;">Same model. Same cost. Completely different value. That gap is what this page closes.</p>
+        </div>
+
+        <!-- ===== FOUNDATIONS ===== -->
+        <div class="gsection">
+            <h2 data-jump="Foundations">Understand what you are talking to</h2>
+            <p class="muted">You do not need the maths, but a rough mental model makes you dramatically better at prompting. Here is the honest version.</p>
+
+            <h3 style="margin-top:1.2rem;">What an LLM actually does</h3>
+            <p class="muted">A large language model predicts the next most likely chunk of text, over and over, based on everything it has seen so far. That is genuinely it. Everything impressive it does comes from doing that extremely well at massive scale.</p>
+            <p class="muted">Three consequences you should internalise:</p>
+            <ul class="muted">
+                <li><b>It has no memory between chats</b> unless the tool gives it one. Every conversation starts fresh.</li>
+                <li><b>It can be confidently wrong.</b> It predicts plausible text, not verified truth. Always check facts that matter.</li>
+                <li><b>Context is everything.</b> It only knows what is in the conversation right now, plus its training. Give it what it needs.</li>
+            </ul>
+
+            <h3 style="margin-top:1.2rem;">The vocabulary you will keep hearing</h3>
+            <div style="overflow-x:auto;">
+                <table class="ptable">
+                    <thead>
+                        <tr><th>Term</th><th>What it actually means</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><b>LLM</b></td><td>Large Language Model. The engine, for example GPT, Claude, Gemini, Llama.</td></tr>
+                        <tr><td><b>GPT</b></td><td>Generative Pre-trained Transformer. OpenAI's family of models.</td></tr>
+                        <tr><td><b>Token</b></td><td>A chunk of text, roughly 4 characters. Models read and bill in tokens, not words.</td></tr>
+                        <tr><td><b>Context window</b></td><td>How much text the model can hold at once. Go over it and the earliest parts fall away.</td></tr>
+                        <tr><td><b>Temperature</b></td><td>Randomness dial. Low (0 to 0.3) for facts and code. Higher (0.7+) for creative work.</td></tr>
+                        <tr><td><b>System prompt</b></td><td>Instructions that set the model's role and rules before the conversation starts.</td></tr>
+                        <tr><td><b>Hallucination</b></td><td>When the model invents something false but says it confidently.</td></tr>
+                        <tr><td><b>RAG</b></td><td>Retrieval Augmented Generation. Feeding the model your own documents so it answers from real sources.</td></tr>
+                        <tr><td><b>Fine-tuning</b></td><td>Further training a model on your data. Expensive. Usually good prompting is enough.</td></tr>
+                        <tr><td><b>Agent</b></td><td>An LLM given tools and a goal, so it can take actions in a loop, not just reply.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 style="margin-top:1.4rem;">Start here (free)</h3>
+            <div class="res-grid">
+                <div class="res-card">
+                    <p class="cat">Understand the basics</p>
+                    <ul>
+                        <li><a href="https://www.aiforanyone.org/glossary/openai" target="_blank" rel="noopener">What is OpenAI</a> - plain-English explainer</li>
+                        <li><a href="https://www.makeuseof.com/gpt-models-explained-and-compared/" target="_blank" rel="noopener">GPT models explained and compared</a></li>
+                        <li><a href="https://iq.opengenus.org/gpt2-vs-gpt3-vs-gpt35-vs-gpt4/" target="_blank" rel="noopener">GPT-2 vs GPT-3 vs GPT-3.5 vs GPT-4</a></li>
+                        <li><a href="https://www.youtube.com/results?search_query=how+large+language+models+work" target="_blank" rel="noopener">How LLMs work (video walkthroughs)</a></li>
+                    </ul>
+                </div>
+                <div class="res-card">
+                    <p class="cat">Official documentation</p>
+                    <ul>
+                        <li><a href="https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/prompt-engineering" target="_blank" rel="noopener">Microsoft Learn: Prompt engineering</a></li>
+                        <li><a href="https://cloud.google.com/discover/what-is-prompt-engineering" target="_blank" rel="noopener">Google Cloud: What is prompt engineering</a></li>
+                        <li><a href="https://platform.openai.com/docs/guides/prompt-engineering" target="_blank" rel="noopener">OpenAI prompt engineering guide</a></li>
+                        <li><a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview" target="_blank" rel="noopener">Anthropic prompt engineering docs</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== ANATOMY ===== -->
+        <div class="gsection">
+            <h2 data-jump="Anatomy of a prompt">The anatomy of a good prompt</h2>
+            <p class="muted">Almost every strong prompt has some combination of these five parts. You will not always need all five, but knowing them means you always know what to add when the output is not right.</p>
+
+            <div class="techs" style="margin-top:1rem;">
+                <div class="tech" data-reveal>
+                    <div class="top"><span class="ic">🎭</span><h3>1. Role</h3></div>
+                    <p>Tell it who to be. This shapes vocabulary, depth, and assumptions.</p>
+                    <p class="use"><code>You are a senior backend engineer reviewing code for a junior developer.</code></p>
+                </div>
+                <div class="tech" data-reveal data-reveal-delay="80">
+                    <div class="top"><span class="ic">🎯</span><h3>2. Task</h3></div>
+                    <p>Say exactly what you want done. Use a clear action verb.</p>
+                    <p class="use"><code>Review this function and list the three most serious issues.</code></p>
+                </div>
+                <div class="tech" data-reveal>
+                    <div class="top"><span class="ic">📋</span><h3>3. Context</h3></div>
+                    <p>Give the background it cannot guess: audience, constraints, what you already tried.</p>
+                    <p class="use"><code>This runs in production handling 10k requests a minute. We cannot add dependencies.</code></p>
+                </div>
+                <div class="tech" data-reveal data-reveal-delay="80">
+                    <div class="top"><span class="ic">📐</span><h3>4. Format</h3></div>
+                    <p>Describe the shape of the answer you want. This one saves the most time.</p>
+                    <p class="use"><code>Answer as a markdown table with columns: Issue, Severity, Fix.</code></p>
+                </div>
+                <div class="tech" data-reveal>
+                    <div class="top"><span class="ic">🚧</span><h3>5. Constraints</h3></div>
+                    <p>Set the boundaries: length, tone, what to avoid, what to assume.</p>
+                    <p class="use"><code>Under 150 words. No code snippets. If you are unsure, say so rather than guessing.</code></p>
+                </div>
+                <div class="tech" data-reveal data-reveal-delay="80">
+                    <div class="top"><span class="ic">💡</span><h3>Putting it together</h3></div>
+                    <p>You rarely write these as labelled sections. You just make sure each one is present somewhere.</p>
+                    <p class="use">Missing output not right? Ask yourself which of the five is missing.</p>
+                </div>
+            </div>
+
+            <h3 style="margin-top:1.4rem;">A full example</h3>
+            <pre><code>You are an experienced technical interviewer at a product company.
+
+I am a final-year CS student preparing for backend interviews.
+I understand basic SQL but have never designed a schema from scratch.
+
+Design a database schema for a food delivery app.
+
+Walk me through your thinking step by step, then show the final
+tables with columns and relationships.
+
+Keep it to 5 tables maximum. Explain each design decision in one
+sentence. End with two follow-up questions an interviewer would
+likely ask about this schema.</code></pre>
+            <p class="muted">Every one of the five parts is in there: role, context, task, format, constraints. That is the whole trick.</p>
+        </div>
+
+        <!-- ===== TECHNIQUES ===== -->
+        <div class="gsection">
+            <h2 data-jump="Core techniques">The techniques that matter</h2>
+            <p class="muted">These are the named patterns you will see referenced everywhere. Learn the first four properly and you will handle 90% of real situations.</p>
+
+            <div class="techs" style="margin-top:1rem;">
+                <div class="tech" data-reveal>
+                    <div class="top"><span class="ic">0️⃣</span><h3>Zero-shot prompting</h3></div>
+                    <span class="lvl b">🌱 Beginner</span>
+                    <p>Just ask, with no examples. The default way most people use AI.</p>
+                    <p class="use"><b>Use when:</b> the task is common and well understood. Classify this review as positive or negative.</p>
+                </div>
+
+                <div class="tech" data-reveal data-reveal-delay="80">
+                    <div class="top"><span class="ic">🔢</span><h3>Few-shot prompting</h3></div>
+                    <span class="lvl b">🌱 Beginner</span>
+                    <p>Show 2 to 5 examples of input and desired output, then give your real input. The single highest-leverage technique.</p>
+                    <p class="use"><b>Use when:</b> you need a specific format or style. Examples teach far better than descriptions.</p>
+                </div>
+
+                <div class="tech" data-reveal>
+                    <div class="top"><span class="ic">🧠</span><h3>Chain of thought</h3></div>
+                    <span class="lvl b">🌱 Beginner</span>
+                    <p>Ask it to reason step by step before answering. Dramatically improves accuracy on logic, maths, and multi-step problems.</p>
+                    <p class="use"><b>Use when:</b> the answer requires reasoning. Add: <code>Think through this step by step before answering.</code></p>
+                </div>
+
+                <div class="tech" data-reveal data-reveal-delay="80">
+                    <div class="top"><span class="ic">🎭</span><h3>Role prompting</h3></div>
+                    <span class="lvl b">🌱 Beginner</span>
+                    <p>Assign an identity and expertise level. Changes vocabulary, depth, and what it assumes you already know.</p>
+                    <p class="use"><b>Use when:</b> you want a specific perspective or level of detail.</p>
+                </div>
+
+                <div class="tech" data-reveal>
+                    <div class="top"><span class="ic">📤</span><h3>Output formatting</h3></div>
+                    <span class="lvl i">📈 Intermediate</span>
+                    <p>Specify the exact structure: JSON, markdown table, bullet list, numbered steps. Essential when feeding output into code.</p>
+                    <p class="use"><b>Use when:</b> you need machine-readable or consistently structured output.</p>
+                </div>
+
+                <div class="tech" data-reveal data-reveal-delay="80">
+                    <div class="top"><span class="ic">⛓️</span><h3>Prompt chaining</h3></div>
+                    <span class="lvl i">📈 Intermediate</span>
+                    <p>Break a big task into several prompts, feeding each output into the next. Far more reliable than one giant prompt.</p>
+                    <p class="use"><b>Use when:</b> the task has distinct stages. Research, then outline, then draft, then edit.</p>
+                </div>
+
+                <div class="tech" data-reveal>
+                    <div class="top"><span class="ic">🔀</span><h3>Delimiters</h3></div>
+                    <span class="lvl i">📈 Intermediate</span>
+                    <p>Wrap different parts in clear markers so the model knows what is instruction and what is data.</p>
+                    <p class="use"><b>Use when:</b> passing in text to process. Use triple quotes, XML-style tags, or markdown headings.</p>
+                </div>
+
+                <div class="tech" data-reveal data-reveal-delay="80">
+                    <div class="top"><span class="ic">🪞</span><h3>Self-critique</h3></div>
+                    <span class="lvl i">📈 Intermediate</span>
+                    <p>Ask it to review and improve its own answer. Often catches real errors on the second pass.</p>
+                    <p class="use"><b>Use when:</b> quality matters. Add: <code>Now critique your answer and give an improved version.</code></p>
+                </div>
+
+                <div class="tech" data-reveal>
+                    <div class="top"><span class="ic">🌳</span><h3>Tree of thought</h3></div>
+                    <span class="lvl a">🚀 Advanced</span>
+                    <p>Ask it to generate several distinct approaches, evaluate each, then pick and develop the best.</p>
+                    <p class="use"><b>Use when:</b> there are genuinely multiple valid strategies and the choice matters.</p>
+                </div>
+
+                <div class="tech" data-reveal data-reveal-delay="80">
+                    <div class="top"><span class="ic">📚</span><h3>RAG (grounding)</h3></div>
+                    <span class="lvl a">🚀 Advanced</span>
+                    <p>Supply your own documents in the prompt so answers come from real sources instead of memory. The main cure for hallucination.</p>
+                    <p class="use"><b>Use when:</b> you need accuracy on private, recent, or domain-specific information.</p>
+                </div>
+
+                <div class="tech" data-reveal>
+                    <div class="top"><span class="ic">🛠️</span><h3>Tool and function calling</h3></div>
+                    <span class="lvl a">🚀 Advanced</span>
+                    <p>Let the model call real functions: search, database queries, APIs, calculations. The foundation of AI agents.</p>
+                    <p class="use"><b>Use when:</b> the model needs live data or must take actions in the world.</p>
+                </div>
+
+                <div class="tech" data-reveal data-reveal-delay="80">
+                    <div class="top"><span class="ic">🧪</span><h3>Evaluation</h3></div>
+                    <span class="lvl a">🚀 Advanced</span>
+                    <p>Build a small test set of inputs with expected outputs, then measure prompt changes against it instead of guessing.</p>
+                    <p class="use"><b>Use when:</b> a prompt goes into production. This is what separates hobby from professional.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== BEFORE AND AFTER ===== -->
+        <div class="gsection">
+            <h2 data-jump="Before and after">See the difference</h2>
+            <p class="muted">Three real situations, weak prompt versus strong prompt. Try both in any free chatbot and compare.</p>
+
+            <h3 style="margin-top:1.1rem;">Debugging code</h3>
+            <div class="compare">
+                <div class="pbox bad">
+                    <span class="tag">Weak</span>
+                    my code doesn't work, fix it
+                    <div style="margin-top:.5rem; font-size:.85rem; opacity:.85;">No code, no error, no context. It has to guess everything.</div>
+                </div>
+                <div class="pbox good">
+                    <span class="tag">Strong</span>
+                    This Python function should return unique users sorted by signup date, but it returns duplicates. Here is the function and the actual output versus expected output. Explain the root cause first, then give the corrected code with a comment on the line that changed.
+                    <div style="margin-top:.5rem; font-size:.85rem; opacity:.85;">Now it can actually diagnose rather than guess.</div>
+                </div>
+            </div>
+
+            <h3 style="margin-top:1.3rem;">Learning something new</h3>
+            <div class="compare">
+                <div class="pbox bad">
+                    <span class="tag">Weak</span>
+                    explain kubernetes
+                    <div style="margin-top:.5rem; font-size:.85rem; opacity:.85;">You get a Wikipedia-style dump at an unknown difficulty level.</div>
+                </div>
+                <div class="pbox good">
+                    <span class="tag">Strong</span>
+                    I know Docker but have never used Kubernetes. Explain Kubernetes by building on what I already understand about containers. Use one running analogy throughout. Cover only pods, services, and deployments. Then give me one small thing I can build this weekend to make it click.
+                    <div style="margin-top:.5rem; font-size:.85rem; opacity:.85;">Tailored to your actual starting point, with a next action.</div>
+                </div>
+            </div>
+
+            <h3 style="margin-top:1.3rem;">Getting feedback on your work</h3>
+            <div class="compare">
+                <div class="pbox bad">
+                    <span class="tag">Weak</span>
+                    is my resume good?
+                    <div style="margin-top:.5rem; font-size:.85rem; opacity:.85;">You will get polite, generic praise. Useless.</div>
+                </div>
+                <div class="pbox good">
+                    <span class="tag">Strong</span>
+                    You are a hiring manager at a product company who screens 200 resumes a week. Here is my resume and the job description I am targeting. Be blunt. List the three things that would make you reject it in the first 10 seconds, then the three highest-impact changes. Do not be encouraging, be useful.
+                    <div style="margin-top:.5rem; font-size:.85rem; opacity:.85;">Explicitly asking for bluntness is what unlocks honest feedback.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== MISTAKES ===== -->
+        <div class="gsection">
+            <h2 data-jump="Common mistakes">Common mistakes to avoid</h2>
+            <div class="mistakes">
+                <div class="mis" data-reveal>
+                    <strong>Being polite instead of specific</strong>
+                    <span>"Could you please help me a bit with this?" wastes tokens. Clear and direct beats courteous every time.</span>
+                </div>
+                <div class="mis" data-reveal data-reveal-delay="60">
+                    <strong>Asking for everything at once</strong>
+                    <span>One giant prompt with six unrelated requests produces six mediocre answers. Chain them instead.</span>
+                </div>
+                <div class="mis" data-reveal>
+                    <strong>Trusting output without checking</strong>
+                    <span>Confident tone is not accuracy. Verify anything factual, especially numbers, citations, and APIs.</span>
+                </div>
+                <div class="mis" data-reveal data-reveal-delay="60">
+                    <strong>Giving up after one try</strong>
+                    <span>The first prompt is a draft. Good results usually come from two or three rounds of refining.</span>
+                </div>
+                <div class="mis" data-reveal>
+                    <strong>Saying what not to do</strong>
+                    <span>"Do not be boring" is weak. "Use concrete examples and short sentences" is what you actually want.</span>
+                </div>
+                <div class="mis" data-reveal data-reveal-delay="60">
+                    <strong>Pasting private data anywhere</strong>
+                    <span>Never put passwords, keys, customer data, or confidential work into a public AI tool. Check your company policy first.</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== 4-STEP PLAN ===== -->
+        <div class="gsection">
+            <h2 data-jump="The 4-step plan">Your 4-step plan</h2>
+            <p class="muted">Go at your own pace. Each step takes a few days of focused practice. By the end you will have a small portfolio of prompts that solve real problems, which is genuinely worth showing in an interview.</p>
+            <div class="steps">
+                <div class="step" data-reveal>
+                    <h3>Step 1 <span class="wtag">Foundations</span></h3>
+                    <ul>
+                        <li>Read the Microsoft Learn and Google Cloud guides linked above</li>
+                        <li>Learn the vocabulary table until the terms feel obvious</li>
+                        <li>Practise the five-part structure: role, task, context, format, constraints</li>
+                        <li>Rewrite 10 lazy prompts you have used before into strong ones</li>
+                        <li><b>Deliverable:</b> a personal cheat sheet of your five best prompt templates</li>
+                    </ul>
+                </div>
+                <div class="step" data-reveal data-reveal-delay="60">
+                    <h3>Step 2 <span class="wtag">Core techniques</span></h3>
+                    <ul>
+                        <li>Practise zero-shot, few-shot, chain of thought, and role prompting</li>
+                        <li>For each one, solve a real problem from your own work or study</li>
+                        <li>Learn delimiters and structured output (JSON, markdown tables)</li>
+                        <li>Try the same task with each technique and compare quality</li>
+                        <li><b>Deliverable:</b> one prompt that reliably produces valid JSON you could feed into code</li>
+                    </ul>
+                </div>
+                <div class="step" data-reveal>
+                    <h3>Step 3 <span class="wtag">Build something</span></h3>
+                    <ul>
+                        <li>Pick a repetitive task you actually do and automate it with prompt chaining</li>
+                        <li>Try the OpenAI or Azure OpenAI API from a script, not just the chat window</li>
+                        <li>Explore <a href="https://learn.microsoft.com/en-us/semantic-kernel/overview/" target="_blank" rel="noopener">Semantic Kernel</a> or LangChain to see how prompts work inside applications</li>
+                        <li>Learn what RAG is and why grounding beats fine-tuning for most cases</li>
+                        <li><b>Deliverable:</b> a small working script or notebook that uses an LLM to do something useful</li>
+                    </ul>
+                </div>
+                <div class="step" data-reveal data-reveal-delay="60">
+                    <h3>Step 4 <span class="wtag">Go deeper</span></h3>
+                    <ul>
+                        <li>Learn function and tool calling, then build a tiny agent</li>
+                        <li>Create a small evaluation set and measure your prompts objectively</li>
+                        <li>Read about prompt injection and basic AI safety</li>
+                        <li>Write up what you built and share it publicly</li>
+                        <li><b>Deliverable:</b> a GitHub repo plus a short post explaining what you learned</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== FREE RESOURCES ===== -->
+        <div class="gsection">
+            <h2 data-jump="Free resources">Free resources</h2>
+            <p class="muted">Everything here is genuinely free. Start with the official guides, they are better than most paid courses.</p>
+            <div class="res-grid">
+                <div class="res-card">
+                    <p class="cat">Official guides (start here)</p>
+                    <ul>
+                        <li><a href="https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/prompt-engineering" target="_blank" rel="noopener">Microsoft: Prompt engineering techniques</a></li>
+                        <li><a href="https://cloud.google.com/discover/what-is-prompt-engineering" target="_blank" rel="noopener">Google Cloud: What is prompt engineering</a></li>
+                        <li><a href="https://platform.openai.com/docs/guides/prompt-engineering" target="_blank" rel="noopener">OpenAI: Prompt engineering guide</a></li>
+                        <li><a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview" target="_blank" rel="noopener">Anthropic: Prompt engineering</a></li>
+                    </ul>
+                </div>
+                <div class="res-card">
+                    <p class="cat">Free courses</p>
+                    <ul>
+                        <li><a href="https://learn.deeplearning.ai/courses/chatgpt-prompt-eng" target="_blank" rel="noopener">DeepLearning.AI: ChatGPT Prompt Engineering</a></li>
+                        <li><a href="https://learn.microsoft.com/en-us/training/paths/prompt-engineering-with-azure-openai/" target="_blank" rel="noopener">Microsoft Learn: Prompt engineering path</a></li>
+                        <li><a href="https://www.cloudskillsboost.google/paths/118" target="_blank" rel="noopener">Google: Intro to Generative AI</a></li>
+                        <li><a href="https://www.promptingguide.ai" target="_blank" rel="noopener">Prompt Engineering Guide (open source)</a></li>
+                    </ul>
+                </div>
+                <div class="res-card">
+                    <p class="cat">Understand the fundamentals</p>
+                    <ul>
+                        <li><a href="https://www.aiforanyone.org/glossary/openai" target="_blank" rel="noopener">What is OpenAI</a></li>
+                        <li><a href="https://www.makeuseof.com/gpt-models-explained-and-compared/" target="_blank" rel="noopener">GPT models explained and compared</a></li>
+                        <li><a href="https://iq.opengenus.org/gpt2-vs-gpt3-vs-gpt35-vs-gpt4/" target="_blank" rel="noopener">GPT version differences</a></li>
+                        <li><a href="https://jalammar.github.io/illustrated-transformer/" target="_blank" rel="noopener">The Illustrated Transformer</a></li>
+                    </ul>
+                </div>
+                <div class="res-card">
+                    <p class="cat">Build with prompts in code</p>
+                    <ul>
+                        <li><a href="https://learn.microsoft.com/en-us/semantic-kernel/overview/" target="_blank" rel="noopener">Semantic Kernel overview</a></li>
+                        <li><a href="https://learn.microsoft.com/en-us/semantic-kernel/concepts/prompts/" target="_blank" rel="noopener">Semantic Kernel: prompt engineering</a></li>
+                        <li><a href="https://python.langchain.com/docs/tutorials/" target="_blank" rel="noopener">LangChain tutorials</a></li>
+                        <li><a href="https://github.com/microsoft/generative-ai-for-beginners" target="_blank" rel="noopener">Microsoft: Generative AI for Beginners</a></li>
+                    </ul>
+                </div>
+                <div class="res-card">
+                    <p class="cat">Practise for free</p>
+                    <ul>
+                        <li><a href="https://chat.openai.com" target="_blank" rel="noopener">ChatGPT</a> - free tier</li>
+                        <li><a href="https://claude.ai" target="_blank" rel="noopener">Claude</a> - free tier</li>
+                        <li><a href="https://gemini.google.com" target="_blank" rel="noopener">Google Gemini</a> - free tier</li>
+                        <li><a href="https://copilot.microsoft.com" target="_blank" rel="noopener">Microsoft Copilot</a> - free</li>
+                        <li><a href="https://huggingface.co/chat" target="_blank" rel="noopener">HuggingChat</a> - open models</li>
+                    </ul>
+                </div>
+                <div class="res-card">
+                    <p class="cat">Go deeper</p>
+                    <ul>
+                        <li><a href="https://github.com/dair-ai/Prompt-Engineering-Guide" target="_blank" rel="noopener">DAIR.AI Prompt Engineering Guide</a></li>
+                        <li><a href="https://github.com/f/awesome-chatgpt-prompts" target="_blank" rel="noopener">Awesome ChatGPT Prompts</a></li>
+                        <li><a href="https://www.anthropic.com/news" target="_blank" rel="noopener">Anthropic research blog</a></li>
+                        <li><a href="https://openai.com/research" target="_blank" rel="noopener">OpenAI research</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== CHECKLIST ===== -->
+        <div class="gsection">
+            <h2 data-jump="Checklist">Prompt quality checklist</h2>
+            <p class="muted">Not getting what you want? Run through this before rewriting from scratch.</p>
+            <ul class="checklist">
+                <li>Have I said <b>who</b> it should be (role and expertise level)?</li>
+                <li>Is the <b>task</b> a single clear action, not three tangled ones?</li>
+                <li>Have I given the <b>context</b> it cannot possibly guess?</li>
+                <li>Have I described the <b>format</b> I want the answer in?</li>
+                <li>Have I set <b>constraints</b> on length, tone, and scope?</li>
+                <li>Would <b>examples</b> teach this faster than my description?</li>
+                <li>Does this need <b>step-by-step reasoning</b> before the answer?</li>
+                <li>Have I said what <b>to do</b> rather than only what to avoid?</li>
+                <li>Should I <b>split this</b> into a chain of smaller prompts?</li>
+                <li>Am I about to paste anything <b>private or confidential</b>?</li>
+            </ul>
+        </div>
+
+        <!-- ===== NEXT ===== -->
+        <div class="gsection">
+            <h2 data-jump="Where to go next">Where to go next</h2>
+            <p class="muted">Prompt engineering pairs well with these:</p>
+            <div class="nextlinks">
+                <a href="./AI-Roadmap.html">🤖 AI Developer Roadmap</a>
+                <a href="./build-ai-agent.html">🛠️ Build an AI Agent</a>
+                <a href="./ai-tools.html">🧰 AI Tools</a>
+                <a href="./ai-era-job-hunt.html">🧭 AI Era Job Hunt</a>
+                <a href="./trending-tech-roles.html">🚀 Trending Tech Roles</a>
+                <a href="./12-week-roadmap.html">📋 12-Week Roadmap</a>
+            </div>
+            <p class="muted" style="margin-top:1rem;">One last thing. The people who get the most out of AI are not the ones who memorised the most techniques. They are the ones who think clearly about what they actually want before they start typing. Prompting is mostly just that skill, written down.</p>
+        </div>
+        <div class="snap">
+            <div class="cell"><div class="n" data-countup="12">12</div><div class="l">techniques covered</div></div>
+            <div class="cell"><div class="n" data-countup="4">4</div><div class="l">step plan</div></div>
+            <div class="cell"><div class="n" data-countup="30" data-suffix="+">30+</div><div class="l">free resources</div></div>
+            <div class="cell"><div class="n" data-countup="0" data-suffix="₹">0₹</div><div class="l">cost to start</div></div>
+        </div>
+
+        <div class="starter">
+            <strong style="font-family:var(--font-display);">🌱 New here? Read this first</strong>
+            <p class="muted" style="margin:.5rem 0 0;">You do not need a machine learning degree for this. Prompt engineering is mostly clear thinking plus a handful of patterns you can learn in an afternoon. Read the first two sections, try the examples in any free chatbot, and you will already be ahead of most people. Everything linked here is free.</p>
+        </div>
+
+    </main>
+
+    <div data-component="footer"></div>
+    <div data-component="scripts-common"></div>
+    <script src="./components/component-loader.js"></script>
+    <script type="module" src="./functions/site.js?v=20260814b"></script>
+
+    <script>
+    (function () {
+        var wrap = document.getElementById('roadmap');
+        if (!wrap) return;
+
+        var path   = document.getElementById('roadPath');
+        var trav   = document.getElementById('traveller');
+        var stops  = Array.prototype.slice.call(wrap.querySelectorAll('.stop'));
+        var cards  = Array.prototype.slice.call(wrap.querySelectorAll('.sd-card'));
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        // fraction along the path where each stop sits
+        var STOP_T = [0, 0.30, 0.585, 0.875];
+        var len = path.getTotalLength();
+
+        function place(t) {
+            var p = path.getPointAtLength(len * Math.max(0, Math.min(1, t)));
+            trav.setAttribute('transform', 'translate(' + p.x + ',' + p.y + ')');
+        }
+
+        function select(i, skipAnim) {
+            stops.forEach(function (s, n) { s.classList.toggle('is-on', n === i); });
+            cards.forEach(function (c, n) { c.classList.toggle('is-active', n === i); });
+            if (skipAnim || reduce) { place(STOP_T[i]); return; }
+            glide(STOP_T[i]);
+        }
+
+        // smooth travel between stops
+        var raf = null, curT = 0;
+        function glide(target) {
+            if (raf) cancelAnimationFrame(raf);
+            var from = curT, delta = target - from, t0 = null, dur = 700;
+            function step(ts) {
+                if (t0 === null) t0 = ts;
+                var k = Math.min(1, (ts - t0) / dur);
+                var e = k < 0.5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;
+                curT = from + delta * e;
+                place(curT);
+                if (k < 1) raf = requestAnimationFrame(step);
+            }
+            raf = requestAnimationFrame(step);
+        }
+
+        stops.forEach(function (s, i) {
+            s.addEventListener('click', function () { select(i); });
+            s.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); select(i); }
+            });
+            s.addEventListener('mouseenter', function () { select(i); });
+        });
+
+        curT = STOP_T[0];
+        place(curT);
+
+        // kick off the draw-in when it scrolls into view
+        function start() {
+            wrap.classList.add('is-live');
+            stops[0].classList.add('is-on');
+            if (reduce) { place(STOP_T[0]); return; }
+            // walk the traveller along as the road draws
+            var t0 = null, dur = 2600, delay = 200;
+            function walk(ts) {
+                if (t0 === null) t0 = ts;
+                var k = (ts - t0 - delay) / dur;
+                if (k > 0) {
+                    var e = k >= 1 ? 1 : 1 - Math.pow(1 - Math.min(1, k), 3);
+                    curT = e;
+                    place(curT);
+                }
+                if (k < 1) requestAnimationFrame(walk);
+                else { curT = STOP_T[0]; glide(STOP_T[0]); }
+            }
+            requestAnimationFrame(walk);
+        }
+
+        if ('IntersectionObserver' in window) {
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (en) {
+                    if (en.isIntersecting) { start(); io.disconnect(); }
+                });
+            }, { threshold: 0.25 });
+            io.observe(wrap);
+        } else {
+            start();
+        }
+    })();
+    </script>
+</body>
+</html>
