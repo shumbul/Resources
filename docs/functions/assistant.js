@@ -110,6 +110,25 @@ export function initAssistant() {
     .ai-send{border:none;border-radius:12px;padding:0 .95rem;cursor:pointer;color:#fff;font-weight:600;
         background:linear-gradient(135deg,var(--primary,#8b5cf6),var(--secondary,#7c3aed));}
     .ai-send:disabled{opacity:.5;cursor:not-allowed;}
+    .ai-mic{border:1px solid var(--border,#e5e7eb);border-radius:12px;width:42px;flex:0 0 42px;
+        cursor:pointer;background:var(--bg-primary,#fff);font-size:1.05rem;line-height:1;
+        display:inline-flex;align-items:center;justify-content:center;position:relative;
+        transition:background .18s ease,border-color .18s ease,transform .18s ease;}
+    .ai-mic:hover{border-color:var(--primary,#8b5cf6);background:var(--bg-tertiary,#f1f5f9);}
+    .ai-mic:focus-visible{outline:2px solid var(--primary,#8b5cf6);outline-offset:2px;}
+    .ai-mic[hidden]{display:none;}
+    .ai-mic.rec{border-color:#ef4444;background:rgba(239,68,68,.10);
+        animation:aiMicPulse 1.3s ease-in-out infinite;}
+    @keyframes aiMicPulse{0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,.45);}
+        70%{box-shadow:0 0 0 9px rgba(239,68,68,0);}}
+    .ai-mic.rec::after{content:'';position:absolute;top:5px;right:5px;width:6px;height:6px;
+        border-radius:50%;background:#ef4444;}
+    .ai-micstatus{font:500 .76rem/1.4 Inter,Segoe UI,sans-serif;margin-top:.4rem;
+        padding:.3rem .5rem;border-radius:8px;color:var(--text-secondary,#666);
+        background:var(--bg-tertiary,#f1f5f9);}
+    .ai-micstatus.err{color:#b3261e;background:rgba(239,68,68,.10);}
+    .ai-micstatus[hidden]{display:none;}
+    @media (prefers-reduced-motion:reduce){.ai-mic.rec{animation:none;}}
     .ai-note{font:400 .72rem/1.4 Inter,Segoe UI,sans-serif;color:var(--text-secondary,#777);}
     .ai-note a{color:var(--primary,#8b5cf6);cursor:pointer;text-decoration:underline;}
     .ai-byok{display:none;flex-direction:column;gap:.4rem;padding:.4rem 0;}
@@ -163,6 +182,7 @@ export function initAssistant() {
       <div class="ai-foot">
         <div class="ai-inrow">
           <textarea class="ai-in" id="aiIn" placeholder="Ask about this page..."></textarea>
+          <button class="ai-mic" id="aiMic" type="button" title="Speak your question" aria-label="Speak your question">&#127908;</button>
           <button class="ai-send" id="aiSend">Send</button>
         </div>
         <div class="ai-note" id="aiNote">First message loads a small model (a one-time download). <a id="aiByokToggle">Use my own key instead</a></div>
@@ -197,6 +217,108 @@ export function initAssistant() {
         fab.classList.toggle('is-quiet', open);
         fab.setAttribute('aria-expanded', open ? 'true' : 'false');
     }
+
+    // ---------- voice input (Web Speech API) ----------
+    // NOTE: this is NOT guaranteed to run on-device. Chrome and Edge stream the
+    // audio to a cloud speech service; Safari may process locally. Do not
+    // advertise this as private. The mic is only active while the user holds a
+    // recording session open, and we stop it as soon as the panel closes.
+    (function setupMic() {
+        const mic = $('aiMic');
+        if (!mic) return;
+        const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+        if (!SR) { mic.hidden = true; return; }   // unsupported, hide rather than break
+
+        // persistent, announced status line for permission and error feedback
+        const status = document.createElement('div');
+        status.className = 'ai-micstatus';
+        status.setAttribute('role', 'status');
+        status.setAttribute('aria-live', 'polite');
+        status.hidden = true;
+        mic.closest('.ai-foot').insertBefore(status, mic.closest('.ai-inrow').nextSibling);
+
+        function say(msg, isError) {
+            if (!msg) { status.hidden = true; status.textContent = ''; return; }
+            status.textContent = msg;
+            status.classList.toggle('err', !!isError);
+            status.hidden = false;
+        }
+
+        const rec = new SR();
+        rec.lang = document.documentElement.lang || 'en-US';
+        rec.interimResults = true;
+        rec.continuous = false;
+        rec.maxAlternatives = 1;
+
+        let listening = false;
+        let baseText = '';
+        let lastError = '';
+
+        function setListening(on) {
+            listening = on;
+            mic.classList.toggle('rec', on);
+            mic.setAttribute('aria-pressed', on ? 'true' : 'false');
+            mic.setAttribute('aria-label', on ? 'Stop listening' : 'Speak your question');
+            mic.title = on ? 'Listening, click to stop' : 'Speak your question';
+        }
+
+        mic.addEventListener('click', () => {
+            if (listening) { rec.stop(); return; }
+            lastError = '';
+            say('');
+            baseText = input.value.trim();
+            try { rec.start(); } catch (_) { /* already started */ }
+        });
+
+        rec.onstart = () => { setListening(true); say('Listening...'); };
+
+        rec.onresult = (e) => {
+            let txt = '';
+            for (let i = e.resultIndex; i < e.results.length; i++) {
+                txt += e.results[i][0].transcript;
+            }
+            input.value = (baseText ? baseText + ' ' : '') + txt.trim();
+            input.dispatchEvent(new Event('input', { bubbles: true }));
+        };
+
+        rec.onerror = (e) => {
+            lastError = e.error;
+            if (e.error === 'not-allowed' || e.error === 'service-not-allowed') {
+                lastError = 'Microphone blocked. Allow mic access in your browser settings, then try again.';
+            } else if (e.error === 'no-speech') {
+                lastError = 'No speech detected. Try again and speak a little louder.';
+            } else if (e.error === 'network') {
+                lastError = 'Speech service unreachable. Check your connection.';
+            } else if (e.error === 'audio-capture') {
+                lastError = 'No microphone found.';
+            } else {
+                lastError = 'Voice input failed (' + e.error + '). You can type instead.';
+            }
+        };
+
+        // onend always fires after onerror, so resolve the final message here
+        rec.onend = () => {
+            setListening(false);
+            if (lastError) { say(lastError, true); }
+            else { say(''); }
+            input.focus();
+        };
+
+        // Stop recognition whenever the panel is closed, by any route.
+        // The panel toggles a class rather than running a CSS transition on
+        // close, so observe the attribute instead of listening for transitionend.
+        const mo = new MutationObserver(() => {
+            if (!panel.classList.contains('open') && listening) {
+                try { rec.abort(); } catch (_) { rec.stop(); }
+                say('');
+            }
+        });
+        mo.observe(panel, { attributes: true, attributeFilter: ['class'] });
+
+        window.addEventListener('beforeunload', () => {
+            if (listening) { try { rec.abort(); } catch (_) {} }
+        });
+    })();
 
     fab.onclick = () => {
         panel.classList.toggle('open');

@@ -107,6 +107,14 @@ OSI vs TCP/IP, TCP vs UDP, HTTP, DNS, and the "what happens when you type a URL"
 ### 🧩 [OOP Deep Dive](https://shumbul.github.io/Resources/oop-deep-dive.html)
 The four pillars, overloading vs overriding, abstract vs interface, and SOLID, with examples and quizzes after every section.
 
+### ✨ [Prompt Engineering Roadmap](https://shumbul.github.io/Resources/prompt-engineering-roadmap.html)
+AI tools are only as good as what you ask them. A zero-jargon guide to writing prompts that actually work, with an animated visual roadmap and a 4-step plan.
+
+- **Foundations:** how LLMs really work, plus the vocabulary you keep hearing
+- **Anatomy of a prompt:** role, task, context, format, constraints
+- **12 techniques:** zero-shot, few-shot, chain of thought, RAG, tool calling and more
+- **30+ free resources:** Microsoft Learn, Google Cloud, OpenAI, Anthropic, Semantic Kernel
+
 ### 🏢 [Career Portals](https://shumbul.github.io/Resources/career-portals.html)
 Official career pages of 99 top tech companies (hiring in India, well-paying, popular) in one searchable place. Apply directly on company portals, bookmark it for your whole job hunt.
 
@@ -116,9 +124,13 @@ This website is built using a **modular component system** that eliminates code 
 
 ### Features
 - **On-page AI assistant:** every guide has a free, private "Ask AI" helper that reads the current page and tailors it to you. Runs on your device (WebGPU), no key or server needed, with an optional bring-your-own-key mode.
+- **Voice input:** speak your question to the assistant instead of typing, using the browser's built-in speech recognition. Note that most browsers process this via a cloud speech service, so it is a convenience feature rather than a private one.
+- **Read aloud:** a "Listen" control reads any guide out loud with play, pause and speed control, highlighting each paragraph as it goes. Uses the browser's built-in speech synthesis.
 - **Reusable Components:** Header, footer, theme switcher, and navigation are centralized
 - **Theme System:** Multi-color theme switcher with persistent preferences
 - **Responsive Design:** Works seamlessly on desktop and mobile
+- **Accessibility:** Keyboard navigable, honours `prefers-reduced-motion`, and every interactive control has an accessible name
+- **SEO:** Canonical URLs, Open Graph and Twitter cards, JSON-LD structured data, plus a generated `sitemap.xml` and `robots.txt`
 - **Component Loading:** Dynamic component loading with caching
 - **Template System:** Easy creation of new pages from templates
 

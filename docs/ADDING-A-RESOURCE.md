@@ -114,3 +114,21 @@ Then open `docs/your-new-guide.html` through a local server (`python -m http.ser
 - No horizontal scroll on mobile; text is readable on the header.
 
 That's it. Content in, everything else is inherited.
+
+## Adding a new page
+
+After creating a new HTML page in `docs/`, run:
+
+```bash
+python build-seo.py
+```
+
+This writes canonical, Open Graph, Twitter card and JSON-LD tags directly into
+the page source. Social crawlers (LinkedIn, WhatsApp, Slack, X) do not execute
+JavaScript, so these tags cannot be injected at runtime and must live in the
+HTML itself.
+
+CI runs `python build-seo.py --check` and fails if any page is out of date.
+
+If you set a page-specific `og:image`, the build script preserves it and only
+converts a relative path to an absolute URL.
