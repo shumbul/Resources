@@ -32,10 +32,20 @@ const fail = (file, message) => problems.push(`${file}: ${message}`);
 const read = (file) => fs.readFileSync(path.join(DOCS, file), 'utf8');
 
 // Markup built inside <script> or shown inside <noscript>-adjacent examples is
-// not a real reference, so scan only the static markup of the page.
-const stripScripts = (html) => html
-    .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '')
-    .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, '');
+// not a real reference, so scan only the static markup of the page. The end-tag
+// patterns allow trailing whitespace (</script >) and the loop keeps stripping
+// until nothing changes, so a nested or malformed block cannot leave a live
+// <script> behind for the link scanner to read as real markup.
+const BLOCK_RE = /<(script|style)\b[^>]*>[\s\S]*?<\/\1\s*>/gi;
+function stripScripts(html) {
+    let out = html;
+    for (let pass = 0; pass < 10; pass += 1) {
+        const next = out.replace(BLOCK_RE, '');
+        if (next === out) break;
+        out = next;
+    }
+    return out;
+}
 
 function attrValues(html, tag, attr) {
     const out = [];

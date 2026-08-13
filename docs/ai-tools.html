@@ -339,7 +339,8 @@
                     }
                 });
                 els.engineStatus.className = 'status-pill on';
-                els.engineStatus.innerHTML = '<span class="dot"></span>Loaded: ' + model;
+                els.engineStatus.innerHTML = '<span class="dot"></span>';
+                els.engineStatus.append('Loaded: ' + model);
                 els.progressText.textContent = 'Model ready. Runs fully on your device.';
                 enableTools();
             } catch (err) {

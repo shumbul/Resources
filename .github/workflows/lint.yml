@@ -5,6 +5,10 @@ on:
     branches: [ main, develop ]
   pull_request:
 
+# These checks only read the checked-out code.
+permissions:
+  contents: read
+
 jobs:
   htmlhint:
     name: HTML lint
