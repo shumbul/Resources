@@ -14,24 +14,24 @@
  *   2. the ?v=... on the site.js <script> tag in the HTML pages
  *      (docs uses a single value; see ADDING-A-RESOURCE.md).
  */
-import { ensureMeta } from './meta.js?v=20260814d';
-import { renderNav } from './nav.js?v=20260814d';
-import { renderFooter } from './footer.js?v=20260814d';
-import { renderBackLink } from './header.js?v=20260814d';
-import { initCopyButtons } from './copyButtons.js?v=20260814d';
-import { initProgress } from './progress.js?v=20260814d';
-import { initAssistant } from './assistant.js?v=20260814d';
-import { makeScrollablesFocusable } from './a11y.js?v=20260814d';
-import { initMotion } from './motion.js?v=20260814d';
-import { initJourney } from './journey.js?v=20260814d';
-import { initTypewriter } from './typewriter.js?v=20260814d';
-import { initQuickJump } from './quickjump.js?v=20260814d';
-import { initQuizzes } from './quiz.js?v=20260814d';
-import { initFlowMaps } from './flow.js?v=20260814d';
-import { initPractice } from './practice.js?v=20260814d';
-import { initSeo } from './seo.js?v=20260814d';
-import { initMotivation } from './motivation.js?v=20260814d';
-import { initReadAloud } from './readaloud.js?v=20260814d';
+import { ensureMeta } from './meta.js?v=20260814e';
+import { renderNav } from './nav.js?v=20260814e';
+import { renderFooter } from './footer.js?v=20260814e';
+import { renderBackLink } from './header.js?v=20260814e';
+import { initCopyButtons } from './copyButtons.js?v=20260814e';
+import { initProgress } from './progress.js?v=20260814e';
+import { initAssistant } from './assistant.js?v=20260814e';
+import { makeScrollablesFocusable } from './a11y.js?v=20260814e';
+import { initMotion } from './motion.js?v=20260814e';
+import { initJourney } from './journey.js?v=20260814e';
+import { initTypewriter } from './typewriter.js?v=20260814e';
+import { initQuickJump } from './quickjump.js?v=20260814e';
+import { initQuizzes } from './quiz.js?v=20260814e';
+import { initFlowMaps } from './flow.js?v=20260814e';
+import { initPractice } from './practice.js?v=20260814e';
+import { initSeo } from './seo.js?v=20260814e';
+import { initMotivation } from './motivation.js?v=20260814e';
+import { initReadAloud } from './readaloud.js?v=20260814e';
 
 const STEPS = [
     ['meta', ensureMeta],

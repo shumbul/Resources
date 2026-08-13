@@ -17,8 +17,9 @@ const CSS = `
     padding:.45rem .55rem;border-radius:999px;
     background:var(--bg-primary,#fff);border:1px solid var(--border,#e5e7eb);
     box-shadow:0 10px 30px rgba(15,23,42,.18);
-    transition:transform .3s cubic-bezier(.4,0,.2,1);}
-.ra-bar.show{transform:translateX(-50%) translateY(0);}
+    visibility:hidden;
+    transition:transform .3s cubic-bezier(.4,0,.2,1),visibility .3s;}
+.ra-bar.show{transform:translateX(-50%) translateY(0);visibility:visible;}
 .ra-bar button{display:inline-flex;align-items:center;justify-content:center;
     gap:.35rem;border:none;cursor:pointer;border-radius:999px;
     background:transparent;color:var(--text-primary,#111);
@@ -46,7 +47,7 @@ const CSS = `
 .ra-fab:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(15,23,42,.18);
     color:var(--primary,#8b5cf6);}
 .ra-fab:focus-visible{outline:2px solid var(--primary,#8b5cf6);outline-offset:2px;}
-.ra-fab.hide{opacity:0;pointer-events:none;}
+.ra-fab.hide{opacity:0;pointer-events:none;visibility:hidden;}
 
 .ra-speaking{background:linear-gradient(90deg,
     color-mix(in srgb,var(--primary,#8b5cf6) 18%,transparent),
@@ -71,11 +72,18 @@ export function initReadAloud() {
     if (document.querySelector('.ra-fab')) return;
 
     const main = document.querySelector('main') || document.body;
+    const scopedToMain = !!document.querySelector('main');
 
     // Collect readable blocks in document order.
     const blocks = [...main.querySelectorAll('h1,h2,h3,p,li')]
         .filter(el => {
-            if (el.closest('pre, code, .ra-bar, nav, .mot-strip')) return false;
+            // never read chrome: nav, footer, the ticker, or our own controls
+            if (el.closest('pre, code, .ra-bar, nav, footer, .mot-strip, ' +
+                           '.site-topbar, .site-sidebar, .ai-panel, ' +
+                           '[data-component="footer"], .footer-content')) return false;
+            // when there is no <main>, body-wide search would sweep up chrome,
+            // so require the element to sit inside a plausible content region
+            if (!scopedToMain && !el.closest('main, article, .container, .content')) return false;
             const txt = el.textContent.trim();
             if (txt.length < 12) return false;
             // skip a list item whose text is already inside a child we captured

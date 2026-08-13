@@ -1,47 +1,36 @@
 /**
  * seo.js
- * Injects per-page SEO tags that cannot live in the shared head partial
- * because they depend on the current URL and page content:
  *
- *   - <link rel="canonical">      one authoritative URL per page
- *   - og:title / og:description   filled from the page when missing
- *   - og:image + twitter:image    social share card
- *   - JSON-LD structured data     WebSite + WebPage + BreadcrumbList
+ * IMPORTANT: the authoritative SEO tags are written into each HTML file by
+ * `build-seo.py` at build time. Social crawlers (Facebook, LinkedIn, WhatsApp,
+ * Slack, X) do not execute JavaScript, so anything injected here is invisible
+ * to them.
  *
- * Runs on every page via site.js. No dependencies.
+ * This module is therefore only a *safety net*. It fills in tags that are
+ * genuinely absent, which can happen if a page was hand-created and the build
+ * script has not been run yet. It never overwrites a value that already exists.
+ *
+ * If you add a page: run `python build-seo.py` from the repo root.
  */
 
 const ORIGIN = 'https://shumbul.github.io/Resources';
 const SITE_NAME = 'Resources by Shumbul Arifa';
 const AUTHOR = 'Shumbul Arifa';
-const OG_IMAGE = ORIGIN + '/og-image.png';
+const DEFAULT_IMAGE = ORIGIN + '/og-image.png';
 
 function head() { return document.head || document.getElementsByTagName('head')[0]; }
 
-function upsertMeta(attr, key, content) {
+/** Only create the tag when it is missing. Never clobbers author intent. */
+function fillMeta(attr, key, content) {
     if (!content) return;
-    let el = head().querySelector(`meta[${attr}="${key}"]`);
-    if (!el) {
-        el = document.createElement('meta');
-        el.setAttribute(attr, key);
-        head().appendChild(el);
-    }
-    // never clobber a hand-written value
-    if (!el.getAttribute('content')) el.setAttribute('content', content);
-}
-
-function forceMeta(attr, key, content) {
-    if (!content) return;
-    let el = head().querySelector(`meta[${attr}="${key}"]`);
-    if (!el) {
-        el = document.createElement('meta');
-        el.setAttribute(attr, key);
-        head().appendChild(el);
-    }
+    const existing = head().querySelector(`meta[${attr}="${key}"]`);
+    if (existing && existing.getAttribute('content')) return;   // already set, leave alone
+    const el = existing || document.createElement('meta');
+    if (!existing) el.setAttribute(attr, key);
     el.setAttribute('content', content);
+    if (!existing) head().appendChild(el);
 }
 
-/** current file name, e.g. "about.html" */
 function pageFile() {
     const p = location.pathname.split('/').pop();
     return (!p || p === '') ? 'index.html' : p;
@@ -52,7 +41,6 @@ function canonicalUrl() {
     return f === 'index.html' ? ORIGIN + '/' : ORIGIN + '/' + f;
 }
 
-/** best-effort page description */
 function pageDescription() {
     const m = head().querySelector('meta[name="description"]');
     if (m && m.content) return m.content.trim();
@@ -61,57 +49,53 @@ function pageDescription() {
     return 'Free, practical tech-career guides and roadmaps by Shumbul Arifa.';
 }
 
-/** page title without the site suffix */
 function bareTitle() {
     return document.title.split('|')[0].trim() || 'Resources';
 }
 
 export function initSeo() {
+    // If build-seo.py has already run, there is nothing to do.
+    const built = head().querySelector('link[rel="canonical"]');
+    const hasLd = head().querySelector('script[type="application/ld+json"]');
+    if (built && hasLd) return;
+
     const url = canonicalUrl();
     const desc = pageDescription();
     const title = bareTitle();
     const isHome = pageFile() === 'index.html';
 
-    // ---- canonical ----
-    let link = head().querySelector('link[rel="canonical"]');
-    if (!link) {
-        link = document.createElement('link');
+    if (!built) {
+        const link = document.createElement('link');
         link.rel = 'canonical';
+        link.href = url;
         head().appendChild(link);
     }
-    link.href = url;
 
-    // ---- Open Graph ----
-    forceMeta('property', 'og:url', url);
-    upsertMeta('property', 'og:title', title);
-    upsertMeta('property', 'og:description', desc);
-    forceMeta('property', 'og:site_name', SITE_NAME);
-    forceMeta('property', 'og:type', isHome ? 'website' : 'article');
-    forceMeta('property', 'og:image', OG_IMAGE);
-    forceMeta('property', 'og:image:width', '1200');
-    forceMeta('property', 'og:image:height', '630');
-    forceMeta('property', 'og:image:alt', SITE_NAME);
-    forceMeta('property', 'og:locale', 'en_US');
+    fillMeta('property', 'og:url', url);
+    fillMeta('property', 'og:title', title);
+    fillMeta('property', 'og:description', desc);
+    fillMeta('property', 'og:site_name', SITE_NAME);
+    fillMeta('property', 'og:type', isHome ? 'website' : 'article');
+    fillMeta('property', 'og:image', DEFAULT_IMAGE);
+    fillMeta('property', 'og:locale', 'en_US');
 
-    // ---- Twitter ----
-    forceMeta('name', 'twitter:card', 'summary_large_image');
-    upsertMeta('name', 'twitter:title', title);
-    upsertMeta('name', 'twitter:description', desc);
-    forceMeta('name', 'twitter:image', OG_IMAGE);
+    fillMeta('name', 'twitter:card', 'summary_large_image');
+    fillMeta('name', 'twitter:title', title);
+    fillMeta('name', 'twitter:description', desc);
+    fillMeta('name', 'twitter:image', DEFAULT_IMAGE);
 
-    // ---- misc ----
-    upsertMeta('name', 'description', desc);
-    forceMeta('name', 'author', AUTHOR);
-    forceMeta('name', 'robots', 'index, follow, max-image-preview:large');
+    fillMeta('name', 'description', desc);
+    fillMeta('name', 'author', AUTHOR);
+    fillMeta('name', 'robots', 'index, follow, max-image-preview:large');
 
-    // ---- JSON-LD ----
+    if (hasLd) return;
+
     const graph = [
         {
             '@type': 'WebSite',
             '@id': ORIGIN + '/#website',
             url: ORIGIN + '/',
             name: SITE_NAME,
-            description: 'Free, practical tech-career guides, roadmaps and interview prep.',
             inLanguage: 'en',
             publisher: { '@id': ORIGIN + '/#person' }
         },
@@ -120,7 +104,6 @@ export function initSeo() {
             '@id': ORIGIN + '/#person',
             name: AUTHOR,
             url: ORIGIN + '/about.html',
-            jobTitle: 'Software Engineer',
             sameAs: [
                 'https://github.com/shumbul',
                 'https://linkedin.com/in/shumbul',
@@ -134,23 +117,10 @@ export function initSeo() {
             url: url,
             name: document.title,
             description: desc,
-            isPartOf: { '@id': ORIGIN + '/#website' },
-            about: { '@id': ORIGIN + '/#person' },
             inLanguage: 'en',
-            primaryImageOfPage: OG_IMAGE
+            isPartOf: { '@id': ORIGIN + '/#website' }
         }
     ];
-
-    if (!isHome) {
-        graph.push({
-            '@type': 'BreadcrumbList',
-            '@id': url + '#breadcrumb',
-            itemListElement: [
-                { '@type': 'ListItem', position: 1, name: 'Resources', item: ORIGIN + '/' },
-                { '@type': 'ListItem', position: 2, name: title, item: url }
-            ]
-        });
-    }
 
     const ld = document.createElement('script');
     ld.type = 'application/ld+json';

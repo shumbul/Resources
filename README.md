@@ -124,8 +124,8 @@ This website is built using a **modular component system** that eliminates code 
 
 ### Features
 - **On-page AI assistant:** every guide has a free, private "Ask AI" helper that reads the current page and tailors it to you. Runs on your device (WebGPU), no key or server needed, with an optional bring-your-own-key mode.
-- **Voice input:** speak your question to the assistant instead of typing, using the browser's built-in speech recognition.
-- **Read aloud:** a "Listen" control reads any guide out loud with play, pause and speed control, highlighting each paragraph as it goes. Fully on-device.
+- **Voice input:** speak your question to the assistant instead of typing, using the browser's built-in speech recognition. Note that most browsers process this via a cloud speech service, so it is a convenience feature rather than a private one.
+- **Read aloud:** a "Listen" control reads any guide out loud with play, pause and speed control, highlighting each paragraph as it goes. Uses the browser's built-in speech synthesis.
 - **Reusable Components:** Header, footer, theme switcher, and navigation are centralized
 - **Theme System:** Multi-color theme switcher with persistent preferences
 - **Responsive Design:** Works seamlessly on desktop and mobile

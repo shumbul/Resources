@@ -123,6 +123,11 @@ export function initAssistant() {
         70%{box-shadow:0 0 0 9px rgba(239,68,68,0);}}
     .ai-mic.rec::after{content:'';position:absolute;top:5px;right:5px;width:6px;height:6px;
         border-radius:50%;background:#ef4444;}
+    .ai-micstatus{font:500 .76rem/1.4 Inter,Segoe UI,sans-serif;margin-top:.4rem;
+        padding:.3rem .5rem;border-radius:8px;color:var(--text-secondary,#666);
+        background:var(--bg-tertiary,#f1f5f9);}
+    .ai-micstatus.err{color:#b3261e;background:rgba(239,68,68,.10);}
+    .ai-micstatus[hidden]{display:none;}
     @media (prefers-reduced-motion:reduce){.ai-mic.rec{animation:none;}}
     .ai-note{font:400 .72rem/1.4 Inter,Segoe UI,sans-serif;color:var(--text-secondary,#777);}
     .ai-note a{color:var(--primary,#8b5cf6);cursor:pointer;text-decoration:underline;}
@@ -213,12 +218,31 @@ export function initAssistant() {
         fab.setAttribute('aria-expanded', open ? 'true' : 'false');
     }
 
-    // ---------- voice input (Web Speech API, on-device in most browsers) ----------
+    // ---------- voice input (Web Speech API) ----------
+    // NOTE: this is NOT guaranteed to run on-device. Chrome and Edge stream the
+    // audio to a cloud speech service; Safari may process locally. Do not
+    // advertise this as private. The mic is only active while the user holds a
+    // recording session open, and we stop it as soon as the panel closes.
     (function setupMic() {
         const mic = $('aiMic');
         if (!mic) return;
         const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
         if (!SR) { mic.hidden = true; return; }   // unsupported, hide rather than break
+
+        // persistent, announced status line for permission and error feedback
+        const status = document.createElement('div');
+        status.className = 'ai-micstatus';
+        status.setAttribute('role', 'status');
+        status.setAttribute('aria-live', 'polite');
+        status.hidden = true;
+        mic.closest('.ai-foot').insertBefore(status, mic.closest('.ai-inrow').nextSibling);
+
+        function say(msg, isError) {
+            if (!msg) { status.hidden = true; status.textContent = ''; return; }
+            status.textContent = msg;
+            status.classList.toggle('err', !!isError);
+            status.hidden = false;
+        }
 
         const rec = new SR();
         rec.lang = document.documentElement.lang || 'en-US';
@@ -228,23 +252,25 @@ export function initAssistant() {
 
         let listening = false;
         let baseText = '';
+        let lastError = '';
 
         function setListening(on) {
             listening = on;
             mic.classList.toggle('rec', on);
+            mic.setAttribute('aria-pressed', on ? 'true' : 'false');
             mic.setAttribute('aria-label', on ? 'Stop listening' : 'Speak your question');
             mic.title = on ? 'Listening, click to stop' : 'Speak your question';
-            if (on) input.setAttribute('placeholder', 'Listening...');
-            else input.setAttribute('placeholder', 'Ask about this page...');
         }
 
         mic.addEventListener('click', () => {
             if (listening) { rec.stop(); return; }
+            lastError = '';
+            say('');
             baseText = input.value.trim();
             try { rec.start(); } catch (_) { /* already started */ }
         });
 
-        rec.onstart = () => setListening(true);
+        rec.onstart = () => { setListening(true); say('Listening...'); };
 
         rec.onresult = (e) => {
             let txt = '';
@@ -256,21 +282,41 @@ export function initAssistant() {
         };
 
         rec.onerror = (e) => {
-            setListening(false);
+            lastError = e.error;
             if (e.error === 'not-allowed' || e.error === 'service-not-allowed') {
-                input.setAttribute('placeholder', 'Microphone blocked. Allow access in your browser.');
-                setTimeout(() => input.setAttribute('placeholder', 'Ask about this page...'), 4000);
+                lastError = 'Microphone blocked. Allow mic access in your browser settings, then try again.';
+            } else if (e.error === 'no-speech') {
+                lastError = 'No speech detected. Try again and speak a little louder.';
+            } else if (e.error === 'network') {
+                lastError = 'Speech service unreachable. Check your connection.';
+            } else if (e.error === 'audio-capture') {
+                lastError = 'No microphone found.';
+            } else {
+                lastError = 'Voice input failed (' + e.error + '). You can type instead.';
             }
         };
 
+        // onend always fires after onerror, so resolve the final message here
         rec.onend = () => {
             setListening(false);
+            if (lastError) { say(lastError, true); }
+            else { say(''); }
             input.focus();
         };
 
-        // stop listening if the panel closes
-        panel.addEventListener('transitionend', () => {
-            if (!panel.classList.contains('open') && listening) rec.stop();
+        // Stop recognition whenever the panel is closed, by any route.
+        // The panel toggles a class rather than running a CSS transition on
+        // close, so observe the attribute instead of listening for transitionend.
+        const mo = new MutationObserver(() => {
+            if (!panel.classList.contains('open') && listening) {
+                try { rec.abort(); } catch (_) { rec.stop(); }
+                say('');
+            }
+        });
+        mo.observe(panel, { attributes: true, attributeFilter: ['class'] });
+
+        window.addEventListener('beforeunload', () => {
+            if (listening) { try { rec.abort(); } catch (_) {} }
         });
     })();
 
