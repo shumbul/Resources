@@ -158,6 +158,8 @@ node scripts/check-links.js       # internal links, anchors, canonical/og tags, 
 npx @lhci/cli@0.15.x autorun      # Lighthouse budgets (lighthouserc.json)
 ```
 
+The Lighthouse budgets are split per page. `index.html` and `about.html` are held to the "good" layout-shift threshold (CLS <= 0.1). Guide pages get a looser 0.4 because `journey.js` and `quickjump.js` still insert their panels at the top of `<main>` after load; the real fix is to ship those panels in the HTML, and the budget stops it getting any worse in the meantime.
+
 ## 🌟 About
 
 Created with ❤️ by [Shumbul Arifa](https://linktree.com/shumbul)
