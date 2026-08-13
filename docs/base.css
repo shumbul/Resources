@@ -167,11 +167,30 @@ footer {
 /* No-JS fallback navigation. Only ever renders inside <noscript>, so it costs
    nothing when JavaScript is available. */
 .nojs-nav {
-    padding: 0.9rem 1rem;
-    border-bottom: 1px solid var(--border);
+    padding: 2rem 1rem;
+    border-top: 1px solid var(--border);
     background: var(--bg-secondary);
-    text-align: center;
-    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.nojs-nav-inner {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.nojs-nav p {
+    margin: 0 0 0.75rem;
+    line-height: 1.6;
+}
+
+.nojs-nav ul {
+    list-style: none;
+    margin: 0 0 0.75rem;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.1rem;
 }
 
 .nojs-nav a {

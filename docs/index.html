@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resources by Shumbul Arifa</title>
-    <meta name="description" content="A comprehensive 12-week roadmap to land your dream tech job in 2026. Complete with resources, guides, and practical steps.">
-    <link rel="canonical" href="https://shumbul.github.io/Resources/index.html">
+    <title>Free Tech Career Guides &amp; Roadmaps | Resources by Shumbul Arifa</title>
+    <meta name="description" content="30+ free guides and roadmaps for breaking into tech: DSA patterns, system design, interview prep, AI, resume, and LinkedIn. Written by a Microsoft software engineer. No sign-up, no paywall.">
+    <link rel="canonical" href="https://shumbul.github.io/Resources/">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,7 +26,7 @@
     <meta property="og:site_name" content="Resources by Shumbul Arifa">
     <meta property="og:title" content="Free Tech Career Guides and Roadmaps">
     <meta property="og:description" content="30+ free, practical guides on DSA, system design, interviews, AI and landing a tech job. No sign-up, no paywall.">
-    <meta property="og:url" content="https://shumbul.github.io/Resources/index.html">
+    <meta property="og:url" content="https://shumbul.github.io/Resources/">
     <meta property="og:image" content="https://shumbul.github.io/Resources/assets/og-default.png">
     <meta property="og:image:alt" content="Resources by Shumbul Arifa, free tech career guides">
     <meta name="twitter:card" content="summary_large_image">
@@ -37,7 +37,7 @@
         "@type": "WebSite",
         "name": "Resources by Shumbul Arifa",
         "url": "https://shumbul.github.io/Resources/",
-        "description": "A comprehensive 12-week roadmap to land your dream tech job in 2026. Complete with resources, guides, and practical steps.",
+        "description": "30+ free guides and roadmaps for breaking into tech: DSA patterns, system design, interview prep, AI, resume, and LinkedIn.",
         "inLanguage": "en",
         "author": {
             "@type": "Person",
@@ -200,6 +200,68 @@
             color: var(--text-primary);
         }
 
+        .section-lede {
+            text-align: center;
+            max-width: 640px;
+            margin: -2rem auto 3rem;
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        /* Start here lanes */
+        .start-here {
+            padding: 4rem 0 1rem;
+        }
+
+        .lanes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .lane {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            background: var(--bg-primary, #fff);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--primary);
+            border-radius: 1rem;
+            padding: 1.75rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .lane:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.12);
+        }
+
+        .lane-icon {
+            font-size: 1.75rem;
+            display: block;
+            margin-bottom: 0.75rem;
+        }
+
+        .lane h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .lane p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .lane-go {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
         .resources-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -238,6 +300,28 @@
 
         .resource-card.clickable:hover::after {
             opacity: 0.05;
+        }
+
+        /* Whole card is a link: the inner anchor stretches to cover it, so
+           mouse, keyboard and screen reader users all get the same target. */
+        .resource-card.clickable .resource-link::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 1rem;
+            z-index: 1;
+        }
+
+        .resource-card:focus-within {
+            outline: 3px solid var(--primary);
+            outline-offset: 3px;
+        }
+
+        .resource-card .resource-link:focus-visible {
+            outline: none;
         }
 
         .resource-icon {
@@ -745,8 +829,38 @@
         </div>
     </header>
 
-    <section class="bento-section">
+    <main id="main-content">
+
+    <section class="start-here" aria-labelledby="start-here-title">
         <div class="container">
+            <h2 class="section-title" id="start-here-title">New here? Start with one lane</h2>
+            <p class="section-lede">Thirty-plus guides is a lot to land on. Pick the line that sounds like you and follow it. You can wander later.</p>
+            <div class="lanes">
+                <a class="lane" href="./12-week-roadmap.html">
+                    <span class="lane-icon" aria-hidden="true">🎓</span>
+                    <h3>I am still studying</h3>
+                    <p>Get the fundamentals, projects and internship prep in a fixed order, week by week.</p>
+                    <span class="lane-go">Start the 12-week roadmap →</span>
+                </a>
+                <a class="lane" href="./trending-tech-roles.html">
+                    <span class="lane-icon" aria-hidden="true">🔀</span>
+                    <h3>I am switching into tech</h3>
+                    <p>See which roles are actually hiring, what each one pays, and the shortest path into it.</p>
+                    <span class="lane-go">Compare tech roles →</span>
+                </a>
+                <a class="lane" href="./interview-prep-kit.html">
+                    <span class="lane-icon" aria-hidden="true">🎯</span>
+                    <h3>I have interviews coming up</h3>
+                    <p>Patterns, mock rounds, behavioural stories and the checklist for the week before.</p>
+                    <span class="lane-go">Open the interview kit →</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="bento-section" aria-labelledby="featured-title">
+        <div class="container">
+            <h2 class="section-title" id="featured-title">Most-read guides</h2>
             <div class="bento">
                 <!-- Big feature: AI Tools -->
                 <a class="bento-card bento-lg bento-violet" href="./ai-tools.html">
@@ -861,9 +975,10 @@
         </div>
     </section>
 
-    <section class="nav-section">
+    <section class="nav-section" aria-labelledby="all-guides-title">
         <div class="container">
-            <!-- <h2 class="section-title">Resources & Guides</h2> -->
+            <h2 class="section-title" id="all-guides-title">All guides</h2>
+            <p class="section-lede">Every guide on the site. Search by topic, or just scroll.</p>
             
             <!-- Search Bar -->
             <div class="search-container">
@@ -894,7 +1009,7 @@
             </div>
             
             <div class="resources-grid">
-                <div class="resource-card animate-in clickable" onclick="window.location.href='./12-week-roadmap.html'">
+                <div class="resource-card animate-in clickable">
                     <div class="resource-icon">📋</div>
                     <h3 class="resource-title">
                         12-Week Roadmap 
@@ -909,7 +1024,7 @@
                     </a>
                 </div>
 
-                <div class="resource-card animate-in clickable" onclick="window.location.href='./AI-Roadmap.html'">
+                <div class="resource-card animate-in clickable">
                     <div class="resource-icon">🤖</div>
                     <h3 class="resource-title">
                         AI Learning Roadmap 
@@ -924,7 +1039,7 @@
                     </a>
                 </div>
 
-                <div class="resource-card animate-in clickable" onclick="window.location.href='./prompt-engineering-roadmap.html'">
+                <div class="resource-card animate-in clickable">
                     <div class="resource-icon">✨</div>
                     <h3 class="resource-title">
                         Prompt Engineering
@@ -939,7 +1054,7 @@
                     </a>
                 </div>
 
-                <div class="resource-card animate-in clickable" onclick="window.location.href='./cybersecurity-roadmap.html'">
+                <div class="resource-card animate-in clickable">
                     <div class="resource-icon">🛡️</div>
                     <h3 class="resource-title">
                         Cyber Security Roadmap 
@@ -954,7 +1069,7 @@
                     </a>
                 </div>
 
-                <div class="resource-card animate-in clickable" onclick="window.location.href='./linkedin-utilization-guide.html'">
+                <div class="resource-card animate-in clickable">
                     <div class="resource-icon">💼</div>
                     <h3 class="resource-title">
                         LinkedIn Utilization Guide
@@ -969,7 +1084,7 @@
                     </a>
                 </div>
 
-                <div class="resource-card animate-in clickable" onclick="window.location.href='./git-guide.html'">
+                <div class="resource-card animate-in clickable">
                     <div class="resource-icon">🚀</div>
                     <h3 class="resource-title">
                         Complete Git Guide 
@@ -984,7 +1099,7 @@
                     </a>
                 </div>
 
-                <div class="resource-card animate-in clickable" onclick="window.location.href='./ai-era-job-hunt.html'">
+                <div class="resource-card animate-in clickable">
                     <div class="resource-icon">🚀</div>
                     <h3 class="resource-title">
                         The AI Era Job Hunt
@@ -998,7 +1113,7 @@
                     </a>
                 </div>
 
-                <div class="resource-card animate-in clickable" onclick="window.location.href='./big-tech-core-models.html'">
+                <div class="resource-card animate-in clickable">
                     <div class="resource-icon">🏢</div>
                     <h3 class="resource-title">
                         Big Companies, Simple Models
@@ -1012,22 +1127,7 @@
                     </a>
                 </div>
 
-                <div class="resource-card animate-in clickable" onclick="window.location.href='./component-demo.html'">
-                    <div class="resource-icon">🧩</div>
-                    <h3 class="resource-title">
-                        Component System Demo 
-                        <span class="status-badge status-tech">Tech</span>
-                    </h3>
-                    <p class="resource-description">
-                        See how the new modular component system works. 
-                        No more code duplication - build pages faster and cleaner.
-                    </p>
-                    <a href="./component-demo.html" class="resource-link">
-                        View Demo →
-                    </a>
-                </div>
-
-                <div class="resource-card animate-in clickable" onclick="window.location.href='./dsa-practice-guide.html'">
+                <div class="resource-card animate-in clickable">
                     <div class="resource-icon">💻</div>
                     <h3 class="resource-title">DSA Practice Guide</h3>
                     <p class="resource-description">
@@ -1039,7 +1139,7 @@
                     </a>
                 </div>
 
-                <div class="resource-card animate-in clickable" onclick="window.location.href='./system-design-templates.html'">
+                <div class="resource-card animate-in clickable">
                     <div class="resource-icon">🎯</div>
                     <h3 class="resource-title">System Design Templates</h3>
                     <p class="resource-description">
@@ -1051,7 +1151,7 @@
                     </a>
                 </div>
 
-                <div class="resource-card animate-in clickable" onclick="window.location.href='./ai-tools.html'">
+                <div class="resource-card animate-in clickable">
                     <div class="resource-icon">🛠️</div>
                     <h3 class="resource-title">AI Tools for Developers</h3>
                     <p class="resource-description">
@@ -1063,19 +1163,7 @@
                     </a>
                 </div>
 
-                <div class="resource-card animate-in">
-                    <div class="resource-icon">🧩</div>
-                    <h3 class="resource-title">Component System Demo</h3>
-                    <p class="resource-description">
-                        See how this site is built with modular components. 
-                        No more code duplication, easier maintenance!
-                    </p>
-                    <a href="./component-demo.html" class="resource-link">
-                        View Demo →
-                    </a>
-                </div>
-
-                <div class="resource-card animate-in clickable" onclick="window.location.href='./resume-portfolio-templates.html'">
+                <div class="resource-card animate-in clickable">
                     <div class="resource-icon">📄</div>
                     <h3 class="resource-title">Resume & Portfolio Templates</h3>
                     <p class="resource-description">
@@ -1087,7 +1175,7 @@
                     </a>
                 </div>
 
-                <div class="resource-card animate-in clickable" onclick="window.location.href='./interview-prep-kit.html'">
+                <div class="resource-card animate-in clickable">
                     <div class="resource-icon">🗣️</div>
                     <h3 class="resource-title">Interview Prep Kit</h3>
                     <p class="resource-description">
@@ -1099,7 +1187,7 @@
                     </a>
                 </div>
 
-                <div class="resource-card animate-in clickable" onclick="window.location.href='./star-method.html'">
+                <div class="resource-card animate-in clickable">
                     <div class="resource-icon">⭐</div>
                     <h3 class="resource-title">The STAR Method</h3>
                     <p class="resource-description">
@@ -1110,7 +1198,7 @@
                         Learn STAR →
                     </a>
                 </div>
-                <div class="resource-card animate-in clickable" onclick="window.location.href='./trending-tech-roles.html'">
+                <div class="resource-card animate-in clickable">
                     <div class="resource-icon">🚀</div>
                     <h3 class="resource-title">Trending Roles in Tech</h3>
                     <p class="resource-description">
@@ -1121,7 +1209,7 @@
                         Explore roles →
                     </a>
                 </div>
-                <div class="resource-card animate-in clickable" onclick="window.location.href='./full-stack-developer-path.html'">
+                <div class="resource-card animate-in clickable">
                     <div class="resource-icon">🌐</div>
                     <h3 class="resource-title">Full-Stack Developer Path</h3>
                     <p class="resource-description">
@@ -1132,7 +1220,7 @@
                         Start building →
                     </a>
                 </div>
-                <div class="resource-card animate-in clickable" onclick="window.location.href='./cs-fundamentals-guide.html'">
+                <div class="resource-card animate-in clickable">
                     <div class="resource-icon">🧠</div>
                     <h3 class="resource-title">CS Fundamentals</h3>
                     <p class="resource-description">
@@ -1143,7 +1231,7 @@
                         Learn the core →
                     </a>
                 </div>
-                <div class="resource-card animate-in clickable" onclick="window.location.href='./sql-databases-guide.html'">
+                <div class="resource-card animate-in clickable">
                     <div class="resource-icon">🗄️</div>
                     <h3 class="resource-title">SQL &amp; Databases</h3>
                     <p class="resource-description">
@@ -1154,7 +1242,7 @@
                         Query away →
                     </a>
                 </div>
-                <div class="resource-card animate-in clickable" onclick="window.location.href='./cloud-devops-starter.html'">
+                <div class="resource-card animate-in clickable">
                     <div class="resource-icon">☁️</div>
                     <h3 class="resource-title">Cloud &amp; DevOps Starter</h3>
                     <p class="resource-description">
@@ -1165,7 +1253,7 @@
                         Ship it →
                     </a>
                 </div>
-                <div class="resource-card animate-in clickable" onclick="window.location.href='./open-source-guide.html'">
+                <div class="resource-card animate-in clickable">
                     <div class="resource-icon">🌍</div>
                     <h3 class="resource-title">Open-Source Contribution</h3>
                     <p class="resource-description">
@@ -1176,7 +1264,7 @@
                         Make your first PR →
                     </a>
                 </div>
-                <div class="resource-card animate-in clickable" onclick="window.location.href='./salary-negotiation-guide.html'">
+                <div class="resource-card animate-in clickable">
                     <div class="resource-icon">💰</div>
                     <h3 class="resource-title">Salary Negotiation</h3>
                     <p class="resource-description">
@@ -1187,7 +1275,7 @@
                         Ask for more →
                     </a>
                 </div>
-                <div class="resource-card animate-in clickable" onclick="window.location.href='./build-a-website.html'">
+                <div class="resource-card animate-in clickable">
                     <div class="resource-icon">🌐</div>
                     <h3 class="resource-title">Build &amp; Deploy a Website</h3>
                     <p class="resource-description">
@@ -1198,7 +1286,7 @@
                         Go live →
                     </a>
                 </div>
-                <div class="resource-card animate-in clickable" onclick="window.location.href='./build-ai-agent.html'">
+                <div class="resource-card animate-in clickable">
                     <div class="resource-icon">🤖</div>
                     <h3 class="resource-title">Build an AI Agent</h3>
                     <p class="resource-description">
@@ -1209,7 +1297,7 @@
                         Build the loop →
                     </a>
                 </div>
-                <div class="resource-card animate-in clickable" onclick="window.location.href='./networking-toolkit.html'">
+                <div class="resource-card animate-in clickable">
                     <div class="resource-icon">🛰️</div>
                     <h3 class="resource-title">Networking Toolkit</h3>
                     <p class="resource-description">
@@ -1220,7 +1308,7 @@
                         Run the commands →
                     </a>
                 </div>
-                <div class="resource-card animate-in clickable" onclick="window.location.href='./career-portals.html'">
+                <div class="resource-card animate-in clickable">
                     <div class="resource-icon">🏢</div>
                     <h3 class="resource-title">Career Portals</h3>
                     <p class="resource-description">
@@ -1231,7 +1319,7 @@
                         Find openings →
                     </a>
                 </div>
-                <div class="resource-card animate-in clickable" onclick="window.location.href='./operating-systems-deep-dive.html'">
+                <div class="resource-card animate-in clickable">
                     <div class="resource-icon">🖥️</div>
                     <h3 class="resource-title">Operating Systems Deep Dive</h3>
                     <p class="resource-description">
@@ -1242,7 +1330,7 @@
                         Take the quizzes →
                     </a>
                 </div>
-                <div class="resource-card animate-in clickable" onclick="window.location.href='./dbms-deep-dive.html'">
+                <div class="resource-card animate-in clickable">
                     <div class="resource-icon">🗃️</div>
                     <h3 class="resource-title">DBMS Deep Dive</h3>
                     <p class="resource-description">
@@ -1253,7 +1341,7 @@
                         Take the quizzes →
                     </a>
                 </div>
-                <div class="resource-card animate-in clickable" onclick="window.location.href='./computer-networks-deep-dive.html'">
+                <div class="resource-card animate-in clickable">
                     <div class="resource-icon">🌐</div>
                     <h3 class="resource-title">Computer Networks Deep Dive</h3>
                     <p class="resource-description">
@@ -1264,7 +1352,7 @@
                         Take the quizzes →
                     </a>
                 </div>
-                <div class="resource-card animate-in clickable" onclick="window.location.href='./oop-deep-dive.html'">
+                <div class="resource-card animate-in clickable">
                     <div class="resource-icon">🧩</div>
                     <h3 class="resource-title">OOP Deep Dive</h3>
                     <p class="resource-description">
@@ -1278,6 +1366,8 @@
             </div>
         </div>
     </section>
+
+    </main>
 
     <footer>
         <div class="footer-content">
@@ -1318,7 +1408,10 @@
                     <li><a href="./AI-Roadmap.html">🤖 AI Learning Roadmap</a></li>
                     <li><a href="./linkedin-utilization-guide.html">💼 LinkedIn Guide</a></li>
                     <li><a href="./git-guide.html">🚀 Git Guide</a></li>
-                    <li><a href="./component-demo.html">🧩 Component Demo</a></li>
+                    <li><a href="./interview-prep-kit.html">🎯 Interview Prep Kit</a></li>
+                    <li><a href="./about.html">👋 About Shumbul</a></li>
+                    <li><a href="./contact.html">✉️ Contact</a></li>
+                    <li><a href="./feed.xml">📡 RSS feed</a></li>
                     <li><a href="https://linktree.com/shumbul" target="_blank" rel="noopener noreferrer">🌐 All Links</a></li>
                 </ul>
             </div>
@@ -1354,7 +1447,7 @@
             <p>© 2026 Shumbul Arifa. Made with ❤️ for the tech community.</p>
             <p>
                 <a href="https://linktree.com/shumbul" target="_blank" rel="noopener noreferrer">🌐 Visit Linktree</a> • 
-                <a href="#" onclick="scrollToTop()">⬆️ Back to Top</a> • 
+                <a href="#main-content">⬆️ Back to Top</a> • 
                 <a href="mailto:shumbularifa@outlook.com">📧 Get in Touch</a>
             </p>
         </div>
@@ -1532,15 +1625,30 @@
                 });
             });
         });
-
-        // Scroll to top function
-        function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
     </script>
     <script type="module" src="./functions/site.js?v=20260815a"></script>
+    <noscript>
+        <nav class="nojs-nav" aria-label="Site links without JavaScript">
+            <div class="nojs-nav-inner">
+                <p><strong>JavaScript is turned off.</strong> The sidebar, search and the AI assistant need it, but every guide is plain HTML and still works. Jump straight to one:</p>
+                <ul>
+                    <li><strong>All guides</strong> (this page)</li>
+                    <li><a href="./12-week-roadmap.html">12-week roadmap</a></li>
+                    <li><a href="./dsa-practice-guide.html">DSA practice</a></li>
+                    <li><a href="./interview-prep-kit.html">Interview prep kit</a></li>
+                    <li><a href="./system-design-templates.html">System design</a></li>
+                    <li><a href="./resume-portfolio-templates.html">Resume templates</a></li>
+                    <li><a href="./linkedin-utilization-guide.html">LinkedIn guide</a></li>
+                    <li><a href="./AI-Roadmap.html">AI roadmap</a></li>
+                    <li><a href="./cs-fundamentals-guide.html">CS fundamentals</a></li>
+                    <li><a href="./git-guide.html">Git guide</a></li>
+                    <li><a href="./about.html">About</a></li>
+                    <li><a href="./contact.html">Contact</a></li>
+                </ul>
+                <p>&copy; Shumbul Arifa &middot; <a href="./feed.xml">RSS feed</a> &middot; <a href="./sitemap.xml">Sitemap</a></p>
+            </div>
+        </nav>
+    </noscript>
+
 </body>
 </html>
