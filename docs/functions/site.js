@@ -14,24 +14,25 @@
  *   2. the ?v=... on the site.js <script> tag in the HTML pages
  *      (docs uses a single value; see ADDING-A-RESOURCE.md).
  */
-import { ensureMeta } from './meta.js?v=20260814e';
-import { renderNav } from './nav.js?v=20260814e';
-import { renderFooter } from './footer.js?v=20260814e';
-import { renderBackLink } from './header.js?v=20260814e';
-import { initCopyButtons } from './copyButtons.js?v=20260814e';
-import { initProgress } from './progress.js?v=20260814e';
-import { initAssistant } from './assistant.js?v=20260814e';
-import { makeScrollablesFocusable } from './a11y.js?v=20260814e';
-import { initMotion } from './motion.js?v=20260814e';
-import { initJourney } from './journey.js?v=20260814e';
-import { initTypewriter } from './typewriter.js?v=20260814e';
-import { initQuickJump } from './quickjump.js?v=20260814e';
-import { initQuizzes } from './quiz.js?v=20260814e';
-import { initFlowMaps } from './flow.js?v=20260814e';
-import { initPractice } from './practice.js?v=20260814e';
-import { initSeo } from './seo.js?v=20260814e';
-import { initMotivation } from './motivation.js?v=20260814e';
-import { initReadAloud } from './readaloud.js?v=20260814e';
+import { ensureMeta } from './meta.js?v=20260814f';
+import { renderNav } from './nav.js?v=20260814f';
+import { renderFooter } from './footer.js?v=20260814f';
+import { renderBackLink } from './header.js?v=20260814f';
+import { initCopyButtons } from './copyButtons.js?v=20260814f';
+import { initProgress } from './progress.js?v=20260814f';
+import { initAssistant } from './assistant.js?v=20260814f';
+import { makeScrollablesFocusable } from './a11y.js?v=20260814f';
+import { initMotion } from './motion.js?v=20260814f';
+import { initJourney } from './journey.js?v=20260814f';
+import { initTypewriter } from './typewriter.js?v=20260814f';
+import { initQuickJump } from './quickjump.js?v=20260814f';
+import { initQuizzes } from './quiz.js?v=20260814f';
+import { initFlowMaps } from './flow.js?v=20260814f';
+import { initPractice } from './practice.js?v=20260814f';
+import { initSeo } from './seo.js?v=20260814f';
+import { initMotivation } from './motivation.js?v=20260814f';
+import { initReadAloud } from './readaloud.js?v=20260814f';
+import { initFuturistic } from './futuristic.js?v=20260814f';
 
 const STEPS = [
     ['meta', ensureMeta],
@@ -52,6 +53,7 @@ const STEPS = [
     ['quiz', initQuizzes],
     ['flow', initFlowMaps],
     ['practice', initPractice],
+    ['futuristic', initFuturistic],
 ];
 
 function run() {
