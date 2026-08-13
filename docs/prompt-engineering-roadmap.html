@@ -94,6 +94,112 @@
         .mis strong { display:block; color:#b3261e; margin-bottom:.25rem; font-size:.95rem; }
         .mis span { font-size:.88rem; color:var(--text-secondary); }
 
+        /* ===== VISUAL ROADMAP ===== */
+        .roadmap { position:relative; margin-top:1rem; }
+        .road-svg { width:100%; height:auto; display:block; overflow:visible; }
+
+        .road-base { fill:none; stroke:var(--border); stroke-width:22; stroke-linecap:round; }
+        .road-dash { fill:none; stroke:url(#roadGrad); stroke-width:3; stroke-linecap:round;
+                     stroke-dasharray:14 20; animation:roadFlow 2.4s linear infinite; }
+        @keyframes roadFlow { to { stroke-dashoffset:-68; } }
+        .road-progress { fill:none; stroke:var(--primary); stroke-width:5; stroke-linecap:round;
+                         stroke-dasharray:1800; stroke-dashoffset:1800; opacity:.85; }
+        .roadmap.is-live .road-progress { animation:roadDraw 2.6s cubic-bezier(.4,0,.2,1) forwards .2s; }
+        @keyframes roadDraw { to { stroke-dashoffset:0; } }
+
+        /* traveller */
+        .traveller { opacity:0; }
+        .roadmap.is-live .traveller { animation:travShow .3s ease forwards .3s; }
+        @keyframes travShow { to { opacity:1; } }
+        .trav-halo { fill:var(--primary); opacity:.22; }
+        .roadmap.is-live .trav-halo { animation:pulseHalo 1.7s ease-in-out infinite .6s; }
+        @keyframes pulseHalo { 0%,100%{ r:15; opacity:.22; } 50%{ r:21; opacity:.08; } }
+        .trav-dot { fill:var(--primary); stroke:var(--bg-secondary); stroke-width:3; }
+
+        /* stops */
+        .stop { cursor:pointer; outline:none; }
+        .stop-ring { fill:var(--bg-secondary); stroke:var(--border); stroke-width:2.5;
+                     transition:stroke .25s, r .25s; }
+        .stop-fill { fill:var(--bg-tertiary); stroke:var(--border); stroke-width:1.5;
+                     transition:fill .25s, stroke .25s; }
+        .stop-num { font-size:16px; font-weight:800; fill:var(--text-secondary);
+                    text-anchor:middle; dominant-baseline:central; transition:fill .25s;
+                    font-family:var(--font-display,sans-serif); }
+        .stop-label { font-size:14px; font-weight:700; fill:var(--text-primary); text-anchor:middle; }
+        .stop-week { font-size:11px; font-weight:600; fill:var(--text-secondary);
+                     text-anchor:middle; letter-spacing:.04em; }
+
+        .stop:hover .stop-ring,
+        .stop:focus-visible .stop-ring,
+        .stop.is-on .stop-ring { stroke:var(--primary); }
+        .stop:hover .stop-fill,
+        .stop:focus-visible .stop-fill,
+        .stop.is-on .stop-fill { fill:var(--primary); stroke:var(--primary); }
+        .stop:hover .stop-num,
+        .stop:focus-visible .stop-num,
+        .stop.is-on .stop-num { fill:#fff; }
+        .stop.is-on .stop-ring { filter:url(#stopGlow); }
+        .stop:focus-visible .stop-ring { stroke-width:4; }
+
+        /* reveal stops one by one */
+        .stop { opacity:0; transform:scale(.55); transform-origin:center;
+                transform-box:fill-box; }
+        .roadmap.is-live .stop { animation:stopPop .45s cubic-bezier(.34,1.5,.64,1) forwards; }
+        .roadmap.is-live .stop[data-stop="1"] { animation-delay:.35s; }
+        .roadmap.is-live .stop[data-stop="2"] { animation-delay:.95s; }
+        .roadmap.is-live .stop[data-stop="3"] { animation-delay:1.55s; }
+        .roadmap.is-live .stop[data-stop="4"] { animation-delay:2.15s; }
+        @keyframes stopPop { to { opacity:1; transform:scale(1); } }
+
+        .finish { opacity:0; transform-box:fill-box; transform-origin:center; }
+        .roadmap.is-live .finish { animation:stopPop .45s cubic-bezier(.34,1.5,.64,1) forwards 2.7s; }
+        .flag-pole { stroke:var(--text-secondary); stroke-width:3; stroke-linecap:round; }
+        .flag-cloth { fill:var(--primary); }
+        .roadmap.is-live .flag-cloth { animation:flagWave 2.2s ease-in-out infinite 3s;
+                                       transform-box:fill-box; transform-origin:left center; }
+        @keyframes flagWave { 0%,100%{ transform:skewY(0deg); } 50%{ transform:skewY(-7deg); } }
+        .flag-base { fill:var(--text-secondary); }
+
+        /* detail panel */
+        .stop-detail { position:relative; margin-top:.6rem; }
+        .sd-card { position:absolute; top:0; left:0; right:0; background:var(--bg-primary);
+                   border:1px solid var(--border); border-left:4px solid var(--primary);
+                   border-radius:12px; padding:1rem 1.2rem;
+                   opacity:0; visibility:hidden; transform:translateY(10px);
+                   transition:opacity .3s ease, transform .3s ease, visibility .3s; }
+        .sd-card.is-active { opacity:1; visibility:visible; transform:translateY(0);
+                             position:relative; }
+        .sd-tag { display:inline-block; font-size:.72rem; font-weight:700;
+                  text-transform:uppercase; letter-spacing:.06em; color:var(--primary);
+                  background:var(--bg-tertiary); border:1px solid var(--border);
+                  padding:.15rem .55rem; border-radius:999px; margin-bottom:.5rem; }
+        .sd-card h3 { margin:0 0 .35rem; font-size:1.12rem; }
+        .sd-card p { margin:0 0 .45rem; font-size:.92rem; color:var(--text-secondary); }
+        .sd-card .sd-out { margin:0; font-size:.88rem; }
+        .sd-card .sd-out b { color:var(--text-primary); }
+
+        .road-hint { text-align:center; font-size:.82rem; margin-top:.6rem; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .road-dash, .trav-halo, .flag-cloth { animation:none !important; }
+            .roadmap .road-progress { stroke-dashoffset:0 !important; animation:none !important; }
+            .roadmap .stop, .roadmap .finish, .roadmap .traveller {
+                opacity:1 !important; transform:none !important; animation:none !important; }
+        }
+
+        @media (max-width:640px){
+            .roadmap { margin-top:.7rem; }
+            .stop-label { font-size:17px; }
+            .stop-week { font-size:14px; }
+            .stop-num { font-size:20px; }
+            .road-base { stroke-width:28; }
+            .sd-card { padding:.85rem .95rem; }
+            .sd-card h3 { font-size:1rem; }
+            .sd-card p { font-size:.85rem; line-height:1.5; }
+            .sd-card .sd-out { font-size:.82rem; }
+            .road-hint { font-size:.78rem; margin-top:.8rem; }
+        }
+
         @media (max-width:640px){
             /* header */
             .guide-header { padding:2rem 0 1.7rem; margin-bottom:1.6rem; }
@@ -200,16 +306,110 @@
     </header>
 
     <main class="container">
-        <div class="starter">
-            <strong style="font-family:var(--font-display);">🌱 New here? Read this first</strong>
-            <p class="muted" style="margin:.5rem 0 0;">You do not need a machine learning degree for this. Prompt engineering is mostly clear thinking plus a handful of patterns you can learn in an afternoon. Read the first two sections, try the examples in any free chatbot, and you will already be ahead of most people. Everything linked here is free.</p>
-        </div>
+        <!-- ===== VISUAL ROADMAP ===== -->
+        <div class="gsection roadmap-section">
+            <h2 data-jump="The journey">Your journey at a glance</h2>
+            <p class="muted">Four stages, four weeks. Hover or tap any stop to see what happens there.</p>
 
-        <div class="snap">
-            <div class="cell"><div class="n" data-countup="12">12</div><div class="l">techniques covered</div></div>
-            <div class="cell"><div class="n" data-countup="4">4</div><div class="l">week plan</div></div>
-            <div class="cell"><div class="n" data-countup="30" data-suffix="+">30+</div><div class="l">free resources</div></div>
-            <div class="cell"><div class="n" data-countup="0" data-suffix="₹">0₹</div><div class="l">cost to start</div></div>
+            <div class="roadmap" id="roadmap">
+                <svg class="road-svg" viewBox="0 0 900 340" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+                    <defs>
+                        <linearGradient id="roadGrad" x1="0" y1="0" x2="1" y2="0">
+                            <stop offset="0%" stop-color="var(--primary)" stop-opacity=".35"/>
+                            <stop offset="50%" stop-color="var(--secondary)" stop-opacity=".55"/>
+                            <stop offset="100%" stop-color="var(--primary)" stop-opacity=".35"/>
+                        </linearGradient>
+                        <filter id="stopGlow" x="-60%" y="-60%" width="220%" height="220%">
+                            <feGaussianBlur stdDeviation="6" result="b"/>
+                            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+                        </filter>
+                    </defs>
+
+                    <!-- the road surface -->
+                    <path id="roadPath"
+                          d="M 60 250 C 170 250, 175 90, 285 90 S 400 250, 510 250 S 625 90, 735 90 S 830 170, 850 190"
+                          class="road-base"/>
+                    <!-- animated dashes travelling along the road -->
+                    <path d="M 60 250 C 170 250, 175 90, 285 90 S 400 250, 510 250 S 625 90, 735 90 S 830 170, 850 190"
+                          class="road-dash"/>
+                    <!-- progress line that draws in on scroll -->
+                    <path id="roadProgress"
+                          d="M 60 250 C 170 250, 175 90, 285 90 S 400 250, 510 250 S 625 90, 735 90 S 830 170, 850 190"
+                          class="road-progress"/>
+
+                    <!-- the traveller -->
+                    <g id="traveller" class="traveller">
+                        <circle r="15" class="trav-halo"/>
+                        <circle r="9" class="trav-dot"/>
+                    </g>
+
+                    <!-- stops -->
+                    <g class="stop" data-stop="1" tabindex="0" role="button" aria-label="Stage 1: Foundations">
+                        <circle cx="60" cy="250" r="26" class="stop-ring"/>
+                        <circle cx="60" cy="250" r="19" class="stop-fill"/>
+                        <text x="60" y="250" class="stop-num">1</text>
+                        <text x="60" y="298" class="stop-label">Foundations</text>
+                        <text x="60" y="315" class="stop-week">Week 1</text>
+                    </g>
+                    <g class="stop" data-stop="2" tabindex="0" role="button" aria-label="Stage 2: Core techniques">
+                        <circle cx="285" cy="90" r="26" class="stop-ring"/>
+                        <circle cx="285" cy="90" r="19" class="stop-fill"/>
+                        <text x="285" y="90" class="stop-num">2</text>
+                        <text x="285" y="42" class="stop-label">Techniques</text>
+                        <text x="285" y="26" class="stop-week">Week 2</text>
+                    </g>
+                    <g class="stop" data-stop="3" tabindex="0" role="button" aria-label="Stage 3: Build something">
+                        <circle cx="510" cy="250" r="26" class="stop-ring"/>
+                        <circle cx="510" cy="250" r="19" class="stop-fill"/>
+                        <text x="510" y="250" class="stop-num">3</text>
+                        <text x="510" y="298" class="stop-label">Build</text>
+                        <text x="510" y="315" class="stop-week">Week 3</text>
+                    </g>
+                    <g class="stop" data-stop="4" tabindex="0" role="button" aria-label="Stage 4: Go deeper">
+                        <circle cx="735" cy="90" r="26" class="stop-ring"/>
+                        <circle cx="735" cy="90" r="19" class="stop-fill"/>
+                        <text x="735" y="90" class="stop-num">4</text>
+                        <text x="735" y="42" class="stop-label">Go deeper</text>
+                        <text x="735" y="26" class="stop-week">Week 4</text>
+                    </g>
+                    <!-- finish flag -->
+                    <g class="finish">
+                        <line x1="850" y1="190" x2="850" y2="150" class="flag-pole"/>
+                        <path d="M 850 150 L 886 160 L 850 170 Z" class="flag-cloth"/>
+                        <circle cx="850" cy="190" r="6" class="flag-base"/>
+                    </g>
+                </svg>
+
+                <!-- detail panel -->
+                <div class="stop-detail" id="stopDetail">
+                    <div class="sd-card is-active" data-detail="1">
+                        <span class="sd-tag">Week 1</span>
+                        <h3>Foundations</h3>
+                        <p>Understand what an LLM actually does, learn the vocabulary, and master the five-part prompt structure: role, task, context, format, constraints.</p>
+                        <p class="sd-out"><b>You will have:</b> a personal cheat sheet of five prompt templates you actually use.</p>
+                    </div>
+                    <div class="sd-card" data-detail="2">
+                        <span class="sd-tag">Week 2</span>
+                        <h3>Core techniques</h3>
+                        <p>Zero-shot, few-shot, chain of thought, role prompting, delimiters and structured output. Solve a real problem with each one and compare results.</p>
+                        <p class="sd-out"><b>You will have:</b> a prompt that reliably returns valid JSON you could feed into code.</p>
+                    </div>
+                    <div class="sd-card" data-detail="3">
+                        <span class="sd-tag">Week 3</span>
+                        <h3>Build something</h3>
+                        <p>Automate a task you genuinely repeat, using prompt chaining. Call the API from a script instead of a chat window. Meet Semantic Kernel and RAG.</p>
+                        <p class="sd-out"><b>You will have:</b> a working script or notebook doing something useful with an LLM.</p>
+                    </div>
+                    <div class="sd-card" data-detail="4">
+                        <span class="sd-tag">Week 4</span>
+                        <h3>Go deeper</h3>
+                        <p>Function calling and a tiny agent. Build an evaluation set so you can measure prompts instead of guessing. Learn prompt injection and safety basics.</p>
+                        <p class="sd-out"><b>You will have:</b> a GitHub repo and a short write-up worth showing in an interview.</p>
+                    </div>
+                </div>
+
+                <p class="road-hint muted">Tap a numbered stop to jump between stages</p>
+            </div>
         </div>
 
         <!-- ===== WHY IT MATTERS ===== -->
@@ -659,11 +859,111 @@ likely ask about this schema.</code></pre>
             </div>
             <p class="muted" style="margin-top:1rem;">One last thing. The people who get the most out of AI are not the ones who memorised the most techniques. They are the ones who think clearly about what they actually want before they start typing. Prompting is mostly just that skill, written down.</p>
         </div>
+        <div class="snap">
+            <div class="cell"><div class="n" data-countup="12">12</div><div class="l">techniques covered</div></div>
+            <div class="cell"><div class="n" data-countup="4">4</div><div class="l">week plan</div></div>
+            <div class="cell"><div class="n" data-countup="30" data-suffix="+">30+</div><div class="l">free resources</div></div>
+            <div class="cell"><div class="n" data-countup="0" data-suffix="₹">0₹</div><div class="l">cost to start</div></div>
+        </div>
+
+        <div class="starter">
+            <strong style="font-family:var(--font-display);">🌱 New here? Read this first</strong>
+            <p class="muted" style="margin:.5rem 0 0;">You do not need a machine learning degree for this. Prompt engineering is mostly clear thinking plus a handful of patterns you can learn in an afternoon. Read the first two sections, try the examples in any free chatbot, and you will already be ahead of most people. Everything linked here is free.</p>
+        </div>
+
     </main>
 
     <div data-component="footer"></div>
     <div data-component="scripts-common"></div>
     <script src="./components/component-loader.js"></script>
     <script type="module" src="./functions/site.js?v=20260731"></script>
+
+    <script>
+    (function () {
+        var wrap = document.getElementById('roadmap');
+        if (!wrap) return;
+
+        var path   = document.getElementById('roadPath');
+        var trav   = document.getElementById('traveller');
+        var stops  = Array.prototype.slice.call(wrap.querySelectorAll('.stop'));
+        var cards  = Array.prototype.slice.call(wrap.querySelectorAll('.sd-card'));
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        // fraction along the path where each stop sits
+        var STOP_T = [0, 0.30, 0.585, 0.875];
+        var len = path.getTotalLength();
+
+        function place(t) {
+            var p = path.getPointAtLength(len * Math.max(0, Math.min(1, t)));
+            trav.setAttribute('transform', 'translate(' + p.x + ',' + p.y + ')');
+        }
+
+        function select(i, skipAnim) {
+            stops.forEach(function (s, n) { s.classList.toggle('is-on', n === i); });
+            cards.forEach(function (c, n) { c.classList.toggle('is-active', n === i); });
+            if (skipAnim || reduce) { place(STOP_T[i]); return; }
+            glide(STOP_T[i]);
+        }
+
+        // smooth travel between stops
+        var raf = null, curT = 0;
+        function glide(target) {
+            if (raf) cancelAnimationFrame(raf);
+            var from = curT, delta = target - from, t0 = null, dur = 700;
+            function step(ts) {
+                if (t0 === null) t0 = ts;
+                var k = Math.min(1, (ts - t0) / dur);
+                var e = k < 0.5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;
+                curT = from + delta * e;
+                place(curT);
+                if (k < 1) raf = requestAnimationFrame(step);
+            }
+            raf = requestAnimationFrame(step);
+        }
+
+        stops.forEach(function (s, i) {
+            s.addEventListener('click', function () { select(i); });
+            s.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); select(i); }
+            });
+            s.addEventListener('mouseenter', function () { select(i); });
+        });
+
+        curT = STOP_T[0];
+        place(curT);
+
+        // kick off the draw-in when it scrolls into view
+        function start() {
+            wrap.classList.add('is-live');
+            stops[0].classList.add('is-on');
+            if (reduce) { place(STOP_T[0]); return; }
+            // walk the traveller along as the road draws
+            var t0 = null, dur = 2600, delay = 200;
+            function walk(ts) {
+                if (t0 === null) t0 = ts;
+                var k = (ts - t0 - delay) / dur;
+                if (k > 0) {
+                    var e = k >= 1 ? 1 : 1 - Math.pow(1 - Math.min(1, k), 3);
+                    curT = e;
+                    place(curT);
+                }
+                if (k < 1) requestAnimationFrame(walk);
+                else { curT = STOP_T[0]; glide(STOP_T[0]); }
+            }
+            requestAnimationFrame(walk);
+        }
+
+        if ('IntersectionObserver' in window) {
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (en) {
+                    if (en.isIntersecting) { start(); io.disconnect(); }
+                });
+            }, { threshold: 0.25 });
+            io.observe(wrap);
+        } else {
+            start();
+        }
+    })();
+    </script>
 </body>
 </html>
