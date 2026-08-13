@@ -16,6 +16,7 @@ const GROUPS = [
     { title: 'Roadmaps', items: [
         { href: '12-week-roadmap.html', label: '12-Week Roadmap', icon: '📋' },
         { href: 'AI-Roadmap.html', label: 'AI Developer Roadmap', icon: '🤖' },
+        { href: 'prompt-engineering-roadmap.html', label: 'Prompt Engineering', icon: '✨' },
         { href: 'cybersecurity-roadmap.html', label: 'Cyber Security Roadmap', icon: '🛡️' },
     ]},
     { title: 'Core Skills', items: [
