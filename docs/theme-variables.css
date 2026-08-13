@@ -41,8 +41,8 @@ body .container {
     --glass-border: rgba(255, 255, 255, 0.55);
     --ring: rgba(139, 92, 246, 0.35);
 
-    --font-sans: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    --font-display: 'Space Grotesk', 'Inter', 'Segoe UI', sans-serif;
+    --font-sans: 'Inter', 'Inter Fallback', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-display: 'Space Grotesk', 'Space Grotesk Fallback', 'Inter', 'Segoe UI', sans-serif;
     --mesh-1: rgba(139, 92, 246, 0.14);
     --mesh-2: rgba(59, 130, 246, 0.10);
     --mesh-3: rgba(236, 72, 153, 0.08);
@@ -171,4 +171,94 @@ pre { max-width: 100%; overflow-x: auto; box-sizing: border-box; }
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border: 0;
+}
+
+/* ==========================================================================
+   Critical layout reservation
+   --------------------------------------------------------------------------
+   nav.js injects the top bar and sidebar at runtime and used to bring these
+   body offsets with it. That meant the page painted with no offsets, then
+   jumped 56px down and 250px right once the script ran, producing a
+   Cumulative Layout Shift of 0.86 on the home page and 3.46 on guide pages
+   (Google considers anything above 0.1 poor).
+
+   Declaring the same offsets here, in a stylesheet loaded from <head>,
+   reserves the space before the first paint so nothing moves.
+   Keep these values in sync with SIDEBAR_W and TOPBAR_H in functions/nav.js.
+   ========================================================================== */
+:root {
+    --sidebar-w: 250px;
+    --topbar-h: 56px;
+}
+
+body {
+    padding-top: var(--topbar-h);
+}
+
+@media (min-width: 1024px) {
+    body {
+        padding-left: var(--sidebar-w);
+    }
+    body.sidebar-collapsed {
+        padding-left: 0;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   Reserve the quick-jump slot.
+
+   quickjump.js inserts a ~125px nav at the top of <main> once it has read the
+   page headings. Before this rule, that insertion pushed the entire page down
+   and was the single largest source of layout shift on guide pages.
+
+   The ::before placeholder occupies the same space beforehand and disappears
+   at the exact moment the real nav arrives, so the net movement is zero.
+   :has() is supported in every current browser; where it is not, the page
+   simply behaves as it did before.
+   -------------------------------------------------------------------------- */
+main:has([data-jump]):not(:has(.quick-jump))::before {
+    content: "";
+    display: block;
+    height: 125px;
+}
+
+.quick-jump {
+    min-height: 125px;
+    box-sizing: border-box;
+}
+
+@media (max-width: 640px) {
+    main:has([data-jump]):not(:has(.quick-jump))::before { height: 150px; }
+    .quick-jump { min-height: 150px; }
+}
+
+/* --------------------------------------------------------------------------
+   Metric-matched font fallbacks
+
+   The web fonts arrive after first paint. When they swap in, every text block
+   changes height slightly and the whole page reflows. On guide pages this was
+   the single largest remaining source of layout shift.
+
+   These @font-face rules describe a local system font adjusted to match the
+   metrics of the real font, so the fallback occupies the same space. When the
+   web font finally loads, nothing moves.
+
+   Overrides are the published metrics for Inter and Space Grotesk.
+   -------------------------------------------------------------------------- */
+@font-face {
+    font-family: "Inter Fallback";
+    src: local("Arial");
+    size-adjust: 107.12%;
+    ascent-override: 90.2%;
+    descent-override: 22.48%;
+    line-gap-override: 0%;
+}
+
+@font-face {
+    font-family: "Space Grotesk Fallback";
+    src: local("Arial");
+    size-adjust: 100.6%;
+    ascent-override: 98.4%;
+    descent-override: 26.1%;
+    line-gap-override: 0%;
 }

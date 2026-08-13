@@ -122,11 +122,13 @@ const CSS = `
 
 .site-backdrop{position:fixed;inset:0;z-index:9300;background:rgba(15,23,42,.45);opacity:0;pointer-events:none;transition:opacity .25s ease;}
 
-/* Layout offsets */
-body{padding-top:var(--topbar-h);transition:padding-left .25s ease;}
-@media (min-width:1024px){
-    body{padding-left:var(--sidebar-w);}
-    body.sidebar-collapsed{padding-left:0;}
+    /* Layout offsets
+       NOTE: body padding is also declared in theme-variables.css so the space is
+       reserved before this script runs. Without that, the page painted first and
+       then jumped, causing severe layout shift. These rules stay here only to add
+       the transition and the collapsed-state behaviour. Keep the values in sync. */
+    body{transition:padding-left .25s ease;}
+    @media (min-width:1024px){
     body.sidebar-collapsed .site-sidebar{transform:translateX(-100%);}
 }
 @media (max-width:1023px){
