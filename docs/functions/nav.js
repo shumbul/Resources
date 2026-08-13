@@ -87,6 +87,12 @@ const CSS = `
     font-weight:700;color:var(--text-primary,#111);text-decoration:none;white-space:nowrap;}
 .site-topbar__brand .spark{display:inline-flex;width:30px;height:30px;align-items:center;justify-content:center;}
 .site-topbar__brand .spark svg{width:30px;height:30px;display:block;filter:drop-shadow(0 2px 5px rgba(124,58,237,.35));}
+.site-topbar__brand .brand-name{display:inline-flex;align-items:baseline;gap:.32rem;}
+.site-topbar__brand .brand-name em{font-style:normal;font-weight:600;font-size:.82em;
+    color:var(--text-secondary,#666);letter-spacing:.01em;}
+@media (max-width:560px){
+    .site-topbar__brand .brand-name em{display:none;}
+}
 .site-topbar__spacer{flex:1;}
 .site-topbar__links{display:flex;align-items:center;gap:.3rem;}
 .site-topbar__links a{white-space:nowrap;text-decoration:none;font:600 .9rem/1 var(--font-sans,inherit);
@@ -150,7 +156,7 @@ export function renderNav() {
         `<a href="./${l.href}"${isActive(l) ? ' class="active" aria-current="page"' : ''}>${l.label}</a>`).join('');
     top.innerHTML =
         `<button class="site-menu-btn" id="siteMenuBtn" aria-label="Toggle menu" aria-expanded="false">☰</button>` +
-        `<a class="site-topbar__brand" href="./index.html"><span class="spark">${HEART_S_SVG}</span><span>Resources</span></a>` +
+        `<a class="site-topbar__brand" href="./index.html"><span class="spark">${HEART_S_SVG}</span><span class="brand-name">Resources <em>by Shumbul</em></span></a>` +
         `<span class="site-topbar__spacer"></span>` +
         `<div class="site-topbar__links">${topLinks}</div>`;
 
