@@ -323,8 +323,51 @@
             margin: 0 auto;
             padding: 0 2rem;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            /* About + search on the left, Quick Links fills the wider right
+               side. Previously all three were equal columns, which left a
+               large empty area under Find Resources. */
+            grid-template-columns: minmax(260px, 1fr) minmax(0, 1.85fr);
             gap: 3rem;
+            align-items: start;
+        }
+
+        /* Quick Links occupies the right column and organises its own links
+           into categories, so the footer gets wider rather than taller. */
+        .footer-section.quick-links { grid-column: 2; grid-row: 1 / span 2; }
+        .footer-section.about-section { grid-column: 1; }
+        .footer-section.find-section { grid-column: 1; }
+
+        .ql-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.25rem 1.5rem;
+            text-align: left;      /* columns are far easier to scan left-aligned */
+        }
+        .ql-cat {
+            font-size: .72rem;
+            font-weight: 700;
+            letter-spacing: .09em;
+            text-transform: uppercase;
+            color: var(--primary);
+            margin: 0 0 .55rem;
+            opacity: .95;
+        }
+        .quick-links .ql-grid ul { list-style: none; margin: 0; padding: 0; }
+        .quick-links .ql-grid li { margin: 0 0 .38rem; }
+        .quick-links .ql-grid a {
+            font-size: .88rem;
+            line-height: 1.4;
+            display: inline-block;
+            transition: color .18s ease, transform .18s ease;
+        }
+        .quick-links .ql-grid a:hover { transform: translateX(3px); }
+
+        @media (max-width: 900px) {
+            .footer-content { grid-template-columns: 1fr; gap: 2.25rem; }
+            .footer-section.quick-links,
+            .footer-section.about-section,
+            .footer-section.find-section { grid-column: 1; grid-row: auto; }
+            .ql-grid { grid-template-columns: repeat(2, 1fr); gap: 1.1rem 1rem; }
         }
 
         .footer-section h3 {
@@ -1002,21 +1045,6 @@
                     </a>
                 </div>
 
-                <div class="resource-card animate-in clickable" onclick="window.location.href='./component-demo.html'">
-                    <div class="resource-icon">🧩</div>
-                    <h3 class="resource-title">
-                        Component System Demo 
-                        <span class="status-badge status-tech">Tech</span>
-                    </h3>
-                    <p class="resource-description">
-                        See how the new modular component system works. 
-                        No more code duplication - build pages faster and cleaner.
-                    </p>
-                    <a href="./component-demo.html" class="resource-link">
-                        View Demo →
-                    </a>
-                </div>
-
                 <div class="resource-card animate-in clickable" onclick="window.location.href='./dsa-practice-guide.html'">
                     <div class="resource-icon">💻</div>
                     <h3 class="resource-title">DSA Practice Guide</h3>
@@ -1050,18 +1078,6 @@
                     </p>
                     <a href="./ai-tools.html" class="resource-link">
                         Try it live →
-                    </a>
-                </div>
-
-                <div class="resource-card animate-in">
-                    <div class="resource-icon">🧩</div>
-                    <h3 class="resource-title">Component System Demo</h3>
-                    <p class="resource-description">
-                        See how this site is built with modular components. 
-                        No more code duplication, easier maintenance!
-                    </p>
-                    <a href="./component-demo.html" class="resource-link">
-                        View Demo →
                     </a>
                 </div>
 
@@ -1300,21 +1316,52 @@
                 </div>
             </div>
 
-            <!-- Quick Links -->
+            <!-- Quick Links: grouped, spans the remaining two columns so it
+                 fills the empty space on the right instead of adding height -->
             <div class="footer-section quick-links">
                 <h3>📚 Quick Links</h3>
-                <ul>
-                    <li><a href="./12-week-roadmap.html">📋 12-Week Roadmap</a></li>
-                    <li><a href="./AI-Roadmap.html">🤖 AI Learning Roadmap</a></li>
-                    <li><a href="./linkedin-utilization-guide.html">💼 LinkedIn Guide</a></li>
-                    <li><a href="./git-guide.html">🚀 Git Guide</a></li>
-                    <li><a href="./component-demo.html">🧩 Component Demo</a></li>
-                    <li><a href="https://linktree.com/shumbul" target="_blank" rel="noopener noreferrer">🌐 All Links</a></li>
-                </ul>
+                <div class="ql-grid">
+                    <div class="ql-group">
+                        <p class="ql-cat">Roadmaps</p>
+                        <ul>
+                            <li><a href="./12-week-roadmap.html">12-Week Roadmap</a></li>
+                            <li><a href="./AI-Roadmap.html">AI Developer</a></li>
+                            <li><a href="./prompt-engineering-roadmap.html">Prompt Engineering</a></li>
+                            <li><a href="./cybersecurity-roadmap.html">Cyber Security</a></li>
+                        </ul>
+                    </div>
+                    <div class="ql-group">
+                        <p class="ql-cat">Core skills</p>
+                        <ul>
+                            <li><a href="./dsa-practice-guide.html">DSA Practice</a></li>
+                            <li><a href="./system-design-templates.html">System Design</a></li>
+                            <li><a href="./cs-fundamentals-guide.html">CS Fundamentals</a></li>
+                            <li><a href="./git-guide.html">Git Guide</a></li>
+                        </ul>
+                    </div>
+                    <div class="ql-group">
+                        <p class="ql-cat">Land the job</p>
+                        <ul>
+                            <li><a href="./resume-portfolio-templates.html">Resume &amp; Portfolio</a></li>
+                            <li><a href="./interview-prep-kit.html">Interview Prep</a></li>
+                            <li><a href="./trending-tech-roles.html">Trending Roles</a></li>
+                            <li><a href="./salary-negotiation-guide.html">Salary Negotiation</a></li>
+                        </ul>
+                    </div>
+                    <div class="ql-group">
+                        <p class="ql-cat">More</p>
+                        <ul>
+                            <li><a href="./linkedin-utilization-guide.html">LinkedIn Guide</a></li>
+                            <li><a href="./ai-tools.html">AI Tools</a></li>
+                            <li><a href="./career-portals.html">Career Portals</a></li>
+                            <li><a href="./about.html">About</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
 
             <!-- Search Resources -->
-            <div class="footer-section">
+            <div class="footer-section find-section">
                 <h3>🔍 Find Resources</h3>
                 <p style="margin-bottom: 1rem;">Quick search through all guides and resources:</p>
                 <div class="footer-search">
@@ -1531,6 +1578,6 @@
             });
         }
     </script>
-    <script type="module" src="./functions/site.js?v=20260814i"></script>
+    <script type="module" src="./functions/site.js?v=20260814m"></script>
 </body>
 </html>

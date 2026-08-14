@@ -31,7 +31,17 @@ const CSS = `
 }
 
 /* ============ HERO: ANIMATED MESH ============ */
-[data-futuristic] header {
+/* Applies to every header variant across the site, not just the home page.
+   Specificity note: [data-futuristic] header (0,1,1) intentionally beats the
+   per-page .guide-header rule (0,1,0), so pages keep working if this module
+   never loads. */
+[data-futuristic] header,
+[data-futuristic] .guide-header,
+[data-futuristic] .header,
+[data-futuristic] .nf-header,
+[data-futuristic] .demo-header,
+[data-futuristic] .ai-header,
+[data-futuristic] .git-header {
   position: relative;
   overflow: hidden;
   isolation: isolate;
@@ -39,8 +49,15 @@ const CSS = `
       color-mix(in oklab, var(--primary) 92%, #000 8%),
       color-mix(in oklab, var(--secondary) 88%, #4c1d95 12%));
 }
-.fx-orb {
-  position: absolute;
+/* Specificity note: theme-variables.css contains
+     .guide-header > *, .header > * { position: relative; z-index: 1 }
+   to lift header *content* above the decoration. That rule (0,1,1) also
+   catches these decorative divs and would force them into flow, stacking
+   them and adding over 1000px of header height. Prefixing with the
+   [data-futuristic] attribute raises specificity to (0,2,0) so absolute
+   positioning wins. */
+[data-futuristic] .fx-orb {
+  position: absolute !important;
   border-radius: 50%;
   filter: blur(58px);
   pointer-events: none;
@@ -48,16 +65,16 @@ const CSS = `
   will-change: transform;
   mix-blend-mode: screen;
 }
-.fx-orb.o1 { width: 44vw; height: 44vw; max-width:520px; max-height:520px;
+[data-futuristic] .fx-orb.o1 { width: 44vw; height: 44vw; max-width:520px; max-height:520px;
   background: radial-gradient(circle, rgba(167,139,250,.85), transparent 68%);
   top: -14%; left: -8%;  animation: fxDrift1 19s ease-in-out infinite; }
-.fx-orb.o2 { width: 38vw; height: 38vw; max-width:460px; max-height:460px;
+[data-futuristic] .fx-orb.o2 { width: 38vw; height: 38vw; max-width:460px; max-height:460px;
   background: radial-gradient(circle, rgba(56,189,248,.62), transparent 68%);
   bottom: -20%; right: -6%; animation: fxDrift2 24s ease-in-out infinite; }
-.fx-orb.o3 { width: 30vw; height: 30vw; max-width:380px; max-height:380px;
+[data-futuristic] .fx-orb.o3 { width: 30vw; height: 30vw; max-width:380px; max-height:380px;
   background: radial-gradient(circle, rgba(244,114,182,.55), transparent 70%);
   top: 40%; right: 22%;  animation: fxDrift3 28s ease-in-out infinite; }
-.fx-orb.o4 { width: 26vw; height: 26vw; max-width:320px; max-height:320px;
+[data-futuristic] .fx-orb.o4 { width: 26vw; height: 26vw; max-width:320px; max-height:320px;
   background: radial-gradient(circle, rgba(52,211,153,.42), transparent 70%);
   bottom: 8%; left: 24%;  animation: fxDrift4 22s ease-in-out infinite; }
 
@@ -72,19 +89,50 @@ const CSS = `
 @keyframes fxDrift4 { 0%,100%{transform:translate3d(0,0,0) scale(1)}
   50%{transform:translate3d(10vw,-9vh,0) scale(1.14)} }
 
+/* Guide headers are ~200px tall rather than a full hero, so the orbs need
+   to be smaller or they wash out the title. */
+[data-futuristic] .fx-compact .fx-orb { filter: blur(40px); }
+[data-futuristic] .fx-compact .fx-orb.o1 { width:34vw; max-width:340px; height:34vw; max-height:340px; }
+[data-futuristic] .fx-compact .fx-orb.o2 { width:30vw; max-width:300px; height:30vw; max-height:300px; }
+[data-futuristic] .fx-compact .fx-orb.o3 { width:24vw; max-width:250px; height:24vw; max-height:250px; }
+[data-futuristic] .fx-compact .fx-orb.o4 { width:22vw; max-width:220px; height:22vw; max-height:220px; }
+[data-futuristic] .fx-compact .fx-mesh-grid { opacity:.10; background-size:26px 26px; }
+
 /* fine grain so the gradient never looks like flat plastic */
-.fx-grain {
-  position:absolute; inset:0; z-index:1; pointer-events:none; opacity:.055;
+[data-futuristic] .fx-grain {
+  position:absolute !important; inset:0; z-index:1; pointer-events:none; opacity:.055;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 /* faint dot grid for depth */
-.fx-mesh-grid {
-  position:absolute; inset:-40px; z-index:1; pointer-events:none; opacity:.14;
+[data-futuristic] .fx-mesh-grid {
+  position:absolute !important; inset:-40px; z-index:1; pointer-events:none; opacity:.14;
   background-image: radial-gradient(circle, #fff 1px, transparent 1px);
   background-size: 30px 30px;
   animation: fxGridDrift 26s linear infinite;
 }
 @keyframes fxGridDrift { to { transform: translate(30px, 30px); } }
+
+/* ---- floating bubbles ----
+   The old shared header texture was a tiling SVG drifting 20s on the
+   diagonal, which is far too slow to read as movement. These are real
+   elements that rise, sway and fade, so the header is visibly alive. */
+[data-futuristic] .fx-bubbles { position:absolute !important; inset:0; z-index:1;
+  pointer-events:none; overflow:hidden; }
+[data-futuristic] .fx-bubble {
+  position:absolute !important; bottom:-14%; border-radius:50%;
+  background: radial-gradient(circle at 32% 28%,
+      rgba(255,255,255,.34), rgba(255,255,255,.10) 46%, rgba(255,255,255,0) 70%);
+  border: 1px solid rgba(255,255,255,.16);
+  will-change: transform, opacity;
+  animation: fxRise linear infinite;
+}
+@keyframes fxRise {
+  0%   { transform: translate3d(0, 0, 0) scale(.85); opacity: 0; }
+  10%  { opacity: .85; }
+  50%  { transform: translate3d(22px, -52vh, 0) scale(1.06); }
+  85%  { opacity: .5; }
+  100% { transform: translate3d(-14px, -108vh, 0) scale(1.15); opacity: 0; }
+}
 
 [data-futuristic] header .container { position: relative; z-index: 2; }
 
@@ -239,7 +287,8 @@ const CSS = `
 
 /* ============ REDUCED MOTION ============ */
 @media (prefers-reduced-motion: reduce) {
-  .fx-orb, .fx-mesh-grid, .fx-aurora i { animation: none !important; }
+  .fx-orb, .fx-mesh-grid, .fx-aurora i, .fx-bubble { animation: none !important; }
+  .fx-bubbles { display: none !important; }
   [data-futuristic] .fx-reveal { animation: none !important;
     opacity:1 !important; transform:none !important; }
   .fx-in { opacity:1 !important; transform:none !important; transition:none !important; }
@@ -255,15 +304,52 @@ const CSS = `
   .fx-stats { gap:1.1rem; margin-top:1.5rem; }
   .fx-stat b { font-size:var(--fx-step-1); }
   .fx-stat span { font-size:.66rem; letter-spacing:.09em; }
+  /* fewer, softer bubbles so cheap phones keep their frame rate */
+  .fx-bubble:nth-child(n+8) { display:none; }
 }
 `;
 
 const REDUCE = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+/**
+ * Build the floating bubble layer.
+ * Sizes, positions, durations and delays are randomised per load so the
+ * motion never looks like a repeating loop. Negative delays mean bubbles are
+ * already mid-flight on first paint rather than all launching together.
+ */
+function makeBubbles(compact) {
+    const wrap = document.createElement('div');
+    wrap.className = 'fx-bubbles';
+    wrap.setAttribute('aria-hidden', 'true');
+    if (REDUCE()) return wrap;          // no motion, no bubbles
+
+    const count = compact ? 9 : 14;
+    for (let i = 0; i < count; i++) {
+        const b = document.createElement('span');
+        b.className = 'fx-bubble';
+        const size = compact
+            ? 8 + Math.random() * 26
+            : 10 + Math.random() * 42;
+        const dur = 14 + Math.random() * 16;
+        b.style.width = size + 'px';
+        b.style.height = size + 'px';
+        b.style.left = (Math.random() * 98) + '%';
+        b.style.animationDuration = dur + 's';
+        b.style.animationDelay = (-Math.random() * dur) + 's';
+        wrap.appendChild(b);
+    }
+    return wrap;
+}
+
 /* ---------- hero decoration ---------- */
 function decorateHero() {
     const header = document.querySelector('header');
     if (!header || header.querySelector('.fx-orb')) return;
+
+    // Guide headers are much shorter than the home hero, so scale the
+    // decoration down or the orbs simply swamp the text.
+    const compact = header.getBoundingClientRect().height < 320;
+    if (compact) header.classList.add('fx-compact');
 
     const frag = document.createDocumentFragment();
     ['o1', 'o2', 'o3', 'o4'].forEach(c => {
@@ -280,6 +366,7 @@ function decorateHero() {
     grain.setAttribute('aria-hidden', 'true');
     frag.appendChild(grid);
     frag.appendChild(grain);
+    frag.appendChild(makeBubbles(compact));
     header.insertBefore(frag, header.firstChild);
 
     // staged entrance for hero content
@@ -297,14 +384,19 @@ function decorateHero() {
 
 /* ---------- hero stats ---------- */
 function addStats() {
+    // Only meaningful on the home page. Guide headers have their own badges.
     const host = document.querySelector('header .hero-content');
     if (!host || host.querySelector('.fx-stats')) return;
+    if (!document.querySelector('.resources-grid')) return;
 
     const guides = document.querySelectorAll('.resource-card').length || 30;
+    // Each stat must read as a complete claim. The original third item was
+    // "0 / Signups", which looked like nobody had signed up rather than
+    // "no signup is required". The label now finishes the sentence.
     const stats = [
         [guides, '+', 'Guides'],
         [100, '%', 'Free'],
-        [0, '', 'Signups'],
+        [0, '', 'Signups needed'],
     ];
 
     const wrap = document.createElement('div');

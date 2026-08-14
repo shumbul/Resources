@@ -14,27 +14,27 @@
  *   2. the ?v=... on the site.js <script> tag in the HTML pages
  *      (docs uses a single value; see ADDING-A-RESOURCE.md).
  */
-import { ensureMeta } from './meta.js?v=20260814i';
-import { renderNav } from './nav.js?v=20260814i';
-import { renderFooter } from './footer.js?v=20260814i';
-import { renderBackLink } from './header.js?v=20260814i';
-import { initCopyButtons } from './copyButtons.js?v=20260814i';
-import { initProgress } from './progress.js?v=20260814i';
-import { initAssistant } from './assistant.js?v=20260814i';
-import { makeScrollablesFocusable } from './a11y.js?v=20260814i';
-import { initMotion } from './motion.js?v=20260814i';
-import { initJourney } from './journey.js?v=20260814i';
-import { initTypewriter } from './typewriter.js?v=20260814i';
-import { initQuickJump } from './quickjump.js?v=20260814i';
-import { initQuizzes } from './quiz.js?v=20260814i';
-import { initFlowMaps } from './flow.js?v=20260814i';
-import { initPractice } from './practice.js?v=20260814i';
-import { initSeo } from './seo.js?v=20260814i';
-import { initMotivation } from './motivation.js?v=20260814i';
-import { initReadAloud } from './readaloud.js?v=20260814i';
-import { initFuturistic } from './futuristic.js?v=20260814i';
-import { initNotFound } from './notfound.js?v=20260814i';
-import { initInstant } from './instant.js?v=20260814i';
+import { ensureMeta } from './meta.js?v=20260814m';
+import { renderNav } from './nav.js?v=20260814m';
+import { renderFooter } from './footer.js?v=20260814m';
+import { renderBackLink } from './header.js?v=20260814m';
+import { initCopyButtons } from './copyButtons.js?v=20260814m';
+import { initProgress } from './progress.js?v=20260814m';
+import { initAssistant } from './assistant.js?v=20260814m';
+import { makeScrollablesFocusable } from './a11y.js?v=20260814m';
+import { initMotion } from './motion.js?v=20260814m';
+import { initJourney } from './journey.js?v=20260814m';
+import { initTypewriter } from './typewriter.js?v=20260814m';
+import { initQuickJump } from './quickjump.js?v=20260814m';
+import { initQuizzes } from './quiz.js?v=20260814m';
+import { initFlowMaps } from './flow.js?v=20260814m';
+import { initPractice } from './practice.js?v=20260814m';
+import { initSeo } from './seo.js?v=20260814m';
+import { initMotivation } from './motivation.js?v=20260814m';
+import { initReadAloud } from './readaloud.js?v=20260814m';
+import { initFuturistic } from './futuristic.js?v=20260814m';
+import { initNotFound } from './notfound.js?v=20260814m';
+import { initInstant } from './instant.js?v=20260814m';
 
 const STEPS = [
     ['meta', ensureMeta],
