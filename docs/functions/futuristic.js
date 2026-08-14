@@ -301,10 +301,13 @@ function addStats() {
     if (!host || host.querySelector('.fx-stats')) return;
 
     const guides = document.querySelectorAll('.resource-card').length || 30;
+    // Each stat must read as a complete claim. The original third item was
+    // "0 / Signups", which looked like nobody had signed up rather than
+    // "no signup is required". The label now finishes the sentence.
     const stats = [
         [guides, '+', 'Guides'],
         [100, '%', 'Free'],
-        [0, '', 'Signups'],
+        [0, '', 'Signups needed'],
     ];
 
     const wrap = document.createElement('div');
