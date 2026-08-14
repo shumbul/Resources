@@ -67,6 +67,91 @@ const CSS = `
 
 const RATES = [0.85, 1, 1.15, 1.35, 1.6];
 
+/**
+ * Voice selection.
+ *
+ * SpeechSynthesisVoice has no reliable gender field (it was dropped from the
+ * spec), so the only portable way to prefer a female voice is to recognise the
+ * known female voice names each platform ships. Listed best-first.
+ */
+const FEMALE_VOICES = [
+    // Chrome / Edge, usually the highest quality available
+    'Google UK English Female',
+    'Google US English',            // this one is female
+    'Microsoft Aria',               // Edge, natural
+    'Microsoft Jenny',
+    'Microsoft Michelle',
+    'Microsoft Zira',               // classic Windows female
+    'Microsoft Hazel',
+    'Microsoft Susan',
+    'Microsoft Linda',
+    'Microsoft Heera',              // Indian English female
+    'Microsoft Neerja',             // Indian English female, natural
+    // Apple
+    'Samantha', 'Karen', 'Moira', 'Tessa', 'Fiona', 'Victoria', 'Serena',
+    'Allison', 'Ava', 'Susan', 'Vicki', 'Kate',
+    // Android / misc
+    'English United States female', 'en-us-x-sfg#female_1',
+];
+
+/** Words that usually indicate a female voice when the name is unfamiliar. */
+const FEMALE_HINTS = /female|woman|\bshe\b/i;
+
+/** Names that are definitely male, used to rule candidates out. */
+const MALE_HINTS = /male(?!.*female)|\bman\b|david|mark|george|daniel|alex|fred|thomas|oliver|james|ravi|guy|tom|rishi|prabhat/i;
+
+/**
+ * Pick the best available female English voice.
+ * Falls back to any English voice, then to the browser default.
+ */
+function pickVoice(voices) {
+    if (!voices || !voices.length) return null;
+
+    const english = voices.filter(v => /^en\b|^en[-_]/i.test(v.lang || ''));
+    const pool = english.length ? english : voices;
+
+    // 1. exact match against the known-female list, in preference order
+    for (const wanted of FEMALE_VOICES) {
+        const hit = pool.find(v => (v.name || '').toLowerCase() === wanted.toLowerCase());
+        if (hit) return hit;
+    }
+    // 2. partial match, e.g. "Microsoft Zira - English (United States)"
+    for (const wanted of FEMALE_VOICES) {
+        const hit = pool.find(v => (v.name || '').toLowerCase().includes(wanted.toLowerCase()));
+        if (hit) return hit;
+    }
+    // 3. anything self-describing as female and not male
+    const hinted = pool.find(v => FEMALE_HINTS.test(v.name || '') && !MALE_HINTS.test(v.name || ''));
+    if (hinted) return hinted;
+
+    // 4. any English voice that is not obviously male
+    const notMale = pool.find(v => !MALE_HINTS.test(v.name || ''));
+    if (notMale) return notMale;
+
+    return pool[0] || null;
+}
+
+/**
+ * Voices load asynchronously in Chrome. getVoices() is often empty on the first
+ * call, so resolve once the list is populated (or give up after a short wait).
+ */
+function whenVoicesReady() {
+    return new Promise(resolve => {
+        const synth = window.speechSynthesis;
+        const now = synth.getVoices();
+        if (now && now.length) { resolve(now); return; }
+
+        let settled = false;
+        const done = () => {
+            if (settled) return;
+            settled = true;
+            resolve(synth.getVoices() || []);
+        };
+        synth.addEventListener('voiceschanged', done, { once: true });
+        setTimeout(done, 1500);   // some browsers never fire the event
+    });
+}
+
 export function initReadAloud() {
     if (!('speechSynthesis' in window)) return;          // unsupported, stay silent
     if (document.querySelector('.ra-fab')) return;
@@ -130,8 +215,15 @@ export function initReadAloud() {
     let rateI = 1;
     let reading = false;
     let current = null;
+    let voice = null;
 
     const synth = window.speechSynthesis;
+
+    // Resolve the preferred voice up front so the first utterance already
+    // uses it. Chrome populates the list asynchronously.
+    whenVoicesReady().then(list => {
+        voice = pickVoice(list);
+    });
 
     function clearHighlight() {
         if (current) current.classList.remove('ra-speaking');
@@ -156,6 +248,16 @@ export function initReadAloud() {
         const u = new SpeechSynthesisUtterance(el.textContent.trim());
         u.rate = RATES[rateI];
         u.lang = document.documentElement.lang || 'en-US';
+
+        // Prefer a female voice. Resolve late in case the list arrived after
+        // init, and fall back silently to the browser default if none matched.
+        if (!voice) voice = pickVoice(synth.getVoices());
+        if (voice) {
+            u.voice = voice;
+            u.lang = voice.lang || u.lang;
+        }
+        u.pitch = 1.05;   // a touch brighter, reads as warmer on most engines
+
         u.onend = () => { if (reading) speakFrom(idx + 1); };
         u.onerror = () => { if (reading) speakFrom(idx + 1); };
         synth.speak(u);
