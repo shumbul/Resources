@@ -28,3 +28,9 @@ jobs:
         # HTML source. This fails if someone adds a page without running
         # `python build-seo.py`.
         run: python build-seo.py --check
+
+      - name: Verify critical CSS is linked from <head>
+        # The layout stylesheets must load before first paint. If they only
+        # arrive via the JS-loaded head-common partial, the page paints
+        # unstyled and then jumps, which is severe layout shift.
+        run: python build-critical-css.py --check
