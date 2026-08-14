@@ -216,7 +216,11 @@ body {
    :has() is supported in every current browser; where it is not, the page
    simply behaves as it did before.
    -------------------------------------------------------------------------- */
-main:has([data-jump]):not(:has(.quick-jump))::before {
+/* quickjump.js builds a nav when it finds 3+ headings, using [data-jump]
+   labels when present and falling back to h2 text otherwise. The headings sit
+   inside .gsection wrappers, so match those siblings rather than bare h2s. */
+main:has(.gsection ~ .gsection ~ .gsection):not(:has(.quick-jump)):not(:has(.journey))::before,
+main:has([data-jump]):not(:has(.quick-jump)):not(:has(.journey))::before {
     content: "";
     display: block;
     height: 125px;
@@ -309,4 +313,20 @@ main:has([data-jump]):not(:has(.quick-jump))::before {
 
 @media (max-width: 640px) {
     [data-component="footer"]:empty { min-height: 300px; }
+}
+
+/* --------------------------------------------------------------------------
+   Header decoration must not resize the header.
+
+   futuristic.js inserts orbs, grain and bubbles as the first children of
+   <header>. theme-variables.css also has `.guide-header > *` forcing
+   position:relative on header children, which would drag those decorative
+   divs into flow and inflate the header by over 1000px. The module raises
+   its own specificity to win, but this rule makes the intent explicit and
+   protects against the decoration ever affecting layout.
+   -------------------------------------------------------------------------- */
+.fx-orb, .fx-grain, .fx-mesh-grid, .fx-bubbles, .fx-bubble {
+    position: absolute;
+    z-index: 0;
+    pointer-events: none;
 }
