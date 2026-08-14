@@ -11,7 +11,9 @@
     <link rel="stylesheet" href="./theme-variables.css">
     <!-- Theme Switcher CSS -->
     <link rel="stylesheet" href="./theme-switcher.css">
-    
+<!-- BEGIN critical-css (build-critical-css.py) -->
+<link rel="stylesheet" href="./base.css">
+<!-- END critical-css -->    
 <!-- BEGIN generated-seo (build-seo.py) -->
 <link rel="canonical" href="https://shumbul.github.io/Resources/git-guide.html">
 <meta name="description" content="Comprehensive Git guide with commands, workflows, and best practices for developers">
@@ -262,6 +264,10 @@
 
     <header class="git-header">
         <div class="container">
+        <!-- BEGIN back-link (build-backlink.py) -->
+        <div class="back-link-row"><a class="back-link" href="./index.html"><span aria-hidden="true">&larr;</span> Back to Resources</a></div>
+        <!-- END back-link -->
+
             <h1 class="git-title">🚀 Complete Git Guide</h1>
             <p class="git-subtitle">
                 Git can feel scary at first. It won't after this. Friendly, practical commands and workflows you'll actually use every day.
@@ -270,6 +276,13 @@
     </header>
 
     <main class="container">
+        <!-- BEGIN quick-jump (build-quickjump.py) -->
+        <nav class="quick-jump" aria-label="Quick jump to section">
+            <div class="quick-jump__label">⚡ Quick jump</div>
+            <div class="quick-jump__links"><a href="#table-of-contents">📋 Table of Contents</a><a href="#setup-configuration">🔧 Setup &amp; Configuration</a><a href="#repository-operations">📁 Repository Operations</a><a href="#basic-workflow">🔄 Basic Workflow</a><a href="#branching-merging">🌳 Branching &amp; Merging</a><a href="#remote-operations">🌐 Remote Operations</a><a href="#viewing-history">📜 Viewing History</a><a href="#undoing-changes">↩️ Undoing Changes</a><a href="#stashing">📦 Stashing</a><a href="#common-workflows">🔄 Common Workflows</a><a href="#best-practices">⭐ Best Practices</a></div>
+        </nav>
+        <!-- END quick-jump -->
+
         <!-- Fresher quickstart -->
         <div style="background:var(--bg-secondary,#f7f8fc);border:1px solid var(--border,#e6e8f0);border-left:4px solid var(--primary,#8b5cf6);border-radius:14px;padding:1.1rem 1.3rem;margin:0 0 1.75rem;">
             <div style="font-weight:700;font-family:var(--font-display,inherit);margin-bottom:.5rem;">🌱 New to Git? The 7 commands you actually use daily</div>
@@ -285,7 +298,7 @@ git status           # what's going on? (use this constantly)</code></pre>
         </div>
         <!-- Table of Contents -->
         <div class="toc">
-            <h2>📋 Table of Contents</h2>
+            <h2 id="table-of-contents">📋 Table of Contents</h2>
             <div class="toc-grid">
                 <div class="toc-item">
                     <a href="#setup">Setup & Configuration</a>
@@ -328,7 +341,7 @@ git status           # what's going on? (use this constantly)</code></pre>
 
         <!-- Setup & Configuration -->
         <div class="git-section" id="setup">
-            <h2>🔧 Setup & Configuration</h2>
+            <h2 id="setup-configuration">🔧 Setup & Configuration</h2>
             
             <h3>Initial Setup</h3>
             <p>Before using Git, configure your identity:</p>
@@ -392,7 +405,7 @@ git config --list --show-origin</code></pre>
 
         <!-- Repository Operations -->
         <div class="git-section" id="repository">
-            <h2>📁 Repository Operations</h2>
+            <h2 id="repository-operations">📁 Repository Operations</h2>
             
             <h3>Creating Repositories</h3>
             <div class="code-block-container" data-language="bash">
@@ -450,7 +463,7 @@ du -sh .git/</code></pre>
 
         <!-- Basic Workflow -->
         <div class="git-section" id="workflow">
-            <h2>🔄 Basic Workflow</h2>
+            <h2 id="basic-workflow">🔄 Basic Workflow</h2>
             <div class="flowmap" data-flow-title="The core Git workflow" data-flow="Working dir|✏️, Staging|➕, Local repo|✅, Remote|☁️"></div>
             
             <h3>Checking Status</h3>
@@ -555,7 +568,7 @@ git commit --amend --no-edit</code></pre>
 
         <!-- Branching & Merging -->
         <div class="git-section" id="branching">
-            <h2>🌳 Branching & Merging</h2>
+            <h2 id="branching-merging">🌳 Branching & Merging</h2>
 
             <div class="git-visual" style="background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--radius,16px);padding:1.25rem 1.25rem .5rem;margin:0 0 1.5rem;">
                 <h3 style="margin-top:0;">Merge vs Rebase, at a glance</h3>
@@ -678,7 +691,7 @@ git merge --continue</code></pre>
 
         <!-- Remote Operations -->
         <div class="git-section" id="remote">
-            <h2>🌐 Remote Operations</h2>
+            <h2 id="remote-operations">🌐 Remote Operations</h2>
             
             <h3>Remote Repository Management</h3>
             <div class="code-block-container" data-language="bash">
@@ -800,7 +813,7 @@ git push &lt;remote-name&gt; --delete &lt;branch-name&gt;</code></pre>
 
         <!-- Viewing History -->
         <div class="git-section" id="history">
-            <h2>📜 Viewing History</h2>
+            <h2 id="viewing-history">📜 Viewing History</h2>
             
             <h3>Basic Log Commands</h3>
             <div class="code-block-container" data-language="bash">
@@ -904,7 +917,7 @@ git show &lt;commit&gt;:&lt;filename&gt;</code></pre>
 
         <!-- Undoing Changes -->
         <div class="git-section" id="undoing">
-            <h2>↩️ Undoing Changes</h2>
+            <h2 id="undoing-changes">↩️ Undoing Changes</h2>
             
             <h3>Working Directory Changes</h3>
             <div class="code-block-container" data-language="bash">
@@ -1087,7 +1100,7 @@ git stash -p</code></pre>
 
         <!-- Common Workflows -->
         <div class="git-section" id="workflows">
-            <h2>🔄 Common Workflows</h2>
+            <h2 id="common-workflows">🔄 Common Workflows</h2>
             
             <div class="workflow-card">
                 <h3>Feature Branch Workflow</h3>
@@ -1346,6 +1359,6 @@ logs/
             console.log('Git Guide loaded successfully! 🚀');
         });
     </script>
-    <script type="module" src="./functions/site.js?v=20260814m"></script>
+    <script type="module" src="./functions/site.js?v=20260814n"></script>
 </body>
 </html>

@@ -8,8 +8,8 @@
 <!-- BEGIN critical-css (build-critical-css.py) -->
 <link rel="stylesheet" href="./theme-variables.css">
 <link rel="stylesheet" href="./theme-switcher.css">
-<!-- END critical-css -->
-<!-- BEGIN generated-seo (build-seo.py) -->
+<link rel="stylesheet" href="./base.css">
+<!-- END critical-css --><!-- BEGIN generated-seo (build-seo.py) -->
 <link rel="canonical" href="https://shumbul.github.io/Resources/build-ai-agent.html">
 <meta name="description" content="Build your first AI agent from scratch: understand what an agent really is, wire up an LLM with tools and memory, and ship a working project you can show.">
 <meta name="author" content="Shumbul Arifa">
@@ -80,6 +80,10 @@
 
     <header class="guide-header">
         <div class="container">
+        <!-- BEGIN back-link (build-backlink.py) -->
+        <div class="back-link-row"><a class="back-link" href="./index.html"><span aria-hidden="true">&larr;</span> Back to Resources</a></div>
+        <!-- END back-link -->
+
             <h1 class="guide-title">🤖 Build an AI Agent</h1>
             <p class="guide-sub">"AI agent" sounds like magic. It is not. An agent is an LLM in a loop that can use tools and remember things. In this project you build one from scratch and understand every piece.</p>
             <div class="guide-badges">
@@ -91,8 +95,15 @@
     </header>
 
     <main class="container">
+        <!-- BEGIN quick-jump (build-quickjump.py) -->
+        <nav class="quick-jump" aria-label="Quick jump to section">
+            <div class="quick-jump__label">⚡ Quick jump</div>
+            <div class="quick-jump__links"><a href="#what-an-agent-actually-is">What is an agent</a><a href="#step-1-set-up">Setup</a><a href="#step-2-talk-to-the-model">Talk to the LLM</a><a href="#step-3-give-it-a-tool">Add a tool</a><a href="#step-4-build-the-loop">The agent loop</a><a href="#step-5-add-memory">Add memory</a><a href="#step-6-make-it-a-real-project">Make it yours</a><a href="#going-further">Going further</a><a href="#copy-paste-ai-prompts">AI prompts</a><a href="#what-to-do-next">What&#x27;s next</a></div>
+        </nav>
+        <!-- END quick-jump -->
+
         <div class="gsection">
-            <h2 data-jump="What is an agent">What an agent actually is</h2>
+            <h2 id="what-an-agent-actually-is" data-jump="What is an agent">What an agent actually is</h2>
             <p class="muted">Strip away the buzzwords and an AI agent is a simple loop:</p>
             <div class="loop">
                 <div class="box"><div class="ic">🧠</div><b>Think</b><span>The LLM decides what to do next</span></div>
@@ -116,7 +127,7 @@
         </div>
 
         <div class="gsection">
-            <h2 data-jump="Setup">Step 1: Set up</h2>
+            <h2 id="step-1-set-up" data-jump="Setup">Step 1: Set up</h2>
             <p class="muted">Create a project and install one small library. We will talk to an OpenAI-compatible API (Groq's free tier here).</p>
             <pre><code>mkdir my-agent && cd my-agent
 python -m venv venv
@@ -131,7 +142,7 @@ export GROQ_API_KEY="your_key_here"</code></pre>
         </div>
 
         <div class="gsection">
-            <h2 data-jump="Talk to the LLM">Step 2: Talk to the model</h2>
+            <h2 id="step-2-talk-to-the-model" data-jump="Talk to the LLM">Step 2: Talk to the model</h2>
             <p class="muted">First, the simplest possible call. Save this as <code>agent.py</code>:</p>
             <pre><code>import os
 from openai import OpenAI
@@ -150,7 +161,7 @@ print(resp.choices[0].message.content)</code></pre>
         </div>
 
         <div class="gsection">
-            <h2 data-jump="Add a tool">Step 3: Give it a tool</h2>
+            <h2 id="step-3-give-it-a-tool" data-jump="Add a tool">Step 3: Give it a tool</h2>
             <p class="muted">Tools are just Python functions the model is allowed to call. Let us give it a calculator (LLMs are famously bad at arithmetic, so this is a perfect first tool).</p>
             <pre><code>def calculator(expression: str) -> str:
     """Safely evaluate a simple math expression."""
@@ -175,7 +186,7 @@ tools = [{
         </div>
 
         <div class="gsection">
-            <h2 data-jump="The agent loop">Step 4: Build the loop</h2>
+            <h2 id="step-4-build-the-loop" data-jump="The agent loop">Step 4: Build the loop</h2>
             <p class="muted">This is the heart of an agent: keep calling the model, and whenever it asks for a tool, run it and hand back the result, until it produces a final answer.</p>
             <pre><code>import json
 
@@ -207,7 +218,7 @@ print(run_agent("What is 1234 * 5678, and is it bigger than 7 million?"))</code>
         </div>
 
         <div class="gsection">
-            <h2 data-jump="Add memory">Step 5: Add memory</h2>
+            <h2 id="step-5-add-memory" data-jump="Add memory">Step 5: Add memory</h2>
             <p class="muted">Right now each question starts fresh. "Memory" is just keeping the <code>messages</code> list between turns so the agent remembers the conversation.</p>
             <pre><code>history = []
 
@@ -221,7 +232,7 @@ def chat(question: str) -> str:
         </div>
 
         <div class="gsection">
-            <h2 data-jump="Make it yours">Step 6: Make it a real project</h2>
+            <h2 id="step-6-make-it-a-real-project" data-jump="Make it yours">Step 6: Make it a real project</h2>
             <p class="muted">Now turn the toy into something you would actually show. Swap the calculator for a tool that matters to you:</p>
             <ul class="muted">
                 <li><b>A research agent</b> - add a web-search tool and have it summarize findings.</li>
@@ -233,14 +244,14 @@ def chat(question: str) -> str:
         </div>
 
         <div class="gsection">
-            <h2 data-jump="Going further">Going further</h2>
+            <h2 id="going-further" data-jump="Going further">Going further</h2>
             <p class="muted">Once the from-scratch version makes sense, these frameworks do the plumbing for you (but you will understand what they are doing):</p>
             <div><span class="concept">LangChain</span><span class="concept">LlamaIndex</span><span class="concept">CrewAI</span><span class="concept">OpenAI Agents SDK</span></div>
             <p class="muted" style="margin-top:.7rem;">Concepts to explore next: <b>RAG</b> (let the agent search your documents), <b>multi-agent</b> setups (agents that talk to each other), and <b>guardrails</b> (keeping tools safe). This whole site's own <a href="./ai-tools.html">AI helper</a> is a small agent-style system, you now know roughly how it works.</p>
         </div>
 
         <div class="gsection">
-            <h2 data-jump="AI prompts">Copy-paste AI prompts</h2>
+            <h2 id="copy-paste-ai-prompts" data-jump="AI prompts">Copy-paste AI prompts</h2>
             <p class="muted">Do not build alone. Paste these into any AI chatbot (or this site's <strong>✦ Ask AI</strong>) to speed up each step. Tweak the bracketed parts.</p>
 
             <div class="prompt">
@@ -274,7 +285,7 @@ to demo it (CLI or minimal web page). Keep it achievable in a weekend.</code></p
         </div>
 
         <div class="gsection">
-            <h2 data-jump="What's next">What to do next</h2>
+            <h2 id="what-to-do-next" data-jump="What's next">What to do next</h2>
             <div class="nextlinks">
                 <a href="./ai-tools.html">🛠️ AI Tools</a>
                 <a href="./AI-Roadmap.html">🤖 AI Developer Roadmap</a>
@@ -292,6 +303,6 @@ to demo it (CLI or minimal web page). Keep it achievable in a weekend.</code></p
     <div data-component="footer"></div>
     <div data-component="scripts-common"></div>
     <script src="./components/component-loader.js"></script>
-    <script type="module" src="./functions/site.js?v=20260814m"></script>
+    <script type="module" src="./functions/site.js?v=20260814n"></script>
 </body>
 </html>

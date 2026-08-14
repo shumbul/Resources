@@ -8,8 +8,8 @@
 <!-- BEGIN critical-css (build-critical-css.py) -->
 <link rel="stylesheet" href="./theme-variables.css">
 <link rel="stylesheet" href="./theme-switcher.css">
-<!-- END critical-css -->
-<!-- BEGIN generated-seo (build-seo.py) -->
+<link rel="stylesheet" href="./base.css">
+<!-- END critical-css --><!-- BEGIN generated-seo (build-seo.py) -->
 <link rel="canonical" href="https://shumbul.github.io/Resources/interview-prep-kit.html">
 <meta name="description" content="A calm, complete interview prep kit for freshers: the STAR method, common behavioral questions, a technical checklist, and smart questions to ask back.">
 <meta name="author" content="Shumbul Arifa">
@@ -71,6 +71,10 @@
 
     <header class="guide-header">
         <div class="container">
+        <!-- BEGIN back-link (build-backlink.py) -->
+        <div class="back-link-row"><a class="back-link" href="./index.html"><span aria-hidden="true">&larr;</span> Back to Resources</a></div>
+        <!-- END back-link -->
+
             <h1 class="guide-title">🗣️ Interview Prep Kit</h1>
             <p class="guide-sub">Interviews feel scary because they feel unpredictable. They're actually pretty predictable. Prepare a few things well and confidence follows.</p>
             <div class="guide-badges">
@@ -82,8 +86,15 @@
     </header>
 
     <main class="container">
+        <!-- BEGIN quick-jump (build-quickjump.py) -->
+        <nav class="quick-jump" aria-label="Quick jump to section">
+            <div class="quick-jump__label">⚡ Quick jump</div>
+            <div class="quick-jump__links"><a href="#the-star-method-for-every-behavioral-que">The STAR method</a><a href="#behavioral-questions-to-prepare">Behavioral questions to…</a><a href="#technical-prep-checklist">Technical prep checklist</a><a href="#the-coding-interview-flow-say-these-out-">The coding-interview flow</a><a href="#smart-questions-to-ask-them">Smart questions to ask t…</a><a href="#after-the-interview">After the interview</a></div>
+        </nav>
+        <!-- END quick-jump -->
+
         <div class="gsection">
-            <h2>The STAR method (for every behavioral question)</h2>
+            <h2 id="the-star-method-for-every-behavioral-que">The STAR method (for every behavioral question)</h2>
             <p class="muted">"Tell me about a time you..." questions all have the same answer shape. Walk through these four beats and you'll always sound structured.</p>
             <div class="star">
                 <div><div class="k">S</div>Situation<br><span class="muted">Set the scene briefly</span></div>
@@ -95,7 +106,7 @@
         </div>
 
         <div class="gsection">
-            <h2>Behavioral questions to prepare</h2>
+            <h2 id="behavioral-questions-to-prepare">Behavioral questions to prepare</h2>
             <p class="muted">Prepare one STAR story for each of these. A few stories can be reused across many questions. Rehearse out loud on the clock, most answers should land in about 90 seconds.</p>
             <div class="practice-timer" data-seconds="90"></div>
             <ul>
@@ -111,7 +122,7 @@
         </div>
 
         <div class="gsection">
-            <h2>Technical prep checklist</h2>
+            <h2 id="technical-prep-checklist">Technical prep checklist</h2>
             <div class="gcard"><strong>Coding:</strong> Comfortable with the 8 core DSA patterns. Practice talking while you code. See the <a href="./dsa-practice-guide.html">DSA Practice Guide</a>.</div>
             <div class="gcard"><strong>Fundamentals:</strong> Be ready to explain: how the internet works (DNS, HTTP), OOP basics, a database query, and the projects on your resume in depth.</div>
             <div class="gcard"><strong>System design (for some roles):</strong> Know the 6-step framework and core building blocks. See the <a href="./system-design-templates.html">System Design Templates</a>.</div>
@@ -119,7 +130,7 @@
         </div>
 
         <div class="gsection">
-            <h2>The coding-interview flow (say these out loud)</h2>
+            <h2 id="the-coding-interview-flow-say-these-out-">The coding-interview flow (say these out loud)</h2>
             <ul>
                 <li><strong>Clarify:</strong> Repeat the problem, ask about edge cases and input size.</li>
                 <li><strong>Examples:</strong> Walk through a small example by hand.</li>
@@ -131,7 +142,7 @@
         </div>
 
         <div class="gsection">
-            <h2>Smart questions to ask them</h2>
+            <h2 id="smart-questions-to-ask-them">Smart questions to ask them</h2>
             <p class="muted">Always have 2-3 ready. It shows genuine interest and it's your chance to check if you'd actually enjoy working there.</p>
             <ul>
                 <li>What does a typical day or week look like for this role?</li>
@@ -142,7 +153,7 @@
         </div>
 
         <div class="gsection">
-            <h2>After the interview</h2>
+            <h2 id="after-the-interview">After the interview</h2>
             <ul>
                 <li>Send a short thank-you note within 24 hours. Mention something specific you discussed.</li>
                 <li>Jot down the questions you were asked, this makes your next interview easier.</li>
@@ -159,6 +170,6 @@
     <div data-component="footer"></div>
     <div data-component="scripts-common"></div>
     <script src="./components/component-loader.js"></script>
-    <script type="module" src="./functions/site.js?v=20260814m"></script>
+    <script type="module" src="./functions/site.js?v=20260814n"></script>
 </body>
 </html>

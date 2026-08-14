@@ -8,8 +8,8 @@
 <!-- BEGIN critical-css (build-critical-css.py) -->
 <link rel="stylesheet" href="./theme-variables.css">
 <link rel="stylesheet" href="./theme-switcher.css">
-<!-- END critical-css -->
-<!-- BEGIN generated-seo (build-seo.py) -->
+<link rel="stylesheet" href="./base.css">
+<!-- END critical-css --><!-- BEGIN generated-seo (build-seo.py) -->
 <link rel="canonical" href="https://shumbul.github.io/Resources/dsa-practice-guide.html">
 <meta name="description" content="A friendly, pattern-based way to learn Data Structures and Algorithms. Stop grinding random problems, start recognizing patterns.">
 <meta name="author" content="Shumbul Arifa">
@@ -59,6 +59,10 @@
 
     <header class="guide-header">
         <div class="container">
+        <!-- BEGIN back-link (build-backlink.py) -->
+        <div class="back-link-row"><a class="back-link" href="./index.html"><span aria-hidden="true">&larr;</span> Back to Resources</a></div>
+        <!-- END back-link -->
+
             <h1 class="guide-title">💻 DSA Practice Guide</h1>
             <p class="guide-sub">DSA is not about grinding 500 problems. It's about spotting a handful of patterns. Learn those, and most problems start to look familiar.</p>
             <div class="guide-badges">
@@ -70,6 +74,9 @@
     </header>
 
     <main class="container">
+        <!-- BEGIN journey-slot (build-quickjump.py) -->
+        <div class="journey-slot" aria-hidden="true" style="--j-h:501px;--j-hm:369px"></div>
+        <!-- END journey-slot -->
         <div class="gsection">
             <h2>The 8 patterns that cover most problems</h2>
             <p class="muted">If you learn to spot these, you can solve the large majority of interview questions. Master them in this order.</p>
@@ -127,6 +134,6 @@
     <div data-component="footer"></div>
     <div data-component="scripts-common"></div>
     <script src="./components/component-loader.js"></script>
-    <script type="module" src="./functions/site.js?v=20260814m"></script>
+    <script type="module" src="./functions/site.js?v=20260814n"></script>
 </body>
 </html>

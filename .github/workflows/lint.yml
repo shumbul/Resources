@@ -34,3 +34,18 @@ jobs:
         # arrive via the JS-loaded head-common partial, the page paints
         # unstyled and then jumps, which is severe layout shift.
         run: python build-critical-css.py --check
+
+      - name: Verify the visual layer is enabled on every page
+        # Without data-futuristic a page falls back to a flat header and looks
+        # different from the rest of the site.
+        run: python build-futuristic.py --check
+
+      - name: Verify Quick Jump and journey slots are pre-rendered
+        # These used to be built in the browser and inserted after paint, which
+        # pushed the whole page down. Both are now written into the HTML, so a
+        # new or edited page has to be regenerated or it regresses.
+        run: python build-quickjump.py --check
+
+      - name: Verify the back link is pre-rendered
+        # Same reason: injecting it at runtime grew the header after paint.
+        run: python build-backlink.py --check

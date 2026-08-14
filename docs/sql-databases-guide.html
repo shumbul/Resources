@@ -8,8 +8,8 @@
 <!-- BEGIN critical-css (build-critical-css.py) -->
 <link rel="stylesheet" href="./theme-variables.css">
 <link rel="stylesheet" href="./theme-switcher.css">
-<!-- END critical-css -->
-<!-- BEGIN generated-seo (build-seo.py) -->
+<link rel="stylesheet" href="./base.css">
+<!-- END critical-css --><!-- BEGIN generated-seo (build-seo.py) -->
 <link rel="canonical" href="https://shumbul.github.io/Resources/sql-databases-guide.html">
 <meta name="description" content="Learn SQL the practical way: the queries you actually use, joins made simple, and the database concepts that show up in interviews and real jobs.">
 <meta name="author" content="Shumbul Arifa">
@@ -68,6 +68,10 @@
 
     <header class="guide-header">
         <div class="container">
+        <!-- BEGIN back-link (build-backlink.py) -->
+        <div class="back-link-row"><a class="back-link" href="./index.html"><span aria-hidden="true">&larr;</span> Back to Resources</a></div>
+        <!-- END back-link -->
+
             <h1 class="guide-title">🗄️ SQL &amp; Databases</h1>
             <p class="guide-sub">Almost every job touches a database. The good news: you only need a small slice of SQL to be genuinely useful. This guide teaches the queries you will actually write, with examples you can copy.</p>
             <div class="guide-badges">
@@ -79,8 +83,15 @@
     </header>
 
     <main class="container">
+        <!-- BEGIN quick-jump (build-quickjump.py) -->
+        <nav class="quick-jump" aria-label="Quick jump to section">
+            <div class="quick-jump__label">⚡ Quick jump</div>
+            <div class="quick-jump__links"><a href="#the-one-query-shape-to-master">The core query</a><a href="#everyday-queries-you-will-actually-write">Everyday queries</a><a href="#joins-the-part-everyone-fears-they-are-s">Joins</a><a href="#concepts-interviews-love">Concepts</a><a href="#practice-tasks-do-these">Practice tasks</a><a href="#which-database-should-you-learn">Which database</a><a href="#free-places-to-practice">Free resources</a><a href="#what-to-do-next">What&#x27;s next</a></div>
+        </nav>
+        <!-- END quick-jump -->
+
         <div class="gsection">
-            <h2 data-jump="The core query">The one query shape to master</h2>
+            <h2 id="the-one-query-shape-to-master" data-jump="The core query">The one query shape to master</h2>
             <p class="muted">Most of SQL is variations on this. Learn the order and you can read almost anything:</p>
             <pre><code>SELECT column1, column2      -- which columns you want
 FROM table_name              -- from which table
@@ -93,7 +104,7 @@ LIMIT 10;                    -- cap the rows</code></pre>
         </div>
 
         <div class="gsection">
-            <h2 data-jump="Everyday queries">Everyday queries you will actually write</h2>
+            <h2 id="everyday-queries-you-will-actually-write" data-jump="Everyday queries">Everyday queries you will actually write</h2>
             <p class="muted">Filtering and sorting:</p>
             <pre><code>SELECT name, salary
 FROM employees
@@ -119,7 +130,7 @@ DELETE FROM employees WHERE name = 'Asha';</code></pre>
         </div>
 
         <div class="gsection">
-            <h2 data-jump="Joins">Joins, the part everyone fears (they are simple)</h2>
+            <h2 id="joins-the-part-everyone-fears-they-are-s" data-jump="Joins">Joins, the part everyone fears (they are simple)</h2>
             <p class="muted">A join combines rows from two tables using a shared column. Picture two tables, <code>employees</code> and <code>departments</code>, linked by a department id.</p>
             <pre><code>SELECT e.name, d.department_name
 FROM employees e
@@ -138,7 +149,7 @@ WHERE d.id IS NULL;</code></pre>
         </div>
 
         <div class="gsection">
-            <h2 data-jump="Concepts">Concepts interviews love</h2>
+            <h2 id="concepts-interviews-love" data-jump="Concepts">Concepts interviews love</h2>
             <ul class="muted">
                 <li><b>Primary key</b> - uniquely identifies each row. <b>Foreign key</b> - points to a primary key in another table (how tables relate).</li>
                 <li><b>Normalization</b> - splitting data so each fact lives in one place, avoiding duplication and update bugs (aim for 3NF in most apps).</li>
@@ -149,7 +160,7 @@ WHERE d.id IS NULL;</code></pre>
         </div>
 
         <div class="gsection">
-            <h2 data-jump="Practice tasks">Practice tasks (do these)</h2>
+            <h2 id="practice-tasks-do-these" data-jump="Practice tasks">Practice tasks (do these)</h2>
             <p class="muted">Reading SQL is easy; writing it is the skill. Set up a free playground and try:</p>
             <ol class="muted">
                 <li>Find the top 5 highest-paid employees.</li>
@@ -166,7 +177,7 @@ WHERE salary &lt; (SELECT MAX(salary) FROM employees);</code></pre>
         </div>
 
         <div class="gsection">
-            <h2 data-jump="Which database">Which database should you learn?</h2>
+            <h2 id="which-database-should-you-learn" data-jump="Which database">Which database should you learn?</h2>
             <div style="overflow-x:auto;">
                 <table class="roletable">
                     <thead><tr><th>Database</th><th>Type</th><th>Great for</th></tr></thead>
@@ -182,7 +193,7 @@ WHERE salary &lt; (SELECT MAX(salary) FROM employees);</code></pre>
         </div>
 
         <div class="gsection">
-            <h2 data-jump="Free resources">Free places to practice</h2>
+            <h2 id="free-places-to-practice" data-jump="Free resources">Free places to practice</h2>
             <ul class="muted">
                 <li><a href="https://sqlbolt.com/" target="_blank" rel="noopener">SQLBolt</a> - interactive lessons, no setup.</li>
                 <li><a href="https://pgexercises.com/" target="_blank" rel="noopener">PostgreSQL Exercises</a> - practice against a real dataset.</li>
@@ -192,7 +203,7 @@ WHERE salary &lt; (SELECT MAX(salary) FROM employees);</code></pre>
         </div>
 
         <div class="gsection">
-            <h2 data-jump="What's next">What to do next</h2>
+            <h2 id="what-to-do-next" data-jump="What's next">What to do next</h2>
             <div class="nextlinks">
                 <a href="./cs-fundamentals-guide.html">🧠 CS Fundamentals</a>
                 <a href="./full-stack-developer-path.html">🌐 Full-Stack Path</a>
@@ -210,6 +221,6 @@ WHERE salary &lt; (SELECT MAX(salary) FROM employees);</code></pre>
     <div data-component="footer"></div>
     <div data-component="scripts-common"></div>
     <script src="./components/component-loader.js"></script>
-    <script type="module" src="./functions/site.js?v=20260814m"></script>
+    <script type="module" src="./functions/site.js?v=20260814n"></script>
 </body>
 </html>

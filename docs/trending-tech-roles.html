@@ -8,8 +8,8 @@
 <!-- BEGIN critical-css (build-critical-css.py) -->
 <link rel="stylesheet" href="./theme-variables.css">
 <link rel="stylesheet" href="./theme-switcher.css">
-<!-- END critical-css -->
-<!-- BEGIN generated-seo (build-seo.py) -->
+<link rel="stylesheet" href="./base.css">
+<!-- END critical-css --><!-- BEGIN generated-seo (build-seo.py) -->
 <link rel="canonical" href="https://shumbul.github.io/Resources/trending-tech-roles.html">
 <meta name="description" content="The tech roles worth aiming for right now: what each one does, why it is in demand, the skills you need, and how a fresher can break in.">
 <meta name="author" content="Shumbul Arifa">
@@ -119,6 +119,10 @@
 
     <header class="guide-header">
         <div class="container">
+        <!-- BEGIN back-link (build-backlink.py) -->
+        <div class="back-link-row"><a class="back-link" href="./index.html"><span aria-hidden="true">&larr;</span> Back to Resources</a></div>
+        <!-- END back-link -->
+
             <h1 class="guide-title">🚀 Trending Roles in Tech</h1>
             <p class="guide-sub">Not sure what to aim for? This is a friendly map of the roles in real demand right now: what each one actually does, why it is hot, the skills that matter, and how a fresher can break in.</p>
             <div class="guide-badges">
@@ -130,8 +134,15 @@
     </header>
 
     <main class="container">
+        <!-- BEGIN quick-jump (build-quickjump.py) -->
+        <nav class="quick-jump" aria-label="Quick jump to section">
+            <div class="quick-jump__label">⚡ Quick jump</div>
+            <div class="quick-jump__links"><a href="#how-to-read-this-page">How to read this</a><a href="#2026-spotlight-roles">2026 Spotlight roles</a><a href="#specialized-roles-worth-knowing">Specialized roles</a><a href="#all-18-roles-at-a-glance">At a glance</a><a href="#how-to-pick-your-lane">How to pick</a><a href="#turn-a-direction-into-a-plan">Where to go next</a></div>
+        </nav>
+        <!-- END quick-jump -->
+
         <div class="gsection">
-            <h2 data-jump="How to read this">How to read this page</h2>
+            <h2 id="how-to-read-this-page" data-jump="How to read this">How to read this page</h2>
             <p class="muted">Every role below shows the same four things so you can compare fairly:</p>
             <ul class="muted">
                 <li><b>What they do</b> - the day-to-day, in plain words.</li>
@@ -148,7 +159,7 @@
 
         <!-- ===== SPOTLIGHT 9 ===== -->
         <div class="gsection">
-            <h2 data-jump="2026 Spotlight roles">2026 Spotlight roles</h2>
+            <h2 id="2026-spotlight-roles" data-jump="2026 Spotlight roles">2026 Spotlight roles</h2>
             <p class="muted">These 9 roles are the strongest bets for 2026: high demand, solid pay, and a realistic path in. Each one also has free resources built right in so you can start without spending a rupee.</p>
             <div class="roles">
 
@@ -301,7 +312,7 @@
 
         <!-- ===== SPECIALIZED 9 ===== -->
         <div class="gsection">
-            <h2 data-jump="Specialized roles">Specialized roles worth knowing</h2>
+            <h2 id="specialized-roles-worth-knowing" data-jump="Specialized roles">Specialized roles worth knowing</h2>
             <p class="muted">These roles go deeper in a specific niche. They are great to aim for once you have a foundation in an adjacent area, or if one of these is genuinely what excites you most.</p>
             <div class="roles">
 
@@ -445,8 +456,50 @@
 
         <!-- ===== AT A GLANCE TABLE ===== -->
         <div class="gsection">
-            <h2 data-jump="At a glance">All 18 roles at a glance</h2>
+            <h2 id="all-18-roles-at-a-glance" data-jump="At a glance">All 18 roles at a glance</h2>
             <p class="muted">A quick side-by-side. "Entry difficulty" is how hard it usually is to land your first role, not how hard the work is.</p>
+
+            <div class="chartblock" data-chart-title="Where every role sits: demand against how hard it is to break in" style="--viz-ratio:59.7%;--viz-extra:118px;--viz-mobile:671px;">
+                <script type="application/json">
+                {
+                  "type": "scatter",
+                  "note": "Tap a family in the legend to focus it. The same 18 roles are listed in the table below.",
+                  "alt": "Scatter chart plotting 18 tech roles by hiring demand against entry difficulty. Data analyst and frontend developer sit in the easiest-entry, high-demand corner.",
+                  "x": { "label": "Entry difficulty", "ticks": ["Easy", "Medium", "Hard"] },
+                  "y": { "label": "Hiring demand", "ticks": ["Growing", "High", "Very high"] },
+                  "highlight": { "x0": 0, "x1": 1, "y0": 1, "y1": 3, "label": "Best odds for a first role" },
+                  "series": [
+                    { "name": "AI & Data", "color": "var(--primary)" },
+                    { "name": "Software", "color": "#0ea5e9" },
+                    { "name": "Infra", "color": "#059669" },
+                    { "name": "Product", "color": "#d97706" },
+                    { "name": "Hardware", "color": "#db2777" },
+                    { "name": "Community", "color": "#0f766e" }
+                  ],
+                  "points": [
+                    { "label": "AI Engineer", "x": 2, "y": 2, "g": "AI & Data" },
+                    { "label": "Forward-Deployed Eng", "x": 2, "y": 2, "g": "Software" },
+                    { "label": "Software Engineer", "x": 1, "y": 2, "g": "Software" },
+                    { "label": "Data Engineer", "x": 1, "y": 2, "g": "AI & Data" },
+                    { "label": "Cloud / DevOps", "x": 1, "y": 2, "g": "Infra" },
+                    { "label": "Cybersecurity Eng", "x": 1, "y": 2, "g": "Infra" },
+                    { "label": "GenAI / LLM Engineer", "x": 1, "y": 2, "g": "AI & Data" },
+                    { "label": "Product Manager", "x": 2, "y": 1, "g": "Product" },
+                    { "label": "Solutions Architect", "x": 2, "y": 1, "g": "Software" },
+                    { "label": "Data Scientist", "x": 2, "y": 1, "g": "AI & Data" },
+                    { "label": "MLOps Engineer", "x": 1, "y": 1, "g": "AI & Data" },
+                    { "label": "Data Analyst", "x": 0, "y": 1, "g": "AI & Data" },
+                    { "label": "Frontend Developer", "x": 0, "y": 1, "g": "Software" },
+                    { "label": "Robotics Engineer", "x": 2, "y": 0, "g": "Hardware" },
+                    { "label": "Mobile Developer", "x": 1, "y": 0, "g": "Software" },
+                    { "label": "UX / UI Designer", "x": 1, "y": 0, "g": "Product" },
+                    { "label": "Developer Advocate", "x": 1, "y": 0, "g": "Community" },
+                    { "label": "QA / SDET", "x": 0, "y": 0, "g": "Software" }
+                  ]
+                }
+                </script>
+            </div>
+
             <div style="overflow-x:auto;">
                 <table class="roletable">
                     <thead>
@@ -478,7 +531,7 @@
 
         <!-- ===== HOW TO PICK ===== -->
         <div class="gsection">
-            <h2 data-jump="How to pick">How to pick your lane</h2>
+            <h2 id="how-to-pick-your-lane" data-jump="How to pick">How to pick your lane</h2>
             <p class="muted">A simple way to choose without overthinking it:</p>
             <div class="pick">
                 <div class="card" data-reveal><strong>1. Follow the curiosity</strong><span class="muted">Which role above made you want to read more? That pull matters more than any "hottest job" list.</span></div>
@@ -490,7 +543,7 @@
 
         <!-- ===== NEXT STEPS ===== -->
         <div class="gsection">
-            <h2 data-jump="Where to go next">Turn a direction into a plan</h2>
+            <h2 id="turn-a-direction-into-a-plan" data-jump="Where to go next">Turn a direction into a plan</h2>
             <p class="muted">Chosen a lane? These guides help you actually get there:</p>
             <div class="nextlinks">
                 <a href="./12-week-roadmap.html">📋 12-Week Roadmap</a>
@@ -520,6 +573,6 @@
     <div data-component="footer"></div>
     <div data-component="scripts-common"></div>
     <script src="./components/component-loader.js"></script>
-    <script type="module" src="./functions/site.js?v=20260814m"></script>
+    <script type="module" src="./functions/site.js?v=20260814n"></script>
 </body>
 </html>

@@ -8,8 +8,8 @@
 <!-- BEGIN critical-css (build-critical-css.py) -->
 <link rel="stylesheet" href="./theme-variables.css">
 <link rel="stylesheet" href="./theme-switcher.css">
-<!-- END critical-css -->
-<!-- BEGIN generated-seo (build-seo.py) -->
+<link rel="stylesheet" href="./base.css">
+<!-- END critical-css --><!-- BEGIN generated-seo (build-seo.py) -->
 <link rel="canonical" href="https://shumbul.github.io/Resources/operating-systems-deep-dive.html">
 <meta name="description" content="An interview-oriented Operating Systems guide: processes, threads, scheduling, deadlocks, memory, and more, explained with real analogies, plus a quiz after every section and a final quiz with scoring.">
 <meta name="author" content="Shumbul Arifa">
@@ -67,6 +67,10 @@
 
     <header class="guide-header">
         <div class="container">
+        <!-- BEGIN back-link (build-backlink.py) -->
+        <div class="back-link-row"><a class="back-link" href="./index.html"><span aria-hidden="true">&larr;</span> Back to Resources</a></div>
+        <!-- END back-link -->
+
             <h1 class="guide-title">🖥️ Operating Systems Deep Dive</h1>
             <p class="guide-sub">The OS concepts interviewers love, explained with everyday analogies so they actually stick. Read a section, take its quiz, and finish with a scored final quiz to prove you have got it.</p>
             <div class="guide-badges">
@@ -78,8 +82,15 @@
     </header>
 
     <main class="container">
+        <!-- BEGIN quick-jump (build-quickjump.py) -->
+        <nav class="quick-jump" aria-label="Quick jump to section">
+            <div class="quick-jump__label">⚡ Quick jump</div>
+            <div class="quick-jump__links"><a href="#processes-threads">Process vs Thread</a><a href="#cpu-scheduling">CPU Scheduling</a><a href="#deadlocks">Deadlocks</a><a href="#synchronization-mutex-vs-semaphore">Synchronization</a><a href="#virtual-memory-paging">Memory</a><a href="#final-quiz">Final quiz</a><a href="#what-to-do-next">What&#x27;s next</a></div>
+        </nav>
+        <!-- END quick-jump -->
+
         <div class="gsection">
-            <h2 data-jump="Process vs Thread">Processes &amp; threads</h2>
+            <h2 id="processes-threads" data-jump="Process vs Thread">Processes &amp; threads</h2>
             <p class="muted">A <b>process</b> is a running program with its own private memory. A <b>thread</b> is a lighter unit of execution that lives inside a process and shares that process's memory with sibling threads.</p>
             <div class="analogy"><b>Analogy:</b> a process is a house (its own address, its own stuff). Threads are the people living in that house, they share the kitchen and rooms (memory), so they cooperate cheaply, but if one starts a fire, everyone is affected.</div>
             <div class="key"><b>Remember:</b><ul>
@@ -99,7 +110,7 @@
         </div>
 
         <div class="gsection">
-            <h2 data-jump="CPU Scheduling">CPU scheduling</h2>
+            <h2 id="cpu-scheduling" data-jump="CPU Scheduling">CPU scheduling</h2>
             <p class="muted">The CPU can run one thing at a time per core, so the OS scheduler decides who runs next. The goal: keep the CPU busy while feeling responsive to users.</p>
             <table class="tbl">
                 <thead><tr><th>Algorithm</th><th>Idea</th><th>Watch out for</th></tr></thead>
@@ -123,7 +134,7 @@
         </div>
 
         <div class="gsection">
-            <h2 data-jump="Deadlocks">Deadlocks</h2>
+            <h2 id="deadlocks" data-jump="Deadlocks">Deadlocks</h2>
             <p class="muted">A <b>deadlock</b> is when processes wait on each other forever, none can proceed. It needs <b>all four</b> of these conditions at once:</p>
             <div class="key"><ul>
                 <li><b>Mutual exclusion</b> - a resource is held by only one process at a time.</li>
@@ -145,7 +156,7 @@
         </div>
 
         <div class="gsection">
-            <h2 data-jump="Synchronization">Synchronization: mutex vs semaphore</h2>
+            <h2 id="synchronization-mutex-vs-semaphore" data-jump="Synchronization">Synchronization: mutex vs semaphore</h2>
             <p class="muted">When threads share data, you must stop them corrupting it by acting at once. That shared, must-be-exclusive code is the <b>critical section</b>.</p>
             <table class="tbl">
                 <thead><tr><th></th><th>Mutex</th><th>Semaphore</th></tr></thead>
@@ -168,7 +179,7 @@
         </div>
 
         <div class="gsection">
-            <h2 data-jump="Memory">Virtual memory &amp; paging</h2>
+            <h2 id="virtual-memory-paging" data-jump="Memory">Virtual memory &amp; paging</h2>
             <p class="muted"><b>Virtual memory</b> gives each process the illusion of a large, private, contiguous memory, even though physical RAM is limited and shared. The OS splits memory into fixed-size <b>pages</b> and maps virtual pages to physical frames.</p>
             <p class="muted">When a process touches a page that is not in RAM, a <b>page fault</b> occurs and the OS loads it from disk. Too many page faults (constant swapping) is called <b>thrashing</b>, and it destroys performance.</p>
             <div class="analogy"><b>Analogy:</b> your desk is RAM (small, fast), the filing cabinet is disk (big, slow). Paging is fetching just the folder you need onto the desk. Thrashing is a desk so small you spend all day swapping folders in and out and never actually working.</div>
@@ -184,7 +195,7 @@
         </div>
 
         <div class="gsection">
-            <h2 data-jump="Final quiz">Final quiz</h2>
+            <h2 id="final-quiz" data-jump="Final quiz">Final quiz</h2>
             <p class="muted">Ten questions across everything above. Aim for 7+ before you call this subject interview-ready.</p>
             <div class="quiz quiz-final" data-quiz-title="Operating Systems: final quiz">
                 <script type="application/json">
@@ -205,7 +216,7 @@
         </div>
 
         <div class="gsection">
-            <h2 data-jump="What's next">What to do next</h2>
+            <h2 id="what-to-do-next" data-jump="What's next">What to do next</h2>
             <div class="nextlinks">
                 <a href="./cs-fundamentals-guide.html">🧠 CS Fundamentals</a>
                 <a href="./dbms-deep-dive.html">🗃️ DBMS Deep Dive</a>
@@ -224,6 +235,6 @@
     <div data-component="footer"></div>
     <div data-component="scripts-common"></div>
     <script src="./components/component-loader.js"></script>
-    <script type="module" src="./functions/site.js?v=20260814m"></script>
+    <script type="module" src="./functions/site.js?v=20260814n"></script>
 </body>
 </html>

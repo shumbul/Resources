@@ -8,8 +8,8 @@
 <!-- BEGIN critical-css (build-critical-css.py) -->
 <link rel="stylesheet" href="./theme-variables.css">
 <link rel="stylesheet" href="./theme-switcher.css">
-<!-- END critical-css -->
-<!-- BEGIN generated-seo (build-seo.py) -->
+<link rel="stylesheet" href="./base.css">
+<!-- END critical-css --><!-- BEGIN generated-seo (build-seo.py) -->
 <link rel="canonical" href="https://shumbul.github.io/Resources/system-design-templates.html">
 <meta name="description" content="A friendly starter kit for system design. A simple framework, reusable building blocks, and worked examples so you can think in systems, not just code.">
 <meta name="author" content="Shumbul Arifa">
@@ -63,6 +63,10 @@
 
     <header class="guide-header">
         <div class="container">
+        <!-- BEGIN back-link (build-backlink.py) -->
+        <div class="back-link-row"><a class="back-link" href="./index.html"><span aria-hidden="true">&larr;</span> Back to Resources</a></div>
+        <!-- END back-link -->
+
             <h1 class="guide-title">🎯 System Design Templates</h1>
             <p class="guide-sub">System design feels huge until you have a simple checklist. Here's a friendly framework and a set of building blocks you can reuse for almost any design question.</p>
             <div class="guide-badges">
@@ -74,6 +78,9 @@
     </header>
 
     <main class="container">
+        <!-- BEGIN journey-slot (build-quickjump.py) -->
+        <div class="journey-slot" aria-hidden="true" style="--j-h:501px;--j-hm:369px"></div>
+        <!-- END journey-slot -->
         <div class="gsection">
             <h2>The 6-step framework (use it every time)</h2>
             <ol class="steps">
@@ -222,6 +229,6 @@
     <div data-component="footer"></div>
     <div data-component="scripts-common"></div>
     <script src="./components/component-loader.js"></script>
-    <script type="module" src="./functions/site.js?v=20260814m"></script>
+    <script type="module" src="./functions/site.js?v=20260814n"></script>
 </body>
 </html>

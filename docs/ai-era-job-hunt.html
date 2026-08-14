@@ -20,8 +20,9 @@
     <link rel="stylesheet" href="./theme-variables.css">
     <!-- Theme Switcher CSS -->
     <link rel="stylesheet" href="./theme-switcher.css">
-
-    <style>
+<!-- BEGIN critical-css (build-critical-css.py) -->
+<link rel="stylesheet" href="./base.css">
+<!-- END critical-css -->    <style>
         * {
             margin: 0;
             padding: 0;
@@ -961,10 +962,17 @@
 
     <!-- Main Content -->
     <main class="main">
+        <!-- BEGIN quick-jump (build-quickjump.py) -->
+        <nav class="quick-jump" aria-label="Quick jump to section">
+            <div class="quick-jump__label">⚡ Quick jump</div>
+            <div class="quick-jump__links"><a href="#why-this-matters-right-now">Why this matters right now</a><a href="#do-this-weekend">⚡ Do This Weekend</a><a href="#quick-answers">Quick Answers</a><a href="#the-mindset-shifts-that-tie-it-together">The Mindset Shifts That…</a><a href="#ready-to-redesign-your-strategy">Ready to redesign your s…</a></div>
+        </nav>
+        <!-- END quick-jump -->
+
         <div class="container">
 
             <div class="section-intro">
-                <h2>Why this matters right now</h2>
+                <h2 id="why-this-matters-right-now">Why this matters right now</h2>
                 <p>AI has flipped the cost of producing average work to near-zero. That means average work is worth near-zero to a hiring team. What's valuable now is your <strong>judgment, your communication, and your visible track record</strong>. This guide breaks down exactly how to reposition yourself for that reality.</p>
                 <p style="margin-top:.75rem;padding:.7rem 1rem;background:var(--bg-secondary,#f7f8fc);border-left:4px solid var(--primary,#8b5cf6);border-radius:10px;"><strong>🌱 Zero experience?</strong> Start with the <a href="./12-week-roadmap.html">12-Week Roadmap</a> to build skills, then come back and run the weekend plan below. You do not need a job history to build a visible track record.</p>
             </div>
@@ -1182,7 +1190,7 @@
             <!-- Weekend Plan -->
             <div class="weekend-section">
                 <div class="weekend-header">
-                    <h2>⚡ Do This Weekend</h2>
+                    <h2 id="do-this-weekend">⚡ Do This Weekend</h2>
                     <p>Two days. Real moves. This is how you go from reading to actually being ahead.</p>
                 </div>
                 <div class="weekend-days">
@@ -1244,7 +1252,7 @@
 
             <!-- FAQ -->
             <div class="faq-section">
-                <h2>Quick Answers</h2>
+                <h2 id="quick-answers">Quick Answers</h2>
                 <p class="faq-lead">The objections people have right before they close the tab and do nothing.</p>
                 <div class="faq-list">
                     <div class="faq-item">
@@ -1272,7 +1280,7 @@
 
             <!-- Mindset Shift -->
             <div class="mindset-section">
-                <h2>The Mindset Shifts That Tie It Together</h2>
+                <h2 id="the-mindset-shifts-that-tie-it-together">The Mindset Shifts That Tie It Together</h2>
                 <p class="lead">These aren't just tactical changes. They're a different way of thinking about what value you bring.</p>
 
                 <div class="shift-grid">
@@ -1331,7 +1339,7 @@
 
             <!-- Resources CTA -->
             <div class="resources-section">
-                <h2>Ready to redesign your strategy?</h2>
+                <h2 id="ready-to-redesign-your-strategy">Ready to redesign your strategy?</h2>
                 <p>I've put together the templates and resources to help you act on all three of these this weekend. Start with whichever one feels most urgent.</p>
 
                 <div class="resource-links">
@@ -1439,6 +1447,6 @@
             });
         });
     </script>
-    <script type="module" src="./functions/site.js?v=20260814m"></script>
+    <script type="module" src="./functions/site.js?v=20260814n"></script>
 </body>
 </html>

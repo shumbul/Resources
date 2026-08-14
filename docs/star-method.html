@@ -5,8 +5,8 @@
 <!-- BEGIN critical-css (build-critical-css.py) -->
 <link rel="stylesheet" href="./theme-variables.css">
 <link rel="stylesheet" href="./theme-switcher.css">
-<!-- END critical-css -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="./base.css">
+<!-- END critical-css -->    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap">
 <!-- BEGIN generated-seo (build-seo.py) -->
@@ -89,6 +89,10 @@
 
     <header class="guide-header">
         <div class="container">
+        <!-- BEGIN back-link (build-backlink.py) -->
+        <div class="back-link-row"><a class="back-link" href="./index.html"><span aria-hidden="true">&larr;</span> Back to Resources</a></div>
+        <!-- END back-link -->
+
             <h1 class="guide-title">⭐ The STAR Method</h1>
             <p class="guide-sub">"Tell me about a time you..." questions all have the same answer shape. Learn it once and you will never freeze in a behavioral interview again.</p>
             <div class="guide-badges">
@@ -100,8 +104,15 @@
     </header>
 
     <main class="container">
+        <!-- BEGIN quick-jump (build-quickjump.py) -->
+        <nav class="quick-jump" aria-label="Quick jump to section">
+            <div class="quick-jump__label">⚡ Quick jump</div>
+            <div class="quick-jump__links"><a href="#what-is-the-star-method">What is the STAR method?</a><a href="#the-star-breakdown">The STAR breakdown</a><a href="#the-quick-framework-use-this-every-time">The quick framework</a><a href="#how-to-prepare">How to prepare</a><a href="#10-worked-sample-answers">10 worked sample answers</a><a href="#practice-questions">Practice questions</a></div>
+        </nav>
+        <!-- END quick-jump -->
+
         <div class="gsection">
-            <h2>What is the STAR method?</h2>
+            <h2 id="what-is-the-star-method">What is the STAR method?</h2>
             <p class="muted">A simple, four-beat structure for answering any behavioral question. Walk through these in order and your answer stays clear and compelling.</p>
             <div class="star-hero">
                 <div class="star-letter"><div class="big">S</div><div class="word">Situation</div><div class="ic">📍</div><p class="muted" style="margin:.3rem 0 0;font-size:.85rem;">Set the scene: your role, the context, the background.</p></div>
@@ -112,7 +123,7 @@
         </div>
 
         <div class="gsection">
-            <h2>The STAR breakdown</h2>
+            <h2 id="the-star-breakdown">The STAR breakdown</h2>
             <div style="margin-bottom:1rem;">
                 <strong>📍 1. Situation</strong>
                 <ul class="muted"><li>Describe the specific context or event, detailed yet concise.</li><li>Pick a meaningful moment from work, academics, or volunteering. Avoid vague generalizations.</li></ul>
@@ -132,7 +143,7 @@
         </div>
 
         <div class="gsection">
-            <h2>The quick framework (use this every time)</h2>
+            <h2 id="the-quick-framework-use-this-every-time">The quick framework (use this every time)</h2>
             <table>
                 <thead><tr><th>Element</th><th>What to include</th><th>Ask yourself</th></tr></thead>
                 <tbody>
@@ -145,7 +156,7 @@
         </div>
 
         <div class="gsection">
-            <h2>How to prepare</h2>
+            <h2 id="how-to-prepare">How to prepare</h2>
             <ul class="muted">
                 <li>Reflect on recent experiences across work, academics, leadership, and volunteering.</li>
                 <li>Prepare a few STAR stories that each show a different strength (teamwork, problem-solving, leadership, adaptability).</li>
@@ -156,7 +167,7 @@
         </div>
 
         <div class="gsection">
-            <h2>10 worked sample answers</h2>
+            <h2 id="10-worked-sample-answers">10 worked sample answers</h2>
             <p class="muted">Click any question to see the STAR breakdown. Notice how short each one is, that is the point.</p>
 
             <details class="qa"><summary>Tell me about a time you worked with a difficult team member.</summary><div class="body">
@@ -231,7 +242,7 @@
         </div>
 
         <div class="gsection">
-            <h2>Practice questions</h2>
+            <h2 id="practice-questions">Practice questions</h2>
             <p class="muted">Prepare a STAR story for each. The best way to practice is out loud, on the clock: pull a random question, then answer it in about 90 seconds.</p>
             <div class="practice-picker" data-source="#star-practice-list" data-label="Answer this in STAR format"></div>
             <div class="practice-timer" data-seconds="90"></div>
@@ -274,6 +285,6 @@
     <div data-component="footer"></div>
     <div data-component="scripts-common"></div>
     <script src="./components/component-loader.js"></script>
-    <script type="module" src="./functions/site.js?v=20260814m"></script>
+    <script type="module" src="./functions/site.js?v=20260814n"></script>
 </body>
 </html>

@@ -8,8 +8,8 @@
 <!-- BEGIN critical-css (build-critical-css.py) -->
 <link rel="stylesheet" href="./theme-variables.css">
 <link rel="stylesheet" href="./theme-switcher.css">
-<!-- END critical-css -->
-<!-- BEGIN generated-seo (build-seo.py) -->
+<link rel="stylesheet" href="./base.css">
+<!-- END critical-css --><!-- BEGIN generated-seo (build-seo.py) -->
 <link rel="canonical" href="https://shumbul.github.io/Resources/open-source-guide.html">
 <meta name="description" content="Make your first open-source contribution without the fear. Find beginner-friendly issues, open your first pull request, and build real proof of work.">
 <meta name="author" content="Shumbul Arifa">
@@ -75,6 +75,10 @@
 
     <header class="guide-header">
         <div class="container">
+        <!-- BEGIN back-link (build-backlink.py) -->
+        <div class="back-link-row"><a class="back-link" href="./index.html"><span aria-hidden="true">&larr;</span> Back to Resources</a></div>
+        <!-- END back-link -->
+
             <h1 class="guide-title">🌍 Open-Source Contribution</h1>
             <p class="guide-sub">Contributing to open source is the single best "proof of work" a fresher can have. Real code, real teamwork, in public. This guide gets you from nervous to your first merged pull request.</p>
             <div class="guide-badges">
@@ -86,8 +90,15 @@
     </header>
 
     <main class="container">
+        <!-- BEGIN quick-jump (build-quickjump.py) -->
+        <nav class="quick-jump" aria-label="Quick jump to section">
+            <div class="quick-jump__label">⚡ Quick jump</div>
+            <div class="quick-jump__links"><a href="#why-open-source-is-worth-it">Why bother</a><a href="#step-0-get-ready">Prep</a><a href="#step-1-find-a-beginner-friendly-issue">Find an issue</a><a href="#step-2-read-the-project-s-rules">Read the rules</a><a href="#step-3-the-contribution-workflow">The workflow</a><a href="#what-a-good-pull-request-looks-like">A good PR</a><a href="#do-s-and-don-ts">Do&#x27;s and don&#x27;ts</a><a href="#contributions-that-are-not-code">Beyond code</a><a href="#what-to-do-next">What&#x27;s next</a></div>
+        </nav>
+        <!-- END quick-jump -->
+
         <div class="gsection">
-            <h2 data-jump="Why bother">Why open source is worth it</h2>
+            <h2 id="why-open-source-is-worth-it" data-jump="Why bother">Why open source is worth it</h2>
             <ul class="muted">
                 <li><b>Proof of work</b> - a merged PR in a real project beats a dozen tutorial clones on a resume.</li>
                 <li><b>Real teamwork</b> - you learn Git, code review, and how professional projects actually run.</li>
@@ -98,14 +109,14 @@
         </div>
 
         <div class="gsection">
-            <h2 data-jump="Prep">Step 0: Get ready</h2>
+            <h2 id="step-0-get-ready" data-jump="Prep">Step 0: Get ready</h2>
             <p class="muted">Before your first contribution, make sure you have:</p>
             <div><span class="tag">A GitHub account</span><span class="tag">Git installed</span><span class="tag">Basic Git (clone, branch, commit, push)</span><span class="tag">One language you know</span></div>
             <p class="muted" style="margin-top:.7rem;">That is genuinely enough to start. You will learn the rest by doing.</p>
         </div>
 
         <div class="gsection">
-            <h2 data-jump="Find an issue">Step 1: Find a beginner-friendly issue</h2>
+            <h2 id="step-1-find-a-beginner-friendly-issue" data-jump="Find an issue">Step 1: Find a beginner-friendly issue</h2>
             <p class="muted">The secret is looking for issues that maintainers have marked as welcoming to newcomers. Search GitHub for these labels:</p>
             <div><span class="tag">good first issue</span><span class="tag">good-first-issue</span><span class="tag">beginner-friendly</span><span class="tag">help wanted</span><span class="tag">documentation</span></div>
             <p class="muted" style="margin-top:.7rem;">Great places to look:</p>
@@ -119,13 +130,13 @@
         </div>
 
         <div class="gsection">
-            <h2 data-jump="Read the rules">Step 2: Read the project's rules</h2>
+            <h2 id="step-2-read-the-project-s-rules" data-jump="Read the rules">Step 2: Read the project's rules</h2>
             <p class="muted">Every serious project has a <code>CONTRIBUTING.md</code> and often a <code>CODE_OF_CONDUCT.md</code>. Read them, they tell you how to set up, how they want commits, and how to submit. Following these is the number one thing that gets your PR accepted (and ignoring them is the number one reason PRs get rejected).</p>
             <p class="muted">Then comment on the issue before you start: something like <i>"Hi! I'd like to work on this, is it still open?"</i> This avoids two people doing the same work and shows good etiquette.</p>
         </div>
 
         <div class="gsection">
-            <h2 data-jump="The workflow">Step 3: The contribution workflow</h2>
+            <h2 id="step-3-the-contribution-workflow" data-jump="The workflow">Step 3: The contribution workflow</h2>
             <p class="muted">This is the standard fork-and-pull flow. Learn it once and it works everywhere.</p>
             <div class="step" data-reveal><div class="num">1</div><div><b>Fork</b> the repo on GitHub (your own copy).</div></div>
             <div class="step" data-reveal><div class="num">2</div><div><b>Clone</b> your fork and create a branch.
@@ -142,7 +153,7 @@ git commit -m "Fix typo in installation section of README"</code></pre></div></d
         </div>
 
         <div class="gsection">
-            <h2 data-jump="A good PR">What a good pull request looks like</h2>
+            <h2 id="what-a-good-pull-request-looks-like" data-jump="A good PR">What a good pull request looks like</h2>
             <ul class="muted">
                 <li><b>Small and focused</b> - fix one thing. Huge PRs are hard to review and often stall.</li>
                 <li><b>Clear title and description</b> - what changed, why, and how you tested it.</li>
@@ -153,7 +164,7 @@ git commit -m "Fix typo in installation section of README"</code></pre></div></d
         </div>
 
         <div class="gsection">
-            <h2 data-jump="Do's and don'ts">Do's and don'ts</h2>
+            <h2 id="do-s-and-don-ts" data-jump="Do's and don'ts">Do's and don'ts</h2>
             <div class="cols">
                 <div class="avoid" data-reveal>
                     <h4>Avoid</h4>
@@ -179,13 +190,13 @@ git commit -m "Fix typo in installation section of README"</code></pre></div></d
         </div>
 
         <div class="gsection">
-            <h2 data-jump="Beyond code">Contributions that are not code</h2>
+            <h2 id="contributions-that-are-not-code" data-jump="Beyond code">Contributions that are not code</h2>
             <p class="muted">Open source needs more than programmers. All of these count and are great first steps:</p>
             <div><span class="tag">Fixing docs &amp; typos</span><span class="tag">Improving examples</span><span class="tag">Writing tests</span><span class="tag">Reproducing bugs</span><span class="tag">Translations</span><span class="tag">Design &amp; UX</span><span class="tag">Answering issues</span></div>
         </div>
 
         <div class="gsection">
-            <h2 data-jump="What's next">What to do next</h2>
+            <h2 id="what-to-do-next" data-jump="What's next">What to do next</h2>
             <p class="muted">Once you have a merged PR, add it to your resume and portfolio, it is real, verifiable experience.</p>
             <div class="nextlinks">
                 <a href="./git-guide.html">🚀 Git Guide</a>
@@ -204,6 +215,6 @@ git commit -m "Fix typo in installation section of README"</code></pre></div></d
     <div data-component="footer"></div>
     <div data-component="scripts-common"></div>
     <script src="./components/component-loader.js"></script>
-    <script type="module" src="./functions/site.js?v=20260814m"></script>
+    <script type="module" src="./functions/site.js?v=20260814n"></script>
 </body>
 </html>

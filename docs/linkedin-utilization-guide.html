@@ -14,7 +14,9 @@
     <link rel="stylesheet" href="./theme-variables.css">
     <!-- Theme Switcher CSS -->
     <link rel="stylesheet" href="./theme-switcher.css">
-    
+<!-- BEGIN critical-css (build-critical-css.py) -->
+<link rel="stylesheet" href="./base.css">
+<!-- END critical-css -->    
     <style>
         * {
             margin: 0;
@@ -490,6 +492,10 @@
         <!-- Header -->
         <div class="header">
             <div class="header-content">
+            <!-- BEGIN back-link (build-backlink.py) -->
+            <div class="back-link-row"><a class="back-link" href="./index.html"><span aria-hidden="true">&larr;</span> Back to Resources</a></div>
+            <!-- END back-link -->
+
                 <h1>LinkedIn Utilization Guide</h1>
                 <p class="subtitle">Let's turn your profile into something recruiters actually notice. Simple, friendly tips (with AI to help) you can act on today.</p>
                 <div class="stats">
@@ -568,6 +574,25 @@
         <!-- Profile Foundation -->
         <div class="section" id="profile-foundation">
             <h2><span class="emoji">🏗️</span> How Should Your Profile Look Like?</h2>
+
+            <div class="diagram" data-diagram-title="Anatomy of a profile a recruiter actually reads" style="--viz-ratio:71.4%;--viz-extra:96px;--viz-mobile:640px;">
+                <script type="application/json">
+                {
+                  "type": "stack",
+                  "note": "Recruiters skim top to bottom and usually stop early. Each layer below has to earn the next one.",
+                  "alt": "Diagram of the seven parts of a LinkedIn profile in the order a recruiter reads them: photo and banner, headline, About, featured work, experience and projects, skills, then recommendations.",
+                  "layers": [
+                    { "label": "Photo and banner", "sub": "The first half second", "note": "A clear headshot and a banner that says what you do." },
+                    { "label": "Headline", "sub": "220 characters, always visible", "note": "Follows you into search results, comments and messages." },
+                    { "label": "About", "sub": "First 2 lines shown before 'see more'", "note": "Front-load the role you want and your strongest proof." },
+                    { "label": "Featured", "sub": "Your three best links", "note": "Projects, writing or a portfolio the recruiter can click." },
+                    { "label": "Experience and projects", "sub": "Problem, solution, impact", "note": "Numbers here are what separate you from identical profiles." },
+                    { "label": "Skills", "sub": "Keyword match for recruiter search", "note": "This is largely how recruiters find you in the first place." },
+                    { "label": "Recommendations", "sub": "Proof from other people", "note": "Two or three specific ones beat ten generic ones." }
+                  ]
+                }
+                </script>
+            </div>
             
             <h3><span class="emoji">📸</span> Professional Photo & Banner</h3>
             <ul class="tip-list">
@@ -1344,6 +1369,6 @@ Make recommendations actionable and specific to my goals."
             });
         });
     </script>
-    <script type="module" src="./functions/site.js?v=20260814m"></script>
+    <script type="module" src="./functions/site.js?v=20260814n"></script>
 </body>
 </html>

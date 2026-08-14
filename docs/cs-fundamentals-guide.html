@@ -8,8 +8,8 @@
 <!-- BEGIN critical-css (build-critical-css.py) -->
 <link rel="stylesheet" href="./theme-variables.css">
 <link rel="stylesheet" href="./theme-switcher.css">
-<!-- END critical-css -->
-<!-- BEGIN generated-seo (build-seo.py) -->
+<link rel="stylesheet" href="./base.css">
+<!-- END critical-css --><!-- BEGIN generated-seo (build-seo.py) -->
 <link rel="canonical" href="https://shumbul.github.io/Resources/cs-fundamentals-guide.html">
 <meta name="description" content="The computer science core that interviews love: Operating Systems, DBMS, Computer Networks, and OOP, explained simply with the exact topics to focus on.">
 <meta name="author" content="Shumbul Arifa">
@@ -71,6 +71,10 @@
 
     <header class="guide-header">
         <div class="container">
+        <!-- BEGIN back-link (build-backlink.py) -->
+        <div class="back-link-row"><a class="back-link" href="./index.html"><span aria-hidden="true">&larr;</span> Back to Resources</a></div>
+        <!-- END back-link -->
+
             <h1 class="guide-title">🧠 CS Fundamentals</h1>
             <p class="guide-sub">The core computer science every fresher interview digs into: Operating Systems, Databases, Networks, and OOP. You do not need a whole semester, you need the right topics, explained simply.</p>
             <div class="guide-badges">
@@ -82,13 +86,37 @@
     </header>
 
     <main class="container">
-        <div class="gsection">
-            <h2 data-jump="How to use this">How to use this guide</h2>
-            <p class="muted">Do not try to master everything. For each subject below you get: <b>why it matters</b>, the <b>focus topics</b> (the ones that actually get asked), and a few <b>sample questions</b> with short answers so you know the depth expected. Read actively: after each topic, try to explain it out loud in one or two sentences. If you can teach it, you know it.</p>
-        </div>
+        <!-- BEGIN quick-jump (build-quickjump.py) -->
+        <nav class="quick-jump" aria-label="Quick jump to section">
+            <div class="quick-jump__label">⚡ Quick jump</div>
+            <div class="quick-jump__links"><a href="#how-to-use-this-guide">How to use this</a><a href="#operating-systems-os">Operating Systems</a><a href="#databases-dbms">DBMS</a><a href="#computer-networks-cn">Networks</a><a href="#object-oriented-programming-oop">OOP</a><a href="#what-to-prioritize">Priority table</a><a href="#free-places-to-learn">Free resources</a><a href="#what-to-do-next">What&#x27;s next</a></div>
+        </nav>
+        <!-- END quick-jump -->
 
         <div class="gsection">
-            <h2 data-jump="Operating Systems">Operating Systems (OS)</h2>
+            <h2 id="how-to-use-this-guide" data-jump="How to use this">How to use this guide</h2>
+            <p class="muted">Do not try to master everything. For each subject below you get: <b>why it matters</b>, the <b>focus topics</b> (the ones that actually get asked), and a few <b>sample questions</b> with short answers so you know the depth expected. Read actively: after each topic, try to explain it out loud in one or two sentences. If you can teach it, you know it.</p>
+
+                        <div class="diagram" data-diagram-title="The study loop that makes this stick" style="--viz-ratio:59.7%;--viz-extra:96px;--viz-mobile:585px;">
+                            <script type="application/json">
+                            {
+                              "type": "loop",
+                              "note": "Reading alone feels productive and fades in a day. The loop below is what survives to the interview.",
+                              "alt": "Cycle diagram: read one topic, close the page and explain it out loud, notice exactly where you stall, then reread only that part, and repeat.",
+                              "center": "Active recall",
+                              "centerSub": "One topic at a time",
+                              "nodes": [
+                                { "label": "Read one topic", "sub": "Just one, not the whole page" },
+                                { "label": "Close it and explain", "sub": "Out loud, in your own words" },
+                                { "label": "Notice where you stall", "sub": "That pause is the real gap" },
+                                { "label": "Reread only that bit", "sub": "Then run the loop again" }
+                              ]
+                            }
+                            </script>
+                        </div>        </div>
+
+        <div class="gsection">
+            <h2 id="operating-systems-os" data-jump="Operating Systems">Operating Systems (OS)</h2>
             <div class="why"><b>Why it matters:</b> interviewers test whether you understand how programs really run, share resources, and avoid stepping on each other.</div>
             <p class="muted"><b>Focus on these topics:</b></p>
             <div class="focus">
@@ -111,7 +139,7 @@
         </div>
 
         <div class="gsection">
-            <h2 data-jump="DBMS">Databases (DBMS)</h2>
+            <h2 id="databases-dbms" data-jump="DBMS">Databases (DBMS)</h2>
             <div class="why"><b>Why it matters:</b> almost every app stores data, so interviewers check that you can model it, query it, and keep it consistent.</div>
             <p class="muted"><b>Focus on these topics:</b></p>
             <div class="focus">
@@ -134,7 +162,7 @@
         </div>
 
         <div class="gsection">
-            <h2 data-jump="Networks">Computer Networks (CN)</h2>
+            <h2 id="computer-networks-cn" data-jump="Networks">Computer Networks (CN)</h2>
             <div class="why"><b>Why it matters:</b> every web app talks over a network, so interviewers check you understand what happens when you type a URL and hit enter.</div>
             <p class="muted"><b>Focus on these topics:</b></p>
             <div class="focus">
@@ -157,7 +185,7 @@
         </div>
 
         <div class="gsection">
-            <h2 data-jump="OOP">Object-Oriented Programming (OOP)</h2>
+            <h2 id="object-oriented-programming-oop" data-jump="OOP">Object-Oriented Programming (OOP)</h2>
             <div class="why"><b>Why it matters:</b> most codebases are object-oriented, so interviewers check you can design clean, reusable code, not just make it work.</div>
             <p class="muted"><b>Focus on these topics:</b></p>
             <div class="focus">
@@ -180,7 +208,7 @@
         </div>
 
         <div class="gsection">
-            <h2 data-jump="Priority table">What to prioritize</h2>
+            <h2 id="what-to-prioritize" data-jump="Priority table">What to prioritize</h2>
             <p class="muted">Short on time? Here is a rough priority order based on how often each shows up in fresher interviews.</p>
             <div style="overflow-x:auto;">
                 <table class="roletable">
@@ -196,7 +224,7 @@
         </div>
 
         <div class="gsection">
-            <h2 data-jump="Free resources">Free places to learn</h2>
+            <h2 id="free-places-to-learn" data-jump="Free resources">Free places to learn</h2>
             <ul class="muted">
                 <li><a href="https://www.geeksforgeeks.org/" target="_blank" rel="noopener">GeeksforGeeks</a> - topic-wise notes and interview questions for all four subjects.</li>
                 <li><a href="https://www.youtube.com/@gatesmashers" target="_blank" rel="noopener">Gate Smashers (YouTube)</a> - clear, short lectures on OS, DBMS, and CN.</li>
@@ -206,7 +234,7 @@
         </div>
 
         <div class="gsection">
-            <h2 data-jump="What's next">What to do next</h2>
+            <h2 id="what-to-do-next" data-jump="What's next">What to do next</h2>
             <p class="muted">Pair these fundamentals with problem-solving and interview practice:</p>
             <div class="nextlinks">
                 <a href="./dsa-practice-guide.html">💻 DSA Practice</a>
@@ -225,6 +253,6 @@
     <div data-component="footer"></div>
     <div data-component="scripts-common"></div>
     <script src="./components/component-loader.js"></script>
-    <script type="module" src="./functions/site.js?v=20260814m"></script>
+    <script type="module" src="./functions/site.js?v=20260814n"></script>
 </body>
 </html>

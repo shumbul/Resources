@@ -8,8 +8,8 @@
 <!-- BEGIN critical-css (build-critical-css.py) -->
 <link rel="stylesheet" href="./theme-variables.css">
 <link rel="stylesheet" href="./theme-switcher.css">
-<!-- END critical-css -->
-<!-- BEGIN generated-seo (build-seo.py) -->
+<link rel="stylesheet" href="./base.css">
+<!-- END critical-css --><!-- BEGIN generated-seo (build-seo.py) -->
 <link rel="canonical" href="https://shumbul.github.io/Resources/career-portals.html">
 <meta name="description" content="Official career pages of 99 top tech companies hiring in India, well-paying, popular, and successful. Search, click, and apply directly. Bookmark this for your job hunt.">
 <meta name="author" content="Shumbul Arifa">
@@ -74,6 +74,10 @@
 
     <header class="guide-header">
         <div class="container">
+        <!-- BEGIN back-link (build-backlink.py) -->
+        <div class="back-link-row"><a class="back-link" href="./index.html"><span aria-hidden="true">&larr;</span> Back to Resources</a></div>
+        <!-- END back-link -->
+
             <h1 class="guide-title">🏢 Career Portals</h1>
             <p class="guide-sub">Official career pages of 99 top tech companies that hire in India, pay well, and are genuinely popular and successful, all in one place. Applying on a company's own portal (not just aggregators) often gets your resume seen faster. Search, click, and apply directly. Bookmark this for your whole job hunt.</p>
             <div class="guide-badges">
@@ -85,8 +89,15 @@
     </header>
 
     <main class="container">
+        <!-- BEGIN quick-jump (build-quickjump.py) -->
+        <nav class="quick-jump" aria-label="Quick jump to section">
+            <div class="quick-jump__label">⚡ Quick jump</div>
+            <div class="quick-jump__links"><a href="#search-99-companies">All companies</a><a href="#applying-smart-not-just-often">Applying smart</a><a href="#what-to-do-next">What&#x27;s next</a></div>
+        </nav>
+        <!-- END quick-jump -->
+
         <div class="gsection">
-            <h2 data-jump="All companies">Search 99 companies</h2>
+            <h2 id="search-99-companies" data-jump="All companies">Search 99 companies</h2>
             <input type="search" class="cp-search" id="cpSearch" placeholder="Search companies (e.g. Google, Amazon, Adobe)..." aria-label="Search companies" autocomplete="off">
             <p class="cp-count" id="cpCount"></p>
             <div class="cp-grid" id="cpGrid"></div>
@@ -94,7 +105,7 @@
         </div>
 
         <div class="gsection">
-            <h2 data-jump="Applying smart">Applying smart (not just often)</h2>
+            <h2 id="applying-smart-not-just-often" data-jump="Applying smart">Applying smart (not just often)</h2>
             <ul class="muted">
                 <li><b>Apply on the official portal</b> and, in parallel, find a referral on LinkedIn. A referral plus a direct application is the strongest combo.</li>
                 <li><b>Tailor the top of your resume</b> to each role's keywords. See the <a href="./resume-portfolio-templates.html">Resume guide</a>.</li>
@@ -105,7 +116,7 @@
         </div>
 
         <div class="gsection">
-            <h2 data-jump="What's next">What to do next</h2>
+            <h2 id="what-to-do-next" data-jump="What's next">What to do next</h2>
             <div class="nextlinks">
                 <a href="./resume-portfolio-templates.html">📄 Resume &amp; Portfolio</a>
                 <a href="./linkedin-utilization-guide.html">💼 LinkedIn Guide</a>
@@ -124,7 +135,7 @@
     <div data-component="footer"></div>
     <div data-component="scripts-common"></div>
     <script src="./components/component-loader.js"></script>
-    <script type="module" src="./functions/site.js?v=20260814m"></script>
+    <script type="module" src="./functions/site.js?v=20260814n"></script>
 
     <script>
         (function () {
