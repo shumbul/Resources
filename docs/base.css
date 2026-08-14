@@ -1,20 +1,38 @@
 /* --------------------------------------------------------------------------
-   Base layout and reset.
+   Base layout.
 
-   This used to live in a <style> block inside components/head-common.html,
-   which is fetched by component-loader.js and injected into <head> around
-   750ms after the page had already painted. It contains the box-sizing reset
-   and the base margins for the body, headings, paragraphs and .container, so
-   applying it late re-laid-out the entire document in one go. That was the
-   single largest remaining source of layout shift, worth up to 0.61 on the
-   guide pages.
+   This started as a <style> block inside components/head-common.html. That
+   partial is fetched by component-loader.js, and the block never actually
+   reached the page: inspecting the matched CSS rules on the previous build
+   shows no `p { color }` rule applying at all. It was dormant code.
 
-   It is now a real stylesheet linked from every page's <head> by
-   build-critical-css.py, so it is part of the first paint. It is linked after
-   theme-variables.css to keep the cascade order it had before.
+   The layout half of it still matters. Linking it here, before first paint,
+   is what takes the worst page from 0.205 to 0.000 Cumulative Layout Shift:
+   the box-sizing reset and the base margins no longer change after the
+   document has already been laid out.
+
+   Two things are deliberately NOT here.
+
+   Colour. Reviving `p { color: var(--text-secondary) }` and
+   `h1-h6 { color: var(--text-primary) }` changed the design, because an
+   element selector beats an inherited value. That overrode the white the
+   gradient headers and the dark journey panel pass down to their children,
+   and the roadmap subtitles turned dark slate on purple. Colour cannot move
+   a box, so dropping it keeps the whole layout-shift win with none of the
+   visual change.
+
+   Component styling. The old block also styled .btn, .cta-button, footer,
+   .social-link and the theme swatches. Those were dormant too, and every
+   page already styles its own, so reviving them would silently restyle
+   buttons and footers site-wide for no measurable benefit.
+
+   Rule of thumb for anything added to this file: if it cannot move a box on
+   first paint, it does not belong here.
    -------------------------------------------------------------------------- */
-/* Base styles */
-* {
+
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -23,9 +41,6 @@
 body {
     font-family: 'Inter', 'Inter Fallback', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.7;
-    color: var(--text-primary);
-    background: var(--bg-primary);
-    transition: all 0.3s ease;
 }
 
 .container {
@@ -34,146 +49,26 @@ body {
     padding: 0 2rem;
 }
 
-/* Typography */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     line-height: 1.3;
     margin-bottom: 1rem;
-    color: var(--text-primary);
 }
 
 p {
     margin-bottom: 1rem;
-    color: var(--text-secondary);
 }
 
 a {
-    color: var(--primary);
     text-decoration: none;
-    transition: color 0.3s ease;
 }
 
-a:hover {
-    color: var(--secondary);
-}
-
-/* Common button styles */
-.btn, .cta-button {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.875rem 1.5rem;
-    background: var(--primary);
-    color: white;
-    border: none;
-    border-radius: 0.75rem;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    font-size: 1rem;
-}
-
-.btn:hover, .cta-button:hover {
-    background: var(--secondary);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
-    color: white;
-}
-
-/* Back navigation */
-.back-nav {
-    padding: 1rem 0;
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 2rem;
-}
-
-.back-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: #ffffff;
-    transition: all 0.3s ease;
-    font-weight: 500;
-}
-
-.back-link:hover {
-    color: #ffffff;
-    transform: translateX(-3px);
-}
-
-/* Footer */
-footer {
-    background: var(--bg-secondary);
-    border-top: 1px solid var(--border);
-    padding: 3rem 0;
-    text-align: center;
-    margin-top: 4rem;
-}
-
-.footer-content {
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.footer-content p {
-    font-size: 1.125rem;
-    margin-bottom: 1.5rem;
-}
-
-.social-links {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin: 2rem 0;
-}
-
-.social-link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 2.5rem;
-    height: 2.5rem;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    border: none;
-    border-radius: 50%;
-    color: #fff;
-    text-decoration: none;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
-}
-
-.social-link:hover {
-    filter: brightness(1.08);
-    color: #fff;
-    transform: translateY(-2px);
-    box-shadow: var(--shadow, 0 6px 16px -8px rgba(15,23,42,.45));
-}
-
-/* Theme switcher styles for individual theme colors */
-.theme-color {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    border: 2px solid var(--border);
-}
-
-.theme-color.purple { background: #8b5cf6; }
-.theme-color.blue { background: #2563eb; }
-.theme-color.green { background: #059669; }
-.theme-color.orange { background: #ea580c; }
-.theme-color.red { background: #dc2626; }
-
-/* Responsive design */
 @media (max-width: 768px) {
     .container {
         padding: 0 1rem;
-    }
-    
-    .social-links {
-        gap: 0.75rem;
-    }
-    
-    .social-link {
-        width: 2.25rem;
-        height: 2.25rem;
     }
 }
