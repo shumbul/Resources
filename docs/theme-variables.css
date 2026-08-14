@@ -262,3 +262,51 @@ main:has([data-jump]):not(:has(.quick-jump))::before {
     descent-override: 26.1%;
     line-gap-override: 0%;
 }
+
+/* --------------------------------------------------------------------------
+   Reserve space for runtime-injected chrome.
+
+   footer.js, motivation.js, quickjump.js and header.js all insert elements
+   after first paint. Without a reserved slot each one shoves the surrounding
+   content, which is what produced the high CLS scores.
+
+   Each placeholder claims the measured height of the real element and
+   collapses the instant that element exists, so the net movement is zero.
+   -------------------------------------------------------------------------- */
+
+/* Footer: measured 249px on guide pages. The placeholder sits on the
+   still-empty [data-component="footer"] div and collapses once filled. */
+[data-component="footer"]:empty {
+    display: block;
+    min-height: 249px;
+    margin-top: 3.5rem;
+}
+
+/* Motivational ticker: measured 49px, inserted just above the footer. */
+[data-component="footer"]:empty::before {
+    content: "";
+    display: block;
+    height: 49px;
+    margin-top: -3.5rem;
+}
+
+/* Back link row: measured 32px plus its own margin, inserted as the first
+   child of the header inner container by header.js. */
+.guide-header .container:not(:has(.back-link-row))::before,
+.header-content:not(:has(.back-link-row))::before {
+    content: "";
+    display: block;
+    height: 32px;
+    margin-bottom: 1.5rem;
+}
+
+/* Theme switcher: measured 55px on the home page. */
+[data-component="theme-switcher"]:empty,
+#theme-switcher-placeholder:empty {
+    display: block;
+    min-height: 55px;
+}
+
+@media (max-width: 640px) {
+    [data-component="footer"]:empty { min-height: 300px; }
+}
