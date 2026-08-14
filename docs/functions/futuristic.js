@@ -105,13 +105,12 @@ function addStats() {
     if (!document.querySelector('.resources-grid')) return;
 
     const guides = document.querySelectorAll('.resource-card').length || 30;
-    // Each stat must read as a complete claim. The original third item was
-    // "0 / Signups", which looked like nobody had signed up rather than
-    // "no signup is required". The label now finishes the sentence.
+    // Each stat must read as a complete claim on its own. A "0 / Signups"
+    // item was tried here and read as "nobody signed up" rather than "no
+    // signup is required", so the point is made in the copy instead.
     const stats = [
         [guides, '+', 'Guides'],
         [100, '%', 'Free'],
-        [0, '', 'Signups needed'],
     ];
 
     const wrap = document.createElement('div');

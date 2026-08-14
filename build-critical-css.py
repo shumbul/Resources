@@ -33,17 +33,28 @@ SKIP = {"component-demo.html"}
 BEGIN = "<!-- BEGIN critical-css (build-critical-css.py) -->"
 END = "<!-- END critical-css -->"
 
+# Cache-busting version for the stylesheets. Bump this whenever any of the
+# sheets below changes, and keep it equal to the ?v= on the site.js script tag.
+#
+# This matters more than it looks. These sheets carry layout that used to be
+# injected by JavaScript. A browser holding an older copy of the CSS together
+# with the newer HTML and JS gets neither: the JS no longer injects the rules
+# and the cached file does not have them yet, so the hero collapses. The
+# version query makes the two move together.
+VERSION = "20260814n"
+
 SHEETS = [
     "./theme-variables.css",
     "./theme-switcher.css",
     "./base.css",
 ]
 
-BLOCK = "\n".join(
-    [BEGIN]
-    + ['<link rel="stylesheet" href="{0}">'.format(h) for h in SHEETS]
-    + [END]
-)
+
+def link(href):
+    return '<link rel="stylesheet" href="{0}?v={1}">'.format(href, VERSION)
+
+
+BLOCK = "\n".join([BEGIN] + [link(h) for h in SHEETS] + [END])
 
 
 def read(p):
@@ -56,13 +67,48 @@ def write(p, s):
         f.write(s)
 
 
+def version_links(src, upto):
+    """Point every existing link at the current version of these sheets."""
+    changed = False
+    head, tail = src[:upto], src[upto:]
+    for h in SHEETS:
+        pat = re.compile(
+            r'<link\b[^>]*\bhref="' + re.escape(h) + r'(?:\?v=[^"]*)?"[^>]*>')
+        new_head, n = pat.subn(link(h), head)
+        if n:
+            changed = changed or new_head != head
+            head = new_head
+    return head + tail, changed
+
+
+def head_boundary(src):
+    """
+    Where the real <head> ends.
+
+    Pages carry <div data-component="head-common"> inside <head>. A <div> is
+    not valid head content, so the parser implicitly closes <head> there and
+    everything after it lands in <body>. Stylesheets have to go before it.
+    """
+    m = re.search(r'<div\s+data-component=["\']head-common["\']', src)
+    if m is not None:
+        return m.start()
+    i = src.find("</head>")
+    return i if i > 0 else len(src)
+
+
 def process(path, check_only=False):
     src = read(path)
     original = src
     if "<head>" not in src:
         return None
 
-    # Strip any previously generated block so the sheet list can change and
+    # Refresh the version on any link the page already carries. This runs
+    # first: it changes the length of the document, so doing it after the
+    # insertion point had been chosen would shift that point into the middle
+    # of a tag.
+    src, _ = version_links(src, head_boundary(src))
+
+    # Strip any previously generated block, so the sheet list can change and
     # so a page that links some sheets itself is measured correctly.
     anchor = None
     if BEGIN in src:
@@ -76,13 +122,10 @@ def process(path, check_only=False):
         anchor = k
         src = src[:k] + src[j:]
 
-    # The div forces an implicit </head>, so measure the real head to there.
-    head_end = src.find("</head>")
-    m_div = re.search(r'<div\s+data-component=["\']head-common["\']', src)
-    boundary = m_div.start() if m_div is not None else head_end
-    real_head = src[:boundary] if boundary > 0 else src
+    boundary = head_boundary(src)
+    real_head = src[:boundary]
 
-    missing = [h for h in SHEETS if 'href="{0}"'.format(h) not in real_head]
+    missing = [h for h in SHEETS if 'href="{0}?v='.format(h) not in real_head]
     if not missing:
         if src == original:
             return False
@@ -90,20 +133,16 @@ def process(path, check_only=False):
             write(path, src)
         return True
 
-    block = "\n".join(
-        [BEGIN]
-        + ['<link rel="stylesheet" href="{0}">'.format(h) for h in missing]
-        + [END]
-    )
+    block = "\n".join([BEGIN] + [link(h) for h in missing] + [END])
 
     if anchor is not None:
         i = anchor
     else:
-        linked = [h for h in SHEETS if 'href="{0}"'.format(h) in real_head]
+        linked = [h for h in SHEETS if 'href="{0}?v='.format(h) in real_head]
         if linked:
-            # Keep the documented order: append after the last sheet the page
-            # already links itself.
-            last = max(real_head.rfind('href="{0}"'.format(h)) for h in linked)
+            # Keep the documented order: place it after the last sheet the
+            # page already links itself, at the end of that whole tag.
+            last = max(real_head.rfind('href="{0}?v='.format(h)) for h in linked)
             i = src.index(">", last) + 1
         else:
             # insert right after <meta charset>, which must stay first

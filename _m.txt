@@ -1,0 +1,37 @@
+fix: cache-bust the stylesheets, and drop the signups stat
+
+Two fixes.
+
+1. Stale CSS collapsed the hero.
+
+The previous commit moved layout rules out of JavaScript and into
+theme-variables.css and the new base.css. The JS modules carry a ?v= query
+so browsers refetch them, but the stylesheet <link> tags never did.
+
+A returning visitor therefore ended up with new HTML, new JavaScript that
+no longer injects those rules, and an old cached stylesheet that does not
+contain them yet. Neither source supplied the layout, so the hero stats lost
+their flex row and rendered as three stacked lines of inline text.
+
+The stylesheet links now carry the same version query as site.js, applied by
+build-critical-css.py and kept in the head-common partial too. Reproduced the
+failure by serving the previous stylesheet under the un-versioned URL, and
+confirmed the versioned build renders correctly against that same cache.
+
+Also fixed a bug in build-critical-css.py that this uncovered: it rewrote the
+existing links before using an offset computed from the original text, so the
+insertion point drifted by the number of characters added and landed inside a
+<link> tag, splitting it across seven pages. Versioning now happens first and
+the insertion point is computed after.
+
+2. Removed the "0 Signups needed" hero stat.
+
+Reworded once already and still read as a negative at a glance. Two stats
+that each stand on their own are stronger than three where one needs
+explaining. The point is already made in the page copy.
+
+Verified: HTMLHint clean on 41 files, all five build scripts pass --check,
+homepage renders correctly both with a clean cache and with the previous
+stylesheet cached.
+
+Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>
