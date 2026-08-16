@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap">
+    <meta charset="UTF-8">
+<!-- BEGIN critical-css (build-critical-css.py) -->
+<link rel="stylesheet" href="./theme-variables.css?v=20260816c">
+<link rel="stylesheet" href="./theme-switcher.css?v=20260816c">
+<link rel="stylesheet" href="./base.css?v=20260816c">
+<!-- END critical-css -->
+<!-- BEGIN generated-seo (build-seo.py) -->
+<link rel="canonical" href="https://shumbul.github.io/Resources/mcp-guide.html">
+<meta name="description" content="Model Context Protocol explained for beginners: what MCP actually solves, how hosts, clients and servers fit together, connecting your first server, and building one in 25 lines of Python.">
+<meta name="author" content="Shumbul Arifa">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://shumbul.github.io/Resources/mcp-guide.html">
+<meta property="og:site_name" content="Resources by Shumbul Arifa">
+<meta property="og:title" content="MCP Explained - the standard that lets AI use your tools">
+<meta property="og:description" content="A friendly, hands-on guide to the Model Context Protocol. Real code, real output, no hype.">
+<meta property="og:image" content="https://shumbul.github.io/Resources/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Resources by Shumbul Arifa">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="MCP Explained - the standard that lets AI use your tools">
+<meta name="twitter:description" content="A friendly, hands-on guide to the Model Context Protocol. Real code, real output, no hype.">
+<meta name="twitter:image" content="https://shumbul.github.io/Resources/og-image.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://shumbul.github.io/Resources/#website","url":"https://shumbul.github.io/Resources/","name":"Resources by Shumbul Arifa","inLanguage":"en","description":"Free, practical tech-career guides, roadmaps and interview prep.","publisher":{"@id":"https://shumbul.github.io/Resources/#person"}},{"@type":"Person","@id":"https://shumbul.github.io/Resources/#person","name":"Shumbul Arifa","url":"https://shumbul.github.io/Resources/about.html","jobTitle":"Software Engineer","sameAs":["https://github.com/shumbul","https://linkedin.com/in/shumbul","https://instagram.com/shumbul.arifa","https://www.youtube.com/@Shumbul"]},{"@type":"WebPage","@id":"https://shumbul.github.io/Resources/mcp-guide.html#webpage","url":"https://shumbul.github.io/Resources/mcp-guide.html","name":"MCP Explained | Resources by Shumbul Arifa","description":"Model Context Protocol explained for beginners: what MCP actually solves, how hosts, clients and servers fit together, connecting your first server, and building one in 25 lines of Python.","inLanguage":"en","isPartOf":{"@id":"https://shumbul.github.io/Resources/#website"},"about":{"@id":"https://shumbul.github.io/Resources/#person"},"primaryImageOfPage":"https://shumbul.github.io/Resources/og-image.png"},{"@type":"BreadcrumbList","@id":"https://shumbul.github.io/Resources/mcp-guide.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Resources","item":"https://shumbul.github.io/Resources/"},{"@type":"ListItem","position":2,"name":"MCP Explained","item":"https://shumbul.github.io/Resources/mcp-guide.html"}]}]}</script>
+<!-- END generated-seo -->
+    <div data-component="head-common"></div>
+
+    <title>MCP Explained | Resources by Shumbul Arifa</title>
+    <meta name="description" content="Model Context Protocol explained for beginners: what MCP actually solves, how hosts, clients and servers fit together, connecting your first server, and building one in 25 lines of Python.">
+    <meta property="og:title" content="MCP Explained - the standard that lets AI use your tools">
+    <meta property="og:description" content="A friendly, hands-on guide to the Model Context Protocol. Real code, real output, no hype.">
+
+    <style>
+        .guide-header { background: linear-gradient(135deg, var(--primary), var(--secondary)); color:#fff; padding:3.5rem 0; text-align:center; margin-bottom:2.5rem; }
+        .guide-title { font-size:2.6rem; font-weight:800; margin-bottom:.6rem; color:#fff; }
+        .guide-sub { font-size:1.15rem; color:rgba(255,255,255,.94); max-width:730px; margin:0 auto; }
+        .guide-badges { display:flex; gap:.5rem; justify-content:center; flex-wrap:wrap; margin-top:1.2rem; }
+        .guide-badge { background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.4); padding:.35rem .8rem; border-radius:999px; font-size:.85rem; font-weight:600; }
+
+        .starter { background:var(--bg-primary); border:1px solid var(--border); border-left:4px solid var(--primary); border-radius:12px; padding:1.1rem 1.3rem; margin-bottom:1.75rem; }
+        .gsection { background:var(--bg-secondary); border:1px solid var(--border); border-radius:16px; padding:1.6rem 1.75rem; margin-bottom:1.75rem; }
+        .gsection h2 { margin-top:0; }
+        .gsection h3 { margin:1.4rem 0 .5rem; font-size:1.05rem; }
+        .muted { color:var(--text-secondary); }
+
+        pre { background:#0f172a; color:#e2e8f0; border-radius:12px; padding:1rem 1.2rem; overflow-x:auto; font-size:.86rem; line-height:1.55; margin:.5rem 0; max-width:100%; box-sizing:border-box; }
+        pre code { font-family:ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace; }
+
+        /* A terminal frame, so real captured output is visually distinct from
+           code you are meant to type. */
+        .term { border-radius:12px; overflow:hidden; margin:.9rem 0; border:1px solid #1e293b; }
+        .term .bar { background:#1e293b; padding:.45rem .8rem; display:flex; align-items:center; gap:.4rem; }
+        .term .bar i { width:11px; height:11px; border-radius:50%; display:inline-block; }
+        .term .bar .r { background:#ef4444; } .term .bar .y { background:#eab308; } .term .bar .g { background:#22c55e; }
+        .term .bar span { margin-left:.5rem; font:600 .78rem/1 ui-monospace,Consolas,monospace; color:#94a3b8; }
+        .term pre { margin:0; border-radius:0; font-size:.82rem; }
+        .term .ok { color:#4ade80; }
+        .term .dim { color:#94a3b8; }
+        .term .warn { color:#fbbf24; }
+
+        .cmp { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:1rem 0; }
+        @media (max-width:720px){ .cmp { grid-template-columns:1fr; } }
+        .cmp > div { background:var(--bg-primary); border:1px solid var(--border); border-radius:12px; padding:1rem 1.15rem; }
+        .cmp .bad { border-top:3px solid #dc2626; }
+        .cmp .good { border-top:3px solid #059669; }
+        .cmp h4 { margin:0 0 .5rem; font-size:.95rem; }
+        .cmp ul { margin:0; padding-left:1.1rem; color:var(--text-secondary); font-size:.9rem; }
+        .cmp li { margin-bottom:.3rem; }
+
+        .prim { display:grid; grid-template-columns:repeat(3,1fr); gap:.8rem; margin:1rem 0; }
+        @media (max-width:760px){ .prim { grid-template-columns:1fr; } }
+        .prim .p { background:var(--bg-primary); border:1px solid var(--border); border-radius:12px; padding:1rem 1.1rem; }
+        .prim .p .ic { font-size:1.5rem; }
+        .prim .p b { display:block; margin:.35rem 0 .2rem; font-family:var(--font-display); }
+        .prim .p span { font-size:.86rem; color:var(--text-secondary); }
+        .prim .p em { display:block; margin-top:.5rem; font-style:normal; font-size:.8rem; color:var(--primary); font-weight:600; }
+
+        .steps { counter-reset:s; }
+        .steps > li { list-style:none; position:relative; padding-left:2.4rem; margin-bottom:1rem; }
+        .steps > li::before { counter-increment:s; content:counter(s); position:absolute; left:0; top:0;
+            width:1.7rem; height:1.7rem; border-radius:50%; background:linear-gradient(135deg,var(--primary),var(--secondary));
+            color:#fff; font-weight:700; font-size:.85rem; display:flex; align-items:center; justify-content:center; }
+
+        .warnbox { background:#fef2f2; border:1px solid #fecaca; border-left:4px solid #dc2626; border-radius:12px; padding:1rem 1.2rem; margin:1rem 0; }
+        .warnbox b { color:#991b1b; }
+        .warnbox p { margin:.4rem 0 0; color:#7f1d1d; font-size:.92rem; }
+
+        .concept { display:inline-block; background:var(--bg-tertiary); border:1px solid var(--border); border-radius:999px; padding:.2rem .6rem; font-size:.78rem; font-weight:600; margin:.25rem .25rem 0 0; }
+        .gsection p a, .gsection li a, .starter a { text-decoration:underline; }
+        .nextlinks { display:flex; flex-wrap:wrap; gap:.6rem; }
+        .nextlinks a { text-decoration:none; background:var(--bg-primary); border:1px solid var(--border); border-radius:10px; padding:.55rem .9rem; font-weight:600; color:var(--text-primary); }
+        .nextlinks a:hover { border-color:var(--primary); color:var(--primary); }
+
+        .ftable { width:100%; border-collapse:collapse; margin:.8rem 0; font-size:.9rem; }
+        .ftable th, .ftable td { text-align:left; padding:.55rem .7rem; border-bottom:1px solid var(--border); }
+        .ftable th { font-size:.78rem; text-transform:uppercase; letter-spacing:.06em; color:var(--text-secondary); }
+        .ftable code { background:var(--bg-tertiary); padding:.1rem .35rem; border-radius:5px; font-size:.85em; }
+
+        /* Animated request-flow diagram. The travelling dot is the only moving
+           part, and it is switched off under prefers-reduced-motion since the
+           numbered captions carry the same information. */
+        .mcpflow { display:block; width:100%; max-width:720px; height:auto; margin:1rem auto .4rem; }
+        .mf-box rect { fill:var(--bg-primary); stroke:var(--border); stroke-width:1.5; }
+        .mf-host rect { stroke:var(--primary); }
+        .mf-srv rect { stroke:#059669; }
+        .mf-inner { fill:var(--bg-tertiary); stroke:var(--border); stroke-width:1; }
+        .mf-t { fill:var(--text-primary); font:700 15px var(--font-display,sans-serif); }
+        .mf-t2 { fill:var(--text-primary); font:600 13px var(--font-sans,sans-serif); }
+        .mf-s { fill:var(--text-secondary); font:400 11.5px var(--font-sans,sans-serif); }
+        .mf-lbl { fill:var(--primary); font:700 12px var(--font-sans,sans-serif); }
+        .mf-cap { fill:var(--text-secondary); font:500 11.5px var(--font-sans,sans-serif); }
+        .mf-arrow { fill:none; stroke:var(--primary); stroke-width:2; color:var(--primary); }
+        .mf-back { stroke:#059669; color:#059669; }
+        .mf-dot { fill:var(--accent); stroke:var(--bg-primary); stroke-width:2; }
+        @media (prefers-reduced-motion: reduce){ .mf-dot { display:none; } }
+        @media (max-width:640px){ .mf-cap { font-size:10px; } }
+
+        /* Screenshots. width and height attributes are set on the img so the
+           browser reserves the right box before the file arrives, which keeps
+           this off the layout-shift budget. */
+        .shot { margin:1rem 0 .5rem; }
+        .shot img { display:block; width:100%; height:auto; border-radius:12px;
+            border:1px solid var(--border); box-shadow:var(--shadow); }
+        .shot figcaption { margin-top:.5rem; font-size:.84rem; color:var(--text-secondary); text-align:center; }
+    </style>
+</head>
+<body data-futuristic>
+    <div data-component="theme-switcher"></div>
+
+    <header class="guide-header">
+        <div class="container">
+        <!-- BEGIN back-link (build-backlink.py) -->
+        <div class="back-link-row"><a class="back-link" href="./index.html"><span aria-hidden="true">&larr;</span> Back to Resources</a></div>
+        <!-- END back-link -->
+
+            <h1 class="guide-title">🔌 MCP Explained</h1>
+            <p class="guide-sub">Every AI tool wants to reach your files, your database, your GitHub. MCP is the standard trying to stop everyone from building that plumbing separately. Here is what it is, why it exists, and how to use it today.</p>
+            <div class="guide-badges">
+                <span class="guide-badge">🌱 Beginner friendly</span>
+                <span class="guide-badge">🐍 Real Python</span>
+                <span class="guide-badge">✅ Output verified</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- BEGIN quick-jump (build-quickjump.py) -->
+        <nav class="quick-jump" aria-label="Quick jump to section">
+            <div class="quick-jump__label">⚡ Quick jump</div>
+            <div class="quick-jump__links"><a href="#what-mcp-actually-is">What MCP is</a><a href="#the-problem-it-solves">The problem</a><a href="#how-the-pieces-fit-together">How it fits together</a><a href="#what-a-server-can-offer">What a server offers</a><a href="#use-one-today-in-about-five-minutes">Use one today</a><a href="#build-your-own-server">Build your own</a><a href="#what-the-model-actually-sees">What the model sees</a><a href="#before-you-install-someone-else-s-server">Security</a><a href="#quick-check">Quick check</a><a href="#what-mcp-is-not">Honest limits</a><a href="#what-to-do-next">What next</a></div>
+        </nav>
+        <!-- END quick-jump -->
+
+        <div class="starter">
+            <div style="font-weight:700;font-family:var(--font-display,inherit);margin-bottom:.5rem;">🌱 New to this? Read this first</div>
+            <p class="muted" style="margin:0;">You do not need to know what an agent is to follow along. If you have ever used ChatGPT, Claude, GitHub Copilot or Cursor, you already have somewhere to plug MCP in. Everything below is copy-paste, and every code output on this page was produced by actually running it.</p>
+        </div>
+
+        <div class="gsection">
+            <h2 id="what-mcp-actually-is" data-jump="What MCP is">What MCP actually is</h2>
+            <p>An LLM on its own is a very well-read person locked in a room with no phone. It can reason about your code, but it cannot open your files. It can talk about your database, but it cannot query it.</p>
+            <p><strong>The Model Context Protocol is how you pass things into that room.</strong> It is an open standard, published by Anthropic and now supported across Claude, ChatGPT, VS Code, Cursor and others, that describes one way for AI applications to talk to outside systems.</p>
+            <p class="muted">The official analogy is a good one: MCP is <strong>USB-C for AI applications</strong>. Before USB-C, every device had its own cable. Now one port fits everything.</p>
+            <p><strong>Worth knowing before you invest an hour:</strong> you do not need MCP to build an AI agent. Plain function calling works perfectly well, and our <a href="./build-ai-agent.html">Build an AI Agent</a> guide does exactly that. MCP earns its keep the moment you want the same tool to work in more than one app, or you want to use somebody else's tool without writing the glue yourself.</p>
+            <div>
+                <span class="concept">Open standard</span>
+                <span class="concept">Works with any model</span>
+                <span class="concept">Not tied to any model</span>
+                <span class="concept">Runs locally or remote</span>
+            </div>
+        </div>
+
+        <div class="gsection">
+            <h2 id="the-problem-it-solves" data-jump="The problem">The problem it solves</h2>
+            <p>Before MCP, if you had <strong>4 AI apps</strong> and wanted each to reach <strong>5 systems</strong> (files, GitHub, Postgres, Slack, Jira), somebody had to write <strong>20 separate integrations</strong>. Every app reinvented the same connector, slightly differently.</p>
+            <p>That is the <strong>M times N problem</strong>. MCP turns it into <strong>M plus N</strong>: each app speaks MCP once, each system exposes MCP once.</p>
+
+            <div class="chartblock" data-chart-title="Integrations somebody has to write and maintain" style="--viz-ratio:36.1%;--viz-extra:118px;--viz-mobile:365px;">
+                <script type="application/json">
+                {
+                  "type": "bar",
+                  "note": "Assuming every AI app wants to reach every system. The gap widens fast as either number grows.",
+                  "alt": "Bar chart comparing custom integrations against MCP. For 2 apps and 3 systems, 6 custom versus 5 with MCP. For 4 apps and 5 systems, 20 versus 9. For 8 apps and 10 systems, 80 versus 18.",
+                  "labelWidth": 210,
+                  "bars": [
+                    { "label": "2 apps, 3 systems (custom)", "value": 6, "display": "6", "color": "#dc2626" },
+                    { "label": "2 apps, 3 systems (MCP)", "value": 5, "display": "5", "color": "#059669" },
+                    { "label": "4 apps, 5 systems (custom)", "value": 20, "display": "20", "color": "#dc2626" },
+                    { "label": "4 apps, 5 systems (MCP)", "value": 9, "display": "9", "color": "#059669" },
+                    { "label": "8 apps, 10 systems (custom)", "value": 80, "display": "80", "color": "#dc2626" },
+                    { "label": "8 apps, 10 systems (MCP)", "value": 18, "display": "18", "color": "#059669" }
+                  ]
+                }
+                </script>
+            </div>
+
+            <div class="cmp">
+                <div class="bad">
+                    <h4>😩 Without MCP</h4>
+                    <ul>
+                        <li>Every app writes its own connector</li>
+                        <li>Your tool only works in the app you built it for</li>
+                        <li>Change the API, fix it in four places</li>
+                        <li>No shared idea of permissions or discovery</li>
+                    </ul>
+                </div>
+                <div class="good">
+                    <h4>🙂 With MCP</h4>
+                    <ul>
+                        <li>Build the connector once</li>
+                        <li>It works in any MCP-capable app</li>
+                        <li>Fix it in one place</li>
+                        <li>Discovery, schemas and errors are standardised</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="gsection">
+            <h2 id="how-the-pieces-fit-together" data-jump="How it fits together">How the pieces fit together</h2>
+            <p>Three words come up constantly, and they are easy to mix up. The <strong>host</strong> is the app you actually use. It creates one <strong>client</strong> per connection. Each client talks to one <strong>server</strong>.</p>
+
+            <div class="diagram" data-diagram-title="Who is who in an MCP setup" style="--viz-ratio:32.4%;--viz-extra:96px;--viz-mobile:330px;">
+                <script type="application/json">
+                {
+                  "type": "stack",
+                  "note": "One host, many clients, one server per client. VS Code connected to both a filesystem server and a GitHub server runs two clients.",
+                  "alt": "Diagram of the three MCP participants: the host is the AI application you use, the client is one connection manager per server, and the server is the program exposing tools and data.",
+                  "layers": [
+                    { "label": "Host", "sub": "The app you use", "note": "VS Code, Claude Desktop, Cursor, ChatGPT. Owns the model and the conversation." },
+                    { "label": "Client", "sub": "One per server", "note": "Created by the host. Handles the handshake and keeps the connection alive." },
+                    { "label": "Server", "sub": "The thing being connected", "note": "A small program exposing tools and data. Runs on your machine or somewhere remote." }
+                  ]
+                }
+                </script>
+            </div>
+
+            <p class="muted">A useful rule: <strong>server does not mean cloud here.</strong> Most MCP servers you will meet are small programs running on your own laptop, talking over standard input and output (the same plumbing you use when you pipe one terminal command into another). Nothing leaves your machine unless the server itself makes a network call.</p>
+
+            <h3>What actually happens when you ask a question</h3>
+            <p class="muted">Follow the dot. Four steps, and only one of them involves you.</p>
+
+            <svg class="mcpflow" viewBox="0 0 720 260" role="img"
+                 aria-label="Animated diagram: your question goes to the host, the model decides a tool is needed, the client forwards the call to the server, the server returns data, and the model answers using it.">
+                <defs>
+                    <marker id="mfHead" viewBox="0 0 10 10" refX="9" refY="5"
+                            markerWidth="5" markerHeight="5" orient="auto">
+                        <path d="M 0 1 L 9 5 L 0 9 z" fill="currentColor"/>
+                    </marker>
+                    <path id="mfPath" d="M 120 96 H 330 M 400 96 H 600 M 600 150 H 400 M 330 150 H 120" fill="none"/>
+                </defs>
+
+                <!-- boxes -->
+                <g class="mf-box"><rect x="20" y="60" width="100" height="126" rx="14"/>
+                    <text class="mf-t" x="70" y="100" text-anchor="middle">You</text>
+                    <text class="mf-s" x="70" y="122" text-anchor="middle">ask a</text>
+                    <text class="mf-s" x="70" y="138" text-anchor="middle">question</text></g>
+
+                <g class="mf-box mf-host"><rect x="200" y="40" width="200" height="166" rx="14"/>
+                    <text class="mf-t" x="300" y="72" text-anchor="middle">Host + model</text>
+                    <text class="mf-s" x="300" y="94" text-anchor="middle">VS Code, Claude Desktop</text>
+                    <rect class="mf-inner" x="222" y="112" width="156" height="72" rx="10"/>
+                    <text class="mf-t2" x="300" y="140" text-anchor="middle">MCP client</text>
+                    <text class="mf-s" x="300" y="162" text-anchor="middle">one per server</text></g>
+
+                <g class="mf-box mf-srv"><rect x="480" y="60" width="220" height="126" rx="14"/>
+                    <text class="mf-t" x="590" y="96" text-anchor="middle">MCP server</text>
+                    <text class="mf-s" x="590" y="120" text-anchor="middle">your files, git, database</text>
+                    <text class="mf-s" x="590" y="142" text-anchor="middle">runs with your permissions</text></g>
+
+                <!-- request path, left to right -->
+                <path class="mf-arrow" d="M 124 100 H 194" marker-end="url(#mfHead)"/>
+                <path class="mf-arrow" d="M 404 100 H 474" marker-end="url(#mfHead)"/>
+                <text class="mf-lbl" x="159" y="90" text-anchor="middle">1</text>
+                <text class="mf-lbl" x="439" y="90" text-anchor="middle">2</text>
+
+                <!-- response path, right to left -->
+                <path class="mf-arrow mf-back" d="M 474 150 H 404" marker-end="url(#mfHead)"/>
+                <path class="mf-arrow mf-back" d="M 194 150 H 124" marker-end="url(#mfHead)"/>
+                <text class="mf-lbl" x="439" y="172" text-anchor="middle">3</text>
+                <text class="mf-lbl" x="159" y="172" text-anchor="middle">4</text>
+
+                <!-- travelling packet -->
+                <circle class="mf-dot" r="6">
+                    <animateMotion dur="6s" repeatCount="indefinite"
+                                   path="M 130 100 H 470 M 470 150 H 130"/>
+                </circle>
+
+                <text class="mf-cap" x="360" y="232" text-anchor="middle">1. you ask &#160;&#8226;&#160; 2. the model decides it needs a tool &#160;&#8226;&#160; 3. the server returns data &#160;&#8226;&#160; 4. the model answers</text>
+            </svg>
+
+        </div>
+
+        <div class="gsection">
+            <h2 id="what-a-server-can-offer" data-jump="What a server offers">What a server can offer</h2>
+            <p>An MCP server exposes up to three kinds of thing. Most servers only bother with the first.</p>
+
+            <div class="prim">
+                <div class="p">
+                    <div class="ic">🛠️</div>
+                    <b>Tools</b>
+                    <span>Actions the model can choose to run: search a repo, send a query, create a file.</span>
+                    <em>Model-controlled</em>
+                </div>
+                <div class="p">
+                    <div class="ic">📄</div>
+                    <b>Resources</b>
+                    <span>Read-only context the app can pull in: a file, a schema, a page of docs.</span>
+                    <em>App-controlled</em>
+                </div>
+                <div class="p">
+                    <div class="ic">💬</div>
+                    <b>Prompts</b>
+                    <span>Reusable templates a user can pick, like "review this PR the way we do".</span>
+                    <em>User-controlled</em>
+                </div>
+            </div>
+
+            <p class="muted">The distinction that matters: <strong>the model decides when to call a tool</strong>, whereas resources and prompts are pulled in deliberately. That is why tools are the ones that need your permission.</p>
+        </div>
+
+        <div class="gsection">
+            <h2 id="use-one-today-in-about-five-minutes" data-jump="Use one today">Use one today, in about five minutes</h2>
+            <p>You do not have to build anything to benefit. Connect an existing server to an app you already use.</p>
+
+            <h3>In VS Code with GitHub Copilot</h3>
+            <p class="muted">Create <code>.vscode/mcp.json</code> in your project:</p>
+            <pre><code>{
+  "servers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "."]
+    }
+  }
+}</code></pre>
+
+            <h3>In Claude Desktop</h3>
+            <p class="muted">Settings, then Developer, then Edit Config. Add:</p>
+            <pre><code>{
+  "mcpServers": {
+    "memory": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-memory"]
+    }
+  }
+}</code></pre>
+
+            <div class="warnbox">
+                <b>⊞ On Windows</b>
+                <p>Wrap <code>npx</code> with <code>cmd /c</code>, or the server will not start:
+                <code>"command": "cmd", "args": ["/c", "npx", "-y", "..."]</code>. Servers launched with <code>uvx</code> do not need this.</p>
+            </div>
+
+            <p>Restart the app, and it will list the new tools. Official reference servers worth trying:</p>
+            <table class="ftable">
+                <thead><tr><th>Server</th><th>What it gives the model</th><th>Command</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Filesystem</strong></td><td>Read and write files in folders you allow</td><td><code>npx @modelcontextprotocol/server-filesystem</code></td></tr>
+                    <tr><td><strong>Git</strong></td><td>Read, search and manipulate a repo</td><td><code>uvx mcp-server-git</code></td></tr>
+                    <tr><td><strong>Fetch</strong></td><td>Pull a web page in as clean text</td><td><code>uvx mcp-server-fetch</code></td></tr>
+                    <tr><td><strong>Memory</strong></td><td>Persistent notes across conversations</td><td><code>npx @modelcontextprotocol/server-memory</code></td></tr>
+                </tbody>
+            </table>
+            <p class="muted"><code>uvx</code> is the Python equivalent of <code>npx</code>. If you do not have it, run <code>pip install uv</code> first. There are hundreds more servers in the <a href="https://registry.modelcontextprotocol.io/" target="_blank" rel="noopener">MCP Registry</a>. Read the security section below before you install one you did not write.</p>
+        </div>
+
+        <div class="gsection">
+            <h2 id="build-your-own-server" data-jump="Build your own">Build your own server</h2>
+            <p>Writing the server is the part people assume is hard, and it is the easy part. Here is a complete, working MCP server that helps you plan revision. Install the SDK first:</p>
+            <pre><code>pip install mcp</code></pre>
+
+            <p>Then <code>study_buddy.py</code>:</p>
+            <pre><code>from mcp.server import MCPServer
+
+mcp = MCPServer(name="study-buddy")
+
+
+@mcp.tool()
+def minutes_until(exam_hour: int, now_hour: int) -> str:
+    """How many minutes until an exam that starts at exam_hour (24h clock)."""
+    mins = (exam_hour - now_hour) * 60
+    if mins &lt;= 0:
+        return "That exam has already started."
+    return f"{mins} minutes until your exam."
+
+
+@mcp.tool()
+def pomodoros_left(minutes: int) -> str:
+    """How many 30 minute study blocks (25 work + 5 break) fit in the time left."""
+    return f"You can fit {minutes // 30} pomodoros (25 min work + 5 min break)."
+
+
+@mcp.resource("syllabus://dsa")
+def dsa_syllabus() -> str:
+    """The DSA topics to revise, in priority order."""
+    return ("Arrays, Hashing, Two Pointers, Sliding Window, "
+            "Binary Search, Trees, Graphs, DP")
+
+
+if __name__ == "__main__":
+    mcp.run()</code></pre>
+
+            <p>That is the whole server. Three things are worth noticing:</p>
+            <ul>
+                <li>The <strong>docstring is not a comment</strong>, it is the description the model reads to decide whether to call your tool. Write it for the model.</li>
+                <li>The <strong>type hints are the schema</strong>. <code>exam_hour: int</code> becomes a validated integer parameter automatically.</li>
+                <li>You never wrote any JSON. The SDK generates it.</li>
+            </ul>
+        </div>
+
+        <div class="gsection">
+            <h2 id="what-the-model-actually-sees" data-jump="What the model sees">What the model actually sees</h2>
+            <p>Here is the real output from connecting a client to that exact server. This is not illustrative: it is what the protocol returned.</p>
+
+            <div class="term">
+                <div class="bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>client asks: what tools do you have?</span></div>
+                <pre><code><span class="dim">name        :</span> minutes_until
+<span class="dim">description :</span> How many minutes until an exam that starts at exam_hour (24h clock).
+<span class="dim">inputSchema :</span> {
+  "type": "object",
+  "properties": {
+    "exam_hour": {"title": "Exam Hour", "type": "integer"},
+    "now_hour":  {"title": "Now Hour",  "type": "integer"}
+  },
+  "required": ["exam_hour", "now_hour"]
+}</code></pre>
+            </div>
+
+            <p class="muted">Your Python type hints became a JSON Schema. The model reads this and works out how to call you.</p>
+
+            <div class="term">
+                <div class="bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>client calls the tools</span></div>
+                <pre><code><span class="dim">&gt;</span> minutes_until(exam_hour=14, now_hour=9)
+<span class="ok">300 minutes until your exam.</span>
+
+<span class="dim">&gt;</span> pomodoros_left(minutes=300)
+<span class="ok">You can fit 10 pomodoros (25 min work + 5 min break).</span>
+
+<span class="dim">&gt;</span> read_resource("syllabus://dsa")
+<span class="ok">Arrays, Hashing, Two Pointers, Sliding Window, Binary Search, Trees, Graphs, DP</span></code></pre>
+            </div>
+
+            <h3>What happens when the model gets it wrong</h3>
+            <p>Models do send nonsense sometimes. Here is what came back when the client called <code>minutes_until(exam_hour="banana")</code>, with the second argument missing entirely:</p>
+
+            <div class="term">
+                <div class="bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>a real validation failure</span></div>
+                <pre><code><span class="warn">Error executing tool minutes_until: 2 validation errors</span>
+
+exam_hour
+  <span class="dim">Input should be a valid integer, unable to parse string
+  as an integer [input_value='banana', input_type=str]</span>
+
+now_hour
+  <span class="dim">Field required [type=missing]</span></code></pre>
+            </div>
+
+            <p class="muted">Your function was never called. The error goes back to the model as a normal result, so it can read it and retry with better arguments. You get this for free from the type hints, which is a real argument for writing them properly.</p>
+
+            <h3>Poke at it yourself with the Inspector</h3>
+            <p>Before wiring a server into a real app, test it in isolation. The official <strong>MCP Inspector</strong> connects to any server and lets you list and call things by hand:</p>
+            <pre><code>npx @modelcontextprotocol/inspector python study_buddy.py</code></pre>
+            <p class="muted">This is that exact server, running in the Inspector. The History panel on the left is the actual protocol traffic: <code>initialize</code>, then <code>tools/list</code>, then <code>tools/call</code>.</p>
+
+            <figure class="shot">
+                <img src="./assets/mcp-inspector.png" width="1440" height="880" loading="lazy" decoding="async"
+                     alt="The MCP Inspector connected to the study-buddy server. The Tools tab lists minutes_until and pomodoros_left with their descriptions. The right panel shows exam_hour set to 14 and now_hour set to 9 with a Run Tool button. The History panel lists initialize, tools slash list, and tools slash call.">
+                <figcaption>The Inspector talking to the 25-line server above. Nothing else was configured.</figcaption>
+            </figure>
+
+            <p class="muted">If it works here, it will work in VS Code or Claude Desktop. If it does not, you have a much smaller problem to debug.</p>
+
+        </div>
+
+        <div class="gsection">
+            <h2 id="before-you-install-someone-else-s-server" data-jump="Security">Before you install someone else's server</h2>
+            <p>This is the part most tutorials skip, and it matters more than any of the above.</p>
+            <p><strong>An MCP server is a program running on your machine with your permissions.</strong> A server with filesystem access can read anything you can read. One with network access can send it anywhere.</p>
+
+            <div class="warnbox">
+                <b>⚠️ The official reference servers say this themselves</b>
+                <p>They are published as educational examples, not hardened production software. Treat every third-party server the way you would treat a browser extension that asked for access to all your files.</p>
+            </div>
+
+            <ol class="steps">
+                <li><strong>Prefer servers you can read.</strong> Most are small. Open the source before you run it.</li>
+                <li><strong>Scope the filesystem server.</strong> Pass a specific folder, never your home directory or <code>/</code>.</li>
+                <li><strong>Watch for prompt injection.</strong> If a server returns text from the internet, that text can contain instructions aimed at your model. This is a live, unsolved problem.</li>
+                <li><strong>Keep secrets in environment variables</strong>, not in the config file you might commit.</li>
+                <li><strong>Approve tool calls individually</strong> while you are learning. Do not switch on auto-approve for anything that writes or sends.</li>
+            </ol>
+        </div>
+
+        <div class="gsection">
+            <h2 id="quick-check" data-jump="Quick check">Quick check</h2>
+            <p class="muted">Four questions. No score is recorded anywhere.</p>
+            <div class="quiz" data-quiz-title="Do you have MCP straight?">
+                <script type="application/json">
+                [
+                  {"q":"What problem does MCP mainly solve?","options":["It makes language models more accurate","It stops every AI app writing its own connector for every system","It replaces the need for prompt engineering","It compresses the context window"],"answer":1,"explain":"MCP turns the M times N integration problem into M plus N. Each app speaks MCP once, each system exposes MCP once."},
+                  {"q":"In MCP terms, what is the host?","options":["The remote machine the server runs on","The AI application you are actually using, like VS Code or Claude Desktop","The language model itself","The cloud provider"],"answer":1,"explain":"The host is the app. It creates one client per server it connects to. Server does not mean cloud: most run on your own laptop."},
+                  {"q":"Who decides when a tool gets called?","options":["The user, every time","The server","The model, which is why tools need your approval","The operating system"],"answer":2,"explain":"Tools are model-controlled. Resources and prompts are pulled in deliberately by the app or the user, which is why tools are the ones that need a permission prompt."},
+                  {"q":"You want to give a model access to one project folder. What is safest?","options":["Run the filesystem server pointed at your home directory","Run it pointed at that specific folder only","Disable approval prompts so it is faster","Copy your files into the server's folder"],"answer":1,"explain":"Always scope it as narrowly as the task allows. A server runs with your permissions and can read anything you can read."}
+                ]
+                </script>
+            </div>
+        </div>
+
+        <div class="gsection">
+            <h2 id="what-mcp-is-not" data-jump="Honest limits">What MCP is not</h2>
+            <p>Worth saying plainly, because the hype is loud:</p>
+            <ul>
+                <li><strong>It does not make a model smarter.</strong> It gives a model reach. A weak model with great tools is still a weak model.</li>
+                <li><strong>It is not required to build an agent.</strong> Plain function calling works fine. MCP pays off when you want your tool to work in more than one app.</li>
+                <li><strong>It is young and still moving.</strong> The spec is versioned by date and things do change between versions. Learn the shape, not the trivia.</li>
+                <li><strong>It does not solve permissions for you.</strong> Deciding what a model is allowed to do is still your job.</li>
+            </ul>
+        </div>
+
+        <div class="gsection">
+            <h2 id="what-to-do-next" data-jump="What next">What to do next</h2>
+            <p class="muted">In order, smallest first:</p>
+            <ol class="steps">
+                <li>Connect the filesystem server to VS Code or Claude Desktop, scoped to one project.</li>
+                <li>Run the server on this page and call it from the MCP Inspector.</li>
+                <li>Replace the study tools with something from your own life: your notes, your college timetable, your git log.</li>
+                <li>Put it on GitHub with a clear README. A working server is small enough to explain in an interview and current enough that few people have one.</li>
+            </ol>
+            <div class="nextlinks">
+                <a href="./build-ai-agent.html">🤖 Build an AI Agent</a>
+                <a href="./prompt-engineering-roadmap.html">✨ Prompt Engineering</a>
+                <a href="./ai-tools.html">🛠️ AI Tools</a>
+                <a href="https://modelcontextprotocol.io" target="_blank" rel="noopener">📘 Official MCP docs</a>
+            </div>
+        </div>
+    </main>
+
+    <div data-component="footer"></div>
+    <div data-component="scripts-common"></div>
+    <script src="./components/component-loader.js"></script>
+    <script type="module" src="./functions/site.js?v=20260816c"></script>
+</body>
+</html>

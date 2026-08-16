@@ -41,8 +41,9 @@ const GROUPS = [
     { title: 'Build a Project', items: [
         { href: 'build-a-website.html', label: 'Build a Website', icon: '🌐' },
         { href: 'build-ai-agent.html', label: 'Build an AI Agent', icon: '🤖' },
+        { href: 'mcp-guide.html', label: 'MCP Explained', icon: '🔌' },
         { href: 'networking-toolkit.html', label: 'Networking Toolkit', icon: '🛰️' },
-    ]},
+    ] },
     { title: 'Land the Job', items: [
         { href: 'trending-tech-roles.html', label: 'Trending Tech Roles', icon: '🚀' },
         { href: 'career-portals.html', label: 'Career Portals', icon: '🏢' },

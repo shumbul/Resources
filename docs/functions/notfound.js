@@ -21,7 +21,7 @@
  * Only runs on the 404 page.
  */
 
-import { PAGES } from './pages.js?v=20260816b';
+import { PAGES } from './pages.js?v=20260816c';
 
 const CSS = `
 .nf-redirect{
