@@ -149,7 +149,12 @@ def process(path, check_only=False):
             m = re.search(r'<meta\s+charset=[^>]*>', src, re.I)
             i = m.end() if m else src.index("<head>") + len("<head>")
 
-    out = src[:i] + "\n" + block + src[i:]
+    # Always terminate the block with exactly one newline. strip_existing()
+    # consumes the trailing newlines, so this round-trips cleanly no matter
+    # which order the build scripts ran in. Without it, a page written by
+    # build-seo.py after this script kept an extra blank line and --check
+    # reported it as stale forever.
+    out = src[:i] + "\n" + block + "\n" + src[i:]
     if out == original:
         return False
     if not check_only:

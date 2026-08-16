@@ -37,7 +37,10 @@ const CSS = `
 .mot-track{display:flex;width:max-content;gap:0;animation:motScroll 64s linear infinite;}
 .mot-strip:hover .mot-track,.mot-strip:focus-within .mot-track,
 .mot-strip:focus .mot-track,.mot-strip.is-paused .mot-track{animation-play-state:paused;}
-@keyframes motScroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+/* Travels rightwards: the track starts shifted one full copy to the left and
+   slides back to zero, so each quote enters from the left edge and exits at
+   the right. The duplicated copy makes the wrap seamless. */
+@keyframes motScroll{from{transform:translateX(-50%);}to{transform:translateX(0);}}
 .mot-half{display:inline-flex;}
 .mot-item{display:inline-flex;align-items:center;gap:.5rem;white-space:nowrap;
     padding:0 1.6rem;font-size:.92rem;color:var(--text-secondary,#555);}
@@ -50,13 +53,20 @@ const CSS = `
     .mot-item .a{font-size:.75rem;}
     .mot-track{animation-duration:48s;}
 }
-@media (prefers-reduced-motion:reduce){
-    .mot-track{animation:none;width:100%;justify-content:center;}
-    .mot-half{display:contents;}
-    .mot-half[aria-hidden]{display:none;}
-    .mot-item{display:none;}
-    .mot-item.mot-solo{display:inline-flex;white-space:normal;text-align:center;}
-}
+/* Reduced motion: no sliding at all. One quote at a time, cross-faded, which
+   is the recommended substitution because a fade has no direction of travel
+   and cannot trigger vestibular discomfort. The strip still changes, so the
+   feature is not silently dead for anyone who turns animations off in their
+   operating system. */
+.mot-strip.mot-fade{padding:.7rem 1rem;}
+.mot-strip.mot-fade .mot-track{animation:none;width:100%;display:block;
+    position:relative;min-height:1.5rem;}
+.mot-strip.mot-fade .mot-half[aria-hidden]{display:none;}
+.mot-strip.mot-fade .mot-half{display:block;}
+.mot-strip.mot-fade .mot-item{position:absolute;inset:0;justify-content:center;
+    white-space:normal;text-align:center;opacity:0;transition:opacity .6s ease;
+    pointer-events:none;}
+.mot-strip.mot-fade .mot-item.mot-solo{opacity:1;pointer-events:auto;}
 `;
 
 function itemHtml(l) {
@@ -98,20 +108,41 @@ export function initMotivation() {
     strip.addEventListener('focus', () => strip.classList.add('is-paused'));
     strip.addEventListener('blur', () => strip.classList.remove('is-paused'));
 
-    // reduced-motion fallback: show a single line, rotate it slowly
+    // Reduced motion: swap the slide for a cross-fade carousel. The media
+    // query is watched live, so toggling the operating system setting takes
+    // effect without a reload.
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
-    if (reduce.matches) {
-        // only rotate through the accessible (first) copy
+    let timer = null;
+
+    function startFade() {
+        strip.classList.add('mot-fade');
         const items = strip.querySelectorAll('.mot-half:not([aria-hidden]) .mot-item');
-        if (items.length) {
-            let i = 0;
-            items[0].classList.add('mot-solo');
-            setInterval(() => {
-                items[i % items.length].classList.remove('mot-solo');
-                i++;
-                items[i % items.length].classList.add('mot-solo');
-            }, 7000);
-        }
+        if (!items.length) return;
+        let i = 0;
+        items[0].classList.add('mot-solo');
+        timer = setInterval(() => {
+            items[i % items.length].classList.remove('mot-solo');
+            i++;
+            items[i % items.length].classList.add('mot-solo');
+        }, 6000);
+    }
+
+    function stopFade() {
+        strip.classList.remove('mot-fade');
+        strip.querySelectorAll('.mot-solo').forEach((el) => el.classList.remove('mot-solo'));
+        if (timer) { clearInterval(timer); timer = null; }
+    }
+
+    function applyMotionPreference() {
+        if (reduce.matches) startFade();
+        else stopFade();
+    }
+
+    applyMotionPreference();
+    if (reduce.addEventListener) {
+        reduce.addEventListener('change', applyMotionPreference);
+    } else if (reduce.addListener) {
+        reduce.addListener(applyMotionPreference);
     }
 
     // place it directly before the footer
