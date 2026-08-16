@@ -10,7 +10,7 @@
  * in theme-variables.css, so it can never silently fail to load again.
  */
 
-import { PAGES } from './pages.js?v=20260816a';
+import { PAGES } from './pages.js?v=20260816b';
 
 const SOCIALS = [
     { href: 'https://github.com/shumbul', title: 'GitHub',
@@ -25,30 +25,32 @@ const SOCIALS = [
       path: 'M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.708 2.825L15 11.105V5.383zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741zM1 11.105l4.708-2.897L1 5.383v5.722z' },
 ];
 
+/* Three columns, not four. Four made each column about 113px wide, so
+ * "12-Week Roadmap" and "Salary Negotiation" each wrapped onto two lines and
+ * the footer looked ragged. Three columns give roughly 170px, which fits
+ * every label on one line. About, Collaborate and Contact live in the bottom
+ * bar instead, where they read as site-level rather than as guides. */
 const COLUMNS = [
     { title: 'Roadmaps', links: [
         ['12-week-roadmap.html', '12-Week Roadmap'],
         ['AI-Roadmap.html', 'AI Developer'],
         ['prompt-engineering-roadmap.html', 'Prompt Engineering'],
         ['cybersecurity-roadmap.html', 'Cyber Security'],
+        ['full-stack-developer-path.html', 'Full-Stack Path'],
     ] },
     { title: 'Core skills', links: [
         ['dsa-practice-guide.html', 'DSA Practice'],
         ['system-design-templates.html', 'System Design'],
         ['cs-fundamentals-guide.html', 'CS Fundamentals'],
         ['git-guide.html', 'Git Guide'],
+        ['sql-databases-guide.html', 'SQL & Databases'],
     ] },
     { title: 'Land the job', links: [
         ['resume-portfolio-templates.html', 'Resume & Portfolio'],
         ['interview-prep-kit.html', 'Interview Prep'],
+        ['linkedin-utilization-guide.html', 'LinkedIn Guide'],
         ['trending-tech-roles.html', 'Trending Roles'],
         ['salary-negotiation-guide.html', 'Salary Negotiation'],
-    ] },
-    { title: 'More', links: [
-        ['linkedin-utilization-guide.html', 'LinkedIn Guide'],
-        ['ai-tools.html', 'AI Tools'],
-        ['about.html', 'About'],
-        ['collaborate.html', 'Collaborate'],
     ] },
 ];
 
@@ -119,6 +121,8 @@ function build() {
         +     'by <a href="./about.html">Shumbul Arifa</a> '
         +     '<span class="sf-dot" aria-hidden="true">•</span> &copy; 2026</p>'
         +   '<div class="sf-meta">'
+        +     '<a href="./about.html">About</a>'
+        +     '<a href="./ai-tools.html">AI Tools</a>'
         +     '<a href="./collaborate.html">Work with me</a>'
         +     '<a href="./contact.html">Contact</a>'
         +     '<button type="button" class="sf-top-btn" id="sfTop">'

@@ -34,7 +34,7 @@ const CSS = `
     background:var(--bg-tertiary,#f1f5f9);border-radius:999px;padding:.4rem .6rem;
     cursor:pointer;border:none;min-width:42px;}
 .ra-bar .ra-sep{width:1px;height:20px;background:var(--border,#e5e7eb);}
-.ra-bar .ra-prog{font:500 .74rem/1 Inter,sans-serif;color:var(--text-secondary,#777);
+.ra-bar .ra-prog{font:500 .75rem/1 Inter,sans-serif;color:var(--text-secondary,#777);
     padding:0 .3rem;min-width:52px;text-align:center;}
 
 .ra-fab{position:fixed;left:20px;bottom:20px;z-index:9996;
@@ -61,7 +61,7 @@ const CSS = `
         justify-content:center;}
     .ra-bar button{padding:.4rem .55rem;font-size:.8rem;}
     .ra-bar .ra-main{padding:.45rem .75rem;}
-    .ra-bar .ra-prog{min-width:44px;font-size:.7rem;}
+    .ra-bar .ra-prog{min-width:46px;font-size:.75rem;}
 }
 `;
 
