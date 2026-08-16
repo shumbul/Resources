@@ -1,9 +1,18 @@
-/* Shared footer. Injected ONLY when the page has no footer of its own, so
- * nothing is hardcoded per page. This mirrors the component footer design
- * (social icons + a friendly credit line) so every page's footer matches,
- * whether it comes from the component system or from here. Call once. */
+/* The one footer, used on every page.
+ *
+ * There used to be three: a rich one hardcoded in index.html, a bare one in
+ * components/footer.html whose styles sat in a block that never loaded, and
+ * a minimal fallback here. Guide pages therefore got loose icons and a stray
+ * credit line while the home page looked finished.
+ *
+ * Now this module is the single source. It renders on every page, including
+ * index.html, replacing whatever footer the page shipped. Styling lives once,
+ * in theme-variables.css, so it can never silently fail to load again.
+ */
 
-const LINKS = [
+import { PAGES } from './pages.js?v=20260816a';
+
+const SOCIALS = [
     { href: 'https://github.com/shumbul', title: 'GitHub',
       path: 'M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z' },
     { href: 'https://linkedin.com/in/shumbul', title: 'LinkedIn',
@@ -12,45 +21,196 @@ const LINKS = [
       path: 'M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.374.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z' },
     { href: 'https://www.youtube.com/@Shumbul', title: 'YouTube',
       path: 'M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z' },
+    { href: 'mailto:shumbularifa@outlook.com', title: 'Email',
+      path: 'M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.708 2.825L15 11.105V5.383zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741zM1 11.105l4.708-2.897L1 5.383v5.722z' },
 ];
 
-const CSS = `
-.site-footer{margin-top:3.5rem;padding:2.5rem 1rem;border-top:1px solid var(--border,#e5e7eb);
-    background:var(--bg-secondary,#f9fafb);}
-.site-footer .footer-content{text-align:center;}
-.site-footer .social-links{display:flex;gap:.9rem;justify-content:center;margin-bottom:1rem;}
-.site-footer .social-link{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;
-    border-radius:50%;color:#fff;background:linear-gradient(135deg,var(--primary),var(--secondary));
-    transition:transform .18s ease,box-shadow .18s ease;}
-.site-footer .social-link:hover{transform:translateY(-2px);box-shadow:var(--shadow,0 6px 16px -8px rgba(15,23,42,.4));}
-.site-footer .social-link:focus-visible{outline:2px solid var(--primary,#7c3aed);outline-offset:2px;}
-.site-footer p{color:var(--text-secondary,#475569);font-size:.875rem;margin:0;}
-`;
+const COLUMNS = [
+    { title: 'Roadmaps', links: [
+        ['12-week-roadmap.html', '12-Week Roadmap'],
+        ['AI-Roadmap.html', 'AI Developer'],
+        ['prompt-engineering-roadmap.html', 'Prompt Engineering'],
+        ['cybersecurity-roadmap.html', 'Cyber Security'],
+    ] },
+    { title: 'Core skills', links: [
+        ['dsa-practice-guide.html', 'DSA Practice'],
+        ['system-design-templates.html', 'System Design'],
+        ['cs-fundamentals-guide.html', 'CS Fundamentals'],
+        ['git-guide.html', 'Git Guide'],
+    ] },
+    { title: 'Land the job', links: [
+        ['resume-portfolio-templates.html', 'Resume & Portfolio'],
+        ['interview-prep-kit.html', 'Interview Prep'],
+        ['trending-tech-roles.html', 'Trending Roles'],
+        ['salary-negotiation-guide.html', 'Salary Negotiation'],
+    ] },
+    { title: 'More', links: [
+        ['linkedin-utilization-guide.html', 'LinkedIn Guide'],
+        ['ai-tools.html', 'AI Tools'],
+        ['about.html', 'About'],
+        ['collaborate.html', 'Collaborate'],
+    ] },
+];
 
-export function renderFooter() {
-    // Respect any existing footer (real <footer> or component placeholder).
-    if (document.querySelector('footer, .site-footer, [data-component="footer"]')) return;
+const CHIPS = ['linkedin', 'git', 'ai', 'roadmap', 'interview', 'resume'];
 
-    if (!document.getElementById('site-footer-css')) {
-        const s = document.createElement('style');
-        s.id = 'site-footer-css';
-        s.textContent = CSS;
-        document.head.appendChild(s);
+function esc(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+function socialHtml() {
+    return SOCIALS.map((s) =>
+        '<a href="' + s.href + '" class="social-link" title="' + s.title + '" '
+        + 'aria-label="' + s.title + '"'
+        + (s.href.indexOf('mailto:') === 0
+            ? '' : ' target="_blank" rel="noopener noreferrer"')
+        + '><svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16" '
+        + 'aria-hidden="true"><path d="' + s.path + '"/></svg></a>').join('');
+}
+
+function columnsHtml() {
+    return COLUMNS.map((c) =>
+        '<div class="sf-col"><h3>' + esc(c.title) + '</h3><ul>'
+        + c.links.map((l) =>
+            '<li><a href="./' + l[0] + '">' + esc(l[1]) + '</a></li>').join('')
+        + '</ul></div>').join('');
+}
+
+function build() {
+    return '<div class="container">'
+        + '<div class="sf-top">'
+        +   '<div class="sf-brand">'
+        +     '<a class="sf-logo" href="./index.html">'
+        +       '<span class="sf-mark" aria-hidden="true">S</span>'
+        +       '<span>Resources <em>by Shumbul</em></span></a>'
+        +     '<p class="sf-tagline">Free, practical guides for breaking into tech. '
+        +       'Written for the person I was when I started: no paywalls, '
+        +       'no email gates, no gatekeeping.</p>'
+        +     '<div class="sf-badges">'
+        +       '<span class="sf-badge">🆓 Always free</span>'
+        +       '<span class="sf-badge">🌱 Beginner-first</span></div>'
+        +     '<div class="social-links">' + socialHtml() + '</div>'
+        +   '</div>'
+        +   '<nav class="sf-nav" aria-label="Footer">' + columnsHtml() + '</nav>'
+        +   '<div class="sf-find">'
+        +     '<h3>Find a guide</h3>'
+        +     '<div class="sf-search">'
+        +       '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" '
+        +         'stroke-width="2" aria-hidden="true">'
+        +         '<circle cx="11" cy="11" r="8"></circle>'
+        +         '<path d="m21 21-4.35-4.35"></path></svg>'
+        +       '<input type="search" id="sfSearch" autocomplete="off" '
+        +         'placeholder="Search all guides..." '
+        +         'aria-label="Search all guides" aria-describedby="sfCount"></div>'
+        +     '<p class="sf-hint" id="sfCount">' + PAGES.length
+        +       ' guides and counting</p>'
+        +     '<div class="sf-chips">'
+        +       CHIPS.map(function (c) {
+                    return '<button type="button" class="sf-chip" data-q="'
+                        + c + '">' + c + '</button>';
+                }).join('')
+        +     '</div>'
+        +     '<ul class="sf-results" id="sfResults"></ul>'
+        +   '</div>'
+        + '</div>'
+        + '<div class="sf-bottom">'
+        +   '<p class="sf-credit">Created with <span aria-hidden="true">❤️</span> '
+        +     'by <a href="./about.html">Shumbul Arifa</a> '
+        +     '<span class="sf-dot" aria-hidden="true">•</span> &copy; 2026</p>'
+        +   '<div class="sf-meta">'
+        +     '<a href="./collaborate.html">Work with me</a>'
+        +     '<a href="./contact.html">Contact</a>'
+        +     '<button type="button" class="sf-top-btn" id="sfTop">'
+        +       '<span aria-hidden="true">↑</span> Back to top</button>'
+        +   '</div>'
+        + '</div>'
+        + '</div>';
+}
+
+/* ---------------------------------------------------------------- search */
+
+function wireSearch(root) {
+    const input = root.querySelector('#sfSearch');
+    const list = root.querySelector('#sfResults');
+    const count = root.querySelector('#sfCount');
+    if (!input || !list || !count) return;
+
+    const here = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    const pool = PAGES.filter(function (p) {
+        const f = p.f.toLowerCase();
+        return f !== '404.html' && f !== 'component-demo.html' && f !== here;
+    });
+    const total = pool.length + ' guides and counting';
+
+    function render(q) {
+        const term = q.trim().toLowerCase();
+        if (!term) {
+            list.innerHTML = '';
+            count.textContent = total;
+            return;
+        }
+        const hits = pool.filter(function (p) {
+            return p.t.toLowerCase().indexOf(term) >= 0
+                || p.f.toLowerCase().indexOf(term) >= 0;
+        }).slice(0, 6);
+
+        count.textContent = hits.length
+            ? hits.length + (hits.length === 1 ? ' match' : ' matches')
+            : 'No match. Try "roadmap" or "interview".';
+        list.innerHTML = hits.map(function (p) {
+            return '<li><a href="./' + p.f + '">' + esc(p.t) + '</a></li>';
+        }).join('');
     }
 
-    const icons = LINKS.map((l) =>
-        `<a href="${l.href}" class="social-link" title="${l.title}" aria-label="${l.title}" target="_blank" rel="noopener noreferrer">
-            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="${l.path}"/></svg>
-        </a>`).join('');
+    input.addEventListener('input', function () { render(input.value); });
+    input.addEventListener('keydown', function (e) {
+        if (e.key !== 'Enter') return;
+        const first = list.querySelector('a');
+        if (first) { e.preventDefault(); location.href = first.getAttribute('href'); }
+    });
+
+    root.querySelectorAll('.sf-chip').forEach(function (chip) {
+        chip.addEventListener('click', function () {
+            input.value = chip.dataset.q;
+            render(input.value);
+            input.focus();
+        });
+    });
+}
+
+function wireTop(root) {
+    const btn = root.querySelector('#sfTop');
+    if (!btn) return;
+    btn.addEventListener('click', function () {
+        const reduce = window.matchMedia
+            && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+    });
+}
+
+export function renderFooter() {
+    if (document.querySelector('.site-footer')) return;
 
     const f = document.createElement('footer');
     f.className = 'site-footer';
-    f.innerHTML =
-        `<div class="container">
-            <div class="footer-content">
-                <div class="social-links">${icons}</div>
-                <p>Created with &#10084;&#65039; by Shumbul Arifa | &copy; 2026</p>
-            </div>
-        </div>`;
-    document.body.appendChild(f);
+    f.innerHTML = build();
+
+    /*
+     * Three possible homes, in order:
+     *   1. the component placeholder, so the footer lands where the page
+     *      expects it rather than after everything else
+     *   2. a legacy <footer> the page shipped itself, which is replaced so
+     *      no page can keep a different one
+     *   3. the end of <body>
+     */
+    const slot = document.querySelector('[data-component="footer"]');
+    const legacy = document.querySelector('footer');
+
+    if (slot) slot.replaceWith(f);
+    else if (legacy) legacy.replaceWith(f);
+    else document.body.appendChild(f);
+
+    wireSearch(f);
+    wireTop(f);
 }

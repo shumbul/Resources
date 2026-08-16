@@ -959,3 +959,516 @@ html[data-motion-active="yes"] .gsection.is-inview h2::after {
     from { width: 0; opacity: 0; }
     to   { width: 46px; opacity: 1; }
 }
+/* ==========================================================================
+   Shared footer.
+
+   components/footer.html is used by 31 pages, and its styling used to live in
+   the dormant <style> block inside head-common.html, so it never actually
+   applied. The result was bare left-aligned icons and a stray credit line
+   that looked nothing like the rest of the site. index.html was fine only
+   because it ships its own footer with its own styles.
+
+   Everything here is scoped to .site-footer, which both the component and
+   the fallback in functions/footer.js now carry, so index.html's own footer
+   is untouched.
+   ========================================================================== */
+
+.site-footer {
+    margin-top: 3.5rem;
+    padding: 2.75rem 0 1.5rem;
+    border-top: 1px solid var(--border);
+    background:
+        radial-gradient(120% 100% at 50% 0%,
+            color-mix(in oklab, var(--primary) 7%, transparent), transparent 60%),
+        var(--bg-secondary);
+}
+
+.site-footer__top {
+    display: grid;
+    grid-template-columns: minmax(240px, 1.1fr) minmax(0, 2fr);
+    gap: 2rem 2.5rem;
+    padding-bottom: 1.75rem;
+}
+
+.site-footer__logo {
+    display: inline-flex;
+    align-items: center;
+    gap: .45rem;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--text-primary);
+    text-decoration: none;
+}
+
+.site-footer__logo em {
+    font-style: normal;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.site-footer__logo:hover { color: var(--primary); }
+
+.site-footer__brand p {
+    margin: .55rem 0 0;
+    max-width: 34ch;
+    font-size: .88rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
+.site-footer__nav {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+
+.site-footer__col h3 {
+    margin: 0 0 .6rem;
+    font-family: var(--font-sans);
+    font-size: .72rem;
+    font-weight: 800;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+}
+
+.site-footer__col a {
+    display: block;
+    padding: .2rem 0;
+    font-size: .88rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color .16s ease, transform .16s ease;
+}
+
+.site-footer__col a:hover,
+.site-footer__col a:focus-visible {
+    color: var(--primary);
+    transform: translateX(3px);
+}
+
+.site-footer__bottom {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border);
+}
+
+.site-footer .social-links {
+    display: flex;
+    gap: .6rem;
+    margin: 0;
+}
+
+.site-footer .social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    color: #fff;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    text-decoration: none;
+}
+
+.site-footer .social-link:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 3px;
+}
+
+.site-footer__credit {
+    margin: 0;
+    font-size: .85rem;
+    color: var(--text-secondary);
+}
+
+.site-footer__dot { margin: 0 .35rem; opacity: .5; }
+
+@media (max-width: 860px) {
+    .site-footer__top { grid-template-columns: 1fr; gap: 1.75rem; }
+}
+
+@media (max-width: 560px) {
+    .site-footer__nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .site-footer__bottom { justify-content: center; text-align: center; }
+}
+
+/* ==========================================================================
+   Two named effects.
+
+   1. PULSE (also called a breathing glow, or a sonar / radar ping when the
+      ring travels outward). A shadow that expands and fades on a loop, which
+      reads as "this is alive and pressable" without demanding attention.
+      Applied to the Ask AI button.
+
+   2. SHIMMER (also called a shine or gradient sweep). A bright band travels
+      across the text, the same trick used on premium buttons and on skeleton
+      loading states. Applied to the quote strip.
+
+   Both are decoration only and both are gated on the resolved motion
+   preference, so they stop entirely when motion is off.
+   ========================================================================== */
+
+/* ---------- Pulse: Ask AI ---------- */
+
+.ai-fab { position: relative; }
+
+/*
+ * Two rings, offset in time, so the button is never momentarily still.
+ * ::after already carried a single pulse; this replaces it with a pair and
+ * adds a matching scale on the button itself so the whole thing breathes
+ * rather than just glowing.
+ */
+html[data-motion-active="yes"] .ai-fab::after,
+html[data-motion-active="yes"] .ai-fab::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    z-index: -1;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    animation: fabPing 2.8s cubic-bezier(.22, 1, .36, 1) infinite;
+}
+
+html[data-motion-active="yes"] .ai-fab::before {
+    animation-delay: 1.4s;
+}
+
+@keyframes fabPing {
+    0%   { transform: scale(1);    opacity: .55; }
+    70%  { transform: scale(1.45); opacity: 0; }
+    100% { transform: scale(1.45); opacity: 0; }
+}
+
+html[data-motion-active="yes"] .ai-fab {
+    animation: fabBreathe 2.8s ease-in-out infinite;
+}
+
+@keyframes fabBreathe {
+    0%, 100% { transform: scale(1); }
+    50%      { transform: scale(1.045); }
+}
+
+/* Hovering means they have already noticed it, so stop asking. */
+html[data-motion-active="yes"] .ai-fab:hover,
+html[data-motion-active="yes"] .ai-fab:focus-visible {
+    animation-play-state: paused;
+}
+
+html[data-motion-active="yes"] .ai-fab:hover::after,
+html[data-motion-active="yes"] .ai-fab:hover::before {
+    animation-play-state: paused;
+    opacity: 0;
+}
+
+/* ---------- Shimmer: the quote strip ---------- */
+
+/*
+ * The quote text becomes its own background gradient and the background
+ * slides, which is what makes the highlight appear to travel through the
+ * letters. background-clip: text is required for the effect and is supported
+ * everywhere current; the plain colour below it is the fallback.
+ */
+html[data-motion-active="yes"] .mot-item .q {
+    background: linear-gradient(
+        100deg,
+        var(--text-primary) 0%,
+        var(--text-primary) 38%,
+        var(--primary) 48%,
+        color-mix(in oklab, var(--accent) 85%, white) 52%,
+        var(--text-primary) 62%,
+        var(--text-primary) 100%
+    );
+    background-size: 220% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    animation: quoteShimmer 5.5s ease-in-out infinite;
+}
+
+@keyframes quoteShimmer {
+    0%        { background-position: 130% 0; }
+    45%, 100% { background-position: -30% 0; }
+}
+
+/* The separator twinkles in time with the sweep. */
+html[data-motion-active="yes"] .mot-item .sep {
+    animation: sepTwinkle 5.5s ease-in-out infinite;
+}
+
+@keyframes sepTwinkle {
+    0%, 40%, 100% { opacity: .45; transform: scale(1); }
+    50%           { opacity: 1;   transform: scale(1.25) rotate(15deg); }
+}
+/* ==========================================================================
+   The one footer.
+
+   Three used to exist: a rich one hardcoded in index.html, a bare one in
+   components/footer.html whose styles lived in a block that never loaded,
+   and a minimal JavaScript fallback. functions/footer.js now renders all of
+   them, replacing whatever a page shipped, and the styling lives here so it
+   cannot silently fail to apply again.
+
+   Light on purpose: a dark slab under a light page reads as a separate
+   website. This stays in the page's own palette and separates itself with a
+   soft tint and a top rule instead.
+   ========================================================================== */
+
+.site-footer {
+    margin-top: 4rem;
+    padding: 3rem 0 1.5rem;
+    border-top: 1px solid var(--border);
+    background:
+        radial-gradient(90% 120% at 12% 0%,
+            color-mix(in oklab, var(--primary) 9%, transparent), transparent 62%),
+        radial-gradient(70% 100% at 88% 0%,
+            color-mix(in oklab, #38bdf8 8%, transparent), transparent 60%),
+        var(--bg-secondary);
+}
+
+.site-footer .container { position: relative; z-index: 1; }
+
+.sf-top {
+    display: grid;
+    grid-template-columns: minmax(230px, 1fr) minmax(0, 1.75fr) minmax(210px, .95fr);
+    gap: 2.25rem 2.75rem;
+    padding-bottom: 2rem;
+}
+
+/* ---------- brand ---------- */
+
+.sf-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: .55rem;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--text-primary);
+    text-decoration: none;
+}
+
+.sf-logo em { font-style: normal; font-weight: 500; color: var(--text-secondary); }
+.sf-logo:hover { color: var(--primary); }
+
+.sf-mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    flex: none;
+    border-radius: 9px;
+    color: #fff;
+    font-weight: 800;
+    font-size: .95rem;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    box-shadow: 0 6px 16px -8px color-mix(in oklab, var(--primary) 70%, transparent);
+}
+
+.sf-tagline {
+    margin: .7rem 0 0;
+    max-width: 34ch;
+    font-size: .875rem;
+    line-height: 1.65;
+    color: var(--text-secondary);
+}
+
+.sf-badges { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .85rem; }
+
+.sf-badge {
+    font-size: .74rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    background: var(--bg-primary);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: .28rem .6rem;
+}
+
+/* ---------- link columns ---------- */
+
+.sf-nav {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.25rem;
+}
+
+.sf-col h3,
+.sf-find h3 {
+    margin: 0 0 .65rem;
+    font-family: var(--font-sans);
+    font-size: .71rem;
+    font-weight: 800;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+}
+
+.sf-col ul { list-style: none; margin: 0; padding: 0; }
+
+.sf-col a {
+    display: block;
+    padding: .22rem 0;
+    font-size: .86rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color .16s ease, transform .16s ease;
+}
+
+.sf-col a:hover,
+.sf-col a:focus-visible { color: var(--primary); transform: translateX(3px); }
+
+/* ---------- search ---------- */
+
+.sf-search {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.sf-search svg {
+    position: absolute;
+    left: .65rem;
+    width: 15px;
+    height: 15px;
+    color: var(--text-secondary);
+    pointer-events: none;
+}
+
+.sf-search input {
+    width: 100%;
+    font: inherit;
+    font-size: .86rem;
+    color: var(--text-primary);
+    background: var(--bg-primary);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: .5rem .7rem .5rem 2rem;
+}
+
+.sf-search input:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 1px;
+    border-color: var(--primary);
+}
+
+.sf-hint { margin: .45rem 0 0; font-size: .76rem; color: var(--text-secondary); }
+
+.sf-chips { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .6rem; }
+
+.sf-chip {
+    font: inherit;
+    font-size: .74rem;
+    color: var(--text-secondary);
+    background: var(--bg-primary);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: .25rem .6rem;
+    cursor: pointer;
+    transition: color .16s ease, border-color .16s ease;
+}
+
+.sf-chip:hover { color: var(--primary); border-color: var(--primary); }
+.sf-chip:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+
+.sf-results { list-style: none; margin: .6rem 0 0; padding: 0; }
+
+.sf-results li { margin-bottom: .25rem; }
+
+.sf-results a {
+    display: block;
+    font-size: .84rem;
+    color: var(--primary);
+    text-decoration: none;
+    padding: .2rem .45rem;
+    border-radius: 7px;
+    background: var(--bg-primary);
+    border: 1px solid var(--border);
+}
+
+.sf-results a:hover { border-color: var(--primary); }
+
+/* ---------- social ---------- */
+
+.site-footer .social-links { display: flex; gap: .55rem; margin: 1rem 0 0; }
+
+.site-footer .social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    color: #fff;
+    text-decoration: none;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+}
+
+.site-footer .social-link:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 3px;
+}
+
+/* ---------- bottom bar ---------- */
+
+.sf-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: .85rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border);
+}
+
+.sf-credit { margin: 0; font-size: .84rem; color: var(--text-secondary); }
+.sf-credit a { color: var(--text-secondary); }
+.sf-credit a:hover { color: var(--primary); }
+.sf-dot { margin: 0 .3rem; opacity: .5; }
+
+.sf-meta { display: flex; align-items: center; gap: 1rem; }
+
+.sf-meta a,
+.sf-top-btn {
+    font: inherit;
+    font-size: .84rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+}
+
+.sf-meta a:hover,
+.sf-top-btn:hover { color: var(--primary); }
+
+.sf-meta a:focus-visible,
+.sf-top-btn:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 1080px) {
+    .sf-top { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+    .sf-find { grid-column: 1 / -1; max-width: 420px; }
+}
+
+@media (max-width: 720px) {
+    .site-footer { padding-top: 2.25rem; }
+    .sf-top { grid-template-columns: 1fr; gap: 1.75rem; }
+    .sf-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
+    .sf-find { max-width: none; }
+    .sf-bottom { flex-direction: column; align-items: flex-start; }
+}
