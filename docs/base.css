@@ -63,8 +63,23 @@ p {
     margin-bottom: 1rem;
 }
 
+/*
+ * Link colour genuinely was live in the old inline block, unlike the p and
+ * heading colour rules next to it, so removing it turned every in-content
+ * link from the theme purple to default browser blue. It is restored here.
+ *
+ * It is safe as a bare element selector because everything that needs a
+ * different colour already sets one with a class, which outranks it:
+ * .back-link is white on the gradient headers, .nextlinks a and the footer
+ * link groups set their own, and card links inherit from their container.
+ */
 a {
+    color: var(--primary);
     text-decoration: none;
+}
+
+a:hover {
+    color: var(--secondary);
 }
 
 @media (max-width: 768px) {
