@@ -93,6 +93,10 @@ export const PAGES = [
     "t": "LinkedIn Optimization Guide"
   },
   {
+    "f": "mcp-guide.html",
+    "t": "MCP Explained"
+  },
+  {
     "f": "networking-toolkit.html",
     "t": "Networking Toolkit"
   },
