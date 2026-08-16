@@ -24,12 +24,7 @@
  * "Futuristic visual layer" section there. Keep the two in sync:
  * class names used below must exist in that stylesheet. */
 
-import { motionAllowed, onMotionChange } from './motionpref.js?v=20260816a';
-
-/* Motion is gated on the visitor's resolved preference, not on the media
- * query directly, so the Motion switch in the top bar can turn these on for
- * someone whose operating system asks for reduced motion by default. */
-const REDUCE = () => !motionAllowed();
+const REDUCE = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /**
  * Build the floating bubble layer.
