@@ -311,6 +311,13 @@
                     + '&body=' + encodeURIComponent(body());
             }
 
+            /*
+             * Rebuild once more at the moment of clicking. Password managers,
+             * autofill and paste do not always fire an input event, so this
+             * guarantees the link matches what is actually on screen.
+             */
+            sendBtn.addEventListener('click', refresh);
+
             grid.addEventListener('click', function (ev) {
                 var btn = ev.target.closest('.collab');
                 if (!btn) return;
@@ -330,7 +337,10 @@
             });
 
             message.addEventListener('input', function () {
+                // Once the visitor edits the message it is theirs, so a later
+                // option click must not overwrite it.
                 message.dataset.fromTemplate = '0';
+                refresh();
             });
             [topic, who].forEach(function (el) {
                 el.addEventListener('input', refresh);
