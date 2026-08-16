@@ -6,8 +6,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap">
     <meta charset="UTF-8">
 <!-- BEGIN critical-css (build-critical-css.py) -->
-<link rel="stylesheet" href="./theme-variables.css">
-<link rel="stylesheet" href="./theme-switcher.css">
+<link rel="stylesheet" href="./theme-variables.css?v=20260816a">
+<link rel="stylesheet" href="./theme-switcher.css?v=20260816a">
+<link rel="stylesheet" href="./base.css?v=20260816a">
 <!-- END critical-css -->
 <!-- BEGIN generated-seo (build-seo.py) -->
 <link rel="canonical" href="https://shumbul.github.io/Resources/prompt-engineering-roadmap.html">
@@ -319,6 +320,10 @@
 
     <header class="guide-header">
         <div class="container">
+        <!-- BEGIN back-link (build-backlink.py) -->
+        <div class="back-link-row"><a class="back-link" href="./index.html"><span aria-hidden="true">&larr;</span> Back to Resources</a></div>
+        <!-- END back-link -->
+
             <h1 class="guide-title">✨ Prompt Engineering Roadmap</h1>
             <p class="guide-sub">AI tools are only as good as what you ask them. This is a practical, zero-jargon guide to writing prompts that actually work, from your very first one to advanced patterns used in production.</p>
             <div class="guide-badges">
@@ -331,9 +336,16 @@
     </header>
 
     <main class="container">
+        <!-- BEGIN quick-jump (build-quickjump.py) -->
+        <nav class="quick-jump" aria-label="Quick jump to section">
+            <div class="quick-jump__label">⚡ Quick jump</div>
+            <div class="quick-jump__links"><a href="#your-journey-at-a-glance">The journey</a><a href="#why-prompt-engineering-matters">Why this matters</a><a href="#understand-what-you-are-talking-to">Foundations</a><a href="#the-anatomy-of-a-good-prompt">Anatomy of a prompt</a><a href="#the-techniques-that-matter">Core techniques</a><a href="#see-the-difference">Before and after</a><a href="#common-mistakes-to-avoid">Common mistakes</a><a href="#your-4-step-plan">The 4-step plan</a><a href="#free-resources">Free resources</a><a href="#prompt-quality-checklist">Checklist</a><a href="#where-to-go-next">Where to go next</a></div>
+        </nav>
+        <!-- END quick-jump -->
+
         <!-- ===== VISUAL ROADMAP ===== -->
         <div class="gsection roadmap-section">
-            <h2 data-jump="The journey">Your journey at a glance</h2>
+            <h2 id="your-journey-at-a-glance" data-jump="The journey">Your journey at a glance</h2>
             <p class="muted">Four steps, start to finish. Hover or tap any stop to see what happens there.</p>
 
             <div class="roadmap" id="roadmap">
@@ -439,7 +451,7 @@
 
         <!-- ===== WHY IT MATTERS ===== -->
         <div class="gsection">
-            <h2 data-jump="Why this matters">Why prompt engineering matters</h2>
+            <h2 id="why-prompt-engineering-matters" data-jump="Why this matters">Why prompt engineering matters</h2>
             <p class="muted">Two people use the same AI model. One gets vague, generic output. The other gets exactly what they need, first try. The difference is not the tool, it is how they ask.</p>
             <p class="muted">This is now a real, paid skill. It shows up in job descriptions across engineering, product, marketing, and support. More importantly, it makes everything else you do faster: writing code, debugging, research, drafting, learning.</p>
             <div class="compare">
@@ -459,7 +471,7 @@
 
         <!-- ===== FOUNDATIONS ===== -->
         <div class="gsection">
-            <h2 data-jump="Foundations">Understand what you are talking to</h2>
+            <h2 id="understand-what-you-are-talking-to" data-jump="Foundations">Understand what you are talking to</h2>
             <p class="muted">You do not need the maths, but a rough mental model makes you dramatically better at prompting. Here is the honest version.</p>
 
             <h3 style="margin-top:1.2rem;">What an LLM actually does</h3>
@@ -517,7 +529,7 @@
 
         <!-- ===== ANATOMY ===== -->
         <div class="gsection">
-            <h2 data-jump="Anatomy of a prompt">The anatomy of a good prompt</h2>
+            <h2 id="the-anatomy-of-a-good-prompt" data-jump="Anatomy of a prompt">The anatomy of a good prompt</h2>
             <p class="muted">Almost every strong prompt has some combination of these five parts. You will not always need all five, but knowing them means you always know what to add when the output is not right.</p>
 
             <div class="techs" style="margin-top:1rem;">
@@ -572,7 +584,7 @@ likely ask about this schema.</code></pre>
 
         <!-- ===== TECHNIQUES ===== -->
         <div class="gsection">
-            <h2 data-jump="Core techniques">The techniques that matter</h2>
+            <h2 id="the-techniques-that-matter" data-jump="Core techniques">The techniques that matter</h2>
             <p class="muted">These are the named patterns you will see referenced everywhere. Learn the first four properly and you will handle 90% of real situations.</p>
 
             <div class="techs" style="margin-top:1rem;">
@@ -664,7 +676,7 @@ likely ask about this schema.</code></pre>
 
         <!-- ===== BEFORE AND AFTER ===== -->
         <div class="gsection">
-            <h2 data-jump="Before and after">See the difference</h2>
+            <h2 id="see-the-difference" data-jump="Before and after">See the difference</h2>
             <p class="muted">Three real situations, weak prompt versus strong prompt. Try both in any free chatbot and compare.</p>
 
             <h3 style="margin-top:1.1rem;">Debugging code</h3>
@@ -712,7 +724,7 @@ likely ask about this schema.</code></pre>
 
         <!-- ===== MISTAKES ===== -->
         <div class="gsection">
-            <h2 data-jump="Common mistakes">Common mistakes to avoid</h2>
+            <h2 id="common-mistakes-to-avoid" data-jump="Common mistakes">Common mistakes to avoid</h2>
             <div class="mistakes">
                 <div class="mis" data-reveal>
                     <strong>Being polite instead of specific</strong>
@@ -743,7 +755,7 @@ likely ask about this schema.</code></pre>
 
         <!-- ===== 4-STEP PLAN ===== -->
         <div class="gsection">
-            <h2 data-jump="The 4-step plan">Your 4-step plan</h2>
+            <h2 id="your-4-step-plan" data-jump="The 4-step plan">Your 4-step plan</h2>
             <p class="muted">Go at your own pace. Each step takes a few days of focused practice. By the end you will have a small portfolio of prompts that solve real problems, which is genuinely worth showing in an interview.</p>
             <div class="steps">
                 <div class="step" data-reveal>
@@ -791,7 +803,7 @@ likely ask about this schema.</code></pre>
 
         <!-- ===== FREE RESOURCES ===== -->
         <div class="gsection">
-            <h2 data-jump="Free resources">Free resources</h2>
+            <h2 id="free-resources" data-jump="Free resources">Free resources</h2>
             <p class="muted">Everything here is genuinely free. Start with the official guides, they are better than most paid courses.</p>
             <div class="res-grid">
                 <div class="res-card">
@@ -854,7 +866,7 @@ likely ask about this schema.</code></pre>
 
         <!-- ===== CHECKLIST ===== -->
         <div class="gsection">
-            <h2 data-jump="Checklist">Prompt quality checklist</h2>
+            <h2 id="prompt-quality-checklist" data-jump="Checklist">Prompt quality checklist</h2>
             <p class="muted">Not getting what you want? Run through this before rewriting from scratch.</p>
             <ul class="checklist">
                 <li>Have I said <b>who</b> it should be (role and expertise level)?</li>
@@ -872,7 +884,7 @@ likely ask about this schema.</code></pre>
 
         <!-- ===== NEXT ===== -->
         <div class="gsection">
-            <h2 data-jump="Where to go next">Where to go next</h2>
+            <h2 id="where-to-go-next" data-jump="Where to go next">Where to go next</h2>
             <p class="muted">Prompt engineering pairs well with these:</p>
             <div class="nextlinks">
                 <a href="./AI-Roadmap.html">🤖 AI Developer Roadmap</a>
@@ -901,7 +913,7 @@ likely ask about this schema.</code></pre>
     <div data-component="footer"></div>
     <div data-component="scripts-common"></div>
     <script src="./components/component-loader.js"></script>
-    <script type="module" src="./functions/site.js?v=20260814m"></script>
+    <script type="module" src="./functions/site.js?v=20260816a"></script>
 
     <script>
     (function () {

@@ -9,6 +9,7 @@
 const SITE_LINKS = [
     { href: 'index.html', label: 'Home', icon: '🏠', match: ['index.html', ''] },
     { href: 'about.html', label: 'About', icon: '👋' },
+    { href: 'collaborate.html', label: 'Collaborate', icon: '🤝' },
     { href: 'contact.html', label: 'Contact', icon: '📬' },
 ];
 

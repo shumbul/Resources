@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap">
+    <meta charset="UTF-8">
+<!-- BEGIN critical-css (build-critical-css.py) -->
+<link rel="stylesheet" href="./theme-variables.css?v=20260816a">
+<link rel="stylesheet" href="./theme-switcher.css?v=20260816a">
+<link rel="stylesheet" href="./base.css?v=20260816a">
+<!-- END critical-css -->
+<!-- BEGIN generated-seo (build-seo.py) -->
+<link rel="canonical" href="https://shumbul.github.io/Resources/collaborate.html">
+<meta name="description" content="Work with Shumbul Arifa: speaking and campus talks, sponsoring a guide, co-created content, technical writing, and guide requests.">
+<meta name="author" content="Shumbul Arifa">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://shumbul.github.io/Resources/collaborate.html">
+<meta property="og:site_name" content="Resources by Shumbul Arifa">
+<meta property="og:title" content="Collaborate - Resources by Shumbul Arifa">
+<meta property="og:description" content="Speaking, sponsorship, co-created content and technical writing. Pick what you have in mind and send a note.">
+<meta property="og:image" content="https://shumbul.github.io/Resources/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Resources by Shumbul Arifa">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Collaborate - Resources by Shumbul Arifa">
+<meta name="twitter:description" content="Speaking, sponsorship, co-created content and technical writing. Pick what you have in mind and send a note.">
+<meta name="twitter:image" content="https://shumbul.github.io/Resources/og-image.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://shumbul.github.io/Resources/#website","url":"https://shumbul.github.io/Resources/","name":"Resources by Shumbul Arifa","inLanguage":"en","description":"Free, practical tech-career guides, roadmaps and interview prep.","publisher":{"@id":"https://shumbul.github.io/Resources/#person"}},{"@type":"Person","@id":"https://shumbul.github.io/Resources/#person","name":"Shumbul Arifa","url":"https://shumbul.github.io/Resources/about.html","jobTitle":"Software Engineer","sameAs":["https://github.com/shumbul","https://linkedin.com/in/shumbul","https://instagram.com/shumbul.arifa","https://www.youtube.com/@Shumbul"]},{"@type":"WebPage","@id":"https://shumbul.github.io/Resources/collaborate.html#webpage","url":"https://shumbul.github.io/Resources/collaborate.html","name":"Collaborate | Resources by Shumbul Arifa","description":"Work with Shumbul Arifa: speaking and campus talks, sponsoring a guide, co-created content, technical writing, and guide requests.","inLanguage":"en","isPartOf":{"@id":"https://shumbul.github.io/Resources/#website"},"about":{"@id":"https://shumbul.github.io/Resources/#person"},"primaryImageOfPage":"https://shumbul.github.io/Resources/og-image.png"},{"@type":"BreadcrumbList","@id":"https://shumbul.github.io/Resources/collaborate.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Resources","item":"https://shumbul.github.io/Resources/"},{"@type":"ListItem","position":2,"name":"Collaborate","item":"https://shumbul.github.io/Resources/collaborate.html"}]}]}</script>
+<!-- END generated-seo -->
+    <div data-component="head-common"></div>
+
+    <title>Collaborate | Resources by Shumbul Arifa</title>
+    <meta name="description" content="Work with Shumbul Arifa: speaking and campus talks, sponsoring a guide, co-created content, technical writing, and guide requests.">
+    <meta property="og:title" content="Collaborate - Resources by Shumbul Arifa">
+    <meta property="og:description" content="Speaking, sponsorship, co-created content and technical writing. Pick what you have in mind and send a note.">
+
+    <style>
+        .guide-header { background: linear-gradient(135deg, var(--primary), var(--secondary)); color:#fff; padding:3.5rem 0; text-align:center; margin-bottom:2.5rem; }
+        .guide-title { font-size:2.6rem; font-weight:800; margin-bottom:.6rem; color:#fff; }
+        .guide-sub { font-size:1.15rem; color:rgba(255,255,255,.94); max-width:700px; margin:0 auto; }
+        .gsection { background:var(--bg-secondary); border:1px solid var(--border); border-radius:16px; padding:1.6rem 1.75rem; margin-bottom:1.75rem; }
+        .gsection h2 { margin-top:0; }
+        .muted { color:var(--text-secondary); }
+
+        /* Collaboration options */
+        .collab-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(255px,1fr)); gap:1rem; margin-top:1.1rem; }
+        .collab { display:flex; flex-direction:column; gap:.45rem; text-align:left; background:var(--bg-primary); border:1px solid var(--border); border-radius:14px; padding:1.05rem 1.15rem; cursor:pointer; font:inherit; color:var(--text-primary); transition:border-color .18s ease, box-shadow .18s ease, transform .18s ease; }
+        .collab:hover { border-color:var(--primary); transform:translateY(-2px); box-shadow:var(--shadow); }
+        .collab:focus-visible { outline:2px solid var(--primary); outline-offset:2px; }
+        .collab[aria-pressed="true"] { border-color:var(--primary); box-shadow:0 0 0 3px var(--ring); }
+        .collab .ic { font-size:1.5rem; line-height:1; }
+        .collab strong { font-family:var(--font-display); font-size:1.02rem; }
+        .collab small { color:var(--text-secondary); font-size:.86rem; line-height:1.5; }
+
+        /* Composer */
+        .composer { margin-top:1.25rem; background:var(--bg-primary); border:1px solid var(--border); border-radius:14px; padding:1.25rem 1.35rem; }
+        .composer h3 { margin:0 0 .2rem; font-family:var(--font-display); font-size:1.05rem; }
+        .field { display:block; margin-top:.9rem; }
+        .field span { display:block; font-size:.82rem; font-weight:600; color:var(--text-secondary); margin-bottom:.35rem; }
+        .field input, .field textarea { width:100%; font:inherit; font-size:.94rem; color:var(--text-primary); background:var(--bg-secondary); border:1px solid var(--border); border-radius:10px; padding:.6rem .75rem; }
+        .field textarea { min-height:120px; resize:vertical; }
+        .field input:focus, .field textarea:focus { outline:2px solid var(--primary); outline-offset:1px; border-color:var(--primary); }
+        .subject-preview { margin-top:1rem; font-size:.85rem; color:var(--text-secondary); background:var(--bg-secondary); border:1px dashed var(--border); border-radius:10px; padding:.6rem .75rem; word-break:break-word; }
+        .subject-preview code { font-family:ui-monospace,SFMono-Regular,Consolas,monospace; color:var(--text-primary); }
+        .composer-actions { display:flex; flex-wrap:wrap; gap:.6rem; align-items:center; margin-top:1rem; }
+        .send-btn { display:inline-flex; align-items:center; gap:.5rem; background:linear-gradient(135deg,var(--primary),var(--secondary)); color:#fff; border:none; border-radius:999px; padding:.7rem 1.4rem; font:inherit; font-weight:700; cursor:pointer; text-decoration:none; }
+        .send-btn:hover { filter:brightness(1.07); color:#fff; }
+        .send-btn:focus-visible { outline:2px solid var(--primary); outline-offset:3px; }
+        .copy-btn { background:var(--bg-secondary); border:1px solid var(--border); border-radius:999px; padding:.65rem 1.1rem; font:inherit; font-size:.9rem; cursor:pointer; color:var(--text-primary); }
+        .copy-btn:hover { border-color:var(--primary); }
+        .form-note { font-size:.84rem; color:var(--text-secondary); margin-top:.75rem; }
+
+        /* What I can offer / what I ask */
+        .two-col { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.1rem; margin-top:1rem; }
+        .panel { background:var(--bg-primary); border:1px solid var(--border); border-radius:14px; padding:1.1rem 1.2rem; }
+        .panel h3 { margin:0 0 .55rem; font-family:var(--font-display); font-size:1rem; }
+        .panel ul { margin:0; padding-left:1.1rem; color:var(--text-secondary); }
+        .panel li { margin-bottom:.4rem; }
+
+        /* Press kit stats */
+        .kit { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:.9rem; margin-top:1rem; }
+        .kit-stat { background:var(--bg-primary); border:1px solid var(--border); border-radius:12px; padding:.9rem 1rem; text-align:center; }
+        .kit-stat b { display:block; font-family:var(--font-display); font-size:1.45rem; color:var(--primary); line-height:1.1; }
+        .kit-stat span { font-size:.8rem; color:var(--text-secondary); }
+    </style>
+</head>
+<body data-futuristic>
+    <div data-component="theme-switcher"></div>
+
+    <header class="guide-header">
+        <div class="container">
+        <!-- BEGIN back-link (build-backlink.py) -->
+        <div class="back-link-row"><a class="back-link" href="./index.html"><span aria-hidden="true">&larr;</span> Back to Resources</a></div>
+        <!-- END back-link -->
+
+            <h1 class="guide-title">🤝 Collaborate</h1>
+            <p class="guide-sub">Talks, sponsored guides, co-created content, or something I have not thought of yet. Pick what you have in mind and it will write the email for you.</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- BEGIN quick-jump (build-quickjump.py) -->
+        <nav class="quick-jump" aria-label="Quick jump to section">
+            <div class="quick-jump__label">⚡ Quick jump</div>
+            <div class="quick-jump__links"><a href="#ways-to-work-together">Ways to work together</a><a href="#what-to-expect">What to expect</a><a href="#quick-facts-for-organisers">Quick facts</a><a href="#just-want-to-say-hi">Just saying hi</a></div>
+        </nav>
+        <!-- END quick-jump -->
+
+        <div class="gsection">
+            <h2 id="ways-to-work-together" data-jump="Ways to work together">Ways to work together</h2>
+            <p class="muted">Choose one and the form below fills in a subject line and a starting template, so you are not staring at a blank email.</p>
+
+            <div class="collab-grid" id="collabGrid" role="group" aria-label="Collaboration types">
+                <button type="button" class="collab" aria-pressed="false"
+                        data-kind="Speaking"
+                        data-body="Hi Shumbul,&#10;&#10;I would like to invite you to speak.&#10;&#10;Event:&#10;Audience and rough size:&#10;Date and time (with timezone):&#10;Format (in person, online, panel, workshop):&#10;Topic you have in mind:&#10;Budget or honorarium, if any:&#10;&#10;Thanks!">
+                    <span class="ic">🎤</span>
+                    <strong>Speaking and campus talks</strong>
+                    <small>Colleges, meetups, conferences and internal tech talks, online or in person.</small>
+                </button>
+
+                <button type="button" class="collab" aria-pressed="false"
+                        data-kind="Workshop"
+                        data-body="Hi Shumbul,&#10;&#10;I would like to run a workshop with you.&#10;&#10;Organisation or college:&#10;Topic (DSA, Git, LinkedIn, AI tooling, career prep):&#10;Number of participants:&#10;Preferred dates:&#10;Duration:&#10;Budget, if any:&#10;&#10;Thanks!">
+                    <span class="ic">🧑‍🏫</span>
+                    <strong>Workshops</strong>
+                    <small>Hands-on sessions for students or teams, built from the guides on this site.</small>
+                </button>
+
+                <button type="button" class="collab" aria-pressed="false"
+                        data-kind="Sponsor a guide"
+                        data-body="Hi Shumbul,&#10;&#10;We would like to sponsor a guide so it stays free for readers.&#10;&#10;Company:&#10;What you do:&#10;Guide or topic you are interested in:&#10;What you would want in return:&#10;Budget range:&#10;&#10;Note: I understand guides stay editorially independent and clearly marked.&#10;&#10;Thanks!">
+                    <span class="ic">💚</span>
+                    <strong>Sponsor a guide</strong>
+                    <small>Keep a guide free and openly credited. Editorially independent, always disclosed.</small>
+                </button>
+
+                <button type="button" class="collab" aria-pressed="false"
+                        data-kind="Content collaboration"
+                        data-body="Hi Shumbul,&#10;&#10;I would like to collaborate on content.&#10;&#10;Who I am and where I publish:&#10;What I am proposing (co-written guide, video, cross-post, podcast):&#10;Audience it reaches:&#10;Rough timeline:&#10;&#10;Thanks!">
+                    <span class="ic">🎬</span>
+                    <strong>Content collaboration</strong>
+                    <small>Co-written guides, YouTube collabs, cross-posts and podcast conversations.</small>
+                </button>
+
+                <button type="button" class="collab" aria-pressed="false"
+                        data-kind="Technical writing"
+                        data-body="Hi Shumbul,&#10;&#10;We would like to commission technical writing.&#10;&#10;Company:&#10;Type of content (docs, tutorial, developer blog, course):&#10;Topic and depth:&#10;Length and deadline:&#10;Budget range:&#10;&#10;Thanks!">
+                    <span class="ic">✍️</span>
+                    <strong>Technical writing</strong>
+                    <small>Developer docs, tutorials and engineering blog posts for your product.</small>
+                </button>
+
+                <button type="button" class="collab" aria-pressed="false"
+                        data-kind="Suggest a guide"
+                        data-body="Hi Shumbul,&#10;&#10;Here is a guide I wish existed on the site.&#10;&#10;Topic:&#10;Who it would help:&#10;What you are stuck on right now:&#10;&#10;Thanks!">
+                    <span class="ic">💡</span>
+                    <strong>Suggest a guide</strong>
+                    <small>Tell me what you are stuck on. Free to ask, and it stays free to read.</small>
+                </button>
+
+                <button type="button" class="collab" aria-pressed="false"
+                        data-kind="Brand promotion"
+                        data-body="Hi Shumbul,&#10;&#10;We would like to work with you on a brand or product promotion.&#10;&#10;Company:&#10;Product, and what it actually does:&#10;Who it is for:&#10;Free tier or student access, if any:&#10;What you have in mind (post, video, mention, review):&#10;Platforms:&#10;Timeline:&#10;Budget range:&#10;&#10;Note: I understand anything paid is clearly disclosed, and that you are happy for the review to be honest.&#10;&#10;Thanks!">
+                    <span class="ic">📣</span>
+                    <strong>Brand and product promotion</strong>
+                    <small>Tools I would genuinely use and recommend. Always disclosed, always an honest take.</small>
+                </button>
+
+                <button type="button" class="collab" aria-pressed="false"
+                        data-kind="Something else"
+                        data-body="Hi Shumbul,&#10;&#10;">
+                    <span class="ic">✨</span>
+                    <strong>Something else</strong>
+                    <small>Have an idea that does not fit a box? Those are usually the interesting ones.</small>
+                </button>
+            </div>
+
+            <div class="composer">
+                <h3>Write your note</h3>
+                <p class="muted" style="margin:0;font-size:.88rem;">Everything stays in your browser. Nothing is submitted anywhere: the button just opens your own email app with this filled in.</p>
+
+                <label class="field">
+                    <span>What is this about?</span>
+                    <input type="text" id="topic" placeholder="e.g. Guest talk for our college tech fest" autocomplete="off">
+                </label>
+
+                <label class="field">
+                    <span>Your name and organisation</span>
+                    <input type="text" id="who" placeholder="e.g. Aisha, NIT Trichy CS Club" autocomplete="name">
+                </label>
+
+                <label class="field">
+                    <span>Message</span>
+                    <textarea id="message" placeholder="Pick an option above and this fills itself in, or write your own."></textarea>
+                </label>
+
+                <p class="subject-preview">Subject will be: <code id="subjectPreview">Resources Collaboration - </code></p>
+
+                <div class="composer-actions">
+                    <a class="send-btn" id="sendBtn" href="mailto:shumbularifateam@gmail.com">
+                        <span aria-hidden="true">📧</span> Open in my email app
+                    </a>
+                    <button type="button" class="copy-btn" id="copyBtn">Copy address instead</button>
+                </div>
+                <p class="form-note" id="formNote">Goes to <strong>shumbularifateam@gmail.com</strong>. I read everything, and I reply to anything with a real question in it.</p>
+            </div>
+        </div>
+
+        <div class="gsection">
+            <h2 id="what-to-expect" data-jump="What to expect">What to expect</h2>
+            <div class="two-col">
+                <div class="panel">
+                    <h3>What I can bring</h3>
+                    <ul>
+                        <li>Four years of shipping software at Microsoft, explained without jargon</li>
+                        <li>Sessions built for beginners and final-year students, not for people who already know</li>
+                        <li>Talks on DSA, Git, open source, LinkedIn, resumes and building with AI</li>
+                        <li>Written material your attendees keep, linked back to free guides here</li>
+                    </ul>
+                </div>
+                <div class="panel">
+                    <h3>A few ground rules</h3>
+                    <ul>
+                        <li>Guides stay free. No paywalls or email gates, ever</li>
+                        <li>Sponsorship never buys editorial control, and is always disclosed</li>
+                        <li>Paid promotion still gets an honest review, or I pass on it</li>
+                        <li>No promoting paid courses that promise jobs</li>
+                        <li>I say yes to fewer things than I would like, so detail helps me decide fast</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="gsection">
+            <h2 id="quick-facts-for-organisers" data-jump="Quick facts">Quick facts for organisers</h2>
+            <p class="muted">Handy if you are writing a proposal or filling in a speaker form.</p>
+            <div class="kit">
+                <div class="kit-stat"><b>29+</b><span>Free guides published</span></div>
+                <div class="kit-stat"><b>1,000+</b><span>GitHub followers</span></div>
+                <div class="kit-stat"><b>4+ yrs</b><span>Engineering at Microsoft</span></div>
+                <div class="kit-stat"><b>NITK</b><span>B.Tech, Computer Science</span></div>
+            </div>
+            <p class="muted" style="margin-top:1rem;font-size:.9rem;">
+                Short bio: Shumbul Arifa is a Software Engineer at Microsoft and the author of
+                <a href="./index.html">Resources</a>, a free library of tech-career guides for
+                beginners and career switchers. She writes about getting started in tech without
+                gatekeeping, and shares her work on
+                <a href="https://github.com/shumbul" target="_blank" rel="noopener">GitHub</a>,
+                <a href="https://www.youtube.com/@Shumbul" target="_blank" rel="noopener">YouTube</a>
+                and <a href="https://linkedin.com/in/shumbul" target="_blank" rel="noopener">LinkedIn</a>.
+            </p>
+        </div>
+
+        <div class="gsection">
+            <h2 id="just-want-to-say-hi" data-jump="Just saying hi">Just want to say hi?</h2>
+            <p class="muted">No pitch needed. If a guide helped you land something, that is genuinely the best email I get. The <a href="./contact.html">Contact page</a> has every channel, or reply on whichever platform you found me.</p>
+        </div>
+    </main>
+
+    <div data-component="footer"></div>
+    <div data-component="scripts-common"></div>
+    <script src="./components/component-loader.js"></script>
+    <script type="module" src="./functions/site.js?v=20260816a"></script>
+    <script>
+        /*
+         * Builds a mailto link from the options above. Deliberately not a real
+         * form: this site is static, so there is no server to post to and no
+         * third party gets the visitor's details. The button hands everything
+         * to the visitor's own email client.
+         */
+        (function () {
+            var TO = 'shumbularifateam@gmail.com';
+            var PREFIX = 'Resources Collaboration - ';
+
+            var grid = document.getElementById('collabGrid');
+            var topic = document.getElementById('topic');
+            var who = document.getElementById('who');
+            var message = document.getElementById('message');
+            var preview = document.getElementById('subjectPreview');
+            var sendBtn = document.getElementById('sendBtn');
+            var copyBtn = document.getElementById('copyBtn');
+            var note = document.getElementById('formNote');
+            if (!grid || !sendBtn) return;
+
+            var selected = '';
+
+            function subject() {
+                var t = (topic.value || '').trim();
+                var tail = t || selected || 'General enquiry';
+                return PREFIX + tail;
+            }
+
+            function body() {
+                var parts = [];
+                var m = (message.value || '').trim();
+                if (m) parts.push(m);
+                var w = (who.value || '').trim();
+                if (w) parts.push('\n- ' + w);
+                return parts.join('\n');
+            }
+
+            function refresh() {
+                preview.textContent = subject();
+                sendBtn.href = 'mailto:' + TO
+                    + '?subject=' + encodeURIComponent(subject())
+                    + '&body=' + encodeURIComponent(body());
+            }
+
+            grid.addEventListener('click', function (ev) {
+                var btn = ev.target.closest('.collab');
+                if (!btn) return;
+                grid.querySelectorAll('.collab').forEach(function (b) {
+                    b.setAttribute('aria-pressed', String(b === btn));
+                });
+                selected = btn.dataset.kind || '';
+                // Only overwrite the message if the visitor has not written
+                // their own, so switching options never destroys their text.
+                var template = (btn.dataset.body || '').replace(/&#10;/g, '\n');
+                if (!message.value.trim() || message.dataset.fromTemplate === '1') {
+                    message.value = template;
+                    message.dataset.fromTemplate = '1';
+                }
+                if (!topic.value.trim()) topic.placeholder = selected;
+                refresh();
+            });
+
+            message.addEventListener('input', function () {
+                message.dataset.fromTemplate = '0';
+            });
+            [topic, who].forEach(function (el) {
+                el.addEventListener('input', refresh);
+            });
+
+            copyBtn.addEventListener('click', function () {
+                var done = function () {
+                    var old = copyBtn.textContent;
+                    copyBtn.textContent = 'Address copied';
+                    setTimeout(function () { copyBtn.textContent = old; }, 2200);
+                };
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(TO).then(done, function () {
+                        note.textContent = TO;
+                    });
+                } else {
+                    note.textContent = TO;
+                }
+            });
+
+            refresh();
+        })();
+    </script>
+</body>
+</html>

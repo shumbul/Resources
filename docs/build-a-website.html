@@ -6,8 +6,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap">
     <meta charset="UTF-8">
 <!-- BEGIN critical-css (build-critical-css.py) -->
-<link rel="stylesheet" href="./theme-variables.css">
-<link rel="stylesheet" href="./theme-switcher.css">
+<link rel="stylesheet" href="./theme-variables.css?v=20260816a">
+<link rel="stylesheet" href="./theme-switcher.css?v=20260816a">
+<link rel="stylesheet" href="./base.css?v=20260816a">
 <!-- END critical-css -->
 <!-- BEGIN generated-seo (build-seo.py) -->
 <link rel="canonical" href="https://shumbul.github.io/Resources/build-a-website.html">
@@ -80,6 +81,10 @@
 
     <header class="guide-header">
         <div class="container">
+        <!-- BEGIN back-link (build-backlink.py) -->
+        <div class="back-link-row"><a class="back-link" href="./index.html"><span aria-hidden="true">&larr;</span> Back to Resources</a></div>
+        <!-- END back-link -->
+
             <h1 class="guide-title">🌐 Build &amp; Deploy a Website</h1>
             <p class="guide-sub">The most satisfying first project in tech: a website that is actually live on the internet, with a link you can text to anyone. You can go from blank file to shareable URL in a single afternoon, for free.</p>
             <div class="guide-badges">
@@ -91,8 +96,15 @@
     </header>
 
     <main class="container">
+        <!-- BEGIN quick-jump (build-quickjump.py) -->
+        <nav class="quick-jump" aria-label="Quick jump to section">
+            <div class="quick-jump__label">⚡ Quick jump</div>
+            <div class="quick-jump__links"><a href="#the-plan-in-one-line">The plan</a><a href="#step-1-your-first-page">Your first page</a><a href="#step-2-make-it-look-good-css">Make it look good</a><a href="#step-3-put-it-on-github">Put it on GitHub</a><a href="#step-4-go-live-free-hosting">Go live</a><a href="#step-5-level-it-up">Level up</a><a href="#which-path-fits-you-next">Which path next</a><a href="#copy-paste-ai-prompts">AI prompts</a><a href="#what-to-do-next">What&#x27;s next</a></div>
+        </nav>
+        <!-- END quick-jump -->
+
         <div class="gsection">
-            <h2 data-jump="The plan">The plan in one line</h2>
+            <h2 id="the-plan-in-one-line" data-jump="The plan">The plan in one line</h2>
             <p class="muted"><b>Write an HTML page → make it look good with CSS → put it on GitHub → turn on free hosting.</b> That is the entire journey. Let us do it.</p>
             <div class="browser" aria-hidden="true">
                 <div class="bar"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i><span class="url">your-username.github.io</span></div>
@@ -103,7 +115,7 @@
         </div>
 
         <div class="gsection">
-            <h2 data-jump="Your first page">Step 1: Your first page</h2>
+            <h2 id="step-1-your-first-page" data-jump="Your first page">Step 1: Your first page</h2>
             <p class="muted">Create a folder, and inside it a file called <code>index.html</code>. Paste this and open the file in your browser, you have a webpage.</p>
             <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
@@ -121,7 +133,7 @@
         </div>
 
         <div class="gsection">
-            <h2 data-jump="Make it look good">Step 2: Make it look good (CSS)</h2>
+            <h2 id="step-2-make-it-look-good-css" data-jump="Make it look good">Step 2: Make it look good (CSS)</h2>
             <p class="muted">Add a <code>&lt;style&gt;</code> block inside <code>&lt;head&gt;</code>. CSS controls colors, spacing, and layout.</p>
             <pre><code>&lt;style&gt;
   body {
@@ -139,7 +151,7 @@
         </div>
 
         <div class="gsection">
-            <h2 data-jump="Put it on GitHub">Step 3: Put it on GitHub</h2>
+            <h2 id="step-3-put-it-on-github" data-jump="Put it on GitHub">Step 3: Put it on GitHub</h2>
             <p class="muted">To host it free, your code needs to live on GitHub. Create a free account, then in your project folder:</p>
             <pre><code>git init
 git add .
@@ -152,7 +164,7 @@ git push -u origin main</code></pre>
         </div>
 
         <div class="gsection">
-            <h2 data-jump="Go live">Step 4: Go live (free hosting)</h2>
+            <h2 id="step-4-go-live-free-hosting" data-jump="Go live">Step 4: Go live (free hosting)</h2>
             <p class="muted">Because you named the repo <code>your-username.github.io</code>, GitHub Pages may already be serving it. To be sure:</p>
             <ol class="muted">
                 <li>Open your repo on GitHub → <b>Settings</b> → <b>Pages</b>.</li>
@@ -163,7 +175,7 @@ git push -u origin main</code></pre>
         </div>
 
         <div class="gsection">
-            <h2 data-jump="Level up">Step 5: Level it up</h2>
+            <h2 id="step-5-level-it-up" data-jump="Level up">Step 5: Level it up</h2>
             <p class="muted">Now iterate. Each of these is a small, satisfying upgrade:</p>
             <ul class="muted">
                 <li>Make it responsive so it looks great on phones (CSS media queries).</li>
@@ -175,7 +187,7 @@ git push -u origin main</code></pre>
         </div>
 
         <div class="gsection">
-            <h2 data-jump="Which path next">Which path fits you next?</h2>
+            <h2 id="which-path-fits-you-next" data-jump="Which path next">Which path fits you next?</h2>
             <div class="path">
                 <div class="card"><b>Want depth?</b><p class="muted" style="margin:.3rem 0 0;">Follow the <a href="./full-stack-developer-path.html">Full-Stack Path</a> to learn JavaScript, React, and backends properly.</p></div>
                 <div class="card"><b>Want a job portfolio?</b><p class="muted" style="margin:.3rem 0 0;">Turn this into a proper portfolio with the <a href="./resume-portfolio-templates.html">Resume &amp; Portfolio guide</a>.</p></div>
@@ -184,7 +196,7 @@ git push -u origin main</code></pre>
         </div>
 
         <div class="gsection">
-            <h2 data-jump="AI prompts">Copy-paste AI prompts</h2>
+            <h2 id="copy-paste-ai-prompts" data-jump="AI prompts">Copy-paste AI prompts</h2>
             <p class="muted">Stuck or want to move faster? Paste these into any AI chatbot (or this site's <strong>✦ Ask AI</strong>). Fill in the brackets.</p>
 
             <div class="prompt">
@@ -218,7 +230,7 @@ works so I actually learn it.</code></pre>
         </div>
 
         <div class="gsection">
-            <h2 data-jump="What's next">What to do next</h2>
+            <h2 id="what-to-do-next" data-jump="What's next">What to do next</h2>
             <div class="nextlinks">
                 <a href="./full-stack-developer-path.html">🌐 Full-Stack Path</a>
                 <a href="./git-guide.html">🚀 Git Guide</a>
@@ -236,6 +248,6 @@ works so I actually learn it.</code></pre>
     <div data-component="footer"></div>
     <div data-component="scripts-common"></div>
     <script src="./components/component-loader.js"></script>
-    <script type="module" src="./functions/site.js?v=20260814m"></script>
+    <script type="module" src="./functions/site.js?v=20260816a"></script>
 </body>
 </html>

@@ -6,8 +6,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap">
     <meta charset="UTF-8">
 <!-- BEGIN critical-css (build-critical-css.py) -->
-<link rel="stylesheet" href="./theme-variables.css">
-<link rel="stylesheet" href="./theme-switcher.css">
+<link rel="stylesheet" href="./theme-variables.css?v=20260816a">
+<link rel="stylesheet" href="./theme-switcher.css?v=20260816a">
+<link rel="stylesheet" href="./base.css?v=20260816a">
 <!-- END critical-css -->
 <!-- BEGIN generated-seo (build-seo.py) -->
 <link rel="canonical" href="https://shumbul.github.io/Resources/cloud-devops-starter.html">
@@ -70,6 +71,10 @@
 
     <header class="guide-header">
         <div class="container">
+        <!-- BEGIN back-link (build-backlink.py) -->
+        <div class="back-link-row"><a class="back-link" href="./index.html"><span aria-hidden="true">&larr;</span> Back to Resources</a></div>
+        <!-- END back-link -->
+
             <h1 class="guide-title">☁️ Cloud &amp; DevOps Starter</h1>
             <p class="guide-sub">"DevOps" appears on nearly every job posting now, and it looks intimidating. It is not. This is a calm, ordered path through the core skills, with free tools and hands-on projects at each step.</p>
             <div class="guide-badges">
@@ -81,13 +86,20 @@
     </header>
 
     <main class="container">
+        <!-- BEGIN quick-jump (build-quickjump.py) -->
+        <nav class="quick-jump" aria-label="Quick jump to section">
+            <div class="quick-jump__label">⚡ Quick jump</div>
+            <div class="quick-jump__links"><a href="#the-devops-mindset-first">The mindset</a><a href="#stage-1-linux-git-the-ground-floor">Stage 1: Linux &amp;amp; Git</a><a href="#stage-2-containers-docker">Stage 2: Containers</a><a href="#stage-3-ci-cd-automate-build-deploy">Stage 3: CI/CD</a><a href="#stage-4-one-cloud-provider">Stage 4: Cloud</a><a href="#stage-5-infrastructure-as-code-kubernete">Stage 5: IaC &amp;amp; orchestration</a><a href="#a-sensible-learning-order">A sensible order</a><a href="#free-places-to-learn">Free resources</a><a href="#what-to-do-next">What&#x27;s next</a></div>
+        </nav>
+        <!-- END quick-jump -->
+
         <div class="gsection">
-            <h2 data-jump="The mindset">The DevOps mindset first</h2>
+            <h2 id="the-devops-mindset-first" data-jump="The mindset">The DevOps mindset first</h2>
             <p class="muted">Before tools, the idea: <b>automate the boring, repeatable stuff so releases are fast and mistakes are rare.</b> Every tool below exists to serve that goal. Keep asking "what manual step can I automate?" and DevOps will make sense.</p>
         </div>
 
         <div class="gsection">
-            <h2 data-jump="Stage 1: Linux &amp; Git">Stage 1: Linux &amp; Git (the ground floor)</h2>
+            <h2 id="stage-1-linux-git-the-ground-floor" data-jump="Stage 1: Linux &amp; Git">Stage 1: Linux &amp; Git (the ground floor)</h2>
             <div class="stage" data-reveal>
                 <div class="num">1</div>
                 <div>
@@ -100,7 +112,7 @@
         </div>
 
         <div class="gsection">
-            <h2 data-jump="Stage 2: Containers">Stage 2: Containers (Docker)</h2>
+            <h2 id="stage-2-containers-docker" data-jump="Stage 2: Containers">Stage 2: Containers (Docker)</h2>
             <div class="stage" data-reveal>
                 <div class="num">2</div>
                 <div>
@@ -119,7 +131,7 @@ CMD ["node", "server.js"]</code></pre>
         </div>
 
         <div class="gsection">
-            <h2 data-jump="Stage 3: CI/CD">Stage 3: CI/CD (automate build &amp; deploy)</h2>
+            <h2 id="stage-3-ci-cd-automate-build-deploy" data-jump="Stage 3: CI/CD">Stage 3: CI/CD (automate build &amp; deploy)</h2>
             <div class="stage" data-reveal>
                 <div class="num">3</div>
                 <div>
@@ -143,7 +155,7 @@ jobs:
         </div>
 
         <div class="gsection">
-            <h2 data-jump="Stage 4: Cloud">Stage 4: One cloud provider</h2>
+            <h2 id="stage-4-one-cloud-provider" data-jump="Stage 4: Cloud">Stage 4: One cloud provider</h2>
             <div class="stage" data-reveal>
                 <div class="num">4</div>
                 <div>
@@ -156,7 +168,7 @@ jobs:
         </div>
 
         <div class="gsection">
-            <h2 data-jump="Stage 5: IaC &amp; orchestration">Stage 5: Infrastructure as Code &amp; Kubernetes</h2>
+            <h2 id="stage-5-infrastructure-as-code-kubernete" data-jump="Stage 5: IaC &amp; orchestration">Stage 5: Infrastructure as Code &amp; Kubernetes</h2>
             <div class="stage" data-reveal>
                 <div class="num">5</div>
                 <div>
@@ -169,13 +181,13 @@ jobs:
         </div>
 
         <div class="gsection">
-            <h2 data-jump="A sensible order">A sensible learning order</h2>
+            <h2 id="a-sensible-learning-order" data-jump="A sensible order">A sensible learning order</h2>
             <p class="muted">If you remember one thing: go in order and do not skip ahead. A common mistake is jumping straight to Kubernetes before understanding Linux, Git, and Docker, which makes everything confusing.</p>
             <p class="muted"><b>Linux &amp; Git → Docker → CI/CD → one Cloud → Terraform &amp; Kubernetes.</b> Each stage makes the next one make sense.</p>
         </div>
 
         <div class="gsection">
-            <h2 data-jump="Free resources">Free places to learn</h2>
+            <h2 id="free-places-to-learn" data-jump="Free resources">Free places to learn</h2>
             <ul class="muted">
                 <li><a href="https://roadmap.sh/devops" target="_blank" rel="noopener">roadmap.sh/devops</a> - the visual DevOps roadmap.</li>
                 <li><a href="https://docs.docker.com/get-started/" target="_blank" rel="noopener">Docker's official getting started</a> - hands-on and clear.</li>
@@ -186,7 +198,7 @@ jobs:
         </div>
 
         <div class="gsection">
-            <h2 data-jump="What's next">What to do next</h2>
+            <h2 id="what-to-do-next" data-jump="What's next">What to do next</h2>
             <div class="nextlinks">
                 <a href="./full-stack-developer-path.html">🌐 Full-Stack Path</a>
                 <a href="./git-guide.html">🚀 Git Guide</a>
@@ -204,6 +216,6 @@ jobs:
     <div data-component="footer"></div>
     <div data-component="scripts-common"></div>
     <script src="./components/component-loader.js"></script>
-    <script type="module" src="./functions/site.js?v=20260814m"></script>
+    <script type="module" src="./functions/site.js?v=20260816a"></script>
 </body>
 </html>

@@ -15,9 +15,11 @@
     <meta property="og:description" content="Most big companies win by doing one core thing extremely well. Learn the model and apply it to your own product thinking.">
     <meta property="og:url" content="https://shumbul.github.io/Resources/docs/big-tech-core-models.html">
 
-    <link rel="stylesheet" href="./theme-variables.css">
-    <link rel="stylesheet" href="./theme-switcher.css">
-
+    <link rel="stylesheet" href="./theme-variables.css?v=20260816a">
+    <link rel="stylesheet" href="./theme-switcher.css?v=20260816a">
+<!-- BEGIN critical-css (build-critical-css.py) -->
+<link rel="stylesheet" href="./base.css?v=20260816a">
+<!-- END critical-css -->
     <style>
         * {
             box-sizing: border-box;
@@ -864,6 +866,13 @@
     </header>
 
     <main class="main">
+        <!-- BEGIN quick-jump (build-quickjump.py) -->
+        <nav class="quick-jump" aria-label="Quick jump to section">
+            <div class="quick-jump__label">⚡ Quick jump</div>
+            <div class="quick-jump__links"><a href="#the-5-most-important-companies-and-their">Top 5</a><a href="#bonus-netflix-important-but-different">Bonus Netflix</a><a href="#real-pattern-you-should-remember">Pattern table</a><a href="#the-5-models-that-repeat-everywhere">5 models</a></div>
+        </nav>
+        <!-- END quick-jump -->
+
         <div class="container">
             <section class="statement reveal">
                 <p><strong>Core lens:</strong> before you admire a company, decode it. Ask: <code>What is the one problem they dominate?</code> Then ask: <code>How does money repeat?</code></p>
@@ -880,7 +889,7 @@
             </section>
 
             <section class="reveal" id="top5">
-                <h2 class="section-title" data-jump="Top 5">The 5 most important companies and their core engine</h2>
+                <h2 id="the-5-most-important-companies-and-their" class="section-title" data-jump="Top 5">The 5 most important companies and their core engine</h2>
                 <div class="flow-strip" aria-label="Money flow visual for top companies">
                     <div class="flow-card" data-target="ms-section" title="Jump to Microsoft section" role="button" tabindex="0" aria-label="Jump to Microsoft section">
                         <div class="flow-top"><span class="brand-dot b-ms">MS</span><strong>Microsoft</strong></div>
@@ -1007,7 +1016,7 @@
             </section>
 
             <section class="reveal" id="bonus">
-                <h2 class="section-title" data-jump="Bonus Netflix">Bonus: Netflix (important but different)</h2>
+                <h2 id="bonus-netflix-important-but-different" class="section-title" data-jump="Bonus Netflix">Bonus: Netflix (important but different)</h2>
                 <div class="company-card reveal" style="margin-bottom: 1.8rem;">
                     <div class="company-head">
                         <h3 class="company-title"><span class="logo-chip l-nf">NF</span>Netflix - We sell subscription entertainment</h3>
@@ -1022,7 +1031,7 @@
             </section>
 
             <section class="reveal" id="pattern">
-                <h2 class="section-title" data-jump="Pattern table">Real pattern you should remember</h2>
+                <h2 id="real-pattern-you-should-remember" class="section-title" data-jump="Pattern table">Real pattern you should remember</h2>
                 <div class="insight-table">
                     <table>
                         <thead>
@@ -1044,7 +1053,7 @@
             </section>
 
             <section class="reveal" id="models">
-                <h2 class="section-title" data-jump="5 models">The 5 models that repeat everywhere</h2>
+                <h2 id="the-5-models-that-repeat-everywhere" class="section-title" data-jump="5 models">The 5 models that repeat everywhere</h2>
                 <div class="models-grid">
                     <article class="model-pill m1 reveal"><h4>1) Subscription</h4><p>Examples: Microsoft, Netflix, Spotify</p></article>
                     <article class="model-pill m2 reveal"><h4>2) Ads</h4><p>Examples: Google, Meta</p></article>
@@ -1396,6 +1405,6 @@
             window.addEventListener('scroll', updateProgress, { passive: true });
         });
     </script>
-    <script type="module" src="./functions/site.js?v=20260814m"></script>
+    <script type="module" src="./functions/site.js?v=20260816a"></script>
 </body>
 </html>
