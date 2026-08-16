@@ -41,7 +41,7 @@ END = "<!-- END critical-css -->"
 # with the newer HTML and JS gets neither: the JS no longer injects the rules
 # and the cached file does not have them yet, so the hero collapses. The
 # version query makes the two move together.
-VERSION = "20260816b"
+VERSION = "20260816d"
 
 SHEETS = [
     "./theme-variables.css",
