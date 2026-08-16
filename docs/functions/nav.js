@@ -106,11 +106,16 @@ const CSS = `
     display:flex;flex-direction:column;background:var(--bg-secondary,#f7f8fc);
     border-right:1px solid var(--border,#e5e7eb);transition:transform .25s ease;}
 .site-search{padding:.85rem .8rem .4rem;}
+/* The bottom padding clears the Listen button, which is position: fixed in
+   the bottom-left corner at a higher z-index than the sidebar and therefore
+   floats over it. At the previous 2rem the last nav item sat underneath it
+   once the list was scrolled to the end. The button occupies roughly 55px
+   from the bottom edge, so this leaves a comfortable gap above it. */
 .site-search input{width:100%;box-sizing:border-box;padding:.55rem .7rem;border:1px solid var(--border);
     border-radius:10px;background:var(--bg-primary);color:var(--text-primary);
     font:500 .88rem/1 var(--font-sans,inherit);}
 .site-search input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px var(--ring);}
-.site-sidebar__scroll{flex:1;overflow-y:auto;padding:.4rem .8rem 2rem;}
+.site-sidebar__scroll{flex:1;overflow-y:auto;padding:.4rem .8rem 4.5rem;}
 .site-sidebar__group{margin-bottom:1.05rem;}
 .site-sidebar__title{font:700 .72rem/1 var(--font-sans,inherit);text-transform:uppercase;letter-spacing:.08em;
     color:var(--text-secondary,#666);padding:.3rem .7rem .5rem;}

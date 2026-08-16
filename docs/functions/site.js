@@ -14,29 +14,29 @@
  *   2. the ?v=... on the site.js <script> tag in the HTML pages
  *      (docs uses a single value; see ADDING-A-RESOURCE.md).
  */
-import { ensureMeta } from './meta.js?v=20260816c';
-import { renderNav } from './nav.js?v=20260816c';
-import { renderFooter } from './footer.js?v=20260816c';
-import { renderBackLink } from './header.js?v=20260816c';
-import { initCopyButtons } from './copyButtons.js?v=20260816c';
-import { initProgress } from './progress.js?v=20260816c';
-import { initAssistant } from './assistant.js?v=20260816c';
-import { makeScrollablesFocusable } from './a11y.js?v=20260816c';
-import { initMotion } from './motion.js?v=20260816c';
-import { initJourney } from './journey.js?v=20260816c';
-import { initTypewriter } from './typewriter.js?v=20260816c';
-import { initQuickJump } from './quickjump.js?v=20260816c';
-import { initQuizzes } from './quiz.js?v=20260816c';
-import { initFlowMaps } from './flow.js?v=20260816c';
-import { initCharts } from './chart.js?v=20260816c';
-import { initDiagrams } from './diagram.js?v=20260816c';
-import { initPractice } from './practice.js?v=20260816c';
-import { initSeo } from './seo.js?v=20260816c';
-import { initMotivation } from './motivation.js?v=20260816c';
-import { initReadAloud } from './readaloud.js?v=20260816c';
-import { initFuturistic } from './futuristic.js?v=20260816c';
-import { initNotFound } from './notfound.js?v=20260816c';
-import { initInstant } from './instant.js?v=20260816c';
+import { ensureMeta } from './meta.js?v=20260816d';
+import { renderNav } from './nav.js?v=20260816d';
+import { renderFooter } from './footer.js?v=20260816d';
+import { renderBackLink } from './header.js?v=20260816d';
+import { initCopyButtons } from './copyButtons.js?v=20260816d';
+import { initProgress } from './progress.js?v=20260816d';
+import { initAssistant } from './assistant.js?v=20260816d';
+import { makeScrollablesFocusable } from './a11y.js?v=20260816d';
+import { initMotion } from './motion.js?v=20260816d';
+import { initJourney } from './journey.js?v=20260816d';
+import { initTypewriter } from './typewriter.js?v=20260816d';
+import { initQuickJump } from './quickjump.js?v=20260816d';
+import { initQuizzes } from './quiz.js?v=20260816d';
+import { initFlowMaps } from './flow.js?v=20260816d';
+import { initCharts } from './chart.js?v=20260816d';
+import { initDiagrams } from './diagram.js?v=20260816d';
+import { initPractice } from './practice.js?v=20260816d';
+import { initSeo } from './seo.js?v=20260816d';
+import { initMotivation } from './motivation.js?v=20260816d';
+import { initReadAloud } from './readaloud.js?v=20260816d';
+import { initFuturistic } from './futuristic.js?v=20260816d';
+import { initNotFound } from './notfound.js?v=20260816d';
+import { initInstant } from './instant.js?v=20260816d';
 
 const STEPS = [
     ['meta', ensureMeta],
