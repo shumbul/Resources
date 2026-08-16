@@ -761,3 +761,201 @@ body {
 html {
     scrollbar-gutter: stable;
 }
+/* ==========================================================================
+   Motion override, and the "alive" layer.
+
+   Part 1 re-enables animation for visitors who explicitly asked for it via
+   the Motion switch in the top bar (see functions/motionpref.js). Every
+   reduced-motion block on this site sits inside
+   @media (prefers-reduced-motion: reduce), which cannot be undone by another
+   media query, so these rules win on specificity instead: html[data-motion]
+   plus a class is (0,2,0) or better, against the (0,1,0) of the blocks it
+   overrides. The operating system still decides the default. This only fires
+   after someone clicks the switch.
+
+   Part 2 is the motion itself: entrance, hover and idle animation for the
+   card grids, footer and floating buttons, so pages feel alive rather than
+   printed.
+   ========================================================================== */
+
+/* ---------- Part 1: honour an explicit opt-in ---------- */
+
+html[data-motion="on"] .fx-orb,
+html[data-motion="on"] .fx-mesh-grid,
+html[data-motion="on"] .fx-aurora i,
+html[data-motion="on"] .fx-bubble {
+    animation-play-state: running !important;
+}
+
+html[data-motion="on"] .fx-orb.o1 { animation: fxOrb1 22s ease-in-out infinite !important; }
+html[data-motion="on"] .fx-orb.o2 { animation: fxOrb2 27s ease-in-out infinite !important; }
+html[data-motion="on"] .fx-orb.o3 { animation: fxOrb3 31s ease-in-out infinite !important; }
+html[data-motion="on"] .fx-orb.o4 { animation: fxOrb1 36s ease-in-out infinite reverse !important; }
+html[data-motion="on"] .fx-mesh-grid { animation: fxGridDrift 20s linear infinite !important; }
+html[data-motion="on"] .fx-bubbles { display: block !important; }
+html[data-motion="on"] .fx-bubble { animation-name: fxBubble !important; }
+html[data-motion="on"] .fx-aurora i:nth-child(1) { animation: fxDrift1 34s ease-in-out infinite !important; }
+html[data-motion="on"] .fx-aurora i:nth-child(2) { animation: fxDrift2 42s ease-in-out infinite !important; }
+html[data-motion="on"] .fx-aurora i:nth-child(3) { animation: fxDrift3 48s ease-in-out infinite !important; }
+
+html[data-motion="on"] .fx-in {
+    transition: opacity .7s var(--fx-ease, ease), transform .7s var(--fx-ease, ease) !important;
+}
+
+html[data-motion="on"] [data-reveal] {
+    transition: opacity .6s ease, transform .6s ease !important;
+}
+
+/* ---------- Part 2: the alive layer ---------- */
+
+/*
+ * Card grids. Cards rise and fade in as the grid scrolls into view, one just
+ * after the next. Only opacity and transform are animated, so this cannot
+ * move any surrounding box and cannot cost layout shift.
+ */
+.channels > *,
+.collab-grid > *,
+.resources-grid > *,
+.values > *,
+.kit > * {
+    --rise-delay: 0ms;
+}
+
+/*
+ * The starting (hidden) state is applied only to grids that reveal.js has
+ * marked with .rv-stagger, and only once it has confirmed it can observe
+ * them. If JavaScript never runs, or IntersectionObserver is missing, the
+ * class is never added and every card renders normally. Hiding cards from a
+ * plain CSS rule would leave them invisible forever on any failure.
+ */
+html[data-motion-active="yes"] .rv-stagger > * {
+    opacity: 0;
+    transform: translateY(14px);
+}
+
+html[data-motion-active="yes"] .rv-stagger.is-inview > * {
+    animation: cardRise .62s cubic-bezier(.22, 1, .36, 1) both;
+    animation-delay: var(--rise-delay);
+}
+
+@keyframes cardRise {
+    from { opacity: 0; transform: translateY(14px) scale(.985); }
+    to   { opacity: 1; transform: none; }
+}
+
+/* Hover: lift the card, and give its icon a little life. */
+.channel,
+.collab {
+    position: relative;
+    overflow: hidden;
+}
+
+.channel .ic,
+.collab .ic {
+    display: inline-block;
+    transition: transform .32s cubic-bezier(.34, 1.56, .64, 1);
+}
+
+html[data-motion-active="yes"] .channel:hover .ic,
+html[data-motion-active="yes"] .collab:hover .ic,
+html[data-motion-active="yes"] .channel:focus-visible .ic,
+html[data-motion-active="yes"] .collab:focus-visible .ic {
+    transform: translateY(-3px) scale(1.18) rotate(-6deg);
+}
+
+/*
+ * A shine that sweeps across the card on hover. Pure decoration, sits behind
+ * nothing and catches no pointer events.
+ */
+.channel::after,
+.collab::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -60%;
+    width: 45%;
+    height: 100%;
+    pointer-events: none;
+    background: linear-gradient(100deg, transparent,
+        color-mix(in oklab, var(--primary) 12%, transparent), transparent);
+    opacity: 0;
+}
+
+html[data-motion-active="yes"] .channel:hover::after,
+html[data-motion-active="yes"] .collab:hover::after {
+    animation: cardShine .75s ease forwards;
+}
+
+@keyframes cardShine {
+    from { left: -60%; opacity: 0; }
+    35%  { opacity: 1; }
+    to   { left: 115%; opacity: 0; }
+}
+
+/* Idle float on the collaboration icons, so the grid is never fully still. */
+html[data-motion-active="yes"] .collab-grid .ic,
+html[data-motion-active="yes"] .channels .ic {
+    animation: iconFloat 4.5s ease-in-out infinite;
+    animation-delay: var(--rise-delay, 0ms);
+}
+
+html[data-motion-active="yes"] .collab:hover .ic,
+html[data-motion-active="yes"] .channel:hover .ic {
+    animation-play-state: paused;
+}
+
+@keyframes iconFloat {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-3.5px); }
+}
+
+/* Footer social icons: a quick pop on hover. */
+.social-link, .footer-content .social-link {
+    transition: transform .28s cubic-bezier(.34, 1.56, .64, 1),
+                box-shadow .28s ease, filter .28s ease;
+}
+
+html[data-motion-active="yes"] .social-link:hover,
+html[data-motion-active="yes"] .social-link:focus-visible {
+    transform: translateY(-4px) scale(1.12) rotate(-5deg);
+}
+
+/* Ask AI button: a slow breathing halo so it reads as interactive. */
+html[data-motion-active="yes"] .ai-fab::after {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    border-radius: inherit;
+    pointer-events: none;
+    box-shadow: 0 0 0 0 var(--ring, rgba(139, 92, 246, .45));
+    animation: fabPulse 3.4s ease-out infinite;
+}
+
+.ai-fab { position: relative; }
+
+@keyframes fabPulse {
+    0%   { box-shadow: 0 0 0 0 var(--ring, rgba(139, 92, 246, .45)); opacity: .9; }
+    70%  { box-shadow: 0 0 0 14px rgba(139, 92, 246, 0); opacity: 0; }
+    100% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0); opacity: 0; }
+}
+
+/* Section headings on the guide pages get an underline that draws itself. */
+html[data-motion-active="yes"] .gsection h2 {
+    position: relative;
+}
+
+html[data-motion-active="yes"] .gsection.is-inview h2::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    height: 3px;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    animation: underlineDraw .7s cubic-bezier(.22, 1, .36, 1) .1s both;
+}
+
+@keyframes underlineDraw {
+    from { width: 0; opacity: 0; }
+    to   { width: 46px; opacity: 1; }
+}

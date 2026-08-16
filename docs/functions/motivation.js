@@ -1,3 +1,5 @@
+import { motionAllowed, onMotionChange } from './motionpref.js?v=20260816a';
+
 /**
  * motivation.js
  * A slow marquee of short, ethical, attributed encouragement lines that sits
@@ -108,10 +110,9 @@ export function initMotivation() {
     strip.addEventListener('focus', () => strip.classList.add('is-paused'));
     strip.addEventListener('blur', () => strip.classList.remove('is-paused'));
 
-    // Reduced motion: swap the slide for a cross-fade carousel. The media
-    // query is watched live, so toggling the operating system setting takes
-    // effect without a reload.
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+    // Reduced motion: swap the slide for a cross-fade carousel. The resolved
+    // preference is watched live, so both the operating system setting and
+    // the Motion switch in the top bar take effect without a reload.
     let timer = null;
 
     function startFade() {
@@ -134,16 +135,12 @@ export function initMotivation() {
     }
 
     function applyMotionPreference() {
-        if (reduce.matches) startFade();
-        else stopFade();
+        if (motionAllowed()) stopFade();
+        else startFade();
     }
 
     applyMotionPreference();
-    if (reduce.addEventListener) {
-        reduce.addEventListener('change', applyMotionPreference);
-    } else if (reduce.addListener) {
-        reduce.addListener(applyMotionPreference);
-    }
+    onMotionChange(applyMotionPreference);
 
     // place it directly before the footer
     const footer = document.querySelector('footer') ||
