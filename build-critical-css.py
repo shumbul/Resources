@@ -1,18 +1,25 @@
 # -*- coding: utf-8 -*-
 """
-Move the critical stylesheet links out of the JavaScript-loaded partial and
-into each page's real <head>.
+Move the critical stylesheets out of the JavaScript-loaded partial and into
+each page's real <head>.
 
 Why this matters:
-    components/head-common.html carries the two stylesheets that define the
-    layout (theme-variables.css, theme-switcher.css). That partial is fetched
-    by component-loader.js, so on 32 of 33 pages the CSS did not exist until
-    JavaScript had run. The page therefore painted unstyled, then jumped when
-    the CSS finally applied. That is the dominant cause of the measured CLS
-    of 1.49 on guide pages.
+    components/head-common.html carried the stylesheets that define the
+    layout: theme-variables.css, theme-switcher.css, and a large inline
+    <style> block with the box-sizing reset and the base margins for body,
+    headings, paragraphs and .container (now extracted to base.css).
+
+    That partial is fetched by component-loader.js, so on 32 of 33 pages none
+    of it existed until JavaScript had run. The page painted unstyled and then
+    jumped when the CSS finally applied. That was the dominant cause of the
+    measured CLS of 1.49 on guide pages, and the leftover inline block was
+    still worth up to 0.61 after the two <link> tags had been hoisted.
 
     index.html already linked them directly, which is exactly why it measured
     0.265 instead.
+
+    base.css is linked last of the three so it keeps the cascade position the
+    inline block used to have.
 
 Idempotent: safe to re-run.
 """
@@ -26,12 +33,28 @@ SKIP = {"component-demo.html"}
 BEGIN = "<!-- BEGIN critical-css (build-critical-css.py) -->"
 END = "<!-- END critical-css -->"
 
-BLOCK = "\n".join([
-    BEGIN,
-    '<link rel="stylesheet" href="./theme-variables.css">',
-    '<link rel="stylesheet" href="./theme-switcher.css">',
-    END,
-])
+# Cache-busting version for the stylesheets. Bump this whenever any of the
+# sheets below changes, and keep it equal to the ?v= on the site.js script tag.
+#
+# This matters more than it looks. These sheets carry layout that used to be
+# injected by JavaScript. A browser holding an older copy of the CSS together
+# with the newer HTML and JS gets neither: the JS no longer injects the rules
+# and the cached file does not have them yet, so the hero collapses. The
+# version query makes the two move together.
+VERSION = "20260816a"
+
+SHEETS = [
+    "./theme-variables.css",
+    "./theme-switcher.css",
+    "./base.css",
+]
+
+
+def link(href):
+    return '<link rel="stylesheet" href="{0}?v={1}">'.format(href, VERSION)
+
+
+BLOCK = "\n".join([BEGIN] + [link(h) for h in SHEETS] + [END])
 
 
 def read(p):
@@ -44,34 +67,96 @@ def write(p, s):
         f.write(s)
 
 
+def version_links(src, upto):
+    """Point every existing link at the current version of these sheets."""
+    changed = False
+    head, tail = src[:upto], src[upto:]
+    for h in SHEETS:
+        pat = re.compile(
+            r'<link\b[^>]*\bhref="' + re.escape(h) + r'(?:\?v=[^"]*)?"[^>]*>')
+        new_head, n = pat.subn(link(h), head)
+        if n:
+            changed = changed or new_head != head
+            head = new_head
+    return head + tail, changed
+
+
+def head_boundary(src):
+    """
+    Where the real <head> ends.
+
+    Pages carry <div data-component="head-common"> inside <head>. A <div> is
+    not valid head content, so the parser implicitly closes <head> there and
+    everything after it lands in <body>. Stylesheets have to go before it.
+    """
+    m = re.search(r'<div\s+data-component=["\']head-common["\']', src)
+    if m is not None:
+        return m.start()
+    i = src.find("</head>")
+    return i if i > 0 else len(src)
+
+
 def process(path, check_only=False):
     src = read(path)
+    original = src
     if "<head>" not in src:
         return None
 
-    # already correct?
-    if BEGIN in src:
-        return False
+    # Refresh the version on any link the page already carries. This runs
+    # first: it changes the length of the document, so doing it after the
+    # insertion point had been chosen would shift that point into the middle
+    # of a tag.
+    src, _ = version_links(src, head_boundary(src))
 
-    # If the page already links theme-variables.css directly in head, leave it.
-    head_end = src.find("</head>")
-    head_region = src[:head_end] if head_end > 0 else src
-    # but the div forces an implicit head close, so measure to that instead
-    m_div = re.search(r'<div\s+data-component=["\']head-common["\']', src)
-    boundary = m_div.start() if m_div else head_end
+    # Strip any previously generated block, so the sheet list can change and
+    # so a page that links some sheets itself is measured correctly.
+    anchor = None
+    if BEGIN in src:
+        i = src.index(BEGIN)
+        j = src.index(END, i) + len(END)
+        while j < len(src) and src[j] in "\r\n":
+            j += 1
+        k = i
+        while k > 0 and src[k - 1] in "\r\n":
+            k -= 1
+        anchor = k
+        src = src[:k] + src[j:]
+
+    boundary = head_boundary(src)
     real_head = src[:boundary]
 
-    if 'href="./theme-variables.css"' in real_head:
-        return False
+    missing = [h for h in SHEETS if 'href="{0}?v='.format(h) not in real_head]
+    if not missing:
+        if src == original:
+            return False
+        if not check_only:
+            write(path, src)
+        return True
 
-    # insert right after <meta charset>, which must stay first
-    m = re.search(r'<meta\s+charset=[^>]*>', src, re.I)
-    if m:
-        i = m.end()
+    block = "\n".join([BEGIN] + [link(h) for h in missing] + [END])
+
+    if anchor is not None:
+        i = anchor
     else:
-        i = src.index("<head>") + len("<head>")
+        linked = [h for h in SHEETS if 'href="{0}?v='.format(h) in real_head]
+        if linked:
+            # Keep the documented order: place it after the last sheet the
+            # page already links itself, at the end of that whole tag.
+            last = max(real_head.rfind('href="{0}?v='.format(h)) for h in linked)
+            i = src.index(">", last) + 1
+        else:
+            # insert right after <meta charset>, which must stay first
+            m = re.search(r'<meta\s+charset=[^>]*>', src, re.I)
+            i = m.end() if m else src.index("<head>") + len("<head>")
 
-    out = src[:i] + "\n" + BLOCK + src[i:]
+    # Always terminate the block with exactly one newline. strip_existing()
+    # consumes the trailing newlines, so this round-trips cleanly no matter
+    # which order the build scripts ran in. Without it, a page written by
+    # build-seo.py after this script kept an extra blank line and --check
+    # reported it as stale forever.
+    out = src[:i] + "\n" + block + "\n" + src[i:]
+    if out == original:
+        return False
     if not check_only:
         write(path, out)
     return True

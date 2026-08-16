@@ -6,8 +6,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap">
     <meta charset="UTF-8">
 <!-- BEGIN critical-css (build-critical-css.py) -->
-<link rel="stylesheet" href="./theme-variables.css">
-<link rel="stylesheet" href="./theme-switcher.css">
+<link rel="stylesheet" href="./theme-variables.css?v=20260816a">
+<link rel="stylesheet" href="./theme-switcher.css?v=20260816a">
+<link rel="stylesheet" href="./base.css?v=20260816a">
 <!-- END critical-css -->
 <!-- BEGIN generated-seo (build-seo.py) -->
 <link rel="canonical" href="https://shumbul.github.io/Resources/dbms-deep-dive.html">
@@ -68,6 +69,10 @@
 
     <header class="guide-header">
         <div class="container">
+        <!-- BEGIN back-link (build-backlink.py) -->
+        <div class="back-link-row"><a class="back-link" href="./index.html"><span aria-hidden="true">&larr;</span> Back to Resources</a></div>
+        <!-- END back-link -->
+
             <h1 class="guide-title">🗃️ DBMS Deep Dive</h1>
             <p class="guide-sub">Databases power almost every app, so interviews probe them hard. Learn the core ideas with clear examples, then test yourself with a quiz after every section and a scored final quiz.</p>
             <div class="guide-badges">
@@ -79,8 +84,15 @@
     </header>
 
     <main class="container">
+        <!-- BEGIN quick-jump (build-quickjump.py) -->
+        <nav class="quick-jump" aria-label="Quick jump to section">
+            <div class="quick-jump__label">⚡ Quick jump</div>
+            <div class="quick-jump__links"><a href="#keys-how-rows-are-identified-and-linked">Keys</a><a href="#normalization">Normalization</a><a href="#acid-transactions">ACID</a><a href="#indexing">Indexing</a><a href="#sql-vs-nosql">SQL vs NoSQL</a><a href="#final-quiz">Final quiz</a><a href="#what-to-do-next">What&#x27;s next</a></div>
+        </nav>
+        <!-- END quick-jump -->
+
         <div class="gsection">
-            <h2 data-jump="Keys">Keys: how rows are identified and linked</h2>
+            <h2 id="keys-how-rows-are-identified-and-linked" data-jump="Keys">Keys: how rows are identified and linked</h2>
             <p class="muted">Keys are how a database uniquely identifies rows and connects tables.</p>
             <div class="key"><ul>
                 <li><b>Primary key</b> - uniquely identifies each row (e.g. <code>student_id</code>). One per table, never null.</li>
@@ -101,7 +113,7 @@
         </div>
 
         <div class="gsection">
-            <h2 data-jump="Normalization">Normalization</h2>
+            <h2 id="normalization" data-jump="Normalization">Normalization</h2>
             <p class="muted"><b>Normalization</b> organizes tables to reduce duplicate data and prevent update anomalies. You split data so each fact lives in exactly one place.</p>
             <table class="tbl">
                 <thead><tr><th>Form</th><th>Rule (informally)</th></tr></thead>
@@ -125,7 +137,7 @@
         </div>
 
         <div class="gsection">
-            <h2 data-jump="ACID">ACID &amp; transactions</h2>
+            <h2 id="acid-transactions" data-jump="ACID">ACID &amp; transactions</h2>
             <p class="muted">A <b>transaction</b> is a group of operations treated as one unit. <b>ACID</b> is the set of guarantees that keep transactions reliable:</p>
             <div class="key"><ul>
                 <li><b>Atomicity</b> - all steps succeed, or none do (no half-done transactions).</li>
@@ -146,7 +158,7 @@
         </div>
 
         <div class="gsection">
-            <h2 data-jump="Indexing">Indexing</h2>
+            <h2 id="indexing" data-jump="Indexing">Indexing</h2>
             <p class="muted">An <b>index</b> is a separate data structure (often a B-tree) that lets the database find rows fast without scanning the whole table. Add indexes to columns you frequently filter (<code>WHERE</code>) or join on.</p>
             <div class="analogy"><b>Analogy:</b> the index at the back of a textbook. To find "photosynthesis" you do not read every page, you jump to the index, get the page number, and go straight there. Without it, you would scan the whole book (a full table scan).</div>
             <div class="key"><b>Trade-off:</b><ul>
@@ -166,7 +178,7 @@
         </div>
 
         <div class="gsection">
-            <h2 data-jump="SQL vs NoSQL">SQL vs NoSQL</h2>
+            <h2 id="sql-vs-nosql" data-jump="SQL vs NoSQL">SQL vs NoSQL</h2>
             <table class="tbl">
                 <thead><tr><th></th><th>SQL (relational)</th><th>NoSQL</th></tr></thead>
                 <tbody>
@@ -189,7 +201,7 @@
         </div>
 
         <div class="gsection">
-            <h2 data-jump="Final quiz">Final quiz</h2>
+            <h2 id="final-quiz" data-jump="Final quiz">Final quiz</h2>
             <p class="muted">Ten questions across keys, normalization, ACID, indexing, and SQL vs NoSQL. Aim for 7+.</p>
             <div class="quiz quiz-final" data-quiz-title="DBMS: final quiz">
                 <script type="application/json">
@@ -210,7 +222,7 @@
         </div>
 
         <div class="gsection">
-            <h2 data-jump="What's next">What to do next</h2>
+            <h2 id="what-to-do-next" data-jump="What's next">What to do next</h2>
             <div class="nextlinks">
                 <a href="./sql-databases-guide.html">🗄️ SQL &amp; Databases</a>
                 <a href="./cs-fundamentals-guide.html">🧠 CS Fundamentals</a>
@@ -229,6 +241,6 @@
     <div data-component="footer"></div>
     <div data-component="scripts-common"></div>
     <script src="./components/component-loader.js"></script>
-    <script type="module" src="./functions/site.js?v=20260814m"></script>
+    <script type="module" src="./functions/site.js?v=20260816a"></script>
 </body>
 </html>

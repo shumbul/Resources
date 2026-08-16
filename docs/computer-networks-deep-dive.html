@@ -6,8 +6,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap">
     <meta charset="UTF-8">
 <!-- BEGIN critical-css (build-critical-css.py) -->
-<link rel="stylesheet" href="./theme-variables.css">
-<link rel="stylesheet" href="./theme-switcher.css">
+<link rel="stylesheet" href="./theme-variables.css?v=20260816a">
+<link rel="stylesheet" href="./theme-switcher.css?v=20260816a">
+<link rel="stylesheet" href="./base.css?v=20260816a">
 <!-- END critical-css -->
 <!-- BEGIN generated-seo (build-seo.py) -->
 <link rel="canonical" href="https://shumbul.github.io/Resources/computer-networks-deep-dive.html">
@@ -69,6 +70,10 @@
 
     <header class="guide-header">
         <div class="container">
+        <!-- BEGIN back-link (build-backlink.py) -->
+        <div class="back-link-row"><a class="back-link" href="./index.html"><span aria-hidden="true">&larr;</span> Back to Resources</a></div>
+        <!-- END back-link -->
+
             <h1 class="guide-title">🌐 Computer Networks Deep Dive</h1>
             <p class="guide-sub">Every web app talks over a network, so interviewers love this subject. Learn the layers, protocols, and the famous "what happens when you type a URL" walkthrough, with a quiz after each section and a scored final quiz.</p>
             <div class="guide-badges">
@@ -80,8 +85,15 @@
     </header>
 
     <main class="container">
+        <!-- BEGIN quick-jump (build-quickjump.py) -->
+        <nav class="quick-jump" aria-label="Quick jump to section">
+            <div class="quick-jump__label">⚡ Quick jump</div>
+            <div class="quick-jump__links"><a href="#osi-tcp-ip-models">Models</a><a href="#tcp-vs-udp">TCP vs UDP</a><a href="#http-https-status-codes">HTTP</a><a href="#dns-names-to-addresses">DNS</a><a href="#what-happens-when-you-visit-a-url">URL walkthrough</a><a href="#final-quiz">Final quiz</a><a href="#what-to-do-next">What&#x27;s next</a></div>
+        </nav>
+        <!-- END quick-jump -->
+
         <div class="gsection">
-            <h2 data-jump="Models">OSI &amp; TCP/IP models</h2>
+            <h2 id="osi-tcp-ip-models" data-jump="Models">OSI &amp; TCP/IP models</h2>
             <p class="muted">Networking is built in <b>layers</b>, each doing one job and talking only to the layers next to it. The <b>OSI</b> model has 7 layers (a teaching model); the <b>TCP/IP</b> model has 4 (what the internet actually uses).</p>
             <table class="tbl">
                 <thead><tr><th>Layer (top to bottom)</th><th>Job</th><th>Example</th></tr></thead>
@@ -105,7 +117,7 @@
         </div>
 
         <div class="gsection">
-            <h2 data-jump="TCP vs UDP">TCP vs UDP</h2>
+            <h2 id="tcp-vs-udp" data-jump="TCP vs UDP">TCP vs UDP</h2>
             <p class="muted">Both are transport-layer protocols, but they make opposite trade-offs.</p>
             <table class="tbl">
                 <thead><tr><th></th><th>TCP</th><th>UDP</th></tr></thead>
@@ -130,7 +142,7 @@
         </div>
 
         <div class="gsection">
-            <h2 data-jump="HTTP">HTTP, HTTPS &amp; status codes</h2>
+            <h2 id="http-https-status-codes" data-jump="HTTP">HTTP, HTTPS &amp; status codes</h2>
             <p class="muted"><b>HTTP</b> is the application-layer protocol browsers use to request web resources. <b>HTTPS</b> is HTTP wrapped in TLS encryption, so no one in the middle can read or tamper with it.</p>
             <div class="key"><b>Status code families:</b><ul>
                 <li><b>2xx</b> success (200 OK).</li>
@@ -151,7 +163,7 @@
         </div>
 
         <div class="gsection">
-            <h2 data-jump="DNS">DNS: names to addresses</h2>
+            <h2 id="dns-names-to-addresses" data-jump="DNS">DNS: names to addresses</h2>
             <p class="muted"><b>DNS</b> (Domain Name System) is the internet's phone book: it translates a human name like <code>github.com</code> into the IP address machines actually use to connect.</p>
             <div class="analogy"><b>Analogy:</b> you remember "Mom" in your contacts, not her full phone number. DNS is that contact list for the whole internet, you type a name, it finds the number.</div>
             <p class="muted">A lookup may pass through several DNS servers (resolver → root → TLD → authoritative), and results are <b>cached</b> along the way so repeat visits are fast.</p>
@@ -167,7 +179,7 @@
         </div>
 
         <div class="gsection">
-            <h2 data-jump="URL walkthrough">What happens when you visit a URL</h2>
+            <h2 id="what-happens-when-you-visit-a-url" data-jump="URL walkthrough">What happens when you visit a URL</h2>
             <p class="muted">The classic interview question. Here is the chain, left to right:</p>
             <div class="flowmap" data-flow="DNS lookup|🔎, TCP handshake|🤝, TLS handshake|🔒, HTTP request|📤, Server responds|📥, Render|🖼️"></div>
             <p class="muted">In words: the browser resolves the domain to an IP via <b>DNS</b>, opens a <b>TCP</b> connection (plus a <b>TLS</b> handshake for HTTPS), sends an <b>HTTP</b> request, the server returns HTML, and the browser renders it, fetching CSS, JS, and images as needed. You can watch this live with <code>curl -v</code> in the <a href="./networking-toolkit.html">Networking Toolkit</a>.</p>
@@ -183,7 +195,7 @@
         </div>
 
         <div class="gsection">
-            <h2 data-jump="Final quiz">Final quiz</h2>
+            <h2 id="final-quiz" data-jump="Final quiz">Final quiz</h2>
             <p class="muted">Ten questions across models, TCP/UDP, HTTP, DNS, and the URL walkthrough. Aim for 7+.</p>
             <div class="quiz quiz-final" data-quiz-title="Computer Networks: final quiz">
                 <script type="application/json">
@@ -204,7 +216,7 @@
         </div>
 
         <div class="gsection">
-            <h2 data-jump="What's next">What to do next</h2>
+            <h2 id="what-to-do-next" data-jump="What's next">What to do next</h2>
             <div class="nextlinks">
                 <a href="./networking-toolkit.html">🛰️ Networking Toolkit</a>
                 <a href="./cs-fundamentals-guide.html">🧠 CS Fundamentals</a>
@@ -223,6 +235,6 @@
     <div data-component="footer"></div>
     <div data-component="scripts-common"></div>
     <script src="./components/component-loader.js"></script>
-    <script type="module" src="./functions/site.js?v=20260814m"></script>
+    <script type="module" src="./functions/site.js?v=20260816a"></script>
 </body>
 </html>

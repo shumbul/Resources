@@ -8,9 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- Core Theme Variables (Load First) -->
-    <link rel="stylesheet" href="./theme-variables.css">
+    <link rel="stylesheet" href="./theme-variables.css?v=20260816a">
     <!-- Theme Switcher CSS -->
-    <link rel="stylesheet" href="./theme-switcher.css">
+    <link rel="stylesheet" href="./theme-switcher.css?v=20260816a">
+<!-- BEGIN critical-css (build-critical-css.py) -->
+<link rel="stylesheet" href="./base.css?v=20260816a">
+<!-- END critical-css -->
     
 <!-- BEGIN generated-seo (build-seo.py) -->
 <link rel="canonical" href="https://shumbul.github.io/Resources/">
@@ -311,78 +314,7 @@
             color: var(--text-secondary);
         }
 
-        /* Footer */
-        footer {
-            background: var(--text-primary);
-            color: white;
-            padding: 4rem 0 2rem;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: grid;
-            /* About + search on the left, Quick Links fills the wider right
-               side. Previously all three were equal columns, which left a
-               large empty area under Find Resources. */
-            grid-template-columns: minmax(260px, 1fr) minmax(0, 1.85fr);
-            gap: 3rem;
-            align-items: start;
-        }
-
-        /* Quick Links occupies the right column and organises its own links
-           into categories, so the footer gets wider rather than taller. */
-        .footer-section.quick-links { grid-column: 2; grid-row: 1 / span 2; }
-        .footer-section.about-section { grid-column: 1; }
-        .footer-section.find-section { grid-column: 1; }
-
-        .ql-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1.25rem 1.5rem;
-            text-align: left;      /* columns are far easier to scan left-aligned */
-        }
-        .ql-cat {
-            font-size: .72rem;
-            font-weight: 700;
-            letter-spacing: .09em;
-            text-transform: uppercase;
-            color: var(--primary);
-            margin: 0 0 .55rem;
-            opacity: .95;
-        }
-        .quick-links .ql-grid ul { list-style: none; margin: 0; padding: 0; }
-        .quick-links .ql-grid li { margin: 0 0 .38rem; }
-        .quick-links .ql-grid a {
-            font-size: .88rem;
-            line-height: 1.4;
-            display: inline-block;
-            transition: color .18s ease, transform .18s ease;
-        }
-        .quick-links .ql-grid a:hover { transform: translateX(3px); }
-
         @media (max-width: 900px) {
-            .footer-content { grid-template-columns: 1fr; gap: 2.25rem; }
-            .footer-section.quick-links,
-            .footer-section.about-section,
-            .footer-section.find-section { grid-column: 1; grid-row: auto; }
-            .ql-grid { grid-template-columns: repeat(2, 1fr); gap: 1.1rem 1rem; }
-        }
-
-        .footer-section h3 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            color: white;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .footer-section p, .footer-section li {
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.6;
         }
 
         .about-section {
@@ -391,32 +323,6 @@
 
         .about-section p {
             margin-bottom: 1rem;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .social-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 2.5rem;
-            height: 2.5rem;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 50%;
-            color: white;
-            text-decoration: none;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
-            font-size: 1.2rem;
-        }
-
-        .social-link:hover {
-            filter: brightness(1.08);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow, 0 6px 16px -8px rgba(15,23,42,.45));
         }
 
         .quick-links ul {
@@ -439,81 +345,6 @@
 
         .quick-links a:hover {
             color: white;
-        }
-
-        .footer-search {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
-            padding: 0.75rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .footer-search input {
-            flex: 1;
-            background: transparent;
-            border: none;
-            outline: none;
-            color: white;
-            font-size: 0.9rem;
-        }
-
-        .footer-search input::placeholder {
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        .footer-search svg {
-            width: 16px;
-            height: 16px;
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        .search-suggestions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-
-        .suggestion-tag {
-            background: rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.9);
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .suggestion-tag:hover {
-            background: var(--primary);
-            color: white;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            margin-top: 3rem;
-            padding-top: 2rem;
-            text-align: center;
-            color: rgba(255, 255, 255, 0.85);
-        }
-
-        .footer-bottom p {
-            margin: 0.5rem 0;
-            color: rgba(255, 255, 255, 0.85);
-        }
-
-        .footer-bottom a {
-            color: var(--accent);
-            text-decoration: none;
-        }
-
-        .footer-bottom a:hover {
-            text-decoration: underline;
         }
 
         /* Responsive */
@@ -545,30 +376,6 @@
 
             .search-box {
                 padding: 0.75rem;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-                padding: 0 1rem;
-            }
-
-            .social-links {
-                justify-content: center;
-            }
-
-            .search-suggestions {
-                justify-content: center;
-            }
-
-            .footer-bottom {
-                text-align: center;
-                font-size: 0.9rem;
-            }
-
-            .footer-section h3 {
-                text-align: center;
-                justify-content: center;
             }
 
             .about-section {
@@ -775,7 +582,6 @@
             </div>
         </div>
     </header>
-
     <section class="bento-section" aria-labelledby="featuredHeading">
         <div class="container">
             <h2 id="featuredHeading" class="sr-only">Featured resources</h2>
@@ -895,7 +701,7 @@
 
     <section class="nav-section">
         <div class="container">
-            <!-- <h2 class="section-title">Resources & Guides</h2> -->
+            <!-- <h2 id="resources-guides" class="section-title">Resources & Guides</h2> -->
             
             <!-- Search Bar -->
             <div class="search-container">
@@ -925,7 +731,7 @@
                 </div>
             </div>
             
-            <h2 class="sr-only">All resources</h2>
+            <h2 id="all-resources" class="sr-only">All resources</h2>
             <div class="resources-grid">
                 <div class="resource-card animate-in clickable" onclick="window.location.href='./12-week-roadmap.html'">
                     <div class="resource-icon">📋</div>
@@ -1285,117 +1091,7 @@
         </div>
     </section>
 
-    <footer>
-        <div class="footer-content">
-            <!-- About Section -->
-            <div class="footer-section about-section">
-                <h3>👋 About Shumbul Arifa</h3>
-                <p>
-                    Tech enthusiast passionate about helping others break into the tech industry. 
-                    Creating comprehensive guides, roadmaps, and resources to accelerate your career journey.
-                </p>
-                <p>
-                    From career clarity to landing your dream job - let's build your tech future together! 🚀
-                </p>
-                <div class="social-links">
-                    <a href="https://linktree.com/shumbul" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Linktree">
-                        🌐
-                    </a>
-                    <a href="https://linkedin.com/in/shumbul" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                        💼
-                    </a>
-                    <a href="https://www.youtube.com/@Shumbul" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-                        📺
-                    </a>
-                    <a href="https://github.com/shumbul" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                        💻
-                    </a>
-                    <a href="mailto:shumbularifa@outlook.com" class="social-link" aria-label="Email">
-                        📧
-                    </a>
-                </div>
-            </div>
-
-            <!-- Quick Links: grouped, spans the remaining two columns so it
-                 fills the empty space on the right instead of adding height -->
-            <div class="footer-section quick-links">
-                <h3>📚 Quick Links</h3>
-                <div class="ql-grid">
-                    <div class="ql-group">
-                        <p class="ql-cat">Roadmaps</p>
-                        <ul>
-                            <li><a href="./12-week-roadmap.html">12-Week Roadmap</a></li>
-                            <li><a href="./AI-Roadmap.html">AI Developer</a></li>
-                            <li><a href="./prompt-engineering-roadmap.html">Prompt Engineering</a></li>
-                            <li><a href="./cybersecurity-roadmap.html">Cyber Security</a></li>
-                        </ul>
-                    </div>
-                    <div class="ql-group">
-                        <p class="ql-cat">Core skills</p>
-                        <ul>
-                            <li><a href="./dsa-practice-guide.html">DSA Practice</a></li>
-                            <li><a href="./system-design-templates.html">System Design</a></li>
-                            <li><a href="./cs-fundamentals-guide.html">CS Fundamentals</a></li>
-                            <li><a href="./git-guide.html">Git Guide</a></li>
-                        </ul>
-                    </div>
-                    <div class="ql-group">
-                        <p class="ql-cat">Land the job</p>
-                        <ul>
-                            <li><a href="./resume-portfolio-templates.html">Resume &amp; Portfolio</a></li>
-                            <li><a href="./interview-prep-kit.html">Interview Prep</a></li>
-                            <li><a href="./trending-tech-roles.html">Trending Roles</a></li>
-                            <li><a href="./salary-negotiation-guide.html">Salary Negotiation</a></li>
-                        </ul>
-                    </div>
-                    <div class="ql-group">
-                        <p class="ql-cat">More</p>
-                        <ul>
-                            <li><a href="./linkedin-utilization-guide.html">LinkedIn Guide</a></li>
-                            <li><a href="./ai-tools.html">AI Tools</a></li>
-                            <li><a href="./career-portals.html">Career Portals</a></li>
-                            <li><a href="./about.html">About</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Search Resources -->
-            <div class="footer-section find-section">
-                <h3>🔍 Find Resources</h3>
-                <p style="margin-bottom: 1rem;">Quick search through all guides and resources:</p>
-                <div class="footer-search">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <path d="m21 21-4.35-4.35"></path>
-                    </svg>
-                    <input 
-                        type="text" 
-                        id="footerSearch" 
-                        placeholder="Search resources..."
-                        aria-label="Search resources from footer"
-                    >
-                </div>
-                <div class="search-suggestions">
-                    <span class="suggestion-tag" data-search="linkedin">LinkedIn</span>
-                    <span class="suggestion-tag" data-search="git">Git</span>
-                    <span class="suggestion-tag" data-search="ai">AI</span>
-                    <span class="suggestion-tag" data-search="roadmap">Roadmap</span>
-                    <span class="suggestion-tag" data-search="career">Career</span>
-                    <span class="suggestion-tag" data-search="interview">Interview</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <p>© 2026 Shumbul Arifa. Made with ❤️ for the tech community.</p>
-            <p>
-                <a href="https://linktree.com/shumbul" target="_blank" rel="noopener noreferrer">🌐 Visit Linktree</a> • 
-                <a href="#" onclick="scrollToTop()">⬆️ Back to Top</a> • 
-                <a href="mailto:shumbularifa@outlook.com">📧 Get in Touch</a>
-            </p>
-        </div>
-    </footer>
+    <div data-component="footer"></div>
     <div data-component="scripts-common"></div>
     <script src="./components/component-loader.js"></script>
 
@@ -1529,55 +1225,8 @@
                 card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
                 observer.observe(card);
             });
-
-            // Footer search functionality
-            const footerSearch = document.getElementById('footerSearch');
-            const suggestionTags = document.querySelectorAll('.suggestion-tag');
-
-            // Connect footer search to main search
-            if (footerSearch) {
-                footerSearch.addEventListener('input', (e) => {
-                    // Sync with main search
-                    if (searchInput) {
-                        searchInput.value = e.target.value;
-                        filterResources(e.target.value);
-                        
-                        // Scroll to results if searching
-                        if (e.target.value.trim()) {
-                            document.querySelector('.nav-section').scrollIntoView({ 
-                                behavior: 'smooth' 
-                            });
-                        }
-                    }
-                });
-            }
-
-            // Suggestion tags functionality
-            suggestionTags.forEach(tag => {
-                tag.addEventListener('click', () => {
-                    const searchTerm = tag.getAttribute('data-search');
-                    if (searchInput) {
-                        searchInput.value = searchTerm;
-                        filterResources(searchTerm);
-                        document.querySelector('.nav-section').scrollIntoView({ 
-                            behavior: 'smooth' 
-                        });
-                    }
-                    if (footerSearch) {
-                        footerSearch.value = searchTerm;
-                    }
-                });
-            });
         });
-
-        // Scroll to top function
-        function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
     </script>
-    <script type="module" src="./functions/site.js?v=20260814m"></script>
+    <script type="module" src="./functions/site.js?v=20260816a"></script>
 </body>
 </html>

@@ -6,8 +6,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap">
     <meta charset="UTF-8">
 <!-- BEGIN critical-css (build-critical-css.py) -->
-<link rel="stylesheet" href="./theme-variables.css">
-<link rel="stylesheet" href="./theme-switcher.css">
+<link rel="stylesheet" href="./theme-variables.css?v=20260816a">
+<link rel="stylesheet" href="./theme-switcher.css?v=20260816a">
+<link rel="stylesheet" href="./base.css?v=20260816a">
 <!-- END critical-css -->
 <!-- BEGIN generated-seo (build-seo.py) -->
 <link rel="canonical" href="https://shumbul.github.io/Resources/ai-tools.html">
@@ -99,6 +100,10 @@
 
     <header class="ai-header">
         <div class="container">
+        <!-- BEGIN back-link (build-backlink.py) -->
+        <div class="back-link-row"><a class="back-link" href="./index.html"><span aria-hidden="true">&larr;</span> Back to Resources</a></div>
+        <!-- END back-link -->
+
             <h1 class="ai-title">🛠️ AI Tools for Developers</h1>
             <p class="ai-subtitle">Real AI that runs inside your browser. No API key, no server, no cost, and nothing you type ever leaves your device.</p>
             <div class="badges">
@@ -111,8 +116,15 @@
     </header>
 
     <main class="container">
+        <!-- BEGIN quick-jump (build-quickjump.py) -->
+        <nav class="quick-jump" aria-label="Quick jump to section">
+            <div class="quick-jump__label">⚡ Quick jump</div>
+            <div class="quick-jump__links"><a href="#1-load-the-model-not-loaded">1. Load the model Not lo…</a><a href="#2-linkedin-headline-optimizer">2. LinkedIn headline opt…</a><a href="#3-run-any-prompt">3. Run any prompt</a><a href="#why-this-is-free">Why this is free</a></div>
+        </nav>
+        <!-- END quick-jump -->
+
         <div class="panel">
-            <h2>1. Load the model <span id="engineStatus" class="status-pill off"><span class="dot"></span>Not loaded</span></h2>
+            <h2 id="1-load-the-model-not-loaded">1. Load the model <span id="engineStatus" class="status-pill off"><span class="dot"></span>Not loaded</span></h2>
             <p class="muted">The model downloads once (cached by your browser) and then runs on your own hardware using WebGPU. First load pulls a few hundred MB, later visits are instant.</p>
             <div class="engine-row">
                 <select id="modelSelect" aria-label="Choose which AI model to run" style="max-width: 340px;">
@@ -133,7 +145,7 @@
         </div>
 
         <div class="panel">
-            <h2>2. LinkedIn headline optimizer</h2>
+            <h2 id="2-linkedin-headline-optimizer">2. LinkedIn headline optimizer</h2>
             <p class="muted">Paste your current headline and role. Get three sharper rewrites tuned for recruiter search and click-through.</p>
             <div class="row-2">
                 <div>
@@ -150,7 +162,7 @@
         </div>
 
         <div class="panel">
-            <h2>3. Run any prompt</h2>
+            <h2 id="3-run-any-prompt">3. Run any prompt</h2>
             <p class="muted">This is what the site's "copy this prompt" buttons should have been all along. Type a prompt, get a real answer, streamed live.</p>
             <label for="promptBox">Your prompt</label>
             <textarea id="promptBox" placeholder="Rewrite my project bullet to show impact: 'Built a REST API for the team.'"></textarea>
@@ -178,7 +190,7 @@
         </div>
 
         <div class="panel">
-            <h2>Why this is free</h2>
+            <h2 id="why-this-is-free">Why this is free</h2>
             <ul class="muted">
                 <li><strong>Hosting:</strong> GitHub Pages, static, $0.</li>
                 <li><strong>AI:</strong> the model runs on your device via WebGPU, so there is no server bill no matter how many people use it.</li>
@@ -397,6 +409,6 @@
 
         enableTools();
     </script>
-    <script type="module" src="./functions/site.js?v=20260814m"></script>
+    <script type="module" src="./functions/site.js?v=20260816a"></script>
 </body>
 </html>

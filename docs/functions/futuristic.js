@@ -18,298 +18,18 @@
  * prefers-reduced-motion, and nothing is conveyed by motion alone.
  */
 
-const CSS = `
-/* ============ FLUID TYPE SCALE ============ */
-[data-futuristic] {
-  --fx-step--1: clamp(0.83rem, 0.80rem + 0.15vw, 0.92rem);
-  --fx-step-0:  clamp(1.00rem, 0.95rem + 0.25vw, 1.13rem);
-  --fx-step-1:  clamp(1.25rem, 1.15rem + 0.50vw, 1.55rem);
-  --fx-step-2:  clamp(1.56rem, 1.35rem + 1.05vw, 2.20rem);
-  --fx-step-3:  clamp(1.95rem, 1.55rem + 2.00vw, 3.20rem);
-  --fx-step-4:  clamp(2.44rem, 1.70rem + 3.70vw, 4.60rem);
-  --fx-ease: cubic-bezier(.22,1,.36,1);
-}
 
-/* ============ HERO: ANIMATED MESH ============ */
-/* Applies to every header variant across the site, not just the home page.
-   Specificity note: [data-futuristic] header (0,1,1) intentionally beats the
-   per-page .guide-header rule (0,1,0), so pages keep working if this module
-   never loads. */
-[data-futuristic] header,
-[data-futuristic] .guide-header,
-[data-futuristic] .header,
-[data-futuristic] .nf-header,
-[data-futuristic] .demo-header,
-[data-futuristic] .ai-header,
-[data-futuristic] .git-header {
-  position: relative;
-  overflow: hidden;
-  isolation: isolate;
-  background: linear-gradient(150deg,
-      color-mix(in oklab, var(--primary) 92%, #000 8%),
-      color-mix(in oklab, var(--secondary) 88%, #4c1d95 12%));
-}
-/* Specificity note: theme-variables.css contains
-     .guide-header > *, .header > * { position: relative; z-index: 1 }
-   to lift header *content* above the decoration. That rule (0,1,1) also
-   catches these decorative divs and would force them into flow, stacking
-   them and adding over 1000px of header height. Prefixing with the
-   [data-futuristic] attribute raises specificity to (0,2,0) so absolute
-   positioning wins. */
-[data-futuristic] .fx-orb {
-  position: absolute !important;
-  border-radius: 50%;
-  filter: blur(58px);
-  pointer-events: none;
-  z-index: 0;
-  will-change: transform;
-  mix-blend-mode: screen;
-}
-[data-futuristic] .fx-orb.o1 { width: 44vw; height: 44vw; max-width:520px; max-height:520px;
-  background: radial-gradient(circle, rgba(167,139,250,.85), transparent 68%);
-  top: -14%; left: -8%;  animation: fxDrift1 19s ease-in-out infinite; }
-[data-futuristic] .fx-orb.o2 { width: 38vw; height: 38vw; max-width:460px; max-height:460px;
-  background: radial-gradient(circle, rgba(56,189,248,.62), transparent 68%);
-  bottom: -20%; right: -6%; animation: fxDrift2 24s ease-in-out infinite; }
-[data-futuristic] .fx-orb.o3 { width: 30vw; height: 30vw; max-width:380px; max-height:380px;
-  background: radial-gradient(circle, rgba(244,114,182,.55), transparent 70%);
-  top: 40%; right: 22%;  animation: fxDrift3 28s ease-in-out infinite; }
-[data-futuristic] .fx-orb.o4 { width: 26vw; height: 26vw; max-width:320px; max-height:320px;
-  background: radial-gradient(circle, rgba(52,211,153,.42), transparent 70%);
-  bottom: 8%; left: 24%;  animation: fxDrift4 22s ease-in-out infinite; }
+/* The stylesheet for this module now lives at the end of
+ * theme-variables.css, so it is part of the first paint. See the
+ * "Futuristic visual layer" section there. Keep the two in sync:
+ * class names used below must exist in that stylesheet. */
 
-@keyframes fxDrift1 { 0%,100%{transform:translate3d(0,0,0) scale(1)}
-  33%{transform:translate3d(9vw,7vh,0) scale(1.16)}
-  66%{transform:translate3d(4vw,14vh,0) scale(.9)} }
-@keyframes fxDrift2 { 0%,100%{transform:translate3d(0,0,0) scale(1)}
-  40%{transform:translate3d(-10vw,-6vh,0) scale(1.2)}
-  70%{transform:translate3d(-3vw,-13vh,0) scale(.92)} }
-@keyframes fxDrift3 { 0%,100%{transform:translate3d(0,0,0) scale(1)}
-  50%{transform:translate3d(-12vw,8vh,0) scale(1.24)} }
-@keyframes fxDrift4 { 0%,100%{transform:translate3d(0,0,0) scale(1)}
-  50%{transform:translate3d(10vw,-9vh,0) scale(1.14)} }
+import { motionAllowed, onMotionChange } from './motionpref.js?v=20260816a';
 
-/* Guide headers are ~200px tall rather than a full hero, so the orbs need
-   to be smaller or they wash out the title. */
-[data-futuristic] .fx-compact .fx-orb { filter: blur(40px); }
-[data-futuristic] .fx-compact .fx-orb.o1 { width:34vw; max-width:340px; height:34vw; max-height:340px; }
-[data-futuristic] .fx-compact .fx-orb.o2 { width:30vw; max-width:300px; height:30vw; max-height:300px; }
-[data-futuristic] .fx-compact .fx-orb.o3 { width:24vw; max-width:250px; height:24vw; max-height:250px; }
-[data-futuristic] .fx-compact .fx-orb.o4 { width:22vw; max-width:220px; height:22vw; max-height:220px; }
-[data-futuristic] .fx-compact .fx-mesh-grid { opacity:.10; background-size:26px 26px; }
-
-/* fine grain so the gradient never looks like flat plastic */
-[data-futuristic] .fx-grain {
-  position:absolute !important; inset:0; z-index:1; pointer-events:none; opacity:.055;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-/* faint dot grid for depth */
-[data-futuristic] .fx-mesh-grid {
-  position:absolute !important; inset:-40px; z-index:1; pointer-events:none; opacity:.14;
-  background-image: radial-gradient(circle, #fff 1px, transparent 1px);
-  background-size: 30px 30px;
-  animation: fxGridDrift 26s linear infinite;
-}
-@keyframes fxGridDrift { to { transform: translate(30px, 30px); } }
-
-/* ---- floating bubbles ----
-   The old shared header texture was a tiling SVG drifting 20s on the
-   diagonal, which is far too slow to read as movement. These are real
-   elements that rise, sway and fade, so the header is visibly alive. */
-[data-futuristic] .fx-bubbles { position:absolute !important; inset:0; z-index:1;
-  pointer-events:none; overflow:hidden; }
-[data-futuristic] .fx-bubble {
-  position:absolute !important; bottom:-14%; border-radius:50%;
-  background: radial-gradient(circle at 32% 28%,
-      rgba(255,255,255,.34), rgba(255,255,255,.10) 46%, rgba(255,255,255,0) 70%);
-  border: 1px solid rgba(255,255,255,.16);
-  will-change: transform, opacity;
-  animation: fxRise linear infinite;
-}
-@keyframes fxRise {
-  0%   { transform: translate3d(0, 0, 0) scale(.85); opacity: 0; }
-  10%  { opacity: .85; }
-  50%  { transform: translate3d(22px, -52vh, 0) scale(1.06); }
-  85%  { opacity: .5; }
-  100% { transform: translate3d(-14px, -108vh, 0) scale(1.15); opacity: 0; }
-}
-
-[data-futuristic] header .container { position: relative; z-index: 2; }
-
-/* ============ HERO TYPE ============ */
-[data-futuristic] .hero-content h1 {
-  font-size: var(--fx-step-4);
-  line-height: 1.02;
-  letter-spacing: -.03em;
-  font-weight: 800;
-  background: linear-gradient(180deg, #fff 30%, rgba(255,255,255,.72));
-  -webkit-background-clip: text; background-clip: text;
-  -webkit-text-fill-color: transparent; color: transparent;
-  text-wrap: balance;
-}
-[data-futuristic] .hero-subtitle {
-  font-size: var(--fx-step-0);
-  color: rgba(255,255,255,.88);
-  max-width: 62ch; margin-inline: auto;
-  text-wrap: pretty;
-}
-
-/* animated entrance */
-.fx-in { opacity:0; transform: translateY(20px); }
-.fx-in.fx-shown { opacity:1; transform:none;
-  transition: opacity .7s var(--fx-ease), transform .7s var(--fx-ease); }
-.fx-d1{transition-delay:.05s}.fx-d2{transition-delay:.15s}
-.fx-d3{transition-delay:.25s}.fx-d4{transition-delay:.35s}
-
-/* ============ HERO STATS ============ */
-.fx-stats{display:flex;gap:clamp(1rem,4vw,2.6rem);justify-content:center;
-  flex-wrap:wrap;margin-top:2rem;position:relative;z-index:2;}
-.fx-stat{text-align:center;min-width:74px;}
-.fx-stat b{display:block;font-size:var(--fx-step-2);font-weight:800;color:#fff;
-  line-height:1;font-variant-numeric:tabular-nums;
-  text-shadow:0 2px 22px rgba(0,0,0,.24);}
-.fx-stat span{display:block;font-size:.76rem;letter-spacing:.12em;
-  text-transform:uppercase;color:rgba(255,255,255,.7);margin-top:.4rem;font-weight:600;}
-
-/* ============ MAGNETIC CTA ============ */
-[data-futuristic] .cta-button{
-  position:relative; overflow:hidden; isolation:isolate;
-  color:#fff;                                  /* keep AA contrast on the mesh */
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  background: rgba(255,255,255,.18);
-  border: 1px solid rgba(255,255,255,.42);
-  box-shadow: 0 8px 30px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.30);
-  text-shadow: 0 1px 10px rgba(0,0,0,.28);
-  font-weight: 700;
-  transition: transform .25s var(--fx-ease), box-shadow .25s var(--fx-ease),
-              background .25s ease;
-  will-change: transform;
-}
-[data-futuristic] .cta-button:hover,
-[data-futuristic] .cta-button:focus-visible{
-  color:#fff;
-  background: rgba(255,255,255,.30);
-  border-color: rgba(255,255,255,.60);
-  box-shadow: 0 14px 40px rgba(0,0,0,.30), inset 0 1px 0 rgba(255,255,255,.45);
-}
-[data-futuristic] .cta-button:focus-visible{
-  outline:2px solid #fff; outline-offset:3px;
-}
-[data-futuristic] .cta-button::after{
-  content:''; position:absolute; inset:0; z-index:-1; opacity:0;
-  background: radial-gradient(120px circle at var(--mx,50%) var(--my,50%),
-              rgba(255,255,255,.34), transparent 62%);
-  transition: opacity .3s ease;
-}
-[data-futuristic] .cta-button:hover::after{opacity:1;}
-
-/* ============ SPOTLIGHT CARDS ============ */
-[data-futuristic] .resource-card,
-[data-futuristic] .bento-card{
-  position:relative; isolation:isolate;
-  transition: transform .35s var(--fx-ease), box-shadow .35s var(--fx-ease),
-              border-color .35s ease;
-  will-change: transform;
-}
-[data-futuristic] .resource-card::before,
-[data-futuristic] .bento-card::before{
-  content:''; position:absolute; inset:0; border-radius:inherit; z-index:-1;
-  opacity:0; transition:opacity .35s ease;
-  background: radial-gradient(340px circle at var(--mx,50%) var(--my,50%),
-              color-mix(in oklab, var(--primary) 16%, transparent), transparent 62%);
-}
-[data-futuristic] .resource-card:hover::before,
-[data-futuristic] .bento-card:hover::before{opacity:1;}
-[data-futuristic] .resource-card:hover,
-[data-futuristic] .bento-card:hover{
-  transform: translateY(-5px);
-  border-color: color-mix(in oklab, var(--primary) 42%, transparent);
-  box-shadow: 0 18px 44px -18px color-mix(in oklab, var(--primary) 55%, transparent),
-              0 4px 12px rgba(15,23,42,.08);
-}
-/* thin gradient hairline on hover */
-[data-futuristic] .resource-card::after{
-  content:''; position:absolute; left:0; right:0; top:0; height:2px;
-  border-radius:inherit inherit 0 0; opacity:0; transition:opacity .35s ease;
-  background: linear-gradient(90deg, transparent,
-              color-mix(in oklab, var(--primary) 85%, transparent), transparent);
-}
-[data-futuristic] .resource-card:hover::after{opacity:1;}
-
-/* ============ SCROLL REVEAL ============ */
-@supports (animation-timeline: view()) {
-  [data-futuristic] .fx-reveal{
-    animation: fxRise linear both;
-    animation-timeline: view();
-    animation-range: entry 0% cover 26%;
-  }
-}
-@supports not (animation-timeline: view()) {
-  [data-futuristic] .fx-reveal{opacity:0;transform:translateY(24px);}
-  [data-futuristic] .fx-reveal.fx-shown{opacity:1;transform:none;
-    transition:opacity .6s var(--fx-ease),transform .6s var(--fx-ease);}
-}
-@keyframes fxRise{from{opacity:0;transform:translateY(30px) scale(.985)}
-  to{opacity:1;transform:none}}
-
-/* ============ GLASS NAV ON SCROLL ============ */
-[data-futuristic] .site-topbar{
-  transition: background .3s ease, backdrop-filter .3s ease,
-              box-shadow .3s ease, border-color .3s ease;
-}
-[data-futuristic] .site-topbar.fx-solid{
-  background: color-mix(in oklab, var(--bg-primary) 78%, transparent);
-  backdrop-filter: blur(16px) saturate(150%);
-  -webkit-backdrop-filter: blur(16px) saturate(150%);
-  box-shadow: 0 6px 26px -14px rgba(15,23,42,.34);
-}
-
-/* ============ AURORA BEHIND CONTENT ============ */
-.fx-aurora{position:fixed;inset:0;z-index:-2;pointer-events:none;overflow:hidden;}
-.fx-aurora i{position:absolute;display:block;border-radius:50%;filter:blur(80px);
-  opacity:.30;will-change:transform;}
-.fx-aurora i:nth-child(1){width:520px;height:520px;top:8%;left:-14%;
-  background:radial-gradient(circle,color-mix(in oklab,var(--primary) 62%,transparent),transparent 70%);
-  animation:fxDrift1 34s ease-in-out infinite;}
-.fx-aurora i:nth-child(2){width:440px;height:440px;bottom:4%;right:-12%;
-  background:radial-gradient(circle,rgba(56,189,248,.42),transparent 70%);
-  animation:fxDrift2 42s ease-in-out infinite;}
-.fx-aurora i:nth-child(3){width:380px;height:380px;top:52%;left:38%;
-  background:radial-gradient(circle,rgba(244,114,182,.30),transparent 72%);
-  animation:fxDrift3 48s ease-in-out infinite;}
-
-/* ============ SECTION HEADINGS ============ */
-[data-futuristic] .section-title,
-[data-futuristic] .nav-section h2:not(.sr-only){
-  font-size: var(--fx-step-2); letter-spacing:-.02em; text-wrap:balance;
-}
-
-/* ============ REDUCED MOTION ============ */
-@media (prefers-reduced-motion: reduce) {
-  .fx-orb, .fx-mesh-grid, .fx-aurora i, .fx-bubble { animation: none !important; }
-  .fx-bubbles { display: none !important; }
-  [data-futuristic] .fx-reveal { animation: none !important;
-    opacity:1 !important; transform:none !important; }
-  .fx-in { opacity:1 !important; transform:none !important; transition:none !important; }
-  [data-futuristic] .resource-card:hover,
-  [data-futuristic] .bento-card:hover,
-  [data-futuristic] .cta-button:hover { transform:none !important; }
-}
-
-/* ============ MOBILE ============ */
-@media (max-width: 640px) {
-  .fx-orb { filter: blur(44px); }
-  .fx-aurora { display:none; }           /* save GPU on phones */
-  .fx-stats { gap:1.1rem; margin-top:1.5rem; }
-  .fx-stat b { font-size:var(--fx-step-1); }
-  .fx-stat span { font-size:.66rem; letter-spacing:.09em; }
-  /* fewer, softer bubbles so cheap phones keep their frame rate */
-  .fx-bubble:nth-child(n+8) { display:none; }
-}
-`;
-
-const REDUCE = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+/* Motion is gated on the visitor's resolved preference, not on the media
+ * query directly, so the Motion switch in the top bar can turn these on for
+ * someone whose operating system asks for reduced motion by default. */
+const REDUCE = () => !motionAllowed();
 
 /**
  * Build the floating bubble layer.
@@ -390,13 +110,12 @@ function addStats() {
     if (!document.querySelector('.resources-grid')) return;
 
     const guides = document.querySelectorAll('.resource-card').length || 30;
-    // Each stat must read as a complete claim. The original third item was
-    // "0 / Signups", which looked like nobody had signed up rather than
-    // "no signup is required". The label now finishes the sentence.
+    // Each stat must read as a complete claim on its own. A "0 / Signups"
+    // item was tried here and read as "nobody signed up" rather than "no
+    // signup is required", so the point is made in the copy instead.
     const stats = [
         [guides, '+', 'Guides'],
         [100, '%', 'Free'],
-        [0, '', 'Signups needed'],
     ];
 
     const wrap = document.createElement('div');
@@ -519,11 +238,6 @@ function glassNav() {
 export function initFuturistic() {
     // opt-in: only pages that declare it
     if (!document.body.hasAttribute('data-futuristic')) return;
-
-    const style = document.createElement('style');
-    style.id = 'fx-styles';
-    style.textContent = CSS;
-    document.head.appendChild(style);
 
     decorateHero();
     addStats();

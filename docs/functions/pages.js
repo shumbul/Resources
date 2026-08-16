@@ -45,6 +45,10 @@ export const PAGES = [
     "t": "Cloud &amp; DevOps Starter"
   },
   {
+    "f": "collaborate.html",
+    "t": "Collaborate"
+  },
+  {
     "f": "computer-networks-deep-dive.html",
     "t": "Computer Networks Deep Dive"
   },

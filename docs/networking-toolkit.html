@@ -6,8 +6,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap">
     <meta charset="UTF-8">
 <!-- BEGIN critical-css (build-critical-css.py) -->
-<link rel="stylesheet" href="./theme-variables.css">
-<link rel="stylesheet" href="./theme-switcher.css">
+<link rel="stylesheet" href="./theme-variables.css?v=20260816a">
+<link rel="stylesheet" href="./theme-switcher.css?v=20260816a">
+<link rel="stylesheet" href="./base.css?v=20260816a">
 <!-- END critical-css -->
 <!-- BEGIN generated-seo (build-seo.py) -->
 <link rel="canonical" href="https://shumbul.github.io/Resources/networking-toolkit.html">
@@ -67,6 +68,10 @@
 
     <header class="guide-header">
         <div class="container">
+        <!-- BEGIN back-link (build-backlink.py) -->
+        <div class="back-link-row"><a class="back-link" href="./index.html"><span aria-hidden="true">&larr;</span> Back to Resources</a></div>
+        <!-- END back-link -->
+
             <h1 class="guide-title">🛰️ Networking Toolkit</h1>
             <p class="guide-sub">The fastest way to make Computer Networks theory click is to run it. This is a hands-on toolkit of copy-paste commands that let you see DNS, TCP, routing, and ports on your own machine, right now.</p>
             <div class="guide-badges">
@@ -78,8 +83,15 @@
     </header>
 
     <main class="container">
+        <!-- BEGIN quick-jump (build-quickjump.py) -->
+        <nav class="quick-jump" aria-label="Quick jump to section">
+            <div class="quick-jump__label">⚡ Quick jump</div>
+            <div class="quick-jump__links"><a href="#see-your-own-network-setup">See your setup</a><a href="#watch-dns-resolve-a-name-to-an-ip">DNS in action</a><a href="#test-if-a-host-is-reachable-icmp">Reachability</a><a href="#trace-the-path-packets-take">Trace the route</a><a href="#see-open-ports-and-live-connections">Ports &amp;amp; connections</a><a href="#talk-to-a-web-server-by-hand-http">Talk to a server</a><a href="#check-if-a-specific-port-is-open">Check a specific port</a><a href="#mini-challenge-trace-a-full-request">Mini challenge</a><a href="#copy-paste-ai-prompts">AI prompts</a><a href="#what-to-do-next">What&#x27;s next</a></div>
+        </nav>
+        <!-- END quick-jump -->
+
         <div class="gsection">
-            <h2 data-jump="See your setup">See your own network setup</h2>
+            <h2 id="see-your-own-network-setup" data-jump="See your setup">See your own network setup</h2>
             <span class="cn-tag">CN: IP addressing, subnets, MAC</span>
             <p class="cmd-why">Show your IP address, subnet, and network adapters, the identity of your machine on the network.</p>
             <pre><code># Windows
@@ -91,7 +103,7 @@ ip addr        # (or: ifconfig)</code></pre>
         </div>
 
         <div class="gsection">
-            <h2 data-jump="DNS in action">Watch DNS resolve a name to an IP</h2>
+            <h2 id="watch-dns-resolve-a-name-to-an-ip" data-jump="DNS in action">Watch DNS resolve a name to an IP</h2>
             <span class="cn-tag">CN: DNS, application layer</span>
             <p class="cmd-why">DNS turns a name like <code>github.com</code> into an IP address. These let you watch it happen and see which DNS server answered.</p>
             <pre><code># Windows
@@ -104,7 +116,7 @@ host github.com         # short</code></pre>
         </div>
 
         <div class="gsection">
-            <h2 data-jump="Reachability">Test if a host is reachable (ICMP)</h2>
+            <h2 id="test-if-a-host-is-reachable-icmp" data-jump="Reachability">Test if a host is reachable (ICMP)</h2>
             <span class="cn-tag">CN: ICMP, round-trip time</span>
             <p class="cmd-why">Ping sends small ICMP packets and times the round trip, the simplest "is it alive and how far away" test.</p>
             <pre><code># Windows (4 packets by default)
@@ -116,7 +128,7 @@ ping github.com</code></pre>
         </div>
 
         <div class="gsection">
-            <h2 data-jump="Trace the route">Trace the path packets take</h2>
+            <h2 id="trace-the-path-packets-take" data-jump="Trace the route">Trace the path packets take</h2>
             <span class="cn-tag">CN: routing, hops, TTL</span>
             <p class="cmd-why">Every packet hops through multiple routers to reach its destination. This reveals each hop on the way, routing made visible.</p>
             <pre><code># Windows
@@ -128,7 +140,7 @@ traceroute github.com   # install if needed: sudo apt install traceroute</code><
         </div>
 
         <div class="gsection">
-            <h2 data-jump="Ports &amp; connections">See open ports and live connections</h2>
+            <h2 id="see-open-ports-and-live-connections" data-jump="Ports &amp; connections">See open ports and live connections</h2>
             <span class="cn-tag">CN: ports, TCP states, sockets</span>
             <p class="cmd-why">Every network service listens on a port. See what is listening and which connections are currently open on your machine.</p>
             <pre><code># Windows
@@ -140,7 +152,7 @@ ss -tulpn        # modern (or: netstat -tulpn)</code></pre>
         </div>
 
         <div class="gsection">
-            <h2 data-jump="Talk to a server">Talk to a web server by hand (HTTP)</h2>
+            <h2 id="talk-to-a-web-server-by-hand-http" data-jump="Talk to a server">Talk to a web server by hand (HTTP)</h2>
             <span class="cn-tag">CN: HTTP, TCP, application layer</span>
             <p class="cmd-why">A web request is just text sent over TCP. These make an HTTP request and show you the raw response headers, the protocol demystified.</p>
             <pre><code># Any OS with curl
@@ -150,7 +162,7 @@ curl -v https://example.com         # verbose: see the TCP + TLS + HTTP steps</c
         </div>
 
         <div class="gsection">
-            <h2 data-jump="Check a specific port">Check if a specific port is open</h2>
+            <h2 id="check-if-a-specific-port-is-open" data-jump="Check a specific port">Check if a specific port is open</h2>
             <span class="cn-tag">CN: ports, TCP handshake</span>
             <p class="cmd-why">Useful for "is the server up on port 443?" Tries to open a TCP connection to one port.</p>
             <pre><code># Linux / macOS (netcat)
@@ -162,7 +174,7 @@ Test-NetConnection github.com -Port 443</code></pre>
         </div>
 
         <div class="gsection">
-            <h2 data-jump="Mini challenge">Mini challenge: trace a full request</h2>
+            <h2 id="mini-challenge-trace-a-full-request" data-jump="Mini challenge">Mini challenge: trace a full request</h2>
             <p class="muted">Put it together. Pick any website and, in order:</p>
             <ol class="muted">
                 <li>Resolve its name with <code>nslookup</code> or <code>dig</code> (DNS).</li>
@@ -174,7 +186,7 @@ Test-NetConnection github.com -Port 443</code></pre>
         </div>
 
         <div class="gsection">
-            <h2 data-jump="AI prompts">Copy-paste AI prompts</h2>
+            <h2 id="copy-paste-ai-prompts" data-jump="AI prompts">Copy-paste AI prompts</h2>
             <p class="muted">Paste these into any AI chatbot (or this site's <strong>✦ Ask AI</strong>) to go deeper. Fill in the brackets.</p>
 
             <div class="prompt">
@@ -200,7 +212,7 @@ answer, tell me if I'm right and add one crisp follow-up.</code></pre>
         </div>
 
         <div class="gsection">
-            <h2 data-jump="What's next">What to do next</h2>
+            <h2 id="what-to-do-next" data-jump="What's next">What to do next</h2>
             <div class="nextlinks">
                 <a href="./cs-fundamentals-guide.html">🧠 CS Fundamentals (Networks)</a>
                 <a href="./cloud-devops-starter.html">☁️ Cloud &amp; DevOps</a>
@@ -218,6 +230,6 @@ answer, tell me if I'm right and add one crisp follow-up.</code></pre>
     <div data-component="footer"></div>
     <div data-component="scripts-common"></div>
     <script src="./components/component-loader.js"></script>
-    <script type="module" src="./functions/site.js?v=20260814m"></script>
+    <script type="module" src="./functions/site.js?v=20260816a"></script>
 </body>
 </html>

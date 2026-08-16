@@ -6,8 +6,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap">
     <meta charset="UTF-8">
 <!-- BEGIN critical-css (build-critical-css.py) -->
-<link rel="stylesheet" href="./theme-variables.css">
-<link rel="stylesheet" href="./theme-switcher.css">
+<link rel="stylesheet" href="./theme-variables.css?v=20260816a">
+<link rel="stylesheet" href="./theme-switcher.css?v=20260816a">
+<link rel="stylesheet" href="./base.css?v=20260816a">
 <!-- END critical-css -->
 <!-- BEGIN generated-seo (build-seo.py) -->
 <link rel="canonical" href="https://shumbul.github.io/Resources/about.html">
@@ -80,16 +81,27 @@
 
     <header class="guide-header">
         <div class="container">
+        <!-- BEGIN back-link (build-backlink.py) -->
+        <div class="back-link-row"><a class="back-link" href="./index.html"><span aria-hidden="true">&larr;</span> Back to Resources</a></div>
+        <!-- END back-link -->
+
             <h1 class="guide-title">👋 About</h1>
             <p class="guide-sub">Free, friendly, no-nonsense tech-career resources. Built by someone who remembers exactly how confusing the start can be.</p>
         </div>
     </header>
 
     <main class="container">
+        <!-- BEGIN quick-jump (build-quickjump.py) -->
+        <nav class="quick-jump" aria-label="Quick jump to section">
+            <div class="quick-jump__label">⚡ Quick jump</div>
+            <div class="quick-jump__links"><a href="#hi-i-m-shumbul">Hi, I&#x27;m Shumbul 👋</a><a href="#a-little-of-my-journey">A little of my journey</a><a href="#what-this-site-is">What this site is</a><a href="#how-to-use-it">How to use it</a><a href="#want-to-say-hi-or-suggest-a-guide">Want to say hi or sugges…</a></div>
+        </nav>
+        <!-- END quick-jump -->
+
         <div class="gsection">
             <div class="intro">
                 <div>
-                    <h2>Hi, I'm Shumbul 👋</h2>
+                    <h2 id="hi-i-m-shumbul">Hi, I'm Shumbul 👋</h2>
                     <div class="badge-row">
                         <span class="mini-badge">💻 Software Engineer @ Microsoft</span>
                         <span class="mini-badge">⏳ 4+ years of experience</span>
@@ -113,7 +125,7 @@
                     <span class="chip">🌙 On campus</span>
                 </div>
                 <div>
-                    <h2>A little of my journey</h2>
+                    <h2 id="a-little-of-my-journey">A little of my journey</h2>
                     <p>I was once the person googling "how do I even start", refreshing job portals, and wondering if I was behind. I wasn't, and neither are you. Consistent, small steps got me from a CS student at NITK to shipping software at Microsoft, and the same approach is what these guides are built around.</p>
                     <p class="muted">If any of this helps you land something or just feel less lost, that's the whole point. That would genuinely make my day.</p>
                 </div>
@@ -121,7 +133,7 @@
         </div>
 
         <div class="gsection">
-            <h2>What this site is</h2>
+            <h2 id="what-this-site-is">What this site is</h2>
             <p>A growing library of career and skill guides, roadmaps for learning, LinkedIn and resume help, DSA and system design starters, interview prep, and even a built-in AI helper that reads each page and answers your questions right there.</p>
             <div class="values">
                 <div class="value"><div class="ic">🆓</div><strong>Always free</strong><p class="muted" style="margin:.3rem 0 0;">No paywalls, no email gates, no upsells. Share it with anyone.</p></div>
@@ -131,7 +143,7 @@
         </div>
 
         <div class="gsection">
-            <h2>How to use it</h2>
+            <h2 id="how-to-use-it">How to use it</h2>
             <ul>
                 <li>Browse the <strong>guides in the sidebar</strong> and start with whatever feels most urgent for you.</li>
                 <li>New to everything? Begin with the <a href="./12-week-roadmap.html">12-Week Roadmap</a>.</li>
@@ -141,7 +153,7 @@
         </div>
 
         <div class="gsection">
-            <h2>Want to say hi or suggest a guide?</h2>
+            <h2 id="want-to-say-hi-or-suggest-a-guide">Want to say hi or suggest a guide?</h2>
             <p>I'd genuinely love to hear from you, feedback, requests, or just a hello. Head over to the <a href="./contact.html">Contact page</a> and pick whichever channel you like.</p>
         </div>
     </main>
@@ -149,6 +161,6 @@
     <div data-component="footer"></div>
     <div data-component="scripts-common"></div>
     <script src="./components/component-loader.js"></script>
-    <script type="module" src="./functions/site.js?v=20260814m"></script>
+    <script type="module" src="./functions/site.js?v=20260816a"></script>
 </body>
 </html>

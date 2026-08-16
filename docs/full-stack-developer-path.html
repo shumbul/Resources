@@ -6,8 +6,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap">
     <meta charset="UTF-8">
 <!-- BEGIN critical-css (build-critical-css.py) -->
-<link rel="stylesheet" href="./theme-variables.css">
-<link rel="stylesheet" href="./theme-switcher.css">
+<link rel="stylesheet" href="./theme-variables.css?v=20260816a">
+<link rel="stylesheet" href="./theme-switcher.css?v=20260816a">
+<link rel="stylesheet" href="./base.css?v=20260816a">
 <!-- END critical-css -->
 <!-- BEGIN generated-seo (build-seo.py) -->
 <link rel="canonical" href="https://shumbul.github.io/Resources/full-stack-developer-path.html">
@@ -78,6 +79,10 @@
 
     <header class="guide-header">
         <div class="container">
+        <!-- BEGIN back-link (build-backlink.py) -->
+        <div class="back-link-row"><a class="back-link" href="./index.html"><span aria-hidden="true">&larr;</span> Back to Resources</a></div>
+        <!-- END back-link -->
+
             <h1 class="guide-title">🌐 Full-Stack Developer Path</h1>
             <p class="guide-sub">Web development, in the right order. No jumping around, no tutorial hell. Learn each layer, build a real thing with it, then move on. By the end you have skills and a portfolio.</p>
             <div class="guide-badges">
@@ -89,8 +94,15 @@
     </header>
 
     <main class="container">
+        <!-- BEGIN quick-jump (build-quickjump.py) -->
+        <nav class="quick-jump" aria-label="Quick jump to section">
+            <div class="quick-jump__label">⚡ Quick jump</div>
+            <div class="quick-jump__links"><a href="#the-big-picture">The big picture</a><a href="#stage-1-web-foundations-html-css">Stage 1: Foundations</a><a href="#stage-2-javascript-the-language-of-the-w">Stage 2: JavaScript</a><a href="#stage-3-a-frontend-framework-react">Stage 3: React</a><a href="#stage-4-the-backend-node-express-apis">Stage 4: Backend</a><a href="#stage-5-databases-where-data-lives">Stage 5: Databases</a><a href="#stage-6-put-it-all-together">Stage 6: Full-stack</a><a href="#do-s-and-don-ts">Do&#x27;s and don&#x27;ts</a><a href="#free-places-to-learn">Free resources</a><a href="#what-to-do-next">What&#x27;s next</a></div>
+        </nav>
+        <!-- END quick-jump -->
+
         <div class="gsection">
-            <h2 data-jump="The big picture">The big picture</h2>
+            <h2 id="the-big-picture" data-jump="The big picture">The big picture</h2>
             <p class="muted">"Full-stack" just means you can build both halves of a web app:</p>
             <ul class="muted">
                 <li><b>Frontend</b> - what the user sees and clicks (runs in the browser).</li>
@@ -101,7 +113,7 @@
         </div>
 
         <div class="gsection">
-            <h2 data-jump="Stage 1: Foundations">Stage 1: Web foundations (HTML &amp; CSS)</h2>
+            <h2 id="stage-1-web-foundations-html-css" data-jump="Stage 1: Foundations">Stage 1: Web foundations (HTML &amp; CSS)</h2>
             <div class="stage" data-reveal>
                 <div class="num">1</div>
                 <div>
@@ -114,7 +126,7 @@
         </div>
 
         <div class="gsection">
-            <h2 data-jump="Stage 2: JavaScript">Stage 2: JavaScript (the language of the web)</h2>
+            <h2 id="stage-2-javascript-the-language-of-the-w" data-jump="Stage 2: JavaScript">Stage 2: JavaScript (the language of the web)</h2>
             <div class="stage" data-reveal>
                 <div class="num">2</div>
                 <div>
@@ -127,7 +139,7 @@
         </div>
 
         <div class="gsection">
-            <h2 data-jump="Stage 3: React">Stage 3: A frontend framework (React)</h2>
+            <h2 id="stage-3-a-frontend-framework-react" data-jump="Stage 3: React">Stage 3: A frontend framework (React)</h2>
             <div class="stage" data-reveal>
                 <div class="num">3</div>
                 <div>
@@ -140,7 +152,7 @@
         </div>
 
         <div class="gsection">
-            <h2 data-jump="Stage 4: Backend">Stage 4: The backend (Node, Express, APIs)</h2>
+            <h2 id="stage-4-the-backend-node-express-apis" data-jump="Stage 4: Backend">Stage 4: The backend (Node, Express, APIs)</h2>
             <div class="stage" data-reveal>
                 <div class="num">4</div>
                 <div>
@@ -153,7 +165,7 @@
         </div>
 
         <div class="gsection">
-            <h2 data-jump="Stage 5: Databases">Stage 5: Databases (where data lives)</h2>
+            <h2 id="stage-5-databases-where-data-lives" data-jump="Stage 5: Databases">Stage 5: Databases (where data lives)</h2>
             <div class="stage" data-reveal>
                 <div class="num">5</div>
                 <div>
@@ -166,7 +178,7 @@
         </div>
 
         <div class="gsection">
-            <h2 data-jump="Stage 6: Full-stack">Stage 6: Put it all together</h2>
+            <h2 id="stage-6-put-it-all-together" data-jump="Stage 6: Full-stack">Stage 6: Put it all together</h2>
             <div class="stage" data-reveal>
                 <div class="num">6</div>
                 <div>
@@ -179,7 +191,7 @@
         </div>
 
         <div class="gsection">
-            <h2 data-jump="Do's and don'ts">Do's and don'ts</h2>
+            <h2 id="do-s-and-don-ts" data-jump="Do's and don'ts">Do's and don'ts</h2>
             <div class="cols">
                 <div class="avoid" data-reveal>
                     <h4>Avoid</h4>
@@ -205,7 +217,7 @@
         </div>
 
         <div class="gsection">
-            <h2 data-jump="Free resources">Free places to learn</h2>
+            <h2 id="free-places-to-learn" data-jump="Free resources">Free places to learn</h2>
             <ul class="muted">
                 <li><a href="https://developer.mozilla.org/" target="_blank" rel="noopener">MDN Web Docs</a> - the reference for HTML, CSS, and JavaScript.</li>
                 <li><a href="https://www.theodinproject.com/" target="_blank" rel="noopener">The Odin Project</a> - a full, free, project-based full-stack curriculum.</li>
@@ -216,7 +228,7 @@
         </div>
 
         <div class="gsection">
-            <h2 data-jump="What's next">What to do next</h2>
+            <h2 id="what-to-do-next" data-jump="What's next">What to do next</h2>
             <p class="muted">Once you have one full-stack app deployed, you are ready to apply. These guides take you the rest of the way:</p>
             <div class="nextlinks">
                 <a href="./resume-portfolio-templates.html">📄 Resume &amp; Portfolio</a>
@@ -236,6 +248,6 @@
     <div data-component="footer"></div>
     <div data-component="scripts-common"></div>
     <script src="./components/component-loader.js"></script>
-    <script type="module" src="./functions/site.js?v=20260814m"></script>
+    <script type="module" src="./functions/site.js?v=20260816a"></script>
 </body>
 </html>

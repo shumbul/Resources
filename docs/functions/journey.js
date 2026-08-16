@@ -169,8 +169,17 @@ export function initJourney() {
     const panel = document.createElement('section');
     panel.className = 'journey';
     panel.setAttribute('aria-label', 'Your learning journey overview');
-    const wrap = sections[0].parentNode;
-    wrap.insertBefore(panel, wrap.firstChild);
+
+    // build-quickjump.py leaves a correctly sized slot at the mount point.
+    // Replacing it keeps the position identical and costs no layout shift;
+    // without one, fall back to prepending as before.
+    const slot = document.querySelector('.journey-slot');
+    if (slot && slot.parentNode) {
+        slot.parentNode.replaceChild(panel, slot);
+    } else {
+        const wrap = sections[0].parentNode;
+        wrap.insertBefore(panel, wrap.firstChild);
+    }
 
     const view = new JourneyView(type, sections, panel);
     view.render();
