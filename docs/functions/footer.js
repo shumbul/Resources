@@ -10,7 +10,7 @@
  * in theme-variables.css, so it can never silently fail to load again.
  */
 
-import { PAGES } from './pages.js?v=20260816d';
+import { PAGES } from './pages.js?v=20260816e';
 
 const SOCIALS = [
     { href: 'https://github.com/shumbul', title: 'GitHub',

@@ -6,9 +6,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap">
     <meta charset="UTF-8">
 <!-- BEGIN critical-css (build-critical-css.py) -->
-<link rel="stylesheet" href="./theme-variables.css?v=20260816d">
-<link rel="stylesheet" href="./theme-switcher.css?v=20260816d">
-<link rel="stylesheet" href="./base.css?v=20260816d">
+<link rel="stylesheet" href="./theme-variables.css?v=20260816e">
+<link rel="stylesheet" href="./theme-switcher.css?v=20260816e">
+<link rel="stylesheet" href="./base.css?v=20260816e">
 <!-- END critical-css -->
 <!-- BEGIN generated-seo (build-seo.py) -->
 <link rel="canonical" href="https://shumbul.github.io/Resources/build-ai-agent.html">
@@ -74,6 +74,12 @@
         .al-arrow { fill:none; stroke:var(--secondary); stroke-width:2.5; stroke-linecap:round; }
         .al-dot { fill:var(--accent); }
         @media (prefers-reduced-motion: reduce){ .al-dot animateMotion { display:none; } }
+        /* A sideways pointer to a related guide, without derailing this one. */
+        .aside-note { background:var(--bg-primary); border:1px solid var(--border); border-left:4px solid var(--accent);
+            border-radius:12px; padding:1rem 1.2rem; margin:1.2rem 0 .2rem; }
+        .aside-note b { display:block; font-family:var(--font-display,inherit); margin-bottom:.4rem; }
+        .aside-note p { margin:.4rem 0 0; font-size:.92rem; color:var(--text-secondary); }
+        .aside-note a { font-weight:600; }
     </style>
 </head>
 <body data-futuristic>
@@ -184,6 +190,12 @@ tools = [{
     },
 }]</code></pre>
             <p class="muted">You describe the tool to the model in plain words. The model decides <i>when</i> to call it, you decide what it does.</p>
+
+            <aside class="aside-note">
+                <b>🔌 Noticed how much of that was boilerplate?</b>
+                <p>You wrote a Python function, then wrote the same thing again as JSON so the model could understand it. Two places to keep in sync, for every tool, in every project.</p>
+                <p>There is a standard for this now. <strong>MCP</strong> (Model Context Protocol) generates that schema from your type hints, and any MCP-capable app can use your tool without you writing glue for each one. Keep going here first, since building the loop by hand is the bit that makes it click, then read <a href="./mcp-guide.html">MCP Explained</a>.</p>
+            </aside>
         </div>
 
         <div class="gsection">
@@ -288,6 +300,7 @@ to demo it (CLI or minimal web page). Keep it achievable in a weekend.</code></p
         <div class="gsection">
             <h2 id="what-to-do-next" data-jump="What's next">What to do next</h2>
             <div class="nextlinks">
+                <a href="./mcp-guide.html">🔌 MCP Explained</a>
                 <a href="./ai-tools.html">🛠️ AI Tools</a>
                 <a href="./AI-Roadmap.html">🤖 AI Developer Roadmap</a>
                 <a href="./full-stack-developer-path.html">🌐 Full-Stack Path</a>
@@ -304,6 +317,6 @@ to demo it (CLI or minimal web page). Keep it achievable in a weekend.</code></p
     <div data-component="footer"></div>
     <div data-component="scripts-common"></div>
     <script src="./components/component-loader.js"></script>
-    <script type="module" src="./functions/site.js?v=20260816d"></script>
+    <script type="module" src="./functions/site.js?v=20260816e"></script>
 </body>
 </html>
