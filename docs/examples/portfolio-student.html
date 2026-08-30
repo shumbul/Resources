@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ananya Rao - Computer Science Student</title>
+<meta name="description" content="Example student portfolio built with AI prompts, from Resources by Shumbul Arifa.">
+<meta name="robots" content="noindex">
+<style>
+:root{
+  --ink:#0f172a; --muted:#475569; --line:#e2e8f0;
+  --bg:#ffffff; --soft:#f8fafc; --accent:#2563eb;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--ink);
+  background:var(--bg);line-height:1.65}
+.wrap{max-width:820px;margin:0 auto;padding:0 1.25rem}
+a{color:var(--accent)}
+
+header{padding:3.5rem 0 2.5rem;border-bottom:1px solid var(--line)}
+.eyebrow{font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:.6rem}
+h1{font-size:2.4rem;line-height:1.15;margin-bottom:.6rem;letter-spacing:-.02em}
+.tagline{font-size:1.1rem;color:var(--muted);max-width:52ch}
+.links{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.4rem}
+.links a{display:inline-block;padding:.5rem .9rem;border:1px solid var(--line);
+  border-radius:999px;text-decoration:none;font-size:.9rem;font-weight:600;color:var(--ink)}
+.links a:hover{border-color:var(--accent);color:var(--accent)}
+.links a.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+section{padding:2.5rem 0;border-bottom:1px solid var(--line)}
+h2{font-size:1.35rem;margin-bottom:1.2rem;letter-spacing:-.01em}
+.lead{color:var(--muted);max-width:62ch}
+
+.proj{padding:1.2rem 0;border-top:1px solid var(--line)}
+.proj:first-of-type{border-top:0;padding-top:0}
+.proj h3{font-size:1.05rem;margin-bottom:.15rem}
+.proj .meta{font-size:.85rem;color:var(--muted);margin-bottom:.5rem}
+.proj p{color:var(--muted);margin-bottom:.5rem}
+.tags{display:flex;flex-wrap:wrap;gap:.35rem}
+.tags span{font-size:.75rem;font-weight:600;background:var(--soft);
+  border:1px solid var(--line);border-radius:999px;padding:.15rem .55rem;color:var(--muted)}
+.proj .go{font-size:.88rem;font-weight:600;text-decoration:none;display:inline-block;margin-top:.5rem}
+.proj .go:hover{text-decoration:underline}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+@media(max-width:640px){.grid2{grid-template-columns:1fr}h1{font-size:1.9rem}}
+ul.plain{list-style:none}
+ul.plain li{padding:.3rem 0;color:var(--muted)}
+ul.plain li b{color:var(--ink)}
+
+footer{padding:2.5rem 0 3.5rem;color:var(--muted);font-size:.9rem}
+.demo-note{background:#fffbeb;border:1px solid #fde68a;border-radius:10px;
+  padding:.7rem 1rem;font-size:.85rem;color:#78350f;margin:1.25rem 0 0}
+.demo-note a{color:#78350f;font-weight:700}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <p class="demo-note">
+    Example portfolio. A fictional student, built to show what the prompts in
+    the guide produce. <a href="../portfolio-building.html">Back to the guide</a>
+  </p>
+</div>
+
+<header>
+  <div class="wrap">
+    <p class="eyebrow">Final year, B.Tech Computer Science</p>
+    <h1>Ananya Rao</h1>
+    <p class="tagline">I build small web things and write about what breaks.
+      Looking for a 2027 summer internship in backend or full-stack.</p>
+    <div class="links">
+      <a class="primary" href="#projects">See my projects</a>
+      <a href="#">GitHub</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">Resume (PDF)</a>
+    </div>
+  </div>
+</header>
+
+<section id="projects">
+  <div class="wrap">
+    <h2>Things I have built</h2>
+
+    <div class="proj">
+      <h3>Attendance tracker for our department</h3>
+      <p class="meta">Solo project &#183; 3 weeks &#183; Used by 60 classmates</p>
+      <p>Our department tracked attendance on paper and it went missing twice.
+        I built a small web app where a class rep marks attendance and everyone
+        can check their own percentage before it is too late to fix.</p>
+      <div class="tags"><span>Python</span><span>Flask</span><span>SQLite</span><span>GitHub Pages</span></div>
+      <a class="go" href="#">Code and screenshots &#8594;</a>
+    </div>
+
+    <div class="proj">
+      <h3>Bus timing bot for the hostel group</h3>
+      <p class="meta">Solo project &#183; One weekend</p>
+      <p>The campus shuttle timings changed every term and nobody knew.
+        The bot answers "next bus?" with the actual next departure. About 40
+        people use it daily.</p>
+      <div class="tags"><span>Python</span><span>Cron</span><span>Bot API</span></div>
+      <a class="go" href="#">Code and screenshots &#8594;</a>
+    </div>
+
+    <div class="proj">
+      <h3>Notes search across four semesters</h3>
+      <p class="meta">Two of us &#183; Ongoing</p>
+      <p>A search box over the PDF notes our seniors left behind. I did the
+        text extraction and the ranking. My first time working with someone
+        else's code review comments.</p>
+      <div class="tags"><span>JavaScript</span><span>Full-text search</span><span>GitHub Pages</span></div>
+      <a class="go" href="#">Code and screenshots &#8594;</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap grid2">
+    <div>
+      <h2>What I know</h2>
+      <ul class="plain">
+        <li><b>Comfortable:</b> Python, JavaScript, SQL, Git</li>
+        <li><b>Learning now:</b> React, Docker, system design basics</li>
+        <li><b>Coursework:</b> DSA, DBMS, Operating Systems, Networks</li>
+      </ul>
+    </div>
+    <div>
+      <h2>Beyond code</h2>
+      <ul class="plain">
+        <li>Coordinator, department tech fest 2026</li>
+        <li>Wrote a few posts about things that broke and why</li>
+        <li>Teach Python basics to first years on Saturdays</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>About me</h2>
+    <p class="lead">I got into programming late, in my second year, after a
+      seminar where somebody demoed a script that scraped placement data. I went
+      home and spent a week failing to rebuild it, then got it working, and that
+      was that. Most of what I know since then has come from building small
+      things that solve an actual annoyance around me.</p>
+    <p class="lead" style="margin-top:.8rem">I am looking for an internship where
+      I would be the least experienced person in the room. Reach me at
+      <a href="#">ananya@example.com</a>.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Built in an evening with AI prompts, hosted free on GitHub Pages.
+    Template from <a href="../portfolio-building.html">Resources by Shumbul Arifa</a>.
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vikram Shetty - Support Engineer moving into development</title>
+<meta name="description" content="Example career-switcher portfolio built with AI prompts, from Resources by Shumbul Arifa.">
+<meta name="robots" content="noindex">
+<style>
+:root{
+  --ink:#111827; --muted:#4b5563; --line:#e5e7eb;
+  --bg:#ffffff; --soft:#f9fafb; --accent:#047857; --warn:#b45309;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--ink);
+  background:var(--bg);line-height:1.65}
+.wrap{max-width:840px;margin:0 auto;padding:0 1.25rem}
+a{color:var(--accent)}
+
+.demo-note{background:#fffbeb;border:1px solid #fde68a;border-radius:10px;
+  padding:.7rem 1rem;font-size:.85rem;color:#78350f;margin:1.25rem 0 0}
+.demo-note a{color:#78350f;font-weight:700}
+
+header{padding:3.5rem 0 2.5rem;border-bottom:1px solid var(--line)}
+h1{font-size:2.3rem;line-height:1.15;margin-bottom:.5rem;letter-spacing:-.02em}
+.role{font-size:1.05rem;color:var(--accent);font-weight:600;margin-bottom:.7rem}
+.tagline{font-size:1.08rem;color:var(--muted);max-width:56ch}
+.links{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.4rem}
+.links a{padding:.5rem .9rem;border:1px solid var(--line);border-radius:8px;
+  text-decoration:none;font-size:.9rem;font-weight:600;color:var(--ink)}
+.links a:hover{border-color:var(--accent);color:var(--accent)}
+.links a.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+section{padding:2.5rem 0;border-bottom:1px solid var(--line)}
+h2{font-size:1.3rem;margin-bottom:.3rem;letter-spacing:-.01em}
+.sub{color:var(--muted);font-size:.92rem;margin-bottom:1.3rem}
+
+.item{padding:1.15rem 0;border-top:1px solid var(--line)}
+.item:first-of-type{border-top:0;padding-top:0}
+.item h3{font-size:1.05rem;margin-bottom:.15rem}
+.item .meta{font-size:.84rem;color:var(--muted);margin-bottom:.5rem}
+.item p{color:var(--muted);margin-bottom:.4rem}
+.item .result{color:var(--ink);font-weight:600;font-size:.93rem}
+.tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.6rem}
+.tags span{font-size:.74rem;font-weight:600;background:var(--soft);
+  border:1px solid var(--line);border-radius:999px;padding:.15rem .55rem;color:var(--muted)}
+
+.note{background:var(--soft);border-left:3px solid var(--warn);border-radius:0 10px 10px 0;
+  padding:.8rem 1rem;margin:1rem 0;font-size:.9rem;color:var(--muted)}
+.note b{color:var(--ink)}
+
+ul.plain{list-style:none}
+ul.plain li{padding:.3rem 0 .3rem 1.1rem;color:var(--muted);position:relative}
+ul.plain li::before{content:"–";position:absolute;left:0;color:var(--accent)}
+
+footer{padding:2.5rem 0 3.5rem;color:var(--muted);font-size:.88rem}
+@media(max-width:640px){h1{font-size:1.85rem}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <p class="demo-note">
+    Example portfolio. A fictional career switcher, built to show what the
+    prompts in the guide produce when your day job is not development.
+    <a href="../portfolio-building.html">Back to the guide</a>
+  </p>
+</div>
+
+<header>
+  <div class="wrap">
+    <h1>Vikram Shetty</h1>
+    <p class="role">Production support engineer, moving into backend development</p>
+    <p class="tagline">Five years keeping other people's systems running. That taught
+      me where software actually breaks. Now I write the fixes instead of just
+      reporting them.</p>
+    <div class="links">
+      <a class="primary" href="#work">What I have built</a>
+      <a href="#">GitHub</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">Resume (PDF)</a>
+    </div>
+  </div>
+</header>
+
+<section id="work">
+  <div class="wrap">
+    <h2>What I have built</h2>
+    <p class="sub">Two of these came out of my day job. Two I built at night to learn.</p>
+
+    <div class="item">
+      <h3>Log triage script that the whole team now uses</h3>
+      <p class="meta">At work &#183; Built over 3 weekends &#183; Used by 11 people</p>
+      <p>Every incident started with the same twenty minutes of grepping logs across
+        four servers. I wrote a script that pulls the relevant window, groups errors
+        by signature, and prints the three most likely causes based on our past
+        incidents.</p>
+      <p class="result">First-response time on P2 incidents dropped from about
+        25 minutes to under 10. It is now in the team runbook.</p>
+      <div class="tags"><span>Python</span><span>Bash</span><span>Regex</span><span>Cron</span></div>
+    </div>
+
+    <div class="item">
+      <h3>Documented an undocumented legacy service</h3>
+      <p class="meta">At work &#183; Ongoing &#183; The original authors left in 2021</p>
+      <p>Nobody knew how our billing reconciliation job worked. I read the code,
+        traced it in a test environment, and wrote up the data flow, the failure
+        modes, and what to do about each one.</p>
+      <p class="result">Two engineers have since made changes to it safely.
+        Onboarding for that system went from "ask Vikram" to a document.</p>
+      <div class="tags"><span>Java</span><span>Oracle</span><span>Systems tracing</span></div>
+    </div>
+
+    <div class="item">
+      <h3>Expense splitter for my flatmates</h3>
+      <p class="meta">Personal &#183; Nights over 6 weeks &#183; 4 users, all of them my flatmates</p>
+      <p>My first project built from an empty folder rather than an existing
+        codebase. A web app where we log shared expenses and it works out who
+        owes whom. Deliberately built the API and the front end myself instead
+        of following a tutorial.</p>
+      <p class="result">Still running. More importantly, it is where I finally
+        understood what a REST API actually is.</p>
+      <div class="tags"><span>Python</span><span>FastAPI</span><span>SQLite</span><span>GitHub Pages</span></div>
+    </div>
+
+    <div class="item">
+      <h3>Rebuilt a tutorial project, then broke it on purpose</h3>
+      <p class="meta">Personal &#183; Learning project</p>
+      <p>I followed a well-known URL shortener tutorial, then spent longer changing
+        it: swapped the database, added rate limiting, and load tested it until it
+        fell over so I could see how.</p>
+      <p class="result">Honest framing: the first version was a tutorial. Everything
+        after that was mine, and that part is what I would talk about.</p>
+      <div class="tags"><span>Go</span><span>Postgres</span><span>Docker</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>About the switch</h2>
+    <p class="sub" style="max-width:64ch">I did mechanical engineering, joined an IT
+      services company because that was the job available, and ended up in production
+      support. For a long time I read that as a dead end. It is not. Five years of
+      being on the receiving end of other people's bugs taught me what fragile code
+      looks like before it fails, and I have never met a developer who thinks about
+      3 AM as much as I do.</p>
+    <div class="note">
+      <b>What I am upfront about:</b> I have not shipped production features in a
+      product team. I am applying for roles where that is understood, and where
+      being genuinely good at debugging is worth something on day one.
+    </div>
+    <p class="sub" style="max-width:64ch">Studying at night, mostly backend and
+      systems. Reach me at <a href="#">vikram@example.com</a>.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>What I bring</h2>
+    <ul class="plain">
+      <li><b>From support:</b> incident triage, reading unfamiliar codebases fast, writing things down so the next person does not have to ask</li>
+      <li><b>Building with:</b> Python, Go, SQL, Docker, Git</li>
+      <li><b>Currently learning:</b> system design, and how to write tests I actually trust</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Built with AI prompts, hosted free on GitHub Pages.
+    Template from <a href="../portfolio-building.html">Resources by Shumbul Arifa</a>.
+  </div>
+</footer>
+
+</body>
+</html>
