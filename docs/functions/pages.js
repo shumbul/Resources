@@ -113,6 +113,10 @@ export const PAGES = [
     "t": "Operating Systems Deep Dive"
   },
   {
+    "f": "portfolio-building.html",
+    "t": "Portfolio Building with AI"
+  },
+  {
     "f": "prompt-engineering-roadmap.html",
     "t": "Prompt Engineering Roadmap"
   },

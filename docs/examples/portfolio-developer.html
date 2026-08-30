@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rahul Menon - Backend Engineer</title>
+<meta name="description" content="Example developer portfolio built with AI prompts, from Resources by Shumbul Arifa.">
+<meta name="robots" content="noindex">
+<style>
+:root{
+  --bg:#0b1120; --card:#111a2e; --ink:#e8edf7; --muted:#93a3bd;
+  --line:#1e293b; --accent:#818cf8; --accent2:#38bdf8; --ok:#34d399;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);
+  color:var(--ink);line-height:1.65}
+.wrap{max-width:900px;margin:0 auto;padding:0 1.25rem}
+a{color:var(--accent2)}
+
+.demo-note{background:#1e1b0e;border:1px solid #57450f;border-radius:10px;
+  padding:.7rem 1rem;font-size:.85rem;color:#fcd34d;margin:1.25rem 0 0}
+.demo-note a{color:#fcd34d;font-weight:700}
+
+header{padding:4rem 0 3rem}
+.status{display:inline-flex;align-items:center;gap:.45rem;font-size:.82rem;
+  font-weight:600;color:var(--ok);background:rgba(52,211,153,.1);
+  border:1px solid rgba(52,211,153,.3);border-radius:999px;padding:.3rem .75rem;
+  margin-bottom:1.1rem}
+.status i{width:7px;height:7px;border-radius:50%;background:var(--ok);display:inline-block}
+h1{font-size:2.7rem;line-height:1.1;letter-spacing:-.03em;margin-bottom:.7rem}
+h1 span{background:linear-gradient(90deg,var(--accent),var(--accent2));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.tagline{font-size:1.12rem;color:var(--muted);max-width:56ch}
+.links{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.6rem}
+.links a{padding:.55rem 1rem;border-radius:10px;text-decoration:none;
+  font-size:.9rem;font-weight:600;border:1px solid var(--line);color:var(--ink)}
+.links a:hover{border-color:var(--accent)}
+.links a.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:#0b1120;border-color:transparent}
+
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2.2rem}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:1rem}
+.stat b{display:block;font-size:1.5rem;line-height:1.1;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.stat span{font-size:.8rem;color:var(--muted)}
+
+section{padding:3rem 0;border-top:1px solid var(--line)}
+h2{font-size:1.4rem;margin-bottom:.4rem;letter-spacing:-.01em}
+.sub{color:var(--muted);font-size:.92rem;margin-bottom:1.4rem}
+
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;
+  padding:1.25rem;display:flex;flex-direction:column}
+.card h3{font-size:1.05rem;margin-bottom:.3rem}
+.card .impact{color:var(--ok);font-size:.85rem;font-weight:700;margin-bottom:.5rem}
+.card p{color:var(--muted);font-size:.92rem;flex:1}
+.stack{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.8rem}
+.stack span{font-size:.72rem;font-weight:600;color:var(--muted);
+  background:rgba(129,140,248,.1);border:1px solid rgba(129,140,248,.25);
+  border-radius:999px;padding:.15rem .55rem}
+.card .go{margin-top:.8rem;font-size:.86rem;font-weight:700;text-decoration:none}
+
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+th,td{text-align:left;padding:.6rem .5rem;border-bottom:1px solid var(--line)}
+th{font-size:.75rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}
+td b{color:var(--ink)}
+td{color:var(--muted)}
+
+footer{padding:2.5rem 0 3.5rem;color:var(--muted);font-size:.88rem}
+@media(max-width:680px){
+  .cards{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr}
+  h1{font-size:2rem}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <p class="demo-note">
+    Example portfolio. A fictional engineer, built to show what the prompts in
+    the guide produce. <a href="../portfolio-building.html">Back to the guide</a>
+  </p>
+</div>
+
+<header>
+  <div class="wrap">
+    <span class="status"><i></i> Open to senior backend roles</span>
+    <h1>Rahul Menon<br><span>Backend engineer, 6 years</span></h1>
+    <p class="tagline">I make slow systems fast and fragile systems boring.
+      Mostly Go and Postgres, mostly payments and data pipelines.</p>
+    <div class="links">
+      <a class="primary" href="#work">Selected work</a>
+      <a href="#">GitHub</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">Read my notes</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>40M+</b><span>daily events handled in production</span></div>
+      <div class="stat"><b>p99 120ms</b><span>down from 1.4s on the checkout path</span></div>
+      <div class="stat"><b>4</b><span>engineers mentored to promotion</span></div>
+    </div>
+  </div>
+</header>
+
+<section id="work">
+  <div class="wrap">
+    <h2>Selected work</h2>
+    <p class="sub">Three problems, what I actually did, and what changed as a result.</p>
+    <div class="cards">
+
+      <div class="card">
+        <h3>Checkout latency rewrite</h3>
+        <p class="impact">p99 1.4s to 120ms, cart abandonment down 8%</p>
+        <p>Checkout made 14 sequential service calls. I traced the path,
+          batched what could be batched, moved pricing to a read replica with a
+          30 second cache, and deleted two services nobody owned.</p>
+        <div class="stack"><span>Go</span><span>Postgres</span><span>Redis</span><span>OpenTelemetry</span></div>
+        <a class="go" href="#">Write-up &#8594;</a>
+      </div>
+
+      <div class="card">
+        <h3>Idempotent payment retries</h3>
+        <p class="impact">Duplicate charges: 30 a month to zero</p>
+        <p>Retries during a provider outage were double charging customers.
+          I added idempotency keys end to end and a reconciliation job that
+          catches anything that still slips through.</p>
+        <div class="stack"><span>Go</span><span>Kafka</span><span>Postgres</span></div>
+        <a class="go" href="#">Write-up &#8594;</a>
+      </div>
+
+      <div class="card">
+        <h3>Analytics pipeline rebuild</h3>
+        <p class="impact">Nightly batch to under 5 minutes fresh</p>
+        <p>Product waited a day for numbers. Moved from a nightly batch to
+          streaming, with a replayable log so a bad deploy no longer means a
+          lost day of data.</p>
+        <div class="stack"><span>Kafka</span><span>ClickHouse</span><span>Terraform</span></div>
+        <a class="go" href="#">Write-up &#8594;</a>
+      </div>
+
+      <div class="card">
+        <h3>On-call that people stopped dreading</h3>
+        <p class="impact">Pages per week: 23 to 4</p>
+        <p>Audited a year of alerts, deleted the ones nobody acted on, added
+          runbooks for the rest, and set an error budget the team agreed to.
+          Not glamorous, most valuable thing I did that year.</p>
+        <div class="stack"><span>Prometheus</span><span>Grafana</span><span>PagerDuty</span></div>
+        <a class="go" href="#">Write-up &#8594;</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Where I have worked</h2>
+    <table>
+      <thead><tr><th>Years</th><th>Role</th><th>What I owned</th></tr></thead>
+      <tbody>
+        <tr><td>2024 to now</td><td><b>Senior Engineer, Fintech Co</b></td><td>Payments platform, on-call process, two juniors</td></tr>
+        <tr><td>2022 to 2024</td><td><b>Engineer, Logistics Startup</b></td><td>Order pipeline, moved us off a single Postgres box</td></tr>
+        <tr><td>2020 to 2022</td><td><b>Engineer, Services Firm</b></td><td>Internal tools for three client teams</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>How I work</h2>
+    <p class="sub" style="max-width:62ch">I like problems where the answer is
+      measurement rather than cleverness. I write things down before I build
+      them, I prefer deleting code to adding it, and I would rather ship a boring
+      solution this month than an elegant one next quarter.</p>
+    <p class="sub" style="max-width:62ch">Currently reading about consensus
+      protocols and slowly failing to learn the guitar.
+      Reach me at <a href="#">rahul@example.com</a>.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Built with AI prompts, hosted free on GitHub Pages.
+    Template from <a href="../portfolio-building.html">Resources by Shumbul Arifa</a>.
+  </div>
+</footer>
+
+</body>
+</html>

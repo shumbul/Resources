@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap">
+    <meta charset="UTF-8">
+<!-- BEGIN critical-css (build-critical-css.py) -->
+<link rel="stylesheet" href="./theme-variables.css?v=20260830a">
+<link rel="stylesheet" href="./theme-switcher.css?v=20260830a">
+<link rel="stylesheet" href="./base.css?v=20260830a">
+<!-- END critical-css -->
+<!-- BEGIN generated-seo (build-seo.py) -->
+<link rel="canonical" href="https://shumbul.github.io/Resources/portfolio-building.html">
+<meta name="description" content="Build a portfolio website in an evening using AI. Copy-paste prompts, three live example portfolios you can view and steal, and honest advice on what recruiters actually read.">
+<meta name="author" content="Shumbul Arifa">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://shumbul.github.io/Resources/portfolio-building.html">
+<meta property="og:site_name" content="Resources by Shumbul Arifa">
+<meta property="og:title" content="Portfolio Building with AI - copy-paste prompts and live examples">
+<meta property="og:description" content="Ten prompts, three working examples, and the content work AI cannot do for you.">
+<meta property="og:image" content="https://shumbul.github.io/Resources/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Resources by Shumbul Arifa">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Portfolio Building with AI - copy-paste prompts and live examples">
+<meta name="twitter:description" content="Ten prompts, three working examples, and the content work AI cannot do for you.">
+<meta name="twitter:image" content="https://shumbul.github.io/Resources/og-image.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://shumbul.github.io/Resources/#website","url":"https://shumbul.github.io/Resources/","name":"Resources by Shumbul Arifa","inLanguage":"en","description":"Free, practical tech-career guides, roadmaps and interview prep.","publisher":{"@id":"https://shumbul.github.io/Resources/#person"}},{"@type":"Person","@id":"https://shumbul.github.io/Resources/#person","name":"Shumbul Arifa","url":"https://shumbul.github.io/Resources/about.html","jobTitle":"Software Engineer","sameAs":["https://github.com/shumbul","https://linkedin.com/in/shumbul","https://instagram.com/shumbul.arifa","https://www.youtube.com/@Shumbul"]},{"@type":"WebPage","@id":"https://shumbul.github.io/Resources/portfolio-building.html#webpage","url":"https://shumbul.github.io/Resources/portfolio-building.html","name":"Portfolio Building with AI | Resources by Shumbul Arifa","description":"Build a portfolio website in an evening using AI. Copy-paste prompts, three live example portfolios you can view and steal, and honest advice on what recruiters actually read.","inLanguage":"en","isPartOf":{"@id":"https://shumbul.github.io/Resources/#website"},"about":{"@id":"https://shumbul.github.io/Resources/#person"},"primaryImageOfPage":"https://shumbul.github.io/Resources/og-image.png"},{"@type":"BreadcrumbList","@id":"https://shumbul.github.io/Resources/portfolio-building.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Resources","item":"https://shumbul.github.io/Resources/"},{"@type":"ListItem","position":2,"name":"Portfolio Building with AI","item":"https://shumbul.github.io/Resources/portfolio-building.html"}]}]}</script>
+<!-- END generated-seo -->
+    <div data-component="head-common"></div>
+
+    <title>Portfolio Building with AI | Resources by Shumbul Arifa</title>
+    <meta name="description" content="Build a portfolio website in an evening using AI. Copy-paste prompts, three live example portfolios you can view and steal, and honest advice on what recruiters actually read.">
+    <meta property="og:title" content="Portfolio Building with AI - copy-paste prompts and live examples">
+    <meta property="og:description" content="Ten prompts, three working examples, and the content work AI cannot do for you.">
+
+    <style>
+        .guide-header { background: linear-gradient(135deg, var(--primary), var(--secondary)); color:#fff; padding:3.5rem 0; text-align:center; margin-bottom:2.5rem; }
+        .guide-title { font-size:2.6rem; font-weight:800; margin-bottom:.6rem; color:#fff; }
+        .guide-sub { font-size:1.15rem; color:rgba(255,255,255,.94); max-width:740px; margin:0 auto; }
+        .guide-badges { display:flex; gap:.5rem; justify-content:center; flex-wrap:wrap; margin-top:1.2rem; }
+        .guide-badge { background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.4); padding:.35rem .8rem; border-radius:999px; font-size:.85rem; font-weight:600; }
+
+        .starter { background:var(--bg-primary); border:1px solid var(--border); border-left:4px solid var(--primary); border-radius:12px; padding:1.1rem 1.3rem; margin-bottom:1.75rem; }
+        .gsection { background:var(--bg-secondary); border:1px solid var(--border); border-radius:16px; padding:1.6rem 1.75rem; margin-bottom:1.75rem; }
+        .gsection h2 { margin-top:0; }
+        .gsection h3 { margin:1.5rem 0 .5rem; font-size:1.05rem; }
+        .muted { color:var(--text-secondary); }
+
+        pre { background:#0f172a; color:#e2e8f0; border-radius:12px; padding:1rem 1.2rem; overflow-x:auto; font-size:.86rem; line-height:1.6; margin:.5rem 0; max-width:100%; box-sizing:border-box; white-space:pre-wrap; }
+        pre code { font-family:ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace; }
+
+        /* A labelled, copyable prompt card. */
+        .prompt { margin:1rem 0 1.4rem; }
+        .prompt .lbl { display:flex; align-items:center; gap:.5rem; flex-wrap:wrap; margin-bottom:.35rem; }
+        .prompt .num { display:inline-flex; align-items:center; justify-content:center; width:1.5rem; height:1.5rem; border-radius:50%; background:linear-gradient(135deg,var(--primary),var(--secondary)); color:#fff; font-size:.78rem; font-weight:700; flex:none; }
+        .prompt .title { font-family:var(--font-display); font-weight:700; font-size:.98rem; }
+        .prompt .who { font-size:.75rem; font-weight:600; color:var(--text-secondary); background:var(--bg-tertiary); border:1px solid var(--border); border-radius:999px; padding:.12rem .55rem; }
+        .prompt .why { font-size:.88rem; color:var(--text-secondary); margin:0 0 .1rem; }
+
+        /* Example portfolio cards with real screenshots. */
+        .egs { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; margin:1.1rem 0 .5rem; }
+        @media (max-width:760px){ .egs { grid-template-columns:1fr; } }
+        .eg { background:var(--bg-primary); border:1px solid var(--border); border-radius:14px; overflow:hidden; display:flex; flex-direction:column; text-decoration:none; color:var(--text-primary); transition:border-color .18s ease, box-shadow .18s ease, transform .18s ease; }
+        .eg:hover { border-color:var(--primary); box-shadow:var(--shadow); transform:translateY(-2px); }
+        .eg img { display:block; width:100%; height:auto; border-bottom:1px solid var(--border); }
+        .eg .body { padding:.9rem 1rem 1.1rem; }
+        .eg b { display:block; font-family:var(--font-display); font-size:1rem; margin-bottom:.2rem; }
+        .eg span { display:block; font-size:.86rem; color:var(--text-secondary); }
+        .eg .open { display:inline-block; margin-top:.6rem; font-size:.85rem; font-weight:700; color:var(--primary); }
+
+        .blocks { display:grid; grid-template-columns:repeat(5,1fr); gap:.7rem; margin:1rem 0; }
+        @media (max-width:900px){ .blocks { grid-template-columns:1fr 1fr; } }
+        @media (max-width:480px){ .blocks { grid-template-columns:1fr; } }
+        .blocks .b { background:var(--bg-primary); border:1px solid var(--border); border-radius:12px; padding:.85rem .9rem; }
+        .blocks .b .ic { font-size:1.3rem; }
+        .blocks .b strong { display:block; margin:.3rem 0 .15rem; font-size:.92rem; font-family:var(--font-display); }
+        .blocks .b span { font-size:.82rem; color:var(--text-secondary); }
+
+        .cmp { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:1rem 0; }
+        @media (max-width:720px){ .cmp { grid-template-columns:1fr; } }
+        .cmp > div { background:var(--bg-primary); border:1px solid var(--border); border-radius:12px; padding:1rem 1.15rem; }
+        .cmp .bad { border-top:3px solid #dc2626; }
+        .cmp .good { border-top:3px solid #059669; }
+        .cmp h4 { margin:0 0 .5rem; font-size:.95rem; }
+        .cmp p { margin:0; font-size:.9rem; color:var(--text-secondary); }
+        .cmp code { display:block; background:var(--bg-tertiary); border-radius:8px; padding:.5rem .65rem; font-size:.82rem; margin-top:.5rem; color:var(--text-primary); }
+
+        .steps { counter-reset:s; list-style:none; padding:0; }
+        .steps > li { position:relative; padding-left:2.4rem; margin-bottom:1rem; }
+        .steps > li::before { counter-increment:s; content:counter(s); position:absolute; left:0; top:0; width:1.7rem; height:1.7rem; border-radius:50%; background:linear-gradient(135deg,var(--primary),var(--secondary)); color:#fff; font-weight:700; font-size:.85rem; display:flex; align-items:center; justify-content:center; }
+
+        .warnbox { background:#fef2f2; border:1px solid #fecaca; border-left:4px solid #dc2626; border-radius:12px; padding:1rem 1.2rem; margin:1rem 0; }
+        .warnbox b { color:#991b1b; }
+        .warnbox p { margin:.4rem 0 0; color:#7f1d1d; font-size:.92rem; }
+
+        .ftable { width:100%; border-collapse:collapse; margin:.8rem 0; font-size:.9rem; }
+        .ftable th, .ftable td { text-align:left; padding:.55rem .7rem; border-bottom:1px solid var(--border); }
+        .ftable th { font-size:.78rem; text-transform:uppercase; letter-spacing:.06em; color:var(--text-secondary); }
+        .ftable code { background:var(--bg-tertiary); padding:.1rem .35rem; border-radius:5px; font-size:.85em; }
+
+        .concept { display:inline-block; background:var(--bg-tertiary); border:1px solid var(--border); border-radius:999px; padding:.2rem .6rem; font-size:.78rem; font-weight:600; margin:.25rem .25rem 0 0; }
+        .gsection p a, .gsection li a, .starter a { text-decoration:underline; }
+        .nextlinks { display:flex; flex-wrap:wrap; gap:.6rem; }
+        .nextlinks a { text-decoration:none; background:var(--bg-primary); border:1px solid var(--border); border-radius:10px; padding:.55rem .9rem; font-weight:600; color:var(--text-primary); }
+        .nextlinks a:hover { border-color:var(--primary); color:var(--primary); }
+    </style>
+</head>
+<body data-futuristic>
+    <div data-component="theme-switcher"></div>
+
+    <header class="guide-header">
+        <div class="container">
+        <!-- BEGIN back-link (build-backlink.py) -->
+        <div class="back-link-row"><a class="back-link" href="./index.html"><span aria-hidden="true">&larr;</span> Back to Resources</a></div>
+        <!-- END back-link -->
+
+            <h1 class="guide-title">🎨 Portfolio Building with AI</h1>
+            <p class="guide-sub">You have done work. You may not think any of it counts yet. This page helps you find what is worth showing, write it honestly, and put it somewhere people can actually see it. Twelve copy-paste prompts, four live examples, and the honest part: what AI cannot do for you.</p>
+            <div class="guide-badges">
+                <span class="guide-badge">⚡ One evening</span>
+                <span class="guide-badge">🆓 Free tools only</span>
+                <span class="guide-badge">📋 12 prompts</span>
+                <span class="guide-badge">👀 4 live examples</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- BEGIN quick-jump (build-quickjump.py) -->
+        <nav class="quick-jump" aria-label="Quick jump to section">
+            <div class="quick-jump__label">⚡ Quick jump</div>
+            <div class="quick-jump__links"><a href="#see-what-you-are-building">See it first</a><a href="#do-this-before-you-open-any-ai-tool">Do this first</a><a href="#what-makes-a-prompt-work">Anatomy of a prompt</a><a href="#the-12-prompts">The prompts</a><a href="#which-ai-tool-and-what-it-costs">Which tool</a><a href="#put-it-online-free-in-ten-minutes">Put it online</a><a href="#the-part-ai-cannot-do-for-you">What AI cannot do</a><a href="#the-checklist-before-you-share-it">Before you share</a><a href="#what-to-do-next">What next</a></div>
+        </nav>
+        <!-- END quick-jump -->
+
+        <div class="starter">
+            <div style="font-weight:700;font-family:var(--font-display,inherit);margin-bottom:.5rem;">🌱 Start here if you feel behind</div>
+            <p class="muted" style="margin:0;">You do not need three impressive projects. You need about two hours and <strong>at least one thing you have built, fixed, or figured out</strong>. A class assignment counts. A tutorial you took further counts. A script that saved your team twenty minutes counts. If you are not sure anything you have done qualifies, start at <a href="#the-12-prompts">prompt 4</a>, which exists precisely for that. If you have never written HTML, the prompts write it for you.</p>
+        </div>
+
+        <div class="gsection">
+            <h2 id="see-what-you-are-building" data-jump="See it first">See what you are building</h2>
+            <p>Four complete portfolios, built with the prompts on this page. They are real pages, not pictures. Open them, resize them, view source, take whatever you like.</p>
+
+            <div class="egs">
+                <a class="eg" href="./examples/portfolio-student.html">
+                    <img src="./assets/pf-student.png" width="1100" height="760" loading="lazy" decoding="async"
+                         alt="A clean light portfolio for a final year student, with projects described by the problem each one solved.">
+                    <div class="body">
+                        <b>Student, no job yet</b>
+                        <span>Class projects framed as real problems. Honest about being early.</span>
+                        <span class="open">Open the live page &#8594;</span>
+                    </div>
+                </a>
+                <a class="eg" href="./examples/portfolio-switcher.html">
+                    <img src="./assets/pf-switcher.png" width="1100" height="760" loading="lazy" decoding="async"
+                         alt="A portfolio for a support engineer moving into development, showing work scripts and personal projects side by side.">
+                    <div class="body">
+                        <b>Career switcher</b>
+                        <span>Day job is not development. Uses support work as evidence.</span>
+                        <span class="open">Open the live page &#8594;</span>
+                    </div>
+                </a>
+                <a class="eg" href="./examples/portfolio-developer.html">
+                    <img src="./assets/pf-developer.png" width="1100" height="760" loading="lazy" decoding="async"
+                         alt="A dark portfolio for an engineer with six years of experience, leading with measurable outcomes like p99 latency.">
+                    <div class="body">
+                        <b>Engineer, a few years in</b>
+                        <span>Leads with numbers. Every project says what changed.</span>
+                        <span class="open">Open the live page &#8594;</span>
+                    </div>
+                </a>
+                <a class="eg" href="./examples/portfolio-designer.html">
+                    <img src="./assets/pf-designer.png" width="1100" height="760" loading="lazy" decoding="async"
+                         alt="An editorial portfolio for a product designer, with case studies that describe research before design.">
+                    <div class="body">
+                        <b>Designer or creative</b>
+                        <span>Case studies. Process before pictures.</span>
+                        <span class="open">Open the live page &#8594;</span>
+                    </div>
+                </a>
+            </div>
+            <p class="muted" style="font-size:.88rem;">The people are made up. The structure is not: each one follows a pattern that survives a recruiter skim. <strong>These are deliberately strong examples.</strong> Your first version will be smaller, and that is completely normal. The career switcher one is the most honest about gaps, if that is where you are.</p>
+        </div>
+
+        <div class="gsection">
+            <h2 id="do-this-before-you-open-any-ai-tool" data-jump="Do this first">Do this before you open any AI tool</h2>
+            <p>This is the part people skip, and it is the reason most AI portfolios look identical and say nothing.</p>
+            <p><strong>AI can write your HTML. It cannot know what you did.</strong> Open a text file (Notepad works, so does the notes app on your phone) and answer these for one to three things you have worked on. Rough notes are fine, nobody sees this file.</p>
+            <pre><code>PROJECT: [name]
+What was it? (a class assignment, a tutorial, something at work,
+              or something I just wanted to exist)
+What did I actually do? (be specific, not "a web app")
+What did I use? (languages, tools)
+Did anyone besides me use it?
+  ("just me" and "my professor graded it" are real answers)
+What changed because of it?
+  If there are numbers, write them.
+  If not, write what I can do now that I could not do before.
+What broke, and what did I learn?
+
+ME:
+What am I looking for? (internship, first job, freelance, switch)
+What should someone remember about me in one line?</code></pre>
+            <p class="muted">Ten minutes here is worth more than an hour of prompting. Every prompt below gets better when you paste these answers in with it.</p>
+
+            <h3>If it was a class assignment, a tutorial, or a group project</h3>
+            <p class="muted">Most early projects are one of these. Pretending otherwise is the fastest way to get caught in an interview, and the honest framing is usually more interesting anyway.</p>
+            <ul>
+                <li><strong>Class assignment:</strong> say what the brief asked for, then say what you chose that the brief did not specify. Every assignment contains decisions.</li>
+                <li><strong>Tutorial you followed:</strong> say so. Then describe what you changed, broke, or added afterwards. "I followed a tutorial, then swapped the database and load tested it until it fell over" is a better story than pretending you invented it.</li>
+                <li><strong>Group project:</strong> name your part specifically. If four of you submit the same description and a company interviews all four, they will notice. "I did the database schema and the login flow" beats "we built".</li>
+                <li><strong>Nobody used it:</strong> completely normal. What you learned is the outcome. Say it plainly.</li>
+            </ul>
+        </div>
+
+        <div class="gsection">
+            <h2 id="what-makes-a-prompt-work" data-jump="Anatomy of a prompt">What makes a prompt work</h2>
+            <p>A weak prompt gets you a template. A strong one gets you something that looks deliberate. The difference is five ingredients:</p>
+            <div class="blocks">
+                <div class="b"><div class="ic">🎭</div><strong>Role</strong><span>Who the AI should act as</span></div>
+                <div class="b"><div class="ic">🎨</div><strong>Look</strong><span>Colours, fonts, mood</span></div>
+                <div class="b"><div class="ic">📝</div><strong>Content</strong><span>Your real words and numbers</span></div>
+                <div class="b"><div class="ic">⚙️</div><strong>Tech</strong><span>Plain HTML, one file, responsive</span></div>
+                <div class="b"><div class="ic">🗣️</div><strong>Tone</strong><span>Warm, formal, plain</span></div>
+            </div>
+            <div class="cmp">
+                <div class="bad">
+                    <h4>❌ Gets you a template</h4>
+                    <p>No role, no content, no constraints. The AI fills the gaps with stock phrases.</p>
+                    <code>Make me a portfolio website</code>
+                </div>
+                <div class="good">
+                    <h4>✅ Gets you a portfolio</h4>
+                    <p>All five ingredients, and it hands over your actual notes.</p>
+                    <code>Act as a front-end developer. Build one HTML file, light theme, blue accent, for a final-year CS student looking for a backend internship. Use these three projects, my words, do not invent anything: [paste notes]</code>
+                </div>
+            </div>
+            <p class="muted"><strong>The rule that matters most:</strong> context before requests. Tell it who you are and who is reading, then ask for the layout.</p>
+        </div>
+
+        <div class="gsection">
+            <h2 id="the-12-prompts" data-jump="The prompts">The twelve prompts</h2>
+            <p class="muted">Run them in order. Each has a copy button. Replace anything in <code>[square brackets]</code> with your own answers from the notes file above. If a prompt gives you something you dislike, say what you dislike and ask again: that is the whole skill.</p>
+
+            <div class="prompt">
+                <div class="lbl"><span class="num">1</span><span class="title">The whole thing, first draft</span><span class="who">everyone</span></div>
+                <p class="why">Start here. Get something on screen, then improve it.</p>
+                <pre><code>Act as a front-end developer who builds clean, fast, accessible websites.
+
+Build me a personal portfolio as ONE single HTML file with the CSS inside a
+&lt;style&gt; tag. No frameworks, no build step, no external files. It must work
+if I just double click it.
+
+About me:
+- Name: [your name]
+- Who I am: [final year CS student / support engineer moving into development /
+  backend engineer, 4 years / engineering manager, 17 years / etc]
+- Looking for: [summer internship in backend]
+- One line people should remember: [I build small tools that fix real annoyances]
+
+My projects (use MY words, do not invent achievements):
+[paste your notes here]
+
+Design: light background, one accent colour [#2563eb], generous white space,
+system fonts, mobile-first. Nothing decorative that does not help someone
+decide whether to contact me.
+
+Sections in this order: header with name and one line, links row
+(GitHub, LinkedIn, resume, email), projects, skills, short about, footer.
+
+Keep the whole page under 250 lines. Explain nothing, just give me the file.</code></pre>
+            </div>
+
+            <div class="prompt">
+                <div class="lbl"><span class="num">2</span><span class="title">A header that is not just your name</span><span class="who">everyone</span></div>
+                <p class="why">The first two seconds. Most portfolios waste them on a big name and nothing else.</p>
+                <pre><code>Rewrite the header of my portfolio.
+
+Right now it says my name and job title, which tells a visitor nothing.
+I want a one-line statement of what I actually do and who I do it for,
+in plain English, no buzzwords, under 20 words.
+
+Here is what I do: [describe it in your own messy words]
+Here is who I want reading it: [recruiter for backend internships]
+
+Give me 6 options, ranging from plain and factual to slightly bold.
+Do not use the words passionate, innovative, dynamic, or leverage.</code></pre>
+            </div>
+
+            <div class="prompt">
+                <div class="lbl"><span class="num">3</span><span class="title">Turn a project into something worth reading</span><span class="who">everyone</span></div>
+                <p class="why">Run this once per project. This is the prompt that does the most work.</p>
+                <pre><code>Here are my rough notes on one project:
+[paste your notes for ONE project]
+
+Rewrite this as a portfolio project entry with:
+- A title that says what it does, not a clever name
+- One line on what was broken before it existed
+- Two or three lines on what I built and the interesting decision I made
+- One line on what changed as a result, using my real numbers
+- A short list of technologies
+
+Rules: use only facts from my notes. If a number is missing, leave it out
+rather than inventing one. Do not call anything "cutting edge" or
+"state of the art". Write like I am explaining it to a classmate.</code></pre>
+            </div>
+
+            <div class="prompt">
+                <div class="lbl"><span class="num">4</span><span class="title">When you think you have nothing to show</span><span class="who">school, first year, career switcher</span></div>
+                <p class="why">You almost certainly have more than you think. This finds it.</p>
+                <pre><code>I am [16 and still at school / switching from teaching to tech] and I do not
+have professional projects. Help me find what I can legitimately show.
+
+Here is everything I have done that touched technology, however small:
+[list it all, including course assignments, spreadsheets you automated,
+a club website you edited, tutorials you followed, anything]
+
+For each one, tell me honestly:
+- Is this worth showing, yes or no, and why
+- If yes, how do I describe it without pretending it was more than it was
+- What is the smallest thing I could add this week to make it stronger
+
+Do not be encouraging for the sake of it. If something is too thin to
+include, say so.</code></pre>
+            </div>
+
+            <div class="prompt">
+                <div class="lbl"><span class="num">5</span><span class="title">The about section that sounds like a person</span><span class="who">everyone</span></div>
+                <p class="why">Most about sections are either a resume repeat or a paragraph about being passionate.</p>
+                <pre><code>Write the About section for my portfolio. About 120 words.
+
+Structure: how I got into this, one specific thing I worked on that changed
+how I think, what I am trying to do next, one human detail that is not work.
+
+Raw material about me: [write 5 messy sentences about yourself here]
+
+Tone: like I am talking to someone I respect, not performing. First person.
+No "I am passionate about". No listing adjectives about myself.
+It is fine to admit I am early in this.</code></pre>
+            </div>
+
+            <div class="prompt">
+                <div class="lbl"><span class="num">6</span><span class="title">Make it work on a phone</span><span class="who">everyone</span></div>
+                <p class="why">Most people will open your link on a phone, often from a message.</p>
+                <pre><code>Review my portfolio HTML for mobile. Assume a 390px wide screen.
+
+Find and fix:
+- Anything that causes sideways scrolling
+- Text smaller than 14px
+- Tap targets smaller than 44px
+- Multi-column layouts that should stack
+- Long unbroken strings like URLs that overflow
+
+Return the corrected file. Tell me in one line per item what you changed
+and why. Do not redesign anything I did not ask about.
+
+[paste your HTML]</code></pre>
+            </div>
+
+            <div class="prompt">
+                <div class="lbl"><span class="num">7</span><span class="title">Make it usable for everyone</span><span class="who">everyone</span></div>
+                <p class="why">This also happens to be what large employers check for. It is a small effort with real weight.</p>
+                <pre><code>Audit my portfolio HTML for accessibility and fix it.
+
+Check specifically:
+- Every image has meaningful alt text (not "image" or the filename)
+- Text and background have enough contrast to read (WCAG AA, 4.5:1 for body
+  text). You do not need to know the rules, the AI does
+- One h1, and heading levels do not skip
+- Every link makes sense out of context, no bare "click here"
+- Keyboard focus is visible on every link and button
+- The page has a lang attribute and a descriptive title
+
+Return the fixed file plus a short list of what was wrong.
+
+[paste your HTML]</code></pre>
+            </div>
+
+            <div class="prompt">
+                <div class="lbl"><span class="num">8</span><span class="title">The brutal review</span><span class="who">everyone, especially experienced</span></div>
+                <p class="why">Ask for criticism explicitly or you will only get compliments.</p>
+                <pre><code>You are a hiring manager for [backend engineering] roles. You have 40
+seconds and 200 other portfolios to get through.
+
+Read mine and be genuinely critical. Do not be encouraging.
+
+Tell me:
+1. What do you learn in the first 10 seconds? Quote the exact words that
+   made you think it.
+2. Which sentence is the weakest, and why?
+3. What is missing that you needed in order to shortlist me?
+4. Which project is strongest, which is filler, and would you cut it?
+5. Is there anything here that would make you stop reading?
+
+[paste your portfolio text]</code></pre>
+            </div>
+
+            <div class="prompt">
+                <div class="lbl"><span class="num">9</span><span class="title">Show seniority without listing years</span><span class="who">5+ years, team leads, trainers</span></div>
+                <p class="why">At senior level, a list of technologies works against you. Judgement is the thing being assessed.</p>
+                <pre><code>I have [11] years of experience as a [data engineer]. My portfolio currently
+reads like a longer version of a junior one: a list of tools and projects.
+
+Rewrite it to show judgement instead of output. For each project, surface:
+- The constraint I was working under (budget, deadline, team, legacy system)
+- The tradeoff I chose and what I gave up
+- What I would do differently now
+- Who I made better, not just what I built
+
+Also suggest what to CUT. At my level, listing 20 technologies makes me look
+junior. Tell me which of these to drop: [paste your list]</code></pre>
+            </div>
+
+            <div class="prompt">
+                <div class="lbl"><span class="num">10</span><span class="title">When you cannot show the work</span><span class="who">enterprise, NDA, consultancy</span></div>
+                <p class="why">If everything you have built belongs to a client or is behind a login, you can still describe the shape of it.</p>
+                <pre><code>Everything I have worked on is confidential. I cannot name the company,
+show the code, screenshot the product, or quote exact internal metrics.
+
+Here is what I did, in full, for my own reference:
+[write it out honestly, names and numbers included]
+
+Rewrite this so it is safe to publish:
+- Describe the problem by its shape and scale, not its owner
+  ("a payments system handling mid-six-figure daily volume")
+- Describe my decisions and the tradeoffs, which are mine, not the client's
+- Use approximate or relative outcomes ("cut processing time by roughly half")
+  rather than exact internal figures
+- Never name the employer, the product, the client, or any proprietary system
+
+Then flag anything still risky, and tell me what a reasonable employer would
+consider fair to share versus what crosses a line.</code></pre>
+            </div>
+
+            <div class="prompt">
+                <div class="lbl"><span class="num">11</span><span class="title">Turn maintenance work into evidence</span><span class="who">support, ops, QA, services roles</span></div>
+                <p class="why">"I maintain other people's code" is a real job that teaches real things. It just needs different framing.</p>
+                <pre><code>My job is [production support / testing / maintaining a legacy system]. I do
+not build new features, so I feel I have nothing to show. Help me see what I
+actually have.
+
+Here is what a normal month looks like for me:
+[describe it: the incidents, the scripts, the documentation, the debugging]
+
+For each thing I do, tell me:
+- Is there a portfolio-worthy story in here, honestly yes or no
+- If yes, what is the evidence a hiring manager would care about
+- How do I describe it without claiming I built the system
+
+Then help me spot the small things I could build FROM this work: a script,
+a dashboard, a piece of documentation, a tool that removes a repeated task.
+Those are portfolio projects and they come with a real problem attached.</code></pre>
+            </div>
+
+            <div class="prompt">
+                <div class="lbl"><span class="num">12</span><span class="title">Get found on Google, and shared properly</span><span class="who">everyone</span></div>
+                <p class="why">So your link shows a proper preview instead of a bare URL when you paste it anywhere.</p>
+                <pre><code>Add the meta tags my portfolio needs. Give me the exact HTML for &lt;head&gt;.
+
+Include:
+- A title tag: my name, my role, under 60 characters
+- A meta description under 155 characters, written for a human
+- Open Graph tags (these control the preview card when someone pastes your
+  link into WhatsApp, LinkedIn or Slack)
+- Twitter card tags
+- A canonical link (tells search engines this is the real address for the page)
+- JSON-LD structured data using schema.org Person, with my name, job title,
+  and links to my GitHub and LinkedIn
+
+My details: [name, role, one-line description, site URL, social links]
+
+Then tell me what size the og:image should be and what it should show.</code></pre>
+            </div>
+        </div>
+
+        <div class="gsection">
+            <h2 id="which-ai-tool-and-what-it-costs" data-jump="Which tool">Which AI tool, and what it costs</h2>
+            <p>All of these have a free tier that is enough for this. You do not need to pay.</p>
+            <table class="ftable">
+                <thead><tr><th>Tool</th><th>Good for</th><th>Watch out for</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>ChatGPT</strong> / <strong>Claude</strong> / <strong>Gemini</strong></td><td>Everything on this page. Paste the prompt, get a file back.</td><td>Free limits reset over time. Work in one long conversation so it keeps context.</td></tr>
+                    <tr><td><strong>GitHub Copilot</strong></td><td>Editing the file afterwards, inside your editor.</td><td>Free for students through the <a href="https://education.github.com/pack" target="_blank" rel="noopener">Student Developer Pack</a>.</td></tr>
+                    <tr><td><strong>v0</strong>, <strong>Lovable</strong>, <strong>Bolt</strong></td><td>Seeing a design instantly, clicking to change it.</td><td>They generate React projects. Harder to host free, and harder to understand later.</td></tr>
+                </tbody>
+            </table>
+            <p class="muted"><strong>My honest recommendation for a first portfolio:</strong> a normal chat tool and one HTML file. You can read it, fix it, and host it anywhere. Fancier builders are quicker on day one and more painful on day thirty.</p>
+        </div>
+
+        <div class="gsection">
+            <h2 id="put-it-online-free-in-ten-minutes" data-jump="Put it online">Put it online, free, in ten minutes</h2>
+            <p class="muted"><strong>Never used GitHub before?</strong> Read <a href="./build-a-website.html">Build a Website</a> first. It covers the same ground more slowly and assumes nothing. The version below is the short one.</p>
+            <ol class="steps">
+                <li>Make a free account at <a href="https://github.com" target="_blank" rel="noopener">github.com</a> and verify your email. Nothing else works until this is done.</li>
+                <li>Save your file as <code>index.html</code>. The name matters: that is the file a web server looks for by default.</li>
+                <li>Click <strong>New repository</strong>. Name it exactly <code>yourusername.github.io</code>, using your real GitHub username. Set it to Public.</li>
+                <li>On the empty repository page, click <strong>uploading an existing file</strong> and drag <code>index.html</code> in. No Git commands needed.</li>
+                <li>Go to <strong>Settings</strong>, then <strong>Pages</strong> in the left sidebar. Under Branch pick <code>main</code> and <code>/ (root)</code>, then Save.</li>
+                <li>Wait two or three minutes, then open <code>https://yourusername.github.io</code>. A 404 at first is normal: the first publish is the slow one.</li>
+            </ol>
+            <p class="muted">That URL is now the one link you put on your resume, your LinkedIn, and every application.</p>
+            <p class="muted"><strong>On a phone, or a shared computer you cannot install software on?</strong> All of this works in a browser. Write the file in any notes app, paste it into GitHub's web editor, and install nothing. Slower, but nothing here needs your own laptop.</p>
+        </div>
+
+        <div class="gsection">
+            <h2 id="the-part-ai-cannot-do-for-you" data-jump="What AI cannot do">The part AI cannot do for you</h2>
+            <p>Worth being blunt, because this is where AI portfolios fall down.</p>
+            <div class="warnbox">
+                <b>⚠️ AI will happily invent your achievements</b>
+                <p>Ask for a portfolio without giving it facts and it will write that you "increased performance by 40%". You will not notice. An interviewer will, because they will ask how you measured it. Every number on your site must be one you can defend for ten minutes.</p>
+            </div>
+            <ul>
+                <li><strong>It cannot decide what matters.</strong> Choosing which three projects to show, and cutting the fourth, is judgement. That choice tells a reader more than the design does.</li>
+                <li><strong>It does not know your field.</strong> A designer needs case studies, a data analyst needs charts, a backend engineer needs architecture and numbers. Tell the AI which you are.</li>
+                <li><strong>It writes fluent, forgettable prose by default.</strong> The sentence a reader remembers is usually the specific, slightly awkward, true one. Keep your own words where they matter.</li>
+                <li><strong>It cannot make you legible to a human in 40 seconds.</strong> Only editing does that. Cut, then cut again.</li>
+            </ul>
+
+            <h3>What to say when someone asks "did you build this?"</h3>
+            <p>The truth, which is better than it sounds: <strong>you wrote the content, AI wrote the HTML, and you edited both.</strong> That is how a large amount of professional software is written in 2026, and most interviewers will respect a straight answer far more than a vague one.</p>
+            <p class="muted">Two things worth preparing for. Some interviewers will ask you to explain a piece of your own page, so read it once and make sure you could point at a CSS rule and say what it does. And if your college or employer has a policy on AI use, follow it, because the policy matters more than my advice does.</p>
+
+            <div class="warnbox" style="background:#eff6ff;border-color:#bfdbfe;border-left-color:#2563eb;">
+                <b style="color:#1e40af;">🎓 If your whole class is doing this together</b>
+                <p style="color:#1e3a8a;">These prompts are a structure, not a form to fill in. If thirty of you run prompt 1 unchanged, you will produce thirty near-identical blue websites, and a recruiter looking at five portfolios from the same college will spot it instantly. <strong>Change the accent colour, change the section order, and above all write different notes.</strong> The notes file is the only part that cannot be copied, which is exactly why it is the part that matters. If you worked in a team, describe your own piece rather than the team's.</p>
+            </div>
+        </div>
+
+        <div class="gsection">
+            <h2 id="the-checklist-before-you-share-it" data-jump="Before you share">The checklist before you share it</h2>
+            <p class="muted">Go through this once. It catches the things that quietly cost you replies.</p>
+            <ul>
+                <li>Every link works, including the resume PDF and the email address</li>
+                <li>Opened it on an actual phone, not just a narrow browser window</li>
+                <li>No placeholder text left anywhere (search the file for "lorem", "example", and square brackets)</li>
+                <li>Every number is one you can explain in an interview</li>
+                <li>Somebody outside your field read it and could say what you do</li>
+                <li>Your name appears in the page title, so the browser tab is not "Document"</li>
+                <li>Pasted the link into a chat to check the preview looks right</li>
+                <li>It loads in under three seconds on mobile data</li>
+            </ul>
+            <div>
+                <span class="concept">One page is enough</span>
+                <span class="concept">Three good projects beat eight</span>
+                <span class="concept">Boring and clear wins</span>
+            </div>
+        </div>
+
+        <div class="gsection">
+            <h2 id="what-to-do-next" data-jump="What next">What to do next</h2>
+            <ol class="steps">
+                <li>Fill in the notes file. Twenty minutes, offline, no AI.</li>
+                <li>Run prompt 1, then 3 once per project. You now have a draft.</li>
+                <li>Run prompts 6 and 7. Your site now works on phones and for screen readers.</li>
+                <li>Run prompt 8 and actually act on what it says.</li>
+                <li>Publish it, then put the link in your LinkedIn headline and your resume header.</li>
+            </ol>
+            <div class="nextlinks">
+                <a href="./build-a-website.html">🌐 Build a Website</a>
+                <a href="./resume-portfolio-templates.html">📄 Resume &amp; Portfolio</a>
+                <a href="./linkedin-utilization-guide.html">💼 LinkedIn Guide</a>
+                <a href="./prompt-engineering-roadmap.html">✨ Prompt Engineering</a>
+            </div>
+        </div>
+    </main>
+
+    <div data-component="footer"></div>
+    <div data-component="scripts-common"></div>
+    <script src="./components/component-loader.js"></script>
+    <script type="module" src="./functions/site.js?v=20260830a"></script>
+</body>
+</html>
