@@ -105,8 +105,164 @@ h1, h2, h3, .demo-title, .ai-title { font-family: var(--font-display); letter-sp
 .demo-header .demo-subtitle,
 .ai-header .ai-subtitle { color: rgba(255, 255, 255, 0.92); }
 
-/* Never let a code block force horizontal page scroll on small screens. */
-pre { max-width: 100%; overflow-x: auto; box-sizing: border-box; }
+/* ==========================================================================
+   CODE BLOCKS
+   ==========================================================================
+   Eleven pages each carried their own copy of
+       pre { background:#0f172a; color:#e2e8f0; ... }
+   which made every block a flat wall of near-white on near-black. On a site
+   that is otherwise light that reads as a hole in the page, it gave the Copy
+   button (styled for a light surface) a dark box to sit on, and, since most
+   of these blocks are prompts rather than code, there was nothing coloured to
+   tell you which bits you are supposed to replace.
+
+   Those per-page rules have been deleted. This is now the only definition.
+   `body` prefixes lift specificity to (0,1,1) so a page-level <style> block,
+   which the browser parses after this file, cannot quietly win.
+
+   Token colours are set below and every one of them clears WCAG AA against
+   the block background: the weakest is hl-str at 5.05:1.
+   -------------------------------------------------------------------------- */
+
+body pre {
+    max-width: 100%;
+    overflow-x: auto;
+    box-sizing: border-box;
+    background: #f6f8fb;
+    color: #1f2430;
+    border: 1px solid #e2e7f0;
+    border-left: 3px solid var(--primary);
+    border-radius: var(--radius-sm, 10px);
+    padding: 1rem 1.15rem;
+    margin: .6rem 0;
+    font-size: .87rem;
+    line-height: 1.62;
+    /* Prompts are prose and wrap; real code is indentation-sensitive, so it
+       scrolls instead. initHighlight() sets data-hl, which tells them apart. */
+    white-space: pre;
+    tab-size: 4;
+}
+
+body pre[data-hl="prompt"],
+body pre[data-hl="text"] { white-space: pre-wrap; overflow-wrap: anywhere; }
+
+body pre code {
+    background: none;
+    border: 0;
+    padding: 0;
+    color: inherit;
+    font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas,
+        'Liberation Mono', monospace;
+    font-size: inherit;
+}
+
+/* Room for the Copy button, which is absolutely positioned top-right. Without
+   this the first line of every block runs underneath it. */
+body pre { padding-right: 4.75rem; }
+
+/* Syntax tokens. Deliberately few: more than about six colours stops being
+   a reading aid and starts being decoration. */
+.hl-com  { color: #5f6672; font-style: italic; }
+.hl-str  { color: #1f7a3d; }
+.hl-kw   { color: #8b23a8; font-weight: 600; }
+.hl-num  { color: #8a5a00; }
+.hl-fn   { color: #1f5fd0; }
+.hl-dec  { color: #8a5a00; }
+.hl-tag  { color: #8b23a8; }
+.hl-attr { color: #1f5fd0; }
+.hl-key  { color: #b32a5b; }
+.hl-flag { color: #5f6672; }
+.hl-lbl  { color: #0f766e; font-weight: 700; }
+
+/* The one token that earns a background. In a prompt, [like this] is the bit
+   you have to swap for your own words, and it is the single most missed
+   instruction on the page, so it gets a chip rather than just a colour. */
+.hl-ph {
+    color: #b32a5b;
+    background: #fdeef4;
+    border-radius: 4px;
+    padding: 0 .18em;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+}
+
+@media (max-width: 600px) {
+    body pre { font-size: .8rem; padding: .85rem .9rem; padding-right: 4.5rem; }
+}
+
+/* git-guide.html predates the shared <pre> and wraps each block in its own
+   container with a language label and a copy button in the header bar.
+   component-demo.html uses a plain .code-block div. Both were dark. They are
+   restyled here rather than in the pages so there is exactly one place where
+   a code surface is defined. */
+body .code-block-container {
+    margin: 1.2rem 0;
+    border: 1px solid #e2e7f0;
+    border-left: 3px solid var(--primary);
+    border-radius: var(--radius-sm, 10px);
+    overflow: hidden;
+    background: #f6f8fb;
+}
+body .code-block-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: .5rem;
+    padding: .45rem .8rem;
+    background: #eef1f8;
+    border-bottom: 1px solid #e2e7f0;
+}
+body .code-block-language {
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: #5f6672;
+}
+body .code-block-copy {
+    display: inline-flex;
+    align-items: center;
+    gap: .35rem;
+    border: 1px solid #d9dfea;
+    background: #ffffff;
+    color: #5f6672;
+    border-radius: 8px;
+    padding: .22rem .55rem;
+    font: 600 .75rem/1 var(--font-sans, inherit);
+    cursor: pointer;
+}
+body .code-block-copy:hover { color: var(--primary); border-color: var(--primary); }
+/* The container already draws the frame, so the inner <pre> must not draw a
+   second one on top of it. */
+body pre.code-block-content {
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    /* The copy button lives in the header bar here, not overlaid on the code,
+       so the gutter the shared rule reserves for it is not needed. */
+    padding: .9rem 1.15rem;
+}
+body .code-block {
+    background: #f6f8fb;
+    color: #1f2430;
+    border: 1px solid #e2e7f0;
+    border-left: 3px solid var(--primary);
+    padding: 1rem 1.15rem;
+    border-radius: var(--radius-sm, 10px);
+    font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas,
+        'Liberation Mono', monospace;
+    font-size: .87rem;
+    overflow-x: auto;
+    margin: 1rem 0;
+}
+
+/* Honour a user stylesheet or an OS high-contrast mode rather than fighting it. */
+@media (forced-colors: active) {
+    body pre { border: 1px solid CanvasText; }
+    .hl-com, .hl-str, .hl-kw, .hl-num, .hl-fn, .hl-dec, .hl-tag,
+    .hl-attr, .hl-key, .hl-flag, .hl-lbl, .hl-ph { color: CanvasText; background: none; }
+}
 
 /* Wide tables scroll inside their own box instead of stretching the page. */
 .gsection table { display: block; max-width: 100%; overflow-x: auto; }

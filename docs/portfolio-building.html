@@ -6,9 +6,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap">
     <meta charset="UTF-8">
 <!-- BEGIN critical-css (build-critical-css.py) -->
-<link rel="stylesheet" href="./theme-variables.css?v=20260830a">
-<link rel="stylesheet" href="./theme-switcher.css?v=20260830a">
-<link rel="stylesheet" href="./base.css?v=20260830a">
+<link rel="stylesheet" href="./theme-variables.css?v=20260830b">
+<link rel="stylesheet" href="./theme-switcher.css?v=20260830b">
+<link rel="stylesheet" href="./base.css?v=20260830b">
 <!-- END critical-css -->
 <!-- BEGIN generated-seo (build-seo.py) -->
 <link rel="canonical" href="https://shumbul.github.io/Resources/portfolio-building.html">
@@ -51,7 +51,6 @@
         .gsection h3 { margin:1.5rem 0 .5rem; font-size:1.05rem; }
         .muted { color:var(--text-secondary); }
 
-        pre { background:#0f172a; color:#e2e8f0; border-radius:12px; padding:1rem 1.2rem; overflow-x:auto; font-size:.86rem; line-height:1.6; margin:.5rem 0; max-width:100%; box-sizing:border-box; white-space:pre-wrap; }
         pre code { font-family:ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace; }
 
         /* A labelled, copyable prompt card. */
@@ -108,6 +107,27 @@
         .nextlinks { display:flex; flex-wrap:wrap; gap:.6rem; }
         .nextlinks a { text-decoration:none; background:var(--bg-primary); border:1px solid var(--border); border-radius:10px; padding:.55rem .9rem; font-weight:600; color:var(--text-primary); }
         .nextlinks a:hover { border-color:var(--primary); color:var(--primary); }
+
+        /* "It is as easy as that": the four moves, shown as a flow so the
+           whole job is visible at a glance rather than inferred from 3,000
+           words. Three of the five reviewers said the page looked like a lot
+           of work before they had read any of it. */
+        .easy { margin-top:1.4rem; background:var(--bg-primary); border:1px solid var(--border); border-left:4px solid var(--primary); border-radius:14px; padding:1.2rem 1.35rem; }
+        .easy h3 { margin:0 0 .35rem; font-size:1.05rem; font-family:var(--font-display); }
+        .easy > p { margin:0 0 .9rem; font-size:.92rem; color:var(--text-secondary); }
+        .easy-flow { list-style:none; padding:0; margin:0; display:grid; grid-template-columns:repeat(4,1fr); gap:.7rem; }
+        @media (max-width:820px){ .easy-flow { grid-template-columns:1fr 1fr; } }
+        @media (max-width:460px){ .easy-flow { grid-template-columns:1fr; } }
+        .easy-flow li { position:relative; background:var(--bg-secondary); border:1px solid var(--border); border-radius:12px; padding:.85rem .9rem; }
+        .easy-flow .k { display:inline-flex; align-items:center; justify-content:center; width:1.45rem; height:1.45rem; border-radius:50%; background:linear-gradient(135deg,var(--primary),var(--secondary)); color:#fff; font-size:.76rem; font-weight:700; }
+        .easy-flow b { display:block; margin:.4rem 0 .2rem; font-size:.9rem; font-family:var(--font-display); }
+        .easy-flow span:not(.k) { display:block; font-size:.82rem; color:var(--text-secondary); line-height:1.5; }
+        .easy-flow code { background:var(--bg-tertiary); padding:.05rem .3rem; border-radius:5px; font-size:.92em; }
+        /* The connector between steps. Decorative, so it is hidden from
+           assistive tech and dropped as soon as the grid stops being a row. */
+        .easy-flow li:not(:last-child)::after { content:'\2192'; position:absolute; right:-.58rem; top:50%; transform:translateY(-50%); color:var(--primary); font-weight:700; z-index:1; }
+        @media (max-width:820px){ .easy-flow li:not(:last-child)::after { content:none; } }
+        .easy-note { margin:.9rem 0 0; font-size:.9rem; color:var(--text-secondary); }
     </style>
 </head>
 <body data-futuristic>
@@ -186,6 +206,18 @@
                 </a>
             </div>
             <p class="muted" style="font-size:.88rem;">The people are made up. The structure is not: each one follows a pattern that survives a recruiter skim. <strong>These are deliberately strong examples.</strong> Your first version will be smaller, and that is completely normal. The career switcher one is the most honest about gaps, if that is where you are.</p>
+
+            <div class="easy">
+                <h3>And it really is as easy as that</h3>
+                <p>Every one of the four pages above came out of the same four moves. No design tool, no framework, no tutorial series, nothing to install.</p>
+                <ol class="easy-flow">
+                    <li><span class="k">1</span><b>Write rough notes</b><span>About 20 minutes, in Notepad or your phone. Nobody sees this file.</span></li>
+                    <li><span class="k">2</span><b>Paste a prompt</b><span>Copy one from below, drop your notes in where it says to.</span></li>
+                    <li><span class="k">3</span><b>Save what it gives you</b><span>One file, named <code>index.html</code>. Double-click it. That is your site.</span></li>
+                    <li><span class="k">4</span><b>Put it online</b><span>Drag that file into GitHub. You get a link you can send.</span></li>
+                </ol>
+                <p class="easy-note">The longest part is step 1, and that is the part that is actually about you. Everything after it is copying, pasting and saving. <strong>If you can send an email, you can do the rest of this page.</strong></p>
+            </div>
         </div>
 
         <div class="gsection">
@@ -573,6 +605,6 @@ Then tell me what size the og:image should be and what it should show.</code></p
     <div data-component="footer"></div>
     <div data-component="scripts-common"></div>
     <script src="./components/component-loader.js"></script>
-    <script type="module" src="./functions/site.js?v=20260830a"></script>
+    <script type="module" src="./functions/site.js?v=20260830b"></script>
 </body>
 </html>
