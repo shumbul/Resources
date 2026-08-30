@@ -197,7 +197,7 @@ export function initMindmaps() {
     const hosts = document.querySelectorAll('[data-mindmap]');
     if (!hosts.length) return;
 
-    import('./mindmaps.js?v=20260830c').then(({ MAPS }) => {
+    import('./mindmaps.js?v=20260830d').then(({ MAPS }) => {
         hosts.forEach((host) => {
             const map = MAPS[host.dataset.mindmap];
             if (!map) {

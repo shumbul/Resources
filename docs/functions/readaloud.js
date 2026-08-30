@@ -37,13 +37,37 @@ const CSS = `
 .ra-bar .ra-prog{font:500 .75rem/1 Inter,sans-serif;color:var(--text-secondary,#777);
     padding:0 .3rem;min-width:52px;text-align:center;}
 
+/* The Listen button.
+ *
+ * Positioning note, because this was got wrong once already. The button is
+ * fixed at bottom-left, which on desktop is directly on top of the sidebar
+ * (the sidebar spans 0 to --sidebar-w at z-index 9400; this sits at 9996).
+ * It therefore covers whichever sidebar links happen to fall at its height.
+ *
+ * The first attempt at fixing that added padding-bottom to the sidebar's
+ * scroll container. That only clears the button when the sidebar is scrolled
+ * all the way down, which is the single position it was tested in. At the top
+ * of the list, which is the default, two links were still underneath it.
+ *
+ * The actual fix is to not overlap at all: on desktop the button sits just to
+ * the right of the sidebar, and slides back to the edge when the sidebar is
+ * collapsed. Below 1024px the sidebar is an off-canvas drawer, so the edge is
+ * already free.
+ */
 .ra-fab{position:fixed;left:20px;bottom:20px;z-index:9996;
     display:inline-flex;align-items:center;gap:.45rem;
     padding:.6rem .9rem;border:1px solid var(--border,#e5e7eb);border-radius:999px;
     background:var(--bg-primary,#fff);color:var(--text-primary,#111);
     font:600 .88rem/1 Inter,Segoe UI,sans-serif;cursor:pointer;
     box-shadow:0 6px 18px rgba(15,23,42,.12);
-    transition:transform .2s ease,box-shadow .2s ease,opacity .25s ease;}
+    transition:transform .2s ease,box-shadow .2s ease,opacity .25s ease,left .25s ease;}
+@media (min-width:1024px){
+    .ra-fab{left:calc(var(--sidebar-w,250px) + 20px);}
+    body.sidebar-collapsed .ra-fab{left:20px;}
+}
+@media (prefers-reduced-motion:reduce){
+    .ra-fab{transition:opacity .25s ease;}
+}
 .ra-fab:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(15,23,42,.18);
     color:var(--primary,#8b5cf6);}
 .ra-fab:focus-visible{outline:2px solid var(--primary,#8b5cf6);outline-offset:2px;}
