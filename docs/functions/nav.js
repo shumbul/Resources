@@ -122,7 +122,12 @@ const CSS = `
     border-radius:10px;background:var(--bg-primary);color:var(--text-primary);
     font:500 .88rem/1 var(--font-sans,inherit);}
 .site-search input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px var(--ring);}
-.site-sidebar__scroll{flex:1;overflow-y:auto;padding:.4rem .8rem 4.5rem;}
+/* 1.5rem, not the 4.5rem it briefly was. The larger value existed to keep the
+   last link clear of the Listen button, which was the wrong fix: the button
+   overlapped the sidebar at every scroll position, not just the bottom. The
+   button now sits beside the sidebar instead (see .ra-fab in readaloud.js),
+   so this is back to being ordinary breathing room. */
+.site-sidebar__scroll{flex:1;overflow-y:auto;padding:.4rem .8rem 1.5rem;}
 .site-sidebar__group{margin-bottom:1.05rem;}
 .site-sidebar__title{font:700 .72rem/1 var(--font-sans,inherit);text-transform:uppercase;letter-spacing:.08em;
     color:var(--text-secondary,#666);padding:.3rem .7rem .5rem;}
