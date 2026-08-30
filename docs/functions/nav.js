@@ -40,6 +40,7 @@ const GROUPS = [
     ]},
     { title: 'Build a Project', items: [
         { href: 'build-a-website.html', label: 'Build a Website', icon: '🌐' },
+        { href: 'portfolio-building.html', label: 'Portfolio with AI', icon: '🎨' },
         { href: 'build-ai-agent.html', label: 'Build an AI Agent', icon: '🤖' },
         { href: 'mcp-guide.html', label: 'MCP Explained', icon: '🔌' },
         { href: 'networking-toolkit.html', label: 'Networking Toolkit', icon: '🛰️' },

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Meera Kulkarni - Product Designer</title>
+<meta name="description" content="Example designer portfolio built with AI prompts, from Resources by Shumbul Arifa.">
+<meta name="robots" content="noindex">
+<style>
+:root{
+  --ink:#1c1917; --muted:#78716c; --line:#e7e5e4;
+  --bg:#fdfcfb; --soft:#f5f5f4; --accent:#c2410c;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);
+  color:var(--ink);line-height:1.7}
+.wrap{max-width:880px;margin:0 auto;padding:0 1.5rem}
+a{color:var(--accent)}
+.serif{font-family:Georgia,'Times New Roman',serif}
+
+.demo-note{background:#fffbeb;border:1px solid #fde68a;border-radius:10px;
+  padding:.7rem 1rem;font-size:.85rem;color:#78350f;margin:1.25rem 0 0}
+.demo-note a{color:#78350f;font-weight:700}
+
+header{padding:4.5rem 0 3rem}
+h1{font-size:3rem;line-height:1.08;letter-spacing:-.03em;margin-bottom:1rem;font-weight:400}
+h1 em{font-style:italic;color:var(--accent)}
+.tagline{font-size:1.15rem;color:var(--muted);max-width:50ch}
+.links{display:flex;flex-wrap:wrap;gap:1.4rem;margin-top:1.8rem;font-size:.92rem;font-weight:600}
+.links a{text-decoration:none;border-bottom:2px solid var(--accent);padding-bottom:2px}
+
+section{padding:3rem 0;border-top:1px solid var(--line)}
+h2{font-size:.8rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:1.6rem}
+
+.case{margin-bottom:2.5rem}
+.case:last-child{margin-bottom:0}
+.thumb{aspect-ratio:16/9;border-radius:14px;margin-bottom:1rem;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.82rem;font-weight:600;color:rgba(255,255,255,.85);letter-spacing:.04em}
+.t1{background:linear-gradient(135deg,#c2410c,#f59e0b)}
+.t2{background:linear-gradient(135deg,#0f766e,#22d3ee)}
+.t3{background:linear-gradient(135deg,#4c1d95,#a78bfa)}
+.case h3{font-size:1.45rem;font-weight:400;letter-spacing:-.01em;margin-bottom:.3rem}
+.case .meta{font-size:.85rem;color:var(--muted);margin-bottom:.8rem}
+.case p{color:var(--muted);max-width:64ch;margin-bottom:.5rem}
+.case .outcome{color:var(--ink);font-weight:600}
+.case .go{display:inline-block;margin-top:.6rem;font-size:.9rem;font-weight:600;text-decoration:none;
+  border-bottom:2px solid var(--accent);padding-bottom:2px}
+
+.process{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
+.step{position:relative}
+.step b{display:block;font-size:1.6rem;color:var(--accent);font-weight:400;
+  font-family:Georgia,serif;line-height:1}
+.step strong{display:block;margin:.35rem 0 .2rem;font-size:.95rem}
+.step span{font-size:.85rem;color:var(--muted)}
+
+blockquote{border-left:3px solid var(--accent);padding-left:1.2rem;margin:1rem 0;
+  font-size:1.05rem;color:var(--ink)}
+blockquote footer{margin-top:.5rem;font-size:.85rem;color:var(--muted);font-weight:600}
+
+footer.page{padding:2.5rem 0 3.5rem;color:var(--muted);font-size:.88rem}
+@media(max-width:700px){
+  .process{grid-template-columns:1fr 1fr}
+  h1{font-size:2.1rem}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <p class="demo-note">
+    Example portfolio. A fictional designer, built to show what the prompts in
+    the guide produce. <a href="../portfolio-building.html">Back to the guide</a>
+  </p>
+</div>
+
+<header>
+  <div class="wrap">
+    <h1 class="serif">Meera Kulkarni<br><em>product designer</em></h1>
+    <p class="tagline">Nine years making complicated things feel obvious.
+      Currently designing for healthcare, previously fintech and education.</p>
+    <div class="links">
+      <a href="#work">Case studies</a>
+      <a href="#">Resume</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">meera@example.com</a>
+    </div>
+  </div>
+</header>
+
+<section id="work">
+  <div class="wrap">
+    <h2>Selected case studies</h2>
+
+    <div class="case">
+      <div class="thumb t1">Patient intake redesign</div>
+      <h3 class="serif">Cutting a 40 minute intake form to 9 minutes</h3>
+      <p class="meta">Lead designer &#183; 5 months &#183; Healthcare platform</p>
+      <p>Nurses were filling the same patient details three times across two
+        systems. I sat in a clinic for four days before drawing anything, then
+        rebuilt the flow around what they actually did rather than what the form
+        assumed.</p>
+      <p class="outcome">Intake time down 78%. Nurse-reported errors down by half
+        in the first quarter.</p>
+      <a class="go" href="#">Read the case study</a>
+    </div>
+
+    <div class="case">
+      <div class="thumb t2">Design system</div>
+      <h3 class="serif">A design system three teams actually used</h3>
+      <p class="meta">Lead designer &#183; 8 months &#183; With two engineers</p>
+      <p>The previous system failed because it shipped as a Figma file with no
+        code. This time we built components and documentation together, and I
+        ran a weekly clinic where anyone could bring a screen and get help.</p>
+      <p class="outcome">Adoption reached 80% of new screens in six months.
+        Design review time halved.</p>
+      <a class="go" href="#">Read the case study</a>
+    </div>
+
+    <div class="case">
+      <div class="thumb t3">Onboarding</div>
+      <h3 class="serif">Onboarding for people who do not trust apps</h3>
+      <p class="meta">Solo designer &#183; 3 months &#183; Fintech</p>
+      <p>Our users were first-time investors and dropping off at identity
+        verification. Research showed it was not confusion, it was suspicion.
+        We redesigned around explaining why each document was needed.</p>
+      <p class="outcome">Verification completion up from 52% to 79%.</p>
+      <a class="go" href="#">Read the case study</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>How I work</h2>
+    <div class="process">
+      <div class="step"><b>01</b><strong>Watch first</strong><span>I do not draw anything until I have seen the real work happen.</span></div>
+      <div class="step"><b>02</b><strong>Frame the problem</strong><span>Written down, agreed with engineering, before any pixels.</span></div>
+      <div class="step"><b>03</b><strong>Make it rough</strong><span>Paper and grey boxes. Pretty comes last, on purpose.</span></div>
+      <div class="step"><b>04</b><strong>Ship and measure</strong><span>If nothing changed in the numbers, it did not work.</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>What people say</h2>
+    <blockquote>
+      "Meera is the only designer I have worked with who asks to see the database
+      schema. She designs for the system that exists, not the one in the mockup."
+      <footer>Engineering lead, healthcare platform</footer>
+    </blockquote>
+    <blockquote>
+      "She ran the research sessions that changed our roadmap. We were building
+      the wrong thing and she proved it politely."
+      <footer>Head of product, fintech</footer>
+    </blockquote>
+  </div>
+</section>
+
+<footer class="page">
+  <div class="wrap">
+    Built with AI prompts, hosted free on GitHub Pages.
+    Template from <a href="../portfolio-building.html">Resources by Shumbul Arifa</a>.
+  </div>
+</footer>
+
+</body>
+</html>
