@@ -97,6 +97,22 @@ export const PAGES = [
     "t": "MCP Explained"
   },
   {
+    "f": "mind-maps.html",
+    "t": "Mind Maps"
+  },
+  {
+    "f": "mindmap-git-model.html",
+    "t": "Git Mental Model Mind Map"
+  },
+  {
+    "f": "mindmap-interview-loop.html",
+    "t": "The Interview Loop Mind Map"
+  },
+  {
+    "f": "mindmap-portfolio-sections.html",
+    "t": "Portfolio Blueprint Mind Map"
+  },
+  {
     "f": "networking-toolkit.html",
     "t": "Networking Toolkit"
   },
