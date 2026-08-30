@@ -45,6 +45,12 @@ const GROUPS = [
         { href: 'mcp-guide.html', label: 'MCP Explained', icon: '🔌' },
         { href: 'networking-toolkit.html', label: 'Networking Toolkit', icon: '🛰️' },
     ] },
+    { title: 'Mind Maps', items: [
+        { href: 'mind-maps.html', label: 'All Mind Maps', icon: '🗺️' },
+        { href: 'mindmap-portfolio-sections.html', label: 'Portfolio Blueprint', icon: '🎨' },
+        { href: 'mindmap-interview-loop.html', label: 'The Interview Loop', icon: '🗣️' },
+        { href: 'mindmap-git-model.html', label: 'Git in Four Places', icon: '🚀' },
+    ]},
     { title: 'Land the Job', items: [
         { href: 'trending-tech-roles.html', label: 'Trending Tech Roles', icon: '🚀' },
         { href: 'career-portals.html', label: 'Career Portals', icon: '🏢' },

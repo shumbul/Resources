@@ -1494,3 +1494,199 @@ html {
         font-size: 0.75rem;
     }
 }
+/* ==========================================================================
+   MIND MAPS
+   ==========================================================================
+   Two genuinely different layouts, not one layout scaled.
+
+   Wide (>900px): the poster. A spine on the left, branches fanning out, each
+   branch's nodes in a row. This is the version worth screenshotting.
+
+   Narrow (<=900px): branches become a collapsible accordion and nodes stack.
+   The original hand-built infographic tried to keep six columns at every
+   width, which is how it ended up overflowing a phone by 705px with 8.5px
+   labels. A phone reader works through one branch at a time anyway.
+
+   .mm-body publishes --mm-stacked so mindmap.js can ask the browser which
+   layout is live instead of hardcoding the breakpoint in two places.
+   -------------------------------------------------------------------------- */
+
+body .mm { margin: 1.5rem 0; }
+
+body .mm-hd {
+    display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1rem;
+    padding: .85rem 1.1rem; margin-bottom: 1.1rem;
+    background: var(--bg-secondary); border: 1px solid var(--border);
+    border-radius: var(--radius, 16px);
+}
+body .mm-spine { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; }
+body .mm-spine__kicker {
+    font: 700 .7rem/1 var(--font-sans, inherit); letter-spacing: .09em;
+    text-transform: uppercase; color: #fff; background: var(--gradient);
+    padding: .32rem .6rem; border-radius: 999px;
+}
+body .mm-spine__count {
+    font-size: .78rem; font-weight: 600; color: var(--text-secondary);
+    background: var(--bg-primary); border: 1px solid var(--border);
+    padding: .26rem .6rem; border-radius: 999px;
+}
+body .mm-legend { display: flex; flex-wrap: wrap; gap: .5rem .9rem; }
+body .mm-legend__item {
+    display: inline-flex; align-items: center; gap: .35rem;
+    font-size: .78rem; color: var(--text-secondary);
+}
+body .mm-tools { display: flex; gap: .4rem; margin-left: auto; }
+body .mm-tool {
+    font: 600 .76rem/1 var(--font-sans, inherit); cursor: pointer;
+    border: 1px solid var(--border); background: var(--bg-primary);
+    color: var(--text-secondary); border-radius: 8px; padding: .38rem .65rem;
+}
+body .mm-tool:hover { border-color: var(--primary); color: var(--primary); }
+
+/* The MUST / EDGE chips. Both are measured against their own fill: MUST is
+   6.34:1 and EDGE is 5.06:1, so the smallest text on the map still clears AA. */
+body .mm-tag {
+    font: 800 .58rem/1 var(--font-sans, inherit); letter-spacing: .05em;
+    padding: .2rem .36rem; border-radius: 5px; white-space: nowrap;
+}
+body .mm-tag--must { background: #fee2e2; color: #9f1239; }
+body .mm-tag--edge { background: #dcfce7; color: #15803d; }
+
+body .mm-branch {
+    background: var(--bg-primary); border: 1px solid var(--border);
+    border-radius: 14px; margin-bottom: .8rem; overflow: hidden;
+}
+body .mm-branch__h { margin: 0; font-size: 1rem; }
+body .mm-branch__btn {
+    width: 100%; display: flex; align-items: center; gap: .6rem;
+    padding: .8rem 1rem; background: none; border: 0; cursor: pointer;
+    text-align: left; font: inherit; color: var(--text-primary);
+}
+body .mm-branch__ic {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 2rem; height: 2rem; border-radius: 9px; font-size: 1.05rem; flex: none;
+    border: 1px solid rgba(15, 23, 42, .07);
+}
+/* Tone comes from the data, so a branch reads as a colour before it reads as
+   a word. Set on the branch and inherited by both the header tile and its
+   nodes rather than repeated per element. */
+body .mm-branch[data-tone="blue"]   .mm-branch__ic { background: linear-gradient(135deg, #dbeafe, #bfdbfe); }
+body .mm-branch[data-tone="green"]  .mm-branch__ic { background: linear-gradient(135deg, #dcfce7, #bbf7d0); }
+body .mm-branch[data-tone="purple"] .mm-branch__ic { background: linear-gradient(135deg, #ede9fe, #ddd6fe); }
+body .mm-branch[data-tone="amber"]  .mm-branch__ic { background: linear-gradient(135deg, #fef3c7, #fde68a); }
+body .mm-branch[data-tone="rose"]   .mm-branch__ic { background: linear-gradient(135deg, #ffe4e6, #fecdd3); }
+body .mm-branch[data-tone="teal"]   .mm-branch__ic { background: linear-gradient(135deg, #ccfbf1, #99f6e4); }
+body .mm-branch[data-tone="slate"]  .mm-branch__ic { background: linear-gradient(135deg, #f1f5f9, #e2e8f0); }
+body .mm-branch[data-tone="orange"] .mm-branch__ic { background: linear-gradient(135deg, #ffedd5, #fed7aa); }
+body .mm-branch__title {
+    font-family: var(--font-display, inherit); font-weight: 700; font-size: .98rem;
+}
+body .mm-branch__n {
+    font-size: .72rem; font-weight: 700; color: var(--text-secondary);
+    background: var(--bg-tertiary); border-radius: 999px; padding: .12rem .45rem;
+}
+body .mm-branch__chev {
+    margin-left: auto; width: .55rem; height: .55rem; flex: none;
+    border-right: 2px solid var(--text-secondary);
+    border-bottom: 2px solid var(--text-secondary);
+    transform: rotate(45deg); transition: transform .18s ease;
+}
+body .mm-branch__panel { padding: 0 1rem 1rem; }
+
+body .mm-nodes {
+    list-style: none; margin: 0; padding: 0;
+    display: grid; gap: .6rem;
+    grid-template-columns: repeat(auto-fit, minmax(148px, 1fr));
+}
+body .mm-node {
+    background: var(--bg-secondary); border: 1px solid var(--border);
+    border-radius: 11px; padding: .7rem .75rem;
+}
+body .mm-node__top {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: .4rem; margin-bottom: .45rem;
+}
+body .mm-ic {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 2.1rem; height: 2.1rem; border-radius: 10px; font-size: 1.1rem; flex: none;
+    border: 1px solid rgba(15, 23, 42, .06);
+}
+body .mm-ic--blue   { background: linear-gradient(135deg, #eff6ff, #dbeafe); }
+body .mm-ic--green  { background: linear-gradient(135deg, #f0fdf4, #dcfce7); }
+body .mm-ic--purple { background: linear-gradient(135deg, #f5f3ff, #ede9fe); }
+body .mm-ic--amber  { background: linear-gradient(135deg, #fffbeb, #fef3c7); }
+body .mm-ic--rose   { background: linear-gradient(135deg, #fff1f2, #ffe4e6); }
+body .mm-ic--teal   { background: linear-gradient(135deg, #f0fdfa, #ccfbf1); }
+body .mm-ic--slate  { background: linear-gradient(135deg, #f8fafc, #f1f5f9); }
+body .mm-ic--orange { background: linear-gradient(135deg, #fff7ed, #ffedd5); }
+
+body .mm-node__label {
+    display: block; font-family: var(--font-display, inherit);
+    font-size: .875rem; font-weight: 700; line-height: 1.3;
+}
+/* 12px floor. The original went to 8.5px on a phone, which is unreadable. */
+body .mm-node__sub {
+    display: block; font-size: .75rem; line-height: 1.45;
+    color: var(--text-secondary); margin-top: .18rem;
+}
+body .mm-branch__link {
+    display: inline-flex; align-items: center; gap: .3rem; margin-top: .8rem;
+    font-size: .82rem; font-weight: 700; color: var(--primary); text-decoration: none;
+}
+body .mm-branch__link:hover { text-decoration: underline; }
+
+body .mm-related {
+    margin-top: 1.4rem; padding: 1.1rem 1.25rem;
+    background: var(--bg-secondary); border: 1px solid var(--border);
+    border-left: 4px solid var(--primary); border-radius: 14px;
+}
+body .mm-related h3 { margin: 0 0 .6rem; font-size: 1rem; }
+body .mm-related__links { display: flex; flex-wrap: wrap; gap: .5rem; }
+body .mm-related__links a {
+    background: var(--bg-primary); border: 1px solid var(--border);
+    border-radius: 10px; padding: .5rem .8rem;
+    font-size: .86rem; font-weight: 600;
+    color: var(--text-primary); text-decoration: none;
+}
+body .mm-related__links a:hover { border-color: var(--primary); color: var(--primary); }
+
+/* -------------------------------------------------- wide: the poster layout */
+@media (min-width: 901px) {
+    body .mm-body { --mm-stacked: 0; position: relative; padding-left: 1.5rem; }
+    /* The spine. Decorative, so it is a pseudo-element and never announced. */
+    body .mm-body::before {
+        content: ''; position: absolute; left: 0; top: 1.2rem; bottom: 1.2rem;
+        width: 3px; border-radius: 3px; background: var(--gradient); opacity: .5;
+    }
+    body .mm-branch {
+        display: grid; grid-template-columns: 210px 1fr; align-items: start;
+        gap: 0 1.1rem; position: relative; padding: .9rem 1.1rem;
+    }
+    /* The connector from the spine to each branch. */
+    body .mm-branch::before {
+        content: ''; position: absolute; left: -1.5rem; top: 2.1rem;
+        width: 1.5rem; height: 2px; background: var(--primary); opacity: .35;
+    }
+    body .mm-branch__btn { padding: 0; cursor: default; }
+    body .mm-branch__chev { display: none; }
+    /* Always open on desktop; mindmap.js keeps aria-expanded in step. */
+    body .mm-branch__panel { display: block !important; padding: 0; }
+    body .mm-nodes { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ---------------------------------------------- narrow: stacked accordion */
+@media (max-width: 900px) {
+    body .mm-body { --mm-stacked: 1; }
+    body .mm-branch__panel { display: none; }
+    body .mm-branch.is-open .mm-branch__panel { display: block; }
+    body .mm-branch.is-open .mm-branch__chev { transform: rotate(-135deg); }
+    body .mm-branch__btn:hover { background: var(--bg-secondary); }
+    body .mm-tools { margin-left: 0; width: 100%; }
+}
+@media (max-width: 420px) {
+    body .mm-nodes { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body .mm-branch__chev { transition: none; }
+}
